@@ -606,6 +606,226 @@ export const TAROT_SPREADS: Record<string, TarotSpread> = {
         meaning: "Influence and guidance - based on understanding the truth, pointing you toward the direction to move forward and actions to take"
       }
     ]
+  },
+
+  daily_guidance: {
+    name: "Daily Guidance",
+    description: "A simple one-card draw for daily insight, guidance, and energy focus",
+    cardCount: 1,
+    positions: [
+      {
+        name: "Today's Guidance",
+        meaning: "The energy, lesson, or guidance you need for today"
+      }
+    ]
+  },
+
+  yes_no: {
+    name: "Yes/No Spread",
+    description: "A 3-card spread for binary questions, providing clear guidance on yes/no decisions",
+    cardCount: 3,
+    positions: [
+      {
+        name: "The Situation",
+        meaning: "The current circumstances surrounding your question"
+      },
+      {
+        name: "Influences",
+        meaning: "Hidden factors and influences affecting the outcome"
+      },
+      {
+        name: "Answer",
+        meaning: "The guidance and likely answer to your yes/no question"
+      }
+    ]
+  },
+
+  weekly_forecast: {
+    name: "Weekly Forecast",
+    description: "A 7-card spread providing guidance for each day of the upcoming week",
+    cardCount: 7,
+    positions: [
+      {
+        name: "Monday",
+        meaning: "Energy and focus for Monday - new beginnings and fresh starts"
+      },
+      {
+        name: "Tuesday",
+        meaning: "Energy and focus for Tuesday - action and determination"
+      },
+      {
+        name: "Wednesday",
+        meaning: "Energy and focus for Wednesday - communication and adaptability"
+      },
+      {
+        name: "Thursday",
+        meaning: "Energy and focus for Thursday - expansion and growth"
+      },
+      {
+        name: "Friday",
+        meaning: "Energy and focus for Friday - love, creativity, and relationships"
+      },
+      {
+        name: "Saturday",
+        meaning: "Energy and focus for Saturday - responsibility and structure"
+      },
+      {
+        name: "Sunday",
+        meaning: "Energy and focus for Sunday - rest, reflection, and spiritual connection"
+      }
+    ]
+  },
+
+  new_moon_intentions: {
+    name: "New Moon Intentions",
+    description: "A 5-card spread for setting intentions and manifesting new beginnings during the new moon",
+    cardCount: 5,
+    positions: [
+      {
+        name: "Current Energy",
+        meaning: "Your current spiritual and emotional state as you enter this new cycle"
+      },
+      {
+        name: "What to Release",
+        meaning: "Old patterns, beliefs, or situations you need to let go of"
+      },
+      {
+        name: "Intention to Set",
+        meaning: "The primary intention or goal to focus on during this lunar cycle"
+      },
+      {
+        name: "How to Manifest",
+        meaning: "Practical steps and energy to put into manifesting your intention"
+      },
+      {
+        name: "Potential Outcome",
+        meaning: "What you can expect to achieve by the full moon if you follow this guidance"
+      }
+    ]
+  },
+
+  full_moon_release: {
+    name: "Full Moon Release",
+    description: "A 5-card spread for releasing what no longer serves and harvesting the fruits of your efforts",
+    cardCount: 5,
+    positions: [
+      {
+        name: "What Has Manifested",
+        meaning: "What you have successfully created or achieved during this lunar cycle"
+      },
+      {
+        name: "What to Release",
+        meaning: "Emotions, patterns, or situations that need to be released under the full moon"
+      },
+      {
+        name: "Hidden Blessings",
+        meaning: "Unexpected gifts or lessons that have emerged during this cycle"
+      },
+      {
+        name: "How to Release",
+        meaning: "The best way to let go and release what no longer serves you"
+      },
+      {
+        name: "Moving Forward",
+        meaning: "How to carry the wisdom and energy forward into the next cycle"
+      }
+    ]
+  },
+
+  elemental_balance: {
+    name: "Elemental Balance",
+    description: "A 4-card spread examining your connection to the four elements for balance and harmony",
+    cardCount: 4,
+    positions: [
+      {
+        name: "Fire - Passion and Action",
+        meaning: "Your creative energy, passion, and ability to take action"
+      },
+      {
+        name: "Water - Emotions and Intuition",
+        meaning: "Your emotional state, intuitive abilities, and flow with life"
+      },
+      {
+        name: "Air - Thoughts and Communication",
+        meaning: "Your mental clarity, communication skills, and intellectual pursuits"
+      },
+      {
+        name: "Earth - Stability and Manifestation",
+        meaning: "Your grounding, practical matters, and ability to manifest in the physical world"
+      }
+    ]
+  },
+
+  past_life_karma: {
+    name: "Past Life Karma",
+    description: "A 6-card spread exploring karmic patterns and past life influences on your current situation",
+    cardCount: 6,
+    positions: [
+      {
+        name: "Past Life Influence",
+        meaning: "The most relevant past life pattern affecting your current situation"
+      },
+      {
+        name: "Karmic Lesson",
+        meaning: "The lesson your soul is working to learn in this lifetime"
+      },
+      {
+        name: "Karmic Debt",
+        meaning: "What you need to balance or resolve from past actions"
+      },
+      {
+        name: "Soul Gifts",
+        meaning: "Talents and wisdom you've brought forward from previous lifetimes"
+      },
+      {
+        name: "Current Challenge",
+        meaning: "How these karmic patterns are manifesting in your present life"
+      },
+      {
+        name: "Path to Resolution",
+        meaning: "How to heal and transcend these karmic patterns"
+      }
+    ]
+  },
+
+  compatibility: {
+    name: "Compatibility Spread",
+    description: "An 8-card spread for examining compatibility between two people in any type of relationship",
+    cardCount: 8,
+    positions: [
+      {
+        name: "Person A - Core Nature",
+        meaning: "The essential nature and energy of the first person"
+      },
+      {
+        name: "Person B - Core Nature",
+        meaning: "The essential nature and energy of the second person"
+      },
+      {
+        name: "What Attracts You",
+        meaning: "What draws these two people together"
+      },
+      {
+        name: "Potential Challenges",
+        meaning: "Areas of conflict or difficulty in the relationship"
+      },
+      {
+        name: "Communication Style",
+        meaning: "How these two people communicate and understand each other"
+      },
+      {
+        name: "Shared Goals",
+        meaning: "Common ground and shared aspirations"
+      },
+      {
+        name: "Growth Potential",
+        meaning: "How this relationship can help both people grow and evolve"
+      },
+      {
+        name: "Long-term Potential",
+        meaning: "The likely future and sustainability of this connection"
+      }
+    ]
   }
 };
 

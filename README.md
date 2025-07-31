@@ -18,8 +18,12 @@ A professional-grade Model Context Protocol (MCP) server for Rider-Waite tarot c
 
 **✅ FULLY IMPLEMENTED AND WORKING:**
 - Complete 78-card Rider-Waite deck with detailed interpretations
-- 11 professional tarot spreads (Single Card, Three Card, Celtic Cross, Horseshoe, Relationship Cross, Career Path, Decision Making, Spiritual Guidance, Year Ahead, Chakra Alignment, Shadow Work)
+- **25 professional tarot spreads** including Celtic Cross, Relationship Cross, Career Path, Spiritual Guidance, Year Ahead, Chakra Alignment, Shadow Work, **NEW: Daily Guidance, Yes/No, Weekly Forecast, Moon Phase spreads, Elemental Balance, Past Life Karma, Compatibility**
 - **Custom Spread Creation**: AI can create custom tarot spreads when existing ones don't fit
+- **Lunar Integration**: Moon phase detection with appropriate spreads and guidance
+- **AI Spread Recommendations**: Intelligent spread suggestions based on question analysis
+- **Daily Card Practice**: Single card draws for daily guidance
+- **Card Comparison Tools**: Multi-card meaning analysis and interpretation
 - Multi-transport MCP server (stdio, HTTP, SSE)
 - Advanced interpretation engine with elemental analysis
 - Cryptographically secure card shuffling and drawing
@@ -36,8 +40,10 @@ A professional-grade Model Context Protocol (MCP) server for Rider-Waite tarot c
 ### 🃏 Professional Tarot System
 - **Research-Based Accuracy**: Interpretations verified against professional tarot sources (Biddy Tarot, Labyrinthos, classical literature)
 - **Complete Rider-Waite Deck**: Comprehensive card database with detailed meanings, symbolism, astrology, and numerology
-- **11 Professional Spreads**: Celtic Cross, Relationship Cross, Career Path, Spiritual Guidance, Chakra Alignment, Year Ahead, and more
+- **25 Professional Spreads**: Celtic Cross, Relationship Cross, Career Path, Spiritual Guidance, Chakra Alignment, Year Ahead, Daily Guidance, Yes/No, Weekly Forecast, Moon Phase spreads, Elemental Balance, Past Life Karma, Compatibility, and more
 - **Custom Spread Creation**: AI can create unlimited custom spreads (1-15 positions) when existing spreads don't fit the specific question or context
+- **Lunar Integration**: Automatic moon phase detection with themed spreads and guidance for each lunar cycle
+- **AI Spread Recommendations**: Intelligent analysis of questions to recommend the most appropriate spread with confidence scoring
 - **Specialized Reading Analysis**: Tailored interpretations for relationships, career, spiritual growth, and energy balancing
 - **Intelligent Card Combinations**: Multi-dimensional analysis including elemental balance, suit patterns, and numerical progressions
 
