@@ -1,4 +1,5 @@
 import { TarotSession, TarotReading } from "./types.js";
+import { getSecureRandom } from "./utils.js";
 
 /**
  * Manages tarot reading sessions
@@ -69,7 +70,9 @@ export class TarotSessionManager {
    * Generate a unique session ID
    */
   private generateSessionId(): string {
-    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const timestamp = Date.now();
+    const randomPart = Math.floor(getSecureRandom() * 1000000000).toString(36);
+    return `session_${timestamp}_${randomPart}`;
   }
 
   /**
