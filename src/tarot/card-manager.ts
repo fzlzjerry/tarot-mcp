@@ -1,21 +1,29 @@
-import fs from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { TarotCard, CardOrientation, CardCategory } from './types.js';
-import { getSecureRandom } from './utils.js';
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
+import { TarotCard, CardOrientation, CardCategory } from "./types.js";
+import { getSecureRandom } from "./utils.js";
 
-// Helper to get __dirname in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const CARD_DATA_PATH = path.join(__dirname, 'card-data.json');
+// Helper to get __dirname in ES modules - with fallback for testing
+let CARD_DATA_PATH: string;
+try {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  CARD_DATA_PATH = path.join(__dirname, "card-data.json");
+} catch (error) {
+  // Fallback for test environment
+  CARD_DATA_PATH = path.join(process.cwd(), "src", "tarot", "card-data.json");
+}
 
 /**
  * Manages tarot card data and operations.
  * Use the static `create()` method to instantiate.
  */
 export class TarotCardManager {
-  private static instance: TarotCardManager;
+  private static instance: TarotCardManager | null = null;
+  private static initPromise: Promise<TarotCardManager> | null = null;
   private readonly cards: Map<string, TarotCard>;
+  private readonly cardsByName: Map<string, TarotCard>;
   private readonly allCards: readonly TarotCard[];
 
   /**
@@ -25,6 +33,7 @@ export class TarotCardManager {
   private constructor(cards: TarotCard[]) {
     this.allCards = Object.freeze(cards);
     this.cards = new Map();
+    this.cardsByName = new Map();
     this.initializeCards();
   }
 
@@ -37,45 +46,68 @@ export class TarotCardManager {
       return TarotCardManager.instance;
     }
 
-    try {
-      const data = await fs.readFile(CARD_DATA_PATH, 'utf-8');
-      const { cards } = JSON.parse(data);
-      if (!Array.isArray(cards)) {
-        throw new Error('Card data is not in the expected format ({"cards": [...]})');
-      }
-      TarotCardManager.instance = new TarotCardManager(cards as TarotCard[]);
-      return TarotCardManager.instance;
-    } catch (error) {
-      console.error('Failed to load or parse tarot card data:', error);
-      throw new Error('Could not initialize TarotCardManager. Card data is missing or corrupt.');
+    // Prevent multiple concurrent initializations
+    if (TarotCardManager.initPromise) {
+      return TarotCardManager.initPromise;
     }
+
+    TarotCardManager.initPromise = (async () => {
+      try {
+        const data = await fs.readFile(CARD_DATA_PATH, "utf-8");
+        const { cards } = JSON.parse(data);
+        if (!Array.isArray(cards)) {
+          throw new Error(
+            'Card data is not in the expected format ({"cards": [...]})',
+          );
+        }
+        TarotCardManager.instance = new TarotCardManager(cards as TarotCard[]);
+        return TarotCardManager.instance;
+      } catch (error) {
+        TarotCardManager.initPromise = null; // Reset on error
+        console.error("Failed to load or parse tarot card data:", error);
+        throw new Error(
+          "Could not initialize TarotCardManager. Card data is missing or corrupt.",
+        );
+      }
+    })();
+
+    return TarotCardManager.initPromise;
   }
 
   /**
-   * Populates the internal map for quick card lookups.
+   * Populates the internal maps for quick card lookups.
    */
   private initializeCards(): void {
-    this.allCards.forEach(card => {
+    this.allCards.forEach((card) => {
       this.cards.set(card.id, card);
-      // Also allow lookup by name (case-insensitive)
-      this.cards.set(card.name.toLowerCase(), card);
+      // Separate map for name lookups (case-insensitive)
+      this.cardsByName.set(card.name.toLowerCase(), card);
     });
   }
 
   /**
    * Get detailed information about a specific card.
    */
-  public getCardInfo(cardName: string, orientation: CardOrientation = "upright"): string {
+  public getCardInfo(
+    cardName: string,
+    orientation: CardOrientation = "upright",
+  ): string {
     const card = this.findCard(cardName);
     if (!card) {
       return `Card "${cardName}" not found. Use the list_all_cards tool to see available cards.`;
     }
 
-    const meanings = orientation === "upright" ? card.meanings.upright : card.meanings.reversed;
-    const keywords = orientation === "upright" ? card.keywords.upright : card.keywords.reversed;
+    const meanings =
+      orientation === "upright"
+        ? card.meanings.upright
+        : card.meanings.reversed;
+    const keywords =
+      orientation === "upright"
+        ? card.keywords.upright
+        : card.keywords.reversed;
 
     let result = `# ${card.name} (${orientation.charAt(0).toUpperCase() + orientation.slice(1)})\n\n`;
-    
+
     result += `**Arcana:** ${card.arcana === "major" ? "Major Arcana" : "Minor Arcana"}`;
     if (card.suit) {
       result += ` - ${card.suit.charAt(0).toUpperCase() + card.suit.slice(1)}`;
@@ -86,19 +118,19 @@ export class TarotCardManager {
     result += "\n\n";
 
     result += `**Keywords:** ${keywords.join(", ")}\n\n`;
-    
+
     result += `**Description:** ${card.description}\n\n`;
-    
+
     result += `## Meanings (${orientation.charAt(0).toUpperCase() + orientation.slice(1)})\n\n`;
     result += `**General:** ${meanings.general}\n\n`;
     result += `**Love & Relationships:** ${meanings.love}\n\n`;
     result += `**Career & Finance:** ${meanings.career}\n\n`;
     result += `**Health:** ${meanings.health}\n\n`;
     result += `**Spirituality:** ${meanings.spirituality}\n\n`;
-    
+
     result += `## Symbolism\n\n`;
-    result += card.symbolism.map(symbol => `• ${symbol}`).join("\n") + "\n\n";
-    
+    result += card.symbolism.map((symbol) => `• ${symbol}`).join("\n") + "\n\n";
+
     if (card.element) {
       result += `**Element:** ${card.element.charAt(0).toUpperCase() + card.element.slice(1)}\n`;
     }
@@ -120,22 +152,24 @@ export class TarotCardManager {
 
     switch (category) {
       case "major_arcana":
-        filteredCards = this.allCards.filter(card => card.arcana === "major");
+        filteredCards = this.allCards.filter((card) => card.arcana === "major");
         break;
       case "minor_arcana":
-        filteredCards = this.allCards.filter(card => card.arcana === "minor");
+        filteredCards = this.allCards.filter((card) => card.arcana === "minor");
         break;
       case "wands":
-        filteredCards = this.allCards.filter(card => card.suit === "wands");
+        filteredCards = this.allCards.filter((card) => card.suit === "wands");
         break;
       case "cups":
-        filteredCards = this.allCards.filter(card => card.suit === "cups");
+        filteredCards = this.allCards.filter((card) => card.suit === "cups");
         break;
       case "swords":
-        filteredCards = this.allCards.filter(card => card.suit === "swords");
+        filteredCards = this.allCards.filter((card) => card.suit === "swords");
         break;
       case "pentacles":
-        filteredCards = this.allCards.filter(card => card.suit === "pentacles");
+        filteredCards = this.allCards.filter(
+          (card) => card.suit === "pentacles",
+        );
         break;
       default:
         filteredCards = this.allCards;
@@ -143,35 +177,42 @@ export class TarotCardManager {
 
     let result = `# Tarot Cards`;
     if (category !== "all") {
-      result += ` - ${category.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase())}`;
+      result += ` - ${category.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase())}`;
     }
     result += `\n\n`;
 
     if (category === "all" || category === "major_arcana") {
-      const majorCards = filteredCards.filter(card => card.arcana === "major");
+      const majorCards = filteredCards.filter(
+        (card) => card.arcana === "major",
+      );
       if (majorCards.length > 0) {
         result += `## Major Arcana (${majorCards.length} cards)\n\n`;
         majorCards
           .sort((a, b) => (a.number ?? 0) - (b.number ?? 0))
-          .forEach(card => {
+          .forEach((card) => {
             result += `• **${card.name}** (${card.number}) - ${card.keywords.upright.slice(0, 3).join(", ")}\n`;
           });
         result += "\n";
       }
     }
 
-    if (category === "all" || category === "minor_arcana" || ["wands", "cups", "swords", "pentacles"].includes(category)) {
-      const suits = category === "all" || category === "minor_arcana" 
-        ? ["wands", "cups", "swords", "pentacles"]
-        : [category as string];
+    if (
+      category === "all" ||
+      category === "minor_arcana" ||
+      ["wands", "cups", "swords", "pentacles"].includes(category)
+    ) {
+      const suits =
+        category === "all" || category === "minor_arcana"
+          ? ["wands", "cups", "swords", "pentacles"]
+          : [category as string];
 
-      suits.forEach(suit => {
-        const suitCards = filteredCards.filter(card => card.suit === suit);
+      suits.forEach((suit) => {
+        const suitCards = filteredCards.filter((card) => card.suit === suit);
         if (suitCards.length > 0) {
           result += `## ${suit.charAt(0).toUpperCase() + suit.slice(1)} (${suitCards.length} cards)\n\n`;
           suitCards
             .sort((a, b) => (a.number ?? 0) - (b.number ?? 0))
-            .forEach(card => {
+            .forEach((card) => {
               result += `• **${card.name}** - ${card.keywords.upright.slice(0, 3).join(", ")}\n`;
             });
           result += "\n";
@@ -204,7 +245,6 @@ export class TarotCardManager {
     return undefined;
   }
 
-
   /**
    * Fisher-Yates shuffle algorithm for true randomness.
    */
@@ -230,7 +270,9 @@ export class TarotCardManager {
    */
   public getRandomCards(count: number): TarotCard[] {
     if (count > this.allCards.length) {
-      throw new Error(`Cannot draw ${count} cards from a deck of ${this.allCards.length} cards`);
+      throw new Error(
+        `Cannot draw ${count} cards from a deck of ${this.allCards.length} cards`,
+      );
     }
     if (count === this.allCards.length) {
       return this.fisherYatesShuffle(this.allCards);
@@ -238,7 +280,7 @@ export class TarotCardManager {
     const shuffled = this.fisherYatesShuffle(this.allCards);
     return shuffled.slice(0, count);
   }
-  
+
   /**
    * Get all cards in the deck.
    */
