@@ -1,4 +1,4 @@
-import { TarotCard } from './types.js';
+import { TarotCard } from "../shared/types.js";
 
 export interface CardAnalytics {
   overview: DatabaseOverview;

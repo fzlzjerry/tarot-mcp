@@ -1,6 +1,7 @@
-import { TarotCardManager } from '../card-manager.js';
-import { TarotReadingManager } from '../reading-manager.js';
-import { TarotSessionManager } from '../session-manager.js';
+import fs from "node:fs";
+import { TarotCardManager } from "../tarot/cards/card-manager.js";
+import { TarotReadingManager } from "../tarot/readings/reading-manager.js";
+import { TarotSessionManager } from "../tarot/readings/session-manager.js";
 
 describe('TarotReadingManager', () => {
   let cardManager: TarotCardManager;
@@ -19,18 +20,18 @@ describe('TarotReadingManager', () => {
 
       expect(result).toContain('# Single Card Reading');
       expect(result).toContain('What should I focus on today?');
-      expect(result).toContain('Card 1:');
+      expect(result).toContain('### 1. The Message');
       expect(result).toContain('## Interpretation');
     });
 
     it('should perform a three card reading successfully', () => {
       const result = readingManager.performReading('three_card', 'What about my career?');
 
-      expect(result).toContain('# Three Card Reading');
+      expect(result).toContain('# Three Card Spread Reading');
       expect(result).toContain('What about my career?');
-      expect(result).toContain('Past:');
-      expect(result).toContain('Present:');
-      expect(result).toContain('Future:');
+      expect(result).toContain('Past/Situation');
+      expect(result).toContain('Present/Action');
+      expect(result).toContain('Future/Outcome');
       expect(result).toContain('## Interpretation');
     });
 
@@ -39,10 +40,10 @@ describe('TarotReadingManager', () => {
 
       expect(result).toContain('# Celtic Cross Reading');
       expect(result).toContain('Complete life guidance');
-      expect(result).toContain('Present Situation:');
-      expect(result).toContain('Challenge:');
-      expect(result).toContain('Distant Past:');
-      expect(result).toContain('Possible Outcome:');
+      expect(result).toContain('Present Situation');
+      expect(result).toContain('Challenge/Cross');
+      expect(result).toContain('Distant Past/Foundation');
+      expect(result).toContain('Possible Outcome');
       expect(result).toContain('## Interpretation');
     });
 
@@ -54,7 +55,7 @@ describe('TarotReadingManager', () => {
     });
 
     it('should include session ID when provided', () => {
-      const sessionId = 'test-session-123';
+      const sessionId = sessionManager.createSession().id;
       const result = readingManager.performReading('single_card', 'Test question', sessionId);
 
       expect(result).toContain('# Single Card Reading');
@@ -85,7 +86,7 @@ describe('TarotReadingManager', () => {
       const complexQuestion = 'What about love & relationships? (Is there hope?)';
       const result = readingManager.performReading('three_card', complexQuestion);
 
-      expect(result).toContain('# Three Card Reading');
+      expect(result).toContain('# Three Card Spread Reading');
       expect(result).toContain(complexQuestion);
       expect(result).toContain('## Interpretation');
     });
@@ -127,9 +128,9 @@ describe('TarotReadingManager', () => {
       const result = readingManager.listAvailableSpreads();
 
       expect(result).toContain('cards)');
-      expect(result).toContain('Past:');
-      expect(result).toContain('Present:');
-      expect(result).toContain('Future:');
+      expect(result).toContain('Past/Situation');
+      expect(result).toContain('Present/Action');
+      expect(result).toContain('Future/Outcome');
     });
 
     it('should be well-formatted markdown', () => {
@@ -143,8 +144,8 @@ describe('TarotReadingManager', () => {
     });
   });
 
-  describe('createCustomSpread', () => {
-    it('should create a custom spread successfully', () => {
+  describe('performCustomReading', () => {
+    it('should perform a custom spread successfully', () => {
       const spreadName = 'Test Spread';
       const description = 'A test spread for validation';
       const positions = [
@@ -152,61 +153,19 @@ describe('TarotReadingManager', () => {
         { name: 'Position 2', meaning: 'Second meaning' }
       ];
 
-      const result = readingManager.createCustomSpread(spreadName, description, positions);
+      const result = readingManager.performCustomReading(
+        spreadName,
+        description,
+        positions,
+        'What should I understand?'
+      );
 
-      expect(result).toContain('Custom spread "Test Spread" created successfully');
-      expect(result).toContain('2 positions');
-      expect(result).toContain('Position 1: First meaning');
-      expect(result).toContain('Position 2: Second meaning');
-    });
-
-    it('should validate spread name', () => {
-      const result = readingManager.createCustomSpread('', 'Description', [
-        { name: 'Pos', meaning: 'Meaning' }
-      ]);
-
-      expect(result).toContain('Spread name cannot be empty');
-    });
-
-    it('should validate description', () => {
-      const result = readingManager.createCustomSpread('Name', '', [
-        { name: 'Pos', meaning: 'Meaning' }
-      ]);
-
-      expect(result).toContain('Description cannot be empty');
-    });
-
-    it('should validate minimum positions', () => {
-      const result = readingManager.createCustomSpread('Name', 'Description', []);
-
-      expect(result).toContain('At least 1 position is required');
-    });
-
-    it('should validate maximum positions', () => {
-      const tooManyPositions = Array.from({ length: 16 }, (_, i) => ({
-        name: `Position ${i + 1}`,
-        meaning: `Meaning ${i + 1}`
-      }));
-
-      const result = readingManager.createCustomSpread('Name', 'Description', tooManyPositions);
-
-      expect(result).toContain('Maximum 15 positions allowed');
-    });
-
-    it('should validate position names', () => {
-      const result = readingManager.createCustomSpread('Name', 'Description', [
-        { name: '', meaning: 'Valid meaning' }
-      ]);
-
-      expect(result).toContain('Position name cannot be empty');
-    });
-
-    it('should validate position meanings', () => {
-      const result = readingManager.createCustomSpread('Name', 'Description', [
-        { name: 'Valid name', meaning: '' }
-      ]);
-
-      expect(result).toContain('Position meaning cannot be empty');
+      expect(result).toContain('# Test Spread Reading');
+      expect(result).toContain('What should I understand?');
+      expect(result).toContain('### 1. Position 1');
+      expect(result).toContain('*First meaning*');
+      expect(result).toContain('### 2. Position 2');
+      expect(result).toContain('## Interpretation');
     });
 
     it('should handle complex custom spreads', () => {
@@ -217,16 +176,18 @@ describe('TarotReadingManager', () => {
         { name: 'Outcome', meaning: 'Likely result of your actions' }
       ];
 
-      const result = readingManager.createCustomSpread(
+      const result = readingManager.performCustomReading(
         'Personal Growth Spread',
         'A spread for understanding personal development opportunities',
-        positions
+        positions,
+        'How can I grow from this?'
       );
 
-      expect(result).toContain('Custom spread "Personal Growth Spread" created successfully');
-      expect(result).toContain('4 positions');
-      expect(result).toContain('Core Issue: The heart of the matter');
-      expect(result).toContain('Hidden Influence: Subconscious factors at play');
+      expect(result).toContain('# Personal Growth Spread Reading');
+      expect(result).toContain('Core Issue');
+      expect(result).toContain('Hidden Influence');
+      expect(result).toContain('Action to Take');
+      expect(result).toContain('Outcome');
     });
   });
 
@@ -271,10 +232,10 @@ describe('TarotReadingManager', () => {
       for (let i = 0; i < 20; i++) {
         const result = readingManager.performReading('single_card', `Test ${i}`);
 
-        if (result.includes('(Upright)')) {
+        if (result.includes('(upright)')) {
           orientations.add('upright');
         }
-        if (result.includes('(Reversed)')) {
+        if (result.includes('(reversed)')) {
           orientations.add('reversed');
         }
       }
@@ -334,5 +295,111 @@ describe('TarotReadingManager', () => {
         expect(interpretation.length).toBeGreaterThan(100);
       }
     });
+  });
+
+  describe('contextual interpretation selection', () => {
+    it('uses the requested orientation and question category for deterministic readings', () => {
+      const fool = cardManager.findCard('The Fool')!;
+      const deterministicManager = new TarotReadingManager(cardManager, sessionManager, {
+        drawCards: () => [fool],
+        drawOrientation: () => 'reversed'
+      });
+
+      const result = deterministicManager.performReading(
+        'single_card',
+        '我的事业下一步怎么走?'
+      );
+
+      expect(result).toContain('**The Fool** (reversed)');
+      expect(result).toContain(fool.meanings.reversed.career);
+      expect(result).not.toContain(fool.meanings.reversed.general);
+    });
+
+    it('uses custom spread position meanings when selecting contextual card meanings', () => {
+      const lovers = cardManager.findCard('The Lovers')!;
+      const deterministicManager = new TarotReadingManager(cardManager, sessionManager, {
+        drawCards: () => [lovers],
+        drawOrientation: () => 'upright'
+      });
+
+      const result = deterministicManager.performCustomReading(
+        'Context Spread',
+        'A deterministic spread for testing contextual meaning selection',
+        [
+          {
+            name: 'Card 1',
+            meaning: 'Love and relationship dynamics'
+          }
+        ],
+        'General guidance'
+      );
+
+      expect(result).toContain(lovers.meanings.upright.love);
+      expect(result).not.toContain(lovers.meanings.upright.general);
+    });
+
+    it('keeps Celtic Cross analysis aligned to the registered spread positions', () => {
+      const cardNames = [
+        'The Fool',
+        'The Magician',
+        'The High Priestess',
+        'The Empress',
+        'The Emperor',
+        'The Hierophant',
+        'The Lovers',
+        'The Chariot',
+        'Strength',
+        'The Hermit'
+      ];
+      const cards = cardNames.map((name) => cardManager.findCard(name)!);
+      const deterministicManager = new TarotReadingManager(cardManager, sessionManager, {
+        drawCards: () => cards,
+        drawOrientation: () => 'upright'
+      });
+
+      const result = deterministicManager.performReading(
+        'celtic_cross',
+        'What is the shape of this situation?'
+      );
+
+      expect(result).toContain('### 6. Near Future');
+      expect(result).toContain(
+        '**Near Future Impact:** The The Hierophant in your near future will'
+      );
+      expect(result).not.toContain(
+        '**Near Future Impact:** The The Empress in your near future will'
+      );
+    });
+  });
+});
+
+describe("spread references", () => {
+  it("uses only registered spreads in lunar and seasonal recommendations", () => {
+    const spreadsSource = fs.readFileSync(
+      "src/tarot/readings/spreads.ts",
+      "utf-8",
+    );
+    const lunarSource = fs.readFileSync(
+      "src/tarot/readings/lunar-utils.ts",
+      "utf-8",
+    );
+
+    const validSpreadTypes = new Set(
+      [...spreadsSource.matchAll(/^  ([a-z_]+): \{/gm)].map(
+        ([, spread]) => spread,
+      ),
+    );
+    const recommendedSpreads = [
+      ...lunarSource.matchAll(/recommendedSpreads:\s*\[([^\]]+)\]/g),
+    ].flatMap(([, spreads]) =>
+      [...spreads.matchAll(/"([^"]+)"/g)].map(([, spread]) => spread),
+    );
+
+    expect(validSpreadTypes.size).toBeGreaterThan(0);
+    expect(recommendedSpreads.length).toBeGreaterThan(0);
+
+    for (const spread of recommendedSpreads) {
+      expect(validSpreadTypes.has(spread)).toBe(true);
+    }
   });
 });

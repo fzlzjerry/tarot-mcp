@@ -1,5 +1,5 @@
-import { TarotSession, TarotReading } from "./types.js";
-import { getSecureRandom } from "./utils.js";
+import { TarotSession, TarotReading } from "../shared/types.js";
+import { getSecureRandomInt } from "../shared/utils.js";
 
 /**
  * Manages tarot reading sessions
@@ -71,7 +71,7 @@ export class TarotSessionManager {
    */
   private generateSessionId(): string {
     const timestamp = Date.now();
-    const randomPart = Math.floor(getSecureRandom() * 1000000000).toString(36);
+    const randomPart = getSecureRandomInt(1000000000).toString(36);
     return `session_${timestamp}_${randomPart}`;
   }
 

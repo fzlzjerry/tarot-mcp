@@ -11,7 +11,7 @@
     }
   },
   "cursor_local_http": {
-    "description": "Cursor IDE with local HTTP transport",
+    "description": "Cursor IDE with local MCP Streamable HTTP transport",
     "config": {
       "mcpServers": {
         "tarot": {
@@ -21,7 +21,7 @@
     }
   },
   "cursor_remote_http": {
-    "description": "Cursor IDE with remote HTTP transport",
+    "description": "Cursor IDE with remote MCP Streamable HTTP transport",
     "config": {
       "mcpServers": {
         "tarot": {
@@ -56,7 +56,7 @@
     }
   },
   "vs_code_http": {
-    "description": "VS Code with HTTP server",
+    "description": "VS Code with MCP Streamable HTTP server",
     "config": {
       "mcp": {
         "servers": {
@@ -80,7 +80,7 @@
     }
   },
   "windsurf_sse": {
-    "description": "Windsurf with SSE transport",
+    "description": "Windsurf with legacy SSE transport (/sse advertises /messages?sessionId=...)",
     "config": {
       "mcpServers": {
         "tarot": {

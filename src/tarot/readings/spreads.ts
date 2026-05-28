@@ -1,4 +1,4 @@
-import { TarotSpread } from "./types.js";
+import { TarotSpread } from "../shared/types.js";
 
 /**
  * Tarot spread definitions

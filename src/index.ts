@@ -1,13 +1,9 @@
 #!/usr/bin/env node
 
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from "@modelcontextprotocol/sdk/types.js";
-import { TarotServer } from "./tarot-server.js";
-import { TarotHttpServer } from "./http-server.js";
+import { TarotServer } from "./mcp/tarot-service.js";
+import { TarotHttpServer } from "./mcp/http-server.js";
+import { createMcpProtocolServer } from "./mcp/protocol-server.js";
 
 /**
  * Parse command line arguments
@@ -77,52 +73,7 @@ async function main() {
  * Start the stdio-based MCP server
  */
 async function startStdioServer(tarotServer: TarotServer) {
-  const server = new Server(
-    {
-      name: "tarot-mcp-server",
-      version: "1.0.0",
-    },
-    {
-      capabilities: {
-        tools: {},
-      },
-    }
-  );
-
-  // Handle tool listing
-  server.setRequestHandler(ListToolsRequestSchema, async () => {
-    return {
-      tools: tarotServer.getAvailableTools(),
-    };
-  });
-
-  // Handle tool execution
-  server.setRequestHandler(CallToolRequestSchema, async (request) => {
-    const { name, arguments: args } = request.params;
-
-    try {
-      const result = await tarotServer.executeTool(name, args || {});
-      return {
-        content: [
-          {
-            type: "text",
-            text: result,
-          },
-        ],
-      };
-    } catch (error) {
-      return {
-        isError: true,
-        content: [
-          {
-            type: "text",
-            text: `Error executing tool ${name}: ${error instanceof Error ? error.message : String(error)}`,
-          },
-        ],
-      };
-    }
-  });
-
+  const server = createMcpProtocolServer(tarotServer);
   const transport = new StdioServerTransport();
   await server.connect(transport);
 

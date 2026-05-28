@@ -1,6 +1,6 @@
 # 🔮 Tarot MCP Server
 
-A professional-grade Model Context Protocol (MCP) server for Rider-Waite tarot card readings, built with Node.js and TypeScript. This server provides comprehensive tarot functionality through both MCP protocol and HTTP API endpoints, featuring research-based interpretations and advanced reading analysis.
+A professional-grade Model Context Protocol (MCP) server for Rider-Waite-Smith (RWS) tarot card readings, built with Node.js and TypeScript. This server provides comprehensive tarot functionality through both MCP protocol and HTTP API endpoints, featuring modern RWS interpretations and advanced reading analysis.
 
 ## Server config
 
@@ -17,14 +17,14 @@ A professional-grade Model Context Protocol (MCP) server for Rider-Waite tarot c
 ## 🚀 Current Implementation Status
 
 **✅ FULLY IMPLEMENTED AND WORKING:**
-- Complete 78-card Rider-Waite deck with detailed interpretations
+- Complete 78-card Rider-Waite-Smith deck with detailed modern interpretations
 - **25 professional tarot spreads** including Celtic Cross, Relationship Cross, Career Path, Spiritual Guidance, Year Ahead, Chakra Alignment, Shadow Work, **NEW: Daily Guidance, Yes/No, Weekly Forecast, Moon Phase spreads, Elemental Balance, Past Life Karma, Compatibility**
 - **Custom Spread Creation**: AI can create custom tarot spreads when existing ones don't fit
 - **Lunar Integration**: Moon phase detection with appropriate spreads and guidance
 - **AI Spread Recommendations**: Intelligent spread suggestions based on question analysis
 - **Daily Card Practice**: Single card draws for daily guidance
 - **Card Comparison Tools**: Multi-card meaning analysis and interpretation
-- Multi-transport MCP server (stdio, HTTP, SSE)
+- Multi-transport MCP server (stdio, Streamable HTTP, legacy SSE)
 - Advanced interpretation engine with elemental analysis
 - Cryptographically secure card shuffling and drawing
 - Context-aware meaning selection
@@ -38,8 +38,8 @@ A professional-grade Model Context Protocol (MCP) server for Rider-Waite tarot c
 ## ✨ Features
 
 ### 🃏 Professional Tarot System
-- **Research-Based Accuracy**: Interpretations verified against professional tarot sources (Biddy Tarot, Labyrinthos, classical literature)
-- **Complete Rider-Waite Deck**: Comprehensive card database with detailed meanings, symbolism, astrology, and numerology
+- **Modern RWS Meanings**: User-visible card keywords and meanings follow modern Rider-Waite-Smith interpretation patterns
+- **Complete Rider-Waite-Smith Deck**: Comprehensive card database with detailed meanings, symbolism, astrology, and numerology
 - **25 Professional Spreads**: Celtic Cross, Relationship Cross, Career Path, Spiritual Guidance, Chakra Alignment, Year Ahead, Daily Guidance, Yes/No, Weekly Forecast, Moon Phase spreads, Elemental Balance, Past Life Karma, Compatibility, and more
 - **Custom Spread Creation**: AI can create unlimited custom spreads (1-15 positions) when existing spreads don't fit the specific question or context
 - **Lunar Integration**: Automatic moon phase detection with themed spreads and guidance for each lunar cycle
@@ -51,11 +51,11 @@ A professional-grade Model Context Protocol (MCP) server for Rider-Waite tarot c
 - **Context-Aware Readings**: Automatically selects relevant meanings based on question content (love, career, health, spiritual)
 - **Elemental Analysis**: Fire, Water, Air, Earth balance assessment and missing element identification
 - **Archetypal Patterns**: Major Arcana progression analysis and Fool's Journey insights
-- **Position Dynamics**: Celtic Cross relationship analysis (conscious vs subconscious, goal vs outcome)
+- **Position Dynamics**: Celtic Cross relationship analysis aligned to the registered spread positions
 - **Energy Flow Assessment**: Three Card spread progression and overall reading energy analysis
 
 ### 🚀 Technical Excellence
-- **Multi-Transport Support**: stdio (MCP), HTTP, and SSE protocols
+- **Multi-Transport Support**: stdio, MCP Streamable HTTP, and legacy SSE protocols
 - **Cryptographic Randomness**: Fisher-Yates shuffle with crypto-secure random number generation
 - **50/50 Fair Distribution**: Equal probability for upright and reversed card orientations
 - **Production Ready**: Docker containerization, health checks, and comprehensive error handling
@@ -93,7 +93,7 @@ Here's what a professional Celtic Cross reading looks like:
 
 ## 🔮 Professional Tarot Spreads
 
-Our server features **11 specialized tarot spreads** designed for different life areas and spiritual practices:
+Our server features **25 specialized tarot spreads** designed for different life areas and spiritual practices:
 
 ### 🔮 General Guidance
 - **Single Card**: Daily guidance and quick insights
@@ -124,7 +124,7 @@ Each spread includes:
 
 | Feature | This Server | Basic Tarot APIs | Generic Card Readers |
 |---------|-------------|------------------|---------------------|
-| **Research-Based Accuracy** | ✅ Verified against professional sources | ❌ Generic meanings | ❌ Simplified interpretations |
+| **Modern RWS Meanings** | ✅ Contextual modern RWS meanings | ❌ Generic meanings | ❌ Simplified interpretations |
 | **Advanced Analysis** | ✅ Elemental, numerical, archetypal | ❌ Basic card meanings | ❌ Single-layer interpretation |
 | **Context Awareness** | ✅ Question-specific meanings | ❌ One-size-fits-all | ❌ Generic responses |
 | **Professional Spreads** | ✅ Celtic Cross dynamics | ❌ Simple layouts | ❌ Basic positioning |
@@ -147,6 +147,7 @@ Each spread includes:
    ```bash
    npm run build
    ```
+   `npm run build` compiles TypeScript and copies `src/tarot/cards/card-data.json` into `dist/tarot/cards/card-data.json`. Do not use bare `tsc` for production builds, because the runtime loads this JSON asset next to the compiled files.
 
 3. **Run as MCP Server (stdio)**
    ```bash
@@ -212,7 +213,7 @@ When running in HTTP mode, the following endpoints are available:
 - `POST /api/reading` - Perform a comprehensive tarot reading
   ```json
   {
-    "spreadType": "single_card|three_card|celtic_cross|horseshoe|relationship_cross|career_path|decision_making|spiritual_guidance|year_ahead|chakra_alignment|shadow_work",
+    "spreadType": "single_card|three_card|celtic_cross|...",
     "question": "Your specific question here",
     "sessionId": "optional-session-id-for-tracking"
   }
@@ -245,12 +246,15 @@ When running in HTTP mode, the following endpoints are available:
 - **Secure Randomization**: Cryptographically secure card drawing and shuffling
 
 ### MCP Protocol
-- `GET /sse` - Server-Sent Events endpoint for MCP clients
-- `POST /mcp` - HTTP-based MCP endpoint for direct protocol communication
+- `POST /mcp` - MCP Streamable HTTP client-to-server endpoint with session initialization
+- `GET /mcp` - MCP Streamable HTTP server-to-client stream for an initialized session
+- `DELETE /mcp` - MCP Streamable HTTP session termination
+- `GET /sse` - Legacy Server-Sent Events endpoint for older MCP clients
+- `POST /messages?sessionId=...` - Legacy SSE client-to-server message endpoint advertised by `/sse`
 
 ## 🛠️ MCP Tools
 
-The server provides **8 comprehensive MCP tools** for professional tarot reading and analysis:
+The server provides **13 comprehensive MCP tools** for professional tarot reading and analysis:
 
 ### `get_card_info`
 Get comprehensive information about a specific tarot card including symbolism, astrology, and numerology.
@@ -271,11 +275,20 @@ List all available tarot cards with filtering and categorization.
 ```
 **Returns**: Organized card listings with keywords and brief descriptions.
 
+### `list_available_spreads`
+List all available spread types, descriptions, card counts, positions, and position meanings.
+
+```json
+{}
+```
+
+**Returns**: Markdown reference for every registered spread.
+
 ### `perform_reading`
 Perform a professional tarot reading with advanced interpretation analysis.
 ```json
 {
-  "spreadType": "single_card|three_card|celtic_cross|horseshoe|relationship_cross|career_path|decision_making|spiritual_guidance|year_ahead|chakra_alignment|shadow_work",
+  "spreadType": "single_card|three_card|celtic_cross|horseshoe|relationship_cross|career_path|decision_making|spiritual_guidance|year_ahead|chakra_alignment|shadow_work|venus_love|tree_of_life|astrological_houses|mandala|pentagram|mirror_of_truth|daily_guidance|yes_no|weekly_forecast|new_moon_intentions|full_moon_release|elemental_balance|past_life_karma|compatibility",
   "question": "What should I know about my career path this year?",
   "sessionId": "optional-session-id"
 }
@@ -291,6 +304,7 @@ Perform a professional tarot reading with advanced interpretation analysis.
 - Chakra energy balance evaluation (Chakra Alignment)
 - Spiritual development guidance (Spiritual Guidance)
 - Annual forecasting (Year Ahead)
+- Lunar, compatibility, truth-clarifying, and elemental specialty spreads
 
 ### `search_cards`
 Search for tarot cards using various criteria like keywords, suit, element, etc.
@@ -340,15 +354,16 @@ Get random cards with optional filtering for practice and exploration.
 ```json
 {
   "count": 3,
-  "suit": "wands",
-  "arcana": "major",
-  "element": "fire"
+  "suit": "wands"
 }
 ```
 **Features**:
 - Cryptographically secure randomization
-- Optional filtering by suit, arcana, or element
-- Customizable card count
+- Optional filtering by `suit`, `arcana`, or `element`
+- Multiple filters use AND/intersection semantics
+- Draws are without replacement
+- `count` must fit inside the filtered card pool
+- Output uses upright keywords and general meaning for practice draws
 
 ### `create_custom_spread`
 Create a custom tarot spread and draw cards for it. Perfect for AI when no existing spread fits the specific needs.
@@ -381,6 +396,12 @@ Create a custom tarot spread and draw cards for it. Perfect for AI when no exist
 - Full interpretation with position-specific analysis
 - Session management support
 - Perfect for AI when existing spreads don't fit the specific question or context
+
+### Additional Guidance Tools
+- `get_daily_card` - Draw a daily guidance reading using the Daily Guidance spread.
+- `recommend_spread` - Recommend the best spread for a question, category, and timeframe.
+- `get_moon_phase_reading` - Calculate lunar phase guidance and perform an aligned reading.
+- `get_card_meanings_comparison` - Compare 2-5 cards, with optional per-card orientation, and summarize their combined message. Legacy `cardNames` input is still supported as upright cards.
 
 ## 🔧 Configuration
 
@@ -430,9 +451,9 @@ Or for local development:
 }
 ```
 
-### HTTP-based MCP Clients
+### Streamable HTTP MCP Clients
 
-For clients supporting HTTP MCP:
+For clients supporting MCP Streamable HTTP:
 
 ```json
 {
@@ -444,9 +465,9 @@ For clients supporting HTTP MCP:
 }
 ```
 
-### SSE-based MCP Clients
+### Legacy SSE MCP Clients
 
-For clients supporting Server-Sent Events:
+For older clients supporting the legacy Server-Sent Events transport:
 
 ```json
 {
@@ -457,6 +478,8 @@ For clients supporting Server-Sent Events:
   }
 }
 ```
+
+The legacy `/sse` endpoint advertises `/messages?sessionId=...` as the matching client-to-server message endpoint.
 
 ## 📚 Usage Examples
 
@@ -582,11 +605,17 @@ curl "http://localhost:3000/api/spreads"
 
 ### Advanced Search and Analytics
 
+The `/mcp` endpoint is a full MCP Streamable HTTP transport. Raw HTTP clients must first send an `initialize` request, keep the returned `mcp-session-id`, then send `notifications/initialized` before calling tools. MCP clients handle this automatically.
+
 #### Search Cards by Keyword
 ```bash
 curl -X POST http://localhost:3000/mcp \
+  -H "Accept: application/json, text/event-stream" \
   -H "Content-Type: application/json" \
+  -H "mcp-session-id: <initialized-session-id>" \
   -d '{
+    "jsonrpc": "2.0",
+    "id": 2,
     "method": "tools/call",
     "params": {
       "name": "search_cards",
@@ -602,8 +631,12 @@ curl -X POST http://localhost:3000/mcp \
 #### Find Similar Cards
 ```bash
 curl -X POST http://localhost:3000/mcp \
+  -H "Accept: application/json, text/event-stream" \
   -H "Content-Type: application/json" \
+  -H "mcp-session-id: <initialized-session-id>" \
   -d '{
+    "jsonrpc": "2.0",
+    "id": 3,
     "method": "tools/call",
     "params": {
       "name": "find_similar_cards",
@@ -618,8 +651,12 @@ curl -X POST http://localhost:3000/mcp \
 #### Get Database Analytics
 ```bash
 curl -X POST http://localhost:3000/mcp \
+  -H "Accept: application/json, text/event-stream" \
   -H "Content-Type: application/json" \
+  -H "mcp-session-id: <initialized-session-id>" \
   -d '{
+    "jsonrpc": "2.0",
+    "id": 4,
     "method": "tools/call",
     "params": {
       "name": "get_database_analytics",
@@ -633,8 +670,12 @@ curl -X POST http://localhost:3000/mcp \
 #### Get Random Cards for Practice
 ```bash
 curl -X POST http://localhost:3000/mcp \
+  -H "Accept: application/json, text/event-stream" \
   -H "Content-Type: application/json" \
+  -H "mcp-session-id: <initialized-session-id>" \
   -d '{
+    "jsonrpc": "2.0",
+    "id": 5,
     "method": "tools/call",
     "params": {
       "name": "get_random_cards",
@@ -651,33 +692,27 @@ curl -X POST http://localhost:3000/mcp \
 ### Professional Tarot Engine
 ```
 src/
-├── index.ts              # Multi-transport entry point (stdio/HTTP/SSE)
-├── http-server.ts        # Production HTTP server with CORS and error handling
-├── tarot-server.ts       # Core tarot server with MCP tool integration
+├── index.ts              # CLI entry point for stdio or HTTP transport
+├── mcp/
+│   ├── protocol-server.ts # Shared MCP protocol server and tool handlers
+│   ├── http-server.ts     # Streamable HTTP, legacy SSE, and REST endpoints
+│   └── tarot-service.ts   # MCP tool orchestration over tarot domain services
 └── tarot/
-    ├── types.ts          # Comprehensive TypeScript definitions
-    ├── card-data.ts      # Research-verified Rider-Waite card database
-    ├── card-manager.ts   # Advanced card data management and search
-    ├── spreads.ts        # Professional spread definitions and layouts
-    ├── reading-manager.ts # Advanced interpretation engine with:
-    │                     #   - Elemental balance analysis
-    │                     #   - Suit pattern recognition
-    │                     #   - Numerical progression interpretation
-    │                     #   - Archetypal pattern analysis
-    │                     #   - Context-aware meaning selection
-    └── session-manager.ts # Session tracking and reading history
+    ├── cards/            # Card data, loading, search, and analytics
+    ├── readings/         # Spreads, lunar utilities, readings, and sessions
+    └── shared/           # Types, validation, errors, and secure randomness
 ```
 
 ### Key Components
 
 #### Advanced Interpretation Engine
 - **Multi-Dimensional Analysis**: Individual cards + combinations + overall themes
-- **Professional Methods**: Based on research from Biddy Tarot, Labyrinthos, and classical sources
+- **Modern RWS Methods**: Based on Rider-Waite-Smith card structure, imagery, and modern contextual reading patterns
 - **Context Awareness**: Question-specific meaning selection (love, career, health, spiritual)
 - **Elemental Analysis**: Fire, Water, Air, Earth balance and missing element identification
 
 #### Production-Ready Infrastructure
-- **Multi-Transport Support**: stdio (MCP), HTTP REST API, Server-Sent Events
+- **Multi-Transport Support**: stdio, MCP Streamable HTTP, legacy SSE, and HTTP REST helpers
 - **Docker Containerization**: Complete deployment with health checks and monitoring
 - **Error Handling**: Comprehensive error responses and logging
 - **Type Safety**: Full TypeScript implementation with strict mode
@@ -705,11 +740,11 @@ npm run format
 - **Integration Tests**: API endpoints and MCP tool functionality
 - **Type Safety**: 100% TypeScript with strict mode enabled
 - **Code Coverage**: Comprehensive test coverage for core functionality
-- **Professional Validation**: Interpretations verified against established tarot sources
+- **Modern RWS Validation**: Interpretations are tested against modern RWS semantic anchors and card imagery checks
 
 ### Research Validation
-- **Accuracy Verification**: Cross-referenced with Biddy Tarot, Labyrinthos, and classical literature
-- **Traditional Compliance**: Adherence to established Rider-Waite traditions
+- **Accuracy Verification**: Data tests verify deck order, schema strictness, modern RWS anchors, and card imagery references
+- **RWS Compliance**: Adherence to the 78-card Rider-Waite-Smith deck structure
 - **Professional Standards**: Implementation of methods used by certified tarot readers
 - **Symbolic Integrity**: Proper interpretation of traditional symbols and imagery
 
@@ -720,6 +755,7 @@ npm run format
 1. **Build for production**
    ```bash
    npm run build
+   node scripts/verify-build-assets.mjs
    ```
 
 2. **Run with PM2 (recommended)**
@@ -772,15 +808,15 @@ We welcome contributions to improve the Tarot MCP Server! Here's how you can hel
 
 ### 📋 Contribution Process
 1. **Fork the repository** and create a feature branch
-2. **Research thoroughly** - All card meanings must be verified against professional sources
+2. **Keep meanings modern RWS** - User-visible card meanings must remain aligned with modern Rider-Waite-Smith semantics
 3. **Maintain quality** - Follow TypeScript best practices and include comprehensive tests
 4. **Document changes** - Update README and add examples for new features
 5. **Submit pull request** with detailed description and test coverage
 
 ### 🔬 Research Standards
-- **Primary Sources**: Biddy Tarot, Labyrinthos, classical tarot literature
-- **Verification**: Cross-reference meanings with multiple professional sources
-- **Traditional Accuracy**: Maintain adherence to established Rider-Waite traditions
+- **Primary Basis**: Rider-Waite-Smith deck structure, card imagery, and modern RWS semantic anchors
+- **Verification**: Update `modern-rws-fixtures.ts` and data integrity tests when card meanings change
+- **RWS Accuracy**: Maintain adherence to the 78-card Rider-Waite-Smith deck and modern interpretation language
 - **Professional Language**: Use authentic tarot terminology and phrasing
 
 ### 🧪 Testing Requirements
@@ -809,22 +845,22 @@ We welcome contributions to improve the Tarot MCP Server! Here's how you can hel
 - **AI-Enhanced Insights**: Advanced pattern recognition and personalized guidance
 - **Blockchain Integration**: Decentralized reading verification and authenticity
 
-## 🔮 About This Professional Tarot Implementation
+## 🔮 About This Modern RWS Tarot Implementation
 
-### Research-Based Accuracy
-This server implements the traditional Rider-Waite tarot deck with interpretations verified against multiple professional sources:
+### Modern RWS Accuracy
+This server implements the Rider-Waite-Smith tarot deck with modern user-visible interpretations:
 
-- **Biddy Tarot**: Professional Celtic Cross methodology and advanced reading techniques
-- **Labyrinthos**: Traditional symbolism and classical interpretations
-- **Classical Tarot Literature**: Historical meanings and established correspondences
-- **Professional Reader Methods**: Advanced combination interpretation techniques
+- **Modern RWS Semantics**: Card meanings use contemporary keywords and context-specific explanations
+- **RWS Imagery**: Descriptions and symbolism stay grounded in recognizable Rider-Waite-Smith card art
+- **Historical Awareness**: Classical correspondences inform metadata without overriding modern user-visible meanings
+- **Reader Methods**: Advanced combination interpretation techniques for context-aware readings
 
 ### Comprehensive Card Database
-**✅ COMPLETE**: All 78 cards of the Rider-Waite deck are fully implemented with extensive information for each card:
+**✅ COMPLETE**: All 78 cards of the Rider-Waite-Smith deck are fully implemented with extensive information for each card:
 
 - **Multi-Context Meanings**: General, love, career, health, and spiritual interpretations
 - **Orientation Specific**: Detailed upright and reversed meanings beyond simple opposites
-- **Symbolic Analysis**: Comprehensive interpretation of traditional Rider-Waite imagery
+- **Symbolic Analysis**: Comprehensive interpretation of Rider-Waite-Smith imagery
 - **Astrological Correspondences**: Planetary and zodiacal associations
 - **Numerological Significance**: Spiritual and practical number meanings
 - **Elemental Associations**: Fire, Water, Air, Earth energies and their interactions

@@ -1,4 +1,4 @@
-import { TarotCardManager } from "../card-manager.js";
+import { TarotCardManager } from "../tarot/cards/card-manager.js";
 
 describe("TarotCardManager", () => {
   let cardManager: TarotCardManager;
