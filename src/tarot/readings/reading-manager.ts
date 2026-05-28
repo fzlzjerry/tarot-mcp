@@ -1,8 +1,13 @@
-import { TarotCardManager } from "./card-manager.js";
+import { TarotCardManager } from "../cards/card-manager.js";
 import { TarotSessionManager } from "./session-manager.js";
-import { TarotReading, DrawnCard, CardOrientation, TarotCard } from "./types.js";
+import { TarotReading, DrawnCard, CardOrientation, TarotCard } from "../shared/types.js";
 import { TAROT_SPREADS, getAllSpreads, getSpread, isValidSpreadType } from "./spreads.js";
-import { getSecureRandom } from "./utils.js";
+import { getSecureRandomInt } from "../shared/utils.js";
+
+export interface TarotReadingRandomSource {
+  drawCards?: (count: number) => TarotCard[];
+  drawOrientation?: () => CardOrientation;
+}
 
 /**
  * Manages tarot readings and interpretations
@@ -10,10 +15,16 @@ import { getSecureRandom } from "./utils.js";
 export class TarotReadingManager {
   private cardManager: TarotCardManager;
   private sessionManager: TarotSessionManager;
+  private randomSource: TarotReadingRandomSource;
 
-  constructor(cardManager: TarotCardManager, sessionManager: TarotSessionManager) {
+  constructor(
+    cardManager: TarotCardManager,
+    sessionManager: TarotSessionManager,
+    randomSource: TarotReadingRandomSource = {}
+  ) {
     this.cardManager = cardManager;
     this.sessionManager = sessionManager;
+    this.randomSource = randomSource;
   }
 
   /**
@@ -27,12 +38,12 @@ export class TarotReadingManager {
     const spread = getSpread(spreadType)!;
 
     // Use cryptographically secure random card drawing
-    const cards = this.cardManager.getRandomCards(spread.cardCount);
+    const cards = this.drawCards(spread.cardCount);
 
     // Generate random orientations for each card using secure randomness
     const drawnCards: DrawnCard[] = cards.map((card: any, index: number) => ({
       card,
-      orientation: this.getSecureRandomOrientation(), // Cryptographically secure orientation
+      orientation: this.drawOrientation(),
       position: spread.positions[index].name,
       positionMeaning: spread.positions[index].meaning
     }));
@@ -99,12 +110,12 @@ export class TarotReadingManager {
     };
 
     // Use cryptographically secure random card drawing
-    const cards = this.cardManager.getRandomCards(customSpread.cardCount);
+    const cards = this.drawCards(customSpread.cardCount);
 
     // Generate random orientations for each card using secure randomness
     const drawnCards: DrawnCard[] = cards.map((card: any, index: number) => ({
       card,
-      orientation: this.getSecureRandomOrientation(), // Cryptographically secure orientation
+      orientation: this.drawOrientation(),
       position: customSpread.positions[index].name,
       positionMeaning: customSpread.positions[index].meaning
     }));
@@ -179,11 +190,17 @@ export class TarotReadingManager {
       interpretation += `**${drawnCard.position}**: ${drawnCard.card.name} (${drawnCard.orientation})\n`;
 
       // Choose the most relevant meaning based on position
-      const relevantMeaning = this.selectRelevantMeaning(meanings, drawnCard.position || "General", question);
+      const relevantMeaning = this.selectRelevantMeaning(
+        meanings,
+        drawnCard.position || "General",
+        question,
+        drawnCard.positionMeaning
+      );
       interpretation += `${relevantMeaning}\n\n`;
     });
 
     // Add spread-specific analysis
+    let usedSpreadSpecificAnalysis = true;
     if (spreadName.toLowerCase().includes("celtic cross")) {
       interpretation += this.generateCelticCrossAnalysis(drawnCards);
     } else if (spreadName.toLowerCase().includes("three card")) {
@@ -210,6 +227,12 @@ export class TarotReadingManager {
       interpretation += this.generatePentagramAnalysis(drawnCards);
     } else if (spreadName.toLowerCase().includes("mirror of truth")) {
       interpretation += this.generateMirrorOfTruthAnalysis(drawnCards);
+    } else {
+      usedSpreadSpecificAnalysis = false;
+    }
+
+    if (!usedSpreadSpecificAnalysis && drawnCards.length > 1) {
+      interpretation += this.generateGenericSpreadAnalysis(drawnCards);
     }
 
     // Overall interpretation
@@ -221,29 +244,78 @@ export class TarotReadingManager {
   /**
    * Select the most relevant meaning based on position and question
    */
-  private selectRelevantMeaning(meanings: any, position: string, question: string): string {
-    const questionLower = question.toLowerCase();
-    const positionLower = position.toLowerCase();
+  private selectRelevantMeaning(
+    meanings: any,
+    position: string,
+    question: string,
+    positionMeaning: string = ""
+  ): string {
+    const contextLower = `${question} ${position} ${positionMeaning}`.toLowerCase();
 
     // Determine the most relevant aspect based on question content
-    if (questionLower.includes("love") || questionLower.includes("relationship") || questionLower.includes("romance")) {
+    if (this.matchesContext(contextLower, [
+      "love",
+      "relationship",
+      "romance",
+      "partner",
+      "marriage",
+      "affection",
+      "爱情",
+      "感情",
+      "恋爱",
+      "关系",
+      "伴侣",
+      "婚姻",
+    ])) {
       return meanings.love;
-    } else if (questionLower.includes("career") || questionLower.includes("job") || questionLower.includes("work") || questionLower.includes("money")) {
+    } else if (this.matchesContext(contextLower, [
+      "career",
+      "job",
+      "work",
+      "business",
+      "money",
+      "finance",
+      "study",
+      "事业",
+      "工作",
+      "职业",
+      "财务",
+      "金钱",
+      "学习",
+    ])) {
       return meanings.career;
-    } else if (questionLower.includes("health") || questionLower.includes("wellness") || questionLower.includes("body")) {
+    } else if (this.matchesContext(contextLower, [
+      "health",
+      "wellness",
+      "body",
+      "energy",
+      "rest",
+      "健康",
+      "身体",
+      "精力",
+      "休息",
+    ])) {
       return meanings.health;
-    } else if (questionLower.includes("spiritual") || questionLower.includes("purpose") || questionLower.includes("meaning")) {
+    } else if (this.matchesContext(contextLower, [
+      "spiritual",
+      "purpose",
+      "meaning",
+      "soul",
+      "growth",
+      "灵性",
+      "精神",
+      "意义",
+      "使命",
+      "成长",
+    ])) {
       return meanings.spirituality;
     }
 
-    // Default to general meaning, but consider position context
-    if (positionLower.includes("love") || positionLower.includes("relationship")) {
-      return meanings.love;
-    } else if (positionLower.includes("career") || positionLower.includes("work")) {
-      return meanings.career;
-    }
-
     return meanings.general;
+  }
+
+  private matchesContext(context: string, terms: string[]): boolean {
+    return terms.some((term) => context.includes(term));
   }
 
   /**
@@ -257,40 +329,50 @@ export class TarotReadingManager {
     // Analyze key relationships between positions
     const present = drawnCards[0];
     const challenge = drawnCards[1];
-    const past = drawnCards[2];
-    const future = drawnCards[3];
-    const above = drawnCards[4];
-    const below = drawnCards[5];
-    const advice = drawnCards[6];
+    const distantPast = drawnCards[2];
+    const recentPast = drawnCards[3];
+    const possibleOutcome = drawnCards[4];
+    const nearFuture = drawnCards[5];
+    const approach = drawnCards[6];
     const external = drawnCards[7];
-    const hopesFearsCard = drawnCards[8];
-    const outcome = drawnCards[9];
+    const hopesFears = drawnCards[8];
+    const finalOutcome = drawnCards[9];
 
-    // Above vs Below analysis
-    analysis += `**Conscious vs Subconscious:** The ${above.card.name} above represents your conscious goals, while the ${below.card.name} below reveals your subconscious drives. `;
-    if (above.orientation === below.orientation) {
-      analysis += "These are aligned, suggesting harmony between your conscious desires and unconscious motivations. ";
+    analysis += `**Current Pattern:** The ${present.card.name} at the center is crossed by ${challenge.card.name}, showing the main tension in the situation. `;
+    if (present.orientation === challenge.orientation) {
+      analysis += "Because both cards share the same orientation, the challenge is visible and can be addressed directly. ";
     } else {
-      analysis += "The different orientations suggest some tension between what you consciously want and what unconsciously drives you. ";
+      analysis += "The different orientations suggest a contrast between the obvious situation and the way the challenge is operating. ";
     }
 
-    // Above vs Outcome analysis
-    analysis += `**Goal vs Outcome:** Your conscious goal (${above.card.name}) `;
-    if (this.cardsHaveSimilarEnergy(above, outcome)) {
-      analysis += "aligns well with the likely outcome, suggesting you're on the right path. ";
+    analysis += `**Possible vs Final Outcome:** The possible outcome (${possibleOutcome.card.name}) `;
+    if (this.cardsHaveSimilarEnergy(possibleOutcome, finalOutcome)) {
+      analysis += "aligns with the final outcome, suggesting the current path can mature without a drastic change. ";
     } else {
-      analysis += "differs from the projected outcome, indicating you may need to adjust your approach. ";
+      analysis += "differs from the final outcome, so the reading points to a course correction before the pattern settles. ";
     }
 
-    // Future vs Outcome analysis
-    analysis += `**Near Future Impact:** The ${future.card.name} in your near future will `;
-    if (future.orientation === "upright") {
+    analysis += `**Near Future Impact:** The ${nearFuture.card.name} in your near future will `;
+    if (nearFuture.orientation === "upright") {
       analysis += "support your journey toward the final outcome. ";
     } else {
       analysis += "present challenges that need to be navigated carefully to reach your desired outcome. ";
     }
 
+    analysis += `**Past Movement:** ${distantPast.card.name} sets the deeper foundation, while ${recentPast.card.name} shows what is now passing out of the foreground. `;
+    analysis += `**Response Pattern:** Your approach (${approach.card.name}) meets external influences (${external.card.name}) and the hopes or fears carried by ${hopesFears.card.name}. `;
+
     analysis += "\n";
+    return analysis;
+  }
+
+  private generateGenericSpreadAnalysis(drawnCards: DrawnCard[]): string {
+    const first = drawnCards[0];
+    const last = drawnCards[drawnCards.length - 1];
+
+    let analysis = "**Contextual Spread Analysis:**\n\n";
+    analysis += `This spread moves from ${first.position || "the opening card"} (${first.card.name}) to ${last.position || "the closing card"} (${last.card.name}). `;
+    analysis += "No dedicated spread template is registered for this layout, so the reading uses each position meaning, card orientation, elemental balance, and the question context as its interpretive frame.\n\n";
     return analysis;
   }
 
@@ -1163,9 +1245,19 @@ export class TarotReadingManager {
    * Generate cryptographically secure random orientation
    */
   private getSecureRandomOrientation(): CardOrientation {
-    // Use the same secure random method as card manager
-    const random = getSecureRandom();
-    return random < 0.5 ? "upright" : "reversed"; // 50% chance upright, 50% reversed
+    return getSecureRandomInt(2) === 0 ? "upright" : "reversed";
+  }
+
+  private drawCards(count: number): TarotCard[] {
+    return this.randomSource.drawCards
+      ? this.randomSource.drawCards(count)
+      : this.cardManager.getRandomCards(count);
+  }
+
+  private drawOrientation(): CardOrientation {
+    return this.randomSource.drawOrientation
+      ? this.randomSource.drawOrientation()
+      : this.getSecureRandomOrientation();
   }
 
 
@@ -1174,7 +1266,7 @@ export class TarotReadingManager {
    */
   private generateReadingId(): string {
     const timestamp = Date.now();
-    const randomPart = Math.floor(getSecureRandom() * 1000000000).toString(36);
+    const randomPart = getSecureRandomInt(1000000000).toString(36);
     return `reading_${timestamp}_${randomPart}`;
   }
 }

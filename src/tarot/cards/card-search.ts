@@ -1,5 +1,5 @@
-import { TarotCard } from './types.js';
-import { getSecureRandom } from './utils.js';
+import { TarotCard } from "../shared/types.js";
+import { getSecureRandomInt } from "../shared/utils.js";
 
 export interface SearchOptions {
   keyword?: string;
@@ -97,16 +97,39 @@ export class TarotCardSearch {
    * Get random cards with optional filters
    */
   getRandomCards(count: number = 1, options?: Partial<SearchOptions>): TarotCard[] {
-    let filteredCards = this.cards;
-
-    if (options) {
-      const searchResults = this.search(options as SearchOptions);
-      filteredCards = searchResults.map(result => result.card);
+    const filteredCards = this.filterCardsForRandomDraw(options);
+    if (filteredCards.length > 0 && count > filteredCards.length) {
+      throw new Error(
+        `Cannot draw ${count} cards from ${filteredCards.length} matching cards`
+      );
     }
 
     // Use Fisher-Yates shuffle with secure random for true randomness
     const shuffled = this.fisherYatesShuffle(filteredCards);
-    return shuffled.slice(0, Math.min(count, shuffled.length));
+    return shuffled.slice(0, count);
+  }
+
+  private filterCardsForRandomDraw(options?: Partial<SearchOptions>): readonly TarotCard[] {
+    if (!options) {
+      return this.cards;
+    }
+
+    return this.cards.filter(card => {
+      if (options.suit && card.suit !== options.suit) return false;
+      if (options.arcana && card.arcana !== options.arcana) return false;
+      if (options.element && card.element !== options.element) return false;
+      if (options.number !== undefined && card.number !== options.number) return false;
+
+      if (options.keyword) {
+        const keywordScore = this.evaluateCard(card, {
+          keyword: options.keyword,
+          orientation: options.orientation || 'upright'
+        });
+        return keywordScore.relevanceScore > 0;
+      }
+
+      return true;
+    });
   }
 
   private evaluateCard(card: TarotCard, options: SearchOptions): SearchResult {
@@ -259,7 +282,7 @@ export class TarotCardSearch {
   private fisherYatesShuffle<T>(array: readonly T[]): T[] {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(getSecureRandom() * (i + 1));
+      const j = getSecureRandomInt(i + 1);
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;

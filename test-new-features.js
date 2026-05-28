@@ -4,7 +4,7 @@
  * Test script for new tarot MCP server features
  */
 
-import { TarotServer } from './dist/tarot-server.js';
+import { TarotServer } from './dist/mcp/tarot-service.js';
 
 async function testNewFeatures() {
   console.log('🔮 Testing New Tarot MCP Server Features\n');

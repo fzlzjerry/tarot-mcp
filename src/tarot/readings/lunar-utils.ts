@@ -85,7 +85,7 @@ export function calculateMoonPhase(date: Date = new Date()): MoonPhaseInfo {
       name: "Last Quarter",
       description: "Half the moon is illuminated again, representing release and forgiveness",
       tarotThemes: ["release", "forgiveness", "letting go", "breaking patterns", "healing"],
-      recommendedSpreads: ["shadow_work", "healing_spread", "elemental_balance"]
+      recommendedSpreads: ["shadow_work", "full_moon_release", "elemental_balance"]
     };
   } else {
     return {

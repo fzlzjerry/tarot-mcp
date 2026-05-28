@@ -4,7 +4,7 @@
  * List all available tools in the tarot MCP server
  */
 
-import { TarotServer } from './dist/tarot-server.js';
+import { TarotServer } from './dist/mcp/tarot-service.js';
 
 async function listTools() {
   console.log('🔮 Tarot MCP Server - Available Tools\n');

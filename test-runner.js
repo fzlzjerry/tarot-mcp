@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { TarotCardManager } from "./dist/tarot/card-manager.js";
-import { TarotServer } from "./dist/tarot-server.js";
+import { TarotCardManager } from "./dist/tarot/cards/card-manager.js";
+import { TarotServer } from "./dist/mcp/tarot-service.js";
 
 /**
  * Simple test runner to validate our optimizations

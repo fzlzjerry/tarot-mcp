@@ -2,7 +2,7 @@
  * Input validation utilities for the Tarot MCP Server
  */
 
-import { TarotCard, CardOrientation, CardCategory, SpreadType } from "./types.js";
+import { CardOrientation, CardCategory, SpreadType } from "./types.js";
 import { ValidationError } from "./errors.js";
 
 /**
@@ -67,16 +67,17 @@ export const validatePositiveInteger: Validator<number> = (value: unknown) => {
  */
 export function validateRange(min: number, max: number): Validator<number> {
   return (value: unknown) => {
-    const numberResult = validatePositiveInteger(value);
-    if (!numberResult.success) {
-      return numberResult;
+    if (typeof value !== "number") {
+      return failure([`Expected number, got ${typeof value}`]);
+    }
+    if (!Number.isInteger(value)) {
+      return failure(["Expected integer"]);
     }
 
-    const num = numberResult.data!;
-    if (num < min || num > max) {
-      return failure([`Expected number between ${min} and ${max}, got ${num}`]);
+    if (value < min || value > max) {
+      return failure([`Expected number between ${min} and ${max}, got ${value}`]);
     }
-    return success(num);
+    return success(value);
   };
 }
 
@@ -193,6 +194,7 @@ export interface SearchParams {
   arcana?: "major" | "minor";
   element?: "fire" | "water" | "air" | "earth";
   number?: number;
+  orientation?: "upright" | "reversed";
   limit?: number;
 }
 
@@ -261,6 +263,16 @@ export const validateSearchParams: Validator<SearchParams> = (value: unknown) =>
       errors.push(`number: ${numberResult.errors.join(", ")}`);
     } else {
       result.number = numberResult.data;
+    }
+  }
+
+  // Validate optional orientation
+  if (params.orientation !== undefined) {
+    const orientationResult = validateCardOrientation(params.orientation);
+    if (!orientationResult.success) {
+      errors.push(`orientation: ${orientationResult.errors.join(", ")}`);
+    } else {
+      result.orientation = orientationResult.data;
     }
   }
 

@@ -1,8 +1,9 @@
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { TarotCard, CardOrientation, CardCategory } from "./types.js";
-import { getSecureRandom } from "./utils.js";
+import { TarotCard, CardOrientation, CardCategory } from "../shared/types.js";
+import { getSecureRandomInt } from "../shared/utils.js";
+import { parseCardData } from "./card-schema.js";
 
 // Helper to get __dirname in ES modules - with fallback for testing
 let CARD_DATA_PATH: string;
@@ -12,7 +13,13 @@ try {
   CARD_DATA_PATH = path.join(__dirname, "card-data.json");
 } catch (error) {
   // Fallback for test environment
-  CARD_DATA_PATH = path.join(process.cwd(), "src", "tarot", "card-data.json");
+  CARD_DATA_PATH = path.join(
+    process.cwd(),
+    "src",
+    "tarot",
+    "cards",
+    "card-data.json",
+  );
 }
 
 /**
@@ -54,13 +61,8 @@ export class TarotCardManager {
     TarotCardManager.initPromise = (async () => {
       try {
         const data = await fs.readFile(CARD_DATA_PATH, "utf-8");
-        const { cards } = JSON.parse(data);
-        if (!Array.isArray(cards)) {
-          throw new Error(
-            'Card data is not in the expected format ({"cards": [...]})',
-          );
-        }
-        TarotCardManager.instance = new TarotCardManager(cards as TarotCard[]);
+        const cards = parseCardData(JSON.parse(data));
+        TarotCardManager.instance = new TarotCardManager(cards);
         return TarotCardManager.instance;
       } catch (error) {
         TarotCardManager.initPromise = null; // Reset on error
@@ -251,7 +253,7 @@ export class TarotCardManager {
   private fisherYatesShuffle<T>(array: readonly T[]): T[] {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(getSecureRandom() * (i + 1));
+      const j = getSecureRandomInt(i + 1);
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
@@ -261,7 +263,7 @@ export class TarotCardManager {
    * Get a random card from the deck.
    */
   public getRandomCard(): TarotCard {
-    const randomIndex = Math.floor(getSecureRandom() * this.allCards.length);
+    const randomIndex = getSecureRandomInt(this.allCards.length);
     return this.allCards[randomIndex];
   }
 
