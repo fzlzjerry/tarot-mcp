@@ -13,16 +13,24 @@ import { TarotServer } from "./tarot-service.js";
 interface McpTransportSession<TTransport> {
   server: Server;
   transport: TTransport;
+  lastActivity: number;
+  /** In-flight request/stream count; sessions with active work are not swept. */
+  activeRequests: number;
 }
 
 /**
  * HTTP Server for Tarot MCP with modern Streamable HTTP and legacy SSE support.
  */
 export class TarotHttpServer {
+  /** Streamable HTTP sessions idle longer than this are reaped. */
+  private static readonly SESSION_IDLE_TIMEOUT_MS = 30 * 60 * 1000;
+  private static readonly SESSION_SWEEP_INTERVAL_MS = 5 * 60 * 1000;
+
   private readonly app: express.Application;
   private readonly tarotServer: TarotServer;
   private readonly port: number;
   private httpServer?: HttpServer;
+  private sessionSweepTimer?: NodeJS.Timeout;
   private readonly streamableSessions = new Map<
     string,
     McpTransportSession<StreamableHTTPServerTransport>
@@ -39,6 +47,22 @@ export class TarotHttpServer {
 
     this.setupMiddleware();
     this.setupRoutes();
+  }
+
+  /**
+   * Reap Streamable HTTP sessions whose clients vanished without sending
+   * DELETE; otherwise the session map grows without bound.
+   */
+  private sweepIdleSessions(): void {
+    const cutoff = Date.now() - TarotHttpServer.SESSION_IDLE_TIMEOUT_MS;
+    for (const [sessionId, session] of this.streamableSessions.entries()) {
+      if (session.activeRequests === 0 && session.lastActivity < cutoff) {
+        this.streamableSessions.delete(sessionId);
+        void session.server.close().catch((error) => {
+          console.error("Error closing idle MCP session server:", error);
+        });
+      }
+    }
   }
 
   /**
@@ -86,6 +110,35 @@ export class TarotHttpServer {
       });
     });
 
+    this.app.get(HTTP_ENDPOINTS.api.cards, async (req, res) => {
+      try {
+        const result = await this.tarotServer.executeTool(
+          TOOL_NAMES.listAllCards,
+          {
+            category: this.getQueryParam(req, "category"),
+          },
+        );
+        this.sendToolResult(res, result);
+      } catch (error) {
+        this.sendHttpError(res, error);
+      }
+    });
+
+    this.app.get(`${HTTP_ENDPOINTS.api.cards}/:cardName`, async (req, res) => {
+      try {
+        const result = await this.tarotServer.executeTool(
+          TOOL_NAMES.getCardInfo,
+          {
+            cardName: req.params.cardName,
+            orientation: this.getQueryParam(req, "orientation"),
+          },
+        );
+        this.sendToolResult(res, result);
+      } catch (error) {
+        this.sendHttpError(res, error);
+      }
+    });
+
     this.app.post(HTTP_ENDPOINTS.streamableHttp, (req, res) => {
       void this.handleStreamablePost(req, res);
     });
@@ -114,7 +167,7 @@ export class TarotHttpServer {
             sessionId,
           },
         );
-        res.json({ result });
+        this.sendToolResult(res, result);
       } catch (error) {
         this.sendHttpError(res, error);
       }
@@ -134,11 +187,23 @@ export class TarotHttpServer {
             sessionId,
           },
         );
-        res.json({ result });
+        this.sendToolResult(res, result);
       } catch (error) {
         this.sendHttpError(res, error);
       }
     });
+  }
+
+  /**
+   * Send a tool result, mapping handler-level validation failures
+   * ("Error: ..." strings) to HTTP 400 instead of a 200 success.
+   */
+  private sendToolResult(res: Response, result: string): void {
+    if (result.startsWith("Error")) {
+      res.status(400).json({ error: result });
+      return;
+    }
+    res.json({ result });
   }
 
   private async handleStreamablePost(
@@ -153,11 +218,18 @@ export class TarotHttpServer {
         : undefined;
 
       if (existingSession) {
-        await existingSession.transport.handleRequest(req, res, req.body);
+        await this.handleSessionRequest(existingSession, req, res);
         return;
       }
 
-      if (sessionId || !isInitializeRequest(req.body)) {
+      if (sessionId) {
+        // Unknown/expired session: the MCP Streamable HTTP spec requires 404
+        // so clients know to re-initialize.
+        this.sendJsonRpcError(res, 404, -32001, "Session not found");
+        return;
+      }
+
+      if (!isInitializeRequest(req.body)) {
         this.sendJsonRpcError(
           res,
           400,
@@ -168,14 +240,15 @@ export class TarotHttpServer {
       }
 
       const server = createMcpProtocolServer(this.tarotServer);
-      let transport!: StreamableHTTPServerTransport;
-      transport = new StreamableHTTPServerTransport({
+      const transport: StreamableHTTPServerTransport = new StreamableHTTPServerTransport({
         sessionIdGenerator: () => randomUUID(),
         enableJsonResponse: true,
         onsessioninitialized: (initializedSessionId) => {
           this.streamableSessions.set(initializedSessionId, {
             server,
             transport,
+            lastActivity: Date.now(),
+            activeRequests: 0,
           });
         },
         onsessionclosed: (closedSessionId) => {
@@ -200,20 +273,49 @@ export class TarotHttpServer {
     res: Response,
   ): Promise<void> {
     const sessionId = this.getHeader(req, "mcp-session-id");
-    const session = sessionId
-      ? this.streamableSessions.get(sessionId)
-      : undefined;
 
+    if (!sessionId) {
+      res.status(400).send("Missing MCP session ID");
+      return;
+    }
+
+    const session = this.streamableSessions.get(sessionId);
     if (!session) {
-      res.status(400).send("Invalid or missing MCP session ID");
+      // 404 per the MCP Streamable HTTP spec so clients re-initialize.
+      res.status(404).send("Session not found");
       return;
     }
 
     try {
-      await session.transport.handleRequest(req, res);
+      await this.handleSessionRequest(session, req, res);
     } catch (error) {
       console.error("Error handling Streamable HTTP session request:", error);
       this.sendJsonRpcError(res, 500, -32603, "Internal server error");
+    }
+  }
+
+  /**
+   * Run a transport request while holding the session's in-flight counter so
+   * the idle sweep never severs a session with an open request or SSE stream.
+   * For SSE responses handleRequest resolves when the stream is set up, so we
+   * also wait for the response to close before releasing the counter.
+   */
+  private async handleSessionRequest(
+    session: McpTransportSession<StreamableHTTPServerTransport>,
+    req: Request,
+    res: Response,
+  ): Promise<void> {
+    session.lastActivity = Date.now();
+    session.activeRequests++;
+    try {
+      const parsedBody = req.method === "POST" ? req.body : undefined;
+      await session.transport.handleRequest(req, res, parsedBody);
+      if (!res.writableEnded) {
+        await new Promise<void>((resolve) => res.once("close", resolve));
+      }
+    } finally {
+      session.activeRequests--;
+      session.lastActivity = Date.now();
     }
   }
 
@@ -226,7 +328,12 @@ export class TarotHttpServer {
       );
       const sessionId = transport.sessionId;
 
-      this.sseSessions.set(sessionId, { server, transport });
+      this.sseSessions.set(sessionId, {
+        server,
+        transport,
+        lastActivity: Date.now(),
+        activeRequests: 0,
+      });
       res.on("close", () => {
         this.sseSessions.delete(sessionId);
         void server.close().catch((error) => {
@@ -269,6 +376,11 @@ export class TarotHttpServer {
 
   private getHeader(req: Request, name: string): string | undefined {
     const value = req.headers[name];
+    return typeof value === "string" ? value : undefined;
+  }
+
+  private getQueryParam(req: Request, name: string): string | undefined {
+    const value = req.query[name];
     return typeof value === "string" ? value : undefined;
   }
 
@@ -318,6 +430,11 @@ export class TarotHttpServer {
       server.once("error", onError);
       server.once("listening", () => {
         server.off("error", onError);
+        this.sessionSweepTimer = setInterval(
+          () => this.sweepIdleSessions(),
+          TarotHttpServer.SESSION_SWEEP_INTERVAL_MS,
+        );
+        this.sessionSweepTimer.unref();
         console.log(`Tarot MCP Server running on http://0.0.0.0:${this.port}`);
         console.log(
           `Streamable HTTP MCP endpoint: ${HTTP_ENDPOINTS.streamableHttp}`,
@@ -337,6 +454,11 @@ export class TarotHttpServer {
    * Stop the HTTP server and close active MCP sessions.
    */
   public async stop(): Promise<void> {
+    if (this.sessionSweepTimer) {
+      clearInterval(this.sessionSweepTimer);
+      this.sessionSweepTimer = undefined;
+    }
+
     for (const session of [
       ...this.streamableSessions.values(),
       ...this.sseSessions.values(),

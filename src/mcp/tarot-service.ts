@@ -247,7 +247,7 @@ export class TarotServer {
     const targetCard = this.cardManager.findCard(cardName.data!);
 
     if (!targetCard) {
-      return `Card "${cardName.data}" not found. Please check the card name and try again.`;
+      return `Error: Card "${cardName.data}" not found. Please check the card name and try again.`;
     }
 
     const similarCards = this.cardSearch.findSimilarCards(
@@ -443,10 +443,13 @@ export class TarotServer {
       return this.formatValidationError("question", question.errors);
     }
 
-    // Use the daily_guidance spread for consistency
+    // Use the daily_guidance spread for consistency. Daily cards are one-shot
+    // (the tool has no sessionId parameter), so skip session tracking.
     return this.readingManager.performReading(
       "daily_guidance",
       typeof question === "string" ? question : sanitizeString(question.data!),
+      undefined,
+      { trackSession: false },
     );
   }
 
@@ -746,10 +749,13 @@ export class TarotServer {
     // Get moon phase recommendations
     const moonGuidance = getMoonPhaseRecommendations(date);
 
-    // Perform the reading
+    // Perform the reading. Moon-phase readings are one-shot (the tool has no
+    // sessionId parameter), so skip session tracking.
     const reading = this.readingManager.performReading(
       spreadType,
       sanitizeString(question.data!),
+      undefined,
+      { trackSession: false },
     );
 
     return `${moonGuidance}\n\n---\n\n# 🔮 Your Moon Phase Reading\n\n${reading}`;

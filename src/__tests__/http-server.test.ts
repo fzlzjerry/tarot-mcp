@@ -1,5 +1,6 @@
 import { spawn, ChildProcessWithoutNullStreams } from "node:child_process";
 import fs from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 
 const PORT = 3379;
@@ -63,7 +64,7 @@ describe("HTTP MCP server", () => {
 
   beforeAll(async () => {
     const tsxBin = path.join(process.cwd(), "node_modules", ".bin", "tsx");
-    tsxTempDir = await fs.mkdtemp("/private/tmp/tarot-mcp-tsx-");
+    tsxTempDir = await fs.mkdtemp(path.join(os.tmpdir(), "tarot-mcp-tsx-"));
     serverProcess = spawn(
       tsxBin,
       ["src/index.ts", "--transport", "http", "--port", String(PORT)],
@@ -124,6 +125,35 @@ describe("HTTP MCP server", () => {
     const spreadsJson = await spreads.json();
     expect(spreadsJson.spreads.length).toBeGreaterThanOrEqual(20);
     expect(spreadsJson.spreads[0]).toHaveProperty("type");
+  });
+
+  it("serves card listing and card detail endpoints", async () => {
+    const cards = await fetch(`${BASE_URL}/api/cards?category=major_arcana`);
+    expect(cards.status).toBe(200);
+    const cardsJson = await cards.json();
+    expect(cardsJson.result).toContain("Major Arcana (22 cards)");
+
+    const card = await fetch(
+      `${BASE_URL}/api/cards/${encodeURIComponent("The Fool")}?orientation=reversed`,
+    );
+    expect(card.status).toBe(200);
+    const cardJson = await card.json();
+    expect(cardJson.result).toContain("# The Fool (Reversed)");
+
+    const badCategory = await fetch(`${BASE_URL}/api/cards?category=swirls`);
+    expect(badCategory.status).toBe(400);
+  });
+
+  it("returns HTTP 400 for invalid reading parameters", async () => {
+    const response = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ spreadType: "not_a_spread", question: "Hi?" }),
+    });
+
+    expect(response.status).toBe(400);
+    const json = await response.json();
+    expect(json.error).toContain("Invalid spreadType");
   });
 
   it("handles Streamable HTTP initialize, initialized, and tools/list", async () => {

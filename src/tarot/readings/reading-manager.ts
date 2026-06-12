@@ -1,8 +1,9 @@
 import { TarotCardManager } from "../cards/card-manager.js";
 import { TarotSessionManager } from "./session-manager.js";
 import { TarotReading, DrawnCard, CardOrientation, TarotCard } from "../shared/types.js";
-import { TAROT_SPREADS, getAllSpreads, getSpread, isValidSpreadType } from "./spreads.js";
+import { getAllSpreads, getSpread, isValidSpreadType } from "./spreads.js";
 import { getSecureRandomInt } from "../shared/utils.js";
+import { sanitizeString } from "../shared/validation.js";
 
 export interface TarotReadingRandomSource {
   drawCards?: (count: number) => TarotCard[];
@@ -30,9 +31,19 @@ export class TarotReadingManager {
   /**
    * Perform a tarot reading
    */
-  public performReading(spreadType: string, question: string, sessionId?: string): string {
+  public performReading(
+    spreadType: string,
+    question: string,
+    sessionId?: string | null,
+    options: { trackSession?: boolean } = {},
+  ): string {
     if (!isValidSpreadType(spreadType)) {
-      return `Invalid spread type: ${spreadType}. Use list_available_spreads to see valid options.`;
+      return `Error: Invalid spread type: ${spreadType}. Use list_available_spreads to see valid options.`;
+    }
+
+    const session = this.resolveSession(sessionId, options.trackSession ?? true);
+    if (typeof session === "string") {
+      return session;
     }
 
     const spread = getSpread(spreadType)!;
@@ -56,15 +67,35 @@ export class TarotReadingManager {
       cards: drawnCards,
       interpretation: this.generateInterpretation(drawnCards, question, spread.name),
       timestamp: new Date(),
-      sessionId
+      sessionId: session?.id
     };
 
-    // Add to session if provided
-    if (sessionId) {
-      this.sessionManager.addReadingToSession(sessionId, reading);
+    if (session) {
+      this.sessionManager.addReadingToSession(session.id, reading);
     }
 
     return this.formatReading(reading, spread.name, spread.description);
+  }
+
+  /**
+   * Resolve an existing session or start a new one. Returns an error string
+   * (suitable for direct return to the client) when an unknown session ID is
+   * supplied, so stale IDs fail loudly instead of being silently dropped.
+   * Returns undefined when session tracking is disabled (one-shot tools such
+   * as the daily card, which cannot continue a session anyway).
+   */
+  private resolveSession(sessionId: string | null | undefined, trackSession: boolean) {
+    if (sessionId == null) {
+      return trackSession ? this.sessionManager.createSession() : undefined;
+    }
+
+    const session = this.sessionManager.getSession(sessionId);
+    if (!session) {
+      // Echo at most a short, sanitized form of the client-supplied ID.
+      const safeId = sanitizeString(sessionId).slice(0, 64);
+      return `Error: Session "${safeId}" not found. Sessions expire 24 hours after their last activity. Omit sessionId to start a new session.`;
+    }
+    return session;
   }
 
   /**
@@ -99,8 +130,13 @@ export class TarotReadingManager {
     description: string,
     positions: { name: string; meaning: string }[],
     question: string,
-    sessionId?: string
+    sessionId?: string | null
   ): string {
+    const session = this.resolveSession(sessionId, true);
+    if (typeof session === "string") {
+      return session;
+    }
+
     // Create a custom spread object
     const customSpread = {
       name: spreadName,
@@ -128,51 +164,12 @@ export class TarotReadingManager {
       cards: drawnCards,
       interpretation: this.generateInterpretation(drawnCards, question, customSpread.name),
       timestamp: new Date(),
-      sessionId
+      sessionId: session!.id
     };
 
-    // Add to session if provided
-    if (sessionId) {
-      this.sessionManager.addReadingToSession(sessionId, reading);
-    }
+    this.sessionManager.addReadingToSession(session!.id, reading);
 
     return this.formatReading(reading, customSpread.name, customSpread.description);
-  }
-
-  /**
-   * Interpret a combination of cards
-   */
-  public interpretCardCombination(cards: Array<{name: string, orientation?: string}>, context: string): string {
-    const drawnCards: DrawnCard[] = [];
-    
-    for (const cardInput of cards) {
-      const card = this.cardManager.findCard(cardInput.name);
-      if (!card) {
-        return `Card "${cardInput.name}" not found. Use list_all_cards to see available cards.`;
-      }
-      
-      drawnCards.push({
-        card,
-        orientation: (cardInput.orientation as CardOrientation) || "upright"
-      });
-    }
-
-    let result = `# Card Combination Interpretation\n\n`;
-    result += `**Context:** ${context}\n\n`;
-    
-    result += `## Cards in This Reading\n\n`;
-    drawnCards.forEach((drawnCard, index) => {
-      result += `${index + 1}. **${drawnCard.card.name}** (${drawnCard.orientation})\n`;
-      const keywords = drawnCard.orientation === "upright" 
-        ? drawnCard.card.keywords.upright 
-        : drawnCard.card.keywords.reversed;
-      result += `   *Keywords: ${keywords.join(", ")}*\n\n`;
-    });
-
-    result += `## Interpretation\n\n`;
-    result += this.generateCombinationInterpretation(drawnCards, context);
-
-    return result;
   }
 
   /**
@@ -182,7 +179,7 @@ export class TarotReadingManager {
     let interpretation = `This ${spreadName} reading addresses your question: "${question}"\n\n`;
 
     // Individual card interpretations with context
-    drawnCards.forEach((drawnCard, index) => {
+    drawnCards.forEach((drawnCard) => {
       const meanings = drawnCard.orientation === "upright"
         ? drawnCard.card.meanings.upright
         : drawnCard.card.meanings.reversed;
@@ -236,7 +233,7 @@ export class TarotReadingManager {
     }
 
     // Overall interpretation
-    interpretation += this.generateOverallInterpretation(drawnCards, question);
+    interpretation += this.generateOverallInterpretation(drawnCards);
 
     return interpretation;
   }
@@ -338,7 +335,7 @@ export class TarotReadingManager {
     const hopesFears = drawnCards[8];
     const finalOutcome = drawnCards[9];
 
-    analysis += `**Current Pattern:** The ${present.card.name} at the center is crossed by ${challenge.card.name}, showing the main tension in the situation. `;
+    analysis += `**Current Pattern:** ${this.withDefiniteArticle(present.card.name)} at the center is crossed by ${challenge.card.name}, showing the main tension in the situation. `;
     if (present.orientation === challenge.orientation) {
       analysis += "Because both cards share the same orientation, the challenge is visible and can be addressed directly. ";
     } else {
@@ -352,7 +349,7 @@ export class TarotReadingManager {
       analysis += "differs from the final outcome, so the reading points to a course correction before the pattern settles. ";
     }
 
-    analysis += `**Near Future Impact:** The ${nearFuture.card.name} in your near future will `;
+    analysis += `**Near Future Impact:** ${this.withDefiniteArticle(nearFuture.card.name)} in your near future will `;
     if (nearFuture.orientation === "upright") {
       analysis += "support your journey toward the final outcome. ";
     } else {
@@ -419,7 +416,6 @@ export class TarotReadingManager {
     const partner = drawnCards[1];
     const relationship = drawnCards[2];
     const unites = drawnCards[3];
-    const divides = drawnCards[4];
 
     // Analyze compatibility
     analysis += `**Compatibility Assessment:** `;
@@ -449,7 +445,6 @@ export class TarotReadingManager {
 
     let analysis = "**Career Path Analysis:**\n\n";
 
-    const current = drawnCards[0];
     const skills = drawnCards[1];
     const challenges = drawnCards[2];
     const opportunities = drawnCards[3];
@@ -477,9 +472,7 @@ export class TarotReadingManager {
     let analysis = "**Spiritual Development Analysis:**\n\n";
 
     const spiritualState = drawnCards[0];
-    const lessons = drawnCards[1];
     const blocks = drawnCards[2];
-    const gifts = drawnCards[3];
 
     // Analyze spiritual progress
     analysis += `**Spiritual Progress:** `;
@@ -543,7 +536,7 @@ export class TarotReadingManager {
     const monthlyCards = drawnCards.slice(1);
 
     // Analyze overall year energy
-    analysis += `**Year Theme:** The ${overallTheme.card.name} sets the tone for your year, `;
+    analysis += `**Year Theme:** ${this.withDefiniteArticle(overallTheme.card.name)} sets the tone for your year, `;
     if (overallTheme.orientation === "upright") {
       analysis += "indicating a positive and growth-oriented period ahead. ";
     } else {
@@ -582,7 +575,7 @@ export class TarotReadingManager {
 
     let analysis = "**Venus Love Energy Analysis:**\n\n";
 
-    const [currentEnergy, selfLove, attraction, blocks, enhancement, desires, future] = drawnCards;
+    const [currentEnergy, selfLove, attraction, blocks, , , future] = drawnCards;
 
     // Analyze love energy flow
     analysis += `**Love Energy Flow:** Your current relationship energy (${currentEnergy.card.name}) `;
@@ -624,17 +617,15 @@ export class TarotReadingManager {
 
     let analysis = "**Tree of Life Spiritual Analysis:**\n\n";
 
-    const [kether, chokmah, binah, chesed, geburah, tiphareth, netzach, hod, yesod, malkuth] = drawnCards;
+    const [kether, chokmah, binah, chesed, geburah, , netzach, hod, , malkuth] = drawnCards;
 
     // Analyze the three pillars
     const leftPillar = [binah, geburah, hod]; // Severity
     const rightPillar = [chokmah, chesed, netzach]; // Mercy
-    const middlePillar = [kether, tiphareth, yesod, malkuth]; // Balance
 
     // Pillar analysis
     const leftUprightCount = leftPillar.filter(c => c.orientation === "upright").length;
     const rightUprightCount = rightPillar.filter(c => c.orientation === "upright").length;
-    const middleUprightCount = middlePillar.filter(c => c.orientation === "upright").length;
 
     analysis += `**Pillar Balance:** `;
     if (rightUprightCount > leftUprightCount) {
@@ -903,6 +894,14 @@ export class TarotReadingManager {
   }
 
   /**
+   * Prefix a card name with "The" unless it already starts with it
+   * (Major Arcana names like "The Hierophant" must not become "The The ...").
+   */
+  private withDefiniteArticle(cardName: string): string {
+    return cardName.startsWith("The ") ? cardName : `The ${cardName}`;
+  }
+
+  /**
    * Check if two cards have similar energy
    */
   private cardsHaveSimilarEnergy(card1: DrawnCard, card2: DrawnCard): boolean {
@@ -919,12 +918,11 @@ export class TarotReadingManager {
   /**
    * Generate overall interpretation considering card interactions
    */
-  private generateOverallInterpretation(drawnCards: DrawnCard[], question: string): string {
+  private generateOverallInterpretation(drawnCards: DrawnCard[]): string {
     let overall = "**Overall Interpretation:**\n\n";
 
     // Analyze the energy of the reading
     const uprightCount = drawnCards.filter(c => c.orientation === "upright").length;
-    const reversedCount = drawnCards.filter(c => c.orientation === "reversed").length;
     const majorArcanaCount = drawnCards.filter(c => c.card.arcana === "major").length;
     const totalCards = drawnCards.length;
 
@@ -952,7 +950,7 @@ export class TarotReadingManager {
     }
 
     // Add specific guidance based on card combinations and spread type
-    overall += this.generateAdvancedCombinationInterpretation(drawnCards, question);
+    overall += this.generateAdvancedCombinationInterpretation(drawnCards);
 
     return overall;
   }
@@ -960,7 +958,7 @@ export class TarotReadingManager {
   /**
    * Generate advanced interpretation for card combinations
    */
-  private generateAdvancedCombinationInterpretation(drawnCards: DrawnCard[], context: string): string {
+  private generateAdvancedCombinationInterpretation(drawnCards: DrawnCard[]): string {
     let interpretation = "";
 
     // Elemental analysis
@@ -1197,20 +1195,20 @@ export class TarotReadingManager {
   }
 
   /**
-   * Generate interpretation for card combinations (legacy method for compatibility)
-   */
-  private generateCombinationInterpretation(drawnCards: DrawnCard[], context: string): string {
-    return this.generateAdvancedCombinationInterpretation(drawnCards, context);
-  }
-
-  /**
    * Format a reading for display
    */
   private formatReading(reading: TarotReading, spreadName: string, spreadDescription: string): string {
     let result = `# ${spreadName} Reading\n\n`;
     result += `**Question:** ${reading.question}\n`;
     result += `**Date:** ${reading.timestamp.toLocaleString()}\n`;
-    result += `**Reading ID:** ${reading.id}\n\n`;
+    result += `**Reading ID:** ${reading.id}\n`;
+    if (reading.sessionId) {
+      const readingNumber = this.sessionManager.getSessionReadings(reading.sessionId).length;
+      result += `**Session ID:** ${reading.sessionId}`;
+      result += readingNumber > 1 ? ` (reading #${readingNumber} in this session)` : "";
+      result += `\n*Pass this sessionId to future readings to continue the session.*\n`;
+    }
+    result += `\n`;
     
     result += `*${spreadDescription}*\n\n`;
     

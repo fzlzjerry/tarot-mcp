@@ -208,6 +208,26 @@ export function parseCardData(data: unknown): TarotCard[] {
 
   data.cards.forEach((card, index) => validateCard(card, index, issues));
 
+  const seenIds = new Set<string>();
+  const seenNames = new Set<string>();
+  data.cards.forEach((card, index) => {
+    const record = card as Record<string, unknown>;
+    const id = typeof record.id === "string" ? record.id : undefined;
+    const name = typeof record.name === "string" ? record.name.toLowerCase() : undefined;
+    if (id !== undefined) {
+      if (seenIds.has(id)) {
+        addIssue(issues, `cards[${index}].id`, `Duplicate card id "${id}"`);
+      }
+      seenIds.add(id);
+    }
+    if (name !== undefined) {
+      if (seenNames.has(name)) {
+        addIssue(issues, `cards[${index}].name`, `Duplicate card name "${record.name}"`);
+      }
+      seenNames.add(name);
+    }
+  });
+
   if (issues.length > 0) {
     const details = issues
       .slice(0, 5)

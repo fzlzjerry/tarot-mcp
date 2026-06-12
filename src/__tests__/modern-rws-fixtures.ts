@@ -58,7 +58,7 @@ export const CANONICAL_CARD_MANIFEST: Array<
     arcana: "major" as const,
     number,
   })),
-  ...SUITS.flatMap(([suit, suitName], suitIndex) =>
+  ...SUITS.flatMap(([suit, suitName]) =>
     MINOR_RANKS.map(([rankId, rankName, number]) => ({
       id: `${rankId}_of_${suit}`,
       name: `${rankName} of ${suitName}`,

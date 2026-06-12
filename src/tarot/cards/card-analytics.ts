@@ -52,11 +52,14 @@ export class TarotCardAnalytics {
    * Generate comprehensive analytics report
    */
   generateReport(): CardAnalytics {
+    const overview = this.getDatabaseOverview();
+    const dataQuality = this.getDataQualityReport();
+    const contentAnalysis = this.getContentAnalysis();
     return {
-      overview: this.getDatabaseOverview(),
-      dataQuality: this.getDataQualityReport(),
-      contentAnalysis: this.getContentAnalysis(),
-      recommendations: this.generateRecommendations()
+      overview,
+      dataQuality,
+      contentAnalysis,
+      recommendations: this.generateRecommendations(overview, dataQuality, contentAnalysis)
     };
   }
 
@@ -229,10 +232,12 @@ export class TarotCardAnalytics {
   /**
    * Generate recommendations for database improvement
    */
-  generateRecommendations(): string[] {
+  generateRecommendations(
+    overview: DatabaseOverview = this.getDatabaseOverview(),
+    qualityReport: DataQualityReport = this.getDataQualityReport(),
+    contentAnalysis: ContentAnalysis = this.getContentAnalysis()
+  ): string[] {
     const recommendations: string[] = [];
-    const qualityReport = this.getDataQualityReport();
-    const contentAnalysis = this.getContentAnalysis();
 
     // Data quality recommendations
     if (qualityReport.incompleteCards.length > 0) {
@@ -253,7 +258,6 @@ export class TarotCardAnalytics {
     }
 
     // Balance recommendations
-    const overview = this.getDatabaseOverview();
     if (overview.completionRate < 100) {
       recommendations.push(`Database is ${overview.completionRate.toFixed(1)}% complete - finish remaining cards`);
     }

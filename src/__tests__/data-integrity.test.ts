@@ -1,4 +1,6 @@
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
+import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
+import { SPREAD_TYPES } from "../tarot/shared/types.js";
 import {
   BANNED_LEGACY_KEYWORDS_BY_CARD,
   CANONICAL_CARD_MANIFEST,
@@ -76,6 +78,9 @@ describe("tarot card data integrity", () => {
 
       for (const orientation of ["upright", "reversed"] as const) {
         expect(card.keywords[orientation].length).toBeGreaterThanOrEqual(5);
+        expect(new Set(card.keywords[orientation]).size).toBe(
+          card.keywords[orientation].length,
+        );
         for (const keyword of card.keywords[orientation]) {
           expect(keyword.trim()).toBe(keyword);
           expect(keyword.length).toBeGreaterThan(0);
@@ -164,5 +169,11 @@ describe("tarot card data integrity", () => {
     expect(fiveOfPentacles).toContain("five");
     expect(fiveOfPentacles).toContain("pentacle");
     expect(fiveOfPentacles).toContain("snow");
+  });
+});
+
+describe("spread type registry consistency", () => {
+  it("keeps SPREAD_TYPES in sync with the TAROT_SPREADS registry", () => {
+    expect([...SPREAD_TYPES].sort()).toEqual(Object.keys(TAROT_SPREADS).sort());
   });
 });

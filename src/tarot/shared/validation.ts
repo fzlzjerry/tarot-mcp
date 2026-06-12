@@ -2,8 +2,7 @@
  * Input validation utilities for the Tarot MCP Server
  */
 
-import { CardOrientation, CardCategory, SpreadType } from "./types.js";
-import { ValidationError } from "./errors.js";
+import { SPREAD_TYPES } from "./types.js";
 
 /**
  * Validation result type
@@ -44,22 +43,6 @@ export const validateString: Validator<string> = (value: unknown) => {
     return failure(["String cannot be empty"]);
   }
   return success(value.trim());
-};
-
-/**
- * Validates that a value is a positive integer
- */
-export const validatePositiveInteger: Validator<number> = (value: unknown) => {
-  if (typeof value !== "number") {
-    return failure([`Expected number, got ${typeof value}`]);
-  }
-  if (!Number.isInteger(value)) {
-    return failure(["Expected integer"]);
-  }
-  if (value <= 0) {
-    return failure(["Expected positive number"]);
-  }
-  return success(value);
 };
 
 /**
@@ -123,33 +106,7 @@ export const validateCardCategory = validateEnum(
 /**
  * Validates spread type
  */
-export const validateSpreadType = validateEnum([
-  "single_card",
-  "three_card",
-  "celtic_cross",
-  "horseshoe",
-  "relationship_cross",
-  "career_path",
-  "decision_making",
-  "spiritual_guidance",
-  "year_ahead",
-  "chakra_alignment",
-  "shadow_work",
-  "venus_love",
-  "tree_of_life",
-  "astrological_houses",
-  "mandala",
-  "pentagram",
-  "mirror_of_truth",
-  "daily_guidance",
-  "yes_no",
-  "weekly_forecast",
-  "new_moon_intentions",
-  "full_moon_release",
-  "elemental_balance",
-  "past_life_karma",
-  "compatibility"
-] as const, "spread type");
+export const validateSpreadType = validateEnum(SPREAD_TYPES, "spread type");
 
 /**
  * Validates that a value is an optional string (can be undefined)
@@ -383,43 +340,3 @@ export function sanitizeString(input: string): string {
     .trim();
 }
 
-/**
- * Validates and throws if validation fails
- */
-export function validateOrThrow<T>(
-  validator: Validator<T>,
-  value: unknown,
-  fieldName: string
-): T {
-  const result = validator(value);
-  if (!result.success) {
-    throw new ValidationError(fieldName, value, undefined, {
-      errors: result.errors
-    });
-  }
-  return result.data!;
-}
-
-/**
- * Combines multiple validators with AND logic
- */
-export function combineValidators<T>(...validators: Validator<T>[]): Validator<T> {
-  return (value: unknown) => {
-    const allErrors: string[] = [];
-
-    for (const validator of validators) {
-      const result = validator(value);
-      if (!result.success) {
-        allErrors.push(...result.errors);
-      }
-    }
-
-    if (allErrors.length > 0) {
-      return failure(allErrors);
-    }
-
-    // If all validators pass, return success with the value from the last validator
-    const lastResult = validators[validators.length - 1](value);
-    return lastResult;
-  };
-}

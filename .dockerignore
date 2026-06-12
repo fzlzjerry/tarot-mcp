@@ -1,0 +1,40 @@
+# Dependencies (installed inside the image)
+node_modules
+
+# Build output (rebuilt inside the image)
+dist
+
+# Version control
+.git
+.gitignore
+
+# Tests and coverage
+coverage
+.nyc_output
+
+# Logs
+*.log
+logs
+
+# Environment files
+.env*
+
+# Tooling and CI
+.claude
+.github
+.vscode
+.idea
+
+# OS files
+.DS_Store
+
+# Docker files themselves
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Misc
+*.tgz
+README.md
+LICENSE
+deploy.sh

@@ -70,5 +70,39 @@ export interface TarotSession {
 }
 
 export type CardOrientation = "upright" | "reversed";
-export type SpreadType = "single_card" | "three_card" | "celtic_cross" | "horseshoe" | "relationship_cross" | "career_path" | "decision_making" | "spiritual_guidance" | "year_ahead" | "chakra_alignment" | "shadow_work" | "venus_love" | "tree_of_life" | "astrological_houses" | "mandala" | "pentagram" | "mirror_of_truth" | "daily_guidance" | "yes_no" | "weekly_forecast" | "new_moon_intentions" | "full_moon_release" | "elemental_balance" | "past_life_karma" | "compatibility";
+
+/**
+ * Canonical list of built-in spread types. Single source of truth shared by
+ * the validator (validateSpreadType) and the MCP tool schema enum.
+ * Must stay in sync with the keys of TAROT_SPREADS (enforced by tests).
+ */
+export const SPREAD_TYPES = [
+  "single_card",
+  "three_card",
+  "celtic_cross",
+  "horseshoe",
+  "relationship_cross",
+  "career_path",
+  "decision_making",
+  "spiritual_guidance",
+  "year_ahead",
+  "chakra_alignment",
+  "shadow_work",
+  "venus_love",
+  "tree_of_life",
+  "astrological_houses",
+  "mandala",
+  "pentagram",
+  "mirror_of_truth",
+  "daily_guidance",
+  "yes_no",
+  "weekly_forecast",
+  "new_moon_intentions",
+  "full_moon_release",
+  "elemental_balance",
+  "past_life_karma",
+  "compatibility",
+] as const;
+
+export type SpreadType = (typeof SPREAD_TYPES)[number];
 export type CardCategory = "all" | "major_arcana" | "minor_arcana" | "wands" | "cups" | "swords" | "pentacles";

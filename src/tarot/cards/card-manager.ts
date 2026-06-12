@@ -81,8 +81,8 @@ export class TarotCardManager {
    */
   private initializeCards(): void {
     this.allCards.forEach((card) => {
-      this.cards.set(card.id, card);
-      // Separate map for name lookups (case-insensitive)
+      // Lowercase keys keep lookups symmetric with findCard's normalization
+      this.cards.set(card.id.toLowerCase(), card);
       this.cardsByName.set(card.name.toLowerCase(), card);
     });
   }
@@ -96,7 +96,7 @@ export class TarotCardManager {
   ): string {
     const card = this.findCard(cardName);
     if (!card) {
-      return `Card "${cardName}" not found. Use the list_all_cards tool to see available cards.`;
+      return `Error: Card "${cardName}" not found. Use the list_all_cards tool to see available cards.`;
     }
 
     const meanings =
@@ -233,8 +233,10 @@ export class TarotCardManager {
    */
   public findCard(identifier: string): TarotCard | undefined {
     const normalizedIdentifier = identifier.toLowerCase().trim();
-    // Try exact ID or name match first
-    let card = this.cards.get(normalizedIdentifier);
+    // Try exact ID match first, then exact name match
+    const card =
+      this.cards.get(normalizedIdentifier) ??
+      this.cardsByName.get(normalizedIdentifier);
     if (card) return card;
 
     // Try partial name match as a fallback

@@ -215,7 +215,7 @@ When running in HTTP mode, the following endpoints are available:
   {
     "spreadType": "single_card|three_card|celtic_cross|...",
     "question": "Your specific question here",
-    "sessionId": "optional-session-id-for-tracking"
+    "sessionId": "optional - use the Session ID returned by a previous reading"
   }
   ```
 - `POST /api/custom-spread` - Create and perform a custom tarot spread
@@ -230,7 +230,7 @@ When running in HTTP mode, the following endpoints are available:
       }
     ],
     "question": "Your specific question",
-    "sessionId": "optional-session-id"
+    "sessionId": "optional - use the Session ID returned by a previous reading"
   }
   ```
 - `GET /api/spreads` - List all available spread types with descriptions
@@ -290,7 +290,7 @@ Perform a professional tarot reading with advanced interpretation analysis.
 {
   "spreadType": "single_card|three_card|celtic_cross|horseshoe|relationship_cross|career_path|decision_making|spiritual_guidance|year_ahead|chakra_alignment|shadow_work|venus_love|tree_of_life|astrological_houses|mandala|pentagram|mirror_of_truth|daily_guidance|yes_no|weekly_forecast|new_moon_intentions|full_moon_release|elemental_balance|past_life_karma|compatibility",
   "question": "What should I know about my career path this year?",
-  "sessionId": "optional-session-id"
+  "sessionId": "optional - use the Session ID returned by a previous reading"
 }
 ```
 **Features**:
@@ -386,7 +386,7 @@ Create a custom tarot spread and draw cards for it. Perfect for AI when no exist
     }
   ],
   "question": "What is the best approach for this unique situation?",
-  "sessionId": "optional-session-id"
+  "sessionId": "optional - use the Session ID returned by a previous reading"
 }
 ```
 **Features**:
@@ -700,7 +700,7 @@ src/
 └── tarot/
     ├── cards/            # Card data, loading, search, and analytics
     ├── readings/         # Spreads, lunar utilities, readings, and sessions
-    └── shared/           # Types, validation, errors, and secure randomness
+    └── shared/           # Types, validation, and secure randomness
 ```
 
 ### Key Components

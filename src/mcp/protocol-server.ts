@@ -29,6 +29,9 @@ export function createMcpProtocolServer(tarotServer: TarotServer): Server {
     try {
       const result = await tarotServer.executeTool(name, args || {});
       return {
+        // Handlers report validation failures as "Error: ..." strings;
+        // surface them as tool errors so clients can detect them.
+        ...(result.startsWith("Error") ? { isError: true } : {}),
         content: [
           {
             type: "text",

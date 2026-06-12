@@ -30,7 +30,7 @@ export class TarotCardSearch {
    * Search cards by various criteria
    */
   search(options: SearchOptions): SearchResult[] {
-    let results: SearchResult[] = [];
+    const results: SearchResult[] = [];
 
     for (const card of this.cards) {
       const result = this.evaluateCard(card, options);
@@ -41,34 +41,6 @@ export class TarotCardSearch {
 
     // Sort by relevance score (highest first)
     return results.sort((a, b) => b.relevanceScore - a.relevanceScore);
-  }
-
-  /**
-   * Search by keyword in card meanings, keywords, and symbolism
-   */
-  searchByKeyword(keyword: string): SearchResult[] {
-    return this.search({ keyword });
-  }
-
-  /**
-   * Find cards by suit
-   */
-  findBySuit(suit: string): TarotCard[] {
-    return this.cards.filter(card => card.suit === suit);
-  }
-
-  /**
-   * Find cards by arcana type
-   */
-  findByArcana(arcana: 'major' | 'minor'): TarotCard[] {
-    return this.cards.filter(card => card.arcana === arcana);
-  }
-
-  /**
-   * Find cards by element
-   */
-  findByElement(element: 'fire' | 'water' | 'air' | 'earth'): TarotCard[] {
-    return this.cards.filter(card => card.element === element);
   }
 
   /**
@@ -136,31 +108,47 @@ export class TarotCardSearch {
     let score = 0;
     const matchedFields: string[] = [];
 
-    // Exact matches get higher scores
-    if (options.suit && card.suit === options.suit) {
+    // Structured criteria are hard filters: a card that fails any specified
+    // one is excluded regardless of keyword relevance.
+    if (options.suit && card.suit !== options.suit) {
+      return { card, relevanceScore: 0, matchedFields };
+    }
+    if (options.arcana && card.arcana !== options.arcana) {
+      return { card, relevanceScore: 0, matchedFields };
+    }
+    if (options.element && card.element !== options.element) {
+      return { card, relevanceScore: 0, matchedFields };
+    }
+    if (options.number !== undefined && card.number !== options.number) {
+      return { card, relevanceScore: 0, matchedFields };
+    }
+
+    if (options.suit) {
       score += 10;
       matchedFields.push('suit');
     }
 
-    if (options.arcana && card.arcana === options.arcana) {
+    if (options.arcana) {
       score += 8;
       matchedFields.push('arcana');
     }
 
-    if (options.element && card.element === options.element) {
+    if (options.element) {
       score += 8;
       matchedFields.push('element');
     }
 
-    if (options.number !== undefined && card.number === options.number) {
+    if (options.number !== undefined) {
       score += 10;
       matchedFields.push('number');
     }
 
-    // Keyword search in various fields
+    // Keyword search in various fields. A specified keyword is also a hard
+    // filter: if it matches no field, the card is excluded.
     if (options.keyword) {
       const keyword = options.keyword.toLowerCase();
-      
+      const scoreBeforeKeyword = score;
+
       // Search in card name
       if (card.name.toLowerCase().includes(keyword)) {
         score += 15;
@@ -195,6 +183,10 @@ export class TarotCardSearch {
         score += 4;
         matchedFields.push('description');
       }
+
+      if (score === scoreBeforeKeyword) {
+        return { card, relevanceScore: 0, matchedFields: [] };
+      }
     }
 
     return {
@@ -207,10 +199,10 @@ export class TarotCardSearch {
   private calculateSimilarity(card1: TarotCard, card2: TarotCard): number {
     let score = 0;
 
-    // Same suit/arcana
-    if (card1.suit === card2.suit) score += 3;
+    // Same suit/arcana (suitless Major Arcana pairs must not count as same suit)
+    if (card1.suit && card1.suit === card2.suit) score += 3;
     if (card1.arcana === card2.arcana) score += 2;
-    if (card1.element === card2.element) score += 3;
+    if (card1.element && card1.element === card2.element) score += 3;
 
     // Similar numbers
     if (card1.number !== undefined && card2.number !== undefined) {
@@ -219,61 +211,26 @@ export class TarotCardSearch {
       else if (numDiff <= 2) score += 1;
     }
 
-    // Keyword overlap
-    const keywords1 = [...card1.keywords.upright, ...card1.keywords.reversed];
-    const keywords2 = [...card2.keywords.upright, ...card2.keywords.reversed];
-    
-    for (const kw1 of keywords1) {
-      for (const kw2 of keywords2) {
-        if (kw1.toLowerCase() === kw2.toLowerCase()) {
-          score += 2;
-        }
+    // Keyword overlap: each shared keyword counts once, regardless of how
+    // many times it appears on either card.
+    const keywords1 = new Set(
+      [...card1.keywords.upright, ...card1.keywords.reversed].map((kw) =>
+        kw.toLowerCase(),
+      ),
+    );
+    const keywords2 = new Set(
+      [...card2.keywords.upright, ...card2.keywords.reversed].map((kw) =>
+        kw.toLowerCase(),
+      ),
+    );
+
+    for (const keyword of keywords1) {
+      if (keywords2.has(keyword)) {
+        score += 2;
       }
     }
 
     return score;
-  }
-
-  /**
-   * Get statistics about the card database
-   */
-  getStatistics() {
-    const stats = {
-      totalCards: this.cards.length,
-      majorArcana: this.cards.filter(c => c.arcana === 'major').length,
-      minorArcana: this.cards.filter(c => c.arcana === 'minor').length,
-      suits: {} as Record<string, number>,
-      elements: {} as Record<string, number>,
-      mostCommonKeywords: this.getMostCommonKeywords(10)
-    };
-
-    // Count by suits
-    for (const card of this.cards) {
-      if (card.suit) {
-        stats.suits[card.suit] = (stats.suits[card.suit] || 0) + 1;
-      }
-      if (card.element) {
-        stats.elements[card.element] = (stats.elements[card.element] || 0) + 1;
-      }
-    }
-
-    return stats;
-  }
-
-  private getMostCommonKeywords(limit: number): Array<{ keyword: string; count: number }> {
-    const keywordCounts: Record<string, number> = {};
-
-    for (const card of this.cards) {
-      const allKeywords = [...card.keywords.upright, ...card.keywords.reversed];
-      for (const keyword of allKeywords) {
-        keywordCounts[keyword] = (keywordCounts[keyword] || 0) + 1;
-      }
-    }
-
-    return Object.entries(keywordCounts)
-      .map(([keyword, count]) => ({ keyword, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, limit);
   }
 
   /**

@@ -116,4 +116,53 @@ describe("TarotCardSearch search", () => {
 
     expect(results.map((result) => result.card.name)).toContain("The Fool");
   });
+
+  it("treats structured criteria as hard filters even when a keyword matches", () => {
+    // "focus" appears in every fixture card's upright keywords; the suit
+    // filter must still exclude everything that is not a cup.
+    const results = cardSearch.search({ keyword: "focus", suit: "cups" });
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.card.suit === "cups")).toBe(true);
+  });
+
+  it("excludes cards whose fields do not match the keyword at all", () => {
+    const results = cardSearch.search({
+      keyword: "no_such_keyword_anywhere",
+      suit: "cups",
+    });
+
+    expect(results).toHaveLength(0);
+  });
+
+  it("does not treat two suitless major arcana as sharing a suit in similarity", () => {
+    const magician = createCard("the_magician", "The Magician", {
+      arcana: "major",
+      suit: undefined,
+      number: 1,
+      element: "air",
+      keywords: { upright: ["shared_a", "shared_b"], reversed: ["unique_m"] },
+    });
+    const fool = createCard("the_fool", "The Fool", {
+      arcana: "major",
+      suit: undefined,
+      number: 0,
+      element: undefined,
+      keywords: { upright: ["unique_c"], reversed: ["unique_d"] },
+    });
+    const cup = createCard("cup_1", "Cup 1", {
+      suit: "cups",
+      number: 1,
+      element: "water",
+      keywords: { upright: ["shared_a", "shared_b"], reversed: ["unique_e"] },
+    });
+    const search = new TarotCardSearch([fool, magician, cup]);
+
+    // magician vs cup: two shared keywords (+4) + adjacent number (+2) = 6
+    // magician vs fool: same arcana (+2) + adjacent number (+2) = 4
+    // Before the fix, fool also got +3 for undefined === undefined suit (7)
+    // and would wrongly outrank the cup.
+    const similar = search.findSimilarCards("the_magician", 2);
+    expect(similar.map((card) => card.id)).toEqual(["cup_1", "the_fool"]);
+  });
 });

@@ -11,6 +11,7 @@ export const HTTP_ENDPOINTS = {
   api: {
     info: "/api/info",
     spreads: "/api/spreads",
+    cards: "/api/cards",
     reading: "/api/reading",
     customSpread: "/api/custom-spread",
   },
@@ -31,5 +32,3 @@ export const TOOL_NAMES = {
   getCardMeaningsComparison: "get_card_meanings_comparison",
   createCustomSpread: "create_custom_spread",
 } as const;
-
-export type ToolName = (typeof TOOL_NAMES)[keyof typeof TOOL_NAMES];

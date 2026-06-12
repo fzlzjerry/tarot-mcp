@@ -33,7 +33,6 @@ export default {
   coverageDirectory: "coverage",
   coverageReporters: ["text", "lcov", "html"],
   transformIgnorePatterns: ["node_modules/(?!(.*\\.mjs$))"],
-  setupFiles: ["<rootDir>/jest-crypto-mock.js"],
   moduleFileExtensions: ["ts", "js", "json", "node"],
   testTimeout: 10000,
 };

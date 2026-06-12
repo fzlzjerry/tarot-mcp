@@ -92,5 +92,5 @@ pids/
 # TernJS port file
 .tern-port
 
-# Docker
-.dockerignore
+# Claude Code local settings
+.claude/settings.local.json

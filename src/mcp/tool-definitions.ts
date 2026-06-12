@@ -1,7 +1,5 @@
-import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
+import { SPREAD_TYPES } from "../tarot/shared/types.js";
 import { TOOL_NAMES } from "./public-api.js";
-
-const SPREAD_TYPES = Object.keys(TAROT_SPREADS);
 
 export interface Tool {
   name: string;
@@ -73,7 +71,7 @@ export function getToolDefinitions(): Tool[] {
         properties: {
           spreadType: {
             type: "string",
-            enum: SPREAD_TYPES,
+            enum: [...SPREAD_TYPES],
             description: "The type of tarot spread to perform",
           },
           question: {
@@ -82,7 +80,8 @@ export function getToolDefinitions(): Tool[] {
           },
           sessionId: {
             type: "string",
-            description: "Optional session ID to continue a previous reading",
+            description:
+              "Optional session ID returned by a previous reading; omit to start a new session",
           },
         },
         required: ["spreadType", "question"],
@@ -116,7 +115,9 @@ export function getToolDefinitions(): Tool[] {
             description: "Filter by element",
           },
           number: {
-            type: "number",
+            type: "integer",
+            minimum: 0,
+            maximum: 21,
             description: "Filter by card number",
           },
           orientation: {
@@ -125,7 +126,9 @@ export function getToolDefinitions(): Tool[] {
             description: "Search in upright or reversed meanings",
           },
           limit: {
-            type: "number",
+            type: "integer",
+            minimum: 1,
+            maximum: 100,
             description: "Maximum number of results to return (default: 10)",
           },
         },
@@ -142,7 +145,9 @@ export function getToolDefinitions(): Tool[] {
             description: "The name of the card to find similar cards for",
           },
           limit: {
-            type: "number",
+            type: "integer",
+            minimum: 1,
+            maximum: 77,
             description:
               "Maximum number of similar cards to return (default: 5)",
           },
@@ -170,9 +175,13 @@ export function getToolDefinitions(): Tool[] {
       description: "Get random cards with optional filtering",
       inputSchema: {
         type: "object",
+        // The handler rejects unknown parameters; advertise that contract.
+        additionalProperties: false,
         properties: {
           count: {
-            type: "number",
+            type: "integer",
+            minimum: 1,
+            maximum: 78,
             description: "Number of random cards to draw (default: 1)",
           },
           suit: {
@@ -262,6 +271,8 @@ export function getToolDefinitions(): Tool[] {
         "Compare 2-5 tarot cards, including optional card orientation, to understand their relationships and combined message",
       inputSchema: {
         type: "object",
+        description:
+          "Provide either cards or legacy cardNames. When both are present, cards takes precedence.",
         properties: {
           cards: {
             type: "array",
@@ -274,9 +285,8 @@ export function getToolDefinitions(): Tool[] {
                 },
                 orientation: {
                   type: "string",
-                  enum: ["upright", "reversed"],
                   description:
-                    "Optional orientation for this card (defaults to upright)",
+                    "Optional orientation for this card: upright or reversed (defaults to upright)",
                   default: "upright",
                 },
               },
@@ -303,7 +313,6 @@ export function getToolDefinitions(): Tool[] {
               "The context or question for interpreting these cards together",
           },
         },
-        anyOf: [{ required: ["cards"] }, { required: ["cardNames"] }],
       },
     },
     {
@@ -350,7 +359,8 @@ export function getToolDefinitions(): Tool[] {
           },
           sessionId: {
             type: "string",
-            description: "Optional session ID to continue a previous reading",
+            description:
+              "Optional session ID returned by a previous reading; omit to start a new session",
           },
         },
         required: ["spreadName", "description", "positions", "question"],

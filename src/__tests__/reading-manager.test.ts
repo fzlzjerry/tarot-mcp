@@ -70,16 +70,20 @@ describe('TarotReadingManager', () => {
 
     it('should generate different readings for the same question', () => {
       const question = 'What should I know?';
-      const reading1 = readingManager.performReading('single_card', question);
-      const reading2 = readingManager.performReading('single_card', question);
+      const extractCards = (reading: string): string[] =>
+        [...reading.matchAll(/\*\*(.+)\*\* \((upright|reversed)\)/g)].map(
+          (match) => `${match[1]}|${match[2]}`,
+        );
 
-      // Both should be valid readings
-      expect(reading1).toContain('# Single Card Reading');
-      expect(reading2).toContain('# Single Card Reading');
+      // Compare the drawn cards themselves (not the whole text, which always
+      // differs via reading/session IDs). Two independent 10-card draws with
+      // orientations colliding is astronomically unlikely.
+      const cards1 = extractCards(readingManager.performReading('celtic_cross', question));
+      const cards2 = extractCards(readingManager.performReading('celtic_cross', question));
 
-      // They should likely be different (due to randomness)
-      // Note: There's a small chance they could be the same, but very unlikely
-      expect(reading1).not.toBe(reading2);
+      expect(cards1).toHaveLength(10);
+      expect(cards2).toHaveLength(10);
+      expect(cards1).not.toEqual(cards2);
     });
 
     it('should handle complex questions with special characters', () => {
@@ -224,6 +228,55 @@ describe('TarotReadingManager', () => {
     });
   });
 
+  describe('session lifecycle', () => {
+    const extractSessionId = (reading: string): string => {
+      const match = reading.match(/\*\*Session ID:\*\* (\S+)/);
+      expect(match).not.toBeNull();
+      return match![1];
+    };
+
+    it('starts a new session and reports its ID when none is provided', () => {
+      const result = readingManager.performReading('single_card', 'New session?');
+
+      const sessionId = extractSessionId(result);
+      expect(sessionManager.getSession(sessionId)).toBeDefined();
+      expect(sessionManager.getSessionReadings(sessionId)).toHaveLength(1);
+    });
+
+    it('continues an existing session when its ID is passed back', () => {
+      const first = readingManager.performReading('single_card', 'First question');
+      const sessionId = extractSessionId(first);
+
+      const second = readingManager.performReading('three_card', 'Second question', sessionId);
+
+      expect(second).toContain(`**Session ID:** ${sessionId}`);
+      expect(second).toContain('(reading #2 in this session)');
+      expect(sessionManager.getSessionReadings(sessionId)).toHaveLength(2);
+    });
+
+    it('rejects unknown session IDs instead of silently dropping them', () => {
+      const result = readingManager.performReading(
+        'single_card',
+        'Stale session',
+        'session_does_not_exist',
+      );
+
+      expect(result).toContain('Error: Session "session_does_not_exist" not found');
+    });
+
+    it('threads sessions through custom readings too', () => {
+      const result = readingManager.performCustomReading(
+        'Focus Spread',
+        'A simple test spread',
+        [{ name: 'Theme', meaning: 'The core theme' }],
+        'What should I focus on?',
+      );
+
+      const sessionId = extractSessionId(result);
+      expect(sessionManager.getSessionReadings(sessionId)).toHaveLength(1);
+    });
+  });
+
   describe('randomness and consistency', () => {
     it('should produce different orientations across multiple readings', () => {
       const orientations = new Set<string>();
@@ -364,11 +417,9 @@ describe('TarotReadingManager', () => {
 
       expect(result).toContain('### 6. Near Future');
       expect(result).toContain(
-        '**Near Future Impact:** The The Hierophant in your near future will'
+        '**Near Future Impact:** The Hierophant in your near future will'
       );
-      expect(result).not.toContain(
-        '**Near Future Impact:** The The Empress in your near future will'
-      );
+      expect(result).not.toContain('The The');
     });
   });
 });
@@ -385,7 +436,7 @@ describe("spread references", () => {
     );
 
     const validSpreadTypes = new Set(
-      [...spreadsSource.matchAll(/^  ([a-z_]+): \{/gm)].map(
+      [...spreadsSource.matchAll(/^ {2}([a-z_]+): \{/gm)].map(
         ([, spread]) => spread,
       ),
     );
