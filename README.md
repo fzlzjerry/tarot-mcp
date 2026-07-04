@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/fzlzjerry-tarot-mcp-badge.png)](https://mseep.ai/app/fzlzjerry-tarot-mcp)
+
 # 🔮 Tarot MCP Server
 
 A professional-grade Model Context Protocol (MCP) server for Rider-Waite-Smith (RWS) tarot card readings, built with Node.js and TypeScript. This server provides comprehensive tarot functionality through both MCP protocol and HTTP API endpoints, featuring modern RWS interpretations and advanced reading analysis.
