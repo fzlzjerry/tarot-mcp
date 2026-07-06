@@ -227,7 +227,7 @@ describe('TarotReadingManager', () => {
 
     it('should handle null/undefined session IDs gracefully', () => {
       const result1 = readingManager.performReading('single_card', 'Test', undefined);
-      const result2 = readingManager.performReading('single_card', 'Test', null as any);
+      const result2 = readingManager.performReading('single_card', 'Test', null);
 
       expect(result1).toContain('# Single Card Reading');
       expect(result2).toContain('# Single Card Reading');

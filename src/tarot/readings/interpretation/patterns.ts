@@ -1,4 +1,4 @@
-import { DrawnCard } from "../../shared/types.js";
+import { CardMeanings, DrawnCard } from "../../shared/types.js";
 
 /**
  * Themes evoked when a card number appears more than once in a reading.
@@ -25,7 +25,7 @@ const REPEATED_NUMBER_THEMES: Record<number, string> = {
  * Select the most relevant meaning based on position and question
  */
 export function selectRelevantMeaning(
-  meanings: any,
+  meanings: CardMeanings,
   position: string,
   question: string,
   positionMeaning: string = ""

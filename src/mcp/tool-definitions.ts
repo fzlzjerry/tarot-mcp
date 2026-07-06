@@ -15,6 +15,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "Get detailed information about a specific tarot card from the Rider-Waite deck",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           cardName: {
             type: "string",
@@ -36,6 +37,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
       description: "List all available tarot cards in the Rider-Waite deck",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           category: {
             type: "string",
@@ -60,6 +62,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "List all available tarot spreads with their positions and meanings",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {},
       },
     },
@@ -68,6 +71,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
       description: "Perform a tarot card reading using a specific spread",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           spreadType: {
             type: "string",
@@ -93,6 +97,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "Search for tarot cards using various criteria like keywords, suit, element, etc.",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           keyword: {
             type: "string",
@@ -139,6 +144,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
       description: "Find cards with similar meanings to a given card",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           cardName: {
             type: "string",
@@ -161,6 +167,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "Get comprehensive analytics and statistics about the tarot card database",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           includeRecommendations: {
             type: "boolean",
@@ -207,6 +214,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
       description: "Draw a single card for daily guidance and insight",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           question: {
             type: "string",
@@ -222,6 +230,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "Get a recommendation for the most appropriate tarot spread based on your question or situation",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           question: {
             type: "string",
@@ -250,6 +259,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "Perform a tarot reading based on the current moon phase with an appropriate spread",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           question: {
             type: "string",
@@ -271,6 +281,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "Compare 2-5 tarot cards, including optional card orientation, to understand their relationships and combined message",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         description:
           "Provide either cards or legacy cardNames. When both are present, cards takes precedence.",
         properties: {
@@ -321,6 +332,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         "Create a custom tarot spread and draw cards for it. Use this when no existing spread fits your needs and you want to create your own layout with specific positions and meanings.",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           spreadName: {
             type: "string",
@@ -364,6 +376,23 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
           },
         },
         required: ["spreadName", "description", "positions", "question"],
+      },
+    },
+    {
+      name: TOOL_NAMES.getSessionHistory,
+      description:
+        "List the readings performed so far in a session (summaries with spread, question, time, and drawn cards)",
+      inputSchema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          sessionId: {
+            type: "string",
+            description:
+              "The session ID returned by a previous reading",
+          },
+        },
+        required: ["sessionId"],
       },
     },
 ]);

@@ -61,7 +61,7 @@ export class TarotServer {
   private cardAnalytics: TarotCardAnalytics;
   private readonly toolHandlers: ReadonlyMap<
     string,
-    (args: Record<string, any>) => ToolResult
+    (args: Record<string, unknown>) => ToolResult
   >;
 
   /**
@@ -77,7 +77,7 @@ export class TarotServer {
     this.cardSearch = new TarotCardSearch(this.cardManager.getAllCards());
     this.cardAnalytics = new TarotCardAnalytics(this.cardManager.getAllCards());
     const handlers: Array<
-      [string, (args: Record<string, any>) => ToolResult]
+      [string, (args: Record<string, unknown>) => ToolResult]
     > = [
       [TOOL_NAMES.getCardInfo, (args) => this.handleGetCardInfo(args)],
       [TOOL_NAMES.listAllCards, (args) => this.handleListAllCards(args)],
@@ -103,6 +103,10 @@ export class TarotServer {
       [
         TOOL_NAMES.createCustomSpread,
         (args) => this.handleCreateCustomSpread(args),
+      ],
+      [
+        TOOL_NAMES.getSessionHistory,
+        (args) => this.handleGetSessionHistory(args),
       ],
     ];
     this.toolHandlers = new Map(handlers);
@@ -140,7 +144,7 @@ export class TarotServer {
    */
   public async executeTool(
     toolName: string,
-    args: Record<string, any>,
+    args: Record<string, unknown>,
   ): Promise<ToolResult> {
     const handler = this.toolHandlers.get(toolName);
     if (!handler) {
@@ -160,7 +164,7 @@ export class TarotServer {
   /**
    * Handle card info requests
    */
-  private handleGetCardInfo(args: Record<string, any>): ToolResult {
+  private handleGetCardInfo(args: Record<string, unknown>): ToolResult {
     const cardName = validateCardName(args.cardName);
     if (!cardName.success) {
       return this.formatValidationError("cardName", cardName.errors);
@@ -192,7 +196,7 @@ export class TarotServer {
   /**
    * Handle card listing requests
    */
-  private handleListAllCards(args: Record<string, any>): ToolResult {
+  private handleListAllCards(args: Record<string, unknown>): ToolResult {
     const category =
       args.category === undefined ? "all" : validateCardCategory(args.category);
     if (typeof category !== "string" && !category.success) {
@@ -209,7 +213,7 @@ export class TarotServer {
   /**
    * Handle reading requests
    */
-  private handlePerformReading(args: Record<string, any>): ToolResult {
+  private handlePerformReading(args: Record<string, unknown>): ToolResult {
     const spreadType = validateSpreadType(args.spreadType);
     if (!spreadType.success) {
       return this.formatValidationError("spreadType", spreadType.errors);
@@ -237,7 +241,7 @@ export class TarotServer {
   /**
    * Handle card search requests
    */
-  private handleSearchCards(args: Record<string, any>): ToolResult {
+  private handleSearchCards(args: Record<string, unknown>): ToolResult {
     const validated = validateSearchParams(args);
     if (!validated.success) {
       return this.formatValidationError("search", validated.errors);
@@ -275,7 +279,7 @@ export class TarotServer {
   /**
    * Handle finding similar cards
    */
-  private handleFindSimilarCards(args: Record<string, any>): ToolResult {
+  private handleFindSimilarCards(args: Record<string, unknown>): ToolResult {
     const cardName = validateCardName(args.cardName);
     if (!cardName.success) {
       return this.formatValidationError("cardName", cardName.errors);
@@ -320,7 +324,7 @@ export class TarotServer {
   /**
    * Handle database analytics requests
    */
-  private handleGetAnalytics(args: Record<string, any>): ToolResult {
+  private handleGetAnalytics(args: Record<string, unknown>): ToolResult {
     const includeRecommendations = args.includeRecommendations !== false;
     const analytics = this.cardAnalytics.generateReport();
 
@@ -388,7 +392,7 @@ export class TarotServer {
   /**
    * Handle random card requests
    */
-  private handleGetRandomCards(args: Record<string, any>): ToolResult {
+  private handleGetRandomCards(args: Record<string, unknown>): ToolResult {
     const randomParams = this.validateRandomCardParams(args);
     if (!randomParams.success) {
       return this.formatValidationError("filters", randomParams.errors);
@@ -439,7 +443,7 @@ export class TarotServer {
   /**
    * Handle custom spread creation and reading
    */
-  private handleCreateCustomSpread(args: Record<string, any>): ToolResult {
+  private handleCreateCustomSpread(args: Record<string, unknown>): ToolResult {
     const { spreadName, description, positions, question, sessionId } = args;
 
     const customSpread = validateCustomSpreadParams({
@@ -488,7 +492,7 @@ export class TarotServer {
   /**
    * Handle daily card requests
    */
-  private handleGetDailyCard(args: Record<string, any>): ToolResult {
+  private handleGetDailyCard(args: Record<string, unknown>): ToolResult {
     const question =
       args.question === undefined
         ? "What do I need to know for today?"
@@ -512,7 +516,7 @@ export class TarotServer {
   /**
    * Handle spread recommendation requests
    */
-  private handleRecommendSpread(args: Record<string, any>): ToolResult {
+  private handleRecommendSpread(args: Record<string, unknown>): ToolResult {
     const question = validateString(args.question);
     if (!question.success) {
       return this.formatValidationError("question", question.errors);
@@ -565,7 +569,7 @@ export class TarotServer {
   /**
    * Handle moon phase reading requests
    */
-  private handleGetMoonPhaseReading(args: Record<string, any>): ToolResult {
+  private handleGetMoonPhaseReading(args: Record<string, unknown>): ToolResult {
     const question = validateString(args.question);
     if (!question.success) {
       return this.formatValidationError("question", question.errors);
@@ -606,7 +610,7 @@ export class TarotServer {
   /**
    * Handle card meanings comparison requests
    */
-  private handleGetCardMeaningsComparison(args: Record<string, any>): ToolResult {
+  private handleGetCardMeaningsComparison(args: Record<string, unknown>): ToolResult {
     const context =
       args.context === undefined
         ? "general interpretation"
@@ -677,7 +681,58 @@ export class TarotServer {
     return toolOk(response);
   }
 
-  private validateRandomCardParams(args: Record<string, any>) {
+  /**
+   * Handle session history requests
+   */
+  private handleGetSessionHistory(args: Record<string, unknown>): ToolResult {
+    const sessionId = validateString(args.sessionId);
+    if (!sessionId.success) {
+      return this.formatValidationError("sessionId", sessionId.errors);
+    }
+
+    const id = sanitizeString(sessionId.data!);
+    const session = this.sessionManager.getSession(id);
+    if (!session) {
+      return toolError(
+        `Error: Session "${id.slice(0, 64)}" not found. Sessions expire 24 hours after their last activity.`,
+      );
+    }
+
+    const readings = this.sessionManager.getSessionReadings(id);
+    const totalCount = this.sessionManager.getSessionReadingCount(id);
+
+    let response = `# 🔮 Session History\n\n`;
+    response += `**Session ID:** ${session.id}\n`;
+    response += `**Created:** ${session.createdAt.toISOString()}\n`;
+    response += `**Readings performed:** ${totalCount}`;
+    if (totalCount > readings.length) {
+      response += ` (oldest ${totalCount - readings.length} no longer stored)`;
+    }
+    response += `\n\n`;
+
+    if (readings.length === 0) {
+      response += "No readings have been performed in this session yet.\n";
+      return toolOk(response);
+    }
+
+    readings.forEach((reading, index) => {
+      const number = totalCount - readings.length + index + 1;
+      response += `## ${number}. ${reading.spreadType} — ${reading.timestamp.toISOString()}\n`;
+      response += `**Question:** ${reading.question}\n`;
+      response += `**Reading ID:** ${reading.id}\n`;
+      const cards = reading.cards
+        .map(
+          (card) =>
+            `${card.name} (${card.orientation})${card.position ? ` — ${card.position}` : ""}`,
+        )
+        .join("; ");
+      response += `**Cards:** ${cards}\n\n`;
+    });
+
+    return toolOk(response);
+  }
+
+  private validateRandomCardParams(args: Record<string, unknown>) {
     const allowedKeys = new Set(["count", "suit", "arcana", "element"]);
     const unsupportedKeys = Object.keys(args).filter((key) => !allowedKeys.has(key));
 
@@ -697,7 +752,7 @@ export class TarotServer {
     };
   }
 
-  private parseComparisonCards(args: Record<string, any>) {
+  private parseComparisonCards(args: Record<string, unknown>) {
     const rawCards = Array.isArray(args.cards)
       ? args.cards
       : Array.isArray(args.cardNames)

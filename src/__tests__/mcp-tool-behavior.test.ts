@@ -106,6 +106,42 @@ describe("MCP tool behavior", () => {
     expect(legacyResult).toContain("The Magician (upright)");
   });
 
+  it("lists a session's readings through get_session_history", async () => {
+    const first = await executeTool("performReading", {
+      spreadType: "single_card",
+      question: "First question?",
+    });
+    const sessionId = first.match(/\*\*Session ID:\*\* (\S+)/)![1];
+
+    await executeTool("performReading", {
+      spreadType: "three_card",
+      question: "Second question?",
+      sessionId,
+    });
+
+    const history = await executeTool("getSessionHistory", { sessionId });
+    expect(history).toContain("Session History");
+    expect(history).toContain("**Readings performed:** 2");
+    expect(history).toContain("First question?");
+    expect(history).toContain("Second question?");
+    expect(history).toContain("single_card");
+    expect(history).toContain("three_card");
+
+    const missing = await executeTool("getSessionHistory", {
+      sessionId: "session_nope",
+    });
+    expect(missing).toContain('Error: Session "session_nope" not found');
+  });
+
+  it("keeps natural-language characters like < and > in questions", async () => {
+    const result = await executeTool("performReading", {
+      spreadType: "single_card",
+      question: "Will my salary be < 50k or > 100k?",
+    });
+
+    expect(result).toContain("Will my salary be < 50k or > 100k?");
+  });
+
   it("rejects get_random_cards parameters that are not exposed in the MCP schema", async () => {
     const result = await executeTool("getRandomCards", {
       count: 1,

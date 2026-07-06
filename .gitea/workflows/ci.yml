@@ -20,7 +20,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
-      # Lint has never been enforced; keep it advisory until the codebase is
-      # clean (flips to blocking in the type-safety cleanup phase).
       - run: npm run lint
-        continue-on-error: true

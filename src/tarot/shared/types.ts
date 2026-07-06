@@ -62,9 +62,25 @@ export interface TarotReading {
   sessionId?: string;
 }
 
+/**
+ * What a session stores per reading: enough for the history tool without
+ * retaining the full interpretation prose in memory.
+ */
+export interface TarotReadingSummary {
+  id: string;
+  spreadType: string;
+  question: string;
+  timestamp: Date;
+  cards: Array<{
+    name: string;
+    orientation: CardOrientation;
+    position?: string;
+  }>;
+}
+
 export interface TarotSession {
   id: string;
-  readings: TarotReading[];
+  readings: TarotReadingSummary[];
   /**
    * Monotonic count of readings ever performed in this session. Unlike
    * readings.length it never decreases when old readings are evicted, so
@@ -76,6 +92,9 @@ export interface TarotSession {
 }
 
 export type CardOrientation = "upright" | "reversed";
+
+/** The per-context meanings of a card in one orientation. */
+export type CardMeanings = TarotCard["meanings"]["upright"];
 
 /**
  * Canonical list of built-in spread types. Single source of truth shared by

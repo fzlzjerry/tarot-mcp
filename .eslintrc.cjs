@@ -17,9 +17,7 @@ module.exports = {
   },
   ignorePatterns: ["dist/", "node_modules/"],
   rules: {
-    // The formatted-text generators lean on `any` for card/meaning lookups;
-    // tightening this is a larger refactor than a lint pass should force.
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },

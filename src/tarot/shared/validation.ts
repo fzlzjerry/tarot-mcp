@@ -269,6 +269,7 @@ export const validateCustomSpreadParams: Validator<CustomSpreadParams> = (value:
 
   const params = value as Record<string, unknown>;
   const errors: string[] = [];
+  const validatedPositions: Array<{ name: string; meaning: string }> = [];
 
   // Validate name
   const nameResult = validateString(params.name);
@@ -311,6 +312,13 @@ export const validateCustomSpreadParams: Validator<CustomSpreadParams> = (value:
         if (!posMeaningResult.success) {
           errors.push(`positions[${index}].meaning: ${posMeaningResult.errors.join(", ")}`);
         }
+
+        if (posNameResult.success && posMeaningResult.success) {
+          validatedPositions.push({
+            name: posNameResult.data!,
+            meaning: posMeaningResult.data!,
+          });
+        }
       });
     }
   }
@@ -322,21 +330,27 @@ export const validateCustomSpreadParams: Validator<CustomSpreadParams> = (value:
   return success({
     name: nameResult.data!,
     description: descriptionResult.data!,
-    positions: (params.positions as any[]).map(pos => ({
-      name: pos.name,
-      meaning: pos.meaning
-    }))
+    positions: validatedPositions,
   });
 };
 
+/** Longest free-text input retained; everything beyond is truncated. */
+const MAX_SANITIZED_LENGTH = 2000;
+
 /**
- * Sanitizes input strings to prevent XSS and other attacks
+ * Normalize free-text input: strip control characters, trim, and cap the
+ * length. Output is only ever embedded in Markdown returned to MCP/REST
+ * clients (never rendered as HTML), so natural-language characters like
+ * "<" or ">" pass through untouched.
  */
 export function sanitizeString(input: string): string {
-  return input
-    .replace(/[<>]/g, "") // Remove HTML tags
-    .replace(/javascript:/gi, "") // Remove javascript: protocols
-    .replace(/on\w+=/gi, "") // Remove event handlers
-    .trim();
+  return (
+    input
+      // Strip C0 control characters (keeping \t, \n, \r) and DEL
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
+      .trim()
+      .slice(0, MAX_SANITIZED_LENGTH)
+  );
 }
 

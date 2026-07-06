@@ -133,7 +133,7 @@ export class TarotCardAnalytics {
             totalSymbols += card.symbolism.length;
           }
         } else {
-          const value = (card as any)[field];
+          const value = (card as unknown as Record<string, unknown>)[field];
           if (!value || value === '(placeholder)') {
             missing.push(field);
           }

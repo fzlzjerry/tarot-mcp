@@ -1,6 +1,6 @@
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
 import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
-import { SPREAD_TYPES } from "../tarot/shared/types.js";
+import { SPREAD_TYPES, TarotCard } from "../tarot/shared/types.js";
 import {
   BANNED_LEGACY_KEYWORDS_BY_CARD,
   CANONICAL_CARD_MANIFEST,
@@ -29,7 +29,7 @@ const REQUIRED_MEANING_FIELDS = [
   "spirituality",
 ] as const;
 
-function orientationText(card: any, orientation: "upright" | "reversed"): string {
+function orientationText(card: TarotCard, orientation: "upright" | "reversed"): string {
   return [
     ...card.keywords[orientation],
     ...Object.values(card.meanings[orientation]),

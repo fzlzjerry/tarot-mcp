@@ -123,7 +123,7 @@ describe("HTTP MCP server", () => {
 
     const info = await fetch(`${BASE_URL}/api/info`);
     const infoJson = await info.json();
-    expect(infoJson.tools).toHaveLength(13);
+    expect(infoJson.tools).toHaveLength(14);
 
     const spreads = await fetch(`${BASE_URL}/api/spreads`);
     const spreadsJson = await spreads.json();

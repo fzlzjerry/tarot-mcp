@@ -1,4 +1,4 @@
-import { TarotSession, TarotReading } from "../shared/types.js";
+import { TarotSession, TarotReading, TarotReadingSummary } from "../shared/types.js";
 import { generateId } from "../shared/utils.js";
 
 /**
@@ -53,12 +53,23 @@ export class TarotSessionManager {
 
   /**
    * Add a reading to a session, evicting the oldest reading once the
-   * per-session cap is reached.
+   * per-session cap is reached. Only a summary is retained — the full
+   * interpretation prose is not kept in memory.
    */
   public addReadingToSession(sessionId: string, reading: TarotReading): void {
     const session = this.sessions.get(sessionId);
     if (session) {
-      session.readings.push(reading);
+      session.readings.push({
+        id: reading.id,
+        spreadType: reading.spreadType,
+        question: reading.question,
+        timestamp: reading.timestamp,
+        cards: reading.cards.map((drawnCard) => ({
+          name: drawnCard.card.name,
+          orientation: drawnCard.orientation,
+          position: drawnCard.position,
+        })),
+      });
       session.readingCount++;
       if (session.readings.length > TarotSessionManager.MAX_READINGS_PER_SESSION) {
         session.readings.shift();
@@ -68,9 +79,9 @@ export class TarotSessionManager {
   }
 
   /**
-   * Get all readings from a session
+   * Get all stored reading summaries from a session
    */
-  public getSessionReadings(sessionId: string): TarotReading[] {
+  public getSessionReadings(sessionId: string): TarotReadingSummary[] {
     const session = this.sessions.get(sessionId);
     return session ? session.readings : [];
   }
