@@ -277,6 +277,60 @@ describe('TarotReadingManager', () => {
     });
   });
 
+  describe('interpretation regressions', () => {
+    it('handles repeated court-card numbers without corrupting the text', () => {
+      const cards = [
+        cardManager.findCard('Page of Wands')!,
+        cardManager.findCard('Page of Cups')!,
+        cardManager.findCard('The Fool')!,
+      ];
+      const deterministicManager = new TarotReadingManager(cardManager, sessionManager, {
+        drawCards: () => cards,
+        drawOrientation: () => 'upright',
+      });
+
+      const result = deterministicManager.performReading('three_card', 'What now?');
+
+      // Both Pages carry number 11; the repetition sentence must render
+      // completely instead of slicing characters off the preceding text.
+      expect(result).toContain(
+        'The repetition of 11 emphasizes the themes of messages and fresh perspectives.',
+      );
+      expect(result).not.toContain('themes o.');
+    });
+
+    it('falls back to generic analysis when a custom spread name collides with an analyzer keyword', () => {
+      const result = readingManager.performCustomReading(
+        'My Love Check',
+        'A two-card check-in that is not the seven-card Venus Love spread',
+        [
+          { name: 'You', meaning: 'Where you stand' },
+          { name: 'Them', meaning: 'Where they stand' },
+        ],
+        'How are we doing?',
+      );
+
+      expect(result).toContain('Contextual Spread Analysis');
+      expect(result).not.toContain('Venus Love Energy Analysis');
+    });
+  });
+
+  describe('per-session reading cap', () => {
+    it('caps stored readings while keeping "reading #N" numbering monotonic', () => {
+      const session = sessionManager.createSession();
+
+      for (let i = 1; i <= 35; i++) {
+        readingManager.performReading('single_card', `Question ${i}`, session.id);
+      }
+
+      expect(sessionManager.getSessionReadings(session.id)).toHaveLength(30);
+      expect(sessionManager.getSessionReadingCount(session.id)).toBe(35);
+
+      const next = readingManager.performReading('single_card', 'One more', session.id);
+      expect(next).toContain('(reading #36 in this session)');
+    });
+  });
+
   describe('randomness and consistency', () => {
     it('should produce different orientations across multiple readings', () => {
       const orientations = new Set<string>();

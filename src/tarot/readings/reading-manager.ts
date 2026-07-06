@@ -11,6 +11,27 @@ export interface TarotReadingRandomSource {
 }
 
 /**
+ * Themes evoked when a card number appears more than once in a reading.
+ * Covers 1-10 (pips) and 11-14 (Page/Knight/Queen/King court cards).
+ */
+const REPEATED_NUMBER_THEMES: Record<number, string> = {
+  1: "new beginnings and potential",
+  2: "balance and partnerships",
+  3: "creativity and growth",
+  4: "stability and foundation",
+  5: "change and challenge",
+  6: "harmony and responsibility",
+  7: "spiritual development and introspection",
+  8: "material mastery and achievement",
+  9: "completion and wisdom",
+  10: "fulfillment and new cycles",
+  11: "messages and fresh perspectives",
+  12: "action and determined pursuit",
+  13: "nurturing mastery and intuition",
+  14: "authority and leadership",
+};
+
+/**
  * Manages tarot readings and interpretations
  */
 export class TarotReadingManager {
@@ -196,39 +217,14 @@ export class TarotReadingManager {
       interpretation += `${relevantMeaning}\n\n`;
     });
 
-    // Add spread-specific analysis
-    let usedSpreadSpecificAnalysis = true;
-    if (spreadName.toLowerCase().includes("celtic cross")) {
-      interpretation += this.generateCelticCrossAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("three card")) {
-      interpretation += this.generateThreeCardAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("relationship")) {
-      interpretation += this.generateRelationshipAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("career")) {
-      interpretation += this.generateCareerAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("spiritual")) {
-      interpretation += this.generateSpiritualAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("chakra")) {
-      interpretation += this.generateChakraAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("year ahead")) {
-      interpretation += this.generateYearAheadAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("venus") || spreadName.toLowerCase().includes("love")) {
-      interpretation += this.generateVenusLoveAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("tree of life")) {
-      interpretation += this.generateTreeOfLifeAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("astrological")) {
-      interpretation += this.generateAstrologicalAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("mandala")) {
-      interpretation += this.generateMandalaAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("pentagram")) {
-      interpretation += this.generatePentagramAnalysis(drawnCards);
-    } else if (spreadName.toLowerCase().includes("mirror of truth")) {
-      interpretation += this.generateMirrorOfTruthAnalysis(drawnCards);
-    } else {
-      usedSpreadSpecificAnalysis = false;
-    }
-
-    if (!usedSpreadSpecificAnalysis && drawnCards.length > 1) {
+    // Add spread-specific analysis. An analyzer returns "" when the card
+    // count doesn't match its layout (e.g. a custom spread whose name happens
+    // to contain a keyword like "love"); fall back to the generic analysis
+    // instead of silently dropping all cross-card analysis.
+    const spreadAnalysis = this.selectSpreadAnalysis(drawnCards, spreadName);
+    if (spreadAnalysis) {
+      interpretation += spreadAnalysis;
+    } else if (drawnCards.length > 1) {
       interpretation += this.generateGenericSpreadAnalysis(drawnCards);
     }
 
@@ -236,6 +232,42 @@ export class TarotReadingManager {
     interpretation += this.generateOverallInterpretation(drawnCards);
 
     return interpretation;
+  }
+
+  /**
+   * Pick the spread-specific analyzer matching the spread's display name.
+   * Returns "" when no analyzer matches or the card count doesn't fit.
+   */
+  private selectSpreadAnalysis(drawnCards: DrawnCard[], spreadName: string): string {
+    const name = spreadName.toLowerCase();
+    if (name.includes("celtic cross")) {
+      return this.generateCelticCrossAnalysis(drawnCards);
+    } else if (name.includes("three card")) {
+      return this.generateThreeCardAnalysis(drawnCards);
+    } else if (name.includes("relationship")) {
+      return this.generateRelationshipAnalysis(drawnCards);
+    } else if (name.includes("career")) {
+      return this.generateCareerAnalysis(drawnCards);
+    } else if (name.includes("spiritual")) {
+      return this.generateSpiritualAnalysis(drawnCards);
+    } else if (name.includes("chakra")) {
+      return this.generateChakraAnalysis(drawnCards);
+    } else if (name.includes("year ahead")) {
+      return this.generateYearAheadAnalysis(drawnCards);
+    } else if (name.includes("venus") || name.includes("love")) {
+      return this.generateVenusLoveAnalysis(drawnCards);
+    } else if (name.includes("tree of life")) {
+      return this.generateTreeOfLifeAnalysis(drawnCards);
+    } else if (name.includes("astrological")) {
+      return this.generateAstrologicalAnalysis(drawnCards);
+    } else if (name.includes("mandala")) {
+      return this.generateMandalaAnalysis(drawnCards);
+    } else if (name.includes("pentagram")) {
+      return this.generatePentagramAnalysis(drawnCards);
+    } else if (name.includes("mirror of truth")) {
+      return this.generateMirrorOfTruthAnalysis(drawnCards);
+    }
+    return "";
   }
 
   /**
@@ -1112,23 +1144,14 @@ export class TarotReadingManager {
       .filter(([, count]) => count > 1)
       .map(([num]) => parseInt(num));
 
-    if (repeatedNumbers.length > 0) {
-      interpretation += `The repetition of ${repeatedNumbers.join(" and ")} emphasizes the themes of `;
-      repeatedNumbers.forEach(num => {
-        switch (num) {
-          case 1: interpretation += "new beginnings and potential, "; break;
-          case 2: interpretation += "balance and partnerships, "; break;
-          case 3: interpretation += "creativity and growth, "; break;
-          case 4: interpretation += "stability and foundation, "; break;
-          case 5: interpretation += "change and challenge, "; break;
-          case 6: interpretation += "harmony and responsibility, "; break;
-          case 7: interpretation += "spiritual development and introspection, "; break;
-          case 8: interpretation += "material mastery and achievement, "; break;
-          case 9: interpretation += "completion and wisdom, "; break;
-          case 10: interpretation += "fulfillment and new cycles, "; break;
-        }
-      });
-      interpretation = interpretation.slice(0, -2) + ". ";
+    // Only numbers with a known theme contribute; guard so an unthemed
+    // repeat can never trigger the sentence (and corrupt surrounding text).
+    const repeatedThemes = repeatedNumbers
+      .map((num) => REPEATED_NUMBER_THEMES[num])
+      .filter((theme): theme is string => theme !== undefined);
+
+    if (repeatedThemes.length > 0) {
+      interpretation += `The repetition of ${repeatedNumbers.join(" and ")} emphasizes the themes of ${repeatedThemes.join(", ")}. `;
     }
 
     return interpretation;
@@ -1168,7 +1191,8 @@ export class TarotReadingManager {
 
     // Analyze the Fool's Journey progression
     const majorNumbers = majorCards
-      .map(c => c.card.number!)
+      .map(c => c.card.number)
+      .filter((n): n is number => n !== undefined)
       .sort((a, b) => a - b);
 
     if (majorNumbers.length > 1) {
@@ -1203,7 +1227,7 @@ export class TarotReadingManager {
     result += `**Date:** ${reading.timestamp.toLocaleString()}\n`;
     result += `**Reading ID:** ${reading.id}\n`;
     if (reading.sessionId) {
-      const readingNumber = this.sessionManager.getSessionReadings(reading.sessionId).length;
+      const readingNumber = this.sessionManager.getSessionReadingCount(reading.sessionId);
       result += `**Session ID:** ${reading.sessionId}`;
       result += readingNumber > 1 ? ` (reading #${readingNumber} in this session)` : "";
       result += `\n*Pass this sessionId to future readings to continue the session.*\n`;

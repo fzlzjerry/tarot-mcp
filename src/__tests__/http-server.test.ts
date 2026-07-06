@@ -156,6 +156,40 @@ describe("HTTP MCP server", () => {
     expect(json.error).toContain("Invalid spreadType");
   });
 
+  it("answers malformed JSON with a JSON error instead of an HTML page", async () => {
+    const mcpResponse = await fetch(`${BASE_URL}/mcp`, {
+      method: "POST",
+      headers: {
+        accept: "application/json, text/event-stream",
+        "content-type": "application/json",
+      },
+      body: "{ not json",
+    });
+    expect(mcpResponse.status).toBe(400);
+    expect(mcpResponse.headers.get("content-type")).toContain("application/json");
+    const mcpJson = await mcpResponse.json();
+    expect(mcpJson.error.code).toBe(-32700);
+
+    const restResponse = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: "{ not json",
+    });
+    expect(restResponse.status).toBe(400);
+    expect(restResponse.headers.get("content-type")).toContain("application/json");
+    const restJson = await restResponse.json();
+    expect(restJson.error).toContain("Invalid JSON");
+  });
+
+  it("answers oversized bodies with HTTP 413", async () => {
+    const response = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: `{"question": "${"a".repeat(5 * 1024 * 1024)}"}`,
+    });
+    expect(response.status).toBe(413);
+  });
+
   it("handles Streamable HTTP initialize, initialized, and tools/list", async () => {
     const initializeResponse = await fetch(`${BASE_URL}/mcp`, {
       method: "POST",

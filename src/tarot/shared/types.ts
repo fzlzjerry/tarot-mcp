@@ -65,6 +65,12 @@ export interface TarotReading {
 export interface TarotSession {
   id: string;
   readings: TarotReading[];
+  /**
+   * Monotonic count of readings ever performed in this session. Unlike
+   * readings.length it never decreases when old readings are evicted, so
+   * "reading #N" numbering stays stable.
+   */
+  readingCount: number;
   createdAt: Date;
   lastActivity: Date;
 }

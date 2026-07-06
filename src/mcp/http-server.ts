@@ -47,6 +47,47 @@ export class TarotHttpServer {
 
     this.setupMiddleware();
     this.setupRoutes();
+    this.setupErrorHandling();
+  }
+
+  /**
+   * Map body-parser failures to the JSON/JSON-RPC error contract instead of
+   * Express's default HTML error page.
+   */
+  private setupErrorHandling(): void {
+    this.app.use(
+      (
+        err: Error & { type?: string },
+        req: Request,
+        res: Response,
+        next: express.NextFunction,
+      ) => {
+        if (res.headersSent) {
+          next(err);
+          return;
+        }
+
+        if (err.type === "entity.parse.failed") {
+          const isMcpPath =
+            req.path === HTTP_ENDPOINTS.streamableHttp ||
+            req.path === HTTP_ENDPOINTS.legacyMessages;
+          if (isMcpPath) {
+            this.sendJsonRpcError(res, 400, -32700, "Parse error: invalid JSON");
+          } else {
+            res.status(400).json({ error: "Invalid JSON in request body" });
+          }
+          return;
+        }
+
+        if (err.type === "entity.too.large") {
+          res.status(413).json({ error: "Request body too large" });
+          return;
+        }
+
+        console.error("Unhandled request error:", err);
+        res.status(500).json({ error: "Internal server error" });
+      },
+    );
   }
 
   /**
