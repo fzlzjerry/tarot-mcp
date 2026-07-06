@@ -1,6 +1,7 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
-import { randomUUID } from "node:crypto";
+import rateLimit from "express-rate-limit";
+import { randomUUID, timingSafeEqual } from "node:crypto";
 import type { Server as HttpServer } from "node:http";
 import type { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
@@ -18,6 +19,38 @@ interface McpTransportSession<TTransport> {
   activeRequests: number;
 }
 
+const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+
+function parseCsvEnv(value: string | undefined): string[] {
+  return (value ?? "")
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function isLocalOrigin(origin: string): boolean {
+  try {
+    return LOCAL_HOSTNAMES.has(new URL(origin).hostname);
+  } catch {
+    return false;
+  }
+}
+
+function stripPort(host: string): string {
+  // "[::1]:3000" -> "[::1]", "example.com:3000" -> "example.com"
+  const match = /^(\[[^\]]+\]|[^:]+)/.exec(host);
+  return match ? match[1] : host;
+}
+
+function timingSafeStringEqual(a: string, b: string): boolean {
+  const bufferA = Buffer.from(a);
+  const bufferB = Buffer.from(b);
+  if (bufferA.length !== bufferB.length) {
+    return false;
+  }
+  return timingSafeEqual(bufferA, bufferB);
+}
+
 /**
  * HTTP Server for Tarot MCP with modern Streamable HTTP and legacy SSE support.
  */
@@ -25,10 +58,21 @@ export class TarotHttpServer {
   /** Streamable HTTP sessions idle longer than this are reaped. */
   private static readonly SESSION_IDLE_TIMEOUT_MS = 30 * 60 * 1000;
   private static readonly SESSION_SWEEP_INTERVAL_MS = 5 * 60 * 1000;
+  /** Cap on concurrent transport sessions per map (env-tunable). */
+  private static readonly DEFAULT_MAX_TRANSPORT_SESSIONS = 100;
 
   private readonly app: express.Application;
   private readonly tarotServer: TarotServer;
   private readonly port: number;
+  private readonly host: string;
+  /** Extra allowed origins beyond localhost (ALLOWED_ORIGINS env, "*" = any). */
+  private readonly allowedOrigins: string[];
+  private readonly allowAllOrigins: boolean;
+  /** When non-empty, the Host header must match one of these (ALLOWED_HOSTS env). */
+  private readonly allowedHosts: string[];
+  /** When set (MCP_AUTH_TOKEN env), all MCP and REST endpoints require it. */
+  private readonly authToken?: string;
+  private readonly maxTransportSessions: number;
   private httpServer?: HttpServer;
   private sessionSweepTimer?: NodeJS.Timeout;
   private readonly streamableSessions = new Map<
@@ -40,14 +84,48 @@ export class TarotHttpServer {
     McpTransportSession<SSEServerTransport>
   >();
 
-  constructor(tarotServer: TarotServer, port: number = 3000) {
+  constructor(tarotServer: TarotServer, port: number = 3000, host: string = "0.0.0.0") {
     this.port = port;
+    this.host = host;
     this.app = express();
     this.tarotServer = tarotServer;
+
+    this.allowedOrigins = parseCsvEnv(process.env.ALLOWED_ORIGINS);
+    this.allowAllOrigins = this.allowedOrigins.includes("*");
+    this.allowedHosts = parseCsvEnv(process.env.ALLOWED_HOSTS).map(stripPort);
+    this.authToken = process.env.MCP_AUTH_TOKEN || undefined;
+    this.maxTransportSessions =
+      Number(process.env.MCP_MAX_TRANSPORT_SESSIONS) ||
+      TarotHttpServer.DEFAULT_MAX_TRANSPORT_SESSIONS;
 
     this.setupMiddleware();
     this.setupRoutes();
     this.setupErrorHandling();
+  }
+
+  /**
+   * Origins that browsers may use. Non-browser clients send no Origin header
+   * and pass. Localhost origins are always allowed; others need to be listed
+   * in ALLOWED_ORIGINS (or "*" to allow any). This is the MCP-recommended
+   * DNS-rebinding mitigation.
+   */
+  private isOriginAllowed(origin: string): boolean {
+    return (
+      this.allowAllOrigins ||
+      this.allowedOrigins.includes(origin) ||
+      isLocalOrigin(origin)
+    );
+  }
+
+  private isHostAllowed(hostHeader: string | undefined): boolean {
+    if (this.allowedHosts.length === 0) {
+      return true;
+    }
+    if (!hostHeader) {
+      return false;
+    }
+    const hostname = stripPort(hostHeader);
+    return LOCAL_HOSTNAMES.has(hostname) || this.allowedHosts.includes(hostname);
   }
 
   /**
@@ -91,17 +169,21 @@ export class TarotHttpServer {
   }
 
   /**
-   * Reap Streamable HTTP sessions whose clients vanished without sending
-   * DELETE; otherwise the session map grows without bound.
+   * Reap transport sessions whose clients vanished without cleanly closing;
+   * otherwise the session maps grow without bound. Applies to Streamable
+   * HTTP (no DELETE received) and legacy SSE (no 'close' event fired).
    */
   private sweepIdleSessions(): void {
     const cutoff = Date.now() - TarotHttpServer.SESSION_IDLE_TIMEOUT_MS;
-    for (const [sessionId, session] of this.streamableSessions.entries()) {
-      if (session.activeRequests === 0 && session.lastActivity < cutoff) {
-        this.streamableSessions.delete(sessionId);
-        void session.server.close().catch((error) => {
-          console.error("Error closing idle MCP session server:", error);
-        });
+    const maps = [this.streamableSessions, this.sseSessions] as const;
+    for (const sessions of maps) {
+      for (const [sessionId, session] of sessions.entries()) {
+        if (session.activeRequests === 0 && session.lastActivity < cutoff) {
+          sessions.delete(sessionId);
+          void session.server.close().catch((error) => {
+            console.error("Error closing idle MCP session server:", error);
+          });
+        }
       }
     }
   }
@@ -112,6 +194,9 @@ export class TarotHttpServer {
   private setupMiddleware(): void {
     this.app.use(
       cors({
+        origin: (origin, callback) => {
+          callback(null, !origin || this.isOriginAllowed(origin));
+        },
         exposedHeaders: [
           "Mcp-Session-Id",
           "Mcp-Protocol-Version",
@@ -120,6 +205,54 @@ export class TarotHttpServer {
         ],
       }),
     );
+
+    // Origin/Host validation on everything except the health endpoint, so
+    // container healthchecks keep working regardless of configuration.
+    this.app.use((req: Request, res: Response, next: express.NextFunction) => {
+      if (req.path === HTTP_ENDPOINTS.health) {
+        next();
+        return;
+      }
+      const origin = req.headers.origin;
+      if (origin && !this.isOriginAllowed(origin)) {
+        res.status(403).json({ error: "Forbidden: origin not allowed" });
+        return;
+      }
+      if (!this.isHostAllowed(req.headers.host)) {
+        res.status(403).json({ error: "Forbidden: host not allowed" });
+        return;
+      }
+      next();
+    });
+
+    const rateLimitMax = Number(process.env.RATE_LIMIT_MAX) || 120;
+    const rateLimitWindowMs = Number(process.env.RATE_LIMIT_WINDOW_MS) || 60_000;
+    this.app.use(
+      ["/api", HTTP_ENDPOINTS.streamableHttp, HTTP_ENDPOINTS.legacySse, HTTP_ENDPOINTS.legacyMessages],
+      rateLimit({
+        windowMs: rateLimitWindowMs,
+        limit: rateLimitMax,
+        standardHeaders: true,
+        legacyHeaders: false,
+      }),
+    );
+
+    // Bearer auth on all MCP and REST endpoints when MCP_AUTH_TOKEN is set.
+    // /health stays open for container healthchecks.
+    this.app.use((req: Request, res: Response, next: express.NextFunction) => {
+      if (!this.authToken || req.path === HTTP_ENDPOINTS.health) {
+        next();
+        return;
+      }
+      const header = req.headers.authorization;
+      const token = header?.startsWith("Bearer ") ? header.slice(7) : undefined;
+      if (!token || !timingSafeStringEqual(token, this.authToken)) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+      }
+      next();
+    });
+
     this.app.use(express.json({ limit: "4mb" }));
   }
 
@@ -280,6 +413,16 @@ export class TarotHttpServer {
         return;
       }
 
+      if (this.streamableSessions.size >= this.maxTransportSessions) {
+        this.sendJsonRpcError(
+          res,
+          429,
+          -32000,
+          "Too many concurrent sessions; try again later",
+        );
+        return;
+      }
+
       const server = createMcpProtocolServer(this.tarotServer);
       const transport: StreamableHTTPServerTransport = new StreamableHTTPServerTransport({
         sessionIdGenerator: () => randomUUID(),
@@ -361,6 +504,11 @@ export class TarotHttpServer {
   }
 
   private async handleLegacySse(req: Request, res: Response): Promise<void> {
+    if (this.sseSessions.size >= this.maxTransportSessions) {
+      res.status(429).json({ error: "Too many concurrent sessions; try again later" });
+      return;
+    }
+
     try {
       const server = createMcpProtocolServer(this.tarotServer);
       const transport = new SSEServerTransport(
@@ -405,6 +553,7 @@ export class TarotHttpServer {
       return;
     }
 
+    session.lastActivity = Date.now();
     try {
       await session.transport.handlePostMessage(req, res, req.body);
     } catch (error) {
@@ -446,9 +595,9 @@ export class TarotHttpServer {
   }
 
   private sendHttpError(res: Response, error: unknown): void {
-    res.status(500).json({
-      error: error instanceof Error ? error.message : String(error),
-    });
+    // Log the real error server-side; never leak internals to clients.
+    console.error("REST endpoint error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 
   /**
@@ -460,7 +609,7 @@ export class TarotHttpServer {
     }
 
     return new Promise((resolve, reject) => {
-      const server = this.app.listen(this.port, "0.0.0.0");
+      const server = this.app.listen(this.port, this.host);
       this.httpServer = server;
 
       const onError = (error: Error) => {
@@ -476,7 +625,7 @@ export class TarotHttpServer {
           TarotHttpServer.SESSION_SWEEP_INTERVAL_MS,
         );
         this.sessionSweepTimer.unref();
-        console.log(`Tarot MCP Server running on http://0.0.0.0:${this.port}`);
+        console.log(`Tarot MCP Server running on http://${this.host}:${this.port}`);
         console.log(
           `Streamable HTTP MCP endpoint: ${HTTP_ENDPOINTS.streamableHttp}`,
         );

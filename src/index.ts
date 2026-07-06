@@ -22,10 +22,11 @@ function parsePort(value: string, source: string): number {
 /**
  * Parse command line arguments
  */
-function parseArgs(): { transport: Transport; port: number } {
+function parseArgs(): { transport: Transport; port: number; host: string } {
   const args = process.argv.slice(2);
   let transport: Transport = "stdio";
   let port: number | undefined;
+  let host: string | undefined;
 
   for (let i = 0; i < args.length; i++) {
     switch (args[i]) {
@@ -45,6 +46,16 @@ function parseArgs(): { transport: Transport; port: number } {
         port = parsePort(args[i + 1] ?? "", "--port");
         i++;
         break;
+      case "--host": {
+        const value = args[i + 1];
+        if (!value) {
+          console.error("Missing --host value.");
+          process.exit(1);
+        }
+        host = value;
+        i++;
+        break;
+      }
       case "--help":
       case "-h":
         console.log(`
@@ -55,12 +66,14 @@ Usage: node dist/index.js [options]
 Options:
   --transport <type>    Transport type: stdio, http, sse (default: stdio)
   --port <number>       Port for HTTP/SSE transport (default: $PORT or 3000)
+  --host <address>      Bind address for HTTP/SSE transport (default: $HOST or 0.0.0.0)
   --help, -h           Show this help message
 
 Examples:
   node dist/index.js                           # Run with stdio transport
   node dist/index.js --transport http          # Run HTTP server on port 3000
   node dist/index.js --transport http --port 8080  # Run HTTP server on port 8080
+  node dist/index.js --transport http --host 127.0.0.1  # Local-only HTTP server
         `);
         process.exit(0);
         break;
@@ -79,7 +92,11 @@ Examples:
         : 3000;
   }
 
-  return { transport, port };
+  if (host === undefined) {
+    host = (transport !== "stdio" && process.env.HOST) || "0.0.0.0";
+  }
+
+  return { transport, port, host };
 }
 
 let runningHttpServer: TarotHttpServer | undefined;
@@ -88,7 +105,7 @@ let runningHttpServer: TarotHttpServer | undefined;
  * Main entry point for the Tarot MCP Server
  */
 async function main() {
-  const { transport, port } = parseArgs();
+  const { transport, port, host } = parseArgs();
 
   console.error(`Starting Tarot MCP Server with ${transport} transport...`);
 
@@ -98,7 +115,7 @@ async function main() {
 
   if (transport === "http" || transport === "sse") {
     // Start HTTP server with the initialized TarotServer
-    runningHttpServer = new TarotHttpServer(tarotServer, port);
+    runningHttpServer = new TarotHttpServer(tarotServer, port, host);
     await runningHttpServer.start();
   } else {
     // Start stdio server with the initialized TarotServer
