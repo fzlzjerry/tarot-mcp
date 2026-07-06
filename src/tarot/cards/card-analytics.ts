@@ -43,24 +43,30 @@ export interface ContentAnalysis {
  */
 export class TarotCardAnalytics {
   private cards: readonly TarotCard[];
+  private cachedReport?: CardAnalytics;
 
   constructor(cards: readonly TarotCard[]) {
     this.cards = cards;
   }
 
   /**
-   * Generate comprehensive analytics report
+   * Generate comprehensive analytics report. The card data is immutable
+   * after load, so the report is computed once and cached.
    */
   generateReport(): CardAnalytics {
+    if (this.cachedReport) {
+      return this.cachedReport;
+    }
     const overview = this.getDatabaseOverview();
     const dataQuality = this.getDataQualityReport();
     const contentAnalysis = this.getContentAnalysis();
-    return {
+    this.cachedReport = {
       overview,
       dataQuality,
       contentAnalysis,
       recommendations: this.generateRecommendations(overview, dataQuality, contentAnalysis)
     };
+    return this.cachedReport;
   }
 
   /**

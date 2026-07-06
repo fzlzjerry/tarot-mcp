@@ -7,8 +7,8 @@ export interface Tool {
   inputSchema: Record<string, unknown>;
 }
 
-export function getToolDefinitions(): Tool[] {
-  return [
+// Definitions are static; build them once at module load.
+const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     {
       name: TOOL_NAMES.getCardInfo,
       description:
@@ -366,5 +366,8 @@ export function getToolDefinitions(): Tool[] {
         required: ["spreadName", "description", "positions", "question"],
       },
     },
-  ];
+]);
+
+export function getToolDefinitions(): Tool[] {
+  return [...TOOL_DEFINITIONS];
 }

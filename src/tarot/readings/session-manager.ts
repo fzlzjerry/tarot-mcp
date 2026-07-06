@@ -1,5 +1,5 @@
 import { TarotSession, TarotReading } from "../shared/types.js";
-import { getSecureRandomInt } from "../shared/utils.js";
+import { generateId } from "../shared/utils.js";
 
 /**
  * Manages tarot reading sessions
@@ -31,7 +31,7 @@ export class TarotSessionManager {
       this.evictOldestSession();
     }
 
-    const sessionId = this.generateSessionId();
+    const sessionId = generateId("session");
     const session: TarotSession = {
       id: sessionId,
       readings: [],
@@ -111,15 +111,6 @@ export class TarotSessionManager {
     if (oldestId !== undefined) {
       this.sessions.delete(oldestId);
     }
-  }
-
-  /**
-   * Generate a unique session ID
-   */
-  private generateSessionId(): string {
-    const timestamp = Date.now();
-    const randomPart = getSecureRandomInt(1000000000).toString(36);
-    return `session_${timestamp}_${randomPart}`;
   }
 
   /**

@@ -1,9 +1,11 @@
-import { TarotSpread } from "../shared/types.js";
+import { SpreadType, TarotSpread } from "../shared/types.js";
 
 /**
- * Tarot spread definitions
+ * Tarot spread definitions. `satisfies` keeps the keys in compile-time sync
+ * with SPREAD_TYPES: a spread added or renamed here without updating the
+ * canonical list (or vice versa) fails the build.
  */
-export const TAROT_SPREADS: Record<string, TarotSpread> = {
+export const TAROT_SPREADS = {
   single_card: {
     name: "Single Card",
     description: "A simple one-card draw for quick insight or daily guidance",
@@ -827,7 +829,7 @@ export const TAROT_SPREADS: Record<string, TarotSpread> = {
       }
     ]
   }
-};
+} satisfies Record<SpreadType, TarotSpread>;
 
 /**
  * Get all available spreads
@@ -840,12 +842,12 @@ export function getAllSpreads(): TarotSpread[] {
  * Get a specific spread by name
  */
 export function getSpread(name: string): TarotSpread | undefined {
-  return TAROT_SPREADS[name];
+  return (TAROT_SPREADS as Record<string, TarotSpread>)[name];
 }
 
 /**
  * Validate if a spread type is supported
  */
-export function isValidSpreadType(spreadType: string): boolean {
+export function isValidSpreadType(spreadType: string): spreadType is SpreadType {
   return spreadType in TAROT_SPREADS;
 }

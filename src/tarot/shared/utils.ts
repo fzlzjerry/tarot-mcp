@@ -31,3 +31,25 @@ export function getSecureRandomInt(maxExclusive: number): number {
     }
   }
 }
+
+/**
+ * Fisher-Yates shuffle using cryptographically secure randomness.
+ * Returns a new array; the input is not mutated.
+ */
+export function fisherYatesShuffle<T>(array: readonly T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = getSecureRandomInt(i + 1);
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+/**
+ * Generate a unique, hard-to-guess ID like "reading_1700000000000_abc123".
+ */
+export function generateId(prefix: string): string {
+  const timestamp = Date.now();
+  const randomPart = getSecureRandomInt(1000000000).toString(36);
+  return `${prefix}_${timestamp}_${randomPart}`;
+}

@@ -2,7 +2,7 @@ import { TarotCardManager } from "../cards/card-manager.js";
 import { TarotSessionManager } from "./session-manager.js";
 import { TarotReading, DrawnCard, CardOrientation, TarotCard } from "../shared/types.js";
 import { getAllSpreads, getSpread, isValidSpreadType } from "./spreads.js";
-import { getSecureRandomInt } from "../shared/utils.js";
+import { generateId, getSecureRandomInt } from "../shared/utils.js";
 import { sanitizeString } from "../shared/validation.js";
 
 export interface TarotReadingRandomSource {
@@ -82,7 +82,7 @@ export class TarotReadingManager {
 
     // Create the reading
     const reading: TarotReading = {
-      id: this.generateReadingId(),
+      id: generateId("reading"),
       spreadType,
       question,
       cards: drawnCards,
@@ -179,7 +179,7 @@ export class TarotReadingManager {
 
     // Create the reading
     const reading: TarotReading = {
-      id: this.generateReadingId(),
+      id: generateId("reading"),
       spreadType: `custom_${spreadName.toLowerCase().replace(/\s+/g, '_')}`,
       question,
       cards: drawnCards,
@@ -1257,13 +1257,6 @@ export class TarotReadingManager {
   }
 
   /**
-   * Get a specific spread by type
-   */
-  public getSpreadByType(spreadType: string): any {
-    return getSpread(spreadType);
-  }
-
-  /**
    * Generate cryptographically secure random orientation
    */
   private getSecureRandomOrientation(): CardOrientation {
@@ -1280,15 +1273,5 @@ export class TarotReadingManager {
     return this.randomSource.drawOrientation
       ? this.randomSource.drawOrientation()
       : this.getSecureRandomOrientation();
-  }
-
-
-  /**
-   * Generate a unique reading ID with secure randomness
-   */
-  private generateReadingId(): string {
-    const timestamp = Date.now();
-    const randomPart = getSecureRandomInt(1000000000).toString(36);
-    return `reading_${timestamp}_${randomPart}`;
   }
 }

@@ -1,5 +1,5 @@
 import { TarotCard } from "../shared/types.js";
-import { getSecureRandomInt } from "../shared/utils.js";
+import { fisherYatesShuffle } from "../shared/utils.js";
 
 export interface SearchOptions {
   keyword?: string;
@@ -77,8 +77,7 @@ export class TarotCardSearch {
     }
 
     // Use Fisher-Yates shuffle with secure random for true randomness
-    const shuffled = this.fisherYatesShuffle(filteredCards);
-    return shuffled.slice(0, count);
+    return fisherYatesShuffle(filteredCards).slice(0, count);
   }
 
   private filterCardsForRandomDraw(options?: Partial<SearchOptions>): readonly TarotCard[] {
@@ -231,17 +230,5 @@ export class TarotCardSearch {
     }
 
     return score;
-  }
-
-  /**
-   * Fisher-Yates shuffle algorithm using cryptographically secure random
-   */
-  private fisherYatesShuffle<T>(array: readonly T[]): T[] {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = getSecureRandomInt(i + 1);
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
   }
 }

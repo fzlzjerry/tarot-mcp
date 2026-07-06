@@ -2,25 +2,13 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { TarotCard, CardOrientation, CardCategory } from "../shared/types.js";
-import { getSecureRandomInt } from "../shared/utils.js";
+import { fisherYatesShuffle } from "../shared/utils.js";
 import { parseCardData } from "./card-schema.js";
 
-// Helper to get __dirname in ES modules - with fallback for testing
-let CARD_DATA_PATH: string;
-try {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  CARD_DATA_PATH = path.join(__dirname, "card-data.json");
-} catch (error) {
-  // Fallback for test environment
-  CARD_DATA_PATH = path.join(
-    process.cwd(),
-    "src",
-    "tarot",
-    "cards",
-    "card-data.json",
-  );
-}
+const CARD_DATA_PATH = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "card-data.json",
+);
 
 /**
  * Manages tarot card data and operations.
@@ -250,26 +238,6 @@ export class TarotCardManager {
   }
 
   /**
-   * Fisher-Yates shuffle algorithm for true randomness.
-   */
-  private fisherYatesShuffle<T>(array: readonly T[]): T[] {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = getSecureRandomInt(i + 1);
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  }
-
-  /**
-   * Get a random card from the deck.
-   */
-  public getRandomCard(): TarotCard {
-    const randomIndex = getSecureRandomInt(this.allCards.length);
-    return this.allCards[randomIndex];
-  }
-
-  /**
    * Get multiple random cards (without replacement).
    */
   public getRandomCards(count: number): TarotCard[] {
@@ -278,11 +246,7 @@ export class TarotCardManager {
         `Cannot draw ${count} cards from a deck of ${this.allCards.length} cards`,
       );
     }
-    if (count === this.allCards.length) {
-      return this.fisherYatesShuffle(this.allCards);
-    }
-    const shuffled = this.fisherYatesShuffle(this.allCards);
-    return shuffled.slice(0, count);
+    return fisherYatesShuffle(this.allCards).slice(0, count);
   }
 
   /**

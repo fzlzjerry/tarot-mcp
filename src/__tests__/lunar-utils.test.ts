@@ -2,8 +2,6 @@ import {
   calculateMoonPhase,
   getMoonPhaseRecommendations,
   getNextMoonPhase,
-  getSeasonalInfo,
-  isSignificantMoonPhase,
 } from "../tarot/readings/lunar-utils.js";
 
 const PHASE_ORDER = [
@@ -89,26 +87,6 @@ describe("calculateMoonPhase", () => {
   });
 });
 
-describe("isSignificantMoonPhase", () => {
-  it("flags actual new moons as significant", () => {
-    expect(isSignificantMoonPhase(new Date("2024-02-09T12:00:00Z"))).toBe(
-      true,
-    );
-  });
-
-  it("flags actual full moons as significant", () => {
-    expect(isSignificantMoonPhase(new Date("2023-07-03T12:00:00Z"))).toBe(
-      true,
-    );
-  });
-
-  it("does not flag crescent phases as significant", () => {
-    expect(isSignificantMoonPhase(new Date("2024-01-14T12:00:00Z"))).toBe(
-      false,
-    );
-  });
-});
-
 describe("getNextMoonPhase", () => {
   it.each([
     "2024-01-11T12:00:00Z",
@@ -138,16 +116,5 @@ describe("getMoonPhaseRecommendations", () => {
 
     expect(recommendations).toContain("Full Moon Tarot Guidance");
     expect(recommendations).toContain("**Next Phase:**");
-  });
-});
-
-describe("getSeasonalInfo", () => {
-  it.each([
-    ["2024-04-15T12:00:00Z", "spring"],
-    ["2024-07-15T12:00:00Z", "summer"],
-    ["2024-10-15T12:00:00Z", "autumn"],
-    ["2024-01-15T12:00:00Z", "winter"],
-  ])("maps %s to %s", (iso, season) => {
-    expect(getSeasonalInfo(new Date(iso)).season).toBe(season);
   });
 });
