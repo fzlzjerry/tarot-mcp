@@ -5,6 +5,7 @@ import { TarotServer } from "./mcp/tarot-service.js";
 import { TarotHttpServer } from "./mcp/http-server.js";
 import { createMcpProtocolServer } from "./mcp/protocol-server.js";
 import { CliOptions, CliUsageError, HELP_TEXT, parseArgs } from "./mcp/args.js";
+import { logger } from "./tarot/shared/logger.js";
 
 let runningHttpServer: TarotHttpServer | undefined;
 
@@ -30,11 +31,11 @@ async function main() {
 
   const { transport, port, host } = options;
 
-  console.error(`Starting Tarot MCP Server with ${transport} transport...`);
+  logger.info("server_starting", { transport });
 
   // Asynchronously initialize the TarotServer
   const tarotServer = await TarotServer.create();
-  console.error("Tarot card data loaded successfully.");
+  logger.info("card_data_loaded");
 
   if (transport === "http" || transport === "sse") {
     // Start HTTP server with the initialized TarotServer
@@ -54,16 +55,16 @@ async function startStdioServer(tarotServer: TarotServer) {
   const transport = new StdioServerTransport();
   await server.connect(transport);
 
-  console.error("Tarot MCP Server running on stdio");
+  logger.info("stdio_server_started");
 }
 
 // Handle graceful shutdown: close active MCP sessions and the HTTP listener
 async function shutdown(signal: NodeJS.Signals): Promise<void> {
-  console.error(`Received ${signal}, shutting down Tarot MCP Server...`);
+  logger.info("shutdown_requested", { signal });
   try {
     await runningHttpServer?.stop();
   } catch (error) {
-    console.error("Error during shutdown:", error);
+    logger.error("shutdown_error", { error: String(error) });
     process.exit(1);
   }
   process.exit(0);
@@ -74,6 +75,6 @@ process.on("SIGTERM", () => void shutdown("SIGTERM"));
 
 // Start the server
 main().catch((error) => {
-  console.error("Fatal error in main():", error);
+  logger.error("fatal_error", { error: String(error) });
   process.exit(1);
 });

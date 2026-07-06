@@ -31,6 +31,7 @@ import {
   validateString,
 } from "../tarot/shared/validation.js";
 import { TarotDomainError } from "../tarot/shared/errors.js";
+import { logger } from "../tarot/shared/logger.js";
 
 /**
  * Uniform result of a tool execution. `structured` is reserved for MCP
@@ -151,12 +152,30 @@ export class TarotServer {
       throw new Error(`Unknown tool: ${toolName}`);
     }
 
+    const start = Date.now();
     try {
-      return handler(args);
+      const result = handler(args);
+      logger.info("tool_executed", {
+        tool: toolName,
+        ok: result.ok,
+        durationMs: Date.now() - start,
+      });
+      return result;
     } catch (error) {
       if (error instanceof TarotDomainError) {
+        logger.info("tool_executed", {
+          tool: toolName,
+          ok: false,
+          domainError: error.name,
+          durationMs: Date.now() - start,
+        });
         return toolError(`Error: ${error.message}`);
       }
+      logger.error("tool_failed", {
+        tool: toolName,
+        error: error instanceof Error ? error.message : String(error),
+        durationMs: Date.now() - start,
+      });
       throw error;
     }
   }

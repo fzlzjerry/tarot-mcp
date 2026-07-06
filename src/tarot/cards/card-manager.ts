@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { TarotCard, CardOrientation, CardCategory } from "../shared/types.js";
 import { fisherYatesShuffle } from "../shared/utils.js";
+import { logger } from "../shared/logger.js";
 import { parseCardData } from "./card-schema.js";
 
 const CARD_DATA_PATH = path.join(
@@ -54,7 +55,7 @@ export class TarotCardManager {
         return TarotCardManager.instance;
       } catch (error) {
         TarotCardManager.initPromise = null; // Reset on error
-        console.error("Failed to load or parse tarot card data:", error);
+        logger.error("card_data_load_failed", { error: String(error) });
         throw new Error(
           "Could not initialize TarotCardManager. Card data is missing or corrupt.",
         );

@@ -10,6 +10,7 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { HTTP_ENDPOINTS, MCP_SERVER_INFO, TOOL_NAMES } from "./public-api.js";
 import { createMcpProtocolServer } from "./protocol-server.js";
 import { TarotServer, ToolResult } from "./tarot-service.js";
+import { logger } from "../tarot/shared/logger.js";
 
 interface McpTransportSession<TTransport> {
   server: Server;
@@ -162,7 +163,7 @@ export class TarotHttpServer {
           return;
         }
 
-        console.error("Unhandled request error:", err);
+        logger.error("unhandled_request_error", { error: err.message });
         res.status(500).json({ error: "Internal server error" });
       },
     );
@@ -181,7 +182,7 @@ export class TarotHttpServer {
         if (session.activeRequests === 0 && session.lastActivity < cutoff) {
           sessions.delete(sessionId);
           void session.server.close().catch((error) => {
-            console.error("Error closing idle MCP session server:", error);
+            logger.error("session_close_failed", { error: String(error) });
           });
         }
       }
@@ -192,6 +193,23 @@ export class TarotHttpServer {
    * Setup Express middleware.
    */
   private setupMiddleware(): void {
+    // Request logging with a correlation id on every response.
+    this.app.use((req: Request, res: Response, next: express.NextFunction) => {
+      const requestId = randomUUID();
+      const start = Date.now();
+      res.setHeader("X-Request-Id", requestId);
+      res.on("finish", () => {
+        logger.info("http_request", {
+          requestId,
+          method: req.method,
+          path: req.path,
+          status: res.statusCode,
+          durationMs: Date.now() - start,
+        });
+      });
+      next();
+    });
+
     this.app.use(
       cors({
         origin: (origin, callback) => {
@@ -438,7 +456,7 @@ export class TarotHttpServer {
           const session = this.streamableSessions.get(closedSessionId);
           this.streamableSessions.delete(closedSessionId);
           void session?.server.close().catch((error) => {
-            console.error("Error closing MCP session server:", error);
+            logger.error("session_close_failed", { error: String(error) });
           });
         },
       });
@@ -446,7 +464,7 @@ export class TarotHttpServer {
       await server.connect(transport);
       await transport.handleRequest(req, res, req.body);
     } catch (error) {
-      console.error("Error handling Streamable HTTP MCP request:", error);
+      logger.error("mcp_request_error", { error: String(error) });
       this.sendJsonRpcError(res, 500, -32603, "Internal server error");
     }
   }
@@ -472,7 +490,7 @@ export class TarotHttpServer {
     try {
       await this.handleSessionRequest(session, req, res);
     } catch (error) {
-      console.error("Error handling Streamable HTTP session request:", error);
+      logger.error("mcp_session_request_error", { error: String(error) });
       this.sendJsonRpcError(res, 500, -32603, "Internal server error");
     }
   }
@@ -525,13 +543,13 @@ export class TarotHttpServer {
       res.on("close", () => {
         this.sseSessions.delete(sessionId);
         void server.close().catch((error) => {
-          console.error("Error closing SSE MCP session server:", error);
+          logger.error("session_close_failed", { transport: "sse", error: String(error) });
         });
       });
 
       await server.connect(transport);
     } catch (error) {
-      console.error("SSE connection error:", error);
+      logger.error("sse_connection_error", { error: String(error) });
       if (!res.headersSent) {
         res.status(500).json({ error: "Failed to establish SSE connection" });
       } else {
@@ -556,7 +574,7 @@ export class TarotHttpServer {
     try {
       await session.transport.handlePostMessage(req, res, req.body);
     } catch (error) {
-      console.error("Error handling SSE message:", error);
+      logger.error("sse_message_error", { error: String(error) });
       if (!res.headersSent) {
         res.status(500).send("Failed to handle SSE message");
       }
@@ -595,7 +613,7 @@ export class TarotHttpServer {
 
   private sendHttpError(res: Response, error: unknown): void {
     // Log the real error server-side; never leak internals to clients.
-    console.error("REST endpoint error:", error);
+    logger.error("rest_endpoint_error", { error: error instanceof Error ? error.message : String(error) });
     res.status(500).json({ error: "Internal server error" });
   }
 
@@ -624,16 +642,15 @@ export class TarotHttpServer {
           TarotHttpServer.SESSION_SWEEP_INTERVAL_MS,
         );
         this.sessionSweepTimer.unref();
-        console.log(`Tarot MCP Server running on http://${this.host}:${this.port}`);
-        console.log(
-          `Streamable HTTP MCP endpoint: ${HTTP_ENDPOINTS.streamableHttp}`,
-        );
-        console.log(`Legacy SSE endpoint: ${HTTP_ENDPOINTS.legacySse}`);
-        console.log(
-          `Legacy SSE message endpoint: ${HTTP_ENDPOINTS.legacyMessages}`,
-        );
-        console.log(`Health check: ${HTTP_ENDPOINTS.health}`);
-        console.log(`API info: ${HTTP_ENDPOINTS.api.info}`);
+        logger.info("http_server_started", {
+          url: `http://${this.host}:${this.port}`,
+          mcpEndpoint: HTTP_ENDPOINTS.streamableHttp,
+          sseEndpoint: HTTP_ENDPOINTS.legacySse,
+          messagesEndpoint: HTTP_ENDPOINTS.legacyMessages,
+          health: HTTP_ENDPOINTS.health,
+          apiInfo: HTTP_ENDPOINTS.api.info,
+          auth: this.authToken ? "bearer" : "none",
+        });
         resolve();
       });
     });
