@@ -52,6 +52,10 @@ export class TarotServer {
   private sessionManager: TarotSessionManager;
   private cardSearch: TarotCardSearch;
   private cardAnalytics: TarotCardAnalytics;
+  private readonly toolHandlers: ReadonlyMap<
+    string,
+    (args: Record<string, any>) => ToolResult
+  >;
 
   /**
    * The constructor is private. Use the static async `create()` method.
@@ -65,6 +69,36 @@ export class TarotServer {
     );
     this.cardSearch = new TarotCardSearch(this.cardManager.getAllCards());
     this.cardAnalytics = new TarotCardAnalytics(this.cardManager.getAllCards());
+    const handlers: Array<
+      [string, (args: Record<string, any>) => ToolResult]
+    > = [
+      [TOOL_NAMES.getCardInfo, (args) => this.handleGetCardInfo(args)],
+      [TOOL_NAMES.listAllCards, (args) => this.handleListAllCards(args)],
+      [
+        TOOL_NAMES.listAvailableSpreads,
+        () => toolOk(this.readingManager.listAvailableSpreads()),
+      ],
+      [TOOL_NAMES.performReading, (args) => this.handlePerformReading(args)],
+      [TOOL_NAMES.searchCards, (args) => this.handleSearchCards(args)],
+      [TOOL_NAMES.findSimilarCards, (args) => this.handleFindSimilarCards(args)],
+      [TOOL_NAMES.getDatabaseAnalytics, (args) => this.handleGetAnalytics(args)],
+      [TOOL_NAMES.getRandomCards, (args) => this.handleGetRandomCards(args)],
+      [TOOL_NAMES.getDailyCard, (args) => this.handleGetDailyCard(args)],
+      [TOOL_NAMES.recommendSpread, (args) => this.handleRecommendSpread(args)],
+      [
+        TOOL_NAMES.getMoonPhaseReading,
+        (args) => this.handleGetMoonPhaseReading(args),
+      ],
+      [
+        TOOL_NAMES.getCardMeaningsComparison,
+        (args) => this.handleGetCardMeaningsComparison(args),
+      ],
+      [
+        TOOL_NAMES.createCustomSpread,
+        (args) => this.handleCreateCustomSpread(args),
+      ],
+    ];
+    this.toolHandlers = new Map(handlers);
   }
 
   /**
@@ -101,62 +135,18 @@ export class TarotServer {
     toolName: string,
     args: Record<string, any>,
   ): Promise<ToolResult> {
+    const handler = this.toolHandlers.get(toolName);
+    if (!handler) {
+      throw new Error(`Unknown tool: ${toolName}`);
+    }
+
     try {
-      return this.dispatchTool(toolName, args);
+      return handler(args);
     } catch (error) {
       if (error instanceof TarotDomainError) {
         return toolError(`Error: ${error.message}`);
       }
       throw error;
-    }
-  }
-
-  private dispatchTool(
-    toolName: string,
-    args: Record<string, any>,
-  ): ToolResult {
-    switch (toolName) {
-      case TOOL_NAMES.getCardInfo:
-        return this.handleGetCardInfo(args);
-
-      case TOOL_NAMES.listAllCards:
-        return this.handleListAllCards(args);
-
-      case TOOL_NAMES.listAvailableSpreads:
-        return toolOk(this.readingManager.listAvailableSpreads());
-
-      case TOOL_NAMES.performReading:
-        return this.handlePerformReading(args);
-
-      case TOOL_NAMES.searchCards:
-        return this.handleSearchCards(args);
-
-      case TOOL_NAMES.findSimilarCards:
-        return this.handleFindSimilarCards(args);
-
-      case TOOL_NAMES.getDatabaseAnalytics:
-        return this.handleGetAnalytics(args);
-
-      case TOOL_NAMES.getRandomCards:
-        return this.handleGetRandomCards(args);
-
-      case TOOL_NAMES.getDailyCard:
-        return this.handleGetDailyCard(args);
-
-      case TOOL_NAMES.recommendSpread:
-        return this.handleRecommendSpread(args);
-
-      case TOOL_NAMES.getMoonPhaseReading:
-        return this.handleGetMoonPhaseReading(args);
-
-      case TOOL_NAMES.getCardMeaningsComparison:
-        return this.handleGetCardMeaningsComparison(args);
-
-      case TOOL_NAMES.createCustomSpread:
-        return this.handleCreateCustomSpread(args);
-
-      default:
-        throw new Error(`Unknown tool: ${toolName}`);
     }
   }
 
