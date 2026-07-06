@@ -1,4 +1,4 @@
-import { DrawnCard, SpreadType } from "../../shared/types.js";
+import { DrawnCard, Language, SpreadType } from "../../shared/types.js";
 import { isValidSpreadType } from "../spreads.js";
 
 /**
@@ -86,9 +86,19 @@ function generateCelticCrossAnalysis(drawnCards: DrawnCard[]): string {
   return analysis;
 }
 
-export function generateGenericSpreadAnalysis(drawnCards: DrawnCard[]): string {
+export function generateGenericSpreadAnalysis(
+  drawnCards: DrawnCard[],
+  language: Language = "en",
+): string {
   const first = drawnCards[0];
   const last = drawnCards[drawnCards.length - 1];
+
+  if (language === "zh") {
+    let analysis = "**牌阵脉络分析:**\n\n";
+    analysis += `这个牌阵从「${first.position || "起始牌"}」(${first.card.name})延展到「${last.position || "收尾牌"}」(${last.card.name})。`;
+    analysis += "此布局没有专属的牌阵模板,因此解读以每个牌位的含义、牌的正逆位、元素平衡与问题语境作为诠释框架。\n\n";
+    return analysis;
+  }
 
   let analysis = "**Contextual Spread Analysis:**\n\n";
   analysis += `This spread moves from ${first.position || "the opening card"} (${first.card.name}) to ${last.position || "the closing card"} (${last.card.name}). `;

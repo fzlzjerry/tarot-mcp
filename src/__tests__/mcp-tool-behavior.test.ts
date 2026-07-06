@@ -142,6 +142,50 @@ describe("MCP tool behavior", () => {
     expect(result).toContain("Will my salary be < 50k or > 100k?");
   });
 
+  it("renders readings in Chinese when language=zh", async () => {
+    const result = await executeTool("performReading", {
+      spreadType: "three_card",
+      question: "我的事业发展如何?",
+      language: "zh",
+    });
+
+    expect(result).toContain("塔罗解读");
+    expect(result).toContain("**问题:**");
+    expect(result).toContain("## 你抽到的牌");
+    expect(result).toContain("## 解读");
+    expect(result).toContain("**整体解读:**");
+    // Orientation labels are localized
+    expect(result).toMatch(/(正位|逆位)/);
+    expect(result).not.toContain("## Interpretation");
+  });
+
+  it("renders card info in Chinese when language=zh", async () => {
+    const result = await executeTool("getCardInfo", {
+      cardName: "The Fool",
+      language: "zh",
+    });
+
+    expect(result).toContain("**阿卡纳:** 大阿卡纳");
+    expect(result).toContain("**关键词:**");
+    expect(result).toContain("## 象征意义");
+  });
+
+  it("keeps the English path unchanged and rejects unknown languages", async () => {
+    const english = await executeTool("performReading", {
+      spreadType: "single_card",
+      question: "Plain English?",
+    });
+    expect(english).toContain("# Single Card Reading");
+    expect(english).toContain("## Interpretation");
+
+    const bad = await executeTool("performReading", {
+      spreadType: "single_card",
+      question: "Hi",
+      language: "fr",
+    });
+    expect(bad).toContain("Error: Invalid language");
+  });
+
   it("rejects get_random_cards parameters that are not exposed in the MCP schema", async () => {
     const result = await executeTool("getRandomCards", {
       count: 1,

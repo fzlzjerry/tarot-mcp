@@ -6,9 +6,10 @@ import {
   TarotSpread,
   DrawnCard,
   CardOrientation,
+  Language,
   TarotCard,
 } from "../shared/types.js";
-import { getAllSpreads, getSpread, isValidSpreadType } from "./spreads.js";
+import { TAROT_SPREADS, getSpread, isValidSpreadType } from "./spreads.js";
 import { generateId, getSecureRandomInt } from "../shared/utils.js";
 import { sanitizeString } from "../shared/validation.js";
 import {
@@ -17,6 +18,7 @@ import {
 } from "../shared/errors.js";
 import { generateInterpretation } from "./interpretation/index.js";
 import { formatReading, renderAvailableSpreads } from "./reading-formatter.js";
+import { localizedSpread } from "./spread-localizations.js";
 
 export interface TarotReadingRandomSource {
   drawCards?: (count: number) => TarotCard[];
@@ -70,7 +72,7 @@ export class TarotReadingManager {
     spreadType: string,
     question: string,
     sessionId?: string | null,
-    options: { trackSession?: boolean } = {},
+    options: { trackSession?: boolean; language?: Language } = {},
   ): string {
     return this.performReadingWithDetails(spreadType, question, sessionId, options).text;
   }
@@ -83,7 +85,7 @@ export class TarotReadingManager {
     spreadType: string,
     question: string,
     sessionId?: string | null,
-    options: { trackSession?: boolean } = {},
+    options: { trackSession?: boolean; language?: Language } = {},
   ): PerformedReading {
     if (!isValidSpreadType(spreadType)) {
       throw new InvalidSpreadTypeError(
@@ -91,10 +93,11 @@ export class TarotReadingManager {
       );
     }
 
+    const language = options.language ?? "en";
     const session = this.resolveSession(sessionId, options.trackSession ?? true);
-    const spread = getSpread(spreadType)!;
+    const spread = localizedSpread(getSpread(spreadType)!, spreadType, language);
 
-    return this.executeReading(spread, spreadType, question, session);
+    return this.executeReading(spread, spreadType, question, session, language);
   }
 
   /**
@@ -107,7 +110,8 @@ export class TarotReadingManager {
     description: string,
     positions: { name: string; meaning: string }[],
     question: string,
-    sessionId?: string | null
+    sessionId?: string | null,
+    options: { language?: Language } = {},
   ): string {
     return this.performCustomReadingWithDetails(
       spreadName,
@@ -115,6 +119,7 @@ export class TarotReadingManager {
       positions,
       question,
       sessionId,
+      options,
     ).text;
   }
 
@@ -126,8 +131,10 @@ export class TarotReadingManager {
     description: string,
     positions: { name: string; meaning: string }[],
     question: string,
-    sessionId?: string | null
+    sessionId?: string | null,
+    options: { language?: Language } = {},
   ): PerformedReading {
+    const language = options.language ?? "en";
     const session = this.resolveSession(sessionId, true);
 
     const customSpread: TarotSpread = {
@@ -138,7 +145,7 @@ export class TarotReadingManager {
     };
     const customType = `custom_${spreadName.toLowerCase().replace(/\s+/g, '_')}`;
 
-    return this.executeReading(customSpread, customType, question, session);
+    return this.executeReading(customSpread, customType, question, session, language);
   }
 
   /**
@@ -150,6 +157,7 @@ export class TarotReadingManager {
     spreadType: string,
     question: string,
     session: TarotSession | undefined,
+    language: Language = "en",
   ): PerformedReading {
     // Use cryptographically secure random card drawing
     const cards = this.drawCards(spread.cardCount);
@@ -167,7 +175,7 @@ export class TarotReadingManager {
       spreadType,
       question,
       cards: drawnCards,
-      interpretation: generateInterpretation(drawnCards, question, spreadType, spread.name),
+      interpretation: generateInterpretation(drawnCards, question, spreadType, spread.name, language),
       timestamp: new Date(),
       sessionId: session?.id
     };
@@ -181,7 +189,7 @@ export class TarotReadingManager {
       : 0;
 
     return {
-      text: formatReading(reading, spread.name, spread.description, readingNumber),
+      text: formatReading(reading, spread.name, spread.description, readingNumber, language),
       reading: {
         readingId: reading.id,
         sessionId: session?.id,
@@ -228,8 +236,11 @@ export class TarotReadingManager {
   /**
    * List all available spreads
    */
-  public listAvailableSpreads(): string {
-    return renderAvailableSpreads(getAllSpreads());
+  public listAvailableSpreads(language: Language = "en"): string {
+    const localized = Object.entries(TAROT_SPREADS).map(([type, spread]) =>
+      localizedSpread(spread, type, language),
+    );
+    return renderAvailableSpreads(localized, language);
   }
 
   /**

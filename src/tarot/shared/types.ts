@@ -33,6 +33,8 @@ export interface TarotCard {
   astrology?: string;
   numerology?: string;
   description: string;
+  /** Optional Chinese localization; missing fields fall back to English. */
+  zh?: CardLocalization;
 }
 
 export interface DrawnCard {
@@ -95,6 +97,25 @@ export type CardOrientation = "upright" | "reversed";
 
 /** The per-context meanings of a card in one orientation. */
 export type CardMeanings = TarotCard["meanings"]["upright"];
+
+/** Output languages. English is canonical; zh falls back field-by-field. */
+export const LANGUAGES = ["en", "zh"] as const;
+export type Language = (typeof LANGUAGES)[number];
+
+/** Optional Chinese localization block carried by a card. */
+export interface CardLocalization {
+  name?: string;
+  keywords?: {
+    upright: string[];
+    reversed: string[];
+  };
+  meanings?: {
+    upright: CardMeanings;
+    reversed: CardMeanings;
+  };
+  symbolism?: string[];
+  description?: string;
+}
 
 /**
  * Canonical list of built-in spread types. Single source of truth shared by

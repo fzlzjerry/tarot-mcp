@@ -59,7 +59,12 @@ describe("tarot card data integrity", () => {
 
   it("keeps every card schema strict and meaning-rich", () => {
     for (const card of cardManager.getAllCards()) {
-      expect(Object.keys(card).sort()).toEqual(
+      // "zh" is the optional localization block
+      expect(
+        Object.keys(card)
+          .filter((key) => key !== "zh")
+          .sort(),
+      ).toEqual(
         (card.arcana === "major"
           ? REQUIRED_CARD_KEYS
           : [...REQUIRED_CARD_KEYS, "suit"]

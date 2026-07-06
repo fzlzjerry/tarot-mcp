@@ -61,6 +61,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           cardName: {
             type: "string",
             description:
@@ -109,7 +115,14 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
       inputSchema: {
         type: "object",
         additionalProperties: false,
-        properties: {},
+        properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
+        },
       },
     },
     {
@@ -120,6 +133,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           spreadType: {
             type: "string",
             enum: [...SPREAD_TYPES],
@@ -292,6 +311,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           question: {
             type: "string",
             description: "Optional specific question for daily guidance",
@@ -310,6 +335,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           question: {
             type: "string",
             description:
@@ -361,6 +392,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           question: {
             type: "string",
             description:
@@ -386,6 +423,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         description:
           "Provide either cards or legacy cardNames. When both are present, cards takes precedence.",
         properties: {
+          language: {
+            type: "string",
+            description: 'Output language: "en" or "zh" (default: en)',
+            default: "en",
+          },
           cards: {
             type: "array",
             items: {
@@ -436,6 +478,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           spreadName: {
             type: "string",
             description: "Name for your custom spread",

@@ -32,6 +32,14 @@ import {
 } from "../tarot/shared/validation.js";
 import { TarotDomainError } from "../tarot/shared/errors.js";
 import { logger } from "../tarot/shared/logger.js";
+import { LANGUAGES, Language } from "../tarot/shared/types.js";
+import {
+  localizedCardName,
+  localizedKeywords,
+  localizedMeanings,
+  pick,
+} from "../tarot/shared/i18n.js";
+import { ValidationResult } from "../tarot/shared/validation.js";
 
 /**
  * Uniform result of a tool execution. `structured` is reserved for MCP
@@ -84,7 +92,7 @@ export class TarotServer {
       [TOOL_NAMES.listAllCards, (args) => this.handleListAllCards(args)],
       [
         TOOL_NAMES.listAvailableSpreads,
-        () => toolOk(this.readingManager.listAvailableSpreads()),
+        (args) => this.handleListAvailableSpreads(args),
       ],
       [TOOL_NAMES.performReading, (args) => this.handlePerformReading(args)],
       [TOOL_NAMES.searchCards, (args) => this.handleSearchCards(args)],
@@ -211,6 +219,11 @@ export class TarotServer {
       return this.formatValidationError("orientation", orientation.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     const name = sanitizeString(cardName.data!);
     if (!this.cardManager.findCard(name)) {
       return toolError(
@@ -222,6 +235,7 @@ export class TarotServer {
       this.cardManager.getCardInfo(
         name,
         typeof orientation === "string" ? orientation : orientation.data!,
+        language.data!,
       ),
     );
   }
@@ -244,6 +258,17 @@ export class TarotServer {
   }
 
   /**
+   * Handle spread catalog requests
+   */
+  private handleListAvailableSpreads(args: Record<string, unknown>): ToolResult {
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    return toolOk(this.readingManager.listAvailableSpreads(language.data!));
+  }
+
+  /**
    * Handle reading requests
    */
   private handlePerformReading(args: Record<string, unknown>): ToolResult {
@@ -262,10 +287,16 @@ export class TarotServer {
       return this.formatValidationError("sessionId", sessionId.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     const performed = this.readingManager.performReadingWithDetails(
       spreadType.data!,
       sanitizeString(question.data!),
       sessionId.data,
+      { language: language.data },
     );
     return toolOk(performed.text, performed.reading);
   }
@@ -508,6 +539,11 @@ export class TarotServer {
       return this.formatValidationError("sessionId", validatedSessionId.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     try {
       const performed = this.readingManager.performCustomReadingWithDetails(
         sanitizeString(customSpread.data!.name),
@@ -518,6 +554,7 @@ export class TarotServer {
         })),
         sanitizeString(readingQuestion.data!),
         validatedSessionId.data,
+        { language: language.data },
       );
       return toolOk(performed.text, performed.reading);
     } catch (error) {
@@ -543,13 +580,18 @@ export class TarotServer {
       return this.formatValidationError("question", question.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     // Use the daily_guidance spread for consistency. Daily cards are one-shot
     // (the tool has no sessionId parameter), so skip session tracking.
     const performed = this.readingManager.performReadingWithDetails(
       "daily_guidance",
       typeof question === "string" ? question : sanitizeString(question.data!),
       undefined,
-      { trackSession: false },
+      { trackSession: false, language: language.data },
     );
     return toolOk(performed.text, performed.reading);
   }
@@ -579,6 +621,12 @@ export class TarotServer {
       return this.formatValidationError("category", category.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     const questionText = sanitizeString(question.data!);
     const timeframeValue =
       typeof timeframe === "string" ? timeframe : timeframe.data!;
@@ -591,18 +639,38 @@ export class TarotServer {
       categoryValue as RecommendationCategory,
     );
 
-    let response = `# 🔮 Spread Recommendations for Your Question\n\n`;
-    response += `**Your Question:** "${questionText}"\n`;
-    response += `**Category:** ${categoryValue} | **Timeframe:** ${timeframeValue}\n\n`;
+    let response = pick(
+      lang,
+      `# 🔮 Spread Recommendations for Your Question\n\n`,
+      `# 🔮 为你的问题推荐牌阵\n\n`,
+    );
+    response += `${pick(lang, "**Your Question:**", "**你的问题:**")} "${questionText}"\n`;
+    response += pick(
+      lang,
+      `**Category:** ${categoryValue} | **Timeframe:** ${timeframeValue}\n\n`,
+      `**类别:** ${categoryValue} | **时间范围:** ${timeframeValue}\n\n`,
+    );
 
     recommendations.forEach((rec, index) => {
       const confidence = Math.round(rec.confidence * 100);
-      response += `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())} (${confidence}% match)\n`;
-      response += `${rec.reason}\n\n`;
+      response += pick(
+        lang,
+        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())} (${confidence}% match)\n`,
+        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}(匹配度 ${confidence}%)\n`,
+      );
+      response += `${pick(lang, rec.reason, rec.reasonZh ?? rec.reason)}\n\n`;
     });
 
-    response += `\n**To perform a reading with your chosen spread, use:**\n`;
-    response += `\`perform_reading\` with spreadType: "${recommendations[0].spread}"\n`;
+    response += pick(
+      lang,
+      `\n**To perform a reading with your chosen spread, use:**\n`,
+      `\n**选定牌阵后,这样进行解读:**\n`,
+    );
+    response += pick(
+      lang,
+      `\`perform_reading\` with spreadType: "${recommendations[0].spread}"\n`,
+      `使用 \`perform_reading\` 工具并传入 spreadType: "${recommendations[0].spread}"\n`,
+    );
 
     return toolOk(response, {
       question: questionText,
@@ -629,6 +697,11 @@ export class TarotServer {
       return toolError("Error: customDate must be a valid date in YYYY-MM-DD format.");
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     // Calculate moon phase using proper lunar utilities
     const date = customDate || new Date();
     const moonInfo = calculateMoonPhase(date);
@@ -637,7 +710,7 @@ export class TarotServer {
     const spreadType = moonInfo.recommendedSpreads[0] || "three_card";
 
     // Get moon phase recommendations
-    const moonGuidance = getMoonPhaseRecommendations(date);
+    const moonGuidance = getMoonPhaseRecommendations(date, language.data);
 
     // Perform the reading. Moon-phase readings are one-shot (the tool has no
     // sessionId parameter), so skip session tracking.
@@ -645,12 +718,15 @@ export class TarotServer {
       spreadType,
       sanitizeString(question.data!),
       undefined,
-      { trackSession: false },
+      { trackSession: false, language: language.data },
     );
 
-    return toolOk(
-      `${moonGuidance}\n\n---\n\n# 🔮 Your Moon Phase Reading\n\n${reading}`,
+    const heading = pick(
+      language.data!,
+      "# 🔮 Your Moon Phase Reading",
+      "# 🔮 你的月相解读",
     );
+    return toolOk(`${moonGuidance}\n\n---\n\n${heading}\n\n${reading}`);
   }
 
   /**
@@ -670,11 +746,21 @@ export class TarotServer {
       return this.formatValidationError("cards", parsedCards.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     const contextText =
       typeof context === "string" ? context : sanitizeString(context.data!);
 
-    let response = `# 🔮 Card Meanings Comparison\n\n`;
-    response += `**Context:** ${contextText}\n\n`;
+    let response = pick(
+      lang,
+      `# 🔮 Card Meanings Comparison\n\n`,
+      `# 🔮 牌义对比\n\n`,
+    );
+    response += `${pick(lang, "**Context:**", "**语境:**")} ${contextText}\n\n`;
 
     // Get individual card meanings
     const cards = parsedCards.data!.map((input) => {
@@ -696,33 +782,64 @@ export class TarotServer {
     }
 
     // Display individual meanings
-    response += `## Individual Card Meanings\n\n`;
+    response += pick(lang, `## Individual Card Meanings\n\n`, `## 单张牌义\n\n`);
     cards.forEach((entry, index) => {
       const card = entry.card!;
-      const keywords = card.keywords[entry.orientation];
-      const meanings = card.meanings[entry.orientation];
+      const keywords = localizedKeywords(card, entry.orientation, lang);
+      const meanings = localizedMeanings(card, entry.orientation, lang);
+      const displayName = localizedCardName(card, lang);
+      const orientationText =
+        lang === "zh"
+          ? entry.orientation === "upright" ? "正位" : "逆位"
+          : entry.orientation;
 
-      response += `### ${index + 1}. ${card.name} (${entry.orientation})\n`;
-      response += `**Keywords:** ${keywords.join(", ")}\n`;
-      response += `**General:** ${meanings.general}\n`;
+      response += `### ${index + 1}. ${displayName} (${orientationText})\n`;
+      response += `${pick(lang, "**Keywords:**", "**关键词:**")} ${keywords.join(pick(lang, ", ", "、"))}\n`;
+      response += `${pick(lang, "**General:**", "**总体:**")} ${meanings.general}\n`;
       response += `\n`;
     });
 
+    const displayNames = cards.map((entry) => localizedCardName(entry.card!, lang));
+
     // Provide combined interpretation
-    response += `## Combined Message\n\n`;
-    response += `When these ${cards.length} cards appear together in the context of "${contextText}", they suggest:\n\n`;
+    response += pick(lang, `## Combined Message\n\n`, `## 组合讯息\n\n`);
+    response += pick(
+      lang,
+      `When these ${cards.length} cards appear together in the context of "${contextText}", they suggest:\n\n`,
+      `当这 ${cards.length} 张牌在「${contextText}」的语境下同时出现时,它们提示:\n\n`,
+    );
 
     // Simple combination logic (in a real implementation, this would be more sophisticated)
     if (cards.length === 2) {
-      response += `The interplay between ${cards[0].card!.name} and ${cards[1].card!.name} indicates a dynamic where the energies of both cards are working together. `;
+      response += pick(
+        lang,
+        `The interplay between ${displayNames[0]} and ${displayNames[1]} indicates a dynamic where the energies of both cards are working together. `,
+        `${displayNames[0]}与${displayNames[1]}之间的相互作用,表明两张牌的能量正在协同运作。`,
+      );
     } else if (cards.length === 3) {
-      response += `This three-card combination shows a progression or trinity of energies: ${cards[0].card!.name} represents the foundation, ${cards[1].card!.name} the current influence, and ${cards[2].card!.name} the outcome or resolution. `;
+      response += pick(
+        lang,
+        `This three-card combination shows a progression or trinity of energies: ${displayNames[0]} represents the foundation, ${displayNames[1]} the current influence, and ${displayNames[2]} the outcome or resolution. `,
+        `这三张牌的组合呈现出能量的递进或三位一体:${displayNames[0]}代表根基,${displayNames[1]}代表当前的影响,${displayNames[2]}代表结果或解决之道。`,
+      );
     } else {
-      response += `This multi-card combination creates a complex tapestry of meanings, with each card contributing its unique energy to the overall message. `;
+      response += pick(
+        lang,
+        `This multi-card combination creates a complex tapestry of meanings, with each card contributing its unique energy to the overall message. `,
+        `这组多张牌的组合织就了一幅复杂的意义图景,每张牌都为整体讯息注入独特的能量。`,
+      );
     }
 
-    response += `Consider how the themes and energies of these cards complement or challenge each other in your specific situation.\n\n`;
-    response += `**Suggestion:** Meditate on how these cards relate to your question and trust your intuition about their combined message.`;
+    response += pick(
+      lang,
+      `Consider how the themes and energies of these cards complement or challenge each other in your specific situation.\n\n`,
+      `想一想这些牌的主题与能量在你的具体处境中是互补还是相互挑战。\n\n`,
+    );
+    response += pick(
+      lang,
+      `**Suggestion:** Meditate on how these cards relate to your question and trust your intuition about their combined message.`,
+      `**建议:** 静心体会这些牌与你问题的关联,并相信你对它们组合讯息的直觉。`,
+    );
 
     return toolOk(response);
   }
@@ -874,6 +991,16 @@ export class TarotServer {
 
   private formatValidationError(field: string, errors: string[]): ToolResult {
     return toolError(`Error: Invalid ${field}: ${errors.join("; ")}`);
+  }
+
+  /** Validate the optional language argument (defaults to English). */
+  private validateLanguage(
+    args: Record<string, unknown>,
+  ): ValidationResult<Language> {
+    if (args.language === undefined) {
+      return { success: true, data: "en", errors: [] };
+    }
+    return validateEnum(LANGUAGES, "language")(args.language);
   }
 
   private parseIsoDate(value: unknown): Date | null {

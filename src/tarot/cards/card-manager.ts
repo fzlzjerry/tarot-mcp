@@ -1,9 +1,17 @@
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { TarotCard, CardOrientation, CardCategory } from "../shared/types.js";
+import { TarotCard, CardOrientation, CardCategory, Language } from "../shared/types.js";
 import { fisherYatesShuffle } from "../shared/utils.js";
 import { logger } from "../shared/logger.js";
+import {
+  localizedCardName,
+  localizedDescription,
+  localizedKeywords,
+  localizedMeanings,
+  localizedSymbolism,
+  pick,
+} from "../shared/i18n.js";
 import { parseCardData } from "./card-schema.js";
 
 const CARD_DATA_PATH = path.join(
@@ -82,54 +90,86 @@ export class TarotCardManager {
   public getCardInfo(
     cardName: string,
     orientation: CardOrientation = "upright",
+    language: Language = "en",
   ): string {
     const card = this.findCard(cardName);
     if (!card) {
       return `Error: Card "${cardName}" not found. Use the list_all_cards tool to see available cards.`;
     }
 
-    const meanings =
-      orientation === "upright"
-        ? card.meanings.upright
-        : card.meanings.reversed;
-    const keywords =
-      orientation === "upright"
-        ? card.keywords.upright
-        : card.keywords.reversed;
+    const meanings = localizedMeanings(card, orientation, language);
+    const keywords = localizedKeywords(card, orientation, language);
 
-    let result = `# ${card.name} (${orientation.charAt(0).toUpperCase() + orientation.slice(1)})\n\n`;
+    const orientationTitle =
+      language === "zh"
+        ? orientation === "upright" ? "正位" : "逆位"
+        : orientation.charAt(0).toUpperCase() + orientation.slice(1);
 
-    result += `**Arcana:** ${card.arcana === "major" ? "Major Arcana" : "Minor Arcana"}`;
+    let result = `# ${localizedCardName(card, language)} (${orientationTitle})\n\n`;
+
+    result += pick(language, "**Arcana:** ", "**阿卡纳:** ");
+    result += pick(
+      language,
+      card.arcana === "major" ? "Major Arcana" : "Minor Arcana",
+      card.arcana === "major" ? "大阿卡纳" : "小阿卡纳",
+    );
     if (card.suit) {
-      result += ` - ${card.suit.charAt(0).toUpperCase() + card.suit.slice(1)}`;
+      const suitZh: Record<string, string> = {
+        wands: "权杖",
+        cups: "圣杯",
+        swords: "宝剑",
+        pentacles: "星币",
+      };
+      result += pick(
+        language,
+        ` - ${card.suit.charAt(0).toUpperCase() + card.suit.slice(1)}`,
+        ` - ${suitZh[card.suit]}`,
+      );
     }
     if (card.number !== undefined) {
       result += ` (${card.number})`;
     }
     result += "\n\n";
 
-    result += `**Keywords:** ${keywords.join(", ")}\n\n`;
+    result += `${pick(language, "**Keywords:**", "**关键词:**")} ${keywords.join(pick(language, ", ", "、"))}\n\n`;
 
-    result += `**Description:** ${card.description}\n\n`;
+    result += `${pick(language, "**Description:**", "**牌面描述:**")} ${localizedDescription(card, language)}\n\n`;
 
-    result += `## Meanings (${orientation.charAt(0).toUpperCase() + orientation.slice(1)})\n\n`;
-    result += `**General:** ${meanings.general}\n\n`;
-    result += `**Love & Relationships:** ${meanings.love}\n\n`;
-    result += `**Career & Finance:** ${meanings.career}\n\n`;
-    result += `**Health:** ${meanings.health}\n\n`;
-    result += `**Spirituality:** ${meanings.spirituality}\n\n`;
+    result += pick(
+      language,
+      `## Meanings (${orientationTitle})\n\n`,
+      `## 含义(${orientationTitle})\n\n`,
+    );
+    result += `${pick(language, "**General:**", "**总体:**")} ${meanings.general}\n\n`;
+    result += `${pick(language, "**Love & Relationships:**", "**爱情与关系:**")} ${meanings.love}\n\n`;
+    result += `${pick(language, "**Career & Finance:**", "**事业与财务:**")} ${meanings.career}\n\n`;
+    result += `${pick(language, "**Health:**", "**健康:**")} ${meanings.health}\n\n`;
+    result += `${pick(language, "**Spirituality:**", "**灵性:**")} ${meanings.spirituality}\n\n`;
 
-    result += `## Symbolism\n\n`;
-    result += card.symbolism.map((symbol) => `• ${symbol}`).join("\n") + "\n\n";
+    result += pick(language, `## Symbolism\n\n`, `## 象征意义\n\n`);
+    result +=
+      localizedSymbolism(card, language)
+        .map((symbol) => `• ${symbol}`)
+        .join("\n") + "\n\n";
 
     if (card.element) {
-      result += `**Element:** ${card.element.charAt(0).toUpperCase() + card.element.slice(1)}\n`;
+      const elementZh: Record<string, string> = {
+        fire: "火",
+        water: "水",
+        air: "风",
+        earth: "土",
+      };
+      result += pick(
+        language,
+        `**Element:** ${card.element.charAt(0).toUpperCase() + card.element.slice(1)}\n`,
+        `**元素:** ${elementZh[card.element]}\n`,
+      );
     }
     if (card.astrology) {
-      result += `**Astrology:** ${card.astrology}\n`;
+      result += `${pick(language, "**Astrology:**", "**占星:**")} ${card.astrology}\n`;
     }
     if (card.numerology) {
-      result += `**Numerology:** ${card.numerology}\n`;
+      result += `${pick(language, "**Numerology:**", "**数字学:**")} ${card.numerology}\n`;
     }
 
     return result;

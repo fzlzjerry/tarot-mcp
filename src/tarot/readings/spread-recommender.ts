@@ -21,6 +21,8 @@ export type RecommendationCategory = (typeof RECOMMENDATION_CATEGORIES)[number];
 export interface SpreadRecommendation {
   spread: SpreadType;
   reason: string;
+  /** Chinese reason; falls back to `reason` when absent. */
+  reasonZh?: string;
   confidence: number;
 }
 
@@ -46,16 +48,19 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "venus_love",
         reason: "Perfect for love and relationship questions",
+        reasonZh: "最适合爱情与关系类问题",
         confidence: 0.9,
       },
       {
         spread: "relationship_cross",
         reason: "Comprehensive relationship analysis",
+        reasonZh: "全面的关系分析",
         confidence: 0.8,
       },
       {
         spread: "compatibility",
         reason: "Great for understanding relationship dynamics",
+        reasonZh: "适合理解关系中的互动",
         confidence: 0.7,
       },
     ],
@@ -67,6 +72,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "career_path",
         reason: "Specialized for career guidance",
+        reasonZh: "专为事业指引设计",
         confidence: 0.9,
       },
     ],
@@ -78,11 +84,13 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "spiritual_guidance",
         reason: "Focused on spiritual development",
+        reasonZh: "聚焦灵性发展",
         confidence: 0.9,
       },
       {
         spread: "tree_of_life",
         reason: "Deep spiritual insights",
+        reasonZh: "深层的灵性洞见",
         confidence: 0.8,
       },
     ],
@@ -94,11 +102,13 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "decision_making",
         reason: "Designed for important decisions",
+        reasonZh: "为重要抉择而设计",
         confidence: 0.9,
       },
       {
         spread: "yes_no",
         reason: "Simple yes/no guidance",
+        reasonZh: "简明的是/否指引",
         confidence: 0.7,
       },
     ],
@@ -110,11 +120,13 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "daily_guidance",
         reason: "Perfect for immediate guidance",
+        reasonZh: "最适合即时指引",
         confidence: 0.8,
       },
       {
         spread: "single_card",
         reason: "Quick insight for immediate questions",
+        reasonZh: "为紧迫问题提供快速洞见",
         confidence: 0.7,
       },
     ],
@@ -126,11 +138,13 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "weekly_forecast",
         reason: "Great for weekly planning",
+        reasonZh: "适合一周规划",
         confidence: 0.8,
       },
       {
         spread: "three_card",
         reason: "Good for short-term situations",
+        reasonZh: "适合短期形势",
         confidence: 0.7,
       },
     ],
@@ -142,11 +156,13 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "year_ahead",
         reason: "Comprehensive yearly guidance",
+        reasonZh: "全面的年度指引",
         confidence: 0.9,
       },
       {
         spread: "celtic_cross",
         reason: "In-depth long-term analysis",
+        reasonZh: "深入的长期分析",
         confidence: 0.8,
       },
     ],
@@ -157,6 +173,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "past_life_karma",
         reason: "Explores karmic patterns",
+        reasonZh: "探索业力模式",
         confidence: 0.9,
       },
     ],
@@ -167,11 +184,13 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "new_moon_intentions",
         reason: "Perfect for lunar work",
+        reasonZh: "最适合月相工作",
         confidence: 0.8,
       },
       {
         spread: "full_moon_release",
         reason: "Great for release work",
+        reasonZh: "适合释放与放下",
         confidence: 0.8,
       },
     ],
@@ -182,6 +201,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "elemental_balance",
         reason: "Examines elemental harmony",
+        reasonZh: "检视元素的和谐",
         confidence: 0.8,
       },
     ],
@@ -192,6 +212,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
       {
         spread: "shadow_work",
         reason: "Explores hidden aspects",
+        reasonZh: "探索隐藏的面向",
         confidence: 0.9,
       },
     ],
@@ -202,11 +223,13 @@ const DEFAULT_RECOMMENDATIONS: SpreadRecommendation[] = [
   {
     spread: "three_card",
     reason: "Versatile spread for most questions",
+    reasonZh: "适用于大多数问题的万用牌阵",
     confidence: 0.6,
   },
   {
     spread: "celtic_cross",
     reason: "Comprehensive analysis for complex situations",
+    reasonZh: "复杂局面的全面分析",
     confidence: 0.5,
   },
 ];
