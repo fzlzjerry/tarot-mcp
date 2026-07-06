@@ -282,6 +282,12 @@ export class TarotHttpServer {
       res.json({
         status: "ok",
         timestamp: new Date().toISOString(),
+        uptimeSeconds: Math.round(process.uptime()),
+        readingSessions: this.tarotServer.getSessionCount(),
+        transports: {
+          streamableHttp: this.streamableSessions.size,
+          sse: this.sseSessions.size,
+        },
         endpoints: HTTP_ENDPOINTS,
       });
     });

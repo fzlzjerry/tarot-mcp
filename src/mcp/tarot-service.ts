@@ -154,6 +154,13 @@ export class TarotServer {
   }
 
   /**
+   * Number of live reading sessions (for health reporting).
+   */
+  public getSessionCount(): number {
+    return this.sessionManager.getSessionCount();
+  }
+
+  /**
    * Returns all available tools for the Tarot MCP Server
    */
   public getAvailableTools(): Tool[] {
