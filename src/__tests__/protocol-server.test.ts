@@ -116,6 +116,68 @@ describe("MCP protocol server error contract", () => {
     expect(structured.storedReadings[0].question).toBe("History?");
   });
 
+  it("exposes card and spread catalogs as resources", async () => {
+    const resources = await client.listResources();
+    const uris = resources.resources.map((resource) => resource.uri);
+    expect(uris).toContain("tarot://cards");
+    expect(uris).toContain("tarot://spreads");
+
+    const cards = await client.readResource({ uri: "tarot://cards" });
+    const cardsJson = JSON.parse((cards.contents[0] as { text: string }).text);
+    expect(cardsJson.cards).toHaveLength(78);
+
+    const fool = await client.readResource({
+      uri: `tarot://cards/${encodeURIComponent("The Fool")}`,
+    });
+    const foolJson = JSON.parse((fool.contents[0] as { text: string }).text);
+    expect(foolJson.name).toBe("The Fool");
+    expect(foolJson.meanings.upright.general).toBeTruthy();
+
+    const spread = await client.readResource({
+      uri: "tarot://spreads/celtic_cross",
+    });
+    const spreadJson = JSON.parse((spread.contents[0] as { text: string }).text);
+    expect(spreadJson.positions).toHaveLength(10);
+
+    await expect(
+      client.readResource({ uri: "tarot://cards/not_a_card" }),
+    ).rejects.toThrow();
+  });
+
+  it("exposes reading workflows as prompts", async () => {
+    const prompts = await client.listPrompts();
+    expect(prompts.prompts.map((prompt) => prompt.name)).toEqual(
+      expect.arrayContaining(["perform-reading", "daily-draw"]),
+    );
+
+    const prompt = await client.getPrompt({
+      name: "perform-reading",
+      arguments: { question: "What next?", spreadType: "three_card" },
+    });
+    const text = (prompt.messages[0].content as { text: string }).text;
+    expect(text).toContain('"What next?"');
+    expect(text).toContain('"three_card"');
+    expect(text).toContain("perform_reading");
+  });
+
+  it("annotates read-only and state-mutating tools distinctly", async () => {
+    const tools = await client.listTools();
+    const byName = new Map(tools.tools.map((tool) => [tool.name, tool]));
+
+    expect(byName.get("get_card_info")?.annotations).toMatchObject({
+      readOnlyHint: true,
+      idempotentHint: true,
+    });
+    expect(byName.get("perform_reading")?.annotations).toMatchObject({
+      readOnlyHint: false,
+      idempotentHint: false,
+    });
+    expect(byName.get("get_random_cards")?.annotations).toMatchObject({
+      readOnlyHint: true,
+      idempotentHint: false,
+    });
+  });
+
   it("marks unexpected execution failures with isError", async () => {
     const result = await client.callTool({
       name: "get_random_cards",

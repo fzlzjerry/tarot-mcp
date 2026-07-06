@@ -132,6 +132,20 @@ export class TarotServer {
   }
 
   /**
+   * Full card data (for MCP resources).
+   */
+  public getAllCards() {
+    return this.cardManager.getAllCards();
+  }
+
+  /**
+   * Find a card by id or name (for MCP resources).
+   */
+  public findCard(identifier: string) {
+    return this.cardManager.findCard(identifier);
+  }
+
+  /**
    * Returns all available tools for the Tarot MCP Server
    */
   public getAvailableTools(): Tool[] {

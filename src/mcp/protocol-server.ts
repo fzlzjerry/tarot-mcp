@@ -4,6 +4,8 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { MCP_SERVER_INFO } from "./public-api.js";
+import { registerPrompts } from "./prompts.js";
+import { registerResources } from "./resources.js";
 import { TarotServer } from "./tarot-service.js";
 
 /**
@@ -16,8 +18,13 @@ export function createMcpProtocolServer(tarotServer: TarotServer): Server {
   const server = new Server(MCP_SERVER_INFO, {
     capabilities: {
       tools: {},
+      resources: {},
+      prompts: {},
     },
   });
+
+  registerResources(server, tarotServer);
+  registerPrompts(server);
 
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools: tarotServer.getAvailableTools(),

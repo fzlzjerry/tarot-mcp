@@ -6,6 +6,11 @@ export interface Tool {
   description: string;
   inputSchema: Record<string, unknown>;
   outputSchema?: Record<string, unknown>;
+  annotations?: {
+    readOnlyHint?: boolean;
+    idempotentHint?: boolean;
+    openWorldHint?: boolean;
+  };
 }
 
 /** structuredContent shape for tools that perform a reading. */
@@ -49,6 +54,7 @@ const READING_OUTPUT_SCHEMA: Record<string, unknown> = {
 const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     {
       name: TOOL_NAMES.getCardInfo,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Get detailed information about a specific tarot card from the Rider-Waite deck",
       inputSchema: {
@@ -72,6 +78,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.listAllCards,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description: "List all available tarot cards in the Rider-Waite deck",
       inputSchema: {
         type: "object",
@@ -96,6 +103,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.listAvailableSpreads,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "List all available tarot spreads with their positions and meanings",
       inputSchema: {
@@ -106,6 +114,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.performReading,
+      annotations: { readOnlyHint: false, idempotentHint: false, openWorldHint: false },
       description: "Perform a tarot card reading using a specific spread",
       inputSchema: {
         type: "object",
@@ -132,6 +141,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.searchCards,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Search for tarot cards using various criteria like keywords, suit, element, etc.",
       inputSchema: {
@@ -203,6 +213,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.findSimilarCards,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description: "Find cards with similar meanings to a given card",
       inputSchema: {
         type: "object",
@@ -225,6 +236,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.getDatabaseAnalytics,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Get comprehensive analytics and statistics about the tarot card database",
       inputSchema: {
@@ -241,6 +253,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.getRandomCards,
+      annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
       description: "Get random cards with optional filtering",
       inputSchema: {
         type: "object",
@@ -273,6 +286,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.getDailyCard,
+      annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
       description: "Draw a single card for daily guidance and insight",
       inputSchema: {
         type: "object",
@@ -289,6 +303,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.recommendSpread,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Get a recommendation for the most appropriate tarot spread based on your question or situation",
       inputSchema: {
@@ -339,6 +354,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.getMoonPhaseReading,
+      annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
       description:
         "Perform a tarot reading based on the current moon phase with an appropriate spread",
       inputSchema: {
@@ -361,6 +377,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.getCardMeaningsComparison,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Compare 2-5 tarot cards, including optional card orientation, to understand their relationships and combined message",
       inputSchema: {
@@ -412,6 +429,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.createCustomSpread,
+      annotations: { readOnlyHint: false, idempotentHint: false, openWorldHint: false },
       description:
         "Create a custom tarot spread and draw cards for it. Use this when no existing spread fits your needs and you want to create your own layout with specific positions and meanings.",
       inputSchema: {
@@ -465,6 +483,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     {
       name: TOOL_NAMES.getSessionHistory,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "List the readings performed so far in a session (summaries with spread, question, time, and drawn cards)",
       inputSchema: {
