@@ -359,7 +359,7 @@ export class TarotHttpServer {
             sessionId,
           },
         );
-        this.sendToolResult(res, result);
+        this.sendToolResult(res, result, "reading");
       } catch (error) {
         this.sendHttpError(res, error);
       }
@@ -379,7 +379,7 @@ export class TarotHttpServer {
             sessionId,
           },
         );
-        this.sendToolResult(res, result);
+        this.sendToolResult(res, result, "reading");
       } catch (error) {
         this.sendHttpError(res, error);
       }
@@ -387,14 +387,24 @@ export class TarotHttpServer {
   }
 
   /**
-   * Send a tool result, mapping failed executions to HTTP 400.
+   * Send a tool result, mapping failed executions to HTTP 400. When the
+   * tool produced a structured payload it is included under structuredKey.
    */
-  private sendToolResult(res: Response, result: ToolResult): void {
+  private sendToolResult(
+    res: Response,
+    result: ToolResult,
+    structuredKey = "structured",
+  ): void {
     if (!result.ok) {
       res.status(400).json({ error: result.error });
       return;
     }
-    res.json({ result: result.text });
+    res.json({
+      result: result.text,
+      ...(result.structured !== undefined
+        ? { [structuredKey]: result.structured }
+        : {}),
+    });
   }
 
   private async handleStreamablePost(

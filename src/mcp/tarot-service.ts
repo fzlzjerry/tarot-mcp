@@ -248,13 +248,12 @@ export class TarotServer {
       return this.formatValidationError("sessionId", sessionId.errors);
     }
 
-    return toolOk(
-      this.readingManager.performReading(
-        spreadType.data!,
-        sanitizeString(question.data!),
-        sessionId.data,
-      ),
+    const performed = this.readingManager.performReadingWithDetails(
+      spreadType.data!,
+      sanitizeString(question.data!),
+      sessionId.data,
     );
+    return toolOk(performed.text, performed.reading);
   }
 
   /**
@@ -292,7 +291,18 @@ export class TarotServer {
       response += `- Keywords: ${result.card.keywords.upright.slice(0, 3).join(", ")}\n\n`;
     }
 
-    return toolOk(response);
+    return toolOk(response, {
+      totalMatches: results.length,
+      showing: limitedResults.length,
+      results: limitedResults.map((result) => ({
+        id: result.card.id,
+        name: result.card.name,
+        suit: result.card.suit,
+        element: result.card.element,
+        relevanceScore: result.relevanceScore,
+        matchedFields: result.matchedFields,
+      })),
+    });
   }
 
   /**
@@ -485,18 +495,17 @@ export class TarotServer {
     }
 
     try {
-      return toolOk(
-        this.readingManager.performCustomReading(
-          sanitizeString(customSpread.data!.name),
-          sanitizeString(customSpread.data!.description),
-          customSpread.data!.positions.map((position) => ({
-            name: sanitizeString(position.name),
-            meaning: sanitizeString(position.meaning),
-          })),
-          sanitizeString(readingQuestion.data!),
-          validatedSessionId.data,
-        ),
+      const performed = this.readingManager.performCustomReadingWithDetails(
+        sanitizeString(customSpread.data!.name),
+        sanitizeString(customSpread.data!.description),
+        customSpread.data!.positions.map((position) => ({
+          name: sanitizeString(position.name),
+          meaning: sanitizeString(position.meaning),
+        })),
+        sanitizeString(readingQuestion.data!),
+        validatedSessionId.data,
       );
+      return toolOk(performed.text, performed.reading);
     } catch (error) {
       // Domain errors (unknown session, ...) keep their canonical message.
       if (error instanceof TarotDomainError) {
@@ -522,14 +531,13 @@ export class TarotServer {
 
     // Use the daily_guidance spread for consistency. Daily cards are one-shot
     // (the tool has no sessionId parameter), so skip session tracking.
-    return toolOk(
-      this.readingManager.performReading(
-        "daily_guidance",
-        typeof question === "string" ? question : sanitizeString(question.data!),
-        undefined,
-        { trackSession: false },
-      ),
+    const performed = this.readingManager.performReadingWithDetails(
+      "daily_guidance",
+      typeof question === "string" ? question : sanitizeString(question.data!),
+      undefined,
+      { trackSession: false },
     );
+    return toolOk(performed.text, performed.reading);
   }
 
   /**
@@ -582,7 +590,12 @@ export class TarotServer {
     response += `\n**To perform a reading with your chosen spread, use:**\n`;
     response += `\`perform_reading\` with spreadType: "${recommendations[0].spread}"\n`;
 
-    return toolOk(response);
+    return toolOk(response, {
+      question: questionText,
+      timeframe: timeframeValue,
+      category: categoryValue,
+      recommendations,
+    });
   }
 
   /**
@@ -748,7 +761,18 @@ export class TarotServer {
       response += `**Cards:** ${cards}\n\n`;
     });
 
-    return toolOk(response);
+    return toolOk(response, {
+      sessionId: session.id,
+      createdAt: session.createdAt.toISOString(),
+      readingCount: totalCount,
+      storedReadings: readings.map((reading) => ({
+        readingId: reading.id,
+        spreadType: reading.spreadType,
+        question: reading.question,
+        timestamp: reading.timestamp.toISOString(),
+        cards: reading.cards,
+      })),
+    });
   }
 
   private validateRandomCardParams(args: Record<string, unknown>) {

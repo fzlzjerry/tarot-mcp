@@ -30,6 +30,9 @@ export function createMcpProtocolServer(tarotServer: TarotServer): Server {
       const result = await tarotServer.executeTool(name, args || {});
       return {
         ...(result.ok ? {} : { isError: true }),
+        ...(result.ok && result.structured !== undefined
+          ? { structuredContent: result.structured }
+          : {}),
         content: [
           {
             type: "text",

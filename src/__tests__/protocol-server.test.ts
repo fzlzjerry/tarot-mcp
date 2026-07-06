@@ -63,6 +63,59 @@ describe("MCP protocol server error contract", () => {
     expect(content[0].text).toContain("# Single Card Reading");
   });
 
+  it("returns structuredContent for readings that matches the declared shape", async () => {
+    const result = await client.callTool({
+      name: "perform_reading",
+      arguments: { spreadType: "three_card", question: "Structured?" },
+    });
+
+    expect(result.isError).toBeUndefined();
+    const structured = result.structuredContent as {
+      readingId: string;
+      sessionId?: string;
+      spreadType: string;
+      spreadName: string;
+      question: string;
+      timestamp: string;
+      cards: Array<{ name: string; orientation: string; position?: string }>;
+    };
+
+    expect(structured).toBeDefined();
+    expect(structured.readingId).toMatch(/^reading_/);
+    expect(structured.sessionId).toMatch(/^session_/);
+    expect(structured.spreadType).toBe("three_card");
+    expect(structured.question).toBe("Structured?");
+    expect(new Date(structured.timestamp).getTime()).not.toBeNaN();
+    expect(structured.cards).toHaveLength(3);
+    for (const card of structured.cards) {
+      expect(card.name).toBeTruthy();
+      expect(["upright", "reversed"]).toContain(card.orientation);
+      expect(card.position).toBeTruthy();
+    }
+  });
+
+  it("returns structured session history", async () => {
+    const reading = await client.callTool({
+      name: "perform_reading",
+      arguments: { spreadType: "single_card", question: "History?" },
+    });
+    const { sessionId } = reading.structuredContent as { sessionId: string };
+
+    const history = await client.callTool({
+      name: "get_session_history",
+      arguments: { sessionId },
+    });
+
+    const structured = history.structuredContent as {
+      sessionId: string;
+      readingCount: number;
+      storedReadings: Array<{ question: string }>;
+    };
+    expect(structured.sessionId).toBe(sessionId);
+    expect(structured.readingCount).toBe(1);
+    expect(structured.storedReadings[0].question).toBe("History?");
+  });
+
   it("marks unexpected execution failures with isError", async () => {
     const result = await client.callTool({
       name: "get_random_cards",

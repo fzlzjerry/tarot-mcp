@@ -23,6 +23,27 @@ export interface TarotReadingRandomSource {
   drawOrientation?: () => CardOrientation;
 }
 
+/** Machine-readable payload of a performed reading (MCP structuredContent). */
+export interface ReadingPayload {
+  readingId: string;
+  sessionId?: string;
+  spreadType: string;
+  spreadName: string;
+  question: string;
+  timestamp: string;
+  cards: Array<{
+    name: string;
+    orientation: CardOrientation;
+    position?: string;
+    positionMeaning?: string;
+  }>;
+}
+
+export interface PerformedReading {
+  text: string;
+  reading: ReadingPayload;
+}
+
 /**
  * Orchestrates tarot readings: session resolution, card drawing, and the
  * hand-off to the interpretation and formatting modules.
@@ -51,6 +72,19 @@ export class TarotReadingManager {
     sessionId?: string | null,
     options: { trackSession?: boolean } = {},
   ): string {
+    return this.performReadingWithDetails(spreadType, question, sessionId, options).text;
+  }
+
+  /**
+   * Perform a reading and also return the machine-readable payload used for
+   * MCP structuredContent.
+   */
+  public performReadingWithDetails(
+    spreadType: string,
+    question: string,
+    sessionId?: string | null,
+    options: { trackSession?: boolean } = {},
+  ): PerformedReading {
     if (!isValidSpreadType(spreadType)) {
       throw new InvalidSpreadTypeError(
         `Invalid spread type: ${spreadType}. Use list_available_spreads to see valid options.`,
@@ -75,6 +109,25 @@ export class TarotReadingManager {
     question: string,
     sessionId?: string | null
   ): string {
+    return this.performCustomReadingWithDetails(
+      spreadName,
+      description,
+      positions,
+      question,
+      sessionId,
+    ).text;
+  }
+
+  /**
+   * Custom-reading variant that also returns the structuredContent payload.
+   */
+  public performCustomReadingWithDetails(
+    spreadName: string,
+    description: string,
+    positions: { name: string; meaning: string }[],
+    question: string,
+    sessionId?: string | null
+  ): PerformedReading {
     const session = this.resolveSession(sessionId, true);
 
     const customSpread: TarotSpread = {
@@ -97,7 +150,7 @@ export class TarotReadingManager {
     spreadType: string,
     question: string,
     session: TarotSession | undefined,
-  ): string {
+  ): PerformedReading {
     // Use cryptographically secure random card drawing
     const cards = this.drawCards(spread.cardCount);
 
@@ -126,7 +179,24 @@ export class TarotReadingManager {
     const readingNumber = session
       ? this.sessionManager.getSessionReadingCount(session.id)
       : 0;
-    return formatReading(reading, spread.name, spread.description, readingNumber);
+
+    return {
+      text: formatReading(reading, spread.name, spread.description, readingNumber),
+      reading: {
+        readingId: reading.id,
+        sessionId: session?.id,
+        spreadType,
+        spreadName: spread.name,
+        question,
+        timestamp: reading.timestamp.toISOString(),
+        cards: drawnCards.map((drawnCard) => ({
+          name: drawnCard.card.name,
+          orientation: drawnCard.orientation,
+          position: drawnCard.position,
+          positionMeaning: drawnCard.positionMeaning,
+        })),
+      },
+    };
   }
 
   /**

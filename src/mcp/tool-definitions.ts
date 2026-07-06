@@ -5,7 +5,45 @@ export interface Tool {
   name: string;
   description: string;
   inputSchema: Record<string, unknown>;
+  outputSchema?: Record<string, unknown>;
 }
+
+/** structuredContent shape for tools that perform a reading. */
+const READING_OUTPUT_SCHEMA: Record<string, unknown> = {
+  type: "object",
+  properties: {
+    readingId: { type: "string" },
+    sessionId: {
+      type: "string",
+      description: "Present when the reading is tracked in a session",
+    },
+    spreadType: { type: "string" },
+    spreadName: { type: "string" },
+    question: { type: "string" },
+    timestamp: { type: "string", description: "ISO 8601" },
+    cards: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          name: { type: "string" },
+          orientation: { type: "string" },
+          position: { type: "string" },
+          positionMeaning: { type: "string" },
+        },
+        required: ["name", "orientation"],
+      },
+    },
+  },
+  required: [
+    "readingId",
+    "spreadType",
+    "spreadName",
+    "question",
+    "timestamp",
+    "cards",
+  ],
+};
 
 // Definitions are static; build them once at module load.
 const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
@@ -90,6 +128,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         },
         required: ["spreadType", "question"],
       },
+      outputSchema: READING_OUTPUT_SCHEMA,
     },
     {
       name: TOOL_NAMES.searchCards,
@@ -137,6 +176,29 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
             description: "Maximum number of results to return (default: 10)",
           },
         },
+      },
+      outputSchema: {
+        type: "object",
+        properties: {
+          totalMatches: { type: "integer" },
+          showing: { type: "integer" },
+          results: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                id: { type: "string" },
+                name: { type: "string" },
+                suit: { type: "string" },
+                element: { type: "string" },
+                relevanceScore: { type: "number" },
+                matchedFields: { type: "array", items: { type: "string" } },
+              },
+              required: ["id", "name", "relevanceScore", "matchedFields"],
+            },
+          },
+        },
+        required: ["totalMatches", "showing", "results"],
       },
     },
     {
@@ -223,6 +285,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
           },
         },
       },
+      outputSchema: READING_OUTPUT_SCHEMA,
     },
     {
       name: TOOL_NAMES.recommendSpread,
@@ -251,6 +314,27 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
           },
         },
         required: ["question"],
+      },
+      outputSchema: {
+        type: "object",
+        properties: {
+          question: { type: "string" },
+          timeframe: { type: "string" },
+          category: { type: "string" },
+          recommendations: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                spread: { type: "string" },
+                reason: { type: "string" },
+                confidence: { type: "number" },
+              },
+              required: ["spread", "reason", "confidence"],
+            },
+          },
+        },
+        required: ["question", "timeframe", "category", "recommendations"],
       },
     },
     {
@@ -377,6 +461,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         },
         required: ["spreadName", "description", "positions", "question"],
       },
+      outputSchema: READING_OUTPUT_SCHEMA,
     },
     {
       name: TOOL_NAMES.getSessionHistory,
@@ -393,6 +478,40 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
           },
         },
         required: ["sessionId"],
+      },
+      outputSchema: {
+        type: "object",
+        properties: {
+          sessionId: { type: "string" },
+          createdAt: { type: "string", description: "ISO 8601" },
+          readingCount: { type: "integer" },
+          storedReadings: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                readingId: { type: "string" },
+                spreadType: { type: "string" },
+                question: { type: "string" },
+                timestamp: { type: "string", description: "ISO 8601" },
+                cards: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      name: { type: "string" },
+                      orientation: { type: "string" },
+                      position: { type: "string" },
+                    },
+                    required: ["name", "orientation"],
+                  },
+                },
+              },
+              required: ["readingId", "spreadType", "question", "timestamp", "cards"],
+            },
+          },
+        },
+        required: ["sessionId", "createdAt", "readingCount", "storedReadings"],
       },
     },
 ]);

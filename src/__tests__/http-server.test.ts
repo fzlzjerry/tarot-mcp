@@ -148,6 +148,20 @@ describe("HTTP MCP server", () => {
     expect(badCategory.status).toBe(400);
   });
 
+  it("returns a structured reading object beside the Markdown on /api/reading", async () => {
+    const response = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ spreadType: "single_card", question: "Data?" }),
+    });
+
+    expect(response.status).toBe(200);
+    const json = await response.json();
+    expect(json.result).toContain("# Single Card Reading");
+    expect(json.reading.readingId).toMatch(/^reading_/);
+    expect(json.reading.cards).toHaveLength(1);
+  });
+
   it("returns HTTP 400 for invalid reading parameters", async () => {
     const response = await fetch(`${BASE_URL}/api/reading`, {
       method: "POST",
