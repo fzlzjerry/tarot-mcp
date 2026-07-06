@@ -1,37 +1,24 @@
-import { execFileSync } from "node:child_process";
+import { TarotServer } from "../mcp/tarot-service.js";
+import { TOOL_NAMES } from "../mcp/public-api.js";
 
-function executeNodeScript<T>(script: string): T {
-  const output = execFileSync(
-    process.execPath,
-    ["--import", "tsx", "--eval", script],
-    {
-      cwd: process.cwd(),
-      encoding: "utf8",
-    },
-  );
+let server: TarotServer;
 
-  return JSON.parse(output.trim()) as T;
-}
+beforeAll(async () => {
+  server = await TarotServer.create();
+});
 
 function getAvailableTools(): Array<{
   name: string;
   inputSchema: Record<string, unknown>;
 }> {
-  return executeNodeScript(`
-    const { TarotServer } = await import("./src/mcp/tarot-service.ts");
-    const server = await TarotServer.create();
-    console.log(JSON.stringify(server.getAvailableTools()));
-  `);
+  return server.getAvailableTools();
 }
 
-function executeTool(toolKey: string, args: Record<string, unknown>): string {
-  return executeNodeScript(`
-    const { TarotServer } = await import("./src/mcp/tarot-service.ts");
-    const { TOOL_NAMES } = await import("./src/mcp/public-api.ts");
-    const server = await TarotServer.create();
-    const result = await server.executeTool(TOOL_NAMES[${JSON.stringify(toolKey)}], ${JSON.stringify(args)});
-    console.log(JSON.stringify(result));
-  `);
+async function executeTool(
+  toolKey: keyof typeof TOOL_NAMES,
+  args: Record<string, unknown>,
+): Promise<string> {
+  return server.executeTool(TOOL_NAMES[toolKey], args);
 }
 
 function findSchemaKeywordPaths(
@@ -96,30 +83,30 @@ describe("MCP tool behavior", () => {
     ).toEqual([]);
   });
 
-  it("supports oriented cards in card meanings comparison while preserving legacy cardNames input", () => {
-    const reversedResult = executeTool("getCardMeaningsComparison", {
-        cards: [
-          { name: "The Fool", orientation: "reversed" },
-          { name: "The Magician", orientation: "upright" },
-        ],
-        context: "career planning",
-      });
+  it("supports oriented cards in card meanings comparison while preserving legacy cardNames input", async () => {
+    const reversedResult = await executeTool("getCardMeaningsComparison", {
+      cards: [
+        { name: "The Fool", orientation: "reversed" },
+        { name: "The Magician", orientation: "upright" },
+      ],
+      context: "career planning",
+    });
 
     expect(reversedResult).toContain("The Fool (reversed)");
     expect(reversedResult).toContain("recklessness");
     expect(reversedResult).not.toContain("The Fool (upright)");
 
-    const legacyResult = executeTool("getCardMeaningsComparison", {
-        cardNames: ["The Fool", "The Magician"],
-        context: "career planning",
-      });
+    const legacyResult = await executeTool("getCardMeaningsComparison", {
+      cardNames: ["The Fool", "The Magician"],
+      context: "career planning",
+    });
 
     expect(legacyResult).toContain("The Fool (upright)");
     expect(legacyResult).toContain("The Magician (upright)");
   });
 
-  it("rejects get_random_cards parameters that are not exposed in the MCP schema", () => {
-    const result = executeTool("getRandomCards", {
+  it("rejects get_random_cards parameters that are not exposed in the MCP schema", async () => {
+    const result = await executeTool("getRandomCards", {
       count: 1,
       number: 0,
     });

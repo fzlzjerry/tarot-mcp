@@ -4,100 +4,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { TarotServer } from "./mcp/tarot-service.js";
 import { TarotHttpServer } from "./mcp/http-server.js";
 import { createMcpProtocolServer } from "./mcp/protocol-server.js";
-
-const VALID_TRANSPORTS = ["stdio", "http", "sse"] as const;
-type Transport = (typeof VALID_TRANSPORTS)[number];
-
-function parsePort(value: string, source: string): number {
-  const port = Number(value);
-  if (!Number.isInteger(port) || port < 1 || port > 65535) {
-    console.error(
-      `Invalid ${source} value "${value}": expected an integer between 1 and 65535.`,
-    );
-    process.exit(1);
-  }
-  return port;
-}
-
-/**
- * Parse command line arguments
- */
-function parseArgs(): { transport: Transport; port: number; host: string } {
-  const args = process.argv.slice(2);
-  let transport: Transport = "stdio";
-  let port: number | undefined;
-  let host: string | undefined;
-
-  for (let i = 0; i < args.length; i++) {
-    switch (args[i]) {
-      case "--transport": {
-        const value = args[i + 1];
-        if (!value || !VALID_TRANSPORTS.includes(value as Transport)) {
-          console.error(
-            `Invalid --transport value "${value ?? ""}": expected one of ${VALID_TRANSPORTS.join(", ")}.`,
-          );
-          process.exit(1);
-        }
-        transport = value as Transport;
-        i++;
-        break;
-      }
-      case "--port":
-        port = parsePort(args[i + 1] ?? "", "--port");
-        i++;
-        break;
-      case "--host": {
-        const value = args[i + 1];
-        if (!value) {
-          console.error("Missing --host value.");
-          process.exit(1);
-        }
-        host = value;
-        i++;
-        break;
-      }
-      case "--help":
-      case "-h":
-        console.log(`
-Tarot MCP Server
-
-Usage: node dist/index.js [options]
-
-Options:
-  --transport <type>    Transport type: stdio, http, sse (default: stdio)
-  --port <number>       Port for HTTP/SSE transport (default: $PORT or 3000)
-  --host <address>      Bind address for HTTP/SSE transport (default: $HOST or 0.0.0.0)
-  --help, -h           Show this help message
-
-Examples:
-  node dist/index.js                           # Run with stdio transport
-  node dist/index.js --transport http          # Run HTTP server on port 3000
-  node dist/index.js --transport http --port 8080  # Run HTTP server on port 8080
-  node dist/index.js --transport http --host 127.0.0.1  # Local-only HTTP server
-        `);
-        process.exit(0);
-        break;
-      default:
-        console.error(`Unknown argument "${args[i]}". Use --help for usage.`);
-        process.exit(1);
-    }
-  }
-
-  // The PORT env var only matters when an HTTP listener will actually start
-  // and no explicit --port was given; stdio launches must ignore it.
-  if (port === undefined) {
-    port =
-      transport !== "stdio" && process.env.PORT
-        ? parsePort(process.env.PORT, "PORT")
-        : 3000;
-  }
-
-  if (host === undefined) {
-    host = (transport !== "stdio" && process.env.HOST) || "0.0.0.0";
-  }
-
-  return { transport, port, host };
-}
+import { CliOptions, CliUsageError, HELP_TEXT, parseArgs } from "./mcp/args.js";
 
 let runningHttpServer: TarotHttpServer | undefined;
 
@@ -105,7 +12,23 @@ let runningHttpServer: TarotHttpServer | undefined;
  * Main entry point for the Tarot MCP Server
  */
 async function main() {
-  const { transport, port, host } = parseArgs();
+  let options: CliOptions;
+  try {
+    const parsed = parseArgs(process.argv.slice(2), process.env);
+    if (parsed === "help") {
+      console.log(HELP_TEXT);
+      process.exit(0);
+    }
+    options = parsed;
+  } catch (error) {
+    if (error instanceof CliUsageError) {
+      console.error(error.message);
+      process.exit(1);
+    }
+    throw error;
+  }
+
+  const { transport, port, host } = options;
 
   console.error(`Starting Tarot MCP Server with ${transport} transport...`);
 
