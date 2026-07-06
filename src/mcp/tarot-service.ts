@@ -8,6 +8,13 @@ import {
   getMoonPhaseRecommendations,
 } from "../tarot/readings/lunar-utils.js";
 import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
+import {
+  RECOMMENDATION_CATEGORIES,
+  RECOMMENDATION_TIMEFRAMES,
+  RecommendationCategory,
+  RecommendationTimeframe,
+  recommendSpreads,
+} from "../tarot/readings/spread-recommender.js";
 import { TOOL_NAMES } from "./public-api.js";
 import { getToolDefinitions, Tool } from "./tool-definitions.js";
 import {
@@ -514,10 +521,7 @@ export class TarotServer {
     const timeframe =
       args.timeframe === undefined
         ? "any"
-        : validateEnum(
-            ["immediate", "short_term", "long_term", "any"] as const,
-            "timeframe",
-          )(args.timeframe);
+        : validateEnum(RECOMMENDATION_TIMEFRAMES, "timeframe")(args.timeframe);
     if (typeof timeframe !== "string" && !timeframe.success) {
       return this.formatValidationError("timeframe", timeframe.errors);
     }
@@ -525,17 +529,7 @@ export class TarotServer {
     const category =
       args.category === undefined
         ? "any"
-        : validateEnum(
-            [
-              "love",
-              "career",
-              "spiritual",
-              "general",
-              "decision",
-              "any",
-            ] as const,
-            "category",
-          )(args.category);
+        : validateEnum(RECOMMENDATION_CATEGORIES, "category")(args.category);
     if (typeof category !== "string" && !category.success) {
       return this.formatValidationError("category", category.errors);
     }
@@ -546,214 +540,11 @@ export class TarotServer {
     const categoryValue =
       typeof category === "string" ? category : category.data!;
 
-    // Analyze question keywords to recommend appropriate spread
-    const questionLower = questionText.toLowerCase();
-
-    let recommendations: Array<{
-      spread: string;
-      reason: string;
-      confidence: number;
-    }> = [];
-
-    // Category-based recommendations
-    if (
-      categoryValue === "love" ||
-      questionLower.includes("love") ||
-      questionLower.includes("relationship") ||
-      questionLower.includes("partner")
-    ) {
-      recommendations.push({
-        spread: "venus_love",
-        reason: "Perfect for love and relationship questions",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "relationship_cross",
-        reason: "Comprehensive relationship analysis",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "compatibility",
-        reason: "Great for understanding relationship dynamics",
-        confidence: 0.7,
-      });
-    }
-
-    if (
-      categoryValue === "career" ||
-      questionLower.includes("job") ||
-      questionLower.includes("career") ||
-      questionLower.includes("work")
-    ) {
-      recommendations.push({
-        spread: "career_path",
-        reason: "Specialized for career guidance",
-        confidence: 0.9,
-      });
-    }
-
-    if (
-      categoryValue === "spiritual" ||
-      questionLower.includes("spiritual") ||
-      questionLower.includes("soul") ||
-      questionLower.includes("purpose")
-    ) {
-      recommendations.push({
-        spread: "spiritual_guidance",
-        reason: "Focused on spiritual development",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "tree_of_life",
-        reason: "Deep spiritual insights",
-        confidence: 0.8,
-      });
-    }
-
-    if (
-      categoryValue === "decision" ||
-      questionLower.includes("should i") ||
-      questionLower.includes("decision") ||
-      questionLower.includes("choose")
-    ) {
-      recommendations.push({
-        spread: "decision_making",
-        reason: "Designed for important decisions",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "yes_no",
-        reason: "Simple yes/no guidance",
-        confidence: 0.7,
-      });
-    }
-
-    // Timeframe-based recommendations
-    if (
-      timeframeValue === "immediate" ||
-      questionLower.includes("today") ||
-      questionLower.includes("now")
-    ) {
-      recommendations.push({
-        spread: "daily_guidance",
-        reason: "Perfect for immediate guidance",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "single_card",
-        reason: "Quick insight for immediate questions",
-        confidence: 0.7,
-      });
-    }
-
-    if (
-      timeframeValue === "short_term" ||
-      questionLower.includes("week") ||
-      questionLower.includes("month")
-    ) {
-      recommendations.push({
-        spread: "weekly_forecast",
-        reason: "Great for weekly planning",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "three_card",
-        reason: "Good for short-term situations",
-        confidence: 0.7,
-      });
-    }
-
-    if (
-      timeframeValue === "long_term" ||
-      questionLower.includes("year") ||
-      questionLower.includes("future")
-    ) {
-      recommendations.push({
-        spread: "year_ahead",
-        reason: "Comprehensive yearly guidance",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "celtic_cross",
-        reason: "In-depth long-term analysis",
-        confidence: 0.8,
-      });
-    }
-
-    // Special keyword recommendations
-    if (
-      questionLower.includes("past life") ||
-      questionLower.includes("karma")
-    ) {
-      recommendations.push({
-        spread: "past_life_karma",
-        reason: "Explores karmic patterns",
-        confidence: 0.9,
-      });
-    }
-
-    if (
-      questionLower.includes("moon") ||
-      questionLower.includes("lunar") ||
-      questionLower.includes("cycle")
-    ) {
-      recommendations.push({
-        spread: "new_moon_intentions",
-        reason: "Perfect for lunar work",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "full_moon_release",
-        reason: "Great for release work",
-        confidence: 0.8,
-      });
-    }
-
-    if (
-      questionLower.includes("balance") ||
-      questionLower.includes("element")
-    ) {
-      recommendations.push({
-        spread: "elemental_balance",
-        reason: "Examines elemental harmony",
-        confidence: 0.8,
-      });
-    }
-
-    if (
-      questionLower.includes("shadow") ||
-      questionLower.includes("hidden") ||
-      questionLower.includes("unconscious")
-    ) {
-      recommendations.push({
-        spread: "shadow_work",
-        reason: "Explores hidden aspects",
-        confidence: 0.9,
-      });
-    }
-
-    // Default recommendations if no specific matches
-    if (recommendations.length === 0) {
-      recommendations.push({
-        spread: "three_card",
-        reason: "Versatile spread for most questions",
-        confidence: 0.6,
-      });
-      recommendations.push({
-        spread: "celtic_cross",
-        reason: "Comprehensive analysis for complex situations",
-        confidence: 0.5,
-      });
-    }
-
-    // Sort by confidence and remove duplicates
-    recommendations = recommendations
-      .filter(
-        (rec, index, self) =>
-          self.findIndex((r) => r.spread === rec.spread) === index,
-      )
-      .sort((a, b) => b.confidence - a.confidence)
-      .slice(0, 3);
+    const recommendations = recommendSpreads(
+      questionText,
+      timeframeValue as RecommendationTimeframe,
+      categoryValue as RecommendationCategory,
+    );
 
     let response = `# 🔮 Spread Recommendations for Your Question\n\n`;
     response += `**Your Question:** "${questionText}"\n`;
