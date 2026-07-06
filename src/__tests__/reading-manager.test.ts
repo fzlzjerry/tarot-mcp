@@ -2,6 +2,10 @@ import fs from "node:fs";
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
 import { TarotReadingManager } from "../tarot/readings/reading-manager.js";
 import { TarotSessionManager } from "../tarot/readings/session-manager.js";
+import {
+  InvalidSpreadTypeError,
+  SessionNotFoundError,
+} from "../tarot/shared/errors.js";
 
 describe('TarotReadingManager', () => {
   let cardManager: TarotCardManager;
@@ -47,11 +51,13 @@ describe('TarotReadingManager', () => {
       expect(result).toContain('## Interpretation');
     });
 
-    it('should return error message for invalid spread type', () => {
-      const result = readingManager.performReading('invalid_spread', 'Test question');
-
-      expect(result).toContain('Invalid spread type: invalid_spread');
-      expect(result).toContain('Use list_available_spreads');
+    it('should throw a typed error for invalid spread type', () => {
+      expect(() =>
+        readingManager.performReading('invalid_spread', 'Test question'),
+      ).toThrow(InvalidSpreadTypeError);
+      expect(() =>
+        readingManager.performReading('invalid_spread', 'Test question'),
+      ).toThrow('Invalid spread type: invalid_spread');
     });
 
     it('should include session ID when provided', () => {
@@ -255,13 +261,20 @@ describe('TarotReadingManager', () => {
     });
 
     it('rejects unknown session IDs instead of silently dropping them', () => {
-      const result = readingManager.performReading(
-        'single_card',
-        'Stale session',
-        'session_does_not_exist',
-      );
-
-      expect(result).toContain('Error: Session "session_does_not_exist" not found');
+      expect(() =>
+        readingManager.performReading(
+          'single_card',
+          'Stale session',
+          'session_does_not_exist',
+        ),
+      ).toThrow(SessionNotFoundError);
+      expect(() =>
+        readingManager.performReading(
+          'single_card',
+          'Stale session',
+          'session_does_not_exist',
+        ),
+      ).toThrow('Session "session_does_not_exist" not found');
     });
 
     it('threads sessions through custom readings too', () => {

@@ -18,7 +18,8 @@ async function executeTool(
   toolKey: keyof typeof TOOL_NAMES,
   args: Record<string, unknown>,
 ): Promise<string> {
-  return server.executeTool(TOOL_NAMES[toolKey], args);
+  const result = await server.executeTool(TOOL_NAMES[toolKey], args);
+  return result.ok ? result.text : result.error;
 }
 
 function findSchemaKeywordPaths(

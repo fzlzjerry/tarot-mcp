@@ -23,6 +23,24 @@ import {
   validateSpreadType,
   validateString,
 } from "../tarot/shared/validation.js";
+import { TarotDomainError } from "../tarot/shared/errors.js";
+
+/**
+ * Uniform result of a tool execution. `structured` is reserved for MCP
+ * structuredContent payloads. Error text keeps its historical "Error: ..."
+ * form so transport output stays byte-compatible.
+ */
+export type ToolResult =
+  | { ok: true; text: string; structured?: object }
+  | { ok: false; error: string };
+
+export function toolOk(text: string, structured?: object): ToolResult {
+  return structured === undefined ? { ok: true, text } : { ok: true, text, structured };
+}
+
+export function toolError(error: string): ToolResult {
+  return { ok: false, error };
+}
 
 /**
  * Main class for the Tarot MCP Server functionality.
@@ -75,12 +93,28 @@ export class TarotServer {
   }
 
   /**
-   * Executes a specific tool with the provided arguments
+   * Executes a specific tool with the provided arguments. Typed domain
+   * errors become failed results; unexpected errors propagate so the
+   * transport can report them as execution failures.
    */
   public async executeTool(
     toolName: string,
     args: Record<string, any>,
-  ): Promise<string> {
+  ): Promise<ToolResult> {
+    try {
+      return this.dispatchTool(toolName, args);
+    } catch (error) {
+      if (error instanceof TarotDomainError) {
+        return toolError(`Error: ${error.message}`);
+      }
+      throw error;
+    }
+  }
+
+  private dispatchTool(
+    toolName: string,
+    args: Record<string, any>,
+  ): ToolResult {
     switch (toolName) {
       case TOOL_NAMES.getCardInfo:
         return this.handleGetCardInfo(args);
@@ -89,7 +123,7 @@ export class TarotServer {
         return this.handleListAllCards(args);
 
       case TOOL_NAMES.listAvailableSpreads:
-        return this.readingManager.listAvailableSpreads();
+        return toolOk(this.readingManager.listAvailableSpreads());
 
       case TOOL_NAMES.performReading:
         return this.handlePerformReading(args);
@@ -129,7 +163,7 @@ export class TarotServer {
   /**
    * Handle card info requests
    */
-  private handleGetCardInfo(args: Record<string, any>): string {
+  private handleGetCardInfo(args: Record<string, any>): ToolResult {
     const cardName = validateCardName(args.cardName);
     if (!cardName.success) {
       return this.formatValidationError("cardName", cardName.errors);
@@ -143,31 +177,42 @@ export class TarotServer {
       return this.formatValidationError("orientation", orientation.errors);
     }
 
-    return this.cardManager.getCardInfo(
-      sanitizeString(cardName.data!),
-      typeof orientation === "string" ? orientation : orientation.data!,
+    const name = sanitizeString(cardName.data!);
+    if (!this.cardManager.findCard(name)) {
+      return toolError(
+        `Error: Card "${name}" not found. Use the list_all_cards tool to see available cards.`,
+      );
+    }
+
+    return toolOk(
+      this.cardManager.getCardInfo(
+        name,
+        typeof orientation === "string" ? orientation : orientation.data!,
+      ),
     );
   }
 
   /**
    * Handle card listing requests
    */
-  private handleListAllCards(args: Record<string, any>): string {
+  private handleListAllCards(args: Record<string, any>): ToolResult {
     const category =
       args.category === undefined ? "all" : validateCardCategory(args.category);
     if (typeof category !== "string" && !category.success) {
       return this.formatValidationError("category", category.errors);
     }
 
-    return this.cardManager.listAllCards(
-      typeof category === "string" ? category : category.data!,
+    return toolOk(
+      this.cardManager.listAllCards(
+        typeof category === "string" ? category : category.data!,
+      ),
     );
   }
 
   /**
    * Handle reading requests
    */
-  private handlePerformReading(args: Record<string, any>): string {
+  private handlePerformReading(args: Record<string, any>): ToolResult {
     const spreadType = validateSpreadType(args.spreadType);
     if (!spreadType.success) {
       return this.formatValidationError("spreadType", spreadType.errors);
@@ -183,17 +228,19 @@ export class TarotServer {
       return this.formatValidationError("sessionId", sessionId.errors);
     }
 
-    return this.readingManager.performReading(
-      spreadType.data!,
-      sanitizeString(question.data!),
-      sessionId.data,
+    return toolOk(
+      this.readingManager.performReading(
+        spreadType.data!,
+        sanitizeString(question.data!),
+        sessionId.data,
+      ),
     );
   }
 
   /**
    * Handle card search requests
    */
-  private handleSearchCards(args: Record<string, any>): string {
+  private handleSearchCards(args: Record<string, any>): ToolResult {
     const validated = validateSearchParams(args);
     if (!validated.success) {
       return this.formatValidationError("search", validated.errors);
@@ -209,7 +256,7 @@ export class TarotServer {
     const limitedResults = results.slice(0, limit);
 
     if (limitedResults.length === 0) {
-      return "No cards found matching your search criteria.";
+      return toolOk("No cards found matching your search criteria.");
     }
 
     let response = `Found ${results.length} cards matching your search`;
@@ -225,13 +272,13 @@ export class TarotServer {
       response += `- Keywords: ${result.card.keywords.upright.slice(0, 3).join(", ")}\n\n`;
     }
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle finding similar cards
    */
-  private handleFindSimilarCards(args: Record<string, any>): string {
+  private handleFindSimilarCards(args: Record<string, any>): ToolResult {
     const cardName = validateCardName(args.cardName);
     if (!cardName.success) {
       return this.formatValidationError("cardName", cardName.errors);
@@ -247,7 +294,9 @@ export class TarotServer {
     const targetCard = this.cardManager.findCard(cardName.data!);
 
     if (!targetCard) {
-      return `Error: Card "${cardName.data}" not found. Please check the card name and try again.`;
+      return toolError(
+        `Error: Card "${cardName.data}" not found. Please check the card name and try again.`,
+      );
     }
 
     const similarCards = this.cardSearch.findSimilarCards(
@@ -256,7 +305,7 @@ export class TarotServer {
     );
 
     if (similarCards.length === 0) {
-      return `No similar cards found for "${cardName.data}".`;
+      return toolOk(`No similar cards found for "${cardName.data}".`);
     }
 
     let response = `Cards similar to **${targetCard.name}**:\n\n`;
@@ -268,13 +317,13 @@ export class TarotServer {
       response += `- General meaning: ${card.meanings.upright.general.substring(0, 100)}...\n\n`;
     }
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle database analytics requests
    */
-  private handleGetAnalytics(args: Record<string, any>): string {
+  private handleGetAnalytics(args: Record<string, any>): ToolResult {
     const includeRecommendations = args.includeRecommendations !== false;
     const analytics = this.cardAnalytics.generateReport();
 
@@ -336,13 +385,13 @@ export class TarotServer {
       response += "\n";
     }
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle random card requests
    */
-  private handleGetRandomCards(args: Record<string, any>): string {
+  private handleGetRandomCards(args: Record<string, any>): ToolResult {
     const randomParams = this.validateRandomCardParams(args);
     if (!randomParams.success) {
       return this.formatValidationError("filters", randomParams.errors);
@@ -372,7 +421,7 @@ export class TarotServer {
     const randomCards = this.cardSearch.getRandomCards(requestedCount, options);
 
     if (randomCards.length === 0) {
-      return "No cards found matching your criteria.";
+      return toolOk("No cards found matching your criteria.");
     }
 
     let response =
@@ -387,13 +436,13 @@ export class TarotServer {
       response += `- General meaning: ${card.meanings.upright.general}\n\n`;
     }
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle custom spread creation and reading
    */
-  private handleCreateCustomSpread(args: Record<string, any>): string {
+  private handleCreateCustomSpread(args: Record<string, any>): ToolResult {
     const { spreadName, description, positions, question, sessionId } = args;
 
     const customSpread = validateCustomSpreadParams({
@@ -416,25 +465,33 @@ export class TarotServer {
     }
 
     try {
-      return this.readingManager.performCustomReading(
-        sanitizeString(customSpread.data!.name),
-        sanitizeString(customSpread.data!.description),
-        customSpread.data!.positions.map((position) => ({
-          name: sanitizeString(position.name),
-          meaning: sanitizeString(position.meaning),
-        })),
-        sanitizeString(readingQuestion.data!),
-        validatedSessionId.data,
+      return toolOk(
+        this.readingManager.performCustomReading(
+          sanitizeString(customSpread.data!.name),
+          sanitizeString(customSpread.data!.description),
+          customSpread.data!.positions.map((position) => ({
+            name: sanitizeString(position.name),
+            meaning: sanitizeString(position.meaning),
+          })),
+          sanitizeString(readingQuestion.data!),
+          validatedSessionId.data,
+        ),
       );
     } catch (error) {
-      return `Error creating custom spread: ${error instanceof Error ? error.message : String(error)}`;
+      // Domain errors (unknown session, ...) keep their canonical message.
+      if (error instanceof TarotDomainError) {
+        throw error;
+      }
+      return toolError(
+        `Error creating custom spread: ${error instanceof Error ? error.message : String(error)}`,
+      );
     }
   }
 
   /**
    * Handle daily card requests
    */
-  private handleGetDailyCard(args: Record<string, any>): string {
+  private handleGetDailyCard(args: Record<string, any>): ToolResult {
     const question =
       args.question === undefined
         ? "What do I need to know for today?"
@@ -445,18 +502,20 @@ export class TarotServer {
 
     // Use the daily_guidance spread for consistency. Daily cards are one-shot
     // (the tool has no sessionId parameter), so skip session tracking.
-    return this.readingManager.performReading(
-      "daily_guidance",
-      typeof question === "string" ? question : sanitizeString(question.data!),
-      undefined,
-      { trackSession: false },
+    return toolOk(
+      this.readingManager.performReading(
+        "daily_guidance",
+        typeof question === "string" ? question : sanitizeString(question.data!),
+        undefined,
+        { trackSession: false },
+      ),
     );
   }
 
   /**
    * Handle spread recommendation requests
    */
-  private handleRecommendSpread(args: Record<string, any>): string {
+  private handleRecommendSpread(args: Record<string, any>): ToolResult {
     const question = validateString(args.question);
     if (!question.success) {
       return this.formatValidationError("question", question.errors);
@@ -719,13 +778,13 @@ export class TarotServer {
     response += `\n**To perform a reading with your chosen spread, use:**\n`;
     response += `\`perform_reading\` with spreadType: "${recommendations[0].spread}"\n`;
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle moon phase reading requests
    */
-  private handleGetMoonPhaseReading(args: Record<string, any>): string {
+  private handleGetMoonPhaseReading(args: Record<string, any>): ToolResult {
     const question = validateString(args.question);
     if (!question.success) {
       return this.formatValidationError("question", question.errors);
@@ -736,7 +795,7 @@ export class TarotServer {
         ? undefined
         : this.parseIsoDate(args.customDate);
     if (customDate === null) {
-      return "Error: customDate must be a valid date in YYYY-MM-DD format.";
+      return toolError("Error: customDate must be a valid date in YYYY-MM-DD format.");
     }
 
     // Calculate moon phase using proper lunar utilities
@@ -758,13 +817,15 @@ export class TarotServer {
       { trackSession: false },
     );
 
-    return `${moonGuidance}\n\n---\n\n# 🔮 Your Moon Phase Reading\n\n${reading}`;
+    return toolOk(
+      `${moonGuidance}\n\n---\n\n# 🔮 Your Moon Phase Reading\n\n${reading}`,
+    );
   }
 
   /**
    * Handle card meanings comparison requests
    */
-  private handleGetCardMeaningsComparison(args: Record<string, any>): string {
+  private handleGetCardMeaningsComparison(args: Record<string, any>): ToolResult {
     const context =
       args.context === undefined
         ? "general interpretation"
@@ -798,7 +859,9 @@ export class TarotServer {
     // Check if all cards were found
     const notFound = cards.filter((c) => !c.found);
     if (notFound.length > 0) {
-      return `Error: Could not find the following cards: ${notFound.map((c) => c.name).join(", ")}`;
+      return toolError(
+        `Error: Could not find the following cards: ${notFound.map((c) => c.name).join(", ")}`,
+      );
     }
 
     // Display individual meanings
@@ -830,7 +893,7 @@ export class TarotServer {
     response += `Consider how the themes and energies of these cards complement or challenge each other in your specific situation.\n\n`;
     response += `**Suggestion:** Meditate on how these cards relate to your question and trust your intuition about their combined message.`;
 
-    return response;
+    return toolOk(response);
   }
 
   private validateRandomCardParams(args: Record<string, any>) {
@@ -916,8 +979,8 @@ export class TarotServer {
     };
   }
 
-  private formatValidationError(field: string, errors: string[]): string {
-    return `Error: Invalid ${field}: ${errors.join("; ")}`;
+  private formatValidationError(field: string, errors: string[]): ToolResult {
+    return toolError(`Error: Invalid ${field}: ${errors.join("; ")}`);
   }
 
   private parseIsoDate(value: unknown): Date | null {

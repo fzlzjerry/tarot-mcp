@@ -9,7 +9,7 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { HTTP_ENDPOINTS, MCP_SERVER_INFO, TOOL_NAMES } from "./public-api.js";
 import { createMcpProtocolServer } from "./protocol-server.js";
-import { TarotServer } from "./tarot-service.js";
+import { TarotServer, ToolResult } from "./tarot-service.js";
 
 interface McpTransportSession<TTransport> {
   server: Server;
@@ -369,15 +369,14 @@ export class TarotHttpServer {
   }
 
   /**
-   * Send a tool result, mapping handler-level validation failures
-   * ("Error: ..." strings) to HTTP 400 instead of a 200 success.
+   * Send a tool result, mapping failed executions to HTTP 400.
    */
-  private sendToolResult(res: Response, result: string): void {
-    if (result.startsWith("Error")) {
-      res.status(400).json({ error: result });
+  private sendToolResult(res: Response, result: ToolResult): void {
+    if (!result.ok) {
+      res.status(400).json({ error: result.error });
       return;
     }
-    res.json({ result });
+    res.json({ result: result.text });
   }
 
   private async handleStreamablePost(

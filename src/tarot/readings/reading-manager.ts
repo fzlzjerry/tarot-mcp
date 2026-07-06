@@ -4,6 +4,10 @@ import { TarotReading, DrawnCard, CardOrientation, TarotCard } from "../shared/t
 import { getAllSpreads, getSpread, isValidSpreadType } from "./spreads.js";
 import { generateId, getSecureRandomInt } from "../shared/utils.js";
 import { sanitizeString } from "../shared/validation.js";
+import {
+  InvalidSpreadTypeError,
+  SessionNotFoundError,
+} from "../shared/errors.js";
 
 export interface TarotReadingRandomSource {
   drawCards?: (count: number) => TarotCard[];
@@ -59,13 +63,12 @@ export class TarotReadingManager {
     options: { trackSession?: boolean } = {},
   ): string {
     if (!isValidSpreadType(spreadType)) {
-      return `Error: Invalid spread type: ${spreadType}. Use list_available_spreads to see valid options.`;
+      throw new InvalidSpreadTypeError(
+        `Invalid spread type: ${spreadType}. Use list_available_spreads to see valid options.`,
+      );
     }
 
     const session = this.resolveSession(sessionId, options.trackSession ?? true);
-    if (typeof session === "string") {
-      return session;
-    }
 
     const spread = getSpread(spreadType)!;
 
@@ -99,11 +102,11 @@ export class TarotReadingManager {
   }
 
   /**
-   * Resolve an existing session or start a new one. Returns an error string
-   * (suitable for direct return to the client) when an unknown session ID is
-   * supplied, so stale IDs fail loudly instead of being silently dropped.
-   * Returns undefined when session tracking is disabled (one-shot tools such
-   * as the daily card, which cannot continue a session anyway).
+   * Resolve an existing session or start a new one. Throws
+   * SessionNotFoundError when an unknown session ID is supplied, so stale
+   * IDs fail loudly instead of being silently dropped. Returns undefined
+   * when session tracking is disabled (one-shot tools such as the daily
+   * card, which cannot continue a session anyway).
    */
   private resolveSession(sessionId: string | null | undefined, trackSession: boolean) {
     if (sessionId == null) {
@@ -114,7 +117,9 @@ export class TarotReadingManager {
     if (!session) {
       // Echo at most a short, sanitized form of the client-supplied ID.
       const safeId = sanitizeString(sessionId).slice(0, 64);
-      return `Error: Session "${safeId}" not found. Sessions expire 24 hours after their last activity. Omit sessionId to start a new session.`;
+      throw new SessionNotFoundError(
+        `Session "${safeId}" not found. Sessions expire 24 hours after their last activity. Omit sessionId to start a new session.`,
+      );
     }
     return session;
   }
@@ -154,9 +159,6 @@ export class TarotReadingManager {
     sessionId?: string | null
   ): string {
     const session = this.resolveSession(sessionId, true);
-    if (typeof session === "string") {
-      return session;
-    }
 
     // Create a custom spread object
     const customSpread = {
