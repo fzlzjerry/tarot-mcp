@@ -1,6 +1,6 @@
 import { TarotCardManager } from "../cards/card-manager.js";
 import { TarotSessionManager } from "./session-manager.js";
-import { TarotReading, DrawnCard, CardOrientation, TarotCard } from "../shared/types.js";
+import { TarotReading, DrawnCard, CardOrientation, TarotCard, SpreadType } from "../shared/types.js";
 import { getAllSpreads, getSpread, isValidSpreadType } from "./spreads.js";
 import { generateId, getSecureRandomInt } from "../shared/utils.js";
 import { sanitizeString } from "../shared/validation.js";
@@ -42,6 +42,29 @@ export class TarotReadingManager {
   private cardManager: TarotCardManager;
   private sessionManager: TarotSessionManager;
   private randomSource: TarotReadingRandomSource;
+
+  /**
+   * Spread-specific analyzers keyed by the stable spread type id (never the
+   * display name, which is presentation and can collide with custom spread
+   * names). Types without an entry fall back to the generic analysis.
+   */
+  private readonly spreadAnalyzers: Partial<
+    Record<SpreadType, (drawnCards: DrawnCard[]) => string>
+  > = {
+    three_card: (cards) => this.generateThreeCardAnalysis(cards),
+    celtic_cross: (cards) => this.generateCelticCrossAnalysis(cards),
+    relationship_cross: (cards) => this.generateRelationshipAnalysis(cards),
+    career_path: (cards) => this.generateCareerAnalysis(cards),
+    spiritual_guidance: (cards) => this.generateSpiritualAnalysis(cards),
+    year_ahead: (cards) => this.generateYearAheadAnalysis(cards),
+    chakra_alignment: (cards) => this.generateChakraAnalysis(cards),
+    venus_love: (cards) => this.generateVenusLoveAnalysis(cards),
+    tree_of_life: (cards) => this.generateTreeOfLifeAnalysis(cards),
+    astrological_houses: (cards) => this.generateAstrologicalAnalysis(cards),
+    mandala: (cards) => this.generateMandalaAnalysis(cards),
+    pentagram: (cards) => this.generatePentagramAnalysis(cards),
+    mirror_of_truth: (cards) => this.generateMirrorOfTruthAnalysis(cards),
+  };
 
   constructor(
     cardManager: TarotCardManager,
@@ -89,7 +112,7 @@ export class TarotReadingManager {
       spreadType,
       question,
       cards: drawnCards,
-      interpretation: this.generateInterpretation(drawnCards, question, spread.name),
+      interpretation: this.generateInterpretation(drawnCards, question, spreadType, spread.name),
       timestamp: new Date(),
       sessionId: session?.id
     };
@@ -179,13 +202,15 @@ export class TarotReadingManager {
       positionMeaning: customSpread.positions[index].meaning
     }));
 
-    // Create the reading
+    // Create the reading. The custom_* type id never matches the analyzer
+    // registry, so custom spreads always use the generic analysis.
+    const customType = `custom_${spreadName.toLowerCase().replace(/\s+/g, '_')}`;
     const reading: TarotReading = {
       id: generateId("reading"),
-      spreadType: `custom_${spreadName.toLowerCase().replace(/\s+/g, '_')}`,
+      spreadType: customType,
       question,
       cards: drawnCards,
-      interpretation: this.generateInterpretation(drawnCards, question, customSpread.name),
+      interpretation: this.generateInterpretation(drawnCards, question, customType, customSpread.name),
       timestamp: new Date(),
       sessionId: session!.id
     };
@@ -198,7 +223,12 @@ export class TarotReadingManager {
   /**
    * Generate interpretation for a reading
    */
-  private generateInterpretation(drawnCards: DrawnCard[], question: string, spreadName: string): string {
+  private generateInterpretation(
+    drawnCards: DrawnCard[],
+    question: string,
+    spreadType: string,
+    spreadName: string,
+  ): string {
     let interpretation = `This ${spreadName} reading addresses your question: "${question}"\n\n`;
 
     // Individual card interpretations with context
@@ -220,10 +250,9 @@ export class TarotReadingManager {
     });
 
     // Add spread-specific analysis. An analyzer returns "" when the card
-    // count doesn't match its layout (e.g. a custom spread whose name happens
-    // to contain a keyword like "love"); fall back to the generic analysis
+    // count doesn't match its layout; fall back to the generic analysis
     // instead of silently dropping all cross-card analysis.
-    const spreadAnalysis = this.selectSpreadAnalysis(drawnCards, spreadName);
+    const spreadAnalysis = this.selectSpreadAnalysis(drawnCards, spreadType);
     if (spreadAnalysis) {
       interpretation += spreadAnalysis;
     } else if (drawnCards.length > 1) {
@@ -237,39 +266,14 @@ export class TarotReadingManager {
   }
 
   /**
-   * Pick the spread-specific analyzer matching the spread's display name.
-   * Returns "" when no analyzer matches or the card count doesn't fit.
+   * Pick the spread-specific analyzer registered for the spread type id.
+   * Returns "" when no analyzer is registered or the card count doesn't fit.
    */
-  private selectSpreadAnalysis(drawnCards: DrawnCard[], spreadName: string): string {
-    const name = spreadName.toLowerCase();
-    if (name.includes("celtic cross")) {
-      return this.generateCelticCrossAnalysis(drawnCards);
-    } else if (name.includes("three card")) {
-      return this.generateThreeCardAnalysis(drawnCards);
-    } else if (name.includes("relationship")) {
-      return this.generateRelationshipAnalysis(drawnCards);
-    } else if (name.includes("career")) {
-      return this.generateCareerAnalysis(drawnCards);
-    } else if (name.includes("spiritual")) {
-      return this.generateSpiritualAnalysis(drawnCards);
-    } else if (name.includes("chakra")) {
-      return this.generateChakraAnalysis(drawnCards);
-    } else if (name.includes("year ahead")) {
-      return this.generateYearAheadAnalysis(drawnCards);
-    } else if (name.includes("venus") || name.includes("love")) {
-      return this.generateVenusLoveAnalysis(drawnCards);
-    } else if (name.includes("tree of life")) {
-      return this.generateTreeOfLifeAnalysis(drawnCards);
-    } else if (name.includes("astrological")) {
-      return this.generateAstrologicalAnalysis(drawnCards);
-    } else if (name.includes("mandala")) {
-      return this.generateMandalaAnalysis(drawnCards);
-    } else if (name.includes("pentagram")) {
-      return this.generatePentagramAnalysis(drawnCards);
-    } else if (name.includes("mirror of truth")) {
-      return this.generateMirrorOfTruthAnalysis(drawnCards);
-    }
-    return "";
+  private selectSpreadAnalysis(drawnCards: DrawnCard[], spreadType: string): string {
+    const analyzer = isValidSpreadType(spreadType)
+      ? this.spreadAnalyzers[spreadType]
+      : undefined;
+    return analyzer ? analyzer(drawnCards) : "";
   }
 
   /**
