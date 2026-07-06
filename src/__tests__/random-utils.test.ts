@@ -1,15 +1,15 @@
-import { jest } from "@jest/globals";
+import { vi } from "vitest";
 import { webcrypto } from "node:crypto";
 import { getSecureRandomInt } from "../tarot/shared/utils.js";
 
 describe("secure random utilities", () => {
   afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   it("rejects out-of-range uint32 values to avoid modulo bias", () => {
     const values = [0xffffffff, 4];
-    const getRandomValues = jest
+    const getRandomValues = vi
       .spyOn(webcrypto, "getRandomValues")
       .mockImplementation(((array: Uint32Array) => {
         const value = values.shift();
