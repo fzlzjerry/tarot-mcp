@@ -33,6 +33,10 @@ COPY --from=builder /app/dist ./dist
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S tarot -u 1001
 
+# Writable session-store mount point (see SESSION_STORE_PATH); pre-created
+# and chowned so a named volume inherits the non-root ownership.
+RUN mkdir -p /data && chown tarot:nodejs /data
+
 # Change ownership of the app directory
 RUN chown -R tarot:nodejs /app
 USER tarot

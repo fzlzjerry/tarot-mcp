@@ -227,7 +227,7 @@ export class TarotReadingManager {
       // Echo at most a short, sanitized form of the client-supplied ID.
       const safeId = sanitizeString(sessionId).slice(0, 64);
       throw new SessionNotFoundError(
-        `Session "${safeId}" not found. Sessions expire 24 hours after their last activity. Omit sessionId to start a new session.`,
+        `Session "${safeId}" not found. It may have expired (24 hours idle), been evicted under load, or predate a server restart. Omit sessionId to start a new session.`,
       );
     }
     return session;

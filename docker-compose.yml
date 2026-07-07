@@ -5,10 +5,14 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+      # Persist reading sessions across restarts/redeploys.
+      - SESSION_STORE_PATH=/data/sessions.json
       # Public deployments should set these (see README):
       # - MCP_AUTH_TOKEN=<random secret>       # require Bearer auth
       # - ALLOWED_ORIGINS=https://your.app     # browser origins beyond localhost
       # - ALLOWED_HOSTS=tarot.example.com      # reject other Host headers
+    volumes:
+      - tarot-sessions:/data
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
@@ -16,3 +20,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+
+volumes:
+  tarot-sessions:

@@ -29,7 +29,10 @@ export function formatReading(
         ? pick(
             language,
             ` (reading #${readingNumber} in this session)`,
-            `（本会话第 ${readingNumber} 次解读）`,
+            // Leading space is load-bearing: clients extract the sessionId
+            // as the whitespace-delimited token after the label, so the
+            // marker must never be glued onto the id.
+            ` （本会话第 ${readingNumber} 次解读）`,
           )
         : "";
     result += pick(

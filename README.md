@@ -304,6 +304,7 @@ Options:
 | `ALLOWED_HOSTS` | When set, requests must carry one of these Host headers |
 | `RATE_LIMIT_MAX` / `RATE_LIMIT_WINDOW_MS` | Rate limit per IP (default 120 requests / 60s) |
 | `MCP_MAX_TRANSPORT_SESSIONS` | Cap on concurrent transport sessions per transport (default 100) |
+| `SESSION_STORE_PATH` | When set, reading sessions persist to this JSON file and survive restarts/redeploys (24h idle expiry still applies). Docker Compose enables it by default (`/data/sessions.json` on a named volume); without it sessions are memory-only and a restart invalidates existing sessionIds. |
 | `LOG_LEVEL` / `LOG_FORMAT` | `debug|info|warn|error` (default info); `json` for JSON-lines logs. Logs always go to stderr. |
 
 

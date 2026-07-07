@@ -133,6 +133,36 @@ describe("MCP tool behavior", () => {
     expect(missing).toContain('Error: Session "session_nope" not found');
   });
 
+  it("keeps the zh sessionId whitespace-delimited across consecutive readings", async () => {
+    // Regression: the zh reading-number marker used to be glued directly
+    // onto the sessionId (`session_X（本会话第 2 次解读）`), so clients that
+    // extract the id as the token after the label captured a corrupted id
+    // and their next call failed with SessionNotFoundError.
+    const first = await executeTool("performReading", {
+      spreadType: "single_card",
+      question: "第一问？",
+      language: "zh",
+    });
+    const firstId = first.match(/\*\*会话 ID：\*\* (\S+)/)![1];
+
+    const second = await executeTool("performReading", {
+      spreadType: "single_card",
+      question: "第二问？",
+      sessionId: firstId,
+      language: "zh",
+    });
+    // Re-extract from the reading that carries the 本会话第 N 次解读 marker.
+    const secondId = second.match(/\*\*会话 ID：\*\* (\S+)/)![1];
+    expect(secondId).toBe(firstId);
+    expect(second).toContain("（本会话第 2 次解读）");
+
+    const history = await executeTool("getSessionHistory", {
+      sessionId: secondId,
+    });
+    expect(history).not.toContain("not found");
+    expect(history).toContain("2");
+  });
+
   it("keeps natural-language characters like < and > in questions", async () => {
     const result = await executeTool("performReading", {
       spreadType: "single_card",

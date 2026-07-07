@@ -18,6 +18,8 @@ interface McpTransportSession<TTransport> {
   lastActivity: number;
   /** In-flight request/stream count; sessions with active work are not swept. */
   activeRequests: number;
+  /** Long-lived SSE response stream, when the transport holds one open. */
+  stream?: Response;
 }
 
 const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
@@ -173,18 +175,36 @@ export class TarotHttpServer {
    * Reap transport sessions whose clients vanished without cleanly closing;
    * otherwise the session maps grow without bound. Applies to Streamable
    * HTTP (no DELETE received) and legacy SSE (no 'close' event fired).
+   *
+   * A session holding a live SSE stream is NOT idle even when it carries no
+   * POST traffic: it gets a keepalive comment and a fresh timestamp instead
+   * of being reaped, so only genuinely dead (zombie) connections are closed.
    */
   private sweepIdleSessions(): void {
     const cutoff = Date.now() - TarotHttpServer.SESSION_IDLE_TIMEOUT_MS;
     const maps = [this.streamableSessions, this.sseSessions] as const;
     for (const sessions of maps) {
       for (const [sessionId, session] of sessions.entries()) {
-        if (session.activeRequests === 0 && session.lastActivity < cutoff) {
-          sessions.delete(sessionId);
-          void session.server.close().catch((error) => {
-            logger.error("session_close_failed", { error: String(error) });
-          });
+        if (session.activeRequests > 0 || session.lastActivity >= cutoff) {
+          continue;
         }
+        if (
+          session.stream &&
+          !session.stream.writableEnded &&
+          !session.stream.destroyed
+        ) {
+          try {
+            session.stream.write(": keepalive\n\n");
+            session.lastActivity = Date.now();
+            continue;
+          } catch {
+            // Write failed — the socket is dead; fall through and reap.
+          }
+        }
+        sessions.delete(sessionId);
+        void session.server.close().catch((error) => {
+          logger.error("session_close_failed", { error: String(error) });
+        });
       }
     }
   }
@@ -555,6 +575,7 @@ export class TarotHttpServer {
         transport,
         lastActivity: Date.now(),
         activeRequests: 0,
+        stream: res,
       });
       res.on("close", () => {
         this.sseSessions.delete(sessionId);

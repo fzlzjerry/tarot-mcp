@@ -78,7 +78,10 @@ export class TarotServer {
    */
   private constructor(cardManager: TarotCardManager) {
     this.cardManager = cardManager;
-    this.sessionManager = new TarotSessionManager();
+    // SESSION_STORE_PATH makes reading sessions survive restarts/redeploys.
+    this.sessionManager = new TarotSessionManager(
+      process.env.SESSION_STORE_PATH,
+    );
     this.readingManager = new TarotReadingManager(
       this.cardManager,
       this.sessionManager,
@@ -868,7 +871,7 @@ export class TarotServer {
     const session = this.sessionManager.getSession(id);
     if (!session) {
       return toolError(
-        `Error: Session "${id.slice(0, 64)}" not found. Sessions expire 24 hours after their last activity.`,
+        `Error: Session "${id.slice(0, 64)}" not found. It may have expired (24 hours idle), been evicted under load, or predate a server restart.`,
       );
     }
 
