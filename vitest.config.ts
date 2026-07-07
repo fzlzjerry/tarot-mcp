@@ -17,9 +17,9 @@ export default defineConfig({
         // Baseline at migration time; ratchet upward, never down.
         // (http-server/index run in child processes and are not
         // instrumentable, which caps the global numbers.)
-        lines: 63,
-        functions: 71,
-        branches: 55,
+        lines: 64,
+        functions: 72,
+        branches: 56,
         statements: 64,
       },
     },

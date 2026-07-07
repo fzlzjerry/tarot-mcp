@@ -19,17 +19,17 @@ export function formatReading(
     `# ${spreadName} Reading\n\n`,
     `# ${spreadName} 塔罗解读\n\n`,
   );
-  result += `${pick(language, "**Question:**", "**问题:**")} ${reading.question}\n`;
-  result += `${pick(language, "**Date:**", "**日期:**")} ${reading.timestamp.toISOString()}\n`;
-  result += `${pick(language, "**Reading ID:**", "**解读 ID:**")} ${reading.id}\n`;
+  result += `${pick(language, "**Question:**", "**问题：**")} ${reading.question}\n`;
+  result += `${pick(language, "**Date:**", "**日期：**")} ${reading.timestamp.toISOString()}\n`;
+  result += `${pick(language, "**Reading ID:**", "**解读 ID：**")} ${reading.id}\n`;
   if (reading.sessionId) {
-    result += `${pick(language, "**Session ID:**", "**会话 ID:**")} ${reading.sessionId}`;
+    result += `${pick(language, "**Session ID:**", "**会话 ID：**")} ${reading.sessionId}`;
     result +=
       readingNumber > 1
         ? pick(
             language,
             ` (reading #${readingNumber} in this session)`,
-            `(本会话第 ${readingNumber} 次解读)`,
+            `（本会话第 ${readingNumber} 次解读）`,
           )
         : "";
     result += pick(
@@ -58,7 +58,7 @@ export function formatReading(
     result += pick(
       language,
       `*Keywords: ${keywords.join(", ")}*\n\n`,
-      `*关键词:${keywords.join("、")}*\n\n`,
+      `*关键词：${keywords.join("、")}*\n\n`,
     );
   });
 
@@ -73,7 +73,7 @@ export function orientationLabel(
   language: Language,
 ): string {
   if (language === "zh") {
-    return orientation === "upright" ? "(正位)" : "(逆位)";
+    return orientation === "upright" ? "（正位）" : "（逆位）";
   }
   return ` (${orientation})`;
 }
@@ -95,11 +95,11 @@ export function renderAvailableSpreads(
     result += pick(
       language,
       `## ${spread.name} (${spread.cardCount} cards)\n\n`,
-      `## ${spread.name}(${spread.cardCount} 张牌)\n\n`,
+      `## ${spread.name}（${spread.cardCount} 张牌）\n\n`,
     );
     result += `${spread.description}\n\n`;
 
-    result += pick(language, "**Positions:**\n", "**牌位:**\n");
+    result += pick(language, "**Positions:**\n", "**牌位：**\n");
     spread.positions.forEach((position, index) => {
       result += `${index + 1}. **${position.name}**: ${position.meaning}\n`;
     });

@@ -7,11 +7,7 @@ import { generateOverallInterpretation, selectRelevantMeaning } from "./patterns
 /**
  * Generate the full interpretation for a reading: per-card contextual
  * meanings, the spread-specific (or generic) cross-card analysis, and the
- * overall pattern interpretation.
- *
- * Spread-specific analyzers are English-only for now; with language "zh"
- * the reading uses the localized generic cross-card analysis instead so
- * the whole interpretation stays in one language.
+ * overall pattern interpretation. All sections are bilingual (en/zh).
  */
 export function generateInterpretation(
   drawnCards: DrawnCard[],
@@ -23,7 +19,7 @@ export function generateInterpretation(
   let interpretation = pick(
     language,
     `This ${spreadName} reading addresses your question: "${question}"\n\n`,
-    `这次「${spreadName}」解读回应你的问题:「${question}」\n\n`,
+    `这次「${spreadName}」解读回应你的问题：「${question}」\n\n`,
   );
 
   // Individual card interpretations with context
@@ -34,7 +30,12 @@ export function generateInterpretation(
       language,
     );
 
-    interpretation += `**${drawnCard.position}**: ${localizedCardName(drawnCard.card, language)}${orientationLabel(drawnCard.orientation, language)}\n`;
+    interpretation += pick(
+      language,
+      `**${drawnCard.position}**: `,
+      `**${drawnCard.position}**：`,
+    );
+    interpretation += `${localizedCardName(drawnCard.card, language)}${orientationLabel(drawnCard.orientation, language)}\n`;
 
     // Choose the most relevant meaning based on position
     const relevantMeaning = selectRelevantMeaning(
@@ -49,8 +50,7 @@ export function generateInterpretation(
   // Add spread-specific analysis. An analyzer returns "" when the card
   // count doesn't match its layout; fall back to the generic analysis
   // instead of silently dropping all cross-card analysis.
-  const spreadAnalysis =
-    language === "en" ? selectSpreadAnalysis(drawnCards, spreadType) : "";
+  const spreadAnalysis = selectSpreadAnalysis(drawnCards, spreadType, language);
   if (spreadAnalysis) {
     interpretation += spreadAnalysis;
   } else if (drawnCards.length > 1) {

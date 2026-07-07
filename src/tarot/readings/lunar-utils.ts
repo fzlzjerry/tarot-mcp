@@ -101,42 +101,42 @@ const PHASE_DATA_ZH: Record<
 > = {
   new: {
     name: "新月",
-    description: "月亮隐没不见,象征新的开始与全新起点",
+    description: "月亮隐没不见，象征新的开始与全新起点",
     tarotThemes: ["新的开始", "设定意图", "显化", "播种", "内在反思"],
   },
   waxing_crescent: {
     name: "眉月",
-    description: "一弯新芽初现,象征成长与逐渐积聚的能量",
+    description: "一弯新芽初现，象征成长与逐渐积聚的能量",
     tarotThemes: ["成长", "积聚能量", "采取行动", "势头", "希望"],
   },
   first_quarter: {
     name: "上弦月",
-    description: "月亮半明,象征挑战与抉择",
+    description: "月亮半明，象征挑战与抉择",
     tarotThemes: ["挑战", "抉择", "坚持", "行动", "克服障碍"],
   },
   waxing_gibbous: {
     name: "盈凸月",
-    description: "月亮将满,象征精炼与调整",
+    description: "月亮将满，象征精炼与调整",
     tarotThemes: ["精炼", "调整", "耐心", "微调", "准备"],
   },
   full: {
     name: "满月",
-    description: "月亮全然明亮,象征圆满与释放",
+    description: "月亮全然明亮，象征圆满与释放",
     tarotThemes: ["圆满", "释放", "显化", "完成", "直觉高涨"],
   },
   waning_gibbous: {
     name: "亏凸月",
-    description: "月亮开始亏缺,象征感恩与分享智慧",
+    description: "月亮开始亏缺，象征感恩与分享智慧",
     tarotThemes: ["感恩", "分享智慧", "传授", "反思", "回馈"],
   },
   last_quarter: {
     name: "下弦月",
-    description: "月亮再度半明,象征放下与宽恕",
+    description: "月亮再度半明，象征放下与宽恕",
     tarotThemes: ["释放", "宽恕", "放下", "打破旧模式", "疗愈"],
   },
   waning_crescent: {
     name: "残月",
-    description: "新月前的一弯残月,象征休憩与酝酿",
+    description: "新月前的一弯残月，象征休憩与酝酿",
     tarotThemes: ["休息", "酝酿", "内省", "智慧", "臣服"],
   },
 };
@@ -212,14 +212,14 @@ export function getMoonPhaseRecommendations(
     `# 🌙 ${phaseName} Tarot Guidance\n\n`,
     `# 🌙 ${phaseName}塔罗指引\n\n`,
   );
-  recommendations += `${pick(language, "**Current Phase:**", "**当前月相:**")} ${phaseName}\n`;
-  recommendations += `${pick(language, "**Illumination:**", "**照亮度:**")} ${Math.round(moonInfo.illumination * 100)}%\n\n`;
-  recommendations += `${pick(language, "**Description:**", "**描述:**")} ${description}\n\n`;
+  recommendations += `${pick(language, "**Current Phase:**", "**当前月相：**")} ${phaseName}\n`;
+  recommendations += `${pick(language, "**Illumination:**", "**照亮度：**")} ${Math.round(moonInfo.illumination * 100)}%\n\n`;
+  recommendations += `${pick(language, "**Description:**", "**描述：**")} ${description}\n\n`;
 
   recommendations += pick(
     language,
     `## Key Themes for This Phase:\n`,
-    `## 本月相的关键主题:\n`,
+    `## 本月相的关键主题：\n`,
   );
   themes.forEach(theme => {
     recommendations += `• ${theme}\n`;
@@ -228,7 +228,7 @@ export function getMoonPhaseRecommendations(
   recommendations += pick(
     language,
     `\n## Recommended Spreads:\n`,
-    `\n## 推荐牌阵:\n`,
+    `\n## 推荐牌阵：\n`,
   );
   moonInfo.recommendedSpreads.forEach(spread => {
     recommendations += `• ${spread.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}\n`;
@@ -240,7 +240,7 @@ export function getMoonPhaseRecommendations(
   recommendations += pick(
     language,
     `\n**Next Phase:** ${nextName} (approximately ${nextDate})\n`,
-    `\n**下一个月相:** ${nextName}(约 ${nextDate})\n`,
+    `\n**下一个月相：** ${nextName}（约 ${nextDate}）\n`,
   );
 
   return recommendations;

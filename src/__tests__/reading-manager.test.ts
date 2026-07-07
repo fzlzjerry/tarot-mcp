@@ -427,7 +427,7 @@ describe('TarotReadingManager', () => {
 
       const result = deterministicManager.performReading(
         'single_card',
-        '我的事业下一步怎么走?'
+        '我的事业下一步怎么走？'
       );
 
       expect(result).toContain('**The Fool** (reversed)');

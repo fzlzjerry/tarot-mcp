@@ -105,9 +105,13 @@ export class TarotCardManager {
         ? orientation === "upright" ? "正位" : "逆位"
         : orientation.charAt(0).toUpperCase() + orientation.slice(1);
 
-    let result = `# ${localizedCardName(card, language)} (${orientationTitle})\n\n`;
+    let result = pick(
+      language,
+      `# ${localizedCardName(card, language)} (${orientationTitle})\n\n`,
+      `# ${localizedCardName(card, language)}（${orientationTitle}）\n\n`,
+    );
 
-    result += pick(language, "**Arcana:** ", "**阿卡纳:** ");
+    result += pick(language, "**Arcana:** ", "**阿卡纳：** ");
     result += pick(
       language,
       card.arcana === "major" ? "Major Arcana" : "Minor Arcana",
@@ -127,24 +131,24 @@ export class TarotCardManager {
       );
     }
     if (card.number !== undefined) {
-      result += ` (${card.number})`;
+      result += pick(language, ` (${card.number})`, `（${card.number}）`);
     }
     result += "\n\n";
 
-    result += `${pick(language, "**Keywords:**", "**关键词:**")} ${keywords.join(pick(language, ", ", "、"))}\n\n`;
+    result += `${pick(language, "**Keywords:**", "**关键词：**")} ${keywords.join(pick(language, ", ", "、"))}\n\n`;
 
-    result += `${pick(language, "**Description:**", "**牌面描述:**")} ${localizedDescription(card, language)}\n\n`;
+    result += `${pick(language, "**Description:**", "**牌面描述：**")} ${localizedDescription(card, language)}\n\n`;
 
     result += pick(
       language,
       `## Meanings (${orientationTitle})\n\n`,
-      `## 含义(${orientationTitle})\n\n`,
+      `## 含义（${orientationTitle}）\n\n`,
     );
-    result += `${pick(language, "**General:**", "**总体:**")} ${meanings.general}\n\n`;
-    result += `${pick(language, "**Love & Relationships:**", "**爱情与关系:**")} ${meanings.love}\n\n`;
-    result += `${pick(language, "**Career & Finance:**", "**事业与财务:**")} ${meanings.career}\n\n`;
-    result += `${pick(language, "**Health:**", "**健康:**")} ${meanings.health}\n\n`;
-    result += `${pick(language, "**Spirituality:**", "**灵性:**")} ${meanings.spirituality}\n\n`;
+    result += `${pick(language, "**General:**", "**总体：**")} ${meanings.general}\n\n`;
+    result += `${pick(language, "**Love & Relationships:**", "**爱情与关系：**")} ${meanings.love}\n\n`;
+    result += `${pick(language, "**Career & Finance:**", "**事业与财务：**")} ${meanings.career}\n\n`;
+    result += `${pick(language, "**Health:**", "**健康：**")} ${meanings.health}\n\n`;
+    result += `${pick(language, "**Spirituality:**", "**灵性：**")} ${meanings.spirituality}\n\n`;
 
     result += pick(language, `## Symbolism\n\n`, `## 象征意义\n\n`);
     result +=
@@ -162,14 +166,14 @@ export class TarotCardManager {
       result += pick(
         language,
         `**Element:** ${card.element.charAt(0).toUpperCase() + card.element.slice(1)}\n`,
-        `**元素:** ${elementZh[card.element]}\n`,
+        `**元素：** ${elementZh[card.element]}\n`,
       );
     }
     if (card.astrology) {
-      result += `${pick(language, "**Astrology:**", "**占星:**")} ${card.astrology}\n`;
+      result += `${pick(language, "**Astrology:**", "**占星：**")} ${card.astrology}\n`;
     }
     if (card.numerology) {
-      result += `${pick(language, "**Numerology:**", "**数字学:**")} ${card.numerology}\n`;
+      result += `${pick(language, "**Numerology:**", "**数字学：**")} ${card.numerology}\n`;
     }
 
     return result;

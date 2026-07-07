@@ -145,17 +145,17 @@ describe("MCP tool behavior", () => {
   it("renders readings in Chinese when language=zh", async () => {
     const result = await executeTool("performReading", {
       spreadType: "three_card",
-      question: "我的事业发展如何?",
+      question: "我的事业发展如何？",
       language: "zh",
     });
 
     expect(result).toContain("塔罗解读");
-    expect(result).toContain("**问题:**");
+    expect(result).toContain("**问题：**");
     expect(result).toContain("## 你抽到的牌");
     expect(result).toContain("## 解读");
-    expect(result).toContain("**整体解读:**");
+    expect(result).toContain("**整体解读：**");
     // Orientation labels are localized
-    expect(result).toMatch(/(正位|逆位)/);
+    expect(result).toMatch(/（正位）|（逆位）/);
     expect(result).not.toContain("## Interpretation");
   });
 
@@ -165,8 +165,8 @@ describe("MCP tool behavior", () => {
       language: "zh",
     });
 
-    expect(result).toContain("**阿卡纳:** 大阿卡纳");
-    expect(result).toContain("**关键词:**");
+    expect(result).toContain("**阿卡纳：** 大阿卡纳");
+    expect(result).toContain("**关键词：**");
     expect(result).toContain("## 象征意义");
   });
 

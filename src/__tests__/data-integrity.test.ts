@@ -1,4 +1,5 @@
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
+import { SPREAD_LOCALIZATIONS_ZH } from "../tarot/readings/spread-localizations.js";
 import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
 import { SPREAD_TYPES, TarotCard } from "../tarot/shared/types.js";
 import {
@@ -180,5 +181,82 @@ describe("tarot card data integrity", () => {
 describe("spread type registry consistency", () => {
   it("keeps SPREAD_TYPES in sync with the TAROT_SPREADS registry", () => {
     expect([...SPREAD_TYPES].sort()).toEqual(Object.keys(TAROT_SPREADS).sort());
+  });
+});
+
+describe("chinese localization data integrity", () => {
+  const CJK = /[一-鿿]/;
+
+  it("gives every card a complete zh block mirroring the English shape", async () => {
+    const cardManager = await TarotCardManager.create();
+
+    for (const card of cardManager.getAllCards()) {
+      const zh = card.zh;
+      expect(zh, `card ${card.id} is missing its zh block`).toBeDefined();
+
+      expect(zh!.name).toMatch(CJK);
+
+      for (const orientation of ["upright", "reversed"] as const) {
+        const keywords = zh!.keywords![orientation];
+        expect(keywords.length).toBe(card.keywords[orientation].length);
+        for (const keyword of keywords) {
+          expect(keyword.trim()).toBe(keyword);
+          expect(keyword.length).toBeGreaterThan(0);
+        }
+
+        for (const field of REQUIRED_MEANING_FIELDS) {
+          const meaning = zh!.meanings![orientation][field];
+          expect(meaning.length).toBeGreaterThanOrEqual(40);
+          expect(meaning).toMatch(CJK);
+        }
+      }
+
+      expect(zh!.symbolism!.length).toBe(card.symbolism.length);
+      expect(zh!.description!.length).toBeGreaterThanOrEqual(60);
+      expect(zh!.description!).toMatch(CJK);
+    }
+  });
+
+  it("localizes every built-in spread with matching position counts", () => {
+    expect(Object.keys(SPREAD_LOCALIZATIONS_ZH).sort()).toEqual(
+      [...SPREAD_TYPES].sort(),
+    );
+
+    for (const spreadType of SPREAD_TYPES) {
+      const localization = SPREAD_LOCALIZATIONS_ZH[spreadType]!;
+      const spread = TAROT_SPREADS[spreadType];
+
+      expect(localization.name).toMatch(CJK);
+      expect(localization.description).toMatch(CJK);
+      expect(localization.positions.length).toBe(spread.positions.length);
+      for (const position of localization.positions) {
+        expect(position.name.length).toBeGreaterThan(0);
+        expect(position.meaning).toMatch(CJK);
+      }
+    }
+  });
+
+  it("keeps runtime zh prose on full-width punctuation", async () => {
+    const cardManager = await TarotCardManager.create();
+    // Half-width comma/colon directly after a CJK character means a
+    // translation slipped back to mixed-width punctuation.
+    const mixedWidth = /[一-鿿][,:;?]/;
+
+    for (const card of cardManager.getAllCards()) {
+      for (const orientation of ["upright", "reversed"] as const) {
+        for (const field of REQUIRED_MEANING_FIELDS) {
+          expect(card.zh!.meanings![orientation][field]).not.toMatch(mixedWidth);
+        }
+      }
+      expect(card.zh!.description!).not.toMatch(mixedWidth);
+    }
+
+    for (const spreadType of SPREAD_TYPES) {
+      const localization = SPREAD_LOCALIZATIONS_ZH[spreadType]!;
+      expect(localization.description).not.toMatch(mixedWidth);
+      for (const position of localization.positions) {
+        expect(position.meaning).not.toMatch(mixedWidth);
+      }
+    }
   });
 });

@@ -651,11 +651,11 @@ export class TarotServer {
       `# 🔮 Spread Recommendations for Your Question\n\n`,
       `# 🔮 为你的问题推荐牌阵\n\n`,
     );
-    response += `${pick(lang, "**Your Question:**", "**你的问题:**")} "${questionText}"\n`;
+    response += `${pick(lang, "**Your Question:**", "**你的问题：**")} "${questionText}"\n`;
     response += pick(
       lang,
       `**Category:** ${categoryValue} | **Timeframe:** ${timeframeValue}\n\n`,
-      `**类别:** ${categoryValue} | **时间范围:** ${timeframeValue}\n\n`,
+      `**类别：** ${categoryValue} | **时间范围：** ${timeframeValue}\n\n`,
     );
 
     recommendations.forEach((rec, index) => {
@@ -663,7 +663,7 @@ export class TarotServer {
       response += pick(
         lang,
         `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())} (${confidence}% match)\n`,
-        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}(匹配度 ${confidence}%)\n`,
+        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}（匹配度 ${confidence}%）\n`,
       );
       response += `${pick(lang, rec.reason, rec.reasonZh ?? rec.reason)}\n\n`;
     });
@@ -671,7 +671,7 @@ export class TarotServer {
     response += pick(
       lang,
       `\n**To perform a reading with your chosen spread, use:**\n`,
-      `\n**选定牌阵后,这样进行解读:**\n`,
+      `\n**选定牌阵后，这样进行解读：**\n`,
     );
     response += pick(
       lang,
@@ -767,7 +767,7 @@ export class TarotServer {
       `# 🔮 Card Meanings Comparison\n\n`,
       `# 🔮 牌义对比\n\n`,
     );
-    response += `${pick(lang, "**Context:**", "**语境:**")} ${contextText}\n\n`;
+    response += `${pick(lang, "**Context:**", "**语境：**")} ${contextText}\n\n`;
 
     // Get individual card meanings
     const cards = parsedCards.data!.map((input) => {
@@ -800,9 +800,13 @@ export class TarotServer {
           ? entry.orientation === "upright" ? "正位" : "逆位"
           : entry.orientation;
 
-      response += `### ${index + 1}. ${displayName} (${orientationText})\n`;
-      response += `${pick(lang, "**Keywords:**", "**关键词:**")} ${keywords.join(pick(lang, ", ", "、"))}\n`;
-      response += `${pick(lang, "**General:**", "**总体:**")} ${meanings.general}\n`;
+      response += pick(
+        lang,
+        `### ${index + 1}. ${displayName} (${orientationText})\n`,
+        `### ${index + 1}. ${displayName}（${orientationText}）\n`,
+      );
+      response += `${pick(lang, "**Keywords:**", "**关键词：**")} ${keywords.join(pick(lang, ", ", "、"))}\n`;
+      response += `${pick(lang, "**General:**", "**总体：**")} ${meanings.general}\n`;
       response += `\n`;
     });
 
@@ -813,7 +817,7 @@ export class TarotServer {
     response += pick(
       lang,
       `When these ${cards.length} cards appear together in the context of "${contextText}", they suggest:\n\n`,
-      `当这 ${cards.length} 张牌在「${contextText}」的语境下同时出现时,它们提示:\n\n`,
+      `当这 ${cards.length} 张牌在「${contextText}」的语境下同时出现时，它们提示：\n\n`,
     );
 
     // Simple combination logic (in a real implementation, this would be more sophisticated)
@@ -821,19 +825,19 @@ export class TarotServer {
       response += pick(
         lang,
         `The interplay between ${displayNames[0]} and ${displayNames[1]} indicates a dynamic where the energies of both cards are working together. `,
-        `${displayNames[0]}与${displayNames[1]}之间的相互作用,表明两张牌的能量正在协同运作。`,
+        `${displayNames[0]}与${displayNames[1]}之间的相互作用，表明两张牌的能量正在协同运作。`,
       );
     } else if (cards.length === 3) {
       response += pick(
         lang,
         `This three-card combination shows a progression or trinity of energies: ${displayNames[0]} represents the foundation, ${displayNames[1]} the current influence, and ${displayNames[2]} the outcome or resolution. `,
-        `这三张牌的组合呈现出能量的递进或三位一体:${displayNames[0]}代表根基,${displayNames[1]}代表当前的影响,${displayNames[2]}代表结果或解决之道。`,
+        `这三张牌的组合呈现出能量的递进或三位一体：${displayNames[0]}代表根基，${displayNames[1]}代表当前的影响，${displayNames[2]}代表结果或解决之道。`,
       );
     } else {
       response += pick(
         lang,
         `This multi-card combination creates a complex tapestry of meanings, with each card contributing its unique energy to the overall message. `,
-        `这组多张牌的组合织就了一幅复杂的意义图景,每张牌都为整体讯息注入独特的能量。`,
+        `这组多张牌的组合织就了一幅复杂的意义图景，每张牌都为整体讯息注入独特的能量。`,
       );
     }
 
@@ -845,7 +849,7 @@ export class TarotServer {
     response += pick(
       lang,
       `**Suggestion:** Meditate on how these cards relate to your question and trust your intuition about their combined message.`,
-      `**建议:** 静心体会这些牌与你问题的关联,并相信你对它们组合讯息的直觉。`,
+      `**建议：** 静心体会这些牌与你问题的关联，并相信你对它们组合讯息的直觉。`,
     );
 
     return toolOk(response);
