@@ -125,6 +125,51 @@ function validateKeywords(
   assertStringArray(keywords.reversed, `${path}.reversed`, issues);
 }
 
+const LOCALIZATION_KEYS = new Set([
+  "name",
+  "keywords",
+  "meanings",
+  "symbolism",
+  "description",
+]);
+
+/**
+ * Validate an optional zh localization block. Every field is optional
+ * (translations land in batches) but present fields must be well-formed.
+ */
+function validateLocalization(
+  localization: unknown,
+  path: string,
+  issues: Issue[],
+): void {
+  if (!isRecord(localization)) {
+    addIssue(issues, path, "Expected localization object");
+    return;
+  }
+
+  for (const key of Object.keys(localization)) {
+    if (!LOCALIZATION_KEYS.has(key)) {
+      addIssue(issues, `${path}.${key}`, "Unknown localization field");
+    }
+  }
+
+  if ("name" in localization) {
+    assertString(localization.name, `${path}.name`, issues);
+  }
+  if ("keywords" in localization) {
+    validateKeywords(localization.keywords, `${path}.keywords`, issues);
+  }
+  if ("meanings" in localization) {
+    validateMeanings(localization.meanings, `${path}.meanings`, issues);
+  }
+  if ("symbolism" in localization) {
+    assertStringArray(localization.symbolism, `${path}.symbolism`, issues);
+  }
+  if ("description" in localization) {
+    assertString(localization.description, `${path}.description`, issues);
+  }
+}
+
 function validateCard(card: unknown, index: number, issues: Issue[]): void {
   const path = `cards.${index}`;
   if (!isRecord(card)) {
@@ -134,12 +179,16 @@ function validateCard(card: unknown, index: number, issues: Issue[]): void {
 
   const requiredKeys =
     card.arcana === "minor" ? [...REQUIRED_CARD_KEYS, "suit"] : REQUIRED_CARD_KEYS;
-  const allowedKeys = new Set(requiredKeys);
+  const allowedKeys = new Set<string>([...requiredKeys, "zh"]);
 
   for (const key of Object.keys(card)) {
-    if (!allowedKeys.has(key as (typeof requiredKeys)[number])) {
+    if (!allowedKeys.has(key)) {
       addIssue(issues, `${path}.${key}`, "Unknown card field");
     }
+  }
+
+  if ("zh" in card) {
+    validateLocalization(card.zh, `${path}.zh`, issues);
   }
 
   for (const key of requiredKeys) {

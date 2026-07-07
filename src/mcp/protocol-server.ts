@@ -4,6 +4,8 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { MCP_SERVER_INFO } from "./public-api.js";
+import { registerPrompts } from "./prompts.js";
+import { registerResources } from "./resources.js";
 import { TarotServer } from "./tarot-service.js";
 
 /**
@@ -16,8 +18,13 @@ export function createMcpProtocolServer(tarotServer: TarotServer): Server {
   const server = new Server(MCP_SERVER_INFO, {
     capabilities: {
       tools: {},
+      resources: {},
+      prompts: {},
     },
   });
+
+  registerResources(server, tarotServer);
+  registerPrompts(server);
 
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools: tarotServer.getAvailableTools(),
@@ -29,13 +36,14 @@ export function createMcpProtocolServer(tarotServer: TarotServer): Server {
     try {
       const result = await tarotServer.executeTool(name, args || {});
       return {
-        // Handlers report validation failures as "Error: ..." strings;
-        // surface them as tool errors so clients can detect them.
-        ...(result.startsWith("Error") ? { isError: true } : {}),
+        ...(result.ok ? {} : { isError: true }),
+        ...(result.ok && result.structured !== undefined
+          ? { structuredContent: result.structured }
+          : {}),
         content: [
           {
             type: "text",
-            text: result,
+            text: result.ok ? result.text : result.error,
           },
         ],
       };

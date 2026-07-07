@@ -2,6 +2,10 @@ import fs from "node:fs";
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
 import { TarotReadingManager } from "../tarot/readings/reading-manager.js";
 import { TarotSessionManager } from "../tarot/readings/session-manager.js";
+import {
+  InvalidSpreadTypeError,
+  SessionNotFoundError,
+} from "../tarot/shared/errors.js";
 
 describe('TarotReadingManager', () => {
   let cardManager: TarotCardManager;
@@ -47,11 +51,13 @@ describe('TarotReadingManager', () => {
       expect(result).toContain('## Interpretation');
     });
 
-    it('should return error message for invalid spread type', () => {
-      const result = readingManager.performReading('invalid_spread', 'Test question');
-
-      expect(result).toContain('Invalid spread type: invalid_spread');
-      expect(result).toContain('Use list_available_spreads');
+    it('should throw a typed error for invalid spread type', () => {
+      expect(() =>
+        readingManager.performReading('invalid_spread', 'Test question'),
+      ).toThrow(InvalidSpreadTypeError);
+      expect(() =>
+        readingManager.performReading('invalid_spread', 'Test question'),
+      ).toThrow('Invalid spread type: invalid_spread');
     });
 
     it('should include session ID when provided', () => {
@@ -221,7 +227,7 @@ describe('TarotReadingManager', () => {
 
     it('should handle null/undefined session IDs gracefully', () => {
       const result1 = readingManager.performReading('single_card', 'Test', undefined);
-      const result2 = readingManager.performReading('single_card', 'Test', null as any);
+      const result2 = readingManager.performReading('single_card', 'Test', null);
 
       expect(result1).toContain('# Single Card Reading');
       expect(result2).toContain('# Single Card Reading');
@@ -255,13 +261,20 @@ describe('TarotReadingManager', () => {
     });
 
     it('rejects unknown session IDs instead of silently dropping them', () => {
-      const result = readingManager.performReading(
-        'single_card',
-        'Stale session',
-        'session_does_not_exist',
-      );
-
-      expect(result).toContain('Error: Session "session_does_not_exist" not found');
+      expect(() =>
+        readingManager.performReading(
+          'single_card',
+          'Stale session',
+          'session_does_not_exist',
+        ),
+      ).toThrow(SessionNotFoundError);
+      expect(() =>
+        readingManager.performReading(
+          'single_card',
+          'Stale session',
+          'session_does_not_exist',
+        ),
+      ).toThrow('Session "session_does_not_exist" not found');
     });
 
     it('threads sessions through custom readings too', () => {
@@ -274,6 +287,60 @@ describe('TarotReadingManager', () => {
 
       const sessionId = extractSessionId(result);
       expect(sessionManager.getSessionReadings(sessionId)).toHaveLength(1);
+    });
+  });
+
+  describe('interpretation regressions', () => {
+    it('handles repeated court-card numbers without corrupting the text', () => {
+      const cards = [
+        cardManager.findCard('Page of Wands')!,
+        cardManager.findCard('Page of Cups')!,
+        cardManager.findCard('The Fool')!,
+      ];
+      const deterministicManager = new TarotReadingManager(cardManager, sessionManager, {
+        drawCards: () => cards,
+        drawOrientation: () => 'upright',
+      });
+
+      const result = deterministicManager.performReading('three_card', 'What now?');
+
+      // Both Pages carry number 11; the repetition sentence must render
+      // completely instead of slicing characters off the preceding text.
+      expect(result).toContain(
+        'The repetition of 11 emphasizes the themes of messages and fresh perspectives.',
+      );
+      expect(result).not.toContain('themes o.');
+    });
+
+    it('falls back to generic analysis when a custom spread name collides with an analyzer keyword', () => {
+      const result = readingManager.performCustomReading(
+        'My Love Check',
+        'A two-card check-in that is not the seven-card Venus Love spread',
+        [
+          { name: 'You', meaning: 'Where you stand' },
+          { name: 'Them', meaning: 'Where they stand' },
+        ],
+        'How are we doing?',
+      );
+
+      expect(result).toContain('Contextual Spread Analysis');
+      expect(result).not.toContain('Venus Love Energy Analysis');
+    });
+  });
+
+  describe('per-session reading cap', () => {
+    it('caps stored readings while keeping "reading #N" numbering monotonic', () => {
+      const session = sessionManager.createSession();
+
+      for (let i = 1; i <= 35; i++) {
+        readingManager.performReading('single_card', `Question ${i}`, session.id);
+      }
+
+      expect(sessionManager.getSessionReadings(session.id)).toHaveLength(30);
+      expect(sessionManager.getSessionReadingCount(session.id)).toBe(35);
+
+      const next = readingManager.performReading('single_card', 'One more', session.id);
+      expect(next).toContain('(reading #36 in this session)');
     });
   });
 
@@ -360,7 +427,7 @@ describe('TarotReadingManager', () => {
 
       const result = deterministicManager.performReading(
         'single_card',
-        '我的事业下一步怎么走?'
+        '我的事业下一步怎么走？'
       );
 
       expect(result).toContain('**The Fool** (reversed)');

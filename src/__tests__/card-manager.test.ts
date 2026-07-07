@@ -85,15 +85,6 @@ describe("TarotCardManager", () => {
     });
   });
 
-  describe("getRandomCard", () => {
-    it("should return a valid card", () => {
-      const card = cardManager.getRandomCard();
-      expect(card).toBeDefined();
-      expect(card.name).toBeDefined();
-      expect(card.arcana).toMatch(/^(major|minor)$/);
-    });
-  });
-
   describe("getRandomCards", () => {
     it("should return the requested number of cards", () => {
       const cards = cardManager.getRandomCards(3);

@@ -1,5 +1,5 @@
-import { TarotSession, TarotReading } from "../shared/types.js";
-import { getSecureRandomInt } from "../shared/utils.js";
+import { TarotSession, TarotReading, TarotReadingSummary } from "../shared/types.js";
+import { generateId } from "../shared/utils.js";
 
 /**
  * Manages tarot reading sessions
@@ -8,6 +8,8 @@ export class TarotSessionManager {
   private static readonly CLEANUP_INTERVAL_MS = 60 * 60 * 1000; // hourly sweep
   /** Hard cap so anonymous/public traffic cannot grow memory without bound. */
   private static readonly MAX_SESSIONS = 1000;
+  /** Oldest readings are evicted beyond this per-session cap. */
+  private static readonly MAX_READINGS_PER_SESSION = 30;
 
   private sessions: Map<string, TarotSession>;
 
@@ -29,10 +31,11 @@ export class TarotSessionManager {
       this.evictOldestSession();
     }
 
-    const sessionId = this.generateSessionId();
+    const sessionId = generateId("session");
     const session: TarotSession = {
       id: sessionId,
       readings: [],
+      readingCount: 0,
       createdAt: new Date(),
       lastActivity: new Date()
     };
@@ -49,22 +52,46 @@ export class TarotSessionManager {
   }
 
   /**
-   * Add a reading to a session
+   * Add a reading to a session, evicting the oldest reading once the
+   * per-session cap is reached. Only a summary is retained — the full
+   * interpretation prose is not kept in memory.
    */
   public addReadingToSession(sessionId: string, reading: TarotReading): void {
     const session = this.sessions.get(sessionId);
     if (session) {
-      session.readings.push(reading);
+      session.readings.push({
+        id: reading.id,
+        spreadType: reading.spreadType,
+        question: reading.question,
+        timestamp: reading.timestamp,
+        cards: reading.cards.map((drawnCard) => ({
+          name: drawnCard.card.name,
+          orientation: drawnCard.orientation,
+          position: drawnCard.position,
+        })),
+      });
+      session.readingCount++;
+      if (session.readings.length > TarotSessionManager.MAX_READINGS_PER_SESSION) {
+        session.readings.shift();
+      }
       session.lastActivity = new Date();
     }
   }
 
   /**
-   * Get all readings from a session
+   * Get all stored reading summaries from a session
    */
-  public getSessionReadings(sessionId: string): TarotReading[] {
+  public getSessionReadings(sessionId: string): TarotReadingSummary[] {
     const session = this.sessions.get(sessionId);
     return session ? session.readings : [];
+  }
+
+  /**
+   * Total readings ever performed in a session (monotonic; unaffected by
+   * eviction of old readings).
+   */
+  public getSessionReadingCount(sessionId: string): number {
+    return this.sessions.get(sessionId)?.readingCount ?? 0;
   }
 
   /**
@@ -95,15 +122,6 @@ export class TarotSessionManager {
     if (oldestId !== undefined) {
       this.sessions.delete(oldestId);
     }
-  }
-
-  /**
-   * Generate a unique session ID
-   */
-  private generateSessionId(): string {
-    const timestamp = Date.now();
-    const randomPart = getSecureRandomInt(1000000000).toString(36);
-    return `session_${timestamp}_${randomPart}`;
   }
 
   /**

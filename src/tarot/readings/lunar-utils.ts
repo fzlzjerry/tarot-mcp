@@ -2,6 +2,9 @@
  * Moon phase calculations and lunar-related utilities for tarot readings
  */
 
+import { Language } from "../shared/types.js";
+import { pick } from "../shared/i18n.js";
+
 export interface MoonPhaseInfo {
   phase: "new" | "waxing_crescent" | "first_quarter" | "waxing_gibbous" | "full" | "waning_gibbous" | "last_quarter" | "waning_crescent";
   illumination: number; // 0-1
@@ -91,6 +94,53 @@ const PHASE_DATA: Record<MoonPhaseName, Omit<MoonPhaseInfo, "illumination">> = {
   }
 };
 
+/** Chinese localization of the moon phase catalog. */
+const PHASE_DATA_ZH: Record<
+  MoonPhaseName,
+  { name: string; description: string; tarotThemes: string[] }
+> = {
+  new: {
+    name: "新月",
+    description: "月亮隐没不见，象征新的开始与全新起点",
+    tarotThemes: ["新的开始", "设定意图", "显化", "播种", "内在反思"],
+  },
+  waxing_crescent: {
+    name: "眉月",
+    description: "一弯新芽初现，象征成长与逐渐积聚的能量",
+    tarotThemes: ["成长", "积聚能量", "采取行动", "势头", "希望"],
+  },
+  first_quarter: {
+    name: "上弦月",
+    description: "月亮半明，象征挑战与抉择",
+    tarotThemes: ["挑战", "抉择", "坚持", "行动", "克服障碍"],
+  },
+  waxing_gibbous: {
+    name: "盈凸月",
+    description: "月亮将满，象征精炼与调整",
+    tarotThemes: ["精炼", "调整", "耐心", "微调", "准备"],
+  },
+  full: {
+    name: "满月",
+    description: "月亮全然明亮，象征圆满与释放",
+    tarotThemes: ["圆满", "释放", "显化", "完成", "直觉高涨"],
+  },
+  waning_gibbous: {
+    name: "亏凸月",
+    description: "月亮开始亏缺，象征感恩与分享智慧",
+    tarotThemes: ["感恩", "分享智慧", "传授", "反思", "回馈"],
+  },
+  last_quarter: {
+    name: "下弦月",
+    description: "月亮再度半明，象征放下与宽恕",
+    tarotThemes: ["释放", "宽恕", "放下", "打破旧模式", "疗愈"],
+  },
+  waning_crescent: {
+    name: "残月",
+    description: "新月前的一弯残月，象征休憩与酝酿",
+    tarotThemes: ["休息", "酝酿", "内省", "智慧", "臣服"],
+  },
+};
+
 /**
  * Get the fractional position (0-1) within the lunar cycle for a date,
  * where 0 is a new moon and 0.5 is a full moon
@@ -147,71 +197,52 @@ export function getNextMoonPhase(currentDate: Date = new Date()): { phase: MoonP
 /**
  * Get moon phase recommendations for tarot practice
  */
-export function getMoonPhaseRecommendations(date: Date = new Date()): string {
+export function getMoonPhaseRecommendations(
+  date: Date = new Date(),
+  language: Language = "en",
+): string {
   const moonInfo = calculateMoonPhase(date);
-  
-  let recommendations = `# 🌙 ${moonInfo.name} Tarot Guidance\n\n`;
-  recommendations += `**Current Phase:** ${moonInfo.name}\n`;
-  recommendations += `**Illumination:** ${Math.round(moonInfo.illumination * 100)}%\n\n`;
-  recommendations += `**Description:** ${moonInfo.description}\n\n`;
-  
-  recommendations += `## Key Themes for This Phase:\n`;
-  moonInfo.tarotThemes.forEach(theme => {
+  const zh = PHASE_DATA_ZH[moonInfo.phase];
+  const phaseName = pick(language, moonInfo.name, zh.name);
+  const description = pick(language, moonInfo.description, zh.description);
+  const themes = language === "zh" ? zh.tarotThemes : moonInfo.tarotThemes;
+
+  let recommendations = pick(
+    language,
+    `# 🌙 ${phaseName} Tarot Guidance\n\n`,
+    `# 🌙 ${phaseName}塔罗指引\n\n`,
+  );
+  recommendations += `${pick(language, "**Current Phase:**", "**当前月相：**")} ${phaseName}\n`;
+  recommendations += `${pick(language, "**Illumination:**", "**照亮度：**")} ${Math.round(moonInfo.illumination * 100)}%\n\n`;
+  recommendations += `${pick(language, "**Description:**", "**描述：**")} ${description}\n\n`;
+
+  recommendations += pick(
+    language,
+    `## Key Themes for This Phase:\n`,
+    `## 本月相的关键主题：\n`,
+  );
+  themes.forEach(theme => {
     recommendations += `• ${theme}\n`;
   });
-  
-  recommendations += `\n## Recommended Spreads:\n`;
+
+  recommendations += pick(
+    language,
+    `\n## Recommended Spreads:\n`,
+    `\n## 推荐牌阵：\n`,
+  );
   moonInfo.recommendedSpreads.forEach(spread => {
     recommendations += `• ${spread.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}\n`;
   });
-  
+
   const next = getNextMoonPhase(date);
-  recommendations += `\n**Next Phase:** ${next.phase.name} (approximately ${next.date.toLocaleDateString()})\n`;
-  
+  const nextName = pick(language, next.phase.name, PHASE_DATA_ZH[next.phase.phase].name);
+  const nextDate = next.date.toISOString().slice(0, 10);
+  recommendations += pick(
+    language,
+    `\n**Next Phase:** ${nextName} (approximately ${nextDate})\n`,
+    `\n**下一个月相：** ${nextName}（约 ${nextDate}）\n`,
+  );
+
   return recommendations;
 }
 
-/**
- * Determine if a date is during a significant moon phase for enhanced readings
- */
-export function isSignificantMoonPhase(date: Date = new Date()): boolean {
-  const moonInfo = calculateMoonPhase(date);
-  return moonInfo.phase === "new" || moonInfo.phase === "full";
-}
-
-/**
- * Get seasonal information for enhanced readings
- */
-export function getSeasonalInfo(date: Date = new Date()): {
-  season: "spring" | "summer" | "autumn" | "winter";
-  themes: string[];
-  recommendedSpreads: string[];
-} {
-  const month = date.getMonth(); // 0-11
-  
-  if (month >= 2 && month <= 4) { // March, April, May
-    return {
-      season: "spring",
-      themes: ["new growth", "renewal", "fresh starts", "fertility", "awakening"],
-      recommendedSpreads: ["new_moon_intentions", "three_card", "career_path"]
-    };
-  } else if (month >= 5 && month <= 7) { // June, July, August
-    return {
-      season: "summer",
-      themes: ["abundance", "energy", "action", "manifestation", "vitality"],
-      recommendedSpreads: ["full_moon_release", "elemental_balance", "venus_love"]
-    };
-  } else if (month >= 8 && month <= 10) { // September, October, November
-    return {
-      season: "autumn",
-      themes: ["harvest", "gratitude", "release", "preparation", "wisdom"],
-      recommendedSpreads: ["shadow_work", "past_life_karma", "spiritual_guidance"]
-    };
-  } else { // December, January, February
-    return {
-      season: "winter",
-      themes: ["introspection", "rest", "inner work", "reflection", "planning"],
-      recommendedSpreads: ["tree_of_life", "year_ahead", "chakra_alignment"]
-    };
-  }
-}

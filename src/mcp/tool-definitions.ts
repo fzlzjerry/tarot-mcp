@@ -5,17 +5,68 @@ export interface Tool {
   name: string;
   description: string;
   inputSchema: Record<string, unknown>;
+  outputSchema?: Record<string, unknown>;
+  annotations?: {
+    readOnlyHint?: boolean;
+    idempotentHint?: boolean;
+    openWorldHint?: boolean;
+  };
 }
 
-export function getToolDefinitions(): Tool[] {
-  return [
+/** structuredContent shape for tools that perform a reading. */
+const READING_OUTPUT_SCHEMA: Record<string, unknown> = {
+  type: "object",
+  properties: {
+    readingId: { type: "string" },
+    sessionId: {
+      type: "string",
+      description: "Present when the reading is tracked in a session",
+    },
+    spreadType: { type: "string" },
+    spreadName: { type: "string" },
+    question: { type: "string" },
+    timestamp: { type: "string", description: "ISO 8601" },
+    cards: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          name: { type: "string" },
+          orientation: { type: "string" },
+          position: { type: "string" },
+          positionMeaning: { type: "string" },
+        },
+        required: ["name", "orientation"],
+      },
+    },
+  },
+  required: [
+    "readingId",
+    "spreadType",
+    "spreadName",
+    "question",
+    "timestamp",
+    "cards",
+  ],
+};
+
+// Definitions are static; build them once at module load.
+const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     {
       name: TOOL_NAMES.getCardInfo,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Get detailed information about a specific tarot card from the Rider-Waite deck",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           cardName: {
             type: "string",
             description:
@@ -33,9 +84,11 @@ export function getToolDefinitions(): Tool[] {
     },
     {
       name: TOOL_NAMES.listAllCards,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description: "List all available tarot cards in the Rider-Waite deck",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           category: {
             type: "string",
@@ -56,19 +109,36 @@ export function getToolDefinitions(): Tool[] {
     },
     {
       name: TOOL_NAMES.listAvailableSpreads,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "List all available tarot spreads with their positions and meanings",
       inputSchema: {
         type: "object",
-        properties: {},
+        additionalProperties: false,
+        properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
+        },
       },
     },
     {
       name: TOOL_NAMES.performReading,
+      annotations: { readOnlyHint: false, idempotentHint: false, openWorldHint: false },
       description: "Perform a tarot card reading using a specific spread",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           spreadType: {
             type: "string",
             enum: [...SPREAD_TYPES],
@@ -86,13 +156,16 @@ export function getToolDefinitions(): Tool[] {
         },
         required: ["spreadType", "question"],
       },
+      outputSchema: READING_OUTPUT_SCHEMA,
     },
     {
       name: TOOL_NAMES.searchCards,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Search for tarot cards using various criteria like keywords, suit, element, etc.",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           keyword: {
             type: "string",
@@ -133,12 +206,37 @@ export function getToolDefinitions(): Tool[] {
           },
         },
       },
+      outputSchema: {
+        type: "object",
+        properties: {
+          totalMatches: { type: "integer" },
+          showing: { type: "integer" },
+          results: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                id: { type: "string" },
+                name: { type: "string" },
+                suit: { type: "string" },
+                element: { type: "string" },
+                relevanceScore: { type: "number" },
+                matchedFields: { type: "array", items: { type: "string" } },
+              },
+              required: ["id", "name", "relevanceScore", "matchedFields"],
+            },
+          },
+        },
+        required: ["totalMatches", "showing", "results"],
+      },
     },
     {
       name: TOOL_NAMES.findSimilarCards,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description: "Find cards with similar meanings to a given card",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           cardName: {
             type: "string",
@@ -157,10 +255,12 @@ export function getToolDefinitions(): Tool[] {
     },
     {
       name: TOOL_NAMES.getDatabaseAnalytics,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Get comprehensive analytics and statistics about the tarot card database",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
           includeRecommendations: {
             type: "boolean",
@@ -172,6 +272,7 @@ export function getToolDefinitions(): Tool[] {
     },
     {
       name: TOOL_NAMES.getRandomCards,
+      annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
       description: "Get random cards with optional filtering",
       inputSchema: {
         type: "object",
@@ -204,10 +305,18 @@ export function getToolDefinitions(): Tool[] {
     },
     {
       name: TOOL_NAMES.getDailyCard,
+      annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
       description: "Draw a single card for daily guidance and insight",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           question: {
             type: "string",
             description: "Optional specific question for daily guidance",
@@ -215,14 +324,23 @@ export function getToolDefinitions(): Tool[] {
           },
         },
       },
+      outputSchema: READING_OUTPUT_SCHEMA,
     },
     {
       name: TOOL_NAMES.recommendSpread,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Get a recommendation for the most appropriate tarot spread based on your question or situation",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           question: {
             type: "string",
             description:
@@ -243,14 +361,43 @@ export function getToolDefinitions(): Tool[] {
         },
         required: ["question"],
       },
+      outputSchema: {
+        type: "object",
+        properties: {
+          question: { type: "string" },
+          timeframe: { type: "string" },
+          category: { type: "string" },
+          recommendations: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                spread: { type: "string" },
+                reason: { type: "string" },
+                confidence: { type: "number" },
+              },
+              required: ["spread", "reason", "confidence"],
+            },
+          },
+        },
+        required: ["question", "timeframe", "category", "recommendations"],
+      },
     },
     {
       name: TOOL_NAMES.getMoonPhaseReading,
+      annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
       description:
         "Perform a tarot reading based on the current moon phase with an appropriate spread",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           question: {
             type: "string",
             description:
@@ -267,13 +414,20 @@ export function getToolDefinitions(): Tool[] {
     },
     {
       name: TOOL_NAMES.getCardMeaningsComparison,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
       description:
         "Compare 2-5 tarot cards, including optional card orientation, to understand their relationships and combined message",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         description:
           "Provide either cards or legacy cardNames. When both are present, cards takes precedence.",
         properties: {
+          language: {
+            type: "string",
+            description: 'Output language: "en" or "zh" (default: en)',
+            default: "en",
+          },
           cards: {
             type: "array",
             items: {
@@ -317,11 +471,19 @@ export function getToolDefinitions(): Tool[] {
     },
     {
       name: TOOL_NAMES.createCustomSpread,
+      annotations: { readOnlyHint: false, idempotentHint: false, openWorldHint: false },
       description:
         "Create a custom tarot spread and draw cards for it. Use this when no existing spread fits your needs and you want to create your own layout with specific positions and meanings.",
       inputSchema: {
         type: "object",
+        additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           spreadName: {
             type: "string",
             description: "Name for your custom spread",
@@ -365,6 +527,62 @@ export function getToolDefinitions(): Tool[] {
         },
         required: ["spreadName", "description", "positions", "question"],
       },
+      outputSchema: READING_OUTPUT_SCHEMA,
     },
-  ];
+    {
+      name: TOOL_NAMES.getSessionHistory,
+      annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+      description:
+        "List the readings performed so far in a session (summaries with spread, question, time, and drawn cards)",
+      inputSchema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          sessionId: {
+            type: "string",
+            description:
+              "The session ID returned by a previous reading",
+          },
+        },
+        required: ["sessionId"],
+      },
+      outputSchema: {
+        type: "object",
+        properties: {
+          sessionId: { type: "string" },
+          createdAt: { type: "string", description: "ISO 8601" },
+          readingCount: { type: "integer" },
+          storedReadings: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                readingId: { type: "string" },
+                spreadType: { type: "string" },
+                question: { type: "string" },
+                timestamp: { type: "string", description: "ISO 8601" },
+                cards: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      name: { type: "string" },
+                      orientation: { type: "string" },
+                      position: { type: "string" },
+                    },
+                    required: ["name", "orientation"],
+                  },
+                },
+              },
+              required: ["readingId", "spreadType", "question", "timestamp", "cards"],
+            },
+          },
+        },
+        required: ["sessionId", "createdAt", "readingCount", "storedReadings"],
+      },
+    },
+]);
+
+export function getToolDefinitions(): Tool[] {
+  return [...TOOL_DEFINITIONS];
 }

@@ -8,6 +8,13 @@ import {
   getMoonPhaseRecommendations,
 } from "../tarot/readings/lunar-utils.js";
 import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
+import {
+  RECOMMENDATION_CATEGORIES,
+  RECOMMENDATION_TIMEFRAMES,
+  RecommendationCategory,
+  RecommendationTimeframe,
+  recommendSpreads,
+} from "../tarot/readings/spread-recommender.js";
 import { TOOL_NAMES } from "./public-api.js";
 import { getToolDefinitions, Tool } from "./tool-definitions.js";
 import {
@@ -23,6 +30,33 @@ import {
   validateSpreadType,
   validateString,
 } from "../tarot/shared/validation.js";
+import { TarotDomainError } from "../tarot/shared/errors.js";
+import { logger } from "../tarot/shared/logger.js";
+import { LANGUAGES, Language } from "../tarot/shared/types.js";
+import {
+  localizedCardName,
+  localizedKeywords,
+  localizedMeanings,
+  pick,
+} from "../tarot/shared/i18n.js";
+import { ValidationResult } from "../tarot/shared/validation.js";
+
+/**
+ * Uniform result of a tool execution. `structured` is reserved for MCP
+ * structuredContent payloads. Error text keeps its historical "Error: ..."
+ * form so transport output stays byte-compatible.
+ */
+export type ToolResult =
+  | { ok: true; text: string; structured?: object }
+  | { ok: false; error: string };
+
+export function toolOk(text: string, structured?: object): ToolResult {
+  return structured === undefined ? { ok: true, text } : { ok: true, text, structured };
+}
+
+export function toolError(error: string): ToolResult {
+  return { ok: false, error };
+}
 
 /**
  * Main class for the Tarot MCP Server functionality.
@@ -34,6 +68,10 @@ export class TarotServer {
   private sessionManager: TarotSessionManager;
   private cardSearch: TarotCardSearch;
   private cardAnalytics: TarotCardAnalytics;
+  private readonly toolHandlers: ReadonlyMap<
+    string,
+    (args: Record<string, unknown>) => ToolResult
+  >;
 
   /**
    * The constructor is private. Use the static async `create()` method.
@@ -47,6 +85,40 @@ export class TarotServer {
     );
     this.cardSearch = new TarotCardSearch(this.cardManager.getAllCards());
     this.cardAnalytics = new TarotCardAnalytics(this.cardManager.getAllCards());
+    const handlers: Array<
+      [string, (args: Record<string, unknown>) => ToolResult]
+    > = [
+      [TOOL_NAMES.getCardInfo, (args) => this.handleGetCardInfo(args)],
+      [TOOL_NAMES.listAllCards, (args) => this.handleListAllCards(args)],
+      [
+        TOOL_NAMES.listAvailableSpreads,
+        (args) => this.handleListAvailableSpreads(args),
+      ],
+      [TOOL_NAMES.performReading, (args) => this.handlePerformReading(args)],
+      [TOOL_NAMES.searchCards, (args) => this.handleSearchCards(args)],
+      [TOOL_NAMES.findSimilarCards, (args) => this.handleFindSimilarCards(args)],
+      [TOOL_NAMES.getDatabaseAnalytics, (args) => this.handleGetAnalytics(args)],
+      [TOOL_NAMES.getRandomCards, (args) => this.handleGetRandomCards(args)],
+      [TOOL_NAMES.getDailyCard, (args) => this.handleGetDailyCard(args)],
+      [TOOL_NAMES.recommendSpread, (args) => this.handleRecommendSpread(args)],
+      [
+        TOOL_NAMES.getMoonPhaseReading,
+        (args) => this.handleGetMoonPhaseReading(args),
+      ],
+      [
+        TOOL_NAMES.getCardMeaningsComparison,
+        (args) => this.handleGetCardMeaningsComparison(args),
+      ],
+      [
+        TOOL_NAMES.createCustomSpread,
+        (args) => this.handleCreateCustomSpread(args),
+      ],
+      [
+        TOOL_NAMES.getSessionHistory,
+        (args) => this.handleGetSessionHistory(args),
+      ],
+    ];
+    this.toolHandlers = new Map(handlers);
   }
 
   /**
@@ -68,6 +140,27 @@ export class TarotServer {
   }
 
   /**
+   * Full card data (for MCP resources).
+   */
+  public getAllCards() {
+    return this.cardManager.getAllCards();
+  }
+
+  /**
+   * Find a card by id or name (for MCP resources).
+   */
+  public findCard(identifier: string) {
+    return this.cardManager.findCard(identifier);
+  }
+
+  /**
+   * Number of live reading sessions (for health reporting).
+   */
+  public getSessionCount(): number {
+    return this.sessionManager.getSessionCount();
+  }
+
+  /**
    * Returns all available tools for the Tarot MCP Server
    */
   public getAvailableTools(): Tool[] {
@@ -75,61 +168,51 @@ export class TarotServer {
   }
 
   /**
-   * Executes a specific tool with the provided arguments
+   * Executes a specific tool with the provided arguments. Typed domain
+   * errors become failed results; unexpected errors propagate so the
+   * transport can report them as execution failures.
    */
   public async executeTool(
     toolName: string,
-    args: Record<string, any>,
-  ): Promise<string> {
-    switch (toolName) {
-      case TOOL_NAMES.getCardInfo:
-        return this.handleGetCardInfo(args);
+    args: Record<string, unknown>,
+  ): Promise<ToolResult> {
+    const handler = this.toolHandlers.get(toolName);
+    if (!handler) {
+      throw new Error(`Unknown tool: ${toolName}`);
+    }
 
-      case TOOL_NAMES.listAllCards:
-        return this.handleListAllCards(args);
-
-      case TOOL_NAMES.listAvailableSpreads:
-        return this.readingManager.listAvailableSpreads();
-
-      case TOOL_NAMES.performReading:
-        return this.handlePerformReading(args);
-
-      case TOOL_NAMES.searchCards:
-        return this.handleSearchCards(args);
-
-      case TOOL_NAMES.findSimilarCards:
-        return this.handleFindSimilarCards(args);
-
-      case TOOL_NAMES.getDatabaseAnalytics:
-        return this.handleGetAnalytics(args);
-
-      case TOOL_NAMES.getRandomCards:
-        return this.handleGetRandomCards(args);
-
-      case TOOL_NAMES.getDailyCard:
-        return this.handleGetDailyCard(args);
-
-      case TOOL_NAMES.recommendSpread:
-        return this.handleRecommendSpread(args);
-
-      case TOOL_NAMES.getMoonPhaseReading:
-        return this.handleGetMoonPhaseReading(args);
-
-      case TOOL_NAMES.getCardMeaningsComparison:
-        return this.handleGetCardMeaningsComparison(args);
-
-      case TOOL_NAMES.createCustomSpread:
-        return this.handleCreateCustomSpread(args);
-
-      default:
-        throw new Error(`Unknown tool: ${toolName}`);
+    const start = Date.now();
+    try {
+      const result = handler(args);
+      logger.info("tool_executed", {
+        tool: toolName,
+        ok: result.ok,
+        durationMs: Date.now() - start,
+      });
+      return result;
+    } catch (error) {
+      if (error instanceof TarotDomainError) {
+        logger.info("tool_executed", {
+          tool: toolName,
+          ok: false,
+          domainError: error.name,
+          durationMs: Date.now() - start,
+        });
+        return toolError(`Error: ${error.message}`);
+      }
+      logger.error("tool_failed", {
+        tool: toolName,
+        error: error instanceof Error ? error.message : String(error),
+        durationMs: Date.now() - start,
+      });
+      throw error;
     }
   }
 
   /**
    * Handle card info requests
    */
-  private handleGetCardInfo(args: Record<string, any>): string {
+  private handleGetCardInfo(args: Record<string, unknown>): ToolResult {
     const cardName = validateCardName(args.cardName);
     if (!cardName.success) {
       return this.formatValidationError("cardName", cardName.errors);
@@ -143,31 +226,59 @@ export class TarotServer {
       return this.formatValidationError("orientation", orientation.errors);
     }
 
-    return this.cardManager.getCardInfo(
-      sanitizeString(cardName.data!),
-      typeof orientation === "string" ? orientation : orientation.data!,
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
+    const name = sanitizeString(cardName.data!);
+    if (!this.cardManager.findCard(name)) {
+      return toolError(
+        `Error: Card "${name}" not found. Use the list_all_cards tool to see available cards.`,
+      );
+    }
+
+    return toolOk(
+      this.cardManager.getCardInfo(
+        name,
+        typeof orientation === "string" ? orientation : orientation.data!,
+        language.data!,
+      ),
     );
   }
 
   /**
    * Handle card listing requests
    */
-  private handleListAllCards(args: Record<string, any>): string {
+  private handleListAllCards(args: Record<string, unknown>): ToolResult {
     const category =
       args.category === undefined ? "all" : validateCardCategory(args.category);
     if (typeof category !== "string" && !category.success) {
       return this.formatValidationError("category", category.errors);
     }
 
-    return this.cardManager.listAllCards(
-      typeof category === "string" ? category : category.data!,
+    return toolOk(
+      this.cardManager.listAllCards(
+        typeof category === "string" ? category : category.data!,
+      ),
     );
+  }
+
+  /**
+   * Handle spread catalog requests
+   */
+  private handleListAvailableSpreads(args: Record<string, unknown>): ToolResult {
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    return toolOk(this.readingManager.listAvailableSpreads(language.data!));
   }
 
   /**
    * Handle reading requests
    */
-  private handlePerformReading(args: Record<string, any>): string {
+  private handlePerformReading(args: Record<string, unknown>): ToolResult {
     const spreadType = validateSpreadType(args.spreadType);
     if (!spreadType.success) {
       return this.formatValidationError("spreadType", spreadType.errors);
@@ -183,17 +294,24 @@ export class TarotServer {
       return this.formatValidationError("sessionId", sessionId.errors);
     }
 
-    return this.readingManager.performReading(
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
+    const performed = this.readingManager.performReadingWithDetails(
       spreadType.data!,
       sanitizeString(question.data!),
       sessionId.data,
+      { language: language.data },
     );
+    return toolOk(performed.text, performed.reading);
   }
 
   /**
    * Handle card search requests
    */
-  private handleSearchCards(args: Record<string, any>): string {
+  private handleSearchCards(args: Record<string, unknown>): ToolResult {
     const validated = validateSearchParams(args);
     if (!validated.success) {
       return this.formatValidationError("search", validated.errors);
@@ -209,7 +327,7 @@ export class TarotServer {
     const limitedResults = results.slice(0, limit);
 
     if (limitedResults.length === 0) {
-      return "No cards found matching your search criteria.";
+      return toolOk("No cards found matching your search criteria.");
     }
 
     let response = `Found ${results.length} cards matching your search`;
@@ -225,13 +343,24 @@ export class TarotServer {
       response += `- Keywords: ${result.card.keywords.upright.slice(0, 3).join(", ")}\n\n`;
     }
 
-    return response;
+    return toolOk(response, {
+      totalMatches: results.length,
+      showing: limitedResults.length,
+      results: limitedResults.map((result) => ({
+        id: result.card.id,
+        name: result.card.name,
+        suit: result.card.suit,
+        element: result.card.element,
+        relevanceScore: result.relevanceScore,
+        matchedFields: result.matchedFields,
+      })),
+    });
   }
 
   /**
    * Handle finding similar cards
    */
-  private handleFindSimilarCards(args: Record<string, any>): string {
+  private handleFindSimilarCards(args: Record<string, unknown>): ToolResult {
     const cardName = validateCardName(args.cardName);
     if (!cardName.success) {
       return this.formatValidationError("cardName", cardName.errors);
@@ -247,7 +376,9 @@ export class TarotServer {
     const targetCard = this.cardManager.findCard(cardName.data!);
 
     if (!targetCard) {
-      return `Error: Card "${cardName.data}" not found. Please check the card name and try again.`;
+      return toolError(
+        `Error: Card "${cardName.data}" not found. Please check the card name and try again.`,
+      );
     }
 
     const similarCards = this.cardSearch.findSimilarCards(
@@ -256,7 +387,7 @@ export class TarotServer {
     );
 
     if (similarCards.length === 0) {
-      return `No similar cards found for "${cardName.data}".`;
+      return toolOk(`No similar cards found for "${cardName.data}".`);
     }
 
     let response = `Cards similar to **${targetCard.name}**:\n\n`;
@@ -268,13 +399,13 @@ export class TarotServer {
       response += `- General meaning: ${card.meanings.upright.general.substring(0, 100)}...\n\n`;
     }
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle database analytics requests
    */
-  private handleGetAnalytics(args: Record<string, any>): string {
+  private handleGetAnalytics(args: Record<string, unknown>): ToolResult {
     const includeRecommendations = args.includeRecommendations !== false;
     const analytics = this.cardAnalytics.generateReport();
 
@@ -336,13 +467,13 @@ export class TarotServer {
       response += "\n";
     }
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle random card requests
    */
-  private handleGetRandomCards(args: Record<string, any>): string {
+  private handleGetRandomCards(args: Record<string, unknown>): ToolResult {
     const randomParams = this.validateRandomCardParams(args);
     if (!randomParams.success) {
       return this.formatValidationError("filters", randomParams.errors);
@@ -372,7 +503,7 @@ export class TarotServer {
     const randomCards = this.cardSearch.getRandomCards(requestedCount, options);
 
     if (randomCards.length === 0) {
-      return "No cards found matching your criteria.";
+      return toolOk("No cards found matching your criteria.");
     }
 
     let response =
@@ -387,13 +518,13 @@ export class TarotServer {
       response += `- General meaning: ${card.meanings.upright.general}\n\n`;
     }
 
-    return response;
+    return toolOk(response);
   }
 
   /**
    * Handle custom spread creation and reading
    */
-  private handleCreateCustomSpread(args: Record<string, any>): string {
+  private handleCreateCustomSpread(args: Record<string, unknown>): ToolResult {
     const { spreadName, description, positions, question, sessionId } = args;
 
     const customSpread = validateCustomSpreadParams({
@@ -415,8 +546,13 @@ export class TarotServer {
       return this.formatValidationError("sessionId", validatedSessionId.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     try {
-      return this.readingManager.performCustomReading(
+      const performed = this.readingManager.performCustomReadingWithDetails(
         sanitizeString(customSpread.data!.name),
         sanitizeString(customSpread.data!.description),
         customSpread.data!.positions.map((position) => ({
@@ -425,16 +561,24 @@ export class TarotServer {
         })),
         sanitizeString(readingQuestion.data!),
         validatedSessionId.data,
+        { language: language.data },
       );
+      return toolOk(performed.text, performed.reading);
     } catch (error) {
-      return `Error creating custom spread: ${error instanceof Error ? error.message : String(error)}`;
+      // Domain errors (unknown session, ...) keep their canonical message.
+      if (error instanceof TarotDomainError) {
+        throw error;
+      }
+      return toolError(
+        `Error creating custom spread: ${error instanceof Error ? error.message : String(error)}`,
+      );
     }
   }
 
   /**
    * Handle daily card requests
    */
-  private handleGetDailyCard(args: Record<string, any>): string {
+  private handleGetDailyCard(args: Record<string, unknown>): ToolResult {
     const question =
       args.question === undefined
         ? "What do I need to know for today?"
@@ -443,20 +587,26 @@ export class TarotServer {
       return this.formatValidationError("question", question.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     // Use the daily_guidance spread for consistency. Daily cards are one-shot
     // (the tool has no sessionId parameter), so skip session tracking.
-    return this.readingManager.performReading(
+    const performed = this.readingManager.performReadingWithDetails(
       "daily_guidance",
       typeof question === "string" ? question : sanitizeString(question.data!),
       undefined,
-      { trackSession: false },
+      { trackSession: false, language: language.data },
     );
+    return toolOk(performed.text, performed.reading);
   }
 
   /**
    * Handle spread recommendation requests
    */
-  private handleRecommendSpread(args: Record<string, any>): string {
+  private handleRecommendSpread(args: Record<string, unknown>): ToolResult {
     const question = validateString(args.question);
     if (!question.success) {
       return this.formatValidationError("question", question.errors);
@@ -465,10 +615,7 @@ export class TarotServer {
     const timeframe =
       args.timeframe === undefined
         ? "any"
-        : validateEnum(
-            ["immediate", "short_term", "long_term", "any"] as const,
-            "timeframe",
-          )(args.timeframe);
+        : validateEnum(RECOMMENDATION_TIMEFRAMES, "timeframe")(args.timeframe);
     if (typeof timeframe !== "string" && !timeframe.success) {
       return this.formatValidationError("timeframe", timeframe.errors);
     }
@@ -476,20 +623,16 @@ export class TarotServer {
     const category =
       args.category === undefined
         ? "any"
-        : validateEnum(
-            [
-              "love",
-              "career",
-              "spiritual",
-              "general",
-              "decision",
-              "any",
-            ] as const,
-            "category",
-          )(args.category);
+        : validateEnum(RECOMMENDATION_CATEGORIES, "category")(args.category);
     if (typeof category !== "string" && !category.success) {
       return this.formatValidationError("category", category.errors);
     }
+
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
 
     const questionText = sanitizeString(question.data!);
     const timeframeValue =
@@ -497,235 +640,57 @@ export class TarotServer {
     const categoryValue =
       typeof category === "string" ? category : category.data!;
 
-    // Analyze question keywords to recommend appropriate spread
-    const questionLower = questionText.toLowerCase();
+    const recommendations = recommendSpreads(
+      questionText,
+      timeframeValue as RecommendationTimeframe,
+      categoryValue as RecommendationCategory,
+    );
 
-    let recommendations: Array<{
-      spread: string;
-      reason: string;
-      confidence: number;
-    }> = [];
-
-    // Category-based recommendations
-    if (
-      categoryValue === "love" ||
-      questionLower.includes("love") ||
-      questionLower.includes("relationship") ||
-      questionLower.includes("partner")
-    ) {
-      recommendations.push({
-        spread: "venus_love",
-        reason: "Perfect for love and relationship questions",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "relationship_cross",
-        reason: "Comprehensive relationship analysis",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "compatibility",
-        reason: "Great for understanding relationship dynamics",
-        confidence: 0.7,
-      });
-    }
-
-    if (
-      categoryValue === "career" ||
-      questionLower.includes("job") ||
-      questionLower.includes("career") ||
-      questionLower.includes("work")
-    ) {
-      recommendations.push({
-        spread: "career_path",
-        reason: "Specialized for career guidance",
-        confidence: 0.9,
-      });
-    }
-
-    if (
-      categoryValue === "spiritual" ||
-      questionLower.includes("spiritual") ||
-      questionLower.includes("soul") ||
-      questionLower.includes("purpose")
-    ) {
-      recommendations.push({
-        spread: "spiritual_guidance",
-        reason: "Focused on spiritual development",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "tree_of_life",
-        reason: "Deep spiritual insights",
-        confidence: 0.8,
-      });
-    }
-
-    if (
-      categoryValue === "decision" ||
-      questionLower.includes("should i") ||
-      questionLower.includes("decision") ||
-      questionLower.includes("choose")
-    ) {
-      recommendations.push({
-        spread: "decision_making",
-        reason: "Designed for important decisions",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "yes_no",
-        reason: "Simple yes/no guidance",
-        confidence: 0.7,
-      });
-    }
-
-    // Timeframe-based recommendations
-    if (
-      timeframeValue === "immediate" ||
-      questionLower.includes("today") ||
-      questionLower.includes("now")
-    ) {
-      recommendations.push({
-        spread: "daily_guidance",
-        reason: "Perfect for immediate guidance",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "single_card",
-        reason: "Quick insight for immediate questions",
-        confidence: 0.7,
-      });
-    }
-
-    if (
-      timeframeValue === "short_term" ||
-      questionLower.includes("week") ||
-      questionLower.includes("month")
-    ) {
-      recommendations.push({
-        spread: "weekly_forecast",
-        reason: "Great for weekly planning",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "three_card",
-        reason: "Good for short-term situations",
-        confidence: 0.7,
-      });
-    }
-
-    if (
-      timeframeValue === "long_term" ||
-      questionLower.includes("year") ||
-      questionLower.includes("future")
-    ) {
-      recommendations.push({
-        spread: "year_ahead",
-        reason: "Comprehensive yearly guidance",
-        confidence: 0.9,
-      });
-      recommendations.push({
-        spread: "celtic_cross",
-        reason: "In-depth long-term analysis",
-        confidence: 0.8,
-      });
-    }
-
-    // Special keyword recommendations
-    if (
-      questionLower.includes("past life") ||
-      questionLower.includes("karma")
-    ) {
-      recommendations.push({
-        spread: "past_life_karma",
-        reason: "Explores karmic patterns",
-        confidence: 0.9,
-      });
-    }
-
-    if (
-      questionLower.includes("moon") ||
-      questionLower.includes("lunar") ||
-      questionLower.includes("cycle")
-    ) {
-      recommendations.push({
-        spread: "new_moon_intentions",
-        reason: "Perfect for lunar work",
-        confidence: 0.8,
-      });
-      recommendations.push({
-        spread: "full_moon_release",
-        reason: "Great for release work",
-        confidence: 0.8,
-      });
-    }
-
-    if (
-      questionLower.includes("balance") ||
-      questionLower.includes("element")
-    ) {
-      recommendations.push({
-        spread: "elemental_balance",
-        reason: "Examines elemental harmony",
-        confidence: 0.8,
-      });
-    }
-
-    if (
-      questionLower.includes("shadow") ||
-      questionLower.includes("hidden") ||
-      questionLower.includes("unconscious")
-    ) {
-      recommendations.push({
-        spread: "shadow_work",
-        reason: "Explores hidden aspects",
-        confidence: 0.9,
-      });
-    }
-
-    // Default recommendations if no specific matches
-    if (recommendations.length === 0) {
-      recommendations.push({
-        spread: "three_card",
-        reason: "Versatile spread for most questions",
-        confidence: 0.6,
-      });
-      recommendations.push({
-        spread: "celtic_cross",
-        reason: "Comprehensive analysis for complex situations",
-        confidence: 0.5,
-      });
-    }
-
-    // Sort by confidence and remove duplicates
-    recommendations = recommendations
-      .filter(
-        (rec, index, self) =>
-          self.findIndex((r) => r.spread === rec.spread) === index,
-      )
-      .sort((a, b) => b.confidence - a.confidence)
-      .slice(0, 3);
-
-    let response = `# 🔮 Spread Recommendations for Your Question\n\n`;
-    response += `**Your Question:** "${questionText}"\n`;
-    response += `**Category:** ${categoryValue} | **Timeframe:** ${timeframeValue}\n\n`;
+    let response = pick(
+      lang,
+      `# 🔮 Spread Recommendations for Your Question\n\n`,
+      `# 🔮 为你的问题推荐牌阵\n\n`,
+    );
+    response += `${pick(lang, "**Your Question:**", "**你的问题：**")} "${questionText}"\n`;
+    response += pick(
+      lang,
+      `**Category:** ${categoryValue} | **Timeframe:** ${timeframeValue}\n\n`,
+      `**类别：** ${categoryValue} | **时间范围：** ${timeframeValue}\n\n`,
+    );
 
     recommendations.forEach((rec, index) => {
       const confidence = Math.round(rec.confidence * 100);
-      response += `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())} (${confidence}% match)\n`;
-      response += `${rec.reason}\n\n`;
+      response += pick(
+        lang,
+        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())} (${confidence}% match)\n`,
+        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}（匹配度 ${confidence}%）\n`,
+      );
+      response += `${pick(lang, rec.reason, rec.reasonZh ?? rec.reason)}\n\n`;
     });
 
-    response += `\n**To perform a reading with your chosen spread, use:**\n`;
-    response += `\`perform_reading\` with spreadType: "${recommendations[0].spread}"\n`;
+    response += pick(
+      lang,
+      `\n**To perform a reading with your chosen spread, use:**\n`,
+      `\n**选定牌阵后，这样进行解读：**\n`,
+    );
+    response += pick(
+      lang,
+      `\`perform_reading\` with spreadType: "${recommendations[0].spread}"\n`,
+      `使用 \`perform_reading\` 工具并传入 spreadType: "${recommendations[0].spread}"\n`,
+    );
 
-    return response;
+    return toolOk(response, {
+      question: questionText,
+      timeframe: timeframeValue,
+      category: categoryValue,
+      recommendations,
+    });
   }
 
   /**
    * Handle moon phase reading requests
    */
-  private handleGetMoonPhaseReading(args: Record<string, any>): string {
+  private handleGetMoonPhaseReading(args: Record<string, unknown>): ToolResult {
     const question = validateString(args.question);
     if (!question.success) {
       return this.formatValidationError("question", question.errors);
@@ -736,7 +701,12 @@ export class TarotServer {
         ? undefined
         : this.parseIsoDate(args.customDate);
     if (customDate === null) {
-      return "Error: customDate must be a valid date in YYYY-MM-DD format.";
+      return toolError("Error: customDate must be a valid date in YYYY-MM-DD format.");
+    }
+
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
     }
 
     // Calculate moon phase using proper lunar utilities
@@ -747,7 +717,7 @@ export class TarotServer {
     const spreadType = moonInfo.recommendedSpreads[0] || "three_card";
 
     // Get moon phase recommendations
-    const moonGuidance = getMoonPhaseRecommendations(date);
+    const moonGuidance = getMoonPhaseRecommendations(date, language.data);
 
     // Perform the reading. Moon-phase readings are one-shot (the tool has no
     // sessionId parameter), so skip session tracking.
@@ -755,16 +725,21 @@ export class TarotServer {
       spreadType,
       sanitizeString(question.data!),
       undefined,
-      { trackSession: false },
+      { trackSession: false, language: language.data },
     );
 
-    return `${moonGuidance}\n\n---\n\n# 🔮 Your Moon Phase Reading\n\n${reading}`;
+    const heading = pick(
+      language.data!,
+      "# 🔮 Your Moon Phase Reading",
+      "# 🔮 你的月相解读",
+    );
+    return toolOk(`${moonGuidance}\n\n---\n\n${heading}\n\n${reading}`);
   }
 
   /**
    * Handle card meanings comparison requests
    */
-  private handleGetCardMeaningsComparison(args: Record<string, any>): string {
+  private handleGetCardMeaningsComparison(args: Record<string, unknown>): ToolResult {
     const context =
       args.context === undefined
         ? "general interpretation"
@@ -778,11 +753,21 @@ export class TarotServer {
       return this.formatValidationError("cards", parsedCards.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     const contextText =
       typeof context === "string" ? context : sanitizeString(context.data!);
 
-    let response = `# 🔮 Card Meanings Comparison\n\n`;
-    response += `**Context:** ${contextText}\n\n`;
+    let response = pick(
+      lang,
+      `# 🔮 Card Meanings Comparison\n\n`,
+      `# 🔮 牌义对比\n\n`,
+    );
+    response += `${pick(lang, "**Context:**", "**语境：**")} ${contextText}\n\n`;
 
     // Get individual card meanings
     const cards = parsedCards.data!.map((input) => {
@@ -798,42 +783,141 @@ export class TarotServer {
     // Check if all cards were found
     const notFound = cards.filter((c) => !c.found);
     if (notFound.length > 0) {
-      return `Error: Could not find the following cards: ${notFound.map((c) => c.name).join(", ")}`;
+      return toolError(
+        `Error: Could not find the following cards: ${notFound.map((c) => c.name).join(", ")}`,
+      );
     }
 
     // Display individual meanings
-    response += `## Individual Card Meanings\n\n`;
+    response += pick(lang, `## Individual Card Meanings\n\n`, `## 单张牌义\n\n`);
     cards.forEach((entry, index) => {
       const card = entry.card!;
-      const keywords = card.keywords[entry.orientation];
-      const meanings = card.meanings[entry.orientation];
+      const keywords = localizedKeywords(card, entry.orientation, lang);
+      const meanings = localizedMeanings(card, entry.orientation, lang);
+      const displayName = localizedCardName(card, lang);
+      const orientationText =
+        lang === "zh"
+          ? entry.orientation === "upright" ? "正位" : "逆位"
+          : entry.orientation;
 
-      response += `### ${index + 1}. ${card.name} (${entry.orientation})\n`;
-      response += `**Keywords:** ${keywords.join(", ")}\n`;
-      response += `**General:** ${meanings.general}\n`;
+      response += pick(
+        lang,
+        `### ${index + 1}. ${displayName} (${orientationText})\n`,
+        `### ${index + 1}. ${displayName}（${orientationText}）\n`,
+      );
+      response += `${pick(lang, "**Keywords:**", "**关键词：**")} ${keywords.join(pick(lang, ", ", "、"))}\n`;
+      response += `${pick(lang, "**General:**", "**总体：**")} ${meanings.general}\n`;
       response += `\n`;
     });
 
+    const displayNames = cards.map((entry) => localizedCardName(entry.card!, lang));
+
     // Provide combined interpretation
-    response += `## Combined Message\n\n`;
-    response += `When these ${cards.length} cards appear together in the context of "${contextText}", they suggest:\n\n`;
+    response += pick(lang, `## Combined Message\n\n`, `## 组合讯息\n\n`);
+    response += pick(
+      lang,
+      `When these ${cards.length} cards appear together in the context of "${contextText}", they suggest:\n\n`,
+      `当这 ${cards.length} 张牌在「${contextText}」的语境下同时出现时，它们提示：\n\n`,
+    );
 
     // Simple combination logic (in a real implementation, this would be more sophisticated)
     if (cards.length === 2) {
-      response += `The interplay between ${cards[0].card!.name} and ${cards[1].card!.name} indicates a dynamic where the energies of both cards are working together. `;
+      response += pick(
+        lang,
+        `The interplay between ${displayNames[0]} and ${displayNames[1]} indicates a dynamic where the energies of both cards are working together. `,
+        `${displayNames[0]}与${displayNames[1]}之间的相互作用，表明两张牌的能量正在协同运作。`,
+      );
     } else if (cards.length === 3) {
-      response += `This three-card combination shows a progression or trinity of energies: ${cards[0].card!.name} represents the foundation, ${cards[1].card!.name} the current influence, and ${cards[2].card!.name} the outcome or resolution. `;
+      response += pick(
+        lang,
+        `This three-card combination shows a progression or trinity of energies: ${displayNames[0]} represents the foundation, ${displayNames[1]} the current influence, and ${displayNames[2]} the outcome or resolution. `,
+        `这三张牌的组合呈现出能量的递进或三位一体：${displayNames[0]}代表根基，${displayNames[1]}代表当前的影响，${displayNames[2]}代表结果或解决之道。`,
+      );
     } else {
-      response += `This multi-card combination creates a complex tapestry of meanings, with each card contributing its unique energy to the overall message. `;
+      response += pick(
+        lang,
+        `This multi-card combination creates a complex tapestry of meanings, with each card contributing its unique energy to the overall message. `,
+        `这组多张牌的组合织就了一幅复杂的意义图景，每张牌都为整体讯息注入独特的能量。`,
+      );
     }
 
-    response += `Consider how the themes and energies of these cards complement or challenge each other in your specific situation.\n\n`;
-    response += `**Suggestion:** Meditate on how these cards relate to your question and trust your intuition about their combined message.`;
+    response += pick(
+      lang,
+      `Consider how the themes and energies of these cards complement or challenge each other in your specific situation.\n\n`,
+      `想一想这些牌的主题与能量在你的具体处境中是互补还是相互挑战。\n\n`,
+    );
+    response += pick(
+      lang,
+      `**Suggestion:** Meditate on how these cards relate to your question and trust your intuition about their combined message.`,
+      `**建议：** 静心体会这些牌与你问题的关联，并相信你对它们组合讯息的直觉。`,
+    );
 
-    return response;
+    return toolOk(response);
   }
 
-  private validateRandomCardParams(args: Record<string, any>) {
+  /**
+   * Handle session history requests
+   */
+  private handleGetSessionHistory(args: Record<string, unknown>): ToolResult {
+    const sessionId = validateString(args.sessionId);
+    if (!sessionId.success) {
+      return this.formatValidationError("sessionId", sessionId.errors);
+    }
+
+    const id = sanitizeString(sessionId.data!);
+    const session = this.sessionManager.getSession(id);
+    if (!session) {
+      return toolError(
+        `Error: Session "${id.slice(0, 64)}" not found. Sessions expire 24 hours after their last activity.`,
+      );
+    }
+
+    const readings = this.sessionManager.getSessionReadings(id);
+    const totalCount = this.sessionManager.getSessionReadingCount(id);
+
+    let response = `# 🔮 Session History\n\n`;
+    response += `**Session ID:** ${session.id}\n`;
+    response += `**Created:** ${session.createdAt.toISOString()}\n`;
+    response += `**Readings performed:** ${totalCount}`;
+    if (totalCount > readings.length) {
+      response += ` (oldest ${totalCount - readings.length} no longer stored)`;
+    }
+    response += `\n\n`;
+
+    if (readings.length === 0) {
+      response += "No readings have been performed in this session yet.\n";
+      return toolOk(response);
+    }
+
+    readings.forEach((reading, index) => {
+      const number = totalCount - readings.length + index + 1;
+      response += `## ${number}. ${reading.spreadType} — ${reading.timestamp.toISOString()}\n`;
+      response += `**Question:** ${reading.question}\n`;
+      response += `**Reading ID:** ${reading.id}\n`;
+      const cards = reading.cards
+        .map(
+          (card) =>
+            `${card.name} (${card.orientation})${card.position ? ` — ${card.position}` : ""}`,
+        )
+        .join("; ");
+      response += `**Cards:** ${cards}\n\n`;
+    });
+
+    return toolOk(response, {
+      sessionId: session.id,
+      createdAt: session.createdAt.toISOString(),
+      readingCount: totalCount,
+      storedReadings: readings.map((reading) => ({
+        readingId: reading.id,
+        spreadType: reading.spreadType,
+        question: reading.question,
+        timestamp: reading.timestamp.toISOString(),
+        cards: reading.cards,
+      })),
+    });
+  }
+
+  private validateRandomCardParams(args: Record<string, unknown>) {
     const allowedKeys = new Set(["count", "suit", "arcana", "element"]);
     const unsupportedKeys = Object.keys(args).filter((key) => !allowedKeys.has(key));
 
@@ -853,7 +937,7 @@ export class TarotServer {
     };
   }
 
-  private parseComparisonCards(args: Record<string, any>) {
+  private parseComparisonCards(args: Record<string, unknown>) {
     const rawCards = Array.isArray(args.cards)
       ? args.cards
       : Array.isArray(args.cardNames)
@@ -916,8 +1000,18 @@ export class TarotServer {
     };
   }
 
-  private formatValidationError(field: string, errors: string[]): string {
-    return `Error: Invalid ${field}: ${errors.join("; ")}`;
+  private formatValidationError(field: string, errors: string[]): ToolResult {
+    return toolError(`Error: Invalid ${field}: ${errors.join("; ")}`);
+  }
+
+  /** Validate the optional language argument (defaults to English). */
+  private validateLanguage(
+    args: Record<string, unknown>,
+  ): ValidationResult<Language> {
+    if (args.language === undefined) {
+      return { success: true, data: "en", errors: [] };
+    }
+    return validateEnum(LANGUAGES, "language")(args.language);
   }
 
   private parseIsoDate(value: unknown): Date | null {

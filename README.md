@@ -187,12 +187,7 @@ Each spread includes:
    ```bash
    npm run docker:compose
    # or
-   docker-compose up -d
-   ```
-
-4. **With Traefik (optional)**
-   ```bash
-   docker-compose --profile traefik up -d
+   docker compose up -d
    ```
 
 ## 📡 API Endpoints
@@ -254,154 +249,36 @@ When running in HTTP mode, the following endpoints are available:
 
 ## 🛠️ MCP Tools
 
-The server provides **13 comprehensive MCP tools** for professional tarot reading and analysis:
+The server provides **14 MCP tools**. The authoritative, always-current
+catalog (schemas, annotations, output schemas) is served by the protocol
+itself — call `tools/list` over MCP, or `GET /api/info` over HTTP.
 
-### `get_card_info`
-Get comprehensive information about a specific tarot card including symbolism, astrology, and numerology.
-```json
-{
-  "cardName": "The Fool",
-  "orientation": "upright"
-}
-```
-**Returns**: Detailed card meanings for general, love, career, health, and spiritual contexts.
+| Tool | Purpose |
+| --- | --- |
+| `get_card_info` | Full card detail (meanings, symbolism, astrology) |
+| `list_all_cards` | Card catalog, filterable by category |
+| `list_available_spreads` | Spread catalog with positions |
+| `perform_reading` | Reading with a built-in spread (session-aware) |
+| `create_custom_spread` | Reading with a user-defined spread |
+| `get_daily_card` | One-shot daily guidance draw |
+| `get_moon_phase_reading` | Lunar-phase-aligned reading |
+| `search_cards` | Multi-criteria card search |
+| `find_similar_cards` | Cards with related meanings |
+| `get_random_cards` | Random draws with filters |
+| `recommend_spread` | Spread recommendation for a question |
+| `get_card_meanings_comparison` | Compare 2-5 cards in a context |
+| `get_database_analytics` | Card-database statistics |
+| `get_session_history` | Summaries of a session's readings |
 
-### `list_all_cards`
-List all available tarot cards with filtering and categorization.
-```json
-{
-  "category": "major_arcana|minor_arcana|wands|cups|swords|pentacles|all"
-}
-```
-**Returns**: Organized card listings with keywords and brief descriptions.
+Reading and lookup tools accept `language: "en" | "zh"` (default `en`) for
+fully localized Simplified Chinese output. Reading tools additionally
+return machine-readable `structuredContent` (reading id, session id,
+drawn cards) beside the Markdown text.
 
-### `list_available_spreads`
-List all available spread types, descriptions, card counts, positions, and position meanings.
+The server also exposes MCP **resources** (`tarot://cards`,
+`tarot://cards/{id}`, `tarot://spreads`, `tarot://spreads/{type}`) and
+**prompts** (`perform-reading`, `daily-draw`).
 
-```json
-{}
-```
-
-**Returns**: Markdown reference for every registered spread.
-
-### `perform_reading`
-Perform a professional tarot reading with advanced interpretation analysis.
-```json
-{
-  "spreadType": "single_card|three_card|celtic_cross|horseshoe|relationship_cross|career_path|decision_making|spiritual_guidance|year_ahead|chakra_alignment|shadow_work|venus_love|tree_of_life|astrological_houses|mandala|pentagram|mirror_of_truth|daily_guidance|yes_no|weekly_forecast|new_moon_intentions|full_moon_release|elemental_balance|past_life_karma|compatibility",
-  "question": "What should I know about my career path this year?",
-  "sessionId": "optional - use the Session ID returned by a previous reading"
-}
-```
-**Features**:
-- Context-aware meaning selection based on question content
-- Elemental balance analysis (Fire, Water, Air, Earth)
-- Suit pattern recognition and interpretation
-- Position dynamics analysis (Celtic Cross)
-- Energy flow assessment (Three Card)
-- Relationship compatibility analysis (Relationship Cross)
-- Career readiness assessment (Career Path)
-- Chakra energy balance evaluation (Chakra Alignment)
-- Spiritual development guidance (Spiritual Guidance)
-- Annual forecasting (Year Ahead)
-- Lunar, compatibility, truth-clarifying, and elemental specialty spreads
-
-### `search_cards`
-Search for tarot cards using various criteria like keywords, suit, element, etc.
-```json
-{
-  "keyword": "love",
-  "suit": "cups",
-  "arcana": "minor",
-  "element": "water",
-  "orientation": "upright",
-  "limit": 10
-}
-```
-**Features**:
-- Keyword search across meanings, keywords, and symbolism
-- Filter by suit, arcana, element, number, and orientation
-- Flexible search criteria with customizable result limits
-
-### `find_similar_cards`
-Find cards with similar meanings to a given card.
-```json
-{
-  "cardName": "The Fool",
-  "limit": 5
-}
-```
-**Features**:
-- Semantic similarity analysis
-- Meaning-based card relationships
-- Customizable result limits
-
-### `get_database_analytics`
-Get comprehensive analytics and statistics about the tarot card database.
-```json
-{
-  "includeRecommendations": true
-}
-```
-**Features**:
-- Complete database statistics
-- Card distribution analysis
-- Quality metrics and recommendations
-- Database completeness assessment
-
-### `get_random_cards`
-Get random cards with optional filtering for practice and exploration.
-```json
-{
-  "count": 3,
-  "suit": "wands"
-}
-```
-**Features**:
-- Cryptographically secure randomization
-- Optional filtering by `suit`, `arcana`, or `element`
-- Multiple filters use AND/intersection semantics
-- Draws are without replacement
-- `count` must fit inside the filtered card pool
-- Output uses upright keywords and general meaning for practice draws
-
-### `create_custom_spread`
-Create a custom tarot spread and draw cards for it. Perfect for AI when no existing spread fits the specific needs.
-```json
-{
-  "spreadName": "AI Decision Making Spread",
-  "description": "A custom spread designed to help AI make decisions when no existing spread fits the situation",
-  "positions": [
-    {
-      "name": "Current Situation",
-      "meaning": "The present state of affairs that needs to be addressed"
-    },
-    {
-      "name": "Hidden Influences",
-      "meaning": "Unseen factors affecting the situation"
-    },
-    {
-      "name": "Guidance",
-      "meaning": "Wisdom and advice for making the best decision"
-    }
-  ],
-  "question": "What is the best approach for this unique situation?",
-  "sessionId": "optional - use the Session ID returned by a previous reading"
-}
-```
-**Features**:
-- Create custom spreads with 1-15 positions
-- Define custom position names and meanings
-- Automatic card drawing with cryptographically secure randomization
-- Full interpretation with position-specific analysis
-- Session management support
-- Perfect for AI when existing spreads don't fit the specific question or context
-
-### Additional Guidance Tools
-- `get_daily_card` - Draw a daily guidance reading using the Daily Guidance spread.
-- `recommend_spread` - Recommend the best spread for a question, category, and timeframe.
-- `get_moon_phase_reading` - Calculate lunar phase guidance and perform an aligned reading.
-- `get_card_meanings_comparison` - Compare 2-5 cards, with optional per-card orientation, and summarize their combined message. Legacy `cardNames` input is still supported as upright cards.
 
 ## 🔧 Configuration
 
@@ -412,14 +289,23 @@ node dist/index.js [options]
 
 Options:
   --transport <type>    Transport type: stdio, http, sse (default: stdio)
-  --port <number>       Port for HTTP/SSE transport (default: 3000)
+  --port <number>       Port for HTTP/SSE transport (default: $PORT or 3000)
+  --host <address>      Bind address for HTTP transport (default: $HOST or 0.0.0.0)
   --help, -h           Show help message
 ```
 
 ### Environment Variables
 
-- `NODE_ENV` - Environment (development/production)
-- `PORT` - Server port (default: 3000)
+| Variable | Purpose |
+| --- | --- |
+| `PORT` / `HOST` | HTTP listener port and bind address |
+| `MCP_AUTH_TOKEN` | When set, all MCP/REST endpoints require `Authorization: Bearer <token>` (`/health` stays open). **Set this for any public deployment.** |
+| `ALLOWED_ORIGINS` | Comma-separated browser origins allowed beyond localhost (`*` allows any) |
+| `ALLOWED_HOSTS` | When set, requests must carry one of these Host headers |
+| `RATE_LIMIT_MAX` / `RATE_LIMIT_WINDOW_MS` | Rate limit per IP (default 120 requests / 60s) |
+| `MCP_MAX_TRANSPORT_SESSIONS` | Cap on concurrent transport sessions per transport (default 100) |
+| `LOG_LEVEL` / `LOG_FORMAT` | `debug|info|warn|error` (default info); `json` for JSON-lines logs. Logs always go to stderr. |
+
 
 ## 🎯 MCP Client Integration
 

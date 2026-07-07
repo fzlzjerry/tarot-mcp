@@ -31,4 +31,5 @@ export const TOOL_NAMES = {
   getMoonPhaseReading: "get_moon_phase_reading",
   getCardMeaningsComparison: "get_card_meanings_comparison",
   createCustomSpread: "create_custom_spread",
+  getSessionHistory: "get_session_history",
 } as const;

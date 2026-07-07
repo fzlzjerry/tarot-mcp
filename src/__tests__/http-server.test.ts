@@ -4,10 +4,14 @@ import os from "node:os";
 import path from "node:path";
 
 const PORT = 3379;
+const SECURED_PORT = 3380;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
+const SECURED_BASE_URL = `http://127.0.0.1:${SECURED_PORT}`;
+const AUTH_TOKEN = "test-secret-token";
 const LATEST_PROTOCOL_VERSION = "2025-06-18";
 
 async function waitForHealth(
+  baseUrl: string,
   getFailureDetails: () => string | undefined,
 ): Promise<void> {
   const deadline = Date.now() + 15000;
@@ -19,7 +23,7 @@ async function waitForHealth(
     }
 
     try {
-      const response = await fetch(`${BASE_URL}/health`);
+      const response = await fetch(`${baseUrl}/health`);
       if (response.ok) {
         return;
       }
@@ -84,7 +88,7 @@ describe("HTTP MCP server", () => {
       serverExit = { code, signal };
     });
 
-    await waitForHealth(() => {
+    await waitForHealth(BASE_URL, () => {
       if (!serverExit) {
         return undefined;
       }
@@ -119,7 +123,7 @@ describe("HTTP MCP server", () => {
 
     const info = await fetch(`${BASE_URL}/api/info`);
     const infoJson = await info.json();
-    expect(infoJson.tools).toHaveLength(13);
+    expect(infoJson.tools).toHaveLength(14);
 
     const spreads = await fetch(`${BASE_URL}/api/spreads`);
     const spreadsJson = await spreads.json();
@@ -144,6 +148,20 @@ describe("HTTP MCP server", () => {
     expect(badCategory.status).toBe(400);
   });
 
+  it("returns a structured reading object beside the Markdown on /api/reading", async () => {
+    const response = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ spreadType: "single_card", question: "Data?" }),
+    });
+
+    expect(response.status).toBe(200);
+    const json = await response.json();
+    expect(json.result).toContain("# Single Card Reading");
+    expect(json.reading.readingId).toMatch(/^reading_/);
+    expect(json.reading.cards).toHaveLength(1);
+  });
+
   it("returns HTTP 400 for invalid reading parameters", async () => {
     const response = await fetch(`${BASE_URL}/api/reading`, {
       method: "POST",
@@ -154,6 +172,58 @@ describe("HTTP MCP server", () => {
     expect(response.status).toBe(400);
     const json = await response.json();
     expect(json.error).toContain("Invalid spreadType");
+  });
+
+  it("rejects non-allowlisted browser origins and accepts localhost origins", async () => {
+    const rejected = await fetch(`${BASE_URL}/mcp`, {
+      method: "POST",
+      headers: {
+        accept: "application/json, text/event-stream",
+        "content-type": "application/json",
+        origin: "http://evil.example.com",
+      },
+      body: JSON.stringify(mcpInitializeRequest(99)),
+    });
+    expect(rejected.status).toBe(403);
+
+    const allowed = await fetch(`${BASE_URL}/api/info`, {
+      headers: { origin: "http://localhost:5173" },
+    });
+    expect(allowed.status).toBe(200);
+  });
+
+  it("answers malformed JSON with a JSON error instead of an HTML page", async () => {
+    const mcpResponse = await fetch(`${BASE_URL}/mcp`, {
+      method: "POST",
+      headers: {
+        accept: "application/json, text/event-stream",
+        "content-type": "application/json",
+      },
+      body: "{ not json",
+    });
+    expect(mcpResponse.status).toBe(400);
+    expect(mcpResponse.headers.get("content-type")).toContain("application/json");
+    const mcpJson = await mcpResponse.json();
+    expect(mcpJson.error.code).toBe(-32700);
+
+    const restResponse = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: "{ not json",
+    });
+    expect(restResponse.status).toBe(400);
+    expect(restResponse.headers.get("content-type")).toContain("application/json");
+    const restJson = await restResponse.json();
+    expect(restJson.error).toContain("Invalid JSON");
+  });
+
+  it("answers oversized bodies with HTTP 413", async () => {
+    const response = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: `{"question": "${"a".repeat(5 * 1024 * 1024)}"}`,
+    });
+    expect(response.status).toBe(413);
   });
 
   it("handles Streamable HTTP initialize, initialized, and tools/list", async () => {
@@ -259,5 +329,93 @@ describe("HTTP MCP server", () => {
 
     expect(postResponse.status).toBe(202);
     controller.abort();
+  });
+});
+
+describe("HTTP MCP server with auth and rate limiting", () => {
+  let serverProcess: ChildProcessWithoutNullStreams;
+  let serverExit:
+    | {
+        code: number | null;
+        signal: NodeJS.Signals | null;
+      }
+    | undefined;
+  let serverStderr = "";
+  let tsxTempDir: string | undefined;
+
+  beforeAll(async () => {
+    const tsxBin = path.join(process.cwd(), "node_modules", ".bin", "tsx");
+    tsxTempDir = await fs.mkdtemp(path.join(os.tmpdir(), "tarot-mcp-tsx-"));
+    serverProcess = spawn(
+      tsxBin,
+      ["src/index.ts", "--transport", "http", "--port", String(SECURED_PORT)],
+      {
+        cwd: process.cwd(),
+        env: {
+          ...process.env,
+          TMPDIR: tsxTempDir,
+          MCP_AUTH_TOKEN: AUTH_TOKEN,
+          RATE_LIMIT_MAX: "5",
+          RATE_LIMIT_WINDOW_MS: "60000",
+        },
+        stdio: "pipe",
+      },
+    );
+    serverProcess.stderr.on("data", (chunk) => {
+      serverStderr += chunk.toString();
+    });
+    serverProcess.once("exit", (code, signal) => {
+      serverExit = { code, signal };
+    });
+
+    await waitForHealth(SECURED_BASE_URL, () => {
+      if (!serverExit) {
+        return undefined;
+      }
+
+      return [
+        `Secured HTTP server process exited before becoming healthy.`,
+        `exitCode=${serverExit.code} signal=${serverExit.signal}`,
+        serverStderr.trim(),
+      ]
+        .filter(Boolean)
+        .join("\n");
+    });
+  }, 20000);
+
+  afterAll(async () => {
+    if (serverProcess && serverExit === undefined) {
+      serverProcess.kill("SIGTERM");
+      await new Promise((resolve) => serverProcess.once("exit", resolve));
+    }
+
+    if (tsxTempDir) {
+      await fs.rm(tsxTempDir, { recursive: true, force: true });
+    }
+  });
+
+  it("requires a bearer token on REST and MCP endpoints but not /health", async () => {
+    const health = await fetch(`${SECURED_BASE_URL}/health`);
+    expect(health.status).toBe(200);
+
+    const unauthorized = await fetch(`${SECURED_BASE_URL}/api/info`);
+    expect(unauthorized.status).toBe(401);
+
+    const authorized = await fetch(`${SECURED_BASE_URL}/api/info`, {
+      headers: { authorization: `Bearer ${AUTH_TOKEN}` },
+    });
+    expect(authorized.status).toBe(200);
+  });
+
+  it("rate limits bursts on API endpoints", async () => {
+    const statuses: number[] = [];
+    for (let i = 0; i < 10; i++) {
+      const response = await fetch(`${SECURED_BASE_URL}/api/spreads`, {
+        headers: { authorization: `Bearer ${AUTH_TOKEN}` },
+      });
+      statuses.push(response.status);
+    }
+
+    expect(statuses).toContain(429);
   });
 });

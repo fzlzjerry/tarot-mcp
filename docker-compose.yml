@@ -5,6 +5,10 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+      # Public deployments should set these (see README):
+      # - MCP_AUTH_TOKEN=<random secret>       # require Bearer auth
+      # - ALLOWED_ORIGINS=https://your.app     # browser origins beyond localhost
+      # - ALLOWED_HOSTS=tarot.example.com      # reject other Host headers
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
@@ -12,24 +16,3 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.tarot-mcp.rule=Host(`tarot-mcp.localhost`)"
-      - "traefik.http.services.tarot-mcp.loadbalancer.server.port=3000"
-
-  # Optional: Add Traefik for reverse proxy
-  traefik:
-    image: traefik:v2.10
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "80:80"
-      - "8080:8080"  # Traefik dashboard
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    restart: unless-stopped
-    profiles:
-      - traefik
