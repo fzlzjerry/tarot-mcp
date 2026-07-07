@@ -184,6 +184,21 @@ describe("spread type registry consistency", () => {
   });
 });
 
+describe("minor arcana astrology attributions", () => {
+  it("uses real Golden Dawn attributions, not templated filler", async () => {
+    const cardManager = await TarotCardManager.create();
+    // Aces: "Root of the Powers of <element>"; 2-10: "<planet> in <sign>"
+    // decans; courts: "<sub-element> of <suit element>".
+    const attribution =
+      /^(Root of the Powers of (Fire|Water|Air|Earth)|(Mars|Venus|Mercury|Moon|Sun|Jupiter|Saturn) in (Aries|Taurus|Gemini|Cancer|Leo|Virgo|Libra|Scorpio|Sagittarius|Capricorn|Aquarius|Pisces)|(Fire|Water|Air|Earth) of (Fire|Water|Air|Earth))$/;
+
+    for (const card of cardManager.getAllCards()) {
+      if (card.arcana !== "minor") continue;
+      expect(card.astrology, `card ${card.id}`).toMatch(attribution);
+    }
+  });
+});
+
 describe("chinese localization data integrity", () => {
   const CJK = /[一-鿿]/;
 
