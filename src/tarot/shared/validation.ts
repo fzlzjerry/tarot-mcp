@@ -119,6 +119,31 @@ export const validateOptionalString: Validator<string | undefined> = (value: unk
 };
 
 /**
+ * Validates an optional reading-session ID.
+ *
+ * Some tool-calling clients populate optional string fields with an empty
+ * string, `"new"`, or a human-readable label instead of omitting the field.
+ * Only IDs issued by this server begin with `session_`; all other strings are
+ * therefore safe to interpret as a request for a new session. A server-issued
+ * but stale `session_...` ID is preserved so the caller still gets the useful
+ * SessionNotFoundError instead of silently losing continuity.
+ */
+export const validateOptionalSessionId: Validator<string | undefined> = (
+  value: unknown,
+) => {
+  if (value === undefined || value === null) {
+    return success(undefined);
+  }
+  if (typeof value === "string") {
+    const candidate = value.trim();
+    if (!candidate.startsWith("session_")) {
+      return success(undefined);
+    }
+  }
+  return validateString(value);
+};
+
+/**
  * Validates card name with fuzzy matching support
  */
 export const validateCardName: Validator<string> = (value: unknown) => {

@@ -24,7 +24,7 @@ import {
   validateCardOrientation,
   validateCustomSpreadParams,
   validateEnum,
-  validateOptionalString,
+  validateOptionalSessionId,
   validateRange,
   validateSearchParams,
   validateSpreadType,
@@ -39,6 +39,7 @@ import {
   localizedMeanings,
   pick,
 } from "../tarot/shared/i18n.js";
+import { localizedSpread } from "../tarot/readings/spread-localizations.js";
 import { ValidationResult } from "../tarot/shared/validation.js";
 
 /**
@@ -51,7 +52,9 @@ export type ToolResult =
   | { ok: false; error: string };
 
 export function toolOk(text: string, structured?: object): ToolResult {
-  return structured === undefined ? { ok: true, text } : { ok: true, text, structured };
+  return structured === undefined
+    ? { ok: true, text }
+    : { ok: true, text, structured };
 }
 
 export function toolError(error: string): ToolResult {
@@ -99,8 +102,14 @@ export class TarotServer {
       ],
       [TOOL_NAMES.performReading, (args) => this.handlePerformReading(args)],
       [TOOL_NAMES.searchCards, (args) => this.handleSearchCards(args)],
-      [TOOL_NAMES.findSimilarCards, (args) => this.handleFindSimilarCards(args)],
-      [TOOL_NAMES.getDatabaseAnalytics, (args) => this.handleGetAnalytics(args)],
+      [
+        TOOL_NAMES.findSimilarCards,
+        (args) => this.handleFindSimilarCards(args),
+      ],
+      [
+        TOOL_NAMES.getDatabaseAnalytics,
+        (args) => this.handleGetAnalytics(args),
+      ],
       [TOOL_NAMES.getRandomCards, (args) => this.handleGetRandomCards(args)],
       [TOOL_NAMES.getDailyCard, (args) => this.handleGetDailyCard(args)],
       [TOOL_NAMES.recommendSpread, (args) => this.handleRecommendSpread(args)],
@@ -135,10 +144,10 @@ export class TarotServer {
   /**
    * Returns structured spread definitions for HTTP clients and tests.
    */
-  public getAvailableSpreads() {
+  public getAvailableSpreads(language: Language = "en") {
     return Object.entries(TAROT_SPREADS).map(([type, spread]) => ({
       type,
-      ...spread,
+      ...localizedSpread(spread, type, language),
     }));
   }
 
@@ -260,9 +269,15 @@ export class TarotServer {
       return this.formatValidationError("category", category.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+
     return toolOk(
       this.cardManager.listAllCards(
         typeof category === "string" ? category : category.data!,
+        language.data!,
       ),
     );
   }
@@ -270,7 +285,9 @@ export class TarotServer {
   /**
    * Handle spread catalog requests
    */
-  private handleListAvailableSpreads(args: Record<string, unknown>): ToolResult {
+  private handleListAvailableSpreads(
+    args: Record<string, unknown>,
+  ): ToolResult {
     const language = this.validateLanguage(args);
     if (!language.success) {
       return this.formatValidationError("language", language.errors);
@@ -292,7 +309,7 @@ export class TarotServer {
       return this.formatValidationError("question", question.errors);
     }
 
-    const sessionId = validateOptionalString(args.sessionId);
+    const sessionId = validateOptionalSessionId(args.sessionId);
     if (!sessionId.success) {
       return this.formatValidationError("sessionId", sessionId.errors);
     }
@@ -315,6 +332,12 @@ export class TarotServer {
    * Handle card search requests
    */
   private handleSearchCards(args: Record<string, unknown>): ToolResult {
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     const validated = validateSearchParams(args);
     if (!validated.success) {
       return this.formatValidationError("search", validated.errors);
@@ -330,20 +353,52 @@ export class TarotServer {
     const limitedResults = results.slice(0, limit);
 
     if (limitedResults.length === 0) {
-      return toolOk("No cards found matching your search criteria.");
+      return toolOk(
+        pick(
+          lang,
+          "No cards found matching your search criteria.",
+          "没有找到符合搜索条件的塔罗牌。",
+        ),
+      );
     }
 
-    let response = `Found ${results.length} cards matching your search`;
+    let response = pick(
+      lang,
+      `Found ${results.length} cards matching your search`,
+      `找到 ${results.length} 张符合搜索条件的塔罗牌`,
+    );
     if (results.length > limit) {
-      response += ` (showing top ${limit})`;
+      response += pick(
+        lang,
+        ` (showing top ${limit})`,
+        `（显示前 ${limit} 张）`,
+      );
     }
-    response += ":\n\n";
+    response += pick(lang, ":\n\n", "：\n\n");
 
     for (const result of limitedResults) {
-      response += `**${result.card.name}** (Relevance: ${result.relevanceScore})\n`;
-      response += `- Suit: ${result.card.suit || "N/A"} | Element: ${result.card.element || "N/A"}\n`;
-      response += `- Matched fields: ${result.matchedFields.join(", ")}\n`;
-      response += `- Keywords: ${result.card.keywords.upright.slice(0, 3).join(", ")}\n\n`;
+      const displayName = localizedCardName(result.card, lang);
+      const keywords = localizedKeywords(result.card, "upright", lang);
+      response += pick(
+        lang,
+        `**${displayName}** (Relevance: ${result.relevanceScore})\n`,
+        `**${displayName}**（相关度：${result.relevanceScore}）\n`,
+      );
+      response += pick(
+        lang,
+        `- Suit: ${result.card.suit || "N/A"} | Element: ${result.card.element || "N/A"}\n`,
+        `- 牌组：${this.localizeSuit(result.card.suit, lang)} | 元素：${this.localizeElement(result.card.element, lang)}\n`,
+      );
+      response += pick(
+        lang,
+        `- Matched fields: ${result.matchedFields.join(", ")}\n`,
+        `- 命中字段：${result.matchedFields.join("、")}\n`,
+      );
+      response += pick(
+        lang,
+        `- Keywords: ${keywords.slice(0, 3).join(", ")}\n\n`,
+        `- 关键词：${keywords.slice(0, 3).join("、")}\n\n`,
+      );
     }
 
     return toolOk(response, {
@@ -351,7 +406,7 @@ export class TarotServer {
       showing: limitedResults.length,
       results: limitedResults.map((result) => ({
         id: result.card.id,
-        name: result.card.name,
+        name: localizedCardName(result.card, lang),
         suit: result.card.suit,
         element: result.card.element,
         relevanceScore: result.relevanceScore,
@@ -375,6 +430,12 @@ export class TarotServer {
       return this.formatValidationError("limit", limit.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     // First find the card ID
     const targetCard = this.cardManager.findCard(cardName.data!);
 
@@ -390,16 +451,40 @@ export class TarotServer {
     );
 
     if (similarCards.length === 0) {
-      return toolOk(`No similar cards found for "${cardName.data}".`);
+      return toolOk(
+        pick(
+          lang,
+          `No similar cards found for "${cardName.data}".`,
+          `没有找到与「${cardName.data}」相似的塔罗牌。`,
+        ),
+      );
     }
 
-    let response = `Cards similar to **${targetCard.name}**:\n\n`;
+    let response = pick(
+      lang,
+      `Cards similar to **${targetCard.name}**:\n\n`,
+      `与 **${localizedCardName(targetCard, lang)}** 相似的塔罗牌：\n\n`,
+    );
 
     for (const card of similarCards) {
-      response += `**${card.name}**\n`;
-      response += `- Suit: ${card.suit || "N/A"} | Element: ${card.element || "N/A"}\n`;
-      response += `- Keywords: ${card.keywords.upright.slice(0, 3).join(", ")}\n`;
-      response += `- General meaning: ${card.meanings.upright.general.substring(0, 100)}...\n\n`;
+      const keywords = localizedKeywords(card, "upright", lang);
+      const meanings = localizedMeanings(card, "upright", lang);
+      response += `**${localizedCardName(card, lang)}**\n`;
+      response += pick(
+        lang,
+        `- Suit: ${card.suit || "N/A"} | Element: ${card.element || "N/A"}\n`,
+        `- 牌组：${this.localizeSuit(card.suit, lang)} | 元素：${this.localizeElement(card.element, lang)}\n`,
+      );
+      response += pick(
+        lang,
+        `- Keywords: ${keywords.slice(0, 3).join(", ")}\n`,
+        `- 关键词：${keywords.slice(0, 3).join("、")}\n`,
+      );
+      response += pick(
+        lang,
+        `- General meaning: ${meanings.general.substring(0, 100)}...\n\n`,
+        `- 总体含义：${meanings.general.substring(0, 100)}……\n\n`,
+      );
     }
 
     return toolOk(response);
@@ -409,63 +494,117 @@ export class TarotServer {
    * Handle database analytics requests
    */
   private handleGetAnalytics(args: Record<string, unknown>): ToolResult {
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     const includeRecommendations = args.includeRecommendations !== false;
     const analytics = this.cardAnalytics.generateReport();
 
-    let response = "# 🔮 Tarot Database Analytics Report\n\n";
+    let response = pick(
+      lang,
+      "# 🔮 Tarot Database Analytics Report\n\n",
+      "# 🔮 塔罗牌数据库分析报告\n\n",
+    );
 
     // Overview
-    response += "## 📊 Database Overview\n";
-    response += `- **Total Cards**: ${analytics.overview.totalCards}\n`;
-    response += `- **Completion Rate**: ${analytics.overview.completionRate.toFixed(1)}%\n`;
-    response += `- **Major Arcana**: ${analytics.overview.arcanaDistribution.major || 0} cards\n`;
-    response += `- **Minor Arcana**: ${analytics.overview.arcanaDistribution.minor || 0} cards\n\n`;
+    response += pick(lang, "## 📊 Database Overview\n", "## 📊 数据库概览\n");
+    response += pick(
+      lang,
+      `- **Total Cards**: ${analytics.overview.totalCards}\n`,
+      `- **牌总数**：${analytics.overview.totalCards}\n`,
+    );
+    response += pick(
+      lang,
+      `- **Completion Rate**: ${analytics.overview.completionRate.toFixed(1)}%\n`,
+      `- **完整率**：${analytics.overview.completionRate.toFixed(1)}%\n`,
+    );
+    response += pick(
+      lang,
+      `- **Major Arcana**: ${analytics.overview.arcanaDistribution.major || 0} cards\n`,
+      `- **大阿卡纳**：${analytics.overview.arcanaDistribution.major || 0} 张\n`,
+    );
+    response += pick(
+      lang,
+      `- **Minor Arcana**: ${analytics.overview.arcanaDistribution.minor || 0} cards\n\n`,
+      `- **小阿卡纳**：${analytics.overview.arcanaDistribution.minor || 0} 张\n\n`,
+    );
 
     // Suits distribution
-    response += "### Suits Distribution\n";
+    response += pick(lang, "### Suits Distribution\n", "### 牌组分布\n");
     for (const [suit, count] of Object.entries(
       analytics.overview.suitDistribution,
     )) {
-      response += `- **${suit.charAt(0).toUpperCase() + suit.slice(1)}**: ${count} cards\n`;
+      response += pick(
+        lang,
+        `- **${suit.charAt(0).toUpperCase() + suit.slice(1)}**: ${count} cards\n`,
+        `- **${this.localizeSuit(suit, lang)}**：${count} 张\n`,
+      );
     }
     response += "\n";
 
     // Elements distribution
-    response += "### Elements Distribution\n";
+    response += pick(lang, "### Elements Distribution\n", "### 元素分布\n");
     for (const [element, count] of Object.entries(
       analytics.overview.elementDistribution,
     )) {
-      response += `- **${element.charAt(0).toUpperCase() + element.slice(1)}**: ${count} cards\n`;
+      response += pick(
+        lang,
+        `- **${element.charAt(0).toUpperCase() + element.slice(1)}**: ${count} cards\n`,
+        `- **${this.localizeElement(element, lang)}**：${count} 张\n`,
+      );
     }
     response += "\n";
 
     // Data Quality
-    response += "## 🔍 Data Quality\n";
-    response += `- **Complete Cards**: ${analytics.dataQuality.completeCards}/${analytics.overview.totalCards}\n`;
-    response += `- **Average Keywords per Card**: ${analytics.dataQuality.averageKeywordsPerCard.toFixed(1)}\n`;
-    response += `- **Average Symbols per Card**: ${analytics.dataQuality.averageSymbolsPerCard.toFixed(1)}\n`;
+    response += pick(lang, "## 🔍 Data Quality\n", "## 🔍 数据质量\n");
+    response += pick(
+      lang,
+      `- **Complete Cards**: ${analytics.dataQuality.completeCards}/${analytics.overview.totalCards}\n`,
+      `- **完整牌数据**：${analytics.dataQuality.completeCards}/${analytics.overview.totalCards}\n`,
+    );
+    response += pick(
+      lang,
+      `- **Average Keywords per Card**: ${analytics.dataQuality.averageKeywordsPerCard.toFixed(1)}\n`,
+      `- **每张牌平均关键词数**：${analytics.dataQuality.averageKeywordsPerCard.toFixed(1)}\n`,
+    );
+    response += pick(
+      lang,
+      `- **Average Symbols per Card**: ${analytics.dataQuality.averageSymbolsPerCard.toFixed(1)}\n`,
+      `- **每张牌平均象征数**：${analytics.dataQuality.averageSymbolsPerCard.toFixed(1)}\n`,
+    );
 
     if (analytics.dataQuality.incompleteCards.length > 0) {
-      response += `- **Incomplete Cards**: ${analytics.dataQuality.incompleteCards.join(", ")}\n`;
+      response += pick(
+        lang,
+        `- **Incomplete Cards**: ${analytics.dataQuality.incompleteCards.join(", ")}\n`,
+        `- **数据不完整的牌**：${analytics.dataQuality.incompleteCards.join("、")}\n`,
+      );
     }
     response += "\n";
 
     // Content Analysis
-    response += "## 📈 Content Analysis\n";
-    response += "### Most Common Keywords\n";
+    response += pick(lang, "## 📈 Content Analysis\n", "## 📈 内容分析\n");
+    response += pick(lang, "### Most Common Keywords\n", "### 最常见关键词\n");
     for (const keyword of analytics.contentAnalysis.mostCommonKeywords.slice(
       0,
       10,
     )) {
-      response += `- **${keyword.keyword}**: ${keyword.count} times (${keyword.percentage.toFixed(1)}%)\n`;
+      response += pick(
+        lang,
+        `- **${keyword.keyword}**: ${keyword.count} times (${keyword.percentage.toFixed(1)}%)\n`,
+        `- **${keyword.keyword}**：${keyword.count} 次（${keyword.percentage.toFixed(1)}%）\n`,
+      );
     }
     response += "\n";
 
     // Recommendations
     if (includeRecommendations && analytics.recommendations.length > 0) {
-      response += "## 💡 Recommendations\n";
+      response += pick(lang, "## 💡 Recommendations\n", "## 💡 改进建议\n");
       for (const recommendation of analytics.recommendations) {
-        response += `- ${recommendation}\n`;
+        response += `- ${this.localizeAnalyticsRecommendation(recommendation, lang)}\n`;
       }
       response += "\n";
     }
@@ -488,6 +627,12 @@ export class TarotServer {
       return this.formatValidationError("count", count.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     const filters = validateSearchParams(randomParams.data!);
     if (!filters.success) {
       return this.formatValidationError("filters", filters.errors);
@@ -506,19 +651,43 @@ export class TarotServer {
     const randomCards = this.cardSearch.getRandomCards(requestedCount, options);
 
     if (randomCards.length === 0) {
-      return toolOk("No cards found matching your criteria.");
+      return toolOk(
+        pick(
+          lang,
+          "No cards found matching your criteria.",
+          "没有找到符合筛选条件的塔罗牌。",
+        ),
+      );
     }
 
     let response =
       requestedCount === 1
-        ? "🎴 Random Card:\n\n"
-        : `🎴 ${randomCards.length} Random Cards:\n\n`;
+        ? pick(lang, "🎴 Random Card:\n\n", "🎴 随机塔罗牌：\n\n")
+        : pick(
+            lang,
+            `🎴 ${randomCards.length} Random Cards:\n\n`,
+            `🎴 ${randomCards.length} 张随机塔罗牌：\n\n`,
+          );
 
     for (const card of randomCards) {
-      response += `**${card.name}**\n`;
-      response += `- Suit: ${card.suit || "N/A"} | Element: ${card.element || "N/A"}\n`;
-      response += `- Keywords: ${card.keywords.upright.join(", ")}\n`;
-      response += `- General meaning: ${card.meanings.upright.general}\n\n`;
+      const keywords = localizedKeywords(card, "upright", lang);
+      const meanings = localizedMeanings(card, "upright", lang);
+      response += `**${localizedCardName(card, lang)}**\n`;
+      response += pick(
+        lang,
+        `- Suit: ${card.suit || "N/A"} | Element: ${card.element || "N/A"}\n`,
+        `- 牌组：${this.localizeSuit(card.suit, lang)} | 元素：${this.localizeElement(card.element, lang)}\n`,
+      );
+      response += pick(
+        lang,
+        `- Keywords: ${keywords.join(", ")}\n`,
+        `- 关键词：${keywords.join("、")}\n`,
+      );
+      response += pick(
+        lang,
+        `- General meaning: ${meanings.general}\n\n`,
+        `- 总体含义：${meanings.general}\n\n`,
+      );
     }
 
     return toolOk(response);
@@ -544,7 +713,7 @@ export class TarotServer {
       return this.formatValidationError("question", readingQuestion.errors);
     }
 
-    const validatedSessionId = validateOptionalString(sessionId);
+    const validatedSessionId = validateOptionalSessionId(sessionId);
     if (!validatedSessionId.success) {
       return this.formatValidationError("sessionId", validatedSessionId.errors);
     }
@@ -663,10 +832,16 @@ export class TarotServer {
 
     recommendations.forEach((rec, index) => {
       const confidence = Math.round(rec.confidence * 100);
+      const localizedName =
+        lang === "zh"
+          ? localizedSpread(TAROT_SPREADS[rec.spread], rec.spread, lang).name
+          : rec.spread
+              .replace(/_/g, " ")
+              .replace(/\b\w/g, (letter) => letter.toUpperCase());
       response += pick(
         lang,
-        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())} (${confidence}% match)\n`,
-        `## ${index + 1}. ${rec.spread.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}（匹配度 ${confidence}%）\n`,
+        `## ${index + 1}. ${localizedName} (${confidence}% match)\n`,
+        `## ${index + 1}. ${localizedName}（匹配度 ${confidence}%）\n`,
       );
       response += `${pick(lang, rec.reason, rec.reasonZh ?? rec.reason)}\n\n`;
     });
@@ -686,7 +861,15 @@ export class TarotServer {
       question: questionText,
       timeframe: timeframeValue,
       category: categoryValue,
-      recommendations,
+      recommendations: recommendations.map((recommendation) => ({
+        spread: recommendation.spread,
+        reason: pick(
+          lang,
+          recommendation.reason,
+          recommendation.reasonZh ?? recommendation.reason,
+        ),
+        confidence: recommendation.confidence,
+      })),
     });
   }
 
@@ -704,7 +887,9 @@ export class TarotServer {
         ? undefined
         : this.parseIsoDate(args.customDate);
     if (customDate === null) {
-      return toolError("Error: customDate must be a valid date in YYYY-MM-DD format.");
+      return toolError(
+        "Error: customDate must be a valid date in YYYY-MM-DD format.",
+      );
     }
 
     const language = this.validateLanguage(args);
@@ -742,7 +927,9 @@ export class TarotServer {
   /**
    * Handle card meanings comparison requests
    */
-  private handleGetCardMeaningsComparison(args: Record<string, unknown>): ToolResult {
+  private handleGetCardMeaningsComparison(
+    args: Record<string, unknown>,
+  ): ToolResult {
     const context =
       args.context === undefined
         ? "general interpretation"
@@ -792,7 +979,11 @@ export class TarotServer {
     }
 
     // Display individual meanings
-    response += pick(lang, `## Individual Card Meanings\n\n`, `## 单张牌义\n\n`);
+    response += pick(
+      lang,
+      `## Individual Card Meanings\n\n`,
+      `## 单张牌义\n\n`,
+    );
     cards.forEach((entry, index) => {
       const card = entry.card!;
       const keywords = localizedKeywords(card, entry.orientation, lang);
@@ -800,7 +991,9 @@ export class TarotServer {
       const displayName = localizedCardName(card, lang);
       const orientationText =
         lang === "zh"
-          ? entry.orientation === "upright" ? "正位" : "逆位"
+          ? entry.orientation === "upright"
+            ? "正位"
+            : "逆位"
           : entry.orientation;
 
       response += pick(
@@ -813,7 +1006,9 @@ export class TarotServer {
       response += `\n`;
     });
 
-    const displayNames = cards.map((entry) => localizedCardName(entry.card!, lang));
+    const displayNames = cards.map((entry) =>
+      localizedCardName(entry.card!, lang),
+    );
 
     // Provide combined interpretation
     response += pick(lang, `## Combined Message\n\n`, `## 组合讯息\n\n`);
@@ -867,6 +1062,12 @@ export class TarotServer {
       return this.formatValidationError("sessionId", sessionId.errors);
     }
 
+    const language = this.validateLanguage(args);
+    if (!language.success) {
+      return this.formatValidationError("language", language.errors);
+    }
+    const lang = language.data!;
+
     const id = sanitizeString(sessionId.data!);
     const session = this.sessionManager.getSession(id);
     if (!session) {
@@ -878,32 +1079,70 @@ export class TarotServer {
     const readings = this.sessionManager.getSessionReadings(id);
     const totalCount = this.sessionManager.getSessionReadingCount(id);
 
-    let response = `# 🔮 Session History\n\n`;
-    response += `**Session ID:** ${session.id}\n`;
-    response += `**Created:** ${session.createdAt.toISOString()}\n`;
-    response += `**Readings performed:** ${totalCount}`;
+    let response = pick(lang, "# 🔮 Session History\n\n", "# 🔮 会话历史\n\n");
+    response += pick(
+      lang,
+      `**Session ID:** ${session.id}\n`,
+      `**会话 ID：** ${session.id}\n`,
+    );
+    response += pick(
+      lang,
+      `**Created:** ${session.createdAt.toISOString()}\n`,
+      `**创建时间：** ${session.createdAt.toISOString()}\n`,
+    );
+    response += pick(
+      lang,
+      `**Readings performed:** ${totalCount}`,
+      `**已进行解读：** ${totalCount}`,
+    );
     if (totalCount > readings.length) {
-      response += ` (oldest ${totalCount - readings.length} no longer stored)`;
+      response += pick(
+        lang,
+        ` (oldest ${totalCount - readings.length} no longer stored)`,
+        `（最早的 ${totalCount - readings.length} 次已不再保存）`,
+      );
     }
     response += `\n\n`;
 
     if (readings.length === 0) {
-      response += "No readings have been performed in this session yet.\n";
+      response += pick(
+        lang,
+        "No readings have been performed in this session yet.\n",
+        "这个会话中尚未进行任何解读。\n",
+      );
       return toolOk(response);
     }
 
     readings.forEach((reading, index) => {
       const number = totalCount - readings.length + index + 1;
       response += `## ${number}. ${reading.spreadType} — ${reading.timestamp.toISOString()}\n`;
-      response += `**Question:** ${reading.question}\n`;
-      response += `**Reading ID:** ${reading.id}\n`;
+      response += pick(
+        lang,
+        `**Question:** ${reading.question}\n`,
+        `**问题：** ${reading.question}\n`,
+      );
+      response += pick(
+        lang,
+        `**Reading ID:** ${reading.id}\n`,
+        `**解读 ID：** ${reading.id}\n`,
+      );
       const cards = reading.cards
-        .map(
-          (card) =>
-            `${card.name} (${card.orientation})${card.position ? ` — ${card.position}` : ""}`,
-        )
-        .join("; ");
-      response += `**Cards:** ${cards}\n\n`;
+        .map((card) => {
+          const fullCard = this.cardManager.findCard(card.name);
+          const name = fullCard ? localizedCardName(fullCard, lang) : card.name;
+          const orientation = this.localizeOrientation(card.orientation, lang);
+          return pick(
+            lang,
+            `${name} (${orientation})${card.position ? ` — ${card.position}` : ""}`,
+            `${name}（${orientation}）${card.position ? ` — ${card.position}` : ""}`,
+          );
+        })
+        .join(pick(lang, "; ", "；"));
+      response += pick(
+        lang,
+        `**Cards:** ${cards}\n\n`,
+        `**抽到的牌：** ${cards}\n\n`,
+      );
     });
 
     return toolOk(response, {
@@ -915,14 +1154,28 @@ export class TarotServer {
         spreadType: reading.spreadType,
         question: reading.question,
         timestamp: reading.timestamp.toISOString(),
-        cards: reading.cards,
+        cards: reading.cards.map((card) => {
+          const fullCard = this.cardManager.findCard(card.name);
+          return {
+            ...card,
+            name: fullCard ? localizedCardName(fullCard, lang) : card.name,
+          };
+        }),
       })),
     });
   }
 
   private validateRandomCardParams(args: Record<string, unknown>) {
-    const allowedKeys = new Set(["count", "suit", "arcana", "element"]);
-    const unsupportedKeys = Object.keys(args).filter((key) => !allowedKeys.has(key));
+    const allowedKeys = new Set([
+      "count",
+      "suit",
+      "arcana",
+      "element",
+      "language",
+    ]);
+    const unsupportedKeys = Object.keys(args).filter(
+      (key) => !allowedKeys.has(key),
+    );
 
     if (unsupportedKeys.length > 0) {
       return {
@@ -954,7 +1207,10 @@ export class TarotServer {
       };
     }
 
-    const parsedCards: Array<{ name: string; orientation: "upright" | "reversed" }> = [];
+    const parsedCards: Array<{
+      name: string;
+      orientation: "upright" | "reversed";
+    }> = [];
     const errors: string[] = [];
 
     rawCards.forEach((input, index) => {
@@ -1015,6 +1271,76 @@ export class TarotServer {
       return { success: true, data: "en", errors: [] };
     }
     return validateEnum(LANGUAGES, "language")(args.language);
+  }
+
+  private localizeSuit(suit: string | undefined, language: Language): string {
+    if (language === "en") {
+      return suit ?? "N/A";
+    }
+    const labels: Record<string, string> = {
+      wands: "权杖",
+      cups: "圣杯",
+      swords: "宝剑",
+      pentacles: "星币",
+    };
+    return suit ? (labels[suit] ?? suit) : "无";
+  }
+
+  private localizeElement(
+    element: string | undefined,
+    language: Language,
+  ): string {
+    if (language === "en") {
+      return element ?? "N/A";
+    }
+    const labels: Record<string, string> = {
+      fire: "火",
+      water: "水",
+      air: "风",
+      earth: "土",
+    };
+    return element ? (labels[element] ?? element) : "无";
+  }
+
+  private localizeOrientation(
+    orientation: "upright" | "reversed",
+    language: Language,
+  ): string {
+    if (language === "en") {
+      return orientation;
+    }
+    return orientation === "upright" ? "正位" : "逆位";
+  }
+
+  private localizeAnalyticsRecommendation(
+    recommendation: string,
+    language: Language,
+  ): string {
+    if (language === "en") {
+      return recommendation;
+    }
+    if (recommendation.startsWith("Complete data for ")) {
+      const count = recommendation.match(/\d+/)?.[0] ?? "";
+      return `补全 ${count} 张数据不完整的塔罗牌`;
+    }
+    if (
+      recommendation.startsWith("Database is ") &&
+      recommendation.includes("complete")
+    ) {
+      const percentage = recommendation.match(/\d+(?:\.\d+)?%/)?.[0] ?? "";
+      return `数据库完整率为 ${percentage}，请补全剩余牌数据`;
+    }
+    const translations: Record<string, string> = {
+      "Consider adding more keywords per card for better searchability":
+        "为每张牌增加更多关键词，以提升可搜索性",
+      "Add more symbolic interpretations to enhance card meanings":
+        "增加更多象征解读，以丰富牌义",
+      "Consider expanding card descriptions for more detailed imagery":
+        "扩展牌面描述，以提供更具体的图像细节",
+      "Database is in excellent condition - no improvements needed!":
+        "数据库状态良好，目前无需改进！",
+    };
+    return translations[recommendation] ?? recommendation;
   }
 
   private parseIsoDate(value: unknown): Date | null {

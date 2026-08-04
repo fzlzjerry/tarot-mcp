@@ -14,6 +14,7 @@ export const HTTP_ENDPOINTS = {
     cards: "/api/cards",
     reading: "/api/reading",
     customSpread: "/api/custom-spread",
+    tools: "/api/tools",
   },
 } as const;
 

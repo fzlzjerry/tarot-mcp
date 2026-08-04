@@ -4,10 +4,10 @@ import { fisherYatesShuffle } from "../shared/utils.js";
 export interface SearchOptions {
   keyword?: string;
   suit?: string;
-  arcana?: 'major' | 'minor';
-  element?: 'fire' | 'water' | 'air' | 'earth';
+  arcana?: "major" | "minor";
+  element?: "fire" | "water" | "air" | "earth";
   number?: number;
-  orientation?: 'upright' | 'reversed';
+  orientation?: "upright" | "reversed";
 }
 
 export interface SearchResult {
@@ -47,7 +47,7 @@ export class TarotCardSearch {
    * Get cards with similar meanings
    */
   findSimilarCards(cardId: string, limit: number = 5): TarotCard[] {
-    const targetCard = this.cards.find(card => card.id === cardId);
+    const targetCard = this.cards.find((card) => card.id === cardId);
     if (!targetCard) return [];
 
     const similarities: { card: TarotCard; score: number }[] = [];
@@ -62,17 +62,20 @@ export class TarotCardSearch {
     return similarities
       .sort((a, b) => b.score - a.score)
       .slice(0, limit)
-      .map(item => item.card);
+      .map((item) => item.card);
   }
 
   /**
    * Get random cards with optional filters
    */
-  getRandomCards(count: number = 1, options?: Partial<SearchOptions>): TarotCard[] {
+  getRandomCards(
+    count: number = 1,
+    options?: Partial<SearchOptions>,
+  ): TarotCard[] {
     const filteredCards = this.filterCardsForRandomDraw(options);
     if (filteredCards.length > 0 && count > filteredCards.length) {
       throw new Error(
-        `Cannot draw ${count} cards from ${filteredCards.length} matching cards`
+        `Cannot draw ${count} cards from ${filteredCards.length} matching cards`,
       );
     }
 
@@ -80,21 +83,24 @@ export class TarotCardSearch {
     return fisherYatesShuffle(filteredCards).slice(0, count);
   }
 
-  private filterCardsForRandomDraw(options?: Partial<SearchOptions>): readonly TarotCard[] {
+  private filterCardsForRandomDraw(
+    options?: Partial<SearchOptions>,
+  ): readonly TarotCard[] {
     if (!options) {
       return this.cards;
     }
 
-    return this.cards.filter(card => {
+    return this.cards.filter((card) => {
       if (options.suit && card.suit !== options.suit) return false;
       if (options.arcana && card.arcana !== options.arcana) return false;
       if (options.element && card.element !== options.element) return false;
-      if (options.number !== undefined && card.number !== options.number) return false;
+      if (options.number !== undefined && card.number !== options.number)
+        return false;
 
       if (options.keyword) {
         const keywordScore = this.evaluateCard(card, {
           keyword: options.keyword,
-          orientation: options.orientation || 'upright'
+          orientation: options.orientation || "upright",
         });
         return keywordScore.relevanceScore > 0;
       }
@@ -124,22 +130,22 @@ export class TarotCardSearch {
 
     if (options.suit) {
       score += 10;
-      matchedFields.push('suit');
+      matchedFields.push("suit");
     }
 
     if (options.arcana) {
       score += 8;
-      matchedFields.push('arcana');
+      matchedFields.push("arcana");
     }
 
     if (options.element) {
       score += 8;
-      matchedFields.push('element');
+      matchedFields.push("element");
     }
 
     if (options.number !== undefined) {
       score += 10;
-      matchedFields.push('number');
+      matchedFields.push("number");
     }
 
     // Keyword search in various fields. A specified keyword is also a hard
@@ -151,15 +157,24 @@ export class TarotCardSearch {
       // Search in card name
       if (card.name.toLowerCase().includes(keyword)) {
         score += 15;
-        matchedFields.push('name');
+        matchedFields.push("name");
+      }
+      if (card.zh?.name?.toLowerCase().includes(keyword)) {
+        score += 15;
+        matchedFields.push("zh_name");
       }
 
       // Search in keywords
-      const orientation = options.orientation || 'upright';
+      const orientation = options.orientation || "upright";
       const keywords = card.keywords[orientation];
-      if (keywords.some(kw => kw.toLowerCase().includes(keyword))) {
+      if (keywords.some((kw) => kw.toLowerCase().includes(keyword))) {
         score += 12;
-        matchedFields.push('keywords');
+        matchedFields.push("keywords");
+      }
+      const localizedKeywords = card.zh?.keywords?.[orientation] ?? [];
+      if (localizedKeywords.some((kw) => kw.toLowerCase().includes(keyword))) {
+        score += 12;
+        matchedFields.push("zh_keywords");
       }
 
       // Search in meanings
@@ -170,17 +185,40 @@ export class TarotCardSearch {
           matchedFields.push(`meaning_${field}`);
         }
       }
+      const localizedMeanings = card.zh?.meanings?.[orientation];
+      if (localizedMeanings) {
+        for (const [field, meaning] of Object.entries(localizedMeanings)) {
+          if (meaning.toLowerCase().includes(keyword)) {
+            score += 8;
+            matchedFields.push(`zh_meaning_${field}`);
+          }
+        }
+      }
 
       // Search in symbolism
-      if (card.symbolism.some(symbol => symbol.toLowerCase().includes(keyword))) {
+      if (
+        card.symbolism.some((symbol) => symbol.toLowerCase().includes(keyword))
+      ) {
         score += 6;
-        matchedFields.push('symbolism');
+        matchedFields.push("symbolism");
+      }
+      if (
+        card.zh?.symbolism?.some((symbol) =>
+          symbol.toLowerCase().includes(keyword),
+        )
+      ) {
+        score += 6;
+        matchedFields.push("zh_symbolism");
       }
 
       // Search in description
       if (card.description.toLowerCase().includes(keyword)) {
         score += 4;
-        matchedFields.push('description');
+        matchedFields.push("description");
+      }
+      if (card.zh?.description?.toLowerCase().includes(keyword)) {
+        score += 4;
+        matchedFields.push("zh_description");
       }
 
       if (score === scoreBeforeKeyword) {
@@ -191,7 +229,7 @@ export class TarotCardSearch {
     return {
       card,
       relevanceScore: score,
-      matchedFields
+      matchedFields,
     };
   }
 

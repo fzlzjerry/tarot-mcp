@@ -124,11 +124,19 @@ describe("HTTP MCP server", () => {
     const info = await fetch(`${BASE_URL}/api/info`);
     const infoJson = await info.json();
     expect(infoJson.tools).toHaveLength(14);
+    expect(infoJson.capabilities).toEqual(["tools", "resources", "prompts"]);
 
     const spreads = await fetch(`${BASE_URL}/api/spreads`);
     const spreadsJson = await spreads.json();
     expect(spreadsJson.spreads.length).toBeGreaterThanOrEqual(20);
     expect(spreadsJson.spreads[0]).toHaveProperty("type");
+
+    const localizedSpreads = await fetch(`${BASE_URL}/api/spreads?language=zh`);
+    const localizedSpreadsJson = await localizedSpreads.json();
+    expect(localizedSpreadsJson.spreads[0].name).toContain("单牌");
+
+    const invalidLanguage = await fetch(`${BASE_URL}/api/spreads?language=fr`);
+    expect(invalidLanguage.status).toBe(400);
   });
 
   it("serves card listing and card detail endpoints", async () => {
@@ -146,6 +154,39 @@ describe("HTTP MCP server", () => {
 
     const badCategory = await fetch(`${BASE_URL}/api/cards?category=swirls`);
     expect(badCategory.status).toBe(400);
+
+    const localizedCard = await fetch(
+      `${BASE_URL}/api/cards/${encodeURIComponent("愚者")}?language=zh`,
+    );
+    expect(localizedCard.status).toBe(200);
+    const localizedCardJson = await localizedCard.json();
+    expect(localizedCardJson.result).toContain("愚者（The Fool）");
+  });
+
+  it("exposes every MCP tool through the generic REST tool endpoint", async () => {
+    const search = await fetch(`${BASE_URL}/api/tools/search_cards`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ keyword: "全新开始", language: "zh" }),
+    });
+    expect(search.status).toBe(200);
+    const searchJson = await search.json();
+    expect(searchJson.result).toContain("愚者（The Fool）");
+    expect(searchJson.structured.totalMatches).toBeGreaterThan(0);
+
+    const unknown = await fetch(`${BASE_URL}/api/tools/not_a_tool`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: "{}",
+    });
+    expect(unknown.status).toBe(404);
+
+    const invalidBody = await fetch(`${BASE_URL}/api/tools/search_cards`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: "[]",
+    });
+    expect(invalidBody.status).toBe(400);
   });
 
   it("returns a structured reading object beside the Markdown on /api/reading", async () => {
@@ -160,6 +201,19 @@ describe("HTTP MCP server", () => {
     expect(json.result).toContain("# Single Card Reading");
     expect(json.reading.readingId).toMatch(/^reading_/);
     expect(json.reading.cards).toHaveLength(1);
+
+    const localized = await fetch(`${BASE_URL}/api/reading`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        spreadType: "single_card",
+        question: "今天有什么指引？",
+        language: "zh",
+      }),
+    });
+    expect(localized.status).toBe(200);
+    const localizedJson = await localized.json();
+    expect(localizedJson.result).toContain("塔罗解读");
   });
 
   it("returns HTTP 400 for invalid reading parameters", async () => {
@@ -202,7 +256,9 @@ describe("HTTP MCP server", () => {
       body: "{ not json",
     });
     expect(mcpResponse.status).toBe(400);
-    expect(mcpResponse.headers.get("content-type")).toContain("application/json");
+    expect(mcpResponse.headers.get("content-type")).toContain(
+      "application/json",
+    );
     const mcpJson = await mcpResponse.json();
     expect(mcpJson.error.code).toBe(-32700);
 
@@ -212,7 +268,9 @@ describe("HTTP MCP server", () => {
       body: "{ not json",
     });
     expect(restResponse.status).toBe(400);
-    expect(restResponse.headers.get("content-type")).toContain("application/json");
+    expect(restResponse.headers.get("content-type")).toContain(
+      "application/json",
+    );
     const restJson = await restResponse.json();
     expect(restJson.error).toContain("Invalid JSON");
   });

@@ -67,10 +67,14 @@ describe("recommend_spread characterization", () => {
   });
 
   it("recommends karmic and lunar spreads from special keywords", async () => {
-    const karma = await recommend({ question: "What karma from my past life?" });
+    const karma = await recommend({
+      question: "What karma from my past life?",
+    });
     expect(extractSpreads(karma)[0]).toBe("past_life_karma");
 
-    const moon = await recommend({ question: "What does this moon cycle mean?" });
+    const moon = await recommend({
+      question: "What does this moon cycle mean?",
+    });
     expect(extractSpreads(moon)).toEqual(
       expect.arrayContaining(["new_moon_intentions", "full_moon_release"]),
     );
@@ -81,6 +85,17 @@ describe("recommend_spread characterization", () => {
       question: "What hidden forces are in my unconscious?",
     });
     expect(extractSpreads(result)[0]).toBe("shadow_work");
+  });
+
+  it("recognizes Chinese questions instead of falling back to defaults", async () => {
+    const result = await recommend({
+      question: "我的感情关系会怎样？",
+      language: "zh",
+    });
+
+    expect(result).toContain("金星之爱牌阵");
+    expect(result).toContain('spreadType: "venus_love"');
+    expect(result).not.toContain("Three Card");
   });
 
   it("falls back to versatile defaults when nothing matches", async () => {
@@ -107,7 +122,9 @@ describe("recommend_spread characterization", () => {
       category: "career",
     });
     expect(result).toContain('**Your Question:** "What about work?"');
-    expect(result).toContain("**Category:** career | **Timeframe:** short_term");
+    expect(result).toContain(
+      "**Category:** career | **Timeframe:** short_term",
+    );
     expect(result).toContain("`perform_reading` with spreadType:");
   });
 

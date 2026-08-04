@@ -1,7 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { TarotCard, CardOrientation, CardCategory, Language } from "../shared/types.js";
+import {
+  TarotCard,
+  CardOrientation,
+  CardCategory,
+  Language,
+} from "../shared/types.js";
 import { fisherYatesShuffle } from "../shared/utils.js";
 import { logger } from "../shared/logger.js";
 import {
@@ -28,6 +33,7 @@ export class TarotCardManager {
   private static initPromise: Promise<TarotCardManager> | null = null;
   private readonly cards: Map<string, TarotCard>;
   private readonly cardsByName: Map<string, TarotCard>;
+  private readonly cardsByLocalizedName: Map<string, TarotCard>;
   private readonly allCards: readonly TarotCard[];
 
   /**
@@ -38,6 +44,7 @@ export class TarotCardManager {
     this.allCards = Object.freeze(cards);
     this.cards = new Map();
     this.cardsByName = new Map();
+    this.cardsByLocalizedName = new Map();
     this.initializeCards();
   }
 
@@ -66,6 +73,7 @@ export class TarotCardManager {
         logger.error("card_data_load_failed", { error: String(error) });
         throw new Error(
           "Could not initialize TarotCardManager. Card data is missing or corrupt.",
+          { cause: error },
         );
       }
     })();
@@ -81,6 +89,13 @@ export class TarotCardManager {
       // Lowercase keys keep lookups symmetric with findCard's normalization
       this.cards.set(card.id.toLowerCase(), card);
       this.cardsByName.set(card.name.toLowerCase(), card);
+      if (card.zh?.name) {
+        this.cardsByLocalizedName.set(card.zh.name.toLowerCase(), card);
+        this.cardsByLocalizedName.set(
+          `${card.zh.name}（${card.name}）`.toLowerCase(),
+          card,
+        );
+      }
     });
   }
 
@@ -102,7 +117,9 @@ export class TarotCardManager {
 
     const orientationTitle =
       language === "zh"
-        ? orientation === "upright" ? "正位" : "逆位"
+        ? orientation === "upright"
+          ? "正位"
+          : "逆位"
         : orientation.charAt(0).toUpperCase() + orientation.slice(1);
 
     let result = pick(
@@ -182,7 +199,10 @@ export class TarotCardManager {
   /**
    * List all available cards, optionally filtered by category.
    */
-  public listAllCards(category: CardCategory = "all"): string {
+  public listAllCards(
+    category: CardCategory = "all",
+    language: Language = "en",
+  ): string {
     let filteredCards: readonly TarotCard[] = [];
 
     switch (category) {
@@ -210,9 +230,22 @@ export class TarotCardManager {
         filteredCards = this.allCards;
     }
 
-    let result = `# Tarot Cards`;
+    let result = pick(language, "# Tarot Cards", "# 塔罗牌");
     if (category !== "all") {
-      result += ` - ${category.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase())}`;
+      const categoryZh: Record<CardCategory, string> = {
+        all: "全部",
+        major_arcana: "大阿卡纳",
+        minor_arcana: "小阿卡纳",
+        wands: "权杖",
+        cups: "圣杯",
+        swords: "宝剑",
+        pentacles: "星币",
+      };
+      result += pick(
+        language,
+        ` - ${category.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase())}`,
+        ` - ${categoryZh[category]}`,
+      );
     }
     result += `\n\n`;
 
@@ -221,11 +254,19 @@ export class TarotCardManager {
         (card) => card.arcana === "major",
       );
       if (majorCards.length > 0) {
-        result += `## Major Arcana (${majorCards.length} cards)\n\n`;
+        result += pick(
+          language,
+          `## Major Arcana (${majorCards.length} cards)\n\n`,
+          `## 大阿卡纳（${majorCards.length} 张）\n\n`,
+        );
         majorCards
           .sort((a, b) => (a.number ?? 0) - (b.number ?? 0))
           .forEach((card) => {
-            result += `• **${card.name}** (${card.number}) - ${card.keywords.upright.slice(0, 3).join(", ")}\n`;
+            result += pick(
+              language,
+              `• **${card.name}** (${card.number}) - ${card.keywords.upright.slice(0, 3).join(", ")}\n`,
+              `• **${localizedCardName(card, language)}**（${card.number}）- ${localizedKeywords(card, "upright", language).slice(0, 3).join("、")}\n`,
+            );
           });
         result += "\n";
       }
@@ -244,19 +285,41 @@ export class TarotCardManager {
       suits.forEach((suit) => {
         const suitCards = filteredCards.filter((card) => card.suit === suit);
         if (suitCards.length > 0) {
-          result += `## ${suit.charAt(0).toUpperCase() + suit.slice(1)} (${suitCards.length} cards)\n\n`;
+          const suitZh: Record<string, string> = {
+            wands: "权杖",
+            cups: "圣杯",
+            swords: "宝剑",
+            pentacles: "星币",
+          };
+          result += pick(
+            language,
+            `## ${suit.charAt(0).toUpperCase() + suit.slice(1)} (${suitCards.length} cards)\n\n`,
+            `## ${suitZh[suit]}（${suitCards.length} 张）\n\n`,
+          );
           suitCards
             .sort((a, b) => (a.number ?? 0) - (b.number ?? 0))
             .forEach((card) => {
-              result += `• **${card.name}** - ${card.keywords.upright.slice(0, 3).join(", ")}\n`;
+              result += pick(
+                language,
+                `• **${card.name}** - ${card.keywords.upright.slice(0, 3).join(", ")}\n`,
+                `• **${localizedCardName(card, language)}** - ${localizedKeywords(card, "upright", language).slice(0, 3).join("、")}\n`,
+              );
             });
           result += "\n";
         }
       });
     }
 
-    result += `\n**Total cards:** ${filteredCards.length}\n`;
-    result += `\nUse the \`get_card_info\` tool with any card name to get detailed information.`;
+    result += pick(
+      language,
+      `\n**Total cards:** ${filteredCards.length}\n`,
+      `\n**牌总数：** ${filteredCards.length}\n`,
+    );
+    result += pick(
+      language,
+      `\nUse the \`get_card_info\` tool with any card name to get detailed information.`,
+      `\n使用 \`get_card_info\` 工具并传入任意中文或英文牌名，即可查看详细信息。`,
+    );
 
     return result;
   }
@@ -269,12 +332,16 @@ export class TarotCardManager {
     // Try exact ID match first, then exact name match
     const card =
       this.cards.get(normalizedIdentifier) ??
-      this.cardsByName.get(normalizedIdentifier);
+      this.cardsByName.get(normalizedIdentifier) ??
+      this.cardsByLocalizedName.get(normalizedIdentifier);
     if (card) return card;
 
     // Try partial name match as a fallback
     for (const c of this.allCards) {
-      if (c.name.toLowerCase().includes(normalizedIdentifier)) {
+      if (
+        c.name.toLowerCase().includes(normalizedIdentifier) ||
+        c.zh?.name?.toLowerCase().includes(normalizedIdentifier)
+      ) {
         return c;
       }
     }

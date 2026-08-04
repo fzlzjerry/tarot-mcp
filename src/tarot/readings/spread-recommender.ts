@@ -6,7 +6,8 @@ export const RECOMMENDATION_TIMEFRAMES = [
   "long_term",
   "any",
 ] as const;
-export type RecommendationTimeframe = (typeof RECOMMENDATION_TIMEFRAMES)[number];
+export type RecommendationTimeframe =
+  (typeof RECOMMENDATION_TIMEFRAMES)[number];
 
 export const RECOMMENDATION_CATEGORIES = [
   "love",
@@ -43,7 +44,18 @@ interface RecommendationRule {
 const RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     category: "love",
-    keywords: ["love", "relationship", "partner"],
+    keywords: [
+      "love",
+      "relationship",
+      "partner",
+      "爱情",
+      "恋爱",
+      "感情",
+      "关系",
+      "伴侣",
+      "对象",
+      "婚姻",
+    ],
     recommendations: [
       {
         spread: "venus_love",
@@ -67,7 +79,17 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     category: "career",
-    keywords: ["job", "career", "work"],
+    keywords: [
+      "job",
+      "career",
+      "work",
+      "工作",
+      "事业",
+      "职业",
+      "求职",
+      "升职",
+      "职场",
+    ],
     recommendations: [
       {
         spread: "career_path",
@@ -79,7 +101,15 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     category: "spiritual",
-    keywords: ["spiritual", "soul", "purpose"],
+    keywords: [
+      "spiritual",
+      "soul",
+      "purpose",
+      "灵性",
+      "灵魂",
+      "使命",
+      "人生目的",
+    ],
     recommendations: [
       {
         spread: "spiritual_guidance",
@@ -97,7 +127,15 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     category: "decision",
-    keywords: ["should i", "decision", "choose"],
+    keywords: [
+      "should i",
+      "decision",
+      "choose",
+      "应该",
+      "决定",
+      "抉择",
+      "选择",
+    ],
     recommendations: [
       {
         spread: "decision_making",
@@ -115,7 +153,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     timeframe: "immediate",
-    keywords: ["today", "now"],
+    keywords: ["today", "now", "今天", "现在", "当下"],
     recommendations: [
       {
         spread: "daily_guidance",
@@ -133,7 +171,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     timeframe: "short_term",
-    keywords: ["week", "month"],
+    keywords: ["week", "month", "本周", "这周", "一周", "本月", "这个月"],
     recommendations: [
       {
         spread: "weekly_forecast",
@@ -151,7 +189,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     timeframe: "long_term",
-    keywords: ["year", "future"],
+    keywords: ["year", "future", "今年", "明年", "一年", "未来", "长期"],
     recommendations: [
       {
         spread: "year_ahead",
@@ -168,7 +206,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
     ],
   },
   {
-    keywords: ["past life", "karma"],
+    keywords: ["past life", "karma", "前世", "业力", "因果"],
     recommendations: [
       {
         spread: "past_life_karma",
@@ -179,7 +217,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
     ],
   },
   {
-    keywords: ["moon", "lunar", "cycle"],
+    keywords: ["moon", "lunar", "cycle", "月亮", "月相", "月球", "周期"],
     recommendations: [
       {
         spread: "new_moon_intentions",
@@ -196,7 +234,7 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
     ],
   },
   {
-    keywords: ["balance", "element"],
+    keywords: ["balance", "element", "平衡", "元素"],
     recommendations: [
       {
         spread: "elemental_balance",
@@ -207,7 +245,15 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
     ],
   },
   {
-    keywords: ["shadow", "hidden", "unconscious"],
+    keywords: [
+      "shadow",
+      "hidden",
+      "unconscious",
+      "阴影",
+      "隐藏",
+      "潜意识",
+      "无意识",
+    ],
     recommendations: [
       {
         spread: "shadow_work",

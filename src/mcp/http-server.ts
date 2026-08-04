@@ -11,6 +11,7 @@ import { HTTP_ENDPOINTS, MCP_SERVER_INFO, TOOL_NAMES } from "./public-api.js";
 import { createMcpProtocolServer } from "./protocol-server.js";
 import { TarotServer, ToolResult } from "./tarot-service.js";
 import { logger } from "../tarot/shared/logger.js";
+import type { Language } from "../tarot/shared/types.js";
 
 interface McpTransportSession<TTransport> {
   server: Server;
@@ -87,7 +88,11 @@ export class TarotHttpServer {
     McpTransportSession<SSEServerTransport>
   >();
 
-  constructor(tarotServer: TarotServer, port: number = 3000, host: string = "0.0.0.0") {
+  constructor(
+    tarotServer: TarotServer,
+    port: number = 3000,
+    host: string = "0.0.0.0",
+  ) {
     this.port = port;
     this.host = host;
     this.app = express();
@@ -128,7 +133,9 @@ export class TarotHttpServer {
       return false;
     }
     const hostname = stripPort(hostHeader);
-    return LOCAL_HOSTNAMES.has(hostname) || this.allowedHosts.includes(hostname);
+    return (
+      LOCAL_HOSTNAMES.has(hostname) || this.allowedHosts.includes(hostname)
+    );
   }
 
   /**
@@ -153,7 +160,12 @@ export class TarotHttpServer {
             req.path === HTTP_ENDPOINTS.streamableHttp ||
             req.path === HTTP_ENDPOINTS.legacyMessages;
           if (isMcpPath) {
-            this.sendJsonRpcError(res, 400, -32700, "Parse error: invalid JSON");
+            this.sendJsonRpcError(
+              res,
+              400,
+              -32700,
+              "Parse error: invalid JSON",
+            );
           } else {
             res.status(400).json({ error: "Invalid JSON in request body" });
           }
@@ -264,9 +276,15 @@ export class TarotHttpServer {
     });
 
     const rateLimitMax = Number(process.env.RATE_LIMIT_MAX) || 120;
-    const rateLimitWindowMs = Number(process.env.RATE_LIMIT_WINDOW_MS) || 60_000;
+    const rateLimitWindowMs =
+      Number(process.env.RATE_LIMIT_WINDOW_MS) || 60_000;
     this.app.use(
-      ["/api", HTTP_ENDPOINTS.streamableHttp, HTTP_ENDPOINTS.legacySse, HTTP_ENDPOINTS.legacyMessages],
+      [
+        "/api",
+        HTTP_ENDPOINTS.streamableHttp,
+        HTTP_ENDPOINTS.legacySse,
+        HTTP_ENDPOINTS.legacyMessages,
+      ],
       rateLimit({
         windowMs: rateLimitWindowMs,
         limit: rateLimitMax,
@@ -316,15 +334,22 @@ export class TarotHttpServer {
       res.json({
         name: MCP_SERVER_INFO.name,
         version: MCP_SERVER_INFO.version,
-        capabilities: ["tools"],
+        capabilities: ["tools", "resources", "prompts"],
         tools: this.tarotServer.getAvailableTools(),
         endpoints: HTTP_ENDPOINTS,
       });
     });
 
     this.app.get(HTTP_ENDPOINTS.api.spreads, (req, res) => {
+      const language = this.getLanguageQuery(req);
+      if (!language) {
+        res
+          .status(400)
+          .json({ error: 'Invalid language; expected "en" or "zh"' });
+        return;
+      }
       res.json({
-        spreads: this.tarotServer.getAvailableSpreads(),
+        spreads: this.tarotServer.getAvailableSpreads(language),
       });
     });
 
@@ -334,6 +359,7 @@ export class TarotHttpServer {
           TOOL_NAMES.listAllCards,
           {
             category: this.getQueryParam(req, "category"),
+            language: this.getQueryParam(req, "language"),
           },
         );
         this.sendToolResult(res, result);
@@ -349,6 +375,7 @@ export class TarotHttpServer {
           {
             cardName: req.params.cardName,
             orientation: this.getQueryParam(req, "orientation"),
+            language: this.getQueryParam(req, "language"),
           },
         );
         this.sendToolResult(res, result);
@@ -376,13 +403,14 @@ export class TarotHttpServer {
 
     this.app.post(HTTP_ENDPOINTS.api.reading, async (req, res) => {
       try {
-        const { spreadType, question, sessionId } = req.body;
+        const { spreadType, question, sessionId, language } = req.body;
         const result = await this.tarotServer.executeTool(
           TOOL_NAMES.performReading,
           {
             spreadType,
             question,
             sessionId,
+            language,
           },
         );
         this.sendToolResult(res, result, "reading");
@@ -393,8 +421,14 @@ export class TarotHttpServer {
 
     this.app.post(HTTP_ENDPOINTS.api.customSpread, async (req, res) => {
       try {
-        const { spreadName, description, positions, question, sessionId } =
-          req.body;
+        const {
+          spreadName,
+          description,
+          positions,
+          question,
+          sessionId,
+          language,
+        } = req.body;
         const result = await this.tarotServer.executeTool(
           TOOL_NAMES.createCustomSpread,
           {
@@ -403,9 +437,42 @@ export class TarotHttpServer {
             positions,
             question,
             sessionId,
+            language,
           },
         );
         this.sendToolResult(res, result, "reading");
+      } catch (error) {
+        this.sendHttpError(res, error);
+      }
+    });
+
+    /**
+     * REST parity for the complete MCP tool catalog. Existing ergonomic
+     * endpoints remain available, while clients can invoke every current and
+     * future tool without waiting for another bespoke route.
+     */
+    this.app.post(`${HTTP_ENDPOINTS.api.tools}/:toolName`, async (req, res) => {
+      const toolName = req.params.toolName;
+      if (
+        !this.tarotServer
+          .getAvailableTools()
+          .some((tool) => tool.name === toolName)
+      ) {
+        res.status(404).json({ error: `Unknown tool: ${toolName}` });
+        return;
+      }
+      if (
+        typeof req.body !== "object" ||
+        req.body === null ||
+        Array.isArray(req.body)
+      ) {
+        res.status(400).json({ error: "Tool arguments must be a JSON object" });
+        return;
+      }
+
+      try {
+        const result = await this.tarotServer.executeTool(toolName, req.body);
+        this.sendToolResult(res, result);
       } catch (error) {
         this.sendHttpError(res, error);
       }
@@ -477,25 +544,26 @@ export class TarotHttpServer {
       }
 
       const server = createMcpProtocolServer(this.tarotServer);
-      const transport: StreamableHTTPServerTransport = new StreamableHTTPServerTransport({
-        sessionIdGenerator: () => randomUUID(),
-        enableJsonResponse: true,
-        onsessioninitialized: (initializedSessionId) => {
-          this.streamableSessions.set(initializedSessionId, {
-            server,
-            transport,
-            lastActivity: Date.now(),
-            activeRequests: 0,
-          });
-        },
-        onsessionclosed: (closedSessionId) => {
-          const session = this.streamableSessions.get(closedSessionId);
-          this.streamableSessions.delete(closedSessionId);
-          void session?.server.close().catch((error) => {
-            logger.error("session_close_failed", { error: String(error) });
-          });
-        },
-      });
+      const transport: StreamableHTTPServerTransport =
+        new StreamableHTTPServerTransport({
+          sessionIdGenerator: () => randomUUID(),
+          enableJsonResponse: true,
+          onsessioninitialized: (initializedSessionId) => {
+            this.streamableSessions.set(initializedSessionId, {
+              server,
+              transport,
+              lastActivity: Date.now(),
+              activeRequests: 0,
+            });
+          },
+          onsessionclosed: (closedSessionId) => {
+            const session = this.streamableSessions.get(closedSessionId);
+            this.streamableSessions.delete(closedSessionId);
+            void session?.server.close().catch((error) => {
+              logger.error("session_close_failed", { error: String(error) });
+            });
+          },
+        });
 
       await server.connect(transport);
       await transport.handleRequest(req, res, req.body);
@@ -558,7 +626,9 @@ export class TarotHttpServer {
 
   private async handleLegacySse(req: Request, res: Response): Promise<void> {
     if (this.sseSessions.size >= this.maxTransportSessions) {
-      res.status(429).json({ error: "Too many concurrent sessions; try again later" });
+      res
+        .status(429)
+        .json({ error: "Too many concurrent sessions; try again later" });
       return;
     }
 
@@ -580,7 +650,10 @@ export class TarotHttpServer {
       res.on("close", () => {
         this.sseSessions.delete(sessionId);
         void server.close().catch((error) => {
-          logger.error("session_close_failed", { transport: "sse", error: String(error) });
+          logger.error("session_close_failed", {
+            transport: "sse",
+            error: String(error),
+          });
         });
       });
 
@@ -628,6 +701,11 @@ export class TarotHttpServer {
     return typeof value === "string" ? value : undefined;
   }
 
+  private getLanguageQuery(req: Request): Language | undefined {
+    const value = this.getQueryParam(req, "language") ?? "en";
+    return value === "en" || value === "zh" ? value : undefined;
+  }
+
   private sendJsonRpcError(
     res: Response,
     status: number,
@@ -650,7 +728,9 @@ export class TarotHttpServer {
 
   private sendHttpError(res: Response, error: unknown): void {
     // Log the real error server-side; never leak internals to clients.
-    logger.error("rest_endpoint_error", { error: error instanceof Error ? error.message : String(error) });
+    logger.error("rest_endpoint_error", {
+      error: error instanceof Error ? error.message : String(error),
+    });
     res.status(500).json({ error: "Internal server error" });
   }
 

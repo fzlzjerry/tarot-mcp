@@ -70,6 +70,36 @@ describe("MCP tool behavior", () => {
     expect(comparisonTool).toBeDefined();
   });
 
+  it("advertises language selection on every user-facing tool", () => {
+    for (const tool of getAvailableTools()) {
+      const properties = tool.inputSchema.properties as
+        Record<string, unknown> | undefined;
+      expect(
+        properties,
+        `${tool.name} is missing input properties`,
+      ).toBeDefined();
+      expect(
+        properties,
+        `${tool.name} is missing the language argument`,
+      ).toHaveProperty("language");
+    }
+  });
+
+  it("tells tool-calling models not to invent reading session IDs", () => {
+    for (const toolName of ["perform_reading", "create_custom_spread"]) {
+      const tool = getAvailableTools().find(
+        (candidate) => candidate.name === toolName,
+      );
+      const properties = tool?.inputSchema.properties as
+        Record<string, Record<string, unknown>> | undefined;
+
+      expect(properties?.sessionId?.description).toContain(
+        "never invent an ID",
+      );
+      expect(properties?.sessionId?.description).toContain("Blank, 'new'");
+    }
+  });
+
   it("keeps the card meanings comparison schema free of Codex-sensitive keywords", () => {
     const comparisonTool = getAvailableTools().find(
       (tool) => tool.name === "get_card_meanings_comparison",
@@ -198,6 +228,27 @@ describe("MCP tool behavior", () => {
     expect(result).toContain("**阿卡纳：** 大阿卡纳");
     expect(result).toContain("**关键词：**");
     expect(result).toContain("## 象征意义");
+  });
+
+  it("supports Chinese card names, catalog output, and keyword search", async () => {
+    const info = await executeTool("getCardInfo", {
+      cardName: "愚者",
+      language: "zh",
+    });
+    expect(info).toContain("愚者（The Fool）");
+
+    const catalog = await executeTool("listAllCards", {
+      category: "major_arcana",
+      language: "zh",
+    });
+    expect(catalog).toContain("## 大阿卡纳（22 张）");
+
+    const search = await executeTool("searchCards", {
+      keyword: "全新开始",
+      language: "zh",
+    });
+    expect(search).toContain("愚者（The Fool）");
+    expect(search).toContain("命中字段");
   });
 
   it("keeps the English path unchanged and rejects unknown languages", async () => {

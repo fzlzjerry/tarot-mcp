@@ -90,6 +90,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           category: {
             type: "string",
             enum: [
@@ -151,7 +157,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
           sessionId: {
             type: "string",
             description:
-              "Optional session ID returned by a previous reading; omit to start a new session",
+              "Continuation only: pass the exact session_... ID returned by a previous successful reading. For a new reading, omit this property. Blank, 'new', and non-server labels are treated as a new session; never invent an ID.",
           },
         },
         required: ["spreadType", "question"],
@@ -167,6 +173,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           keyword: {
             type: "string",
             description:
@@ -238,6 +250,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           cardName: {
             type: "string",
             description: "The name of the card to find similar cards for",
@@ -262,6 +280,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           includeRecommendations: {
             type: "boolean",
             description:
@@ -279,6 +303,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         // The handler rejects unknown parameters; advertise that contract.
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           count: {
             type: "integer",
             minimum: 1,
@@ -522,7 +552,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
           sessionId: {
             type: "string",
             description:
-              "Optional session ID returned by a previous reading; omit to start a new session",
+              "Continuation only: pass the exact session_... ID returned by a previous successful reading. For a new reading, omit this property. Blank, 'new', and non-server labels are treated as a new session; never invent an ID.",
           },
         },
         required: ["spreadName", "description", "positions", "question"],
@@ -538,6 +568,12 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         type: "object",
         additionalProperties: false,
         properties: {
+          language: {
+            type: "string",
+            enum: ["en", "zh"],
+            description: "Output language (default: en)",
+            default: "en",
+          },
           sessionId: {
             type: "string",
             description:

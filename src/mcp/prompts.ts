@@ -21,6 +21,11 @@ const PROMPTS = [
           "Spread type id (see list_available_spreads); omit to let the assistant pick one",
         required: false,
       },
+      {
+        name: "language",
+        description: 'Output language: "en" or "zh" (default: en)',
+        required: false,
+      },
     ],
   },
   {
@@ -30,6 +35,11 @@ const PROMPTS = [
       {
         name: "question",
         description: "Optional focus for the day",
+        required: false,
+      },
+      {
+        name: "language",
+        description: 'Output language: "en" or "zh" (default: en)',
         required: false,
       },
     ],
@@ -52,11 +62,17 @@ export function registerPrompts(server: Server): void {
     const { name, arguments: args } = request.params;
 
     if (name === "perform-reading") {
-      const question = args?.question ?? "What guidance do the cards have for me?";
+      const question =
+        args?.question ?? "What guidance do the cards have for me?";
       const spreadType = args?.spreadType;
+      const language = args?.language === "zh" ? "zh" : "en";
       const spreadInstruction = spreadType
         ? `Use the "${spreadType}" spread.`
         : "Pick a fitting spread first (the recommend_spread tool can help).";
+      const languageInstruction =
+        language === "zh"
+          ? 'Pass language: "zh" to every tarot tool and answer in Simplified Chinese.'
+          : 'Pass language: "en" to every tarot tool and answer in English.';
       return {
         description: "Guided tarot reading",
         messages: [
@@ -66,7 +82,7 @@ export function registerPrompts(server: Server): void {
               type: "text" as const,
               text:
                 `Please perform a tarot reading for this question: "${question}". ` +
-                `${spreadInstruction} Call the perform_reading tool, then walk me ` +
+                `${spreadInstruction} ${languageInstruction} Call the perform_reading tool, then walk me ` +
                 `through each card's meaning in its position and finish with an ` +
                 `overall synthesis and practical guidance.`,
             },
@@ -77,6 +93,7 @@ export function registerPrompts(server: Server): void {
 
     if (name === "daily-draw") {
       const question = args?.question;
+      const language = args?.language === "zh" ? "zh" : "en";
       return {
         description: "Daily card draw",
         messages: [
@@ -86,7 +103,7 @@ export function registerPrompts(server: Server): void {
               type: "text" as const,
               text:
                 `Draw my daily tarot card with the get_daily_card tool` +
-                `${question ? ` focused on: "${question}"` : ""} and interpret ` +
+                `${question ? ` focused on: "${question}"` : ""}. Pass language: "${language}" and interpret ` +
                 `its guidance for my day in a warm, practical tone.`,
             },
           },

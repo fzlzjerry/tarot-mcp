@@ -33,7 +33,7 @@ A professional-grade Model Context Protocol (MCP) server for Rider-Waite-Smith (
 - Comprehensive search and analytics tools
 - Session management and reading history
 - Full TypeScript implementation with strict typing
-- Jest testing framework setup
+- Vitest testing framework setup
 
 ## ✨ Features
 
@@ -201,8 +201,11 @@ When running in HTTP mode, the following endpoints are available:
 ### Tarot Cards
 - `GET /api/cards` - List all cards with filtering options
   - `?category=all|major_arcana|minor_arcana|wands|cups|swords|pentacles`
+  - `?language=en|zh` (default: en)
 - `GET /api/cards/:cardName` - Get detailed card information
   - `?orientation=upright|reversed` (default: upright)
+  - Accepts English names, Chinese names, or stable card ids
+  - `?language=en|zh` (default: en)
 
 ### Professional Readings
 - `POST /api/reading` - Perform a comprehensive tarot reading
@@ -210,7 +213,8 @@ When running in HTTP mode, the following endpoints are available:
   {
     "spreadType": "single_card|three_card|celtic_cross|...",
     "question": "Your specific question here",
-    "sessionId": "optional - use the Session ID returned by a previous reading"
+    "sessionId": "optional - use the Session ID returned by a previous reading",
+    "language": "optional - en or zh"
   }
   ```
 - `POST /api/custom-spread` - Create and perform a custom tarot spread
@@ -225,10 +229,12 @@ When running in HTTP mode, the following endpoints are available:
       }
     ],
     "question": "Your specific question",
-    "sessionId": "optional - use the Session ID returned by a previous reading"
+    "sessionId": "optional - use the Session ID returned by a previous reading",
+    "language": "optional - en or zh"
   }
   ```
-- `GET /api/spreads` - List all available spread types with descriptions
+- `GET /api/spreads?language=en|zh` - List all available spread types with descriptions
+- `POST /api/tools/:toolName` - Invoke any MCP tool over REST using the request body as its arguments. This provides HTTP parity for search, recommendations, analytics, daily/lunar readings, comparison, and session-history tools.
 
 ### Advanced Features
 - **Celtic Cross Analysis**: 10-card comprehensive reading with position dynamics
@@ -270,8 +276,10 @@ itself — call `tools/list` over MCP, or `GET /api/info` over HTTP.
 | `get_database_analytics` | Card-database statistics |
 | `get_session_history` | Summaries of a session's readings |
 
-Reading and lookup tools accept `language: "en" | "zh"` (default `en`) for
-fully localized Simplified Chinese output. Reading tools additionally
+All user-facing tools accept `language: "en" | "zh"` (default `en`) for
+localized Simplified Chinese output. Card lookup and search also accept
+Chinese card names and Chinese keywords, while spread recommendation recognizes
+common Chinese question phrases. Reading tools additionally
 return machine-readable `structuredContent` (reading id, session id,
 drawn cards) beside the Markdown text.
 

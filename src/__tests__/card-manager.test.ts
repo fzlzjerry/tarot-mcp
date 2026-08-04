@@ -30,6 +30,12 @@ describe("TarotCardManager", () => {
       const result = cardManager.getCardInfo("The Fool");
       expect(result).toContain("The Fool (Upright)");
     });
+
+    it("accepts a Chinese card name for localized lookup", () => {
+      const result = cardManager.getCardInfo("愚者", "upright", "zh");
+      expect(result).toContain("# 愚者（The Fool）（正位）");
+      expect(result).toContain("全新开始");
+    });
   });
 
   describe("listAllCards", () => {
@@ -58,6 +64,13 @@ describe("TarotCardManager", () => {
       expect(result).toContain("Wands");
       expect(result).toContain("Ace of Wands");
     });
+
+    it("lists localized card names and keywords in Chinese", () => {
+      const result = cardManager.listAllCards("major_arcana", "zh");
+      expect(result).toContain("## 大阿卡纳（22 张）");
+      expect(result).toContain("愚者（The Fool）");
+      expect(result).toContain("全新开始");
+    });
   });
 
   describe("findCard", () => {
@@ -77,6 +90,11 @@ describe("TarotCardManager", () => {
       const card = cardManager.findCard("Fool");
       expect(card).toBeDefined();
       expect(card?.name).toBe("The Fool");
+    });
+
+    it("finds cards by exact and display-form Chinese names", () => {
+      expect(cardManager.findCard("愚者")?.name).toBe("The Fool");
+      expect(cardManager.findCard("愚者（The Fool）")?.name).toBe("The Fool");
     });
 
     it("should return undefined for non-existent card", () => {

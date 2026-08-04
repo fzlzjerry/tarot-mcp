@@ -50,6 +50,7 @@ describe("MCP protocol server error contract", () => {
     expect(content[0].text).toContain(
       'Error: Session "session_does_not_exist" not found',
     );
+    expect(content[0].text).toContain('pass "new" to start a new session');
   });
 
   it("does not set isError on successful calls", async () => {
@@ -62,6 +63,24 @@ describe("MCP protocol server error contract", () => {
     const content = result.content as TextContent[];
     expect(content[0].text).toContain("# Single Card Reading");
   });
+
+  it.each(["", "   ", "new", "fresh-reading-label"])(
+    "treats model-generated sessionId %j as a request for a new session",
+    async (sessionId) => {
+      const result = await client.callTool({
+        name: "perform_reading",
+        arguments: {
+          spreadType: "single_card",
+          question: "Start a compatible session?",
+          sessionId,
+        },
+      });
+
+      expect(result.isError).toBeUndefined();
+      const structured = result.structuredContent as { sessionId: string };
+      expect(structured.sessionId).toMatch(/^session_/);
+    },
+  );
 
   it("returns structuredContent for readings that matches the declared shape", async () => {
     const result = await client.callTool({
