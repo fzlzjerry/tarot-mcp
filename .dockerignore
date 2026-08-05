@@ -11,6 +11,13 @@ dist
 # Tests and coverage
 coverage
 .nyc_output
+# Keep the small, distributable provenance record because the production build
+# copies it into dist; exclude only generation inputs and full-resolution art.
+assets/artwork/source
+assets/artwork/style
+assets/artwork/prompt-plan.json
+assets/artwork/prompt-overrides.json
+assets/cards/qa
 
 # Logs
 *.log

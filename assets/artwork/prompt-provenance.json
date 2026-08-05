@@ -1,0 +1,726 @@
+{
+  "schemaVersion": 1,
+  "deckId": "midnight-art-nouveau-v1",
+  "generator": "OpenAI built-in image_gen",
+  "generationMode": "one independent built-in image_gen call per distinct asset",
+  "thirdPartyDownloads": false,
+  "createdDate": "2026-08-05",
+  "styleBoard": {
+    "path": "assets/artwork/style/dark-art-nouveau-style-board.png",
+    "sha256": "81e8a8b65cd5baedda710eafa3e48b2d62c7d6f4c9b8827c8f618b1e86312c71",
+    "prompt": "Use case: stylized-concept\nAsset type: visual style board for a complete original 78-card tarot deck\nPrimary request: Create a cohesive dark-night Art Nouveau style board that will be used as the single visual reference for an original tarot deck. Show only visual samples: midnight-indigo and near-black grounds, antique-gold sinuous linework, moonlit ivory highlights, restrained jewel accents, elegant botanical curves, celestial geometry, balanced human proportions, Belle Époque-inspired garments, ornamental arch motifs, four small abstract suit emblems, and examples of atmospheric landscape, portrait, motion, and quiet mystery.\nComposition/framing: portrait 2:3 reference sheet divided into clean visual swatches and illustration vignettes, generous safe margins, no complete tarot cards and no copied existing deck imagery.\nLighting/mood: nocturnal, mystical, calm, refined, luminous but not neon.\nConstraints: entirely original; consistent flat illustrative finish with fine ink contours; no readable text, no letters, no numbers, no labels, no logo, no signature, no watermark, no mockup UI, no photorealism, no gradients that obscure linework.",
+    "promptSha256": "8b77e7d9b16bfbc330c663b748a370675adc0711af319cc49abfb12ff84ab107",
+    "reference": null
+  },
+  "cardBack": {
+    "path": "assets/artwork/source/back.png",
+    "sha256": "a746f6c3ba67e815db188ba601ba70d34461c9bb7e0a6a2980fe580766f65f6e",
+    "prompt": "Create a brand-new tarot card BACK design, using the attached style board only as a visual style reference.\nPortrait 2:3 composition. Exact 180-degree rotational symmetry: the design must look identical when turned upside down. Midnight-indigo and near-black ground, antique-gold Art Nouveau linework, restrained moonlit ivory details, mirrored celestial geometry, paired crescent moons, stars, botanical curves, and a centered abstract rosette. Continuous ornamental border with generous safe margin.\nFlat illustrative finish, crisp fine ink contours, calm nocturnal mystery, elegant and original.\nNo front-facing tarot scene. No readable text, no letters, no numbers, no logo, no signature, no watermark, no mockup, no card shadow, no hands holding the card.",
+    "promptSha256": "45682b70c38b2a6f7d37a028244cf0e2b9b4a184fcbbb537a69ad3bb4fdaa568",
+    "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+  },
+  "cards": [
+    {
+      "id": "fool",
+      "name": "The Fool",
+      "path": "assets/artwork/source/fool.png",
+      "sha256": "e1a501497b464b531b5cc2967dd5499bcc02af36d9d7a78b5e1b83ec9b23cfdd",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Fool, using the attached style board only as visual style reference.\nPortrait 2:3. Dark-night Art Nouveau illustration: a youthful traveler stepping toward a moonlit cliff edge with a small white dog, a pale rose, a light travel bundle, sweeping wind, stars and an open nocturnal sky. The mood is wonder, trust, freedom and new beginnings, not danger. Original composition, elegant Belle Époque-inspired garments, midnight indigo and near-black, antique-gold sinuous ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, crisp focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, no frame, no decorative pips.\nNo readable text, no letters, no numbers, no title, no logo, no signature, no watermark, no mockup, no card shadow, no copied deck artwork, no modern objects.",
+      "promptSha256": "ec53062e3fc78f4392f2f5afb311c814de710f26d9689a5a44f39ce69f152842",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "magician",
+      "name": "The Magician",
+      "path": "assets/artwork/source/magician.png",
+      "sha256": "64baa36aa57ae0089b9f54c681c63e5454f304900333a9148b863550b75112bd",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Magician, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the raised wand, infinity sign, garden, and four suit tools on the table. Express manifestation, willpower, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "8974db08d46ad78b33f9699ae03ec0f2b8f974eaaf2741e23b1c5542bd9aaebd",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "high_priestess",
+      "name": "The High Priestess",
+      "path": "assets/artwork/source/high_priestess.png",
+      "sha256": "0f334c10dd0991a6141d7592e83079de751ddefed01e328972dd145ae22578c8",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The High Priestess, using the attached style board only as visual style reference.\nPortrait 2:3. Dark-night Art Nouveau illustration: a serene priestess seated between one dark and one ivory pillar, a crescent moon at her feet, a veiled garden and still water behind her, hands resting calmly over a closed scroll with no markings. Mood of intuition, inner knowing, secrecy and stillness. Original composition, elegant Belle Époque-inspired garments, midnight indigo and near-black, antique-gold sinuous ink linework, moonlit ivory highlights, restrained violet accents, flat illustrative finish, crisp focal silhouette, generous 8% safe margin.\nCENTER ART only; no tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork or modern objects.",
+      "promptSha256": "5c53e94a9ef95740fecd5855c67d65ead903b01733712a493868f347fa356c55",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "empress",
+      "name": "The Empress",
+      "path": "assets/artwork/source/empress.png",
+      "sha256": "02bd8a6ed6fe2709fcd1cee5b3c40010ee65931693b82d3da097276ed2ff0f20",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Empress, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the wheat field, flowing water, starry crown, and fertile garden. Express abundance, nurturing, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "a84234eadcb5d2f18c08ba6270ac586fa50baecbdd56f0b0106b62052f33bf22",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "emperor",
+      "name": "The Emperor",
+      "path": "assets/artwork/source/emperor.png",
+      "sha256": "ddcfc07c20227fc6a53dd40c8beac50747074176562374224b8c25fc6b972c25",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Emperor, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the stone throne, rams, armor, orb, and red mountains. Express structure, authority, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "e6a1291b99ba365b7803a3782150e5ca0df40825d8e32930a1265446b267524c",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "hierophant",
+      "name": "The Hierophant",
+      "path": "assets/artwork/source/hierophant.png",
+      "sha256": "25c3eab42b92a2264d27be16d318f5849e02efbdfcbf01fbeeba9ed5b921529f",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Hierophant, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the keys, triple crown, raised blessing hand, and two students. Express tradition, teaching, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "528a4bd245871dedba2794796c9df8592051b5e9f2789d8126e7c761a2624283",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "lovers",
+      "name": "The Lovers",
+      "path": "assets/artwork/source/lovers.png",
+      "sha256": "5616776c9f532a1df8e93a109cf6a77bf75d630261eb5b8382e5aace93442403",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Lovers, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the angel, two figures, mountain, fruit tree, and clear sky. Express alignment, choice, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "bdb3d6b4b3dc4117a203948bae28761bf9c644fe13a29e1e957227d777ffa54a",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "chariot",
+      "name": "The Chariot",
+      "path": "assets/artwork/source/chariot.png",
+      "sha256": "9b8cfcf3d218d6a8bc174239d9492035ed7042eb1c9260930bee5824ee0d291c",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Chariot, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the charioteer, sphinxes, starry canopy, armor, and city gate. Express determination, victory, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "ccd60a93d7c50557f3d84a8cdddeca153216e6004cdbb48462aec66e43ac1010",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "strength",
+      "name": "Strength",
+      "path": "assets/artwork/source/strength.png",
+      "sha256": "d89820b97b05d6fb3e8a982c64dfd3c894beb92d1cbdfb28063f3aa0dd3d1388",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype Strength, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the calm figure, lion, infinity sign, white robe, and flower garland. Express courage, compassion, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "0ae2b953917ee98f07426f2705774b955faea62fbf9c28e6d7166e84f8fe3674",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "hermit",
+      "name": "The Hermit",
+      "path": "assets/artwork/source/hermit.png",
+      "sha256": "2471c82b3789b69f691038771d8c5d402d47ec23f39692767115d0b8c5b2f482",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Hermit, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the lantern, staff, mountain peak, grey cloak, and solitary path. Express introspection, inner guidance, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "ea5dc0471701d200c692e4f791125df38d86072951fef07b55d286c5566f8ebf",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "wheel_of_fortune",
+      "name": "Wheel of Fortune",
+      "path": "assets/artwork/source/wheel_of_fortune.png",
+      "sha256": "a7d85f8fe8fd9235105b3c0d8f95feebe348cee813c683688a5da77965c3c8f8",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype Wheel of Fortune, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the turning wheel, fixed signs, sphinx, serpent, and clouds. Express turning point, cycles, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "c2ad00e9be1a8fce287fa3af9f8dfa26a6cf36daa0419bdd146789295d8455a8",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "justice",
+      "name": "Justice",
+      "path": "assets/artwork/source/justice.png",
+      "sha256": "cc5af4d38d1c57ee86452714acb2e854f710c70549c1611f58fad5c43afbdeb5",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype Justice, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the scales, sword, pillars, red robe, and square crown. Express fairness, accountability, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "8113fadb2a66b64b0f712d33827d50bf1dd65e9fee5f7eb98bd8ca857ed48777",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "hanged_man",
+      "name": "The Hanged Man",
+      "path": "assets/artwork/source/hanged_man.png",
+      "sha256": "95276409244bc26a9eb6394cc95f85682fe06c7185e67a432e9272b3cfb5b661",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Hanged Man, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the suspended figure, halo, crossed legs, living tree, and reversed view. Express pause, new perspective, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.\nDepict the living adult as a serene aerial acrobat voluntarily and securely posed upside down by one ankle with a supportive silk loop, relaxed and meditative. No hanging by the neck, no injury, no pain, no distress, no violence, and no self-harm; the pose is symbolic performance art.",
+      "promptSha256": "10b83b8b74d2c126df3bfa6c1e4967aef92ba6d15c931011f23b910c5a76d10e",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "death",
+      "name": "Death",
+      "path": "assets/artwork/source/death.png",
+      "sha256": "750602ab299dd530bfe0ca7ad9bba2ae9d35e877a9cca24d338fbd02eb11c373",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype Death, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the white horse, black banner, rising sun, fallen crown, and river. Express transformation, ending, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "a0529229b46611cb8cad6e27b9e408939d70a3c71693c104722a24be7cd903fe",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "temperance",
+      "name": "Temperance",
+      "path": "assets/artwork/source/temperance.png",
+      "sha256": "f68240521b15ccfc2551200fe49247eb2f51ae1088da72e5683016d529de1dfd",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype Temperance, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the angel, flowing cups, one foot in water, irises, and distant path. Express balance, moderation, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "1a982c04a5cee4a58a2fc88813f2f6278975ddf0df42faf3b32c72b11a51c4b9",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "devil",
+      "name": "The Devil",
+      "path": "assets/artwork/source/devil.png",
+      "sha256": "afb0fee306568684bcaccdc4030711cba25ed502f11d61504b7d6b4238904ef2",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Devil, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the chained figures, torch, inverted pentagram, black pedestal, and shadowed cave. Express attachment, shadow, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.\nAll depicted people are safe, calm consenting adults. The loose ornamental chains symbolize voluntary attachment and do not restrain, injure, threaten, or distress anyone. Keep the scene theatrical, nonviolent, and non-graphic.",
+      "promptSha256": "697130a8c9c99d9f9b552f639268e248728671b39ed8586ed3bfb469a9ccfecf",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "tower",
+      "name": "The Tower",
+      "path": "assets/artwork/source/tower.png",
+      "sha256": "e908e6ea1a559413ef5c044bdf2118974715b58ff412c70299de6525e8451186",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Tower, using the attached style board only as visual style reference.\nPortrait 2:3. Dark-night Art Nouveau illustration: a tall ornate stone tower on a mountain struck by a branching bolt of moon-white lightning, crown-like roof breaking apart, two distant human silhouettes falling safely into swirling ribbons of cloud and sparks, dramatic wind and fractured masonry. Mood of sudden revelation, upheaval and liberation, intense but not gory. Original composition, midnight indigo and near-black, antique-gold sinuous ink linework, moonlit ivory highlights, restrained crimson sparks, flat illustrative finish, clear dynamic silhouette, generous 8% safe margin.\nCENTER ART only; no tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "0d128560986abb87d59a3fa41b0fa122587d5a32929a0b580952199f00225c1a",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "star",
+      "name": "The Star",
+      "path": "assets/artwork/source/star.png",
+      "sha256": "8618db7d47051442b3e1636a3725d8f6901cb43b702205de864b5e9d72559ea3",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Star, using the attached style board only as visual style reference.\nPortrait 2:3. A fully clothed adult astronomer in an elegant long-sleeved midnight-blue Belle Époque gown kneels beside a clear moonlit pool, pouring luminous water from two simple pitchers onto earth and water. One large eight-pointed star and seven small stars glow above; reeds, flowers and a distant bird suggest renewal. Mood of hope, healing, openness and calm. Original dark-night Art Nouveau composition, antique-gold linework, moonlit ivory and restrained blue accents, flat illustrative finish, balanced anatomy, generous 8% safe margin.\nThe figure must remain fully clothed from shoulders to ankles. CENTER ART only; no border, frame or pips. No nudity, exposed chest, sheer fabric, readable text, letters, numbers, title, logo, signature, watermark, mockup, copied deck artwork or modern objects.",
+      "promptSha256": "2b6262e3be04ad5b233d37b6a283807672d70ea528c24324055613f6c21228ee",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "moon",
+      "name": "The Moon",
+      "path": "assets/artwork/source/moon.png",
+      "sha256": "28cc3ba89e381673a5dcf3d2bc960368177274bba5fa2e9c255652877d7d8283",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Moon, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the moonlit path, two towers, dog, wolf, crayfish. Express illusion, uncertainty, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "4c2f6ac98578f22d2f147f69658eeda90ee26aca2209b9f913ae5e1f672959e3",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "sun",
+      "name": "The Sun",
+      "path": "assets/artwork/source/sun.png",
+      "sha256": "bf086bb2c1c2797decc72b6c550bdd16390d221606ff5cff56b3023bb9b7d26a",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The Sun, using the attached style board only as visual style reference.\nPortrait 2:3. Dark-night Art Nouveau illustration at luminous dawn: a joyful child in flowing ivory fabric riding a calm white horse through tall sunflowers, a radiant antique-gold sun disk rising behind an ornamental garden wall, blue night receding at the edges. Mood of vitality, truth, warmth and uncomplicated joy. Original composition, midnight indigo balanced with warm antique gold and ivory, sinuous ink linework, restrained amber accents, flat illustrative finish, clear joyous focal silhouette, generous 8% safe margin.\nCENTER ART only; no tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork or modern objects.",
+      "promptSha256": "b60c4767de8de62efb4cb719340f891344ca98194d82b0031b3960b2ff2c4056",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "judgement",
+      "name": "Judgement",
+      "path": "assets/artwork/source/judgement.png",
+      "sha256": "854932511eb2c260ec5e0983bd3a7b558d890ee33d945538819b4cc4ba266f38",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype Judgement, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the angelic trumpet, rising figures, coffins, mountains, and awakening call. Express awakening, renewal, alignment through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "040528d1b15546fe42630b29a9659ac62a624955e585ca85501378c08004da45",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "world",
+      "name": "The World",
+      "path": "assets/artwork/source/world.png",
+      "sha256": "3a3c837ea190bb9f07b6c12a48e54af0fa888e468630c8469c91e374874f98fe",
+      "prompt": "Create a brand-new original central illustration for the tarot archetype The World, using the attached style board only as visual style reference.\nPortrait 2:3. Build an original narrative composition around these traditional symbolic cues: the laurel wreath, dancing figure, four fixed signs, and crossed wands. Express completion, integration, awakening through gesture, landscape, weather and architecture rather than copying an existing deck. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained jewel accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nThis is CENTER ART only. No tarot border, frame or decorative pips. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "9320ae907954019c8607097e861ca959c61ffc64514e4ea77761d31d67f07941",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ace_of_wands",
+      "name": "Ace of Wands",
+      "path": "assets/artwork/source/ace_of_wands.png",
+      "sha256": "da80b96a9ca25acccc246f83bd5e7ccc87f70e8d089895262560ccedd182c27d",
+      "prompt": "Create a brand-new original central illustration for the tarot card Ace of Wands, using the attached style board only as visual style reference.\nPortrait 2:3. Dark-night Art Nouveau scene expressing inspiration and creative ignition: a solitary artist standing on a moonlit ridge as a ribbon of warm amber light rises from their open hand into branching botanical fire and a new dawn path. No physical wand, staff, rod or stick anywhere in the scene; the suit emblem will be added later. Original composition, Belle Époque-inspired clothing, midnight indigo and near-black, antique-gold linework, restrained amber-red accents, flat illustrative finish, crisp focal silhouette, generous 8% safe margin.\nCENTER ART only; no tarot border, frame, decorative pips or suit symbols. No wand objects, readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork or modern objects.",
+      "promptSha256": "c573bf146f40ed00b2d773384a263280db9e4f71469caa96548b06e99ba1ace4",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "two_of_wands",
+      "name": "Two of Wands",
+      "path": "assets/artwork/source/two_of_wands.png",
+      "sha256": "d6ffd7fa1d8e38a4b6873f1e6becbfd097687dbea8e050a19b5a98071a2b0970",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show two figures or two paths held in careful equilibrium. Express planning, future vision, balance through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "6c72734ad42dc218a87cb5c4e2452fef5a908e6b60277f7ff03bf7bb5e5a1857",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "three_of_wands",
+      "name": "Three of Wands",
+      "path": "assets/artwork/source/three_of_wands.png",
+      "sha256": "a16f33f29cd484b24239724d0105f7095197c9e55ca9f78294ab427c225db5f8",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a small circle of collaborators shaping something that can grow. Express expansion, foresight, development through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "f1b2bcfbb2cc28c349e9b8763952524f75a1d6d91ca445cff7959b04f6ffaf3f",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "four_of_wands",
+      "name": "Four of Wands",
+      "path": "assets/artwork/source/four_of_wands.png",
+      "sha256": "a9e61ad3c43b06e38e0f0ef355635642f3624bf41f010cbce3ebaf6d43844a18",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a sheltered garden or quiet chamber holding a deliberate pause. Express celebration, homecoming, structure through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "7913dd1b529c72b8938b53f31d8c3aeb789077e8dcc1bcc3b7f9bd68bc0471d4",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "five_of_wands",
+      "name": "Five of Wands",
+      "path": "assets/artwork/source/five_of_wands.png",
+      "sha256": "1e2c7ea68ead0e0072fad48224d473e31bf123a7ae30a9841426d7c6827c86d9",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show figures meeting friction, hardship or exclusion without graphic violence. Express competition, conflict, challenge through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "0371bf5750523fdde596a0e24c55daf9b31365b8f85057f7e8bed5f59401b34e",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "six_of_wands",
+      "name": "Six of Wands",
+      "path": "assets/artwork/source/six_of_wands.png",
+      "sha256": "35235835d900ccf565466211e32307b569057d15701d533160b5c290cb64c69c",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a graceful passage toward recognition, help, memory or calmer ground. Express recognition, victory, exchange through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "0669f7ab65f23d0514f901235c0023dd634bbc342ff4d4e62065326f60b57f73",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "seven_of_wands",
+      "name": "Seven of Wands",
+      "path": "assets/artwork/source/seven_of_wands.png",
+      "sha256": "e0f3c6a1a671f049f5e6c1b2e06d566690d5b3d074f094199fd6e4640ede1cce",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a lone figure testing choices, boundaries and disciplined judgment. Express defense, perseverance, testing through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "317f30d6af26649b2524dd7f7f7a5c75b4e46f268a9d8198d8ae85ff48119adb",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "eight_of_wands",
+      "name": "Eight of Wands",
+      "path": "assets/artwork/source/eight_of_wands.png",
+      "sha256": "ee5925d8ef54ce399bf8c9068205b505152bf5c0a0fdfd73e1f8842e821f4897",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show focused motion, skilled repetition or a path tightening around the subject. Express speed, movement, creative will through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "2070b38f54aab436545c3ca8baa930db3cef12088f4ff19db5ef0ffed174e786",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "nine_of_wands",
+      "name": "Nine of Wands",
+      "path": "assets/artwork/source/nine_of_wands.png",
+      "sha256": "706747fd7facae877dc5a762a6b4282aa2f94ff97dbdd1d4c67f16a86c98732a",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a solitary figure at a late-night threshold of resilience or fulfillment. Express resilience, boundaries, culmination through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "c519ee1da682aa0d0cf515784d978d591d61db68b7294fc4b3df6aa90a8e8b3b",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ten_of_wands",
+      "name": "Ten of Wands",
+      "path": "assets/artwork/source/ten_of_wands.png",
+      "sha256": "e95bcaf1752e2f4a02068bd938cdf2aa6c3bb8f166865086560f58edfabaf58a",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a group or lone bearer meeting culmination, legacy or the weight of completion. Express burden, responsibility, completion through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "190bdc085afa540f3042892b1989efaa183ef9d9fb22a07b3104ab549baafeb2",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "page_of_wands",
+      "name": "Page of Wands",
+      "path": "assets/artwork/source/page_of_wands.png",
+      "sha256": "038c4b564065b7fa7b4490ce37bdfdfa5eca82eb63160a18871e76ec8c75ffce",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a curious youthful messenger studying a newly discovered sign. Express enthusiasm, exploration, learning through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "f77f32019126c4d7ab26b07ca2cbaf7fe60adf0dc3fb143fd51d4f3e1bf8861a",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "knight_of_wands",
+      "name": "Knight of Wands",
+      "path": "assets/artwork/source/knight_of_wands.png",
+      "sha256": "7a8b370422b0d4e8f04f282193611e2781e765bb58e08e1a56b0d1950a04eaff",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a determined traveler moving through wind and changing terrain. Express action, adventure, pursuit through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "dc15fedaf8883549ba0b506f727a7dfed0b37b1d0447b402a16d15c21f012173",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "queen_of_wands",
+      "name": "Queen of Wands",
+      "path": "assets/artwork/source/queen_of_wands.png",
+      "sha256": "26a5effa226a1bedc2468c067f7d4556b25c2443b442bfa66d7aaccb7c5bab78",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a mature sovereign woman embodying inward mastery and care. Express confidence, vibrancy, inner mastery through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "65a7a94bb747d3b88859548543fc3cb068d192cbe06e9f1c06af8223c561077b",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "king_of_wands",
+      "name": "King of Wands",
+      "path": "assets/artwork/source/king_of_wands.png",
+      "sha256": "00fd05a48bed5170b15fd8d0430e5ee448accf078d24ec67510c4d1ccc44dad4",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a mature sovereign man embodying outward mastery and responsibility. Express leadership, vision, outer mastery through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of creative will, courage, ambition, movement, warmth and living energy. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained amber-red accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo physical wand, staff, rod, branch used as a staff, or decorative wand symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "ad6c4158e713e41396bad6490d078d50028145f0e7d633573869ff0a485ba5f0",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ace_of_cups",
+      "name": "Ace of Cups",
+      "path": "assets/artwork/source/ace_of_cups.png",
+      "sha256": "a99c01eb3c41591bef42cb6a6f2a5ca7fcabfa9b9cb33209644de64fe3e85073",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a solitary figure at a luminous threshold as a new path begins. Express new love, emotional opening, seed through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "1abb4b1ecb0c0b12803d4f225087e61d585a87ab17c5e8cc30c420c9ec86e1cd",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "two_of_cups",
+      "name": "Two of Cups",
+      "path": "assets/artwork/source/two_of_cups.png",
+      "sha256": "2f096b436f46bb35f817fd7f2c8c1745757561eea582045e30f930413d0daf30",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show two figures or two paths held in careful equilibrium. Express partnership, mutual attraction, balance through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "623cee8de244014e907112d74c7256e773a11ce6f09e84f9c932cf8d9b640fdd",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "three_of_cups",
+      "name": "Three of Cups",
+      "path": "assets/artwork/source/three_of_cups.png",
+      "sha256": "8ccbc40791c75d5e9e5fa6593977728865d60f4b3e8a485a4eba952f7c7e23ff",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a small circle of collaborators shaping something that can grow. Express friendship, community, development through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "d3667aab9d2556ae2d48e72c44da492daa6b2b190ada537f066b0d6d01a462e8",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "four_of_cups",
+      "name": "Four of Cups",
+      "path": "assets/artwork/source/four_of_cups.png",
+      "sha256": "5e5af96d21643931ac1bfabf20704e3c94b43c73a1eb26eb24e7f74dd8d98cad",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a sheltered garden or quiet chamber holding a deliberate pause. Express apathy, contemplation, structure through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "4b911fd5e730c57edf3793ff0366ce752d7b7e632a126356e6e4ecaa1e6dac7a",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "five_of_cups",
+      "name": "Five of Cups",
+      "path": "assets/artwork/source/five_of_cups.png",
+      "sha256": "dcf8133e9f8bce67445a02620f36f87787e0cb65fcff2bd87bd6f9e60e7cabce",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show figures meeting friction, hardship or exclusion without graphic violence. Express grief, disappointment, challenge through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "d5843ab5fd8f78bf2a199a7a01c7b2bc2ae65eccf2eaf6b640980ea68bd546fe",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "six_of_cups",
+      "name": "Six of Cups",
+      "path": "assets/artwork/source/six_of_cups.png",
+      "sha256": "bc9b072d8b318194137309e0b3f6fa04248b41c0c65a7c3cd252a970106686b3",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a graceful passage toward recognition, help, memory or calmer ground. Express nostalgia, kindness, exchange through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "410c0f7dcb529fe208798f6a644fd0c0ac2f99aede462a11c4b8ae212069131d",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "seven_of_cups",
+      "name": "Seven of Cups",
+      "path": "assets/artwork/source/seven_of_cups.png",
+      "sha256": "57c9497360bd6b700359b67cd86ed9a206956240cb3590923bc0aa45dec73355",
+      "prompt": "Create a brand-new original central illustration for a tarot scene expressing choices, fantasy and discernment, using the attached style board only as visual style reference.\nPortrait 2:3. A lone dreamer stands before seven distinct moonlit doorways formed from mist, each doorway suggesting a different possible future through landscape, mask, wreath, serpent-like ribbon, jewel glow, castle silhouette and veiled shadow. Do not show any cups, goblets, chalices or drinking vessels; exact suit symbols will be added later. Original dark-night Art Nouveau composition, midnight indigo and near-black, antique-gold sinuous ink linework, moonlit ivory highlights, restrained blue-violet accents, flat illustrative finish, clear silhouette, generous 8% safe margin.\nCENTER ART only; no tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork or modern objects.",
+      "promptSha256": "18f4f9f1bbb05088da6cb7bd9539fbdba9ed42f191c3261891434290b32d271f",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "eight_of_cups",
+      "name": "Eight of Cups",
+      "path": "assets/artwork/source/eight_of_cups.png",
+      "sha256": "9d3c12a89a27e4ec879de265cad16cd337930c2a151a17c0e490a252ca0d427c",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show focused motion, skilled repetition or a path tightening around the subject. Express walking away, seeking meaning, movement through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "4d7d7f8c59d788fdd0559960a20ab7860d959d7a34f62e77baae61541b44a01c",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "nine_of_cups",
+      "name": "Nine of Cups",
+      "path": "assets/artwork/source/nine_of_cups.png",
+      "sha256": "2400647aae1d3cb1b9f458aca47d70e954c05f39dbc48e1c3801bd73683dd2fd",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a solitary figure at a late-night threshold of resilience or fulfillment. Express contentment, wish fulfillment, culmination through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "b63752be9e61b86ce2962905ec2f3bd433d6a64408889b8aff2af5fdfd3774e8",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ten_of_cups",
+      "name": "Ten of Cups",
+      "path": "assets/artwork/source/ten_of_cups.png",
+      "sha256": "019d906c5ab6c8493eab6868eba412b101efb54d214c3d347df94fadaf5715c7",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a group or lone bearer meeting culmination, legacy or the weight of completion. Express harmony, family joy, completion through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "5bfad2f76f25d148672b8a4c42ffcc5947daced7edbc28c0156b7cfff4148568",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "page_of_cups",
+      "name": "Page of Cups",
+      "path": "assets/artwork/source/page_of_cups.png",
+      "sha256": "f74475edd17ecdb782783f96f03aa518d4803b7e3bb64c5776a0e161c90998d7",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a curious youthful messenger studying a newly discovered sign. Express creative message, emotional openness, learning through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "aa604b80edfc7ee71a2ff2c2d6ffbbf4230142b6c41d878cb3f38ece57b67103",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "knight_of_cups",
+      "name": "Knight of Cups",
+      "path": "assets/artwork/source/knight_of_cups.png",
+      "sha256": "73d975e66ef470805c6629467893dfbdac59e20af0bee3820e91d08949e24349",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a determined traveler moving through wind and changing terrain. Express romance, idealism, pursuit through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "44f2d95b1ed680fb7c1114ba54b8de56881303f6e60d332835ced91617acd36b",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "queen_of_cups",
+      "name": "Queen of Cups",
+      "path": "assets/artwork/source/queen_of_cups.png",
+      "sha256": "7ecbd54c1d5b772aaeeaa63496ee378868fa94ecee6c3fdbe5612c443ddbbedf",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a mature sovereign woman embodying inward mastery and care. Express compassion, emotional wisdom, inner mastery through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "ced9b37e835ff75edfab6e943ec6fb126d213cfa33a5cee6bab5acbc59f251d5",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "king_of_cups",
+      "name": "King of Cups",
+      "path": "assets/artwork/source/king_of_cups.png",
+      "sha256": "e901eaad5367db9c79b5419755a52aeb0a4ac3ca120642a71773f36a0549a37e",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a mature sovereign man embodying outward mastery and responsibility. Express emotional balance, wise counsel, outer mastery through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of emotion, relationship, intuition, reflection and the flow of the heart. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moon-blue and violet accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo cup, goblet, chalice, bowl, drinking vessel, or decorative cup symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "6c8592f27bdca33060e77d093e2cb027aa1a0b8a40b11a68d7049e3d9f6d5f59",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ace_of_swords",
+      "name": "Ace of Swords",
+      "path": "assets/artwork/source/ace_of_swords.png",
+      "sha256": "67d6cbf2a186aaabe2aecb18e7aeb2ae3c5f6d12c33fb5d4377ca5893de53b1f",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a solitary figure at a luminous threshold as a new path begins. Express clarity, breakthrough, seed through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "d8e6337929e3d6d3fea38f2f4c2769b128c4603647ff8f475014245a4a8fd9c5",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "two_of_swords",
+      "name": "Two of Swords",
+      "path": "assets/artwork/source/two_of_swords.png",
+      "sha256": "3d40c28262e25e5fb67898f46a98891ded2b899fb0659d4a993be528f9428a77",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show two figures or two paths held in careful equilibrium. Express stalemate, difficult choice, balance through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "e9d26f40087b96aa90ff69f15ea085f43a8684a55df0e5da9474b748eadb0479",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "three_of_swords",
+      "name": "Three of Swords",
+      "path": "assets/artwork/source/three_of_swords.png",
+      "sha256": "742961d7bbde95056d4a7b75bd4eb42cb62b649e0f0199742d8d01ffa1fb364e",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a small circle of collaborators shaping something that can grow. Express heartbreak, truth, development through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "b469f51b8b59d03b9d7d152db602e276679a784bed4bdbae8427d248c5f3dc57",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "four_of_swords",
+      "name": "Four of Swords",
+      "path": "assets/artwork/source/four_of_swords.png",
+      "sha256": "f4c925fbf4487110cb5ac0ffb915df14ec844604a24f0f569ffa826de2ad180e",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a sheltered garden or quiet chamber holding a deliberate pause. Express rest, recovery, structure through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "8c5d3f0a8591e1d3a218cd6a3a1007bfb00321d486d08a3ff898a990bd6a0617",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "five_of_swords",
+      "name": "Five of Swords",
+      "path": "assets/artwork/source/five_of_swords.png",
+      "sha256": "6f053baef3294ca51678b2f5b5e34be437aa4e2d42fd4affeb2e918f65779b9a",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show figures meeting friction, hardship or exclusion without graphic violence. Express conflict, hollow victory, challenge through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "1bb2257c50bc48d6e8b6690aca19acdb83a263b7441a4926aa9345c943c7b637",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "six_of_swords",
+      "name": "Six of Swords",
+      "path": "assets/artwork/source/six_of_swords.png",
+      "sha256": "c4ad5fbd38107ded7538130d63cc692bf8b810f3c50d1b9bf55772e5969e0a37",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a graceful passage toward recognition, help, memory or calmer ground. Express transition, moving on, exchange through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "852cced0003e6120d1d5e29b7709b8ab67772436bb9b60857b66b4a249c28c2a",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "seven_of_swords",
+      "name": "Seven of Swords",
+      "path": "assets/artwork/source/seven_of_swords.png",
+      "sha256": "e5d2b10debd6bcfa74e94bc241783b8aabc64ca780d4a4545b417099ccdccdc9",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a lone figure testing choices, boundaries and disciplined judgment. Express strategy, deception, testing through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "005b2c4f1bfb980f8deead6258e00a9f44280f87930daa8c8577d44b78355eda",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "eight_of_swords",
+      "name": "Eight of Swords",
+      "path": "assets/artwork/source/eight_of_swords.png",
+      "sha256": "7809a46c3833fcbdb133cad3e6f4a5e8da30c72903828aa372edf88068bcea71",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show focused motion, skilled repetition or a path tightening around the subject. Express restriction, limiting beliefs, movement through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "3f192e694b56b3ee4b46df80459120e03125437d3fd46b6b79c73f1db19c79f3",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "nine_of_swords",
+      "name": "Nine of Swords",
+      "path": "assets/artwork/source/nine_of_swords.png",
+      "sha256": "e909db0258b7666995d1d0b084eeaede7b07f3d6a93424e37c7f3e07ce60a461",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a solitary figure at a late-night threshold of resilience or fulfillment. Express anxiety, nightmares, culmination through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "b5aff1a9c5e546dc42d93604aaac44868f803ef8fa2ce30534885c3496341fab",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ten_of_swords",
+      "name": "Ten of Swords",
+      "path": "assets/artwork/source/ten_of_swords.png",
+      "sha256": "f0dfb3f3b1a7da00f7df30f1e64301414d6d099c562889011f770b026b094902",
+      "prompt": "Create a brand-new original central illustration for a tarot scene expressing painful completion, surrender and the first light after crisis, using the attached style board only as visual style reference.\nPortrait 2:3. At night, a cloaked figure rests safely on dark earth beneath ten narrow descending beams of silver moonlight while a warm dawn line appears on the horizon; wind-blown black ribbons dissolve into birds, conveying an ending rather than violence. Do not show any swords, blades, knives or weapons; exact suit symbols will be added later. No gore. Original dark-night Art Nouveau composition, midnight indigo and near-black, antique-gold sinuous ink linework, silver-blue highlights, restrained dawn amber, flat illustrative finish, clear silhouette, generous 8% safe margin.\nCENTER ART only; no tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "8579336d23f890cbc9787b77f212a569308792029b7d3125c218ee0c51d4b8ef",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "page_of_swords",
+      "name": "Page of Swords",
+      "path": "assets/artwork/source/page_of_swords.png",
+      "sha256": "faa3a1cfbbad684b729aaa9c14a55ec69923019aba3c65a7305516bef0d1a480",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a curious youthful messenger studying a newly discovered sign. Express curiosity, watchfulness, learning through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "ed4b9dc3e6c5d0f92ccd0db5334d9a3dfab4f935296b58b06d929cd93e052c51",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "knight_of_swords",
+      "name": "Knight of Swords",
+      "path": "assets/artwork/source/knight_of_swords.png",
+      "sha256": "06f5b69a750542f2ee2b31c236d9444cc7032fe9a9220155bf08b74cdba682cd",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a determined traveler moving through wind and changing terrain. Express ambition, direct action, pursuit through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "fd11efeaa49551838657e1ac0433c45d71708b270af00299f9b91f29c894ce92",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "queen_of_swords",
+      "name": "Queen of Swords",
+      "path": "assets/artwork/source/queen_of_swords.png",
+      "sha256": "b924a4199ea9723f8dad18166f5595ee47aa640f15b995fbaab9d3bc81b8d47d",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a mature sovereign woman embodying inward mastery and care. Express clear boundaries, independence, inner mastery through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "1cf2e61fb193a518f8746377cd33ba043d6b973ffc54539a8a04f6809ba8ae84",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "king_of_swords",
+      "name": "King of Swords",
+      "path": "assets/artwork/source/king_of_swords.png",
+      "sha256": "66abcc42b600f77abeaa12f522e85990b0f4a3ee1b10d5a93201f302cc12ad3f",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a mature sovereign man embodying outward mastery and responsibility. Express mental clarity, authority, outer mastery through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of thought, truth, tension, communication, discernment and decisive clarity. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained silver-blue accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo sword, blade, knife, dagger, weapon, or decorative sword symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "259756587e8879ead8ce60081f6eb74efd966a3fa4e03965d424723dfe64037c",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ace_of_pentacles",
+      "name": "Ace of Pentacles",
+      "path": "assets/artwork/source/ace_of_pentacles.png",
+      "sha256": "bc4168c78c09de01292e65b03159730701c8dc07faf949d1eef09d6f72346077",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a solitary figure at a luminous threshold as a new path begins. Express opportunity, prosperity, seed through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "1ca4b99ecdb7539ad18e49a617133d1e8e7adfdc6147305bda17472bbd0b0a68",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "two_of_pentacles",
+      "name": "Two of Pentacles",
+      "path": "assets/artwork/source/two_of_pentacles.png",
+      "sha256": "789ebfc23e4649449e03734b348994607615632be84b747f87696d343e027120",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show two figures or two paths held in careful equilibrium. Express balance, adaptability, work through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "c9bde3ff7c67b1190206a2491d263365cab2e696ee1b52bdbc768186a1615190",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "three_of_pentacles",
+      "name": "Three of Pentacles",
+      "path": "assets/artwork/source/three_of_pentacles.png",
+      "sha256": "d02ecab3999f7239f92054ae8a2cdc015be346cb2ea34c0f11b07a29754feb05",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a small circle of collaborators shaping something that can grow. Express teamwork, craftsmanship, development through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "265382bd53f83ef6a1f7ef338884e95f08ca992429c64d209472f2f3a8b42cab",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "four_of_pentacles",
+      "name": "Four of Pentacles",
+      "path": "assets/artwork/source/four_of_pentacles.png",
+      "sha256": "0e02f931c7a0c4d14c092c394d98edebb479ad4c43b7aa96808f859ff42ed19d",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a sheltered garden or quiet chamber holding a deliberate pause. Express security, control, structure through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "63af27931ac242583c98a74d5945ba59ab91c63677c05cccd8317b97b0f1b8d2",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "five_of_pentacles",
+      "name": "Five of Pentacles",
+      "path": "assets/artwork/source/five_of_pentacles.png",
+      "sha256": "c25219cbbe84eebba2866e5bf3b753503685c9c21262026bbf82b1e3753ab082",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show figures meeting friction, hardship or exclusion without graphic violence. Express hardship, exclusion, challenge through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "621e849ef3064159952082ff47e89a466983153fe9e2d1823a3865e0ddecda31",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "six_of_pentacles",
+      "name": "Six of Pentacles",
+      "path": "assets/artwork/source/six_of_pentacles.png",
+      "sha256": "d0bf6eb1f8b874f7d9c28def537618fd092067234aebb7d374a6494fdd0591fd",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a graceful passage toward recognition, help, memory or calmer ground. Express generosity, fair exchange, exchange through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "1b44af66481757f015ca375884f1630c4b839fa6ceb42ee2b0b5080f6968ade7",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "seven_of_pentacles",
+      "name": "Seven of Pentacles",
+      "path": "assets/artwork/source/seven_of_pentacles.png",
+      "sha256": "9c684513629cb11cb94711521d52e2b414fdef3bac40d2502309ca43fd820edc",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a lone figure testing choices, boundaries and disciplined judgment. Express patience, assessment, testing through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "f904a021b2f0eae90e57eda01f07443f33c2d85775c698a06525ef19be460a6c",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "eight_of_pentacles",
+      "name": "Eight of Pentacles",
+      "path": "assets/artwork/source/eight_of_pentacles.png",
+      "sha256": "7a01d30bcdb1400fd0586625042156bc1767623f40f041a83070627351f48530",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show focused motion, skilled repetition or a path tightening around the subject. Express skill building, dedication, movement through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "f31650b7cad741e3d2979f7b18464a3ddc41a827b706c231bd3aff2b584a114a",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "nine_of_pentacles",
+      "name": "Nine of Pentacles",
+      "path": "assets/artwork/source/nine_of_pentacles.png",
+      "sha256": "aa4e8e9346bd9dedd15eff79eef194b59582dc2eeea1e32bb5c09d8c6100c525",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a solitary figure at a late-night threshold of resilience or fulfillment. Express self-sufficiency, luxury, culmination through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "257039a4ce54e6a6bae06eb951a8ed987cf797fab232d8500e7db7aacf0e96d0",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "ten_of_pentacles",
+      "name": "Ten of Pentacles",
+      "path": "assets/artwork/source/ten_of_pentacles.png",
+      "sha256": "d079d5c409b6881e4455974cd0b43ff62624d0e08dfe5a1a9572fbf7216e632f",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a group or lone bearer meeting culmination, legacy or the weight of completion. Express legacy, family wealth, completion through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "b8e2b500414271d73075acd65aebb18b9294397451b095a75e16d54975b61072",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "page_of_pentacles",
+      "name": "Page of Pentacles",
+      "path": "assets/artwork/source/page_of_pentacles.png",
+      "sha256": "1a458090dec83574fd84553fd660a872970a03b9a873415942680670bb9e0f51",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a curious youthful messenger studying a newly discovered sign. Express study, practical opportunity, learning through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "f79c661b6b07e4f41154e371c873554a0b51704985b7ccdc1eca260c1a079df7",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "knight_of_pentacles",
+      "name": "Knight of Pentacles",
+      "path": "assets/artwork/source/knight_of_pentacles.png",
+      "sha256": "9b7394906cd68d5c253dffe080dd9760c082a03b6535436c82c613f042c55ade",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a determined traveler moving through wind and changing terrain. Express reliability, steady progress, pursuit through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "fa8da3c07ec3a3592610d99a468461857f70ef8f8b4bb58b6a8ffbf754cd0f98",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "queen_of_pentacles",
+      "name": "Queen of Pentacles",
+      "path": "assets/artwork/source/queen_of_pentacles.png",
+      "sha256": "99167deedac84a629835d611209c4562add274a341bf0112b2069bfdfdea3c7a",
+      "prompt": "Create a brand-new original central illustration for a tarot court archetype expressing practical abundance, nurturing authority and grounded wisdom, using the attached style board only as visual style reference.\nPortrait 2:3. A mature sovereign woman in elegant Belle Époque-inspired green and midnight robes sits in a moonlit garden greenhouse, calmly tending a small flowering plant while woodland creatures rest nearby; stone arches, ivy and fertile earth suggest stewardship and material care. Do not show any coins, pentacles, disks, medallions or five-pointed stars; the suit emblem will be added later. Original dark-night Art Nouveau composition, antique-gold sinuous ink linework, moss-green and warm ivory accents, flat illustrative finish, clear dignified silhouette, generous 8% safe margin.\nCENTER ART only; no tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork or modern objects.",
+      "promptSha256": "4ffeb63be49c05ffbca22fc9aad8cc498c446e5d101b20fe29e79f7866363552",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    },
+    {
+      "id": "king_of_pentacles",
+      "name": "King of Pentacles",
+      "path": "assets/artwork/source/king_of_pentacles.png",
+      "sha256": "cf061d2589c87f82e18387d77c031a17069ea5c31226a8750f969dc572f27db8",
+      "prompt": "Create a brand-new original central illustration for a symbolic tarot scene, using the attached style board only as visual style reference.\nPortrait 2:3. Show a mature sovereign man embodying outward mastery and responsibility. Express prosperity, practical leadership, outer mastery through human gesture, landscape, weather, architecture and botanical motifs, with an emotional undercurrent of work, resources, body, stewardship, craft and practical reality. Do not imitate a known tarot composition. Elegant Belle Époque-inspired garments where people appear, balanced anatomy, midnight indigo and near-black, antique-gold sinuous Art Nouveau ink linework, moonlit ivory highlights, restrained moss-green and warm-ivory accents, flat illustrative finish, clear focal silhouette, generous 8% safe margin.\nNo coin, pentacle, disk, medallion, five-pointed star, or decorative pentacle symbol; exact suit pips will be added later by deterministic post-processing. This is CENTER ART only. No tarot border, frame, decorative pips or suit symbols. No readable text, letters, numbers, title, logo, signature, watermark, mockup, card shadow, copied deck artwork, gore or modern objects.",
+      "promptSha256": "b3157f0a51cedf79449a61b17d9207538b248858a22e3c7481d4954780a368b8",
+      "reference": "assets/artwork/style/dark-art-nouveau-style-board.png"
+    }
+  ]
+}

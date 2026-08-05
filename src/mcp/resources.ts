@@ -5,6 +5,11 @@ import {
   ReadResourceRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { TarotServer } from "./tarot-service.js";
+import {
+  getVisualAppResourceDefinition,
+  readVisualAppResource,
+} from "./visual-app-resource.js";
+import { VISUAL_APP_RESOURCE_URI } from "./tool-definitions.js";
 
 const CARDS_URI = "tarot://cards";
 const SPREADS_URI = "tarot://spreads";
@@ -40,6 +45,7 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
         description: "All built-in spreads with their positions and meanings",
         mimeType: "application/json",
       },
+      getVisualAppResourceDefinition(),
     ],
   }));
 
@@ -62,6 +68,10 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
 
   server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
     const uri = request.params.uri;
+
+    if (uri === VISUAL_APP_RESOURCE_URI) {
+      return readVisualAppResource(uri);
+    }
 
     if (uri === CARDS_URI) {
       const cards = tarotServer.getAllCards().map((card) => ({

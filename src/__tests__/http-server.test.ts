@@ -1,5 +1,6 @@
 import { spawn, ChildProcessWithoutNullStreams } from "node:child_process";
 import fs from "node:fs/promises";
+import { request } from "node:http";
 import os from "node:os";
 import path from "node:path";
 
@@ -53,6 +54,30 @@ function mcpInitializeRequest(id: number) {
       },
     },
   };
+}
+
+function rawHttpStatus(
+  port: number,
+  requestPath: string,
+  headers: Record<string, string>,
+): Promise<number> {
+  return new Promise((resolve, reject) => {
+    const req = request(
+      {
+        hostname: "127.0.0.1",
+        port,
+        path: requestPath,
+        method: "GET",
+        headers,
+      },
+      (response) => {
+        response.resume();
+        response.once("end", () => resolve(response.statusCode ?? 0));
+      },
+    );
+    req.once("error", reject);
+    req.end();
+  });
 }
 
 describe("HTTP MCP server", () => {
@@ -123,7 +148,7 @@ describe("HTTP MCP server", () => {
 
     const info = await fetch(`${BASE_URL}/api/info`);
     const infoJson = await info.json();
-    expect(infoJson.tools).toHaveLength(14);
+    expect(infoJson.tools).toHaveLength(16);
     expect(infoJson.capabilities).toEqual(["tools", "resources", "prompts"]);
 
     const spreads = await fetch(`${BASE_URL}/api/spreads`);
@@ -137,6 +162,29 @@ describe("HTTP MCP server", () => {
 
     const invalidLanguage = await fetch(`${BASE_URL}/api/spreads?language=fr`);
     expect(invalidLanguage.status).toBe(400);
+  });
+
+  it("serves the built visual page publicly with a same-origin-only CSP", async () => {
+    const response = await fetch(`${BASE_URL}/draw`);
+    const hasBuiltUi = await fs
+      .access(path.join(process.cwd(), "dist", "ui", "web", "index.html"))
+      .then(() => true)
+      .catch(() => false);
+
+    expect(response.status).toBe(hasBuiltUi ? 200 : 503);
+    if (hasBuiltUi) {
+      expect(response.headers.get("content-type")).toContain("text/html");
+      expect(response.headers.get("cache-control")).toContain("public");
+      expect(response.headers.get("content-security-policy")).toContain(
+        "connect-src 'self'",
+      );
+      const csp = response.headers.get("content-security-policy") ?? "";
+      expect(csp).toContain("font-src 'self' data:");
+      expect(csp).not.toMatch(/fonts\.(?:googleapis|gstatic)\.com/);
+      const html = await response.text();
+      expect(html).toContain('<div id="root"></div>');
+      expect(html).toMatch(/rel=["']icon["'][^>]+data:image\/svg\+xml/);
+    }
   });
 
   it("serves card listing and card detail endpoints", async () => {
@@ -216,6 +264,79 @@ describe("HTTP MCP server", () => {
     expect(localizedJson.result).toContain("塔罗解读");
   });
 
+  it("supports the two-stage visual reading REST workflow", async () => {
+    const begin = await fetch(`${BASE_URL}/api/visual-readings`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        readingKind: "spread",
+        spreadType: "three_card",
+        question: "What should I choose next?",
+        language: "en",
+      }),
+    });
+    expect(begin.status).toBe(201);
+    const beginJson = await begin.json();
+    expect(beginJson.draw.drawId).toMatch(/^draw_/);
+    expect(beginJson.draw.requiredCount).toBe(3);
+    expect(beginJson.draw.slots).toHaveLength(78);
+    expect(beginJson.draw.deck.slots).toEqual(beginJson.draw.slots);
+    expect(JSON.stringify(beginJson.draw.slots)).not.toMatch(
+      /cardId|orientation|meaning/,
+    );
+
+    const selectedSlotIds = beginJson.draw.slots
+      .slice(0, 3)
+      .map((slot: { slotId: string }) => slot.slotId);
+    const wrongCount = await fetch(
+      `${BASE_URL}/api/visual-readings/${beginJson.draw.drawId}/confirm`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ selectedSlotIds: selectedSlotIds.slice(0, 2) }),
+      },
+    );
+    expect(wrongCount.status).toBe(400);
+    await expect(wrongCount.json()).resolves.toMatchObject({
+      code: "INVALID_SELECTION_COUNT",
+    });
+
+    const confirmUrl = `${BASE_URL}/api/visual-readings/${beginJson.draw.drawId}/confirm`;
+    const confirm = await fetch(confirmUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ selectedSlotIds }),
+    });
+    expect(confirm.status).toBe(200);
+    const confirmedJson = await confirm.json();
+    expect(confirmedJson.reading.drawId).toBe(beginJson.draw.drawId);
+    expect(confirmedJson.reading.cards).toHaveLength(3);
+    expect(confirmedJson.reading.cards[0].imageUri).toMatch(
+      /^\/assets\/cards\/midnight-art-nouveau-v1\/.+\.webp$/,
+    );
+
+    const retry = await fetch(confirmUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ selectedSlotIds }),
+    });
+    expect(retry.status).toBe(200);
+    const retryJson = await retry.json();
+    expect(retryJson.reading.readingId).toBe(
+      confirmedJson.reading.readingId,
+    );
+
+    const conflicting = await fetch(confirmUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ selectedSlotIds: [...selectedSlotIds].reverse() }),
+    });
+    expect(conflicting.status).toBe(409);
+    await expect(conflicting.json()).resolves.toMatchObject({
+      code: "DRAW_ALREADY_CONFIRMED",
+    });
+  });
+
   it("returns HTTP 400 for invalid reading parameters", async () => {
     const response = await fetch(`${BASE_URL}/api/reading`, {
       method: "POST",
@@ -244,6 +365,14 @@ describe("HTTP MCP server", () => {
       headers: { origin: "http://localhost:5173" },
     });
     expect(allowed.status).toBe(200);
+
+    // WHATWG fetch implementations may silently replace the Host header, so
+    // use the raw Node HTTP client to exercise a real proxied same-origin pair.
+    const sameOriginStatus = await rawHttpStatus(PORT, "/api/info", {
+      host: `tarot.example:${PORT}`,
+      origin: `http://tarot.example:${PORT}`,
+    });
+    expect(sameOriginStatus).toBe(200);
   });
 
   it("answers malformed JSON with a JSON error instead of an HTML page", async () => {
@@ -455,6 +584,9 @@ describe("HTTP MCP server with auth and rate limiting", () => {
   it("requires a bearer token on REST and MCP endpoints but not /health", async () => {
     const health = await fetch(`${SECURED_BASE_URL}/health`);
     expect(health.status).toBe(200);
+
+    const draw = await fetch(`${SECURED_BASE_URL}/draw`);
+    expect(draw.status).not.toBe(401);
 
     const unauthorized = await fetch(`${SECURED_BASE_URL}/api/info`);
     expect(unauthorized.status).toBe(401);

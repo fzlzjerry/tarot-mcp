@@ -19,10 +19,21 @@ import {
 import { generateInterpretation } from "./interpretation/index.js";
 import { formatReading, renderAvailableSpreads } from "./reading-formatter.js";
 import { localizedSpread } from "./spread-localizations.js";
+import {
+  localizedCardName,
+  localizedKeywords,
+  localizedMeanings,
+} from "../shared/i18n.js";
+import { selectRelevantMeaning } from "./interpretation/patterns.js";
 
 export interface TarotReadingRandomSource {
   drawCards?: (count: number) => TarotCard[];
   drawOrientation?: () => CardOrientation;
+}
+
+export interface SelectedTarotCard {
+  card: TarotCard;
+  orientation: CardOrientation;
 }
 
 /** Machine-readable payload of a performed reading (MCP structuredContent). */
@@ -35,9 +46,16 @@ export interface ReadingPayload {
   timestamp: string;
   cards: Array<{
     name: string;
+    /** Stable snake_case identifier used by visual clients and card assets. */
+    id: string;
+    cardId: string;
+    displayName: string;
     orientation: CardOrientation;
     position?: string;
     positionMeaning?: string;
+    keywords: string[];
+    meaning: string;
+    imageUri: string;
   }>;
 }
 
@@ -149,6 +167,45 @@ export class TarotReadingManager {
   }
 
   /**
+   * Complete a reading with cards chosen from an already shuffled, opaque
+   * visual deck. This is intentionally an internal-domain entry point: public
+   * tools only ever pass slot IDs to VisualDrawManager, never arbitrary card
+   * IDs, so callers cannot bypass the prepared-deck selection contract.
+   */
+  public performPreparedReadingWithDetails(
+    spread: TarotSpread,
+    spreadType: string,
+    question: string,
+    selectedCards: SelectedTarotCard[],
+    sessionId?: string | null,
+    options: { trackSession?: boolean; language?: Language } = {},
+  ): PerformedReading {
+    if (selectedCards.length !== spread.cardCount) {
+      throw new Error(
+        `Prepared selection has ${selectedCards.length} cards; ${spread.cardCount} required`,
+      );
+    }
+    if (new Set(selectedCards.map(({ card }) => card.id)).size !== selectedCards.length) {
+      throw new Error("Prepared selection contains duplicate cards");
+    }
+
+    const session = this.resolveSession(sessionId, options.trackSession ?? true);
+    return this.executeReading(
+      spread,
+      spreadType,
+      question,
+      session,
+      options.language ?? "en",
+      selectedCards,
+    );
+  }
+
+  /** Validate/touch a continuation session without creating a new session. */
+  public assertContinuationSession(sessionId: string): void {
+    this.resolveSession(sessionId, false);
+  }
+
+  /**
    * Shared reading pipeline: draw cards, interpret, store in the session,
    * and format for display.
    */
@@ -158,14 +215,20 @@ export class TarotReadingManager {
     question: string,
     session: TarotSession | undefined,
     language: Language = "en",
+    selectedCards?: SelectedTarotCard[],
   ): PerformedReading {
-    // Use cryptographically secure random card drawing
-    const cards = this.drawCards(spread.cardCount);
+    // Immediate readings draw here. Visual readings provide a selection from
+    // a server-shuffled opaque deck whose orientations were fixed at begin.
+    const selection =
+      selectedCards ??
+      this.drawCards(spread.cardCount).map((card) => ({
+        card,
+        orientation: this.drawOrientation(),
+      }));
 
-    // Generate random orientations for each card using secure randomness
-    const drawnCards: DrawnCard[] = cards.map((card, index) => ({
+    const drawnCards: DrawnCard[] = selection.map(({ card, orientation }, index) => ({
       card,
-      orientation: this.drawOrientation(),
+      orientation,
       position: spread.positions[index].name,
       positionMeaning: spread.positions[index].meaning
     }));
@@ -177,34 +240,62 @@ export class TarotReadingManager {
       cards: drawnCards,
       interpretation: generateInterpretation(drawnCards, question, spreadType, spread.name, language),
       timestamp: new Date(),
-      sessionId: session?.id
+      ...(session ? { sessionId: session.id } : {}),
+    };
+
+    const readingNumber = session
+      ? this.sessionManager.getSessionReadingCount(session.id) + 1
+      : 0;
+
+    // Build every potentially-throwing representation before committing the
+    // session mutation. Visual confirmation can then cache the completed
+    // result without risking a retry that records the same reading twice.
+    const performed: PerformedReading = {
+      text: formatReading(reading, spread.name, spread.description, readingNumber, language),
+      reading: {
+        readingId: reading.id,
+        ...(session ? { sessionId: session.id } : {}),
+        spreadType,
+        spreadName: spread.name,
+        question,
+        timestamp: reading.timestamp.toISOString(),
+        cards: drawnCards.map((drawnCard) => {
+          const meanings = localizedMeanings(
+            drawnCard.card,
+            drawnCard.orientation,
+            language,
+          );
+          const cardId = drawnCard.card.id;
+          return {
+            id: cardId,
+            cardId,
+            name: drawnCard.card.name,
+            displayName: localizedCardName(drawnCard.card, language),
+            orientation: drawnCard.orientation,
+            position: drawnCard.position,
+            positionMeaning: drawnCard.positionMeaning,
+            keywords: localizedKeywords(
+              drawnCard.card,
+              drawnCard.orientation,
+              language,
+            ),
+            meaning: selectRelevantMeaning(
+              meanings,
+              drawnCard.position ?? "General",
+              question,
+              drawnCard.positionMeaning,
+            ),
+            imageUri: `/assets/cards/midnight-art-nouveau-v1/${cardId}.webp`,
+          };
+        }),
+      },
     };
 
     if (session) {
       this.sessionManager.addReadingToSession(session.id, reading);
     }
 
-    const readingNumber = session
-      ? this.sessionManager.getSessionReadingCount(session.id)
-      : 0;
-
-    return {
-      text: formatReading(reading, spread.name, spread.description, readingNumber, language),
-      reading: {
-        readingId: reading.id,
-        sessionId: session?.id,
-        spreadType,
-        spreadName: spread.name,
-        question,
-        timestamp: reading.timestamp.toISOString(),
-        cards: drawnCards.map((drawnCard) => ({
-          name: drawnCard.card.name,
-          orientation: drawnCard.orientation,
-          position: drawnCard.position,
-          positionMeaning: drawnCard.positionMeaning,
-        })),
-      },
-    };
+    return performed;
   }
 
   /**

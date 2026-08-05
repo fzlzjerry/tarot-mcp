@@ -2,7 +2,10 @@ import cors from "cors";
 import express, { Request, Response } from "express";
 import rateLimit from "express-rate-limit";
 import { randomUUID, timingSafeEqual } from "node:crypto";
+import { existsSync } from "node:fs";
 import type { Server as HttpServer } from "node:http";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
@@ -24,6 +27,11 @@ interface McpTransportSession<TTransport> {
 }
 
 const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+const MODULE_DIRECTORY = dirname(fileURLToPath(import.meta.url));
+
+function firstExistingDirectory(candidates: string[]): string | undefined {
+  return candidates.find((candidate) => existsSync(candidate));
+}
 
 function parseCsvEnv(value: string | undefined): string[] {
   return (value ?? "")
@@ -125,6 +133,29 @@ export class TarotHttpServer {
     );
   }
 
+  /**
+   * The bundled Web app calls the API on the same origin. Permit that exact
+   * Origin/Host pair without requiring operators to duplicate their public
+   * URL in ALLOWED_ORIGINS; cross-origin callers still use the allow-list.
+   */
+  private isSameOrigin(origin: string, hostHeader: string | undefined): boolean {
+    if (!hostHeader) return false;
+    try {
+      return new URL(origin).host.toLowerCase() === hostHeader.toLowerCase();
+    } catch {
+      return false;
+    }
+  }
+
+  private isRequestOriginAllowed(req: Request): boolean {
+    const origin = req.headers.origin;
+    return (
+      !origin ||
+      this.isOriginAllowed(origin) ||
+      this.isSameOrigin(origin, req.headers.host)
+    );
+  }
+
   private isHostAllowed(hostHeader: string | undefined): boolean {
     if (this.allowedHosts.length === 0) {
       return true;
@@ -181,6 +212,84 @@ export class TarotHttpServer {
         res.status(500).json({ error: "Internal server error" });
       },
     );
+  }
+
+  /**
+   * Serve only built, self-contained product assets before Bearer auth. The
+   * interactive page itself is public; every API request it makes remains
+   * behind the normal authentication middleware.
+   */
+  private setupPublicStaticAssets(): void {
+    const webDirectory = firstExistingDirectory([
+      join(MODULE_DIRECTORY, "..", "ui", "web"),
+      join(process.cwd(), "dist", "ui", "web"),
+    ]);
+    const cardDirectory = firstExistingDirectory([
+      join(MODULE_DIRECTORY, "..", "assets", "cards"),
+      join(process.cwd(), "dist", "assets", "cards"),
+      join(process.cwd(), "assets", "cards"),
+    ]);
+
+    if (webDirectory) {
+      const indexPath = join(webDirectory, "index.html");
+      this.app.get(
+        [HTTP_ENDPOINTS.draw, `${HTTP_ENDPOINTS.draw}/`],
+        (_req, res, next) => {
+          res.setHeader("Cache-Control", "public, max-age=300");
+          res.setHeader("Referrer-Policy", "no-referrer");
+          res.setHeader("X-Content-Type-Options", "nosniff");
+          res.setHeader(
+            "Content-Security-Policy",
+            "default-src 'self'; connect-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'",
+          );
+          res.sendFile(indexPath, (error) => {
+            if (error && !res.headersSent) next(error);
+          });
+        },
+      );
+      this.app.use(
+        HTTP_ENDPOINTS.draw,
+        express.static(webDirectory, {
+          index: false,
+          fallthrough: true,
+          setHeaders: (res, filePath) => {
+            res.setHeader("X-Content-Type-Options", "nosniff");
+            res.setHeader(
+              "Cache-Control",
+              filePath.endsWith(".html")
+                ? "public, max-age=300"
+                : "public, max-age=31536000, immutable",
+            );
+          },
+        }),
+      );
+    } else {
+      this.app.get(
+        [HTTP_ENDPOINTS.draw, `${HTTP_ENDPOINTS.draw}/`],
+        (_req, res) => {
+          res
+            .status(503)
+            .type("text/plain")
+            .send("Visual reading Web build is not available. Run npm run build:ui.");
+        },
+      );
+    }
+
+    if (cardDirectory) {
+      this.app.use(
+        HTTP_ENDPOINTS.visualCardAssets,
+        express.static(cardDirectory, {
+          index: false,
+          fallthrough: true,
+          immutable: true,
+          maxAge: "1y",
+          setHeaders: (res) => {
+            res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+            res.setHeader("X-Content-Type-Options", "nosniff");
+          },
+        }),
+      );
+    }
   }
 
   /**
@@ -263,8 +372,7 @@ export class TarotHttpServer {
         next();
         return;
       }
-      const origin = req.headers.origin;
-      if (origin && !this.isOriginAllowed(origin)) {
+      if (!this.isRequestOriginAllowed(req)) {
         res.status(403).json({ error: "Forbidden: origin not allowed" });
         return;
       }
@@ -274,6 +382,8 @@ export class TarotHttpServer {
       }
       next();
     });
+
+    this.setupPublicStaticAssets();
 
     const rateLimitMax = Number(process.env.RATE_LIMIT_MAX) || 120;
     const rateLimitWindowMs =
@@ -446,6 +556,52 @@ export class TarotHttpServer {
       }
     });
 
+    this.app.post(HTTP_ENDPOINTS.api.visualReadings, async (req, res) => {
+      if (
+        typeof req.body !== "object" ||
+        req.body === null ||
+        Array.isArray(req.body)
+      ) {
+        res.status(400).json({ error: "Visual reading arguments must be a JSON object" });
+        return;
+      }
+      try {
+        const result = await this.tarotServer.executeTool(
+          TOOL_NAMES.beginVisualReading,
+          req.body,
+        );
+        if (result.ok) res.status(201);
+        this.sendToolResult(res, result, "draw");
+      } catch (error) {
+        this.sendHttpError(res, error);
+      }
+    });
+
+    this.app.post(
+      `${HTTP_ENDPOINTS.api.visualReadings}/:drawId/confirm`,
+      async (req, res) => {
+        if (
+          typeof req.body !== "object" ||
+          req.body === null ||
+          Array.isArray(req.body)
+        ) {
+          res
+            .status(400)
+            .json({ error: "Visual confirmation arguments must be a JSON object" });
+          return;
+        }
+        try {
+          const result = await this.tarotServer.executeTool(
+            TOOL_NAMES.confirmVisualReading,
+            { ...req.body, drawId: req.params.drawId },
+          );
+          this.sendToolResult(res, result, "reading");
+        } catch (error) {
+          this.sendHttpError(res, error);
+        }
+      },
+    );
+
     /**
      * REST parity for the complete MCP tool catalog. Existing ergonomic
      * endpoints remain available, while clients can invoke every current and
@@ -489,7 +645,10 @@ export class TarotHttpServer {
     structuredKey = "structured",
   ): void {
     if (!result.ok) {
-      res.status(400).json({ error: result.error });
+      res.status(result.httpStatus ?? 400).json({
+        error: result.error,
+        ...(result.code ? { code: result.code } : {}),
+      });
       return;
     }
     res.json({

@@ -1,11 +1,25 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
+import type { VisualBrowserFallback } from "../mcp/browser-handoff.js";
 import { createMcpProtocolServer } from "../mcp/protocol-server.js";
-import { TarotServer } from "../mcp/tarot-service.js";
+import { TOOL_NAMES } from "../mcp/public-api.js";
+import { TarotServer, type ToolResult } from "../mcp/tarot-service.js";
+import type { VisualBeginPayload } from "../tarot/readings/visual-draw-manager.js";
 
 interface TextContent {
   type: string;
   text: string;
+}
+
+function deferred<T>(): {
+  promise: Promise<T>;
+  resolve(value: T): void;
+} {
+  let resolve!: (value: T) => void;
+  const promise = new Promise<T>((innerResolve) => {
+    resolve = innerResolve;
+  });
+  return { promise, resolve };
 }
 
 describe("MCP protocol server error contract", () => {
@@ -110,6 +124,8 @@ describe("MCP protocol server error contract", () => {
       expect(card.name).toBeTruthy();
       expect(["upright", "reversed"]).toContain(card.orientation);
       expect(card.position).toBeTruthy();
+      expect(card).not.toHaveProperty("imageUri");
+      expect(card).not.toHaveProperty("embeddedImage");
     }
   });
 
@@ -135,11 +151,210 @@ describe("MCP protocol server error contract", () => {
     expect(structured.storedReadings[0].question).toBe("History?");
   });
 
+  it("returns opaque deck slots without attaching artwork to tool results", async () => {
+    const begin = await client.callTool({
+      name: "begin_visual_reading",
+      arguments: {
+        readingKind: "spread",
+        spreadType: "three_card",
+        question: "Which direction should I take?",
+        language: "en",
+      },
+    });
+
+    expect(begin.isError).toBeUndefined();
+    const prepared = begin.structuredContent as Record<string, unknown>;
+    expect(prepared.drawId).toMatch(/^draw_/);
+    expect(prepared.requiredCount).toBe(3);
+    expect(prepared).not.toHaveProperty("slots");
+    expect(prepared).not.toHaveProperty("deck");
+
+    const beginMeta = (
+      begin as unknown as {
+        _meta: {
+          visualDeck: {
+            slots: Array<{ slotId: string; order: number }>;
+          };
+        };
+      }
+    )._meta;
+    expect(beginMeta.visualDeck.slots).toHaveLength(78);
+    expect(beginMeta.visualDeck.slots[0]).toEqual({
+      slotId: expect.stringMatching(/^slot_/),
+      order: 0,
+    });
+    expect(beginMeta.visualDeck).not.toHaveProperty("backImage");
+    expect(JSON.stringify(begin)).not.toContain("data:image");
+
+    const selectedSlotIds = beginMeta.visualDeck.slots
+      .slice(0, 3)
+      .map((slot) => slot.slotId);
+    const confirm = await client.callTool({
+      name: "confirm_visual_reading",
+      arguments: { drawId: prepared.drawId, selectedSlotIds },
+    });
+
+    expect(confirm.isError).toBeUndefined();
+    const reading = confirm.structuredContent as {
+      drawId: string;
+      cards: Array<{ cardId: string; imageUri?: string }>;
+    };
+    expect(reading.drawId).toBe(prepared.drawId);
+    expect(reading.cards).toHaveLength(3);
+    for (const card of reading.cards) {
+      expect(card).not.toHaveProperty("imageUri");
+      expect(card).not.toHaveProperty("embeddedImage");
+    }
+    expect(confirm).not.toHaveProperty("_meta");
+    expect(JSON.stringify(confirm)).not.toContain("data:image");
+    expect(JSON.stringify(confirm)).not.toContain("cardImages");
+    expect(JSON.stringify(confirm)).not.toContain("backImage");
+  });
+
+  it("returns a browser-confirmed reading from the original pending tool call", async () => {
+    const tarotServer = await TarotServer.create();
+    const completion = deferred<Extract<ToolResult, { ok: true }>>();
+    let privateDraw: VisualBeginPayload | undefined;
+    let waiterSignal: AbortSignal | undefined;
+    const handoffUrl =
+      "http://127.0.0.1:48123/draw/#handoff=protocol-test-token";
+    const fallback: VisualBrowserFallback = {
+      force: false,
+      open: vi.fn(async (draw) => {
+        privateDraw = draw;
+        return { url: handoffUrl, opened: false, reused: false };
+      }),
+      waitForConfirmation: vi.fn((drawId, options) => {
+        expect(drawId).toBe(privateDraw?.drawId);
+        waiterSignal = options?.signal;
+        return completion.promise;
+      }),
+      stop: vi.fn(async () => undefined),
+    };
+    const server = createMcpProtocolServer(tarotServer, {
+      visualBrowserFallback: fallback,
+    });
+    const [clientTransport, serverTransport] =
+      InMemoryTransport.createLinkedPair();
+    const fallbackClient = new Client({
+      name: "pending-browser-protocol-test",
+      version: "1.0.0",
+    });
+
+    try {
+      await Promise.all([
+        server.connect(serverTransport),
+        fallbackClient.connect(clientTransport),
+      ]);
+      // Populate the SDK client's output validator cache. This makes the test
+      // exercise the advertised pending|confirmed oneOf schema, not only the
+      // raw protocol payload.
+      await fallbackClient.listTools();
+      const progressMessages: string[] = [];
+      let settled = false;
+      const beginPromise = fallbackClient.callTool(
+        {
+          name: TOOL_NAMES.beginVisualReading,
+          arguments: {
+            readingKind: "spread",
+            spreadType: "single_card",
+            question: "Will this result return to the assistant?",
+            language: "en",
+          },
+        },
+        undefined,
+        {
+          timeout: 5_000,
+          resetTimeoutOnProgress: true,
+          onprogress: ({ message }) => {
+            if (message) progressMessages.push(message);
+          },
+        },
+      );
+      beginPromise.then(
+        () => {
+          settled = true;
+        },
+        () => {
+          settled = true;
+        },
+      );
+
+      await vi.waitFor(() => {
+        expect(fallback.open).toHaveBeenCalledTimes(1);
+        expect(fallback.waitForConfirmation).toHaveBeenCalledTimes(1);
+        expect(progressMessages.join("\n")).toContain(handoffUrl);
+      });
+      expect(settled).toBe(false);
+      expect(privateDraw?.slots).toHaveLength(78);
+      expect(waiterSignal?.aborted).toBe(false);
+
+      const selectedSlotId = privateDraw!.slots[0].slotId;
+      const confirmed = await tarotServer.executeTool(
+        TOOL_NAMES.confirmVisualReading,
+        {
+          drawId: privateDraw!.drawId,
+          selectedSlotIds: [selectedSlotId],
+        },
+      );
+      if (!confirmed.ok) throw new Error(confirmed.error);
+      completion.resolve(confirmed);
+
+      const result = await beginPromise;
+      expect(result.isError).toBeUndefined();
+      expect(result.structuredContent).toMatchObject({
+        readingId: (confirmed.structured as { readingId: string }).readingId,
+        drawId: privateDraw!.drawId,
+        status: "confirmed",
+        cards: expect.arrayContaining([expect.any(Object)]),
+      });
+      expect(result._meta).toMatchObject({
+        browserFallback: { opened: false, reused: false, completed: true },
+      });
+      expect(result._meta).not.toHaveProperty("cardImages");
+      expect(result._meta).not.toHaveProperty("backImage");
+      expect(JSON.stringify(result)).not.toContain("data:image");
+      expect(JSON.stringify(result)).not.toContain("imageUri");
+      expect((result.content[0] as TextContent).text).toContain(
+        "Single Card Reading",
+      );
+    } finally {
+      await fallbackClient.close();
+      await server.close();
+    }
+  });
+
   it("exposes card and spread catalogs as resources", async () => {
     const resources = await client.listResources();
     const uris = resources.resources.map((resource) => resource.uri);
     expect(uris).toContain("tarot://cards");
     expect(uris).toContain("tarot://spreads");
+    expect(uris).toContain("ui://tarot-mcp/visual-reading.html");
+
+    const visualApp = resources.resources.find(
+      (resource) => resource.uri === "ui://tarot-mcp/visual-reading.html",
+    );
+    expect(visualApp?.mimeType).toBe("text/html;profile=mcp-app");
+    expect(visualApp?._meta).toMatchObject({
+      ui: {
+        csp: {
+          connectDomains: [],
+          resourceDomains: [],
+          frameDomains: [],
+          baseUriDomains: [],
+        },
+      },
+    });
+
+    const visualResource = await client.readResource({
+      uri: "ui://tarot-mcp/visual-reading.html",
+    });
+    expect(visualResource.contents[0].mimeType).toBe(
+      "text/html;profile=mcp-app",
+    );
+    expect((visualResource.contents[0] as { text: string }).text).toContain(
+      "<!doctype html>",
+    );
 
     const cards = await client.readResource({ uri: "tarot://cards" });
     const cardsJson = JSON.parse((cards.contents[0] as { text: string }).text);
@@ -155,7 +370,9 @@ describe("MCP protocol server error contract", () => {
     const spread = await client.readResource({
       uri: "tarot://spreads/celtic_cross",
     });
-    const spreadJson = JSON.parse((spread.contents[0] as { text: string }).text);
+    const spreadJson = JSON.parse(
+      (spread.contents[0] as { text: string }).text,
+    );
     expect(spreadJson.positions).toHaveLength(10);
 
     await expect(
@@ -195,6 +412,21 @@ describe("MCP protocol server error contract", () => {
       readOnlyHint: true,
       idempotentHint: false,
     });
+    expect(byName.get("confirm_visual_reading")?._meta).toMatchObject({
+      ui: {
+        resourceUri: "ui://tarot-mcp/visual-reading.html",
+        visibility: ["app"],
+      },
+    });
+    for (const toolName of [
+      "perform_reading",
+      "begin_visual_reading",
+      "confirm_visual_reading",
+    ]) {
+      expect(JSON.stringify(byName.get(toolName)?.outputSchema)).not.toContain(
+        "imageUri",
+      );
+    }
   });
 
   it("marks unexpected execution failures with isError", async () => {

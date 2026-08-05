@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "deckId": "midnight-art-nouveau-v1",
+  "reviewedDate": "2026-08-05",
+  "reviewer": "Codex visual QA",
+  "cardsReviewed": 78,
+  "contactSheets": [
+    "assets/cards/qa/contact-sheet-web.png",
+    "assets/cards/qa/contact-sheet-mcp.png",
+    "assets/cards/qa/contact-sheet-detail-1.png",
+    "assets/cards/qa/contact-sheet-detail-2.png",
+    "assets/cards/qa/contact-sheet-detail-3.png",
+    "assets/cards/qa/card-back-symmetry.png",
+    "assets/cards/qa/representative-samples.png"
+  ],
+  "noReadableText": true,
+  "noLogosOrWatermarks": true,
+  "pipCountsVerified": true,
+  "styleConsistencyVerified": true,
+  "anatomyAndCroppingVerified": true,
+  "notes": [
+    "All 78 center-art sources were reviewed through overview and three enlarged detail sheets.",
+    "No readable generated text, signature, logo, watermark, placeholder, or copied card scan is visible.",
+    "Minor-arcana rank labels and suit pips are deterministic SVG overlays; A-10 counts and court-card single emblems match the manifest.",
+    "The complete deck retains the approved midnight-indigo, antique-gold, moonlit Art Nouveau language without a visual outlier.",
+    "Figures, hands, faces, focal crops, and card-edge safe areas are acceptable at the delivered Web and MCP sizes.",
+    "Web and MCP card backs were reviewed beside 180-degree rotations and verified as decoded-pixel exact by the automated validator."
+  ],
+  "contactSheetArtifacts": [
+    {
+      "path": "assets/cards/qa/contact-sheet-web.png",
+      "bytes": 3233672,
+      "sha256": "7e1155107660e42b2b1f7e2def409f18e40baf2b7a594e3974f206d686270f8b"
+    },
+    {
+      "path": "assets/cards/qa/contact-sheet-mcp.png",
+      "bytes": 1386943,
+      "sha256": "439c5432595903e4c73da59642e23f93439539b3c397b94da942ef81298057c8"
+    },
+    {
+      "path": "assets/cards/qa/contact-sheet-detail-1.png",
+      "bytes": 4273573,
+      "sha256": "eb57670f2611af052d1b0f09692522a7910c717ba0416ceddcf88920fa8496b1"
+    },
+    {
+      "path": "assets/cards/qa/contact-sheet-detail-2.png",
+      "bytes": 4125444,
+      "sha256": "33bf96ee2480ab89c83d9e55a3c0802dfc13789a87d9aba596c319f29e4fb6e8"
+    },
+    {
+      "path": "assets/cards/qa/contact-sheet-detail-3.png",
+      "bytes": 4105174,
+      "sha256": "84c72804adce741138b4e275f3026b428811865775a12a6c0c3bd0ba19f00fdb"
+    },
+    {
+      "path": "assets/cards/qa/card-back-symmetry.png",
+      "bytes": 253382,
+      "sha256": "c68483917b9cce3ab5240326d7524200e34c63c02109be7d76a1e2cdd3cb0740"
+    },
+    {
+      "path": "assets/cards/qa/representative-samples.png",
+      "bytes": 1687814,
+      "sha256": "0a5a1bf3e625a6f6f0c701095c476580dd159803ea139dbeaf7f0e833e1dd642"
+    }
+  ],
+  "cardBackExactDecodedSymmetryVerified": true
+}

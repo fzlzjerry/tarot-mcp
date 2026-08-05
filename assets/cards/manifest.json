@@ -1,0 +1,2630 @@
+{
+  "schemaVersion": 1,
+  "deckId": "midnight-art-nouveau-v1",
+  "title": "Midnight Art Nouveau Tarot",
+  "source": {
+    "type": "original-generated-artwork",
+    "generator": "OpenAI built-in image_gen",
+    "thirdPartyDownloads": false,
+    "promptProvenance": "assets/artwork/prompt-provenance.json",
+    "license": "assets/ASSET_LICENSE.md"
+  },
+  "styleReferenceSha256": "81e8a8b65cd5baedda710eafa3e48b2d62c7d6f4c9b8827c8f618b1e86312c71",
+  "stylePromptSha256": "8b77e7d9b16bfbc330c663b748a370675adc0711af319cc49abfb12ff84ab107",
+  "cardBackPromptSha256": "45682b70c38b2a6f7d37a028244cf0e2b9b4a184fcbbb537a69ad3bb4fdaa568",
+  "webSpec": {
+    "width": 512,
+    "height": 768,
+    "quality": 82,
+    "hardMaxBytes": 180000
+  },
+  "mcpSpec": {
+    "width": 192,
+    "height": 288,
+    "quality": 68,
+    "hardMaxBytes": 24000
+  },
+  "cardBack": {
+    "rotationalSymmetry": "180deg-exact-decoded-pixels",
+    "encoding": "lossless-webp-from-128-colour-palette",
+    "sourceSha256": "a746f6c3ba67e815db188ba601ba70d34461c9bb7e0a6a2980fe580766f65f6e",
+    "web": {
+      "path": "/assets/cards/midnight-art-nouveau-v1/back.webp",
+      "physicalPath": "assets/cards/back.webp",
+      "width": 512,
+      "height": 768,
+      "bytes": 113458,
+      "sha256": "2f0deefb22ee8b55342f39c4db7707d55683f653fd645311c56a73986f815744",
+      "quality": 100,
+      "lossless": true,
+      "paletteColours": 128
+    },
+    "mcp": {
+      "path": "/assets/cards/midnight-art-nouveau-v1/mcp/back.webp",
+      "physicalPath": "assets/cards/mcp/back.webp",
+      "width": 192,
+      "height": 288,
+      "bytes": 20138,
+      "sha256": "35fd054de9093a4c539d92c150c1419d72e8c8978b5eb68554cd8e1aaea83b2a",
+      "quality": 100,
+      "lossless": true,
+      "paletteColours": 128
+    }
+  },
+  "cards": [
+    {
+      "id": "fool",
+      "name": "The Fool",
+      "arcana": "major",
+      "suit": null,
+      "rank": 0,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "e1a501497b464b531b5cc2967dd5499bcc02af36d9d7a78b5e1b83ec9b23cfdd",
+      "promptSha256": "ec53062e3fc78f4392f2f5afb311c814de710f26d9689a5a44f39ce69f152842",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/fool.webp",
+        "physicalPath": "assets/cards/fool.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 68396,
+        "sha256": "2995b4fa91c4f77f816119a20fc87fde1023bb461b7facd0450fe9692e2c6fb2",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/fool.webp",
+        "physicalPath": "assets/cards/mcp/fool.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6062,
+        "sha256": "d4f01d77c1ee55c844b9d78d76e9a56356119a894f409ff4f42c9d51125b6837",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Fool tarot artwork",
+        "zh": "愚者塔罗牌面"
+      }
+    },
+    {
+      "id": "magician",
+      "name": "The Magician",
+      "arcana": "major",
+      "suit": null,
+      "rank": 1,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "64baa36aa57ae0089b9f54c681c63e5454f304900333a9148b863550b75112bd",
+      "promptSha256": "8974db08d46ad78b33f9699ae03ec0f2b8f974eaaf2741e23b1c5542bd9aaebd",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/magician.webp",
+        "physicalPath": "assets/cards/magician.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 88598,
+        "sha256": "cb2c13f162eb524602c3ed9c3532f8966fba65117e2e08fa9ee320603b51cfd8",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/magician.webp",
+        "physicalPath": "assets/cards/mcp/magician.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7420,
+        "sha256": "7eb74b7c3aeb9f7e2c61658e3da660a700648f624b7bb1d86c4f6f461be086d5",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Magician tarot artwork",
+        "zh": "魔术师塔罗牌面"
+      }
+    },
+    {
+      "id": "high_priestess",
+      "name": "The High Priestess",
+      "arcana": "major",
+      "suit": null,
+      "rank": 2,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "0f334c10dd0991a6141d7592e83079de751ddefed01e328972dd145ae22578c8",
+      "promptSha256": "5c53e94a9ef95740fecd5855c67d65ead903b01733712a493868f347fa356c55",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/high_priestess.webp",
+        "physicalPath": "assets/cards/high_priestess.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 85460,
+        "sha256": "5ce5e666b8862084cfd0f0489ec12c5045da8b48d084e71f14cc1f2d41af95c0",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/high_priestess.webp",
+        "physicalPath": "assets/cards/mcp/high_priestess.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6968,
+        "sha256": "63fe95e3304925a11fb897825d99596cc38689b0491b8268970656f7f697b62e",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The High Priestess tarot artwork",
+        "zh": "女祭司塔罗牌面"
+      }
+    },
+    {
+      "id": "empress",
+      "name": "The Empress",
+      "arcana": "major",
+      "suit": null,
+      "rank": 3,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "02bd8a6ed6fe2709fcd1cee5b3c40010ee65931693b82d3da097276ed2ff0f20",
+      "promptSha256": "a84234eadcb5d2f18c08ba6270ac586fa50baecbdd56f0b0106b62052f33bf22",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/empress.webp",
+        "physicalPath": "assets/cards/empress.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 100458,
+        "sha256": "610b2d36015f95c5bbedb84112008fb3f12018e00680f1d8efc4067b98b24ebf",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/empress.webp",
+        "physicalPath": "assets/cards/mcp/empress.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8552,
+        "sha256": "5e193f2f028b824f16c5db3302dea769781bdca32c605573ffe4d9dc005d9b03",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Empress tarot artwork",
+        "zh": "皇后塔罗牌面"
+      }
+    },
+    {
+      "id": "emperor",
+      "name": "The Emperor",
+      "arcana": "major",
+      "suit": null,
+      "rank": 4,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "ddcfc07c20227fc6a53dd40c8beac50747074176562374224b8c25fc6b972c25",
+      "promptSha256": "e6a1291b99ba365b7803a3782150e5ca0df40825d8e32930a1265446b267524c",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/emperor.webp",
+        "physicalPath": "assets/cards/emperor.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 87616,
+        "sha256": "2ee2de26289bcb88665d089c3b9e714d13c069ee769675fe14bf814e3e3e91d8",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/emperor.webp",
+        "physicalPath": "assets/cards/mcp/emperor.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6814,
+        "sha256": "5a4c5d8dcec38eed20c146ce6699a009d5f887a320c11ed339f36663a22bad92",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Emperor tarot artwork",
+        "zh": "皇帝塔罗牌面"
+      }
+    },
+    {
+      "id": "hierophant",
+      "name": "The Hierophant",
+      "arcana": "major",
+      "suit": null,
+      "rank": 5,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "25c3eab42b92a2264d27be16d318f5849e02efbdfcbf01fbeeba9ed5b921529f",
+      "promptSha256": "528a4bd245871dedba2794796c9df8592051b5e9f2789d8126e7c761a2624283",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/hierophant.webp",
+        "physicalPath": "assets/cards/hierophant.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 88264,
+        "sha256": "4ed6cd8f5da7cea2245a172893c42ea7b6b84ecf1890636d8200840f361c77a6",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/hierophant.webp",
+        "physicalPath": "assets/cards/mcp/hierophant.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6764,
+        "sha256": "f0bc2bacdd3d52baf903e6877623ff9bb17166db4dca6932e71e649576063ff1",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Hierophant tarot artwork",
+        "zh": "教皇塔罗牌面"
+      }
+    },
+    {
+      "id": "lovers",
+      "name": "The Lovers",
+      "arcana": "major",
+      "suit": null,
+      "rank": 6,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "5616776c9f532a1df8e93a109cf6a77bf75d630261eb5b8382e5aace93442403",
+      "promptSha256": "bdb3d6b4b3dc4117a203948bae28761bf9c644fe13a29e1e957227d777ffa54a",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/lovers.webp",
+        "physicalPath": "assets/cards/lovers.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 95534,
+        "sha256": "d070822a5c1369df2d04707a793b9532f46653cab35cf37779c1f6af1a0ea4d2",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/lovers.webp",
+        "physicalPath": "assets/cards/mcp/lovers.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6626,
+        "sha256": "73c62c167717c4abf3454bac22c954415e98be80123735b445a9c0dc915df4f9",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Lovers tarot artwork",
+        "zh": "恋人塔罗牌面"
+      }
+    },
+    {
+      "id": "chariot",
+      "name": "The Chariot",
+      "arcana": "major",
+      "suit": null,
+      "rank": 7,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "9b8cfcf3d218d6a8bc174239d9492035ed7042eb1c9260930bee5824ee0d291c",
+      "promptSha256": "ccd60a93d7c50557f3d84a8cdddeca153216e6004cdbb48462aec66e43ac1010",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/chariot.webp",
+        "physicalPath": "assets/cards/chariot.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 86694,
+        "sha256": "15b6c271ffff3e5fff60ab12b528395dc532c926154a2cf124a527aa2e5671f7",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/chariot.webp",
+        "physicalPath": "assets/cards/mcp/chariot.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7580,
+        "sha256": "d00defc885e9b0e5df4397403ac9927638d0e2720fc4db1f27ea24628cf06d8d",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Chariot tarot artwork",
+        "zh": "战车塔罗牌面"
+      }
+    },
+    {
+      "id": "strength",
+      "name": "Strength",
+      "arcana": "major",
+      "suit": null,
+      "rank": 8,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "d89820b97b05d6fb3e8a982c64dfd3c894beb92d1cbdfb28063f3aa0dd3d1388",
+      "promptSha256": "0ae2b953917ee98f07426f2705774b955faea62fbf9c28e6d7166e84f8fe3674",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/strength.webp",
+        "physicalPath": "assets/cards/strength.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 98070,
+        "sha256": "4bfd865e1255306120843d7b53ece1352377692139c06f4eb299123cfa1bb011",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/strength.webp",
+        "physicalPath": "assets/cards/mcp/strength.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7904,
+        "sha256": "0632b32ab30b73b503327779024281b40004690c72c40b0efeb3529a49e6e475",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Strength tarot artwork",
+        "zh": "力量塔罗牌面"
+      }
+    },
+    {
+      "id": "hermit",
+      "name": "The Hermit",
+      "arcana": "major",
+      "suit": null,
+      "rank": 9,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "2471c82b3789b69f691038771d8c5d402d47ec23f39692767115d0b8c5b2f482",
+      "promptSha256": "ea5dc0471701d200c692e4f791125df38d86072951fef07b55d286c5566f8ebf",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/hermit.webp",
+        "physicalPath": "assets/cards/hermit.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 93310,
+        "sha256": "7bc3df429fffe34956ec961817dfe0433a7b19ce7b533e360ebd3d43202bba95",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/hermit.webp",
+        "physicalPath": "assets/cards/mcp/hermit.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7352,
+        "sha256": "b3e449fb1c46894d4e218751bfecf9bafa8bee90c66bdbf0eee3aa2c5581b957",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Hermit tarot artwork",
+        "zh": "隐士塔罗牌面"
+      }
+    },
+    {
+      "id": "wheel_of_fortune",
+      "name": "Wheel of Fortune",
+      "arcana": "major",
+      "suit": null,
+      "rank": 10,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "a7d85f8fe8fd9235105b3c0d8f95feebe348cee813c683688a5da77965c3c8f8",
+      "promptSha256": "c2ad00e9be1a8fce287fa3af9f8dfa26a6cf36daa0419bdd146789295d8455a8",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/wheel_of_fortune.webp",
+        "physicalPath": "assets/cards/wheel_of_fortune.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 98212,
+        "sha256": "6a69efe1ad8fe50699244a6fe6e4023a2650b3a7ac11121e9e65bce81e1d465a",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/wheel_of_fortune.webp",
+        "physicalPath": "assets/cards/mcp/wheel_of_fortune.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8752,
+        "sha256": "dcac2b90080394ffb00f729a68b4751d89b3b7158c7994793aa2629b781714c3",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Wheel of Fortune tarot artwork",
+        "zh": "命运之轮塔罗牌面"
+      }
+    },
+    {
+      "id": "justice",
+      "name": "Justice",
+      "arcana": "major",
+      "suit": null,
+      "rank": 11,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "cc5af4d38d1c57ee86452714acb2e854f710c70549c1611f58fad5c43afbdeb5",
+      "promptSha256": "8113fadb2a66b64b0f712d33827d50bf1dd65e9fee5f7eb98bd8ca857ed48777",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/justice.webp",
+        "physicalPath": "assets/cards/justice.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 64024,
+        "sha256": "537f6133c3f5a9559ff7a172eefad38167c01ed6688db50524fdb74ae664ea7d",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/justice.webp",
+        "physicalPath": "assets/cards/mcp/justice.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 5662,
+        "sha256": "71498b5d991e18f32c41ff765eb071be78bc1bdca277b3b83e0b45226e934cf2",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Justice tarot artwork",
+        "zh": "正义塔罗牌面"
+      }
+    },
+    {
+      "id": "hanged_man",
+      "name": "The Hanged Man",
+      "arcana": "major",
+      "suit": null,
+      "rank": 12,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "95276409244bc26a9eb6394cc95f85682fe06c7185e67a432e9272b3cfb5b661",
+      "promptSha256": "10b83b8b74d2c126df3bfa6c1e4967aef92ba6d15c931011f23b910c5a76d10e",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/hanged_man.webp",
+        "physicalPath": "assets/cards/hanged_man.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 82252,
+        "sha256": "ab1386d269475c043f2377830bab12f9a936223cf8dac97a14202113b2f26021",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/hanged_man.webp",
+        "physicalPath": "assets/cards/mcp/hanged_man.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6800,
+        "sha256": "dcf674c259ff4d509fa2a1dbdebf5851a2ccf455800778abb9e34766ead94688",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Hanged Man tarot artwork",
+        "zh": "倒吊人塔罗牌面"
+      }
+    },
+    {
+      "id": "death",
+      "name": "Death",
+      "arcana": "major",
+      "suit": null,
+      "rank": 13,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "750602ab299dd530bfe0ca7ad9bba2ae9d35e877a9cca24d338fbd02eb11c373",
+      "promptSha256": "a0529229b46611cb8cad6e27b9e408939d70a3c71693c104722a24be7cd903fe",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/death.webp",
+        "physicalPath": "assets/cards/death.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 86514,
+        "sha256": "2bf3059b38b68de6677dea01eef8553be9bb19df7c893617c1af99a9ad6edd7f",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/death.webp",
+        "physicalPath": "assets/cards/mcp/death.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7032,
+        "sha256": "8ea2f76a30a074d7d9555b55cf76a6e07ae4d866fe23aeb344724012b1564287",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Death tarot artwork",
+        "zh": "死神塔罗牌面"
+      }
+    },
+    {
+      "id": "temperance",
+      "name": "Temperance",
+      "arcana": "major",
+      "suit": null,
+      "rank": 14,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "f68240521b15ccfc2551200fe49247eb2f51ae1088da72e5683016d529de1dfd",
+      "promptSha256": "1a982c04a5cee4a58a2fc88813f2f6278975ddf0df42faf3b32c72b11a51c4b9",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/temperance.webp",
+        "physicalPath": "assets/cards/temperance.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 100484,
+        "sha256": "d40db77b0f50c99214a724b75f66eacf15e8c0c7d64287bab1596b081b0ef861",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/temperance.webp",
+        "physicalPath": "assets/cards/mcp/temperance.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7686,
+        "sha256": "effc38d5f4be7b9ecbb394822851c677325873cc6af1ca30a541eadc2bfed5c3",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Temperance tarot artwork",
+        "zh": "节制塔罗牌面"
+      }
+    },
+    {
+      "id": "devil",
+      "name": "The Devil",
+      "arcana": "major",
+      "suit": null,
+      "rank": 15,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "afb0fee306568684bcaccdc4030711cba25ed502f11d61504b7d6b4238904ef2",
+      "promptSha256": "697130a8c9c99d9f9b552f639268e248728671b39ed8586ed3bfb469a9ccfecf",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/devil.webp",
+        "physicalPath": "assets/cards/devil.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 72824,
+        "sha256": "397c041fd14fa23eab124d3ed004f34dbd25252611eca8089d685cc6a1a5d6d9",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/devil.webp",
+        "physicalPath": "assets/cards/mcp/devil.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6232,
+        "sha256": "a0fce9032b602a7e644715b225cc431da485330b0ffa7f01793eb6af4c87058b",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Devil tarot artwork",
+        "zh": "恶魔塔罗牌面"
+      }
+    },
+    {
+      "id": "tower",
+      "name": "The Tower",
+      "arcana": "major",
+      "suit": null,
+      "rank": 16,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "e908e6ea1a559413ef5c044bdf2118974715b58ff412c70299de6525e8451186",
+      "promptSha256": "0d128560986abb87d59a3fa41b0fa122587d5a32929a0b580952199f00225c1a",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/tower.webp",
+        "physicalPath": "assets/cards/tower.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 100468,
+        "sha256": "6d135fb372f21b50b1c83a1198d85d44b762dab760cadd4117f78aff91d7b378",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/tower.webp",
+        "physicalPath": "assets/cards/mcp/tower.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 9316,
+        "sha256": "774ed076e903f028c23d82283957e001397bf5a15d2a6896c75a43f489a6272a",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Tower tarot artwork",
+        "zh": "高塔塔罗牌面"
+      }
+    },
+    {
+      "id": "star",
+      "name": "The Star",
+      "arcana": "major",
+      "suit": null,
+      "rank": 17,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "8618db7d47051442b3e1636a3725d8f6901cb43b702205de864b5e9d72559ea3",
+      "promptSha256": "2b6262e3be04ad5b233d37b6a283807672d70ea528c24324055613f6c21228ee",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/star.webp",
+        "physicalPath": "assets/cards/star.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 74252,
+        "sha256": "e2f956adf4b9bc3216b9b3064a5bc90ade081a540b659c8c35073b363486bf8c",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/star.webp",
+        "physicalPath": "assets/cards/mcp/star.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6034,
+        "sha256": "0955953c696cae5251aa56791afa0c5084e08fbb79c690df61fc4478dfe47699",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Star tarot artwork",
+        "zh": "星星塔罗牌面"
+      }
+    },
+    {
+      "id": "moon",
+      "name": "The Moon",
+      "arcana": "major",
+      "suit": null,
+      "rank": 18,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "28cc3ba89e381673a5dcf3d2bc960368177274bba5fa2e9c255652877d7d8283",
+      "promptSha256": "4c2f6ac98578f22d2f147f69658eeda90ee26aca2209b9f913ae5e1f672959e3",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/moon.webp",
+        "physicalPath": "assets/cards/moon.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 92718,
+        "sha256": "a3a164354dc804eb009ce6a399d7827503041e288bfd27f1e0a5901595deac12",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/moon.webp",
+        "physicalPath": "assets/cards/mcp/moon.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7060,
+        "sha256": "1b701a174fcb77ca050c6f02683c2ae8f83e0864c6f22c69f1ad4b7f73bd73ba",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Moon tarot artwork",
+        "zh": "月亮塔罗牌面"
+      }
+    },
+    {
+      "id": "sun",
+      "name": "The Sun",
+      "arcana": "major",
+      "suit": null,
+      "rank": 19,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "bf086bb2c1c2797decc72b6c550bdd16390d221606ff5cff56b3023bb9b7d26a",
+      "promptSha256": "b60c4767de8de62efb4cb719340f891344ca98194d82b0031b3960b2ff2c4056",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/sun.webp",
+        "physicalPath": "assets/cards/sun.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 119612,
+        "sha256": "11a3fff0cb5fd2800005914a7ae4454aad3ee6559c08a2b606d1be142bba82d6",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/sun.webp",
+        "physicalPath": "assets/cards/mcp/sun.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 11510,
+        "sha256": "8c7295c77a04b061ded35c6b0db497c268ea66e1c24961de61aa99985a393682",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The Sun tarot artwork",
+        "zh": "太阳塔罗牌面"
+      }
+    },
+    {
+      "id": "judgement",
+      "name": "Judgement",
+      "arcana": "major",
+      "suit": null,
+      "rank": 20,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "854932511eb2c260ec5e0983bd3a7b558d890ee33d945538819b4cc4ba266f38",
+      "promptSha256": "040528d1b15546fe42630b29a9659ac62a624955e585ca85501378c08004da45",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/judgement.webp",
+        "physicalPath": "assets/cards/judgement.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 99394,
+        "sha256": "0c9630cc8c3ddf21ab837dab3658e1689e03c22e197887b2a95d13e19da24b17",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/judgement.webp",
+        "physicalPath": "assets/cards/mcp/judgement.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7620,
+        "sha256": "2a56b1231a2654783634e130195a0084d3b1aff413b56b81414bd78c61740513",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Judgement tarot artwork",
+        "zh": "审判塔罗牌面"
+      }
+    },
+    {
+      "id": "world",
+      "name": "The World",
+      "arcana": "major",
+      "suit": null,
+      "rank": 21,
+      "pipCount": null,
+      "rankLabel": null,
+      "sourceSha256": "3a3c837ea190bb9f07b6c12a48e54af0fa888e468630c8469c91e374874f98fe",
+      "promptSha256": "9320ae907954019c8607097e861ca959c61ffc64514e4ea77761d31d67f07941",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/world.webp",
+        "physicalPath": "assets/cards/world.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 102424,
+        "sha256": "b4a9c24c59381e8a06f905239bdbee75717ac437949d5f0ed528e28cb87ca739",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/world.webp",
+        "physicalPath": "assets/cards/mcp/world.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 9740,
+        "sha256": "c1473699ea3da94cedd8c1008815cd595f1179d666dc2a37772347b047ec03a4",
+        "quality": 68
+      },
+      "alt": {
+        "en": "The World tarot artwork",
+        "zh": "世界塔罗牌面"
+      }
+    },
+    {
+      "id": "ace_of_wands",
+      "name": "Ace of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 1,
+      "pipCount": 1,
+      "rankLabel": "A",
+      "sourceSha256": "da80b96a9ca25acccc246f83bd5e7ccc87f70e8d089895262560ccedd182c27d",
+      "promptSha256": "c573bf146f40ed00b2d773384a263280db9e4f71469caa96548b06e99ba1ace4",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ace_of_wands.webp",
+        "physicalPath": "assets/cards/ace_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 70714,
+        "sha256": "b4318f00b49a59915f307b7ef83f1ccef1343f0cef32b5b3546db82cc9b7e11c",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ace_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/ace_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 5978,
+        "sha256": "d8799a644ba6e19a87d8e039733a5601f45c4254de95a1b289955ed6a9815e93",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ace of Wands tarot artwork",
+        "zh": "权杖王牌塔罗牌面"
+      }
+    },
+    {
+      "id": "two_of_wands",
+      "name": "Two of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 2,
+      "pipCount": 2,
+      "rankLabel": "II",
+      "sourceSha256": "d6ffd7fa1d8e38a4b6873f1e6becbfd097687dbea8e050a19b5a98071a2b0970",
+      "promptSha256": "6c72734ad42dc218a87cb5c4e2452fef5a908e6b60277f7ff03bf7bb5e5a1857",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/two_of_wands.webp",
+        "physicalPath": "assets/cards/two_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 94062,
+        "sha256": "70c2bf96d85aacb9baf0369a8d5388012472b3acf64b1c2d38acd1b708e8ef5f",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/two_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/two_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8774,
+        "sha256": "2850690a4731e94487f39f6cceb071c43ea9eaa2f4fa92aa6e8bf20b01cb6b62",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Two of Wands tarot artwork",
+        "zh": "权杖二塔罗牌面"
+      }
+    },
+    {
+      "id": "three_of_wands",
+      "name": "Three of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 3,
+      "pipCount": 3,
+      "rankLabel": "III",
+      "sourceSha256": "a16f33f29cd484b24239724d0105f7095197c9e55ca9f78294ab427c225db5f8",
+      "promptSha256": "f1b2bcfbb2cc28c349e9b8763952524f75a1d6d91ca445cff7959b04f6ffaf3f",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/three_of_wands.webp",
+        "physicalPath": "assets/cards/three_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 88944,
+        "sha256": "decdecec5d280cec029ce748c5f498556fbefcb917dd0efba7f657098661b808",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/three_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/three_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7016,
+        "sha256": "590f8a8d90963f075221a1f5d4ebd496d4ccf137134bb5324d9f62f6904a9c12",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Three of Wands tarot artwork",
+        "zh": "权杖三塔罗牌面"
+      }
+    },
+    {
+      "id": "four_of_wands",
+      "name": "Four of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 4,
+      "pipCount": 4,
+      "rankLabel": "IV",
+      "sourceSha256": "a9e61ad3c43b06e38e0f0ef355635642f3624bf41f010cbce3ebaf6d43844a18",
+      "promptSha256": "7913dd1b529c72b8938b53f31d8c3aeb789077e8dcc1bcc3b7f9bd68bc0471d4",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/four_of_wands.webp",
+        "physicalPath": "assets/cards/four_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 88592,
+        "sha256": "9357813a4f21793a2d09b74d58a7a828cf668fb2749b4f32c862afea254afb02",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/four_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/four_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7462,
+        "sha256": "8c44ff0eb8fac0b8ed2acb73deb277f74d223757f8a697190b37df4eb2221fff",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Four of Wands tarot artwork",
+        "zh": "权杖四塔罗牌面"
+      }
+    },
+    {
+      "id": "five_of_wands",
+      "name": "Five of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 5,
+      "pipCount": 5,
+      "rankLabel": "V",
+      "sourceSha256": "1e2c7ea68ead0e0072fad48224d473e31bf123a7ae30a9841426d7c6827c86d9",
+      "promptSha256": "0371bf5750523fdde596a0e24c55daf9b31365b8f85057f7e8bed5f59401b34e",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/five_of_wands.webp",
+        "physicalPath": "assets/cards/five_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 80836,
+        "sha256": "1e2cbbb7d8b723304533ed72248eaa79dd4f7fddd195238ca9876f50ace1dcb4",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/five_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/five_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6764,
+        "sha256": "b9a47aac32a57745876396f2cd68fd731a40b6b148d416970ffacfcdba8a9aca",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Five of Wands tarot artwork",
+        "zh": "权杖五塔罗牌面"
+      }
+    },
+    {
+      "id": "six_of_wands",
+      "name": "Six of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 6,
+      "pipCount": 6,
+      "rankLabel": "VI",
+      "sourceSha256": "35235835d900ccf565466211e32307b569057d15701d533160b5c290cb64c69c",
+      "promptSha256": "0669f7ab65f23d0514f901235c0023dd634bbc342ff4d4e62065326f60b57f73",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/six_of_wands.webp",
+        "physicalPath": "assets/cards/six_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 81118,
+        "sha256": "42082931bc9d8b1b464cc5c4ebab108664eaf9c5848b586e329eb3f23c196a42",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/six_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/six_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7170,
+        "sha256": "56ca688861f55c969248106b49646845757921615fcc07072299feab76e1b4b3",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Six of Wands tarot artwork",
+        "zh": "权杖六塔罗牌面"
+      }
+    },
+    {
+      "id": "seven_of_wands",
+      "name": "Seven of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 7,
+      "pipCount": 7,
+      "rankLabel": "VII",
+      "sourceSha256": "e0f3c6a1a671f049f5e6c1b2e06d566690d5b3d074f094199fd6e4640ede1cce",
+      "promptSha256": "317f30d6af26649b2524dd7f7f7a5c75b4e46f268a9d8198d8ae85ff48119adb",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/seven_of_wands.webp",
+        "physicalPath": "assets/cards/seven_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 95618,
+        "sha256": "8ed6d7b7bbdc633e889a24a257718c6b945e8644a9fd4b91260c118ae5afe6ab",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/seven_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/seven_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8056,
+        "sha256": "504b02d2fe96a01f3c431bf5b982579b6aa87948c4ecac334a55705032d3ec61",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Seven of Wands tarot artwork",
+        "zh": "权杖七塔罗牌面"
+      }
+    },
+    {
+      "id": "eight_of_wands",
+      "name": "Eight of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 8,
+      "pipCount": 8,
+      "rankLabel": "VIII",
+      "sourceSha256": "ee5925d8ef54ce399bf8c9068205b505152bf5c0a0fdfd73e1f8842e821f4897",
+      "promptSha256": "2070b38f54aab436545c3ca8baa930db3cef12088f4ff19db5ef0ffed174e786",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/eight_of_wands.webp",
+        "physicalPath": "assets/cards/eight_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 93214,
+        "sha256": "df4127ba37a07fb43bc76bacb064ecd9571e45fb14b0ff655b92ced666ca3bb0",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/eight_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/eight_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7364,
+        "sha256": "1e74e8c9c1043ced25ce5d871282ed5a6b0685fad0d4141c8b1e5eec772958ff",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Eight of Wands tarot artwork",
+        "zh": "权杖八塔罗牌面"
+      }
+    },
+    {
+      "id": "nine_of_wands",
+      "name": "Nine of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 9,
+      "pipCount": 9,
+      "rankLabel": "IX",
+      "sourceSha256": "706747fd7facae877dc5a762a6b4282aa2f94ff97dbdd1d4c67f16a86c98732a",
+      "promptSha256": "c519ee1da682aa0d0cf515784d978d591d61db68b7294fc4b3df6aa90a8e8b3b",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/nine_of_wands.webp",
+        "physicalPath": "assets/cards/nine_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 72280,
+        "sha256": "f621fc3674676fb7b6f7dde3596f97b76bf9f8809cc0c7122a02757f1dbcf302",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/nine_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/nine_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 5556,
+        "sha256": "1b246fa475793eaa7d016d497feeafeb35c2d03a8737691563b7eaae4058b5ef",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Nine of Wands tarot artwork",
+        "zh": "权杖九塔罗牌面"
+      }
+    },
+    {
+      "id": "ten_of_wands",
+      "name": "Ten of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 10,
+      "pipCount": 10,
+      "rankLabel": "X",
+      "sourceSha256": "e95bcaf1752e2f4a02068bd938cdf2aa6c3bb8f166865086560f58edfabaf58a",
+      "promptSha256": "190bdc085afa540f3042892b1989efaa183ef9d9fb22a07b3104ab549baafeb2",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ten_of_wands.webp",
+        "physicalPath": "assets/cards/ten_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 80838,
+        "sha256": "808ef1c3a4c738e8e8421be0b67b12dd65c232a458552fed1bf441c95f76e4ed",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ten_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/ten_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6818,
+        "sha256": "fbb8556588c34c47d3b3f7a4b14c20cc661e13aea95929f8bceb317aa0ed339a",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ten of Wands tarot artwork",
+        "zh": "权杖十塔罗牌面"
+      }
+    },
+    {
+      "id": "page_of_wands",
+      "name": "Page of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 11,
+      "pipCount": 1,
+      "rankLabel": "P",
+      "sourceSha256": "038c4b564065b7fa7b4490ce37bdfdfa5eca82eb63160a18871e76ec8c75ffce",
+      "promptSha256": "f77f32019126c4d7ab26b07ca2cbaf7fe60adf0dc3fb143fd51d4f3e1bf8861a",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/page_of_wands.webp",
+        "physicalPath": "assets/cards/page_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 75718,
+        "sha256": "371de6db1e0c8cf40f0b7e5dab7efaaa35b77d4dcdbdd01e6dc3c2fb4220a42e",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/page_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/page_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6462,
+        "sha256": "8dafd71fc1ce66eadb33832109b7507267c3f467ce4b5c0c6efe5ec760f578a1",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Page of Wands tarot artwork",
+        "zh": "权杖侍从塔罗牌面"
+      }
+    },
+    {
+      "id": "knight_of_wands",
+      "name": "Knight of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 12,
+      "pipCount": 1,
+      "rankLabel": "N",
+      "sourceSha256": "7a8b370422b0d4e8f04f282193611e2781e765bb58e08e1a56b0d1950a04eaff",
+      "promptSha256": "dc15fedaf8883549ba0b506f727a7dfed0b37b1d0447b402a16d15c21f012173",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/knight_of_wands.webp",
+        "physicalPath": "assets/cards/knight_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 92662,
+        "sha256": "79fee092b5a88781d428891cade4a24237b91c33a3b122c24e447a1f67ee8f83",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/knight_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/knight_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8094,
+        "sha256": "87f0fc482771e0f9e8781b6525624ea805b601a0b2ce662f9fa42ae961104e96",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Knight of Wands tarot artwork",
+        "zh": "权杖骑士塔罗牌面"
+      }
+    },
+    {
+      "id": "queen_of_wands",
+      "name": "Queen of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 13,
+      "pipCount": 1,
+      "rankLabel": "Q",
+      "sourceSha256": "26a5effa226a1bedc2468c067f7d4556b25c2443b442bfa66d7aaccb7c5bab78",
+      "promptSha256": "65a7a94bb747d3b88859548543fc3cb068d192cbe06e9f1c06af8223c561077b",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/queen_of_wands.webp",
+        "physicalPath": "assets/cards/queen_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 77148,
+        "sha256": "d2d8258bc438048a5f06d8a751908d06f1a842d7f35145d2df2bdef7988cc494",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/queen_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/queen_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6148,
+        "sha256": "ca82c447372581e92dba9b1cdaa84686acafb5f49cb6095f075dfedc909956b8",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Queen of Wands tarot artwork",
+        "zh": "权杖王后塔罗牌面"
+      }
+    },
+    {
+      "id": "king_of_wands",
+      "name": "King of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 14,
+      "pipCount": 1,
+      "rankLabel": "K",
+      "sourceSha256": "00fd05a48bed5170b15fd8d0430e5ee448accf078d24ec67510c4d1ccc44dad4",
+      "promptSha256": "ad6c4158e713e41396bad6490d078d50028145f0e7d633573869ff0a485ba5f0",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/king_of_wands.webp",
+        "physicalPath": "assets/cards/king_of_wands.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 80692,
+        "sha256": "decd35e47f24b8ebfaf1431ea261ddcbb1e89d7db0b95d8393de39c79ec46077",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/king_of_wands.webp",
+        "physicalPath": "assets/cards/mcp/king_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7240,
+        "sha256": "b918727d8cbe3b413c87e2022378b4a2dc6fc65342db8ba8b650c3884deb38e6",
+        "quality": 68
+      },
+      "alt": {
+        "en": "King of Wands tarot artwork",
+        "zh": "权杖国王塔罗牌面"
+      }
+    },
+    {
+      "id": "ace_of_cups",
+      "name": "Ace of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 1,
+      "pipCount": 1,
+      "rankLabel": "A",
+      "sourceSha256": "a99c01eb3c41591bef42cb6a6f2a5ca7fcabfa9b9cb33209644de64fe3e85073",
+      "promptSha256": "1abb4b1ecb0c0b12803d4f225087e61d585a87ab17c5e8cc30c420c9ec86e1cd",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ace_of_cups.webp",
+        "physicalPath": "assets/cards/ace_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 106626,
+        "sha256": "42290e4cd46d298142c470437757f29d641dbdd353072817352f601391662efe",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ace_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/ace_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 9600,
+        "sha256": "b92089377a8fe90013181007d4545b4c2f5ba1b5513eaa296084809e0f3a4a04",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ace of Cups tarot artwork",
+        "zh": "圣杯王牌塔罗牌面"
+      }
+    },
+    {
+      "id": "two_of_cups",
+      "name": "Two of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 2,
+      "pipCount": 2,
+      "rankLabel": "II",
+      "sourceSha256": "2f096b436f46bb35f817fd7f2c8c1745757561eea582045e30f930413d0daf30",
+      "promptSha256": "623cee8de244014e907112d74c7256e773a11ce6f09e84f9c932cf8d9b640fdd",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/two_of_cups.webp",
+        "physicalPath": "assets/cards/two_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 84050,
+        "sha256": "7f3a7eb83e411dff57cc416164f3b7856283f686460c80b810cb7d700807897b",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/two_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/two_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7018,
+        "sha256": "42d710226fc336e5f84ef371b303b4c1ae1c1562feefc9a4be33cf1e6e6c6559",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Two of Cups tarot artwork",
+        "zh": "圣杯二塔罗牌面"
+      }
+    },
+    {
+      "id": "three_of_cups",
+      "name": "Three of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 3,
+      "pipCount": 3,
+      "rankLabel": "III",
+      "sourceSha256": "8ccbc40791c75d5e9e5fa6593977728865d60f4b3e8a485a4eba952f7c7e23ff",
+      "promptSha256": "d3667aab9d2556ae2d48e72c44da492daa6b2b190ada537f066b0d6d01a462e8",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/three_of_cups.webp",
+        "physicalPath": "assets/cards/three_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 99966,
+        "sha256": "09a3b7bcbae960f6da804ee9d118ac7ef4974a8e6536d683a73a90a27bea7716",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/three_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/three_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8336,
+        "sha256": "a87b79f1ddf1d99f30857cd74d5f767842bad7fc2bf7df08b72467f5a3554bc3",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Three of Cups tarot artwork",
+        "zh": "圣杯三塔罗牌面"
+      }
+    },
+    {
+      "id": "four_of_cups",
+      "name": "Four of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 4,
+      "pipCount": 4,
+      "rankLabel": "IV",
+      "sourceSha256": "5e5af96d21643931ac1bfabf20704e3c94b43c73a1eb26eb24e7f74dd8d98cad",
+      "promptSha256": "4b911fd5e730c57edf3793ff0366ce752d7b7e632a126356e6e4ecaa1e6dac7a",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/four_of_cups.webp",
+        "physicalPath": "assets/cards/four_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 83732,
+        "sha256": "a7f68e93afc332a4effdc8fadd30ee7ba6d60bb4af37d4f4acfcb755ce53d619",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/four_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/four_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6560,
+        "sha256": "afe781511f1b03b17f0f26e593a3680c0089cf047a16248c3ab65bd89fa18ab1",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Four of Cups tarot artwork",
+        "zh": "圣杯四塔罗牌面"
+      }
+    },
+    {
+      "id": "five_of_cups",
+      "name": "Five of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 5,
+      "pipCount": 5,
+      "rankLabel": "V",
+      "sourceSha256": "dcf8133e9f8bce67445a02620f36f87787e0cb65fcff2bd87bd6f9e60e7cabce",
+      "promptSha256": "d5843ab5fd8f78bf2a199a7a01c7b2bc2ae65eccf2eaf6b640980ea68bd546fe",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/five_of_cups.webp",
+        "physicalPath": "assets/cards/five_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 91868,
+        "sha256": "1d12c26f167482241015dfc8b4f21ef1d8e6cb81cc3a50e421c9500d084509f0",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/five_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/five_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7200,
+        "sha256": "0e749316d6787c10e6272d228a3d883a6820a3dc8b10a62f10f22830d7899fc1",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Five of Cups tarot artwork",
+        "zh": "圣杯五塔罗牌面"
+      }
+    },
+    {
+      "id": "six_of_cups",
+      "name": "Six of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 6,
+      "pipCount": 6,
+      "rankLabel": "VI",
+      "sourceSha256": "bc9b072d8b318194137309e0b3f6fa04248b41c0c65a7c3cd252a970106686b3",
+      "promptSha256": "410c0f7dcb529fe208798f6a644fd0c0ac2f99aede462a11c4b8ae212069131d",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/six_of_cups.webp",
+        "physicalPath": "assets/cards/six_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 75216,
+        "sha256": "dddcdf6a3f98880ab73e856e75602ad88c9aa5d89d51fca2e1384724d2299896",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/six_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/six_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6256,
+        "sha256": "9f4343e0d6aa374a9de7ce8a1d97345f1c4567d87737fbbb677fa31a0e64c87f",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Six of Cups tarot artwork",
+        "zh": "圣杯六塔罗牌面"
+      }
+    },
+    {
+      "id": "seven_of_cups",
+      "name": "Seven of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 7,
+      "pipCount": 7,
+      "rankLabel": "VII",
+      "sourceSha256": "57c9497360bd6b700359b67cd86ed9a206956240cb3590923bc0aa45dec73355",
+      "promptSha256": "18f4f9f1bbb05088da6cb7bd9539fbdba9ed42f191c3261891434290b32d271f",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/seven_of_cups.webp",
+        "physicalPath": "assets/cards/seven_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 94642,
+        "sha256": "80ff38d8f37fa5c3befb982e21e0c6b06c55648eafe2567c92d4c45eb3e28a4b",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/seven_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/seven_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7490,
+        "sha256": "9c07a60b68c2c5cb8347e9cc21c819222f58681e0c20c07327f41a2e0a584c18",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Seven of Cups tarot artwork",
+        "zh": "圣杯七塔罗牌面"
+      }
+    },
+    {
+      "id": "eight_of_cups",
+      "name": "Eight of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 8,
+      "pipCount": 8,
+      "rankLabel": "VIII",
+      "sourceSha256": "9d3c12a89a27e4ec879de265cad16cd337930c2a151a17c0e490a252ca0d427c",
+      "promptSha256": "4d7d7f8c59d788fdd0559960a20ab7860d959d7a34f62e77baae61541b44a01c",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/eight_of_cups.webp",
+        "physicalPath": "assets/cards/eight_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 86432,
+        "sha256": "246db6e17d64bf5699aa6ce68e0f331522791f571576647e58913e7b2b10f9a8",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/eight_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/eight_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6828,
+        "sha256": "2a5db1a30a76a17b58751fee6235078127ce34506779d0ed1338d04407bab1c6",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Eight of Cups tarot artwork",
+        "zh": "圣杯八塔罗牌面"
+      }
+    },
+    {
+      "id": "nine_of_cups",
+      "name": "Nine of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 9,
+      "pipCount": 9,
+      "rankLabel": "IX",
+      "sourceSha256": "2400647aae1d3cb1b9f458aca47d70e954c05f39dbc48e1c3801bd73683dd2fd",
+      "promptSha256": "b63752be9e61b86ce2962905ec2f3bd433d6a64408889b8aff2af5fdfd3774e8",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/nine_of_cups.webp",
+        "physicalPath": "assets/cards/nine_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 77724,
+        "sha256": "b2979514840e42241cda15c968863297e8708e9cb066467a1b60317d824fc6f4",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/nine_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/nine_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6414,
+        "sha256": "027fef8bd3a1a6f084e01cc2a553597260607371f2f05099180ae6a0e329605a",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Nine of Cups tarot artwork",
+        "zh": "圣杯九塔罗牌面"
+      }
+    },
+    {
+      "id": "ten_of_cups",
+      "name": "Ten of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 10,
+      "pipCount": 10,
+      "rankLabel": "X",
+      "sourceSha256": "019d906c5ab6c8493eab6868eba412b101efb54d214c3d347df94fadaf5715c7",
+      "promptSha256": "5bfad2f76f25d148672b8a4c42ffcc5947daced7edbc28c0156b7cfff4148568",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ten_of_cups.webp",
+        "physicalPath": "assets/cards/ten_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 81200,
+        "sha256": "bd9090dae3b4031af3c1cfd6f2825e28b88230e51cec0878531c6b5edec095f9",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ten_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/ten_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7176,
+        "sha256": "6b3acb135511031621049979da526cd74670ed170bedb16c7c6a18bb1d0cf0bd",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ten of Cups tarot artwork",
+        "zh": "圣杯十塔罗牌面"
+      }
+    },
+    {
+      "id": "page_of_cups",
+      "name": "Page of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 11,
+      "pipCount": 1,
+      "rankLabel": "P",
+      "sourceSha256": "f74475edd17ecdb782783f96f03aa518d4803b7e3bb64c5776a0e161c90998d7",
+      "promptSha256": "aa604b80edfc7ee71a2ff2c2d6ffbbf4230142b6c41d878cb3f38ece57b67103",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/page_of_cups.webp",
+        "physicalPath": "assets/cards/page_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 85324,
+        "sha256": "1fab36c80f38b5f020b2e72e6aa80fc049b2aa3bbc40e4a38b6c4c9a85d7c951",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/page_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/page_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6850,
+        "sha256": "7df4efa2a94d8fd8befa1293f028cf6cb77eae079d2531a540608acaedb83b11",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Page of Cups tarot artwork",
+        "zh": "圣杯侍从塔罗牌面"
+      }
+    },
+    {
+      "id": "knight_of_cups",
+      "name": "Knight of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 12,
+      "pipCount": 1,
+      "rankLabel": "N",
+      "sourceSha256": "73d975e66ef470805c6629467893dfbdac59e20af0bee3820e91d08949e24349",
+      "promptSha256": "44f2d95b1ed680fb7c1114ba54b8de56881303f6e60d332835ced91617acd36b",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/knight_of_cups.webp",
+        "physicalPath": "assets/cards/knight_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 93394,
+        "sha256": "0d0991d02acfe022811fdc0855a7e9bb5ff333a8e39bfda7fbbf4336925fbfdd",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/knight_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/knight_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7842,
+        "sha256": "cb8bc07cc55d1e0267c3be504cfa9828c9ae6c2203cf4125fe86f7c35588a2eb",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Knight of Cups tarot artwork",
+        "zh": "圣杯骑士塔罗牌面"
+      }
+    },
+    {
+      "id": "queen_of_cups",
+      "name": "Queen of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 13,
+      "pipCount": 1,
+      "rankLabel": "Q",
+      "sourceSha256": "7ecbd54c1d5b772aaeeaa63496ee378868fa94ecee6c3fdbe5612c443ddbbedf",
+      "promptSha256": "ced9b37e835ff75edfab6e943ec6fb126d213cfa33a5cee6bab5acbc59f251d5",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/queen_of_cups.webp",
+        "physicalPath": "assets/cards/queen_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 85598,
+        "sha256": "88ff2e46202eb65b5a665f545811de202b428e99e129d5c6a42c36ee1a220ba6",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/queen_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/queen_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7142,
+        "sha256": "c6f54ddec00b37a7308c1a60cc327a9aa242f3d85da6d334ccf3ba562bfa6035",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Queen of Cups tarot artwork",
+        "zh": "圣杯王后塔罗牌面"
+      }
+    },
+    {
+      "id": "king_of_cups",
+      "name": "King of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 14,
+      "pipCount": 1,
+      "rankLabel": "K",
+      "sourceSha256": "e901eaad5367db9c79b5419755a52aeb0a4ac3ca120642a71773f36a0549a37e",
+      "promptSha256": "6c8592f27bdca33060e77d093e2cb027aa1a0b8a40b11a68d7049e3d9f6d5f59",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/king_of_cups.webp",
+        "physicalPath": "assets/cards/king_of_cups.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 87590,
+        "sha256": "180bde6f79a9343a1bfb081e3b38837954729bfea0d3baeee8fd8974feb5ece6",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/king_of_cups.webp",
+        "physicalPath": "assets/cards/mcp/king_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6840,
+        "sha256": "105a3d8119f5e664130e32ba032cbe15f9393eb8ffd0dbb07b752ba50ed312d2",
+        "quality": 68
+      },
+      "alt": {
+        "en": "King of Cups tarot artwork",
+        "zh": "圣杯国王塔罗牌面"
+      }
+    },
+    {
+      "id": "ace_of_swords",
+      "name": "Ace of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 1,
+      "pipCount": 1,
+      "rankLabel": "A",
+      "sourceSha256": "67d6cbf2a186aaabe2aecb18e7aeb2ae3c5f6d12c33fb5d4377ca5893de53b1f",
+      "promptSha256": "d8e6337929e3d6d3fea38f2f4c2769b128c4603647ff8f475014245a4a8fd9c5",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ace_of_swords.webp",
+        "physicalPath": "assets/cards/ace_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 90240,
+        "sha256": "cf1d766e781ea87232d3ede48610f146e93f26d586f88a0ad4016aed2d344ba8",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ace_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/ace_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7236,
+        "sha256": "25164b489716d4d9a75b76f45db421ea22e409945485068b57d2c3b2199fbea0",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ace of Swords tarot artwork",
+        "zh": "宝剑王牌塔罗牌面"
+      }
+    },
+    {
+      "id": "two_of_swords",
+      "name": "Two of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 2,
+      "pipCount": 2,
+      "rankLabel": "II",
+      "sourceSha256": "3d40c28262e25e5fb67898f46a98891ded2b899fb0659d4a993be528f9428a77",
+      "promptSha256": "e9d26f40087b96aa90ff69f15ea085f43a8684a55df0e5da9474b748eadb0479",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/two_of_swords.webp",
+        "physicalPath": "assets/cards/two_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 86846,
+        "sha256": "86c9d3f9f1d2b312bc038045a38702bac1b8877484b46bdcc9cb24de59dd724f",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/two_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/two_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6620,
+        "sha256": "8e281a1e22d78dab590c29f7e4c3d61a14b52946468c1c9b782fce21d10d6bee",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Two of Swords tarot artwork",
+        "zh": "宝剑二塔罗牌面"
+      }
+    },
+    {
+      "id": "three_of_swords",
+      "name": "Three of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 3,
+      "pipCount": 3,
+      "rankLabel": "III",
+      "sourceSha256": "742961d7bbde95056d4a7b75bd4eb42cb62b649e0f0199742d8d01ffa1fb364e",
+      "promptSha256": "b469f51b8b59d03b9d7d152db602e276679a784bed4bdbae8427d248c5f3dc57",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/three_of_swords.webp",
+        "physicalPath": "assets/cards/three_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 78122,
+        "sha256": "67b0ed56bcd7ff8f14e15a896a517b3348f61b1275b90b95fb744a4da4d880ea",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/three_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/three_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6482,
+        "sha256": "ddbdd87b2e18cd28e642c2bea823f29cb924f2abf2c40764c62ab7e7d1270bd7",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Three of Swords tarot artwork",
+        "zh": "宝剑三塔罗牌面"
+      }
+    },
+    {
+      "id": "four_of_swords",
+      "name": "Four of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 4,
+      "pipCount": 4,
+      "rankLabel": "IV",
+      "sourceSha256": "f4c925fbf4487110cb5ac0ffb915df14ec844604a24f0f569ffa826de2ad180e",
+      "promptSha256": "8c5d3f0a8591e1d3a218cd6a3a1007bfb00321d486d08a3ff898a990bd6a0617",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/four_of_swords.webp",
+        "physicalPath": "assets/cards/four_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 86004,
+        "sha256": "dd9f4d909bc6278d9817916450f01c1cd51baa55b979cea2cd95902098ad6264",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/four_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/four_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6618,
+        "sha256": "dda5a9df8b8398ac52693bd12b19212543675fcce43d3b138bc672ba4505e0bd",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Four of Swords tarot artwork",
+        "zh": "宝剑四塔罗牌面"
+      }
+    },
+    {
+      "id": "five_of_swords",
+      "name": "Five of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 5,
+      "pipCount": 5,
+      "rankLabel": "V",
+      "sourceSha256": "6f053baef3294ca51678b2f5b5e34be437aa4e2d42fd4affeb2e918f65779b9a",
+      "promptSha256": "1bb2257c50bc48d6e8b6690aca19acdb83a263b7441a4926aa9345c943c7b637",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/five_of_swords.webp",
+        "physicalPath": "assets/cards/five_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 70770,
+        "sha256": "310af978f22362e256b2f16247c1f47121e1c8840f96937c0f3edae31b3afe1c",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/five_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/five_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 5508,
+        "sha256": "c22bcc756e89d534fe4adfde4cb7eb9b153b6b2570542f7ed317cff4596a9a6a",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Five of Swords tarot artwork",
+        "zh": "宝剑五塔罗牌面"
+      }
+    },
+    {
+      "id": "six_of_swords",
+      "name": "Six of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 6,
+      "pipCount": 6,
+      "rankLabel": "VI",
+      "sourceSha256": "c4ad5fbd38107ded7538130d63cc692bf8b810f3c50d1b9bf55772e5969e0a37",
+      "promptSha256": "852cced0003e6120d1d5e29b7709b8ab67772436bb9b60857b66b4a249c28c2a",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/six_of_swords.webp",
+        "physicalPath": "assets/cards/six_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 91978,
+        "sha256": "951e4516f1406449666b4dbf636a27643306e8f7de7563bbad6e1775ccb4a9c2",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/six_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/six_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7428,
+        "sha256": "321751f7d93fd3c37d01ec51c899b869aee7d60d38dd45b30141a6b4056ac770",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Six of Swords tarot artwork",
+        "zh": "宝剑六塔罗牌面"
+      }
+    },
+    {
+      "id": "seven_of_swords",
+      "name": "Seven of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 7,
+      "pipCount": 7,
+      "rankLabel": "VII",
+      "sourceSha256": "e5d2b10debd6bcfa74e94bc241783b8aabc64ca780d4a4545b417099ccdccdc9",
+      "promptSha256": "005b2c4f1bfb980f8deead6258e00a9f44280f87930daa8c8577d44b78355eda",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/seven_of_swords.webp",
+        "physicalPath": "assets/cards/seven_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 95306,
+        "sha256": "8e6de66d53a728122b8733232e6f8e3de16012eed23f01a056788f3a9a79e778",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/seven_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/seven_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8124,
+        "sha256": "3e704422666fe641c7c6f5366a3adbad3b2afa5f83635bc856bae45cb3026c48",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Seven of Swords tarot artwork",
+        "zh": "宝剑七塔罗牌面"
+      }
+    },
+    {
+      "id": "eight_of_swords",
+      "name": "Eight of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 8,
+      "pipCount": 8,
+      "rankLabel": "VIII",
+      "sourceSha256": "7809a46c3833fcbdb133cad3e6f4a5e8da30c72903828aa372edf88068bcea71",
+      "promptSha256": "3f192e694b56b3ee4b46df80459120e03125437d3fd46b6b79c73f1db19c79f3",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/eight_of_swords.webp",
+        "physicalPath": "assets/cards/eight_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 80010,
+        "sha256": "47711333177ac699d548caed8ee58f49bacb5014c279152a9389085b59712e85",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/eight_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/eight_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6616,
+        "sha256": "959a3e704ec1ab957a85313f28198d730adce4d299ae3185bba6332830ca779e",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Eight of Swords tarot artwork",
+        "zh": "宝剑八塔罗牌面"
+      }
+    },
+    {
+      "id": "nine_of_swords",
+      "name": "Nine of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 9,
+      "pipCount": 9,
+      "rankLabel": "IX",
+      "sourceSha256": "e909db0258b7666995d1d0b084eeaede7b07f3d6a93424e37c7f3e07ce60a461",
+      "promptSha256": "b5aff1a9c5e546dc42d93604aaac44868f803ef8fa2ce30534885c3496341fab",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/nine_of_swords.webp",
+        "physicalPath": "assets/cards/nine_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 81910,
+        "sha256": "1a6b42a79ac669bf5cb93f8c8e0417c2a359a3d1587a19459ca5f6f73d7cfb5b",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/nine_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/nine_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6688,
+        "sha256": "af14d87203fe180f2cbddaad8cb400b3131cf086dea834c25299035803afe318",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Nine of Swords tarot artwork",
+        "zh": "宝剑九塔罗牌面"
+      }
+    },
+    {
+      "id": "ten_of_swords",
+      "name": "Ten of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 10,
+      "pipCount": 10,
+      "rankLabel": "X",
+      "sourceSha256": "f0dfb3f3b1a7da00f7df30f1e64301414d6d099c562889011f770b026b094902",
+      "promptSha256": "8579336d23f890cbc9787b77f212a569308792029b7d3125c218ee0c51d4b8ef",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ten_of_swords.webp",
+        "physicalPath": "assets/cards/ten_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 69432,
+        "sha256": "0313e74d481e172a7fbf5fd5e632ccf11e08f9829e3d3b73cd2d33453aac0de7",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ten_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/ten_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 5860,
+        "sha256": "ca284c4fb2c489959f1a02c4a2727c3cdca12b6ee9a2f4f715535e5c257e15c4",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ten of Swords tarot artwork",
+        "zh": "宝剑十塔罗牌面"
+      }
+    },
+    {
+      "id": "page_of_swords",
+      "name": "Page of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 11,
+      "pipCount": 1,
+      "rankLabel": "P",
+      "sourceSha256": "faa3a1cfbbad684b729aaa9c14a55ec69923019aba3c65a7305516bef0d1a480",
+      "promptSha256": "ed4b9dc3e6c5d0f92ccd0db5334d9a3dfab4f935296b58b06d929cd93e052c51",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/page_of_swords.webp",
+        "physicalPath": "assets/cards/page_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 81206,
+        "sha256": "070296a29ba9c1dc1607e34c2a8cb3bea4d131fefce27601ac65198b23d481f6",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/page_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/page_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6646,
+        "sha256": "e646d82088f87ed6b3da3ebfaf14ac60dcd307a2f7d4516f5a75405e66d3a3e6",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Page of Swords tarot artwork",
+        "zh": "宝剑侍从塔罗牌面"
+      }
+    },
+    {
+      "id": "knight_of_swords",
+      "name": "Knight of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 12,
+      "pipCount": 1,
+      "rankLabel": "N",
+      "sourceSha256": "06f5b69a750542f2ee2b31c236d9444cc7032fe9a9220155bf08b74cdba682cd",
+      "promptSha256": "fd11efeaa49551838657e1ac0433c45d71708b270af00299f9b91f29c894ce92",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/knight_of_swords.webp",
+        "physicalPath": "assets/cards/knight_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 96844,
+        "sha256": "46a9ee5ad5de3bbcaa63c11f60580dd3657a093bfd09c84613fe64711f230980",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/knight_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/knight_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7898,
+        "sha256": "ced4baef2223673fb30202b3b966ba94b3f6214805dff7099cd2333d794d826d",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Knight of Swords tarot artwork",
+        "zh": "宝剑骑士塔罗牌面"
+      }
+    },
+    {
+      "id": "queen_of_swords",
+      "name": "Queen of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 13,
+      "pipCount": 1,
+      "rankLabel": "Q",
+      "sourceSha256": "b924a4199ea9723f8dad18166f5595ee47aa640f15b995fbaab9d3bc81b8d47d",
+      "promptSha256": "1cf2e61fb193a518f8746377cd33ba043d6b973ffc54539a8a04f6809ba8ae84",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/queen_of_swords.webp",
+        "physicalPath": "assets/cards/queen_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 84164,
+        "sha256": "18a931d039d7b56787de11f4c73ddd48437518e1612d9cf5696dd2c692f917fc",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/queen_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/queen_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6830,
+        "sha256": "ed34daf3c5f94f68c5c16c4f1e94d00798af018847482b2b5bbe04edaa133cea",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Queen of Swords tarot artwork",
+        "zh": "宝剑王后塔罗牌面"
+      }
+    },
+    {
+      "id": "king_of_swords",
+      "name": "King of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 14,
+      "pipCount": 1,
+      "rankLabel": "K",
+      "sourceSha256": "66abcc42b600f77abeaa12f522e85990b0f4a3ee1b10d5a93201f302cc12ad3f",
+      "promptSha256": "259756587e8879ead8ce60081f6eb74efd966a3fa4e03965d424723dfe64037c",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/king_of_swords.webp",
+        "physicalPath": "assets/cards/king_of_swords.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 97638,
+        "sha256": "90c87e2c78675b0d4fc9c11c35b76a58e70997c14dffb3d21f835bc3ee3712b1",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/king_of_swords.webp",
+        "physicalPath": "assets/cards/mcp/king_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8112,
+        "sha256": "b23cfca36a23aa4f198b082628b62695989cc37820054ece03f40592ab0df011",
+        "quality": 68
+      },
+      "alt": {
+        "en": "King of Swords tarot artwork",
+        "zh": "宝剑国王塔罗牌面"
+      }
+    },
+    {
+      "id": "ace_of_pentacles",
+      "name": "Ace of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 1,
+      "pipCount": 1,
+      "rankLabel": "A",
+      "sourceSha256": "bc4168c78c09de01292e65b03159730701c8dc07faf949d1eef09d6f72346077",
+      "promptSha256": "1ca4b99ecdb7539ad18e49a617133d1e8e7adfdc6147305bda17472bbd0b0a68",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ace_of_pentacles.webp",
+        "physicalPath": "assets/cards/ace_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 87468,
+        "sha256": "093c24532b1d3ca2d619a1ccf2828e3ce392fbdd80b35a1a0594d281d426fc9d",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ace_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/ace_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7912,
+        "sha256": "cf4367211fcfe4cadb5969cfa152cfe326513482d2bf88e49efd74f4bfa7bd49",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ace of Pentacles tarot artwork",
+        "zh": "星币王牌塔罗牌面"
+      }
+    },
+    {
+      "id": "two_of_pentacles",
+      "name": "Two of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 2,
+      "pipCount": 2,
+      "rankLabel": "II",
+      "sourceSha256": "789ebfc23e4649449e03734b348994607615632be84b747f87696d343e027120",
+      "promptSha256": "c9bde3ff7c67b1190206a2491d263365cab2e696ee1b52bdbc768186a1615190",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/two_of_pentacles.webp",
+        "physicalPath": "assets/cards/two_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 95842,
+        "sha256": "0f860d50fd7968477b0226fad43c11f2fc5b44c2fba60c27356ac33baaff0e96",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/two_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/two_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7390,
+        "sha256": "baf557bf9662a6204311051e0b199c326ee1df0621e24490ed48f09438d58da9",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Two of Pentacles tarot artwork",
+        "zh": "星币二塔罗牌面"
+      }
+    },
+    {
+      "id": "three_of_pentacles",
+      "name": "Three of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 3,
+      "pipCount": 3,
+      "rankLabel": "III",
+      "sourceSha256": "d02ecab3999f7239f92054ae8a2cdc015be346cb2ea34c0f11b07a29754feb05",
+      "promptSha256": "265382bd53f83ef6a1f7ef338884e95f08ca992429c64d209472f2f3a8b42cab",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/three_of_pentacles.webp",
+        "physicalPath": "assets/cards/three_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 94816,
+        "sha256": "7a4f7daa9ad50fb346312d16d2200aa882c30cf0197ffb596ad8ce8b0a6af271",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/three_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/three_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7882,
+        "sha256": "42d4193784843a831cd282b65b0773a24babddcfeb5af347788d259ff6c2985a",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Three of Pentacles tarot artwork",
+        "zh": "星币三塔罗牌面"
+      }
+    },
+    {
+      "id": "four_of_pentacles",
+      "name": "Four of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 4,
+      "pipCount": 4,
+      "rankLabel": "IV",
+      "sourceSha256": "0e02f931c7a0c4d14c092c394d98edebb479ad4c43b7aa96808f859ff42ed19d",
+      "promptSha256": "63af27931ac242583c98a74d5945ba59ab91c63677c05cccd8317b97b0f1b8d2",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/four_of_pentacles.webp",
+        "physicalPath": "assets/cards/four_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 80292,
+        "sha256": "480a3b903df053140d53b1402e0f73839fc784af6a63e725ad6e1c734544d0e7",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/four_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/four_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7222,
+        "sha256": "772461c9b39b612bc7f7a3cd093605a7066838c37e41839fec4508ae7dd46c1e",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Four of Pentacles tarot artwork",
+        "zh": "星币四塔罗牌面"
+      }
+    },
+    {
+      "id": "five_of_pentacles",
+      "name": "Five of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 5,
+      "pipCount": 5,
+      "rankLabel": "V",
+      "sourceSha256": "c25219cbbe84eebba2866e5bf3b753503685c9c21262026bbf82b1e3753ab082",
+      "promptSha256": "621e849ef3064159952082ff47e89a466983153fe9e2d1823a3865e0ddecda31",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/five_of_pentacles.webp",
+        "physicalPath": "assets/cards/five_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 64280,
+        "sha256": "d6f679689b895859913380dad68de1771a12165082fd63021bdb965e6dc0c5c7",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/five_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/five_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 5222,
+        "sha256": "950e501b8707b11b340568d12e5e651922a4aba378ae4cb22a2b282a4288ce7c",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Five of Pentacles tarot artwork",
+        "zh": "星币五塔罗牌面"
+      }
+    },
+    {
+      "id": "six_of_pentacles",
+      "name": "Six of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 6,
+      "pipCount": 6,
+      "rankLabel": "VI",
+      "sourceSha256": "d0bf6eb1f8b874f7d9c28def537618fd092067234aebb7d374a6494fdd0591fd",
+      "promptSha256": "1b44af66481757f015ca375884f1630c4b839fa6ceb42ee2b0b5080f6968ade7",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/six_of_pentacles.webp",
+        "physicalPath": "assets/cards/six_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 91888,
+        "sha256": "74cd9867fb7859fdfbcca8795d4f01161a991083a652d612fd5748623d332a14",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/six_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/six_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8052,
+        "sha256": "edc50ca83643346f9ee67e2d69e5ddb176dc4ed95da3e85e49986c0a93886ad5",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Six of Pentacles tarot artwork",
+        "zh": "星币六塔罗牌面"
+      }
+    },
+    {
+      "id": "seven_of_pentacles",
+      "name": "Seven of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 7,
+      "pipCount": 7,
+      "rankLabel": "VII",
+      "sourceSha256": "9c684513629cb11cb94711521d52e2b414fdef3bac40d2502309ca43fd820edc",
+      "promptSha256": "f904a021b2f0eae90e57eda01f07443f33c2d85775c698a06525ef19be460a6c",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/seven_of_pentacles.webp",
+        "physicalPath": "assets/cards/seven_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 92756,
+        "sha256": "1b4fcad7415cc78da22216aae1ff3d76af216621208b74671e12ba9c128aae75",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/seven_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/seven_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7704,
+        "sha256": "bc2d4b17bae1f29cdf16b6987bbfcec59acdfb27541e9bc1d4dc9007920dc613",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Seven of Pentacles tarot artwork",
+        "zh": "星币七塔罗牌面"
+      }
+    },
+    {
+      "id": "eight_of_pentacles",
+      "name": "Eight of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 8,
+      "pipCount": 8,
+      "rankLabel": "VIII",
+      "sourceSha256": "7a01d30bcdb1400fd0586625042156bc1767623f40f041a83070627351f48530",
+      "promptSha256": "f31650b7cad741e3d2979f7b18464a3ddc41a827b706c231bd3aff2b584a114a",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/eight_of_pentacles.webp",
+        "physicalPath": "assets/cards/eight_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 91602,
+        "sha256": "a53506234620581ffa85d76bf023d60c45c9a712ff411b3198a68f185980368f",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/eight_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/eight_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8828,
+        "sha256": "eaab4e58597b058ff3742349dafa946449ff2e0926cfff9d9490a6bc5126b94e",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Eight of Pentacles tarot artwork",
+        "zh": "星币八塔罗牌面"
+      }
+    },
+    {
+      "id": "nine_of_pentacles",
+      "name": "Nine of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 9,
+      "pipCount": 9,
+      "rankLabel": "IX",
+      "sourceSha256": "aa4e8e9346bd9dedd15eff79eef194b59582dc2eeea1e32bb5c09d8c6100c525",
+      "promptSha256": "257039a4ce54e6a6bae06eb951a8ed987cf797fab232d8500e7db7aacf0e96d0",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/nine_of_pentacles.webp",
+        "physicalPath": "assets/cards/nine_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 82736,
+        "sha256": "f0cc60d8d8a3be4c7cf0a7244c945705b4f56619800f8cf3eb992195bdfb80eb",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/nine_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/nine_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7496,
+        "sha256": "c0ef1e56943331a049de70ba882a3368311186594b5be81975b3ce137eafd641",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Nine of Pentacles tarot artwork",
+        "zh": "星币九塔罗牌面"
+      }
+    },
+    {
+      "id": "ten_of_pentacles",
+      "name": "Ten of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 10,
+      "pipCount": 10,
+      "rankLabel": "X",
+      "sourceSha256": "d079d5c409b6881e4455974cd0b43ff62624d0e08dfe5a1a9572fbf7216e632f",
+      "promptSha256": "b8e2b500414271d73075acd65aebb18b9294397451b095a75e16d54975b61072",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/ten_of_pentacles.webp",
+        "physicalPath": "assets/cards/ten_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 92084,
+        "sha256": "a55c7fdc1cc700ad433ee670ffd5335d872df22e630a26ad34eb00e597039530",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/ten_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/ten_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8556,
+        "sha256": "1bdc28f80362d9035df4437e33304316125f1a2e4a40957788fb0463bc0d8ca9",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Ten of Pentacles tarot artwork",
+        "zh": "星币十塔罗牌面"
+      }
+    },
+    {
+      "id": "page_of_pentacles",
+      "name": "Page of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 11,
+      "pipCount": 1,
+      "rankLabel": "P",
+      "sourceSha256": "1a458090dec83574fd84553fd660a872970a03b9a873415942680670bb9e0f51",
+      "promptSha256": "f79c661b6b07e4f41154e371c873554a0b51704985b7ccdc1eca260c1a079df7",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/page_of_pentacles.webp",
+        "physicalPath": "assets/cards/page_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 102600,
+        "sha256": "69f45adadd24df86b3ab92b03ddc421afd2386e1b39ac4ebcfcf575190d50ee1",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/page_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/page_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 8002,
+        "sha256": "481d431f08e8fed2b264a1121d7f42436277a5c73b605a8bfbbeef06a114104d",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Page of Pentacles tarot artwork",
+        "zh": "星币侍从塔罗牌面"
+      }
+    },
+    {
+      "id": "knight_of_pentacles",
+      "name": "Knight of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 12,
+      "pipCount": 1,
+      "rankLabel": "N",
+      "sourceSha256": "9b7394906cd68d5c253dffe080dd9760c082a03b6535436c82c613f042c55ade",
+      "promptSha256": "fa8da3c07ec3a3592610d99a468461857f70ef8f8b4bb58b6a8ffbf754cd0f98",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/knight_of_pentacles.webp",
+        "physicalPath": "assets/cards/knight_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 94448,
+        "sha256": "46e40b5801c24054d1cd7e799edbd7eee45004152f0bb29fdb19069d659d67f0",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/knight_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/knight_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7740,
+        "sha256": "70b5895ab35c856fbbda684db2fdaabc76fa70f99de626f0633520560958b393",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Knight of Pentacles tarot artwork",
+        "zh": "星币骑士塔罗牌面"
+      }
+    },
+    {
+      "id": "queen_of_pentacles",
+      "name": "Queen of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 13,
+      "pipCount": 1,
+      "rankLabel": "Q",
+      "sourceSha256": "99167deedac84a629835d611209c4562add274a341bf0112b2069bfdfdea3c7a",
+      "promptSha256": "4ffeb63be49c05ffbca22fc9aad8cc498c446e5d101b20fe29e79f7866363552",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/queen_of_pentacles.webp",
+        "physicalPath": "assets/cards/queen_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 84006,
+        "sha256": "46be191c0bfc93534c04addf9cdc0e070d9ae95528095ec8f2e9cd84ec4d32ff",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/queen_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/queen_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6732,
+        "sha256": "fe9d608c8685b625551221f77e001df801a98e184052f7c2dc0344cbdff71d41",
+        "quality": 68
+      },
+      "alt": {
+        "en": "Queen of Pentacles tarot artwork",
+        "zh": "星币王后塔罗牌面"
+      }
+    },
+    {
+      "id": "king_of_pentacles",
+      "name": "King of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 14,
+      "pipCount": 1,
+      "rankLabel": "K",
+      "sourceSha256": "cf061d2589c87f82e18387d77c031a17069ea5c31226a8750f969dc572f27db8",
+      "promptSha256": "b3157f0a51cedf79449a61b17d9207538b248858a22e3c7481d4954780a368b8",
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/king_of_pentacles.webp",
+        "physicalPath": "assets/cards/king_of_pentacles.webp",
+        "width": 512,
+        "height": 768,
+        "bytes": 72808,
+        "sha256": "d753119bd68b7fed5badd2e3b6c870adf8f0989c1d53788e0ebcb0cbbc3454b3",
+        "quality": 82
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v1/mcp/king_of_pentacles.webp",
+        "physicalPath": "assets/cards/mcp/king_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6450,
+        "sha256": "fbadcb76ab8e3a1da22e574d8194d3c531daf5a98fa2e24d66be5e044603ee63",
+        "quality": 68
+      },
+      "alt": {
+        "en": "King of Pentacles tarot artwork",
+        "zh": "星币国王塔罗牌面"
+      }
+    }
+  ]
+}

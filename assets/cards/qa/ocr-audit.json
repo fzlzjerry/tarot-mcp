@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 1,
+  "deckId": "midnight-art-nouveau-v1",
+  "tool": "tesseract --psm 11",
+  "note": "Decorative line art produces OCR false positives. Tokens are a review aid, not an automatic failure condition.",
+  "disposition": "manual-review-completed",
+  "entries": [
+    {
+      "id": "fool",
+      "heuristicTokens": [
+        "tact",
+        "lape"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "magician",
+      "heuristicTokens": [
+        "vane"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "high_priestess",
+      "heuristicTokens": [
+        "vass"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "empress",
+      "heuristicTokens": [
+        "vaes",
+        "noss",
+        "bias",
+        "vane"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "emperor",
+      "heuristicTokens": [
+        "aull",
+        "bend",
+        "fong",
+        "vicon"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "hierophant",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "lovers",
+      "heuristicTokens": [
+        "seng",
+        "sate"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "chariot",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "strength",
+      "heuristicTokens": [
+        "orns"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "hermit",
+      "heuristicTokens": [
+        "java",
+        "ieti",
+        "gira"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "wheel_of_fortune",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "justice",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "hanged_man",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "death",
+      "heuristicTokens": [
+        "adiod"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "temperance",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "devil",
+      "heuristicTokens": [
+        "dice"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "tower",
+      "heuristicTokens": [
+        "stay",
+        "ness"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "star",
+      "heuristicTokens": [
+        "hawn",
+        "wilf",
+        "lhiz",
+        "vien",
+        "lass"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "moon",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "sun",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "judgement",
+      "heuristicTokens": [
+        "sores",
+        "dost",
+        "ware",
+        "aull"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "world",
+      "heuristicTokens": [
+        "adnan"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "ace_of_wands",
+      "heuristicTokens": [
+        "lane"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "two_of_wands",
+      "heuristicTokens": [
+        "vwhocy"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "three_of_wands",
+      "heuristicTokens": [
+        "meee",
+        "pera",
+        "tame",
+        "strs",
+        "neve"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "four_of_wands",
+      "heuristicTokens": [
+        "thee"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "five_of_wands",
+      "heuristicTokens": [
+        "baty",
+        "vain"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "six_of_wands",
+      "heuristicTokens": [
+        "piper",
+        "gory"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "seven_of_wands",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "eight_of_wands",
+      "heuristicTokens": [
+        "mole",
+        "wide",
+        "lila",
+        "sysy",
+        "eile"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "nine_of_wands",
+      "heuristicTokens": [
+        "nuts"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "ten_of_wands",
+      "heuristicTokens": [
+        "baez",
+        "lips"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "page_of_wands",
+      "heuristicTokens": [
+        "rane",
+        "faas",
+        "leet"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "knight_of_wands",
+      "heuristicTokens": [
+        "vona",
+        "fyss",
+        "rigs",
+        "prev"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "queen_of_wands",
+      "heuristicTokens": [
+        "ayes",
+        "itihg",
+        "eaares",
+        "babes"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "king_of_wands",
+      "heuristicTokens": [
+        "slea",
+        "puns"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "ace_of_cups",
+      "heuristicTokens": [
+        "doves",
+        "ears",
+        "sole",
+        "igeny",
+        "baen"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "two_of_cups",
+      "heuristicTokens": [
+        "loss",
+        "neds"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "three_of_cups",
+      "heuristicTokens": [
+        "reva",
+        "gall",
+        "jnnsd"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "four_of_cups",
+      "heuristicTokens": [
+        "ljmad",
+        "they",
+        "bases"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "five_of_cups",
+      "heuristicTokens": [
+        "cory",
+        "sole",
+        "pane",
+        "alate",
+        "alle",
+        "rall"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "six_of_cups",
+      "heuristicTokens": [
+        "pageres",
+        "teuel",
+        "tift"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "seven_of_cups",
+      "heuristicTokens": [
+        "site",
+        "fils"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "eight_of_cups",
+      "heuristicTokens": [
+        "neen",
+        "sweeee",
+        "vaio",
+        "shes",
+        "bene"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "nine_of_cups",
+      "heuristicTokens": [
+        "melt",
+        "cans",
+        "lilo",
+        "lags",
+        "sean"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "ten_of_cups",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "page_of_cups",
+      "heuristicTokens": [
+        "ysan"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "knight_of_cups",
+      "heuristicTokens": [
+        "apes",
+        "sass"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "queen_of_cups",
+      "heuristicTokens": [
+        "fais",
+        "wees"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "king_of_cups",
+      "heuristicTokens": [
+        "aval"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "ace_of_swords",
+      "heuristicTokens": [
+        "desc"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "two_of_swords",
+      "heuristicTokens": [
+        "saget"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "three_of_swords",
+      "heuristicTokens": [
+        "peas"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "four_of_swords",
+      "heuristicTokens": [
+        "peon",
+        "delis"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "five_of_swords",
+      "heuristicTokens": [
+        "zinn"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "six_of_swords",
+      "heuristicTokens": [
+        "kadi",
+        "cosa",
+        "ceon",
+        "jasn",
+        "hith"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "seven_of_swords",
+      "heuristicTokens": [
+        "seat",
+        "came",
+        "veet",
+        "lier",
+        "fact"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "eight_of_swords",
+      "heuristicTokens": [
+        "zens",
+        "laas",
+        "fees",
+        "sees",
+        "rarer",
+        "xyly",
+        "lass"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "nine_of_swords",
+      "heuristicTokens": [
+        "alls"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "ten_of_swords",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "page_of_swords",
+      "heuristicTokens": [
+        "legpy"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "knight_of_swords",
+      "heuristicTokens": [
+        "sine",
+        "scat",
+        "sinn"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "queen_of_swords",
+      "heuristicTokens": [
+        "naka",
+        "tenho",
+        "buna",
+        "saas",
+        "cave"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "king_of_swords",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "ace_of_pentacles",
+      "heuristicTokens": [
+        "decree",
+        "pais",
+        "vike"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "two_of_pentacles",
+      "heuristicTokens": [
+        "pare",
+        "caan",
+        "yess"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "three_of_pentacles",
+      "heuristicTokens": [
+        "vill",
+        "diape",
+        "nosh",
+        "poul"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "four_of_pentacles",
+      "heuristicTokens": [
+        "seis",
+        "cial",
+        "sipe"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "five_of_pentacles",
+      "heuristicTokens": [
+        "kyte",
+        "zain",
+        "vecs",
+        "wiae"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "six_of_pentacles",
+      "heuristicTokens": [
+        "dase",
+        "resa",
+        "cece",
+        "beng",
+        "foes"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "seven_of_pentacles",
+      "heuristicTokens": [
+        "cath",
+        "peat",
+        "prin"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "eight_of_pentacles",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "nine_of_pentacles",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "ten_of_pentacles",
+      "heuristicTokens": [],
+      "requiresVisualConfirmation": false
+    },
+    {
+      "id": "page_of_pentacles",
+      "heuristicTokens": [
+        "vyfee",
+        "fexs",
+        "vato"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "knight_of_pentacles",
+      "heuristicTokens": [
+        "tess",
+        "pany",
+        "wans",
+        "stat"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "queen_of_pentacles",
+      "heuristicTokens": [
+        "ieee"
+      ],
+      "requiresVisualConfirmation": true
+    },
+    {
+      "id": "king_of_pentacles",
+      "heuristicTokens": [
+        "rice",
+        "vreee"
+      ],
+      "requiresVisualConfirmation": true
+    }
+  ]
+}

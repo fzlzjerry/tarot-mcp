@@ -45,7 +45,7 @@ function findSchemaKeywordPaths(
 }
 
 describe("MCP tool behavior", () => {
-  it("publishes Codex-compatible top-level input schemas", () => {
+  it("publishes object input schemas, with a strict visual-reading union", () => {
     const disallowedTopLevelKeywords = [
       "oneOf",
       "anyOf",
@@ -59,10 +59,22 @@ describe("MCP tool behavior", () => {
     for (const tool of tools) {
       expect(tool.inputSchema).toMatchObject({ type: "object" });
 
-      for (const keyword of disallowedTopLevelKeywords) {
+      for (const keyword of disallowedTopLevelKeywords.filter(
+        (keyword) =>
+          tool.name !== TOOL_NAMES.beginVisualReading || keyword !== "oneOf",
+      )) {
         expect(tool.inputSchema).not.toHaveProperty(keyword);
       }
     }
+
+    const visualBegin = tools.find(
+      (tool) => tool.name === TOOL_NAMES.beginVisualReading,
+    );
+    expect(visualBegin?.inputSchema).toMatchObject({
+      type: "object",
+      required: ["readingKind"],
+    });
+    expect(visualBegin?.inputSchema.oneOf).toHaveLength(4);
 
     const comparisonTool = tools.find(
       (tool) => tool.name === "get_card_meanings_comparison",
@@ -72,6 +84,9 @@ describe("MCP tool behavior", () => {
 
   it("advertises language selection on every user-facing tool", () => {
     for (const tool of getAvailableTools()) {
+      if (tool.name === TOOL_NAMES.confirmVisualReading) {
+        continue; // App-only continuation; language is frozen at begin.
+      }
       const properties = tool.inputSchema.properties as
         Record<string, unknown> | undefined;
       expect(
