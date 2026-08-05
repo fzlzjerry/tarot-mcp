@@ -1,46 +1,53 @@
+/*
+ * Midnight Art Nouveau.
+ *
+ * Every colour here is sampled from the deck itself (assets/cards/back.webp):
+ * a near-black indigo ground at oklch hue ~243 and antique gold linework at
+ * hue ~72. The chroma stays low on purpose — the deck reads as an aged printed
+ * plate, not as neon mysticism, and the interface has to agree with it.
+ *
+ * There is one theme. A tarot table is a dark room.
+ */
+
 :root {
-  color-scheme: light;
-  font-family:
-    Inter,
-    ui-sans-serif,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  --bg: #f3f1eb;
-  --surface: #fbfaf6;
-  --surface-strong: #ffffff;
-  --ink: #1b1b1a;
-  --muted: #65635e;
-  --line: #d8d4c9;
-  --accent: #315847;
-  --accent-strong: #244638;
-  --accent-ink: #ffffff;
-  --selected: #af722f;
-  --danger: #9e342d;
-  --shadow: 0 18px 48px rgb(32 30 24 / 10%);
-  --focus: #2f6fba;
+  color-scheme: dark;
+
+  --font-ui:
+    Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-display:
+    "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia,
+    "Songti SC", "Source Han Serif SC", "Noto Serif CJK SC", serif;
+
+  --bg: oklch(0.145 0.02 243);
+  --surface: oklch(0.185 0.022 243);
+  --surface-raised: oklch(0.225 0.02 245);
+  --ink: oklch(0.945 0.01 85);
+  --muted: oklch(0.76 0.016 82);
+  --gold: oklch(0.76 0.085 78);
+  --gold-line: oklch(0.53 0.066 72);
+  --on-gold: oklch(0.118 0.017 244);
+  --line: oklch(0.3 0.018 243);
+  --danger: oklch(0.72 0.13 25);
+  --focus: var(--gold);
+
+  /* Card stock: the deck's own ground, so faces sit in their own frame. */
+  --card-stock: oklch(0.16 0.02 243);
+
+  --z-cloth: 1;
+  --z-lifted: 60;
+  --z-toolbar: 70;
+  --z-banner: 80;
+  --z-backdrop: 90;
+  --z-dialog: 100;
+
+  --ease-out: cubic-bezier(0.16, 0.84, 0.28, 1);
+
+  font-family: var(--font-ui);
   background: var(--bg);
   color: var(--ink);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-}
-
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #171916;
-  --surface: #20231f;
-  --surface-strong: #292d27;
-  --ink: #f2f0e9;
-  --muted: #b2afa6;
-  --line: #3c4039;
-  --accent: #8dbba4;
-  --accent-strong: #a7ceb9;
-  --accent-ink: #102018;
-  --selected: #dfac66;
-  --danger: #f08b82;
-  --shadow: 0 18px 50px rgb(0 0 0 / 28%);
-  --focus: #8ab8f1;
 }
 
 * {
@@ -75,9 +82,20 @@ button {
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--focus) 72%, transparent);
+textarea:focus-visible,
+[role="slider"]:focus-visible {
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
+}
+
+/*
+ * Headings take focus only to move screen-reader context after a stage change.
+ * They are not interactive, so the ring stays quiet — but it stays on-brand
+ * rather than falling back to the browser's blue.
+ */
+h1[tabindex="-1"]:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  outline-offset: 8px;
 }
 
 .sr-only {
@@ -92,21 +110,54 @@ textarea:focus-visible {
   border: 0;
 }
 
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 4.4vw, 3.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+
+/* ---------------------------------------------------------------- shells */
+
 .setup-shell,
-.waiting-shell {
+.waiting-shell,
+.ritual-shell {
   display: grid;
   min-height: 100vh;
   place-items: center;
   padding: clamp(18px, 4vw, 56px);
 }
 
+.draw-shell,
+.reading-shell {
+  width: min(1500px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(18px, 3vw, 48px);
+}
+
+/* ----------------------------------------------------------------- setup */
+
 .setup-panel {
   width: min(760px, 100%);
-  padding: clamp(24px, 5vw, 56px);
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 14px;
   background: var(--surface);
-  box-shadow: var(--shadow);
+  padding: clamp(24px, 5vw, 56px);
 }
 
 .brand-mark {
@@ -115,38 +166,20 @@ textarea:focus-visible {
   height: 42px;
   margin-bottom: 28px;
   place-items: center;
-  border: 1px solid var(--line);
+  border: 1px solid var(--gold-line);
   border-radius: 50%;
-  color: var(--accent);
+  color: var(--gold);
   font-size: 20px;
-}
-
-h1,
-h2,
-p {
-  margin-top: 0;
-}
-
-h1 {
-  margin-bottom: 12px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1;
-}
-
-h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 500;
 }
 
 .setup-subtitle,
 .draw-header p,
-.reading-header p {
+.reading-header p,
+.ritual-header p {
   max-width: 64ch;
   color: var(--muted);
   line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .setup-form {
@@ -165,7 +198,7 @@ h2 {
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 .field--wide {
@@ -177,10 +210,15 @@ select,
 textarea {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--surface-strong);
+  border-radius: 10px;
+  background: var(--surface-raised);
   padding: 13px 14px;
   line-height: 1.45;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
 }
 
 textarea {
@@ -189,8 +227,8 @@ textarea {
 
 .settings-panel {
   border: 1px solid var(--line);
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--surface-strong) 55%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface-raised) 55%, transparent);
   padding: 12px 14px;
 }
 
@@ -198,7 +236,7 @@ textarea {
   cursor: pointer;
   color: var(--muted);
   font-size: 0.85rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .settings-panel[open] summary {
@@ -207,34 +245,42 @@ textarea {
 
 .settings-panel small {
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   line-height: 1.45;
 }
+
+.form-error {
+  grid-column: 1 / -1;
+  margin: -4px 0 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------- actions */
 
 .primary-action,
 .text-action {
   min-height: 44px;
   border-radius: 999px;
-  padding: 10px 19px;
+  padding: 10px 20px;
   cursor: pointer;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 650;
   transition:
-    background-color 160ms ease,
-    color 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease;
+    background-color 170ms ease,
+    color 170ms ease,
+    border-color 170ms ease,
+    transform 170ms var(--ease-out);
 }
 
 .primary-action {
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: var(--accent-ink);
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: var(--on-gold);
 }
 
 .primary-action:hover:not(:disabled) {
-  border-color: var(--accent-strong);
-  background: var(--accent-strong);
+  background: color-mix(in srgb, var(--gold) 88%, white);
   transform: translateY(-1px);
 }
 
@@ -245,22 +291,17 @@ textarea {
 }
 
 .text-action:hover:not(:disabled) {
-  border-color: var(--accent);
-  color: var(--accent-strong);
+  border-color: var(--gold-line);
+  color: var(--gold);
 }
 
 button:disabled,
 button[aria-disabled="true"] {
   cursor: not-allowed;
-  opacity: 0.48;
+  opacity: 0.42;
 }
 
-.form-error {
-  grid-column: 1 / -1;
-  margin: -4px 0 0;
-  color: var(--danger);
-  font-size: 0.9rem;
-}
+/* --------------------------------------------------------------- waiting */
 
 .waiting-shell {
   align-content: center;
@@ -269,7 +310,7 @@ button[aria-disabled="true"] {
 }
 
 .waiting-symbol {
-  color: var(--accent);
+  color: var(--gold);
   font-size: 42px;
 }
 
@@ -283,13 +324,164 @@ button[aria-disabled="true"] {
   }
 }
 
-.draw-shell,
-.reading-shell {
-  width: min(1500px, 100%);
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: clamp(18px, 3vw, 48px);
+/* --------------------------------------------------- ritual: shuffle, cut */
+
+.ritual-shell {
+  align-content: center;
+  gap: clamp(20px, 3vw, 34px);
+  text-align: center;
 }
+
+.ritual-header {
+  max-width: 46ch;
+}
+
+.ritual-header p {
+  margin: 0 auto;
+}
+
+/*
+ * Height = card + 44px of pile depth + 44px of headroom, because the cut
+ * lifts the upper half 38px clear of the stack and it must not ride up into
+ * the instructions above it.
+ */
+.ritual-pile {
+  position: relative;
+  width: clamp(140px, 26vw, 188px);
+  height: calc(clamp(140px, 26vw, 188px) * 1.5 + 88px);
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.ritual-pile__card {
+  position: absolute;
+  right: 0;
+  bottom: calc(var(--layer) * 2px);
+  left: 0;
+  z-index: calc(var(--layer) + 1);
+  height: calc(clamp(140px, 26vw, 188px) * 1.5);
+  border: 1px solid color-mix(in srgb, var(--gold-line) 70%, transparent);
+  border-radius: 8px;
+  background-color: var(--on-gold);
+  background-image: var(--deck-back-image);
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 45%);
+  transition: transform 300ms var(--ease-out);
+}
+
+.ritual-pile__card.is-lifted {
+  transform: translate(26px, -38px) rotate(2.2deg);
+  box-shadow: 0 12px 22px rgb(0 0 0 / 55%);
+}
+
+.ritual-pile.is-shuffling .ritual-pile__card:nth-child(odd) {
+  animation: riffle-left 780ms var(--ease-out) both;
+  animation-delay: calc(var(--layer) * 12ms);
+}
+
+.ritual-pile.is-shuffling .ritual-pile__card:nth-child(even) {
+  animation: riffle-right 780ms var(--ease-out) both;
+  animation-delay: calc(var(--layer) * 12ms);
+}
+
+@keyframes riffle-left {
+  0% {
+    transform: none;
+  }
+  30% {
+    transform: translate(-44px, -14px) rotate(-7deg);
+  }
+  64% {
+    transform: translate(-13px, -4px) rotate(-2deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes riffle-right {
+  0% {
+    transform: none;
+  }
+  30% {
+    transform: translate(44px, -8px) rotate(6deg);
+  }
+  64% {
+    transform: translate(13px, -2px) rotate(2deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.ritual-cut {
+  position: absolute;
+  right: -30px;
+  bottom: calc(var(--cut-ratio) * 100%);
+  left: -30px;
+  z-index: var(--z-lifted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 26px;
+  margin-bottom: -13px;
+  cursor: ns-resize;
+}
+
+/* Ring the chip and thicken the rule, rather than boxing the whole drag band. */
+.ritual-cut:focus-visible {
+  outline: none;
+}
+
+.ritual-cut:focus-visible .ritual-cut__rule {
+  height: 3px;
+}
+
+.ritual-cut:focus-visible .ritual-cut__value {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.ritual-cut__rule {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 16%,
+    var(--gold) 84%,
+    transparent
+  );
+}
+
+.ritual-cut__value {
+  flex: 0 0 auto;
+  min-width: 32px;
+  border-radius: 999px;
+  background: var(--gold);
+  padding: 2px 8px;
+  color: var(--on-gold);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.ritual-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ritual-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ------------------------------------------------------- draw / headers */
 
 .draw-header,
 .reading-header {
@@ -300,93 +492,134 @@ button[aria-disabled="true"] {
   margin-bottom: clamp(24px, 4vw, 48px);
 }
 
-.draw-header h1,
-.reading-header h1 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+.reading-header {
+  align-items: center;
 }
 
 .spread-label {
-  margin-bottom: 9px;
-  color: var(--accent-strong) !important;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .selection-meter {
   display: flex;
   flex: 0 0 auto;
   align-items: baseline;
-  gap: 5px;
+  gap: 6px;
   padding-bottom: 8px;
   color: var(--muted);
 }
 
 .selection-meter strong {
-  color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
+  color: var(--gold);
+  font-family: var(--font-display);
   font-size: 2.6rem;
+  font-variant-numeric: tabular-nums;
   font-weight: 500;
 }
 
-.selection-staging,
-.deck-section {
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--surface);
-}
+/* ------------------------------------------------------------- the cloth */
 
-.selection-staging {
+.staging {
   margin-bottom: 22px;
-  padding: clamp(16px, 2.2vw, 28px);
 }
 
-.selection-staging__header,
+.staging__header,
 .deck-section__header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
+  margin-bottom: 12px;
 }
 
-.selection-staging__header h2,
+.staging__header h2,
 .deck-section__header h2 {
-  margin-bottom: 8px;
+  margin-bottom: 0;
   font-size: 1.1rem;
 }
 
-.selection-staging__header p,
+.staging__header p,
 .deck-section__header p {
-  margin-bottom: 8px;
+  margin-bottom: 0;
   color: var(--muted);
-  font-size: 0.83rem;
+  font-size: 0.85rem;
 }
 
-.selection-staging__board {
+.reading-cloth {
   position: relative;
-  min-height: clamp(230px, 32vw, 390px);
-  margin-top: 10px;
+  width: 100%;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold-line) 42%, var(--line));
   border-radius: 14px;
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      color-mix(in srgb, var(--accent) 7%, transparent),
-      transparent 56%
-    ),
-    var(--surface-strong);
+  background: var(--surface);
 }
 
-.staged-position {
+/* A single pool of lamplight from above. No grid, no glass, no noise. */
+.reading-cloth__lamp {
   position: absolute;
-  z-index: var(--card-layer);
+  z-index: var(--z-cloth);
+  inset: 0;
+  background: radial-gradient(
+    ellipse 68% 58% at 50% 6%,
+    color-mix(in srgb, var(--gold) 10%, transparent),
+    transparent 68%
+  );
+  pointer-events: none;
+}
+
+/*
+ * 16:10 rather than 16:9, and a card that tops out at 96px. The densest
+ * spread (Celtic Cross) stacks four positions between y 16% and 88%, so the
+ * board has to be tall enough that a card plus its caption clears the next.
+ */
+.reading-cloth--full {
+  --slot-width: clamp(54px, 7.2vw, 96px);
+
+  aspect-ratio: 16 / 10;
+  min-height: min(66vh, 720px);
+}
+
+/*
+ * Same proportions as the full cloth, just smaller. The spread coordinates are
+ * percentages, so matching the aspect ratio is what keeps a card in the same
+ * relative place before and after the reading is confirmed.
+ */
+.reading-cloth--compact {
+  --slot-width: clamp(32px, 3.9vw, 52px);
+
+  width: min(100%, 760px);
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.cloth-slot {
+  position: absolute;
+  z-index: calc(var(--z-cloth) + 1 + var(--card-layer));
   left: var(--card-x);
   top: var(--card-y);
-  width: clamp(42px, 5.6vw, 68px);
-  transform: translate(-50%, -50%) rotate(var(--card-rotation));
+  width: var(--slot-width);
   text-align: center;
+  transform: translate(var(--flip-x, 0px), var(--flip-y, 0px))
+    translate(-50%, -50%) rotate(var(--card-rotation))
+    rotate(var(--flip-rotate, 0deg)) scale(var(--flip-scale, 1));
+}
+
+.slot-caption {
+  display: block;
+  width: 210%;
+  margin: 7px -55% 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: clamp(0.52rem, 0.8vw, 0.72rem);
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* Undo the slot's spread rotation — a sideways card keeps a level label. */
+  transform: rotate(calc(-1 * var(--card-rotation)));
 }
 
 .staged-card {
@@ -396,15 +629,23 @@ button[aria-disabled="true"] {
   aspect-ratio: 2 / 3;
   place-items: center;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--selected) 72%, var(--line));
+  border: 1px solid var(--gold-line);
   border-radius: 6px;
-  background-color: #202b42;
+  background-color: var(--on-gold);
   background-image: var(--deck-back-image);
   background-position: center;
   background-size: cover;
-  color: #fff;
+  color: var(--ink);
   cursor: pointer;
-  box-shadow: 0 7px 18px rgb(18 18 15 / 20%);
+  box-shadow: 0 6px 14px rgb(0 0 0 / 50%);
+  transition:
+    border-color 170ms ease,
+    box-shadow 170ms ease;
+}
+
+.staged-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 60%);
 }
 
 .staged-card > span {
@@ -416,16 +657,17 @@ button[aria-disabled="true"] {
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  background: var(--selected);
-  color: #fff;
+  background: var(--gold);
+  color: var(--on-gold);
   font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
   font-weight: 800;
 }
 
 .staged-card--empty {
   border-style: dashed;
-  border-color: var(--line);
-  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  border-color: color-mix(in srgb, var(--gold-line) 55%, transparent);
+  background: color-mix(in srgb, var(--bg) 45%, transparent);
   box-shadow: none;
   cursor: default;
 }
@@ -434,126 +676,136 @@ button[aria-disabled="true"] {
   position: static;
   background: transparent;
   color: var(--muted);
+  font-weight: 600;
 }
 
-.staged-position__label {
-  display: block;
-  width: 180%;
-  margin: 5px -40% 0;
-  overflow: hidden;
-  color: var(--muted);
-  font-size: clamp(0.52rem, 0.75vw, 0.7rem);
-  line-height: 1.15;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.mobile-position-key {
-  display: none;
-}
+/* --------------------------------------------------------- the arc spread */
 
 .deck-section {
-  padding: clamp(16px, 2.2vw, 28px) 0 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: clamp(16px, 2.2vw, 26px) 0 0;
   overflow: hidden;
 }
 
 .deck-section__header {
-  padding: 0 clamp(16px, 2.2vw, 28px) 8px;
+  padding: 0 clamp(16px, 2.2vw, 26px);
 }
 
-.deck-fan {
-  display: grid;
+.arc-fan {
+  --arc-card-height: calc(var(--arc-card-width) * 1.5);
+
+  position: relative;
   width: 100%;
+  height: calc(var(--arc-card-height) + var(--arc-depth) + 76px);
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 8px clamp(14px, 3vw, 36px) 18px;
+  cursor: grab;
   overscroll-behavior-inline: contain;
-  scrollbar-color: var(--line) transparent;
-  scroll-padding-inline: 40px;
+  scrollbar-color: var(--gold-line) transparent;
+  scrollbar-width: thin;
+  touch-action: pan-x;
 }
 
-.deck-fan__row {
+.arc-fan:active {
+  cursor: grabbing;
+}
+
+.arc-fan__strip {
   position: relative;
-  height: 154px;
-  min-width: 704px;
-  margin-inline: auto;
+  height: 100%;
+  /* Room on both ends so the first and last card can be centred and lifted. */
+  padding-inline: 0;
 }
 
-.deck-card {
+.arc-card {
   position: absolute;
-  z-index: var(--fan-layer);
-  left: var(--fan-left);
-  top: var(--fan-y);
-  width: 86px;
+  top: 44px;
+  width: var(--arc-card-width);
   aspect-ratio: 2 / 3;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, #d2ad63 58%, var(--line));
-  border-radius: 7px;
-  background-color: #202b42;
+  /* Full-strength edge: at a 40px step the border is what separates one card
+     from the next, and a faded line lets the spread read as one dark smear. */
+  border: 1px solid var(--gold-line);
+  border-radius: 6px;
+  background-color: var(--on-gold);
   background-image: var(--deck-back-image);
   background-position: center;
   background-size: cover;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgb(20 25 22 / 10%);
-  transform: rotate(var(--fan-rotation));
-  transform-origin: 50% 115%;
+  box-shadow: 0 6px 12px rgb(0 0 0 / 52%);
+  transform-origin: center;
+  /* transform is driven per frame from ArcFan; never transition it here. */
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease,
-    filter 180ms ease;
+    border-color 170ms ease,
+    box-shadow 170ms ease,
+    filter 220ms ease;
+  /*
+   * Deliberately no `will-change`. Measured over 116 frames of sustained
+   * scrubbing it changed nothing (median 8.3ms either way, zero dropped
+   * frames), and hinting 78 permanent layers only costs idle GPU memory.
+   */
 }
 
-.deck-card::before {
+.arc-card::before {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    110deg,
-    transparent 35%,
-    rgb(255 255 255 / 18%) 49%,
-    transparent 63%
+    112deg,
+    transparent 36%,
+    color-mix(in srgb, var(--gold) 26%, transparent) 50%,
+    transparent 64%
   );
   opacity: 0;
   content: "";
-  transition: opacity 180ms ease;
+  transition: opacity 200ms ease;
 }
 
-.deck-card:hover:not([aria-disabled="true"]),
-.deck-card:focus-visible {
-  z-index: 110;
-  transform: translateY(-10px) rotate(var(--fan-rotation));
-  box-shadow: 0 10px 18px rgb(20 25 22 / 20%);
-}
-
-.deck-card:hover:not([aria-disabled="true"])::before,
-.deck-card:focus-visible::before {
+.arc-card:hover:not([aria-disabled="true"])::before,
+.arc-card:focus-visible::before {
   opacity: 1;
 }
 
-.deck-card.is-selected {
-  z-index: 100;
-  border-color: var(--selected);
-  box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--selected) 45%, transparent),
-    0 11px 22px rgb(35 28 18 / 22%);
-  filter: saturate(1.14) brightness(1.04);
-  transform: translateY(-13px) rotate(var(--fan-rotation));
+.arc-card:hover:not([aria-disabled="true"]),
+.arc-card:focus-visible {
+  z-index: var(--z-lifted);
+  border-color: var(--gold);
+  box-shadow: 0 14px 24px rgb(0 0 0 / 62%);
 }
 
-.selection-order {
+/*
+ * Drawn cards are out of the deck and on the cloth. The gold ring, the badge
+ * and the lift already say so — a heavy dim on an already near-black card just
+ * punches a hole in the spread, so the tint stays light.
+ */
+.arc-card.is-drawn {
+  z-index: calc(var(--z-lifted) - 1);
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--gold) 55%, transparent),
+    0 10px 20px rgb(0 0 0 / 58%);
+  filter: brightness(0.84) saturate(0.88);
+}
+
+.arc-card__order {
   position: absolute;
   right: 6%;
   bottom: 5%;
   display: grid;
-  width: clamp(17px, 1.7vw, 25px);
+  width: clamp(17px, 1.7vw, 24px);
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  background: var(--selected);
-  color: #fff;
-  font-size: clamp(0.58rem, 0.8vw, 0.75rem);
+  background: var(--gold);
+  color: var(--on-gold);
+  filter: brightness(1.6);
+  font-size: clamp(0.58rem, 0.8vw, 0.74rem);
+  font-variant-numeric: tabular-nums;
   font-weight: 800;
 }
+
+/* -------------------------------------------------------------- toolbars */
 
 .draw-toolbar,
 .reveal-toolbar {
@@ -570,8 +822,8 @@ button[aria-disabled="true"] {
 }
 
 .draw-toolbar .status-complete {
-  color: var(--accent-strong);
-  font-weight: 700;
+  color: var(--gold);
+  font-weight: 650;
 }
 
 .toolbar-actions,
@@ -583,70 +835,16 @@ button[aria-disabled="true"] {
   gap: 10px;
 }
 
-.error-banner {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 50;
-  display: flex;
-  width: min(480px, calc(100vw - 36px));
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  border: 1px solid color-mix(in srgb, var(--danger) 50%, var(--line));
-  border-radius: 14px;
-  background: var(--surface-strong);
-  padding: 14px;
-  box-shadow: var(--shadow);
+.reveal-toolbar {
+  min-height: 54px;
 }
 
-.error-banner div {
-  display: grid;
-  gap: 3px;
-}
-
-.error-banner span {
+.reveal-toolbar > span {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
 }
 
-.error-banner button {
-  flex: 0 0 auto;
-  border: 0;
-  background: transparent;
-  color: var(--danger);
-  cursor: pointer;
-  font-weight: 800;
-}
-
-.reading-header {
-  align-items: center;
-}
-
-.spread-board {
-  position: relative;
-  width: 100%;
-  min-height: min(70vh, 760px);
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background-color: var(--surface);
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  box-shadow: inset 0 0 80px color-mix(in srgb, var(--bg) 70%, transparent);
-}
-
-.spread-card {
-  position: absolute;
-  z-index: var(--card-layer);
-  left: var(--card-x);
-  top: var(--card-y);
-  width: clamp(54px, 8.5vw, 106px);
-  transform: translate(-50%, -50%) rotate(var(--card-rotation));
-  text-align: center;
-}
+/* --------------------------------------------------------- reading cards */
 
 .reading-card {
   position: relative;
@@ -656,12 +854,8 @@ button[aria-disabled="true"] {
   border-radius: 8px;
   background: transparent;
   padding: 0;
-  cursor: default;
+  cursor: pointer;
   perspective: 900px;
-}
-
-.reading-card:disabled {
-  opacity: 1;
 }
 
 .reading-card__index {
@@ -674,15 +868,12 @@ button[aria-disabled="true"] {
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  background: rgb(13 25 41 / 82%);
-  color: #f8e7b2;
+  background: color-mix(in srgb, var(--on-gold) 85%, transparent);
+  color: var(--gold);
   font-size: clamp(0.52rem, 0.7vw, 0.68rem);
+  font-variant-numeric: tabular-nums;
   font-weight: 800;
   pointer-events: none;
-}
-
-.reading-card.is-revealed {
-  cursor: pointer;
 }
 
 .reading-card__inner {
@@ -704,25 +895,29 @@ button[aria-disabled="true"] {
   inset: 0;
   display: grid;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+  border: 1px solid var(--gold-line);
   border-radius: 8px;
   backface-visibility: hidden;
-  box-shadow: 0 8px 20px rgb(20 22 18 / 18%);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 55%);
 }
 
 .reading-card__back {
   place-items: center;
-  background-color: #202b42;
+  background-color: var(--on-gold);
   background-image: var(--deck-back-image);
   background-position: center;
   background-size: cover;
 }
 
+.reading-card:hover .reading-card__back {
+  border-color: var(--gold);
+}
+
 .reading-card__face {
   grid-template-rows: 1fr auto;
+  background: var(--card-stock);
+  color: var(--ink);
   transform: rotateY(180deg);
-  background: #f7f1df;
-  color: #171713;
 }
 
 .reading-card__face img,
@@ -741,14 +936,14 @@ button[aria-disabled="true"] {
 .reading-card__caption {
   display: grid;
   gap: 1px;
+  background: var(--card-stock);
   padding: 5px 4px 6px;
-  background: #f7f1df;
   font-size: clamp(0.52rem, 0.72vw, 0.7rem);
   line-height: 1.15;
 }
 
 .reading-card__caption small {
-  color: #6a6252;
+  color: var(--gold);
   font-size: 0.9em;
 }
 
@@ -756,72 +951,64 @@ button[aria-disabled="true"] {
   display: grid;
   min-height: 0;
   place-items: center;
+  background: var(--card-stock);
   padding: 8px;
-  background: #eee3c9;
-  color: #3f3729;
-  font-family: Georgia, "Times New Roman", serif;
+  color: var(--gold);
+  font-family: var(--font-display);
   font-size: clamp(0.62rem, 1vw, 0.9rem);
 }
 
-.position-caption {
-  display: block;
-  width: 140%;
-  margin: 6px -20% 0;
-  overflow: hidden;
-  color: var(--muted);
-  font-size: clamp(0.52rem, 0.8vw, 0.72rem);
-  line-height: 1.2;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.reveal-toolbar {
-  min-height: 54px;
-}
-
-.reveal-toolbar > span {
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
+/* -------------------------------------------------------- interpretation */
 
 .interpretation-panel {
-  margin-top: 28px;
-  border-left: 3px solid var(--accent);
-  padding: 8px 0 4px 22px;
+  margin-top: 44px;
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
 }
 
 .interpretation-panel h2 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.interpretation-panel h2::before {
+  margin-right: 12px;
+  color: var(--gold);
+  content: "✦";
+  font-size: 0.72em;
+  vertical-align: 0.12em;
 }
 
 .interpretation-panel p {
-  max-width: 80ch;
+  max-width: 76ch;
   color: var(--muted);
   line-height: 1.75;
+  text-wrap: pretty;
   white-space: pre-wrap;
 }
 
+/* ---------------------------------------------------------------- dialog */
+
 .modal-backdrop {
   position: fixed;
-  z-index: 100;
+  z-index: var(--z-backdrop);
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgb(12 14 12 / 72%);
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
   padding: 20px;
 }
 
 .card-dialog {
   position: relative;
+  z-index: var(--z-dialog);
   display: grid;
   grid-template-columns: minmax(180px, 300px) minmax(0, 1fr);
   width: min(820px, 100%);
   max-height: calc(100vh - 40px);
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--surface-strong);
-  box-shadow: 0 28px 80px rgb(0 0 0 / 38%);
+  border-radius: 14px;
+  background: var(--surface-raised);
+  box-shadow: 0 28px 70px rgb(0 0 0 / 68%);
 }
 
 .dialog-close {
@@ -835,35 +1022,48 @@ button[aria-disabled="true"] {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: var(--surface-strong);
+  background: var(--surface-raised);
   cursor: pointer;
   font-size: 1.5rem;
 }
 
+.dialog-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
 .dialog-art {
   min-height: 430px;
-  background: #eee3c9;
+  background: var(--card-stock);
 }
 
 .dialog-copy {
   overflow-y: auto;
-  padding: clamp(28px, 6vw, 60px);
+  padding: clamp(28px, 5vw, 48px);
 }
 
 .dialog-copy h2 {
   margin-bottom: 8px;
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
-  line-height: 1;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
 }
 
 .dialog-copy p {
   color: var(--muted);
   line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.position-label {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 .orientation-label {
-  color: var(--accent-strong) !important;
-  font-weight: 800;
+  color: var(--gold) !important;
+  font-weight: 650;
 }
 
 .keyword-list {
@@ -877,32 +1077,79 @@ button[aria-disabled="true"] {
 .keyword-list li {
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 5px 9px;
+  padding: 5px 10px;
   color: var(--muted);
   font-size: 0.78rem;
 }
+
+/* ------------------------------------------------------------ misc chrome */
+
+.mobile-position-key {
+  display: none;
+}
+
+.error-banner {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: var(--z-banner);
+  display: flex;
+  width: min(480px, calc(100vw - 36px));
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid color-mix(in srgb, var(--danger) 55%, var(--line));
+  border-radius: 12px;
+  background: var(--surface-raised);
+  padding: 14px;
+}
+
+.error-banner div {
+  display: grid;
+  gap: 3px;
+}
+
+.error-banner span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.error-banner button {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------ responsive */
 
 @media (max-width: 819px) {
   .draw-header,
   .reading-header {
     align-items: flex-start;
   }
-  .selection-staging__header,
+  .staging__header,
   .deck-section__header {
     align-items: flex-start;
     flex-direction: column;
     gap: 2px;
   }
-  .spread-board {
-    min-height: 580px;
+  .reading-cloth--full {
+    --slot-width: clamp(48px, 11vw, 80px);
+
     aspect-ratio: 4 / 5;
+    min-height: 560px;
   }
-  .spread-card {
-    width: clamp(48px, 11vw, 80px);
+  .reading-cloth--compact {
+    --slot-width: clamp(40px, 8vw, 60px);
+
+    aspect-ratio: 16 / 9;
   }
-  .position-caption {
-    width: 160%;
-    margin-inline: -30%;
+  .slot-caption {
+    width: 240%;
+    margin-inline: -70%;
   }
 }
 
@@ -914,7 +1161,6 @@ button[aria-disabled="true"] {
     min-height: 100vh;
     border: 0;
     border-radius: 0;
-    box-shadow: none;
   }
   .setup-form {
     grid-template-columns: 1fr;
@@ -932,16 +1178,18 @@ button[aria-disabled="true"] {
   .selection-meter {
     align-self: flex-start;
   }
-  .selection-staging {
-    padding: 12px;
+  .reading-cloth--full {
+    --slot-width: clamp(42px, 12vw, 64px);
+
+    min-height: 520px;
   }
-  .selection-staging__board {
-    min-height: 390px;
+  .reading-cloth--compact {
+    --slot-width: clamp(38px, 12vw, 54px);
+
+    min-height: 280px;
   }
-  .staged-position {
-    width: clamp(38px, 12vw, 54px);
-  }
-  .staged-position__label {
+  .staging .slot-caption,
+  .reading-shell .slot-caption {
     display: none;
   }
   .mobile-position-key {
@@ -949,8 +1197,8 @@ button[aria-disabled="true"] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px 12px;
     margin: 14px 0 0;
-    padding: 12px;
     border-top: 1px solid var(--line);
+    padding: 12px;
     list-style: none;
   }
   .mobile-position-key li {
@@ -963,17 +1211,11 @@ button[aria-disabled="true"] {
     line-height: 1.25;
   }
   .mobile-position-key strong {
-    color: var(--accent-strong);
+    color: var(--gold);
     font-variant-numeric: tabular-nums;
   }
   .deck-section {
     padding-top: 14px;
-  }
-  .deck-fan {
-    padding-inline: 12px;
-  }
-  .deck-fan__row {
-    margin-inline: 0;
   }
   .toolbar-actions,
   .reading-actions,
@@ -985,15 +1227,9 @@ button[aria-disabled="true"] {
   .reveal-toolbar button {
     flex: 1 1 auto;
   }
-  .spread-board {
-    min-height: 540px;
-    background-size: 28px 28px;
-  }
-  .spread-card {
-    width: clamp(42px, 12vw, 64px);
-  }
-  .position-caption {
-    display: none;
+  .ritual-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
   }
   .card-dialog {
     grid-template-columns: 1fr;
@@ -1013,7 +1249,38 @@ button[aria-disabled="true"] {
   }
 }
 
+/* --------------------------------------------------------- reduced motion */
+
+/*
+ * Designed alternatives first: the ritual still works, the cards still turn,
+ * nothing depends on an animation having run. The blanket rule below is only
+ * a backstop for anything not named here.
+ */
 @media (prefers-reduced-motion: reduce) {
+  .ritual-pile.is-shuffling .ritual-pile__card {
+    animation: none;
+  }
+
+  /* Cross-fade instead of a 3D flip. */
+  .reading-card__inner {
+    transform: none !important;
+  }
+  .reading-card__back,
+  .reading-card__face {
+    backface-visibility: visible;
+    transition: opacity 140ms linear;
+  }
+  .reading-card__face {
+    opacity: 0;
+    transform: none;
+  }
+  .reading-card.is-revealed .reading-card__face {
+    opacity: 1;
+  }
+  .reading-card.is-revealed .reading-card__back {
+    opacity: 0;
+  }
+
   *,
   *::before,
   *::after {

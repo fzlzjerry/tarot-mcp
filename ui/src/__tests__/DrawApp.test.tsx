@@ -75,6 +75,10 @@ describe("DrawApp", () => {
 
     await user.type(screen.getByLabelText("Question or focus"), "What next?");
     await user.click(screen.getByRole("button", { name: "Lay out the deck" }));
+    // The ritual runs first; skipping leaves the server's order untouched.
+    await user.click(
+      await screen.findByRole("button", { name: "Skip and deal" }),
+    );
     expect(
       await screen.findAllByRole("button", { name: /^Card back/ }),
     ).toHaveLength(78);
@@ -122,14 +126,21 @@ describe("DrawApp", () => {
         screen.getByRole("heading", { name: "Your reading" }),
       ),
     );
+    // Face-down cards stay reachable so they can be turned by keyboard or tap.
     const faceDownCards = screen
       .getAllByRole("button", { hidden: true })
       .filter((button) => button.classList.contains("reading-card"));
     expect(faceDownCards).toHaveLength(3);
     for (const card of faceDownCards) {
-      expect((card as HTMLButtonElement).disabled).toBe(true);
-      expect((card as HTMLButtonElement).tabIndex).toBe(-1);
+      expect((card as HTMLButtonElement).disabled).toBe(false);
     }
+    expect(
+      screen.getByRole("button", { name: "Turn card 2" }),
+    ).not.toBeNull();
+    await user.click(screen.getByRole("button", { name: "Turn card 3" }));
+    expect(
+      screen.getByRole("button", { name: "The World. View card details" }),
+    ).not.toBeNull();
     await user.click(screen.getByRole("button", { name: "Turn next card" }));
     const foolCard = screen.getByRole("button", {
       name: "The Fool. View card details",
@@ -167,6 +178,9 @@ describe("DrawApp", () => {
 
     await user.type(screen.getByLabelText("Question or focus"), "What next?");
     await user.click(screen.getByRole("button", { name: "Lay out the deck" }));
+    await user.click(
+      await screen.findByRole("button", { name: "Skip and deal" }),
+    );
     await screen.findAllByRole("button", { name: /^Card back/ });
     await user.click(screen.getByRole("button", { name: "Card back 1" }));
     await user.click(screen.getByRole("button", { name: "Card back 2" }));

@@ -1,16 +1,20 @@
 import {
   type CSSProperties,
   type FormEvent,
-  type KeyboardEvent,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
+import { ArcFan, type ArcFanHandle } from "./ArcFan.js";
+import { ClothSlot, ReadingCloth } from "./ReadingCloth.js";
+import { RitualStage } from "./RitualStage.js";
+import { ritualOrder } from "./deck-order.js";
+import { type FlipRect, prefersReducedMotion } from "./flip.js";
 import { t } from "./i18n.js";
 import { assertCompleteVisualDeck } from "./normalize.js";
-import { nextGridIndex, toggleSelection, undoSelection } from "./selection.js";
+import { toggleSelection, undoSelection } from "./selection.js";
 import { SPREAD_TEMPLATES, layoutForSpread } from "./spreads.js";
 import type {
   BeginReadingInput,
@@ -26,7 +30,10 @@ interface DrawAppProps {
   client: DrawClient;
 }
 
-type Stage = "setup" | "waiting" | "selecting" | "confirming" | "reading";
+type Stage = "setup" | "waiting" | "ritual" | "selecting" | "confirming" | "reading";
+
+/** Gap between cards as the spread turns itself over. */
+const REVEAL_STAGGER = 90;
 
 function asError(error: unknown): Error {
   return error instanceof Error ? error : new Error(String(error));
@@ -37,6 +44,14 @@ function parseCustomPositions(value: string): string[] {
     .split("\n")
     .map((position) => position.trim())
     .filter(Boolean);
+}
+
+function cardBackStyle(uri: string | undefined): CSSProperties | undefined {
+  return uri
+    ? ({
+        "--deck-back-image": `url("${uri.replaceAll('"', "%22")}")`,
+      } as CSSProperties)
+    : undefined;
 }
 
 function SetupForm({
@@ -245,51 +260,73 @@ function SetupForm({
   );
 }
 
-const FAN_ROW_SIZE = 22;
-const FAN_CARD_STEP = 56;
-
-function cardBackStyle(uri: string | undefined): CSSProperties | undefined {
-  return uri
-    ? ({
-        "--deck-back-image": `url("${uri.replaceAll('"', "%22")}")`,
-      } as CSSProperties)
-    : undefined;
+function PositionKey({
+  language,
+  names,
+}: {
+  language: Language;
+  names: string[];
+}) {
+  return (
+    <ol className="mobile-position-key" aria-label={t(language, "spreadPositions")}>
+      {names.map((name, index) => (
+        <li key={`${name}-${index}`}>
+          <strong>{index + 1}</strong>
+          <span>{name}</span>
+        </li>
+      ))}
+    </ol>
+  );
 }
 
 function SelectionStaging({
   draw,
   selected,
+  origins,
+  returning,
   onRemove,
+  onOriginConsumed,
+  onDeparted,
   language,
 }: {
   draw: BeginReadingPayload;
   selected: string[];
+  origins: Record<string, FlipRect>;
+  returning?: { slotId: string; target: FlipRect };
   onRemove(slotId: string): void;
+  onOriginConsumed(slotId: string): void;
+  onDeparted(slotId: string): void;
   language: Language;
 }) {
   const layout = layoutForSpread(draw.spreadType, draw.requiredCount);
+  const names = Array.from(
+    { length: draw.requiredCount },
+    (_, index) => draw.positions?.[index]?.name ?? `#${index + 1}`,
+  );
   return (
-    <section className="selection-staging" aria-labelledby="staging-title">
-      <div className="selection-staging__header">
+    <div className="staging">
+      <div className="staging__header">
         <h2 id="staging-title">{t(language, "spreadPositions")}</h2>
         <p>{t(language, "stagingHint")}</p>
       </div>
-      <div className="selection-staging__board">
-        {Array.from({ length: draw.requiredCount }, (_, index) => {
-          const point = layout[index];
+      <ReadingCloth label={t(language, "spreadPositions")} size="compact">
+        {names.map((positionName, index) => {
           const slotId = selected[index];
-          const positionName = draw.positions?.[index]?.name ?? `#${index + 1}`;
-          const style = {
-            "--card-x": `${point?.x ?? 50}%`,
-            "--card-y": `${point?.y ?? 50}%`,
-            "--card-rotation": `${point?.rotation ?? 0}deg`,
-            "--card-layer": point?.layer ?? index,
-          } as CSSProperties;
           return (
-            <div
-              className="staged-position"
-              style={style}
+            <ClothSlot
               key={`${positionName}-${index}`}
+              point={layout[index]}
+              index={index}
+              origin={slotId ? origins[slotId] : undefined}
+              onOriginConsumed={
+                slotId ? () => onOriginConsumed(slotId) : undefined
+              }
+              departingTo={
+                slotId && returning?.slotId === slotId
+                  ? returning.target
+                  : undefined
+              }
+              onDeparted={slotId ? () => onDeparted(slotId) : undefined}
             >
               {slotId ? (
                 <button
@@ -305,55 +342,52 @@ function SelectionStaging({
                   <span>{index + 1}</span>
                 </button>
               ) : (
-                <div
-                  className="staged-card staged-card--empty"
-                  aria-hidden="true"
-                >
+                <div className="staged-card staged-card--empty" aria-hidden="true">
                   <span>{index + 1}</span>
                 </div>
               )}
-              <span className="staged-position__label">{positionName}</span>
-            </div>
+              <span className="slot-caption">{positionName}</span>
+            </ClothSlot>
           );
         })}
-      </div>
-      <ol
-        className="mobile-position-key"
-        aria-label={t(language, "spreadPositions")}
-      >
-        {Array.from({ length: draw.requiredCount }, (_, index) => (
-          <li key={`${draw.positions?.[index]?.name ?? "position"}-${index}`}>
-            <strong>{index + 1}</strong>
-            <span>{draw.positions?.[index]?.name ?? `#${index + 1}`}</span>
-          </li>
-        ))}
-      </ol>
-    </section>
+      </ReadingCloth>
+      <PositionKey language={language} names={names} />
+    </div>
   );
 }
 
-function Deck({
+function DrawStage({
   draw,
+  deckOrder,
   selected,
+  origins,
+  returning,
+  arcRef,
   onToggle,
+  onRemove,
+  onOriginConsumed,
+  onDeparted,
   onUndo,
   onClear,
   onConfirm,
   language,
 }: {
   draw: BeginReadingPayload;
+  deckOrder: string[];
   selected: string[];
-  onToggle(slotId: string): void;
+  origins: Record<string, FlipRect>;
+  returning?: { slotId: string; target: FlipRect };
+  arcRef: React.RefObject<ArcFanHandle | null>;
+  onToggle(slotId: string, origin: FlipRect): void;
+  onRemove(slotId: string): void;
+  onOriginConsumed(slotId: string): void;
+  onDeparted(slotId: string): void;
   onUndo(): void;
   onClear(): void;
   onConfirm(): void;
   language: Language;
 }) {
-  const [focusedIndex, setFocusedIndex] = useState(0);
   const heading = useRef<HTMLHeadingElement>(null);
-  const deckButtons = useRef<Array<HTMLButtonElement | null>>([]);
-  const restoreFocusIndex = useRef<number | undefined>(undefined);
-  const selectedSet = useMemo(() => new Set(selected), [selected]);
   const remaining = draw.requiredCount - selected.length;
   const complete = remaining === 0;
 
@@ -362,53 +396,6 @@ function Deck({
     document.body.scrollTop = 0;
     heading.current?.focus({ preventScroll: true });
   }, []);
-
-  useEffect(() => {
-    const index = restoreFocusIndex.current;
-    if (index === undefined) return;
-    restoreFocusIndex.current = undefined;
-    setFocusedIndex(index);
-    deckButtons.current[index]?.focus();
-  }, [selected]);
-
-  const removeStagedCard = (slotId: string): void => {
-    const index = draw.slots.findIndex((slot) => slot.slotId === slotId);
-    if (index >= 0) restoreFocusIndex.current = index;
-    onToggle(slotId);
-  };
-
-  const onFanKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
-    const target = event.target as HTMLElement;
-    const current = Number(target.dataset.slotIndex);
-    if (Number.isNaN(current)) return;
-    if (event.key === "Backspace") {
-      event.preventDefault();
-      onUndo();
-      return;
-    }
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter" && complete) {
-      event.preventDefault();
-      onConfirm();
-      return;
-    }
-    const next = nextGridIndex(
-      current,
-      event.key,
-      draw.slots.length,
-      FAN_ROW_SIZE,
-    );
-    if (next !== current) {
-      event.preventDefault();
-      setFocusedIndex(next);
-      deckButtons.current[next]?.focus();
-    }
-  };
-
-  const rows = Array.from(
-    { length: Math.ceil(draw.slots.length / FAN_ROW_SIZE) },
-    (_, rowIndex) =>
-      draw.slots.slice(rowIndex * FAN_ROW_SIZE, (rowIndex + 1) * FAN_ROW_SIZE),
-  );
 
   return (
     <main className="draw-shell">
@@ -434,80 +421,33 @@ function Deck({
       <SelectionStaging
         draw={draw}
         selected={selected}
-        onRemove={removeStagedCard}
+        origins={origins}
+        returning={returning}
+        onRemove={onRemove}
+        onOriginConsumed={onOriginConsumed}
+        onDeparted={onDeparted}
         language={language}
       />
 
       <section className="deck-section" aria-labelledby="deck-title">
         <div className="deck-section__header">
           <h2 id="deck-title">{t(language, "deckTitle")}</h2>
-          <p>{t(language, "fanHint")}</p>
+          <p>{t(language, "arcHint")}</p>
         </div>
         <p className="sr-only" id="deck-help">
           {t(language, "keyboardHint")}
         </p>
-        <div
-          className="deck-fan"
-          role="group"
-          aria-describedby="deck-help deck-status"
-          onKeyDown={onFanKeyDown}
-        >
-          {rows.map((row, rowIndex) => (
-            <div
-              className="deck-fan__row"
-              key={rowIndex}
-              style={{
-                width: `${Math.max(0, row.length - 1) * FAN_CARD_STEP + 88}px`,
-              }}
-              aria-hidden={row.length === 0}
-            >
-              {row.map((slot, columnIndex) => {
-                const index = rowIndex * FAN_ROW_SIZE + columnIndex;
-                const center = Math.max(1, (row.length - 1) / 2);
-                const normalized = (columnIndex - center) / center;
-                const order = selected.indexOf(slot.slotId);
-                const isSelected = selectedSet.has(slot.slotId);
-                const atLimit =
-                  selected.length >= draw.requiredCount && !isSelected;
-                const style = {
-                  ...cardBackStyle(draw.deckBackImageUri),
-                  "--fan-left": `${columnIndex * FAN_CARD_STEP}px`,
-                  "--fan-y": `${Math.pow(Math.abs(normalized), 1.6) * 28}px`,
-                  "--fan-rotation": `${normalized * 4}deg`,
-                  "--fan-layer": isSelected ? 100 : columnIndex,
-                } as CSSProperties;
-                return (
-                  <button
-                    className={`deck-card${isSelected ? " is-selected" : ""}`}
-                    key={slot.slotId}
-                    type="button"
-                    ref={(element) => {
-                      deckButtons.current[index] = element;
-                    }}
-                    style={style}
-                    data-slot-index={index}
-                    tabIndex={index === focusedIndex ? 0 : -1}
-                    aria-pressed={isSelected}
-                    aria-disabled={atLimit}
-                    aria-label={
-                      isSelected
-                        ? `${t(language, "deckCard", { number: index + 1 })}, ${t(language, "selectedOrder", { number: order + 1 })}`
-                        : t(language, "deckCard", { number: index + 1 })
-                    }
-                    onFocus={() => setFocusedIndex(index)}
-                    onClick={() => !atLimit && onToggle(slot.slotId)}
-                  >
-                    {isSelected ? (
-                      <span className="selection-order" aria-hidden="true">
-                        {order + 1}
-                      </span>
-                    ) : null}
-                  </button>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+        <ArcFan
+          ref={arcRef}
+          slotIds={deckOrder}
+          selected={selected}
+          requiredCount={draw.requiredCount}
+          deckBackImageUri={draw.deckBackImageUri}
+          language={language}
+          onToggle={onToggle}
+          onUndo={onUndo}
+          onConfirm={onConfirm}
+        />
       </section>
 
       <div className="draw-toolbar">
@@ -582,6 +522,7 @@ function ReadingCardView({
   backImageUri,
   revealed,
   onOpen,
+  onTurn,
   language,
 }: {
   card: ReadingCard;
@@ -590,6 +531,7 @@ function ReadingCardView({
   backImageUri?: string;
   revealed: boolean;
   onOpen(): void;
+  onTurn(): void;
   language: Language;
 }) {
   const [source, failed] = useCardImage(client, card);
@@ -599,13 +541,11 @@ function ReadingCardView({
     <button
       type="button"
       className={`reading-card${revealed ? " is-revealed" : ""}`}
-      onClick={() => revealed && onOpen()}
-      disabled={!revealed}
-      tabIndex={revealed ? 0 : -1}
+      onClick={() => (revealed ? onOpen() : onTurn())}
       aria-label={
         revealed
           ? `${card.displayName}. ${t(language, "details")}`
-          : t(language, "deckCard", { number: cardIndex + 1 })
+          : t(language, "turnCard", { number: cardIndex + 1 })
       }
     >
       <span className="reading-card__index" aria-hidden="true">
@@ -737,7 +677,7 @@ function CardDetails({
           )}
         </div>
         <div className="dialog-copy">
-          <p className="spread-label">{card.position}</p>
+          <p className="position-label">{card.position}</p>
           <h2 id="card-dialog-title">{card.displayName}</h2>
           <p className="orientation-label">
             {card.orientation === "reversed"
@@ -775,6 +715,7 @@ function ReadingBoard({
   const [revealed, setRevealed] = useState<Set<number>>(() => new Set());
   const [detailIndex, setDetailIndex] = useState<number>();
   const heading = useRef<HTMLHeadingElement>(null);
+  const timers = useRef<number[]>([]);
   const layout = layoutForSpread(reading.spreadType, reading.cards.length);
   const revealedCount = revealed.size;
   const allRevealed = revealedCount === reading.cards.length;
@@ -785,11 +726,38 @@ function ReadingBoard({
     heading.current?.focus({ preventScroll: true });
   }, []);
 
+  useEffect(
+    () => () => {
+      for (const timer of timers.current) window.clearTimeout(timer);
+      timers.current = [];
+    },
+    [],
+  );
+
   const closeDetails = useCallback(() => setDetailIndex(undefined), []);
+
+  const turn = useCallback((index: number) => {
+    setRevealed((current) => new Set([...current, index]));
+  }, []);
 
   const revealNext = (): void => {
     const next = reading.cards.findIndex((_, index) => !revealed.has(index));
-    if (next >= 0) setRevealed((current) => new Set([...current, next]));
+    if (next >= 0) turn(next);
+  };
+
+  const revealAll = (): void => {
+    const pending = reading.cards
+      .map((_, index) => index)
+      .filter((index) => !revealed.has(index));
+    if (prefersReducedMotion()) {
+      setRevealed(new Set(reading.cards.map((_, index) => index)));
+      return;
+    }
+    pending.forEach((cardIndex, order) => {
+      timers.current.push(
+        window.setTimeout(() => turn(cardIndex), order * REVEAL_STAGGER),
+      );
+    });
   };
 
   return (
@@ -819,48 +787,35 @@ function ReadingBoard({
         </div>
       </header>
 
-      <section className="spread-board" aria-label={reading.spreadName}>
-        {reading.cards.map((card, index) => {
-          const position = layout[index];
-          const style = {
-            "--card-x": `${position?.x ?? 50}%`,
-            "--card-y": `${position?.y ?? 50}%`,
-            "--card-rotation": `${position?.rotation ?? 0}deg`,
-            "--card-layer": position?.layer ?? index,
-          } as CSSProperties;
-          return (
-            <div
-              className="spread-card"
-              style={style}
-              key={`${card.id}-${index}`}
-            >
-              <ReadingCardView
-                card={card}
-                client={client}
-                cardIndex={index}
-                backImageUri={backImageUri}
-                revealed={revealed.has(index)}
-                onOpen={() => setDetailIndex(index)}
-                language={language}
-              />
-              <span className="position-caption">
-                {card.position ?? `#${index + 1}`}
-              </span>
-            </div>
-          );
-        })}
-      </section>
-      <ol
-        className="mobile-position-key"
-        aria-label={t(language, "spreadPositions")}
-      >
+      <ReadingCloth label={reading.spreadName}>
         {reading.cards.map((card, index) => (
-          <li key={`${card.id}-${index}`}>
-            <strong>{index + 1}</strong>
-            <span>{card.position ?? `#${index + 1}`}</span>
-          </li>
+          <ClothSlot
+            key={`${card.id}-${index}`}
+            point={layout[index]}
+            index={index}
+          >
+            <ReadingCardView
+              card={card}
+              client={client}
+              cardIndex={index}
+              backImageUri={backImageUri}
+              revealed={revealed.has(index)}
+              onOpen={() => setDetailIndex(index)}
+              onTurn={() => turn(index)}
+              language={language}
+            />
+            <span className="slot-caption">
+              {card.position ?? `#${index + 1}`}
+            </span>
+          </ClothSlot>
         ))}
-      </ol>
+      </ReadingCloth>
+      <PositionKey
+        language={language}
+        names={reading.cards.map(
+          (card, index) => card.position ?? `#${index + 1}`,
+        )}
+      />
 
       <div className="reveal-toolbar">
         <span aria-live="polite">
@@ -878,9 +833,7 @@ function ReadingBoard({
           <button
             className="primary-action"
             type="button"
-            onClick={() =>
-              setRevealed(new Set(reading.cards.map((_, index) => index)))
-            }
+            onClick={revealAll}
             disabled={allRevealed}
           >
             {t(language, "revealAll")}
@@ -917,26 +870,45 @@ export function DrawApp({ client }: DrawAppProps) {
       : "waiting",
   );
   const [draw, setDraw] = useState<BeginReadingPayload>();
+  const [deckOrder, setDeckOrder] = useState<string[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
+  const [origins, setOrigins] = useState<Record<string, FlipRect>>({});
+  const [returning, setReturning] = useState<{
+    slotId: string;
+    target: FlipRect;
+  }>();
   const [reading, setReading] = useState<ConfirmedReading>();
   const [error, setError] = useState<Error>();
   const [pendingBegin, setPendingBegin] = useState(false);
+  const arcRef = useRef<ArcFanHandle | null>(null);
+
+  const baseOrder = useMemo(
+    () => draw?.slots.map((slot) => slot.slotId) ?? [],
+    [draw],
+  );
 
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
+
+  const startDraw = useCallback((payload: BeginReadingPayload): void => {
+    setDraw(payload);
+    setLanguage(payload.language);
+    setDeckOrder(payload.slots.map((slot) => slot.slotId));
+    setSelected([]);
+    setOrigins({});
+    setReturning(undefined);
+    setReading(undefined);
+    setError(undefined);
+    setStage("ritual");
+  }, []);
 
   useEffect(() => {
     return client.subscribeInitial?.({
       onBegin(payload) {
         try {
           assertCompleteVisualDeck(payload);
-          setDraw(payload);
-          setLanguage(payload.language);
-          setSelected([]);
-          setReading(undefined);
-          setError(undefined);
-          setStage("selecting");
+          startDraw(payload);
         } catch (nextError) {
           setDraw(undefined);
           setError(asError(nextError));
@@ -953,7 +925,7 @@ export function DrawApp({ client }: DrawAppProps) {
         setError(nextError);
       },
     });
-  }, [client]);
+  }, [client, startDraw]);
 
   const beginReading = async (input: BeginReadingInput): Promise<void> => {
     setPendingBegin(true);
@@ -961,11 +933,7 @@ export function DrawApp({ client }: DrawAppProps) {
     try {
       const payload = await client.beginReading(input);
       assertCompleteVisualDeck(payload);
-      setDraw(payload);
-      setLanguage(payload.language);
-      setSelected([]);
-      setReading(undefined);
-      setStage("selecting");
+      startDraw(payload);
     } catch (nextError) {
       setError(asError(nextError));
     } finally {
@@ -995,11 +963,66 @@ export function DrawApp({ client }: DrawAppProps) {
   const restart = (): void => {
     client.clearHandoff?.();
     setDraw(undefined);
+    setDeckOrder([]);
     setReading(undefined);
     setSelected([]);
+    setOrigins({});
+    setReturning(undefined);
     setError(undefined);
     setStage(client.target === "web" ? "setup" : "waiting");
   };
+
+  const commitRemove = useCallback((slotId: string) => {
+    setSelected((current) => current.filter((id) => id !== slotId));
+    setOrigins(({ [slotId]: _removed, ...rest }) => rest);
+    setReturning(undefined);
+    arcRef.current?.focusSlot(slotId);
+  }, []);
+
+  /** Send a placed card back to the spread, flying it home when we can. */
+  const removeCard = useCallback(
+    (slotId: string) => {
+      const target = arcRef.current?.rectFor(slotId);
+      if (!target || prefersReducedMotion()) {
+        commitRemove(slotId);
+        return;
+      }
+      setReturning({ slotId, target });
+    },
+    [commitRemove],
+  );
+
+  const toggleCard = useCallback(
+    (slotId: string, origin: FlipRect) => {
+      if (!draw) return;
+      if (selected.includes(slotId)) {
+        removeCard(slotId);
+        return;
+      }
+      if (selected.length >= draw.requiredCount) return;
+      setOrigins((current) => ({ ...current, [slotId]: origin }));
+      setSelected((current) =>
+        toggleSelection(current, slotId, draw.requiredCount),
+      );
+    },
+    [draw, removeCard, selected],
+  );
+
+  const forgetOrigin = useCallback((slotId: string) => {
+    setOrigins(({ [slotId]: _consumed, ...rest }) => rest);
+  }, []);
+
+  const undo = useCallback(() => {
+    const last = selected[selected.length - 1];
+    if (last) removeCard(last);
+    else setSelected((current) => undoSelection(current));
+  }, [removeCard, selected]);
+
+  const clearAll = useCallback(() => {
+    setSelected([]);
+    setOrigins({});
+    setReturning(undefined);
+  }, []);
 
   if (stage === "setup") {
     return (
@@ -1063,18 +1086,45 @@ export function DrawApp({ client }: DrawAppProps) {
     );
   }
 
+  if (stage === "ritual") {
+    return (
+      <>
+        <RitualStage
+          total={baseOrder.length}
+          spreadName={draw.spreadName}
+          deckBackImageUri={draw.deckBackImageUri}
+          language={language}
+          onReady={(cutIndex, entropy) => {
+            setDeckOrder(ritualOrder(baseOrder, cutIndex, entropy));
+            setStage("selecting");
+          }}
+          onSkip={() => {
+            setDeckOrder(baseOrder);
+            setStage("selecting");
+          }}
+        />
+        {error ? (
+          <ErrorBanner error={error} language={language} onRetry={restart} />
+        ) : null}
+      </>
+    );
+  }
+
   return (
     <>
-      <Deck
+      <DrawStage
         draw={draw}
+        deckOrder={deckOrder}
         selected={selected}
-        onToggle={(slotId) =>
-          setSelected((current) =>
-            toggleSelection(current, slotId, draw.requiredCount),
-          )
-        }
-        onUndo={() => setSelected((current) => undoSelection(current))}
-        onClear={() => setSelected([])}
+        origins={origins}
+        returning={returning}
+        arcRef={arcRef}
+        onToggle={toggleCard}
+        onRemove={removeCard}
+        onOriginConsumed={forgetOrigin}
+        onDeparted={commitRemove}
+        onUndo={undo}
+        onClear={clearAll}
         onConfirm={() => void confirm()}
         language={language}
       />
