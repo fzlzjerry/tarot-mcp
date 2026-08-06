@@ -1,5 +1,6 @@
 import {
   type CSSProperties,
+  type FocusEvent as ReactFocusEvent,
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
   forwardRef,
@@ -34,9 +35,10 @@ const SETTLE_RATE = 0.24;
 const IDLE_MS = 420;
 
 function configFor(width: number): ArcConfig {
-  if (width < 560) return { step: 28, cardWidth: 68, depth: 52, reach: 280 };
-  if (width < 900) return { step: 34, cardWidth: 80, depth: 74, reach: 420 };
-  return { step: 40, cardWidth: 92, depth: 104, reach: 620 };
+  // The exposed step is the effective hit strip once neighbouring cards overlap.
+  if (width < 560) return { step: 44, cardWidth: 72, depth: 56, reach: 300 };
+  if (width < 900) return { step: 44, cardWidth: 80, depth: 74, reach: 420 };
+  return { step: 48, cardWidth: 92, depth: 104, reach: 620 };
 }
 
 export interface ArcFanHandle {
@@ -81,7 +83,8 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
   const dragStart = useRef<{ x: number; scrollLeft: number } | undefined>(
     undefined,
   );
-  const [focusedIndex, setFocusedIndex] = useState(0);
+  const [tabStopIndex, setTabStopIndex] = useState(0);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const [width, setWidth] = useState(1200);
 
   const config = useMemo(() => configFor(width), [width]);
@@ -207,7 +210,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
       focusSlot(slotId) {
         const index = indexOfSlot(slotId);
         if (index < 0) return;
-        setFocusedIndex(index);
+        setTabStopIndex(index);
         nodes.current[index]?.focus();
       },
       rectFor(slotId) {
@@ -238,7 +241,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
   }, []);
 
   const moveFocus = (index: number): void => {
-    setFocusedIndex(index);
+    setTabStopIndex(index);
     nodes.current[index]?.focus();
     bringIntoView(index);
     wake();
@@ -312,6 +315,12 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     wake();
   };
 
+  const onBlur = (event: ReactFocusEvent<HTMLDivElement>): void => {
+    const next = event.relatedTarget;
+    if (next && event.currentTarget.contains(next as Node)) return;
+    setFocusedIndex(null);
+  };
+
   return (
     <div
       className="arc-fan"
@@ -325,6 +334,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
       onPointerLeave={onPointerLeave}
+      onBlur={onBlur}
       style={
         {
           "--arc-card-width": `${config.cardWidth}px`,
@@ -353,7 +363,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
                 } as CSSProperties
               }
               data-slot-index={index}
-              tabIndex={index === focusedIndex ? 0 : -1}
+              tabIndex={index === tabStopIndex ? 0 : -1}
               aria-pressed={isDrawn}
               aria-disabled={atLimit && !isDrawn}
               aria-label={
@@ -362,6 +372,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
                   : t(language, "deckCard", { number: index + 1 })
               }
               onFocus={() => {
+                setTabStopIndex(index);
                 setFocusedIndex(index);
                 wake();
               }}

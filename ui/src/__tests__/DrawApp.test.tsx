@@ -2,6 +2,7 @@ import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import { DrawApp } from "../DrawApp.js";
+import { ritualOrder } from "../deck-order.js";
 import type {
   BeginReadingInput,
   BeginReadingPayload,
@@ -68,6 +69,41 @@ function createClient() {
 }
 
 describe("DrawApp", () => {
+  it("applies the chosen cut to the cards later confirmed", async () => {
+    const user = userEvent.setup();
+    const { client, confirmReading } = createClient();
+    render(<DrawApp client={client} />);
+
+    await user.type(screen.getByLabelText("Question or focus"), "What next?");
+    await user.click(screen.getByRole("button", { name: "Lay out the deck" }));
+
+    const cut = await screen.findByRole(
+      "slider",
+      { name: "Cut here" },
+      { timeout: 2_000 },
+    );
+    await waitFor(() => expect(document.activeElement).toBe(cut));
+    await user.keyboard("[Home][ArrowUp][ArrowUp][ArrowUp]");
+    expect(cut.getAttribute("aria-valuenow")).toBe("3");
+    await user.click(screen.getByRole("button", { name: "Cut here" }));
+
+    await screen.findAllByRole("button", { name: /^Card back/ });
+    await user.click(screen.getByRole("button", { name: "Card back 1" }));
+    await user.click(screen.getByRole("button", { name: "Card back 2" }));
+    await user.click(screen.getByRole("button", { name: "Card back 3" }));
+    await user.click(screen.getByRole("button", { name: "Confirm selection" }));
+
+    const baseOrder = Array.from(
+      { length: 78 },
+      (_, index) => `opaque-${index + 1}`,
+    );
+    const expected = ritualOrder(baseOrder, 3, 148).slice(0, 3);
+    expect(expected).not.toEqual(baseOrder.slice(0, 3));
+    await waitFor(() =>
+      expect(confirmReading).toHaveBeenCalledWith("draw_test", expected),
+    );
+  });
+
   it("runs setup, ordered selection, undo, confirmation, reveal, and details", async () => {
     const user = userEvent.setup();
     const { client, confirmReading } = createClient();

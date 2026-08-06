@@ -583,6 +583,11 @@ button[aria-disabled="true"] {
   min-height: min(66vh, 720px);
 }
 
+/* Give the artwork room to lead when a reading has only one to three cards. */
+.reading-cloth--full.reading-cloth--sparse {
+  --slot-width: clamp(96px, 10vw, 132px);
+}
+
 /*
  * Same proportions as the full cloth, just smaller. The spread coordinates are
  * percentages, so matching the aspect ratio is what keeps a card in the same
@@ -705,7 +710,8 @@ button[aria-disabled="true"] {
   overscroll-behavior-inline: contain;
   scrollbar-color: var(--gold-line) transparent;
   scrollbar-width: thin;
-  touch-action: pan-x;
+  /* Native horizontal deck scrolling and vertical page scrolling must coexist. */
+  touch-action: pan-x pan-y;
 }
 
 .arc-fan:active {
@@ -1017,8 +1023,8 @@ button[aria-disabled="true"] {
   top: 12px;
   right: 12px;
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
@@ -1142,6 +1148,9 @@ button[aria-disabled="true"] {
     aspect-ratio: 4 / 5;
     min-height: 560px;
   }
+  .reading-cloth--full.reading-cloth--sparse {
+    --slot-width: clamp(64px, 16vw, 96px);
+  }
   .reading-cloth--compact {
     --slot-width: clamp(40px, 8vw, 60px);
 
@@ -1179,12 +1188,15 @@ button[aria-disabled="true"] {
     align-self: flex-start;
   }
   .reading-cloth--full {
-    --slot-width: clamp(42px, 12vw, 64px);
+    --slot-width: clamp(44px, 12vw, 64px);
 
     min-height: 520px;
   }
+  .reading-cloth--full.reading-cloth--sparse {
+    --slot-width: clamp(56px, 16vw, 72px);
+  }
   .reading-cloth--compact {
-    --slot-width: clamp(38px, 12vw, 54px);
+    --slot-width: clamp(44px, 12vw, 54px);
 
     min-height: 280px;
   }

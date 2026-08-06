@@ -787,7 +787,7 @@ function ReadingBoard({
         </div>
       </header>
 
-      <ReadingCloth label={reading.spreadName}>
+      <ReadingCloth label={reading.spreadName} cardCount={reading.cards.length}>
         {reading.cards.map((card, index) => (
           <ClothSlot
             key={`${card.id}-${index}`}

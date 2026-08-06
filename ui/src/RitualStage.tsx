@@ -56,7 +56,13 @@ export function RitualStage({
   }, [phase]);
 
   useEffect(() => {
-    if (phase === "cut") cutHandle.current?.focus({ preventScroll: true });
+    if (phase !== "cut") return;
+    const active = document.activeElement;
+    const shouldMoveFocus =
+      active === document.body ||
+      active === heading.current ||
+      (active !== null && pile.current?.contains(active));
+    if (shouldMoveFocus) cutHandle.current?.focus({ preventScroll: true });
   }, [phase]);
 
   const cutIndex = Math.round(ratio * (total - 1));

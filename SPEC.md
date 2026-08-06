@@ -27,11 +27,15 @@ deck, secure randomization, sessions, and canonical tarot data.
    fallback opens a temporary `127.0.0.1` browser table and keeps the original
    `begin_visual_reading` tool call pending. Web users configure the question,
    language, and reading kind on `/draw`.
-2. The UI displays 78 indistinguishable card backs and the target spread layout.
-3. Each click moves one card into the next spread position. Selection can be
+2. The UI shuffles the face-down deck, then lets the reader drag or use the
+   keyboard to choose a cut. Reduced-motion users start at the cut directly, and
+   readers can skip the ritual to retain the server-provided order.
+3. The chosen cut deterministically reorders the 78 opaque slots before the UI
+   displays them as a horizontally scrollable fan beside the target spread.
+4. Each click moves one card into the next spread position. Selection can be
    undone until the required count is reached.
-4. Confirmation atomically resolves the opaque slots to cards and orientations.
-5. Cards reveal individually or together; selecting a revealed card shows its
+5. Confirmation atomically resolves the opaque slots to cards and orientations.
+6. Cards reveal individually or together; selecting a revealed card shows its
    position meaning, orientation, keywords, and localized meaning.
 
 ## Interfaces
@@ -173,6 +177,7 @@ immediately instead of leaving an unreachable waiter.
 - The stdio loopback handoff token is short-lived, bound to one draw, and limited to
   resolving and confirming the draw that created it; it is carried in a URL
   fragment rather than a query string.
-- UI supports keyboard selection, explicit focus, screen-reader labels, reduced
-  motion, 320px reflow, and text labels for reversed cards.
+- UI supports keyboard selection and cutting, explicit focus, screen-reader
+  labels, reduced motion, 320px reflow, touch targets, two-axis gesture escape
+  from the card fan, and text labels for reversed cards.
 - Deployment and multi-instance shared draw state are outside this implementation.

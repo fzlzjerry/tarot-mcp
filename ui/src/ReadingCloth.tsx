@@ -16,15 +16,18 @@ import type { LayoutPoint } from "./types.js";
 export function ReadingCloth({
   label,
   size = "full",
+  cardCount,
   children,
 }: {
   label: string;
   size?: "compact" | "full";
+  cardCount?: number;
   children: ReactNode;
 }) {
+  const sparse = size === "full" && cardCount !== undefined && cardCount <= 3;
   return (
     <section
-      className={`reading-cloth reading-cloth--${size}`}
+      className={`reading-cloth reading-cloth--${size}${sparse ? " reading-cloth--sparse" : ""}`}
       aria-label={label}
     >
       <div className="reading-cloth__lamp" aria-hidden="true" />
