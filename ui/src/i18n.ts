@@ -30,6 +30,7 @@ const messages = {
     waiting: "Waiting for the reading to begin…",
     shuffleTitle: "Shuffle and cut",
     shuffling: "Shuffling the deck…",
+    openingDeck: "The cut is set. The deck opens…",
     cutHint:
       "Drag through the pile to choose where to cut, then cut. Where you cut decides which cards come to hand.",
     cutAction: "Cut here",
@@ -104,7 +105,9 @@ const messages = {
     waiting: "等待抽牌开始…",
     shuffleTitle: "洗牌与切牌",
     shuffling: "正在洗牌…",
-    cutHint: "在牌堆上拖动选择切点，然后切牌。切在哪里，决定哪些牌会来到你手上。",
+    openingDeck: "切点已定，牌组正在展开……",
+    cutHint:
+      "在牌堆上拖动选择切点，然后切牌。切在哪里，决定哪些牌会来到你手上。",
     cutAction: "就切这里",
     cutDepth: "自上往下第 {count} 张切开",
     skipShuffle: "跳过，直接发牌",

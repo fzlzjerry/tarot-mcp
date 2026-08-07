@@ -25,7 +25,7 @@ describe("RitualStage", () => {
 
       const skip = screen.getByRole("button", { name: "Skip and deal" });
       skip.focus();
-      act(() => vi.advanceTimersByTime(900));
+      act(() => vi.runOnlyPendingTimers());
 
       expect(screen.getByRole("slider", { name: "Cut here" })).not.toBeNull();
       expect(document.activeElement).toBe(skip);

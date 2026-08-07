@@ -47,7 +47,10 @@ function clearFlip(node: HTMLElement): void {
   node.style.removeProperty("--flip-y");
   node.style.removeProperty("--flip-scale");
   node.style.removeProperty("--flip-rotate");
+  node.style.removeProperty("--flight-angle");
+  node.style.removeProperty("--flight-distance");
   node.style.removeProperty("transition");
+  node.classList.remove("is-dealing");
 }
 
 interface FlipOptions {
@@ -95,6 +98,11 @@ export function playFlip(
     onFinish?.();
     return () => undefined;
   }
+  const distance = Math.min(Math.hypot(dx, dy), 260);
+  const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+  node.style.setProperty("--flight-angle", `${angle}deg`);
+  node.style.setProperty("--flight-distance", `${distance}px`);
+  node.classList.add("is-dealing");
 
   let finished = false;
   const settle = (): void => {
@@ -169,7 +177,10 @@ export function playFlipOut(
   node.style.setProperty("--flip-x", `${dx}px`);
   node.style.setProperty("--flip-y", `${dy}px`);
   node.style.setProperty("--flip-scale", `${scale}`);
-  node.style.setProperty("--flip-rotate", `${to.rotation - destinationRotation}deg`);
+  node.style.setProperty(
+    "--flip-rotate",
+    `${to.rotation - destinationRotation}deg`,
+  );
   node.style.opacity = "0";
 
   const timer = window.setTimeout(settle, duration + 60);

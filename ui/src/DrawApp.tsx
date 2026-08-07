@@ -30,7 +30,8 @@ interface DrawAppProps {
   client: DrawClient;
 }
 
-type Stage = "setup" | "waiting" | "ritual" | "selecting" | "confirming" | "reading";
+type Stage =
+  "setup" | "waiting" | "ritual" | "selecting" | "confirming" | "reading";
 
 /** Gap between cards as the spread turns itself over. */
 const REVEAL_STAGGER = 90;
@@ -268,7 +269,10 @@ function PositionKey({
   names: string[];
 }) {
   return (
-    <ol className="mobile-position-key" aria-label={t(language, "spreadPositions")}>
+    <ol
+      className="mobile-position-key"
+      aria-label={t(language, "spreadPositions")}
+    >
       {names.map((name, index) => (
         <li key={`${name}-${index}`}>
           <strong>{index + 1}</strong>
@@ -342,7 +346,10 @@ function SelectionStaging({
                   <span>{index + 1}</span>
                 </button>
               ) : (
-                <div className="staged-card staged-card--empty" aria-hidden="true">
+                <div
+                  className="staged-card staged-card--empty"
+                  aria-hidden="true"
+                >
                   <span>{index + 1}</span>
                 </div>
               )}
@@ -1057,8 +1064,16 @@ export function DrawApp({ client }: DrawAppProps) {
 
   if (stage === "confirming") {
     return (
-      <main className="waiting-shell" aria-live="polite">
-        <span className="waiting-symbol is-spinning">✦</span>
+      <main
+        className="waiting-shell confirming-shell"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <span className="confirming-sigil" aria-hidden="true">
+          <span className="confirming-sigil__orbit confirming-sigil__orbit--outer" />
+          <span className="confirming-sigil__orbit confirming-sigil__orbit--inner" />
+          <span className="confirming-sigil__star">✦</span>
+        </span>
         <p>{t(language, "confirming")}</p>
       </main>
     );

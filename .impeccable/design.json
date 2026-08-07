@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-07T10:11:24Z",
+  "title": "Design System: Tarot MCP Visual Reading",
+  "extensions": {
+    "colorMeta": {
+      "midnight-indigo": {
+        "role": "neutral",
+        "displayName": "Midnight Indigo",
+        "canonical": "oklch(0.145 0.02 243)",
+        "tonalRamp": [
+          "oklch(0.118 0.017 244)",
+          "oklch(0.145 0.02 243)",
+          "oklch(0.185 0.022 243)",
+          "oklch(0.225 0.02 245)",
+          "oklch(0.3 0.018 243)"
+        ]
+      },
+      "table-indigo": {
+        "role": "neutral",
+        "displayName": "Table Indigo",
+        "canonical": "oklch(0.185 0.022 243)",
+        "tonalRamp": []
+      },
+      "raised-indigo": {
+        "role": "neutral",
+        "displayName": "Raised Indigo",
+        "canonical": "oklch(0.225 0.02 245)",
+        "tonalRamp": []
+      },
+      "print-ivory": {
+        "role": "neutral",
+        "displayName": "Print Ivory",
+        "canonical": "oklch(0.945 0.01 85)",
+        "tonalRamp": ["oklch(0.76 0.016 82)", "oklch(0.945 0.01 85)"]
+      },
+      "muted-ivory": {
+        "role": "neutral",
+        "displayName": "Muted Ivory",
+        "canonical": "oklch(0.76 0.016 82)",
+        "tonalRamp": []
+      },
+      "antique-gold": {
+        "role": "primary",
+        "displayName": "Antique Gold",
+        "canonical": "oklch(0.76 0.085 78)",
+        "tonalRamp": ["oklch(0.53 0.066 72)", "oklch(0.76 0.085 78)"]
+      },
+      "antique-gold-line": {
+        "role": "primary",
+        "displayName": "Antique Gold Line",
+        "canonical": "oklch(0.53 0.066 72)",
+        "tonalRamp": []
+      },
+      "lacquer-black": {
+        "role": "neutral",
+        "displayName": "Lacquer Black",
+        "canonical": "oklch(0.118 0.017 244)",
+        "tonalRamp": []
+      },
+      "divider-indigo": {
+        "role": "neutral",
+        "displayName": "Divider Indigo",
+        "canonical": "oklch(0.3 0.018 243)",
+        "tonalRamp": []
+      },
+      "omen-red": {
+        "role": "error",
+        "displayName": "Omen Red",
+        "canonical": "oklch(0.72 0.13 25)",
+        "tonalRamp": []
+      },
+      "card-stock": {
+        "role": "neutral",
+        "displayName": "Card Stock",
+        "canonical": "oklch(0.16 0.02 243)",
+        "tonalRamp": []
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Ritual Display",
+        "purpose": "Stage-defining headings and card-detail titles."
+      },
+      "body": {
+        "displayName": "Interface Body",
+        "purpose": "Instructions, meanings, forms, and task guidance."
+      },
+      "label": {
+        "displayName": "Operating Label",
+        "purpose": "Controls, counts, spread names, and compact status."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 6px 12px rgb(0 0 0 / 52%)",
+        "purpose": "A card resting in the fan."
+      },
+      {
+        "name": "card-placed",
+        "value": "0 6px 14px rgb(0 0 0 / 50%)",
+        "purpose": "A selected card placed on the reading cloth."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 14px 24px rgb(0 0 0 / 62%)",
+        "purpose": "Hover, keyboard focus, or active physical lift only."
+      },
+      {
+        "name": "card-reveal",
+        "value": "0 8px 18px rgb(0 0 0 / 55%)",
+        "purpose": "A revealed card on the completed spread."
+      },
+      {
+        "name": "dialog",
+        "value": "0 28px 70px rgb(0 0 0 / 68%)",
+        "purpose": "The card-details layer above the table."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-fast",
+        "value": "170ms ease",
+        "purpose": "Color, border, and short control feedback."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 0.84, 0.28, 1)",
+        "purpose": "Confident physical deceleration."
+      },
+      {
+        "name": "ease-out-quint",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Small light and scale accents that settle quickly."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Signature ritual apertures, sweeps, and seals."
+      },
+      {
+        "name": "deck-riffle",
+        "value": "1500ms",
+        "purpose": "One shuffle, split into three beats — split, riffle, bridge — each timed as a fraction of this duration."
+      },
+      {
+        "name": "pile-lift",
+        "value": "180ms cubic-bezier(0.16, 0.84, 0.28, 1)",
+        "purpose": "The cut packet following the reader's drag off the settled deck."
+      },
+      {
+        "name": "ritual-opening",
+        "value": "620ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The settled cut packet gathers, then every visible card sweeps into a short match-cut arc before the full fan appears."
+      },
+      {
+        "name": "fan-arrival",
+        "value": "820ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One lamplight sweep across the newly opened fan."
+      },
+      {
+        "name": "selection-seal",
+        "value": "440ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Immediate acknowledgment on the chosen card back."
+      },
+      {
+        "name": "deal-flight",
+        "value": "420ms cubic-bezier(0.16, 0.84, 0.28, 1)",
+        "purpose": "FLIP movement and bounded lamplight between fan and cloth."
+      },
+      {
+        "name": "card-reveal",
+        "value": "700ms cubic-bezier(0.22, 0.75, 0.2, 1)",
+        "purpose": "The deliberate final card turn."
+      },
+      {
+        "name": "reveal-halo",
+        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "A single radial light resolution around the revealed card."
+      },
+      {
+        "name": "confirming-orbit",
+        "value": "4.8s linear infinite",
+        "purpose": "A restrained loading indicator used only while awaiting confirmation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "560px"
+      },
+      {
+        "name": "adaptive-table",
+        "value": "819px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The next decisive action in the ritual.",
+      "html": "<button class=\"ds-primary\">Confirm the draw</button>",
+      "css": ".ds-primary { min-height: 44px; border: 1px solid var(--gold); border-radius: 999px; background: var(--gold); padding: 10px 20px; color: var(--on-gold); font: 650 .9rem var(--font-ui); cursor: pointer; transition: background-color 170ms ease, transform 170ms var(--ease-out); } .ds-primary:hover { background: color-mix(in srgb, var(--gold) 88%, white); transform: translateY(-1px); } .ds-primary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A reversible or lower-priority ritual action.",
+      "html": "<button class=\"ds-secondary\">Undo</button>",
+      "css": ".ds-secondary { min-height: 44px; border: 1px solid var(--line); border-radius: 999px; background: transparent; padding: 10px 20px; color: var(--ink); font: 650 .9rem var(--font-ui); cursor: pointer; transition: border-color 170ms ease, color 170ms ease; } .ds-secondary:hover { border-color: var(--gold-line); color: var(--gold); } .ds-secondary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Deck Card",
+      "kind": "custom",
+      "refersTo": "deck-card",
+      "description": "An opaque physical card with gold linework and state-based lift.",
+      "html": "<button class=\"ds-deck-card\" aria-label=\"Face-down tarot card\"><span>1</span></button>",
+      "css": ".ds-deck-card { position: relative; width: 92px; aspect-ratio: 2 / 3; overflow: hidden; border: 1px solid var(--gold-line); border-radius: 6px; background: var(--on-gold); color: var(--ink); cursor: pointer; box-shadow: 0 6px 12px rgb(0 0 0 / 52%); transition: border-color 170ms ease, box-shadow 170ms ease, transform 170ms var(--ease-out); } .ds-deck-card::before { position: absolute; inset: 8px; border: 1px solid color-mix(in srgb, var(--gold-line) 70%, transparent); border-radius: 3px; content: \"\"; } .ds-deck-card:hover { border-color: var(--gold); box-shadow: 0 14px 24px rgb(0 0 0 / 62%); transform: translateY(-8px); } .ds-deck-card span { position: absolute; right: 7px; bottom: 7px; display: grid; width: 22px; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--gold); color: var(--on-gold); font: 800 .68rem var(--font-ui); }"
+    },
+    {
+      "name": "Reading Cloth",
+      "kind": "custom",
+      "refersTo": "reading-cloth",
+      "description": "The lamplit stage that receives selected cards.",
+      "html": "<section class=\"ds-cloth\" aria-label=\"Reading cloth\"><div class=\"ds-slot\">1</div></section>",
+      "css": ".ds-cloth { position: relative; width: min(560px, 100%); aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid color-mix(in srgb, var(--gold-line) 42%, var(--line)); border-radius: 14px; background: radial-gradient(ellipse 68% 58% at 50% 6%, color-mix(in srgb, var(--gold) 10%, transparent), transparent 68%), var(--surface); } .ds-slot { position: absolute; top: 50%; left: 50%; display: grid; width: 52px; aspect-ratio: 2 / 3; place-items: center; border: 1px dashed color-mix(in srgb, var(--gold-line) 55%, transparent); border-radius: 6px; color: var(--muted); transform: translate(-50%, -50%); font: 600 .72rem var(--font-ui); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A familiar raised-indigo field with an explicit gold focus ring.",
+      "html": "<input class=\"ds-input\" value=\"What should I understand today?\" aria-label=\"Question\">",
+      "css": ".ds-input { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-raised); padding: 13px 14px; color: var(--ink); font: 400 1rem/1.45 var(--font-ui); } .ds-input:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Lamplit Oracle / 灯下神谕",
+    "overview": "A midnight reading table illuminated by one controlled source of antique-gold light. The system uses deep indigo stock, fine brass-like linework, ivory type, and illustrated cards treated as physical artifacts. Richness comes from composition, lamplight, card material, and precise state choreography rather than unrelated decoration.",
+    "keyCharacteristics": [
+      "One dark-indigo environment with antique gold reserved for action, focus, and revelation.",
+      "The illustrated deck is always the visual protagonist.",
+      "Tonal surfaces stay flat at rest; physical lift appears only as interaction feedback.",
+      "Serif display establishes ritual while sans-serif UI type protects clarity.",
+      "One responsive ritual spans Web and compact MCP embeds."
+    ],
+    "rules": [
+      {
+        "name": "The Lamplight Rule",
+        "body": "Antique Gold communicates intention or revelation; it does not decorate inactive interface regions.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Serif marks narrative hierarchy; sans-serif carries every action and piece of operating information.",
+        "section": "typography"
+      },
+      {
+        "name": "The State-Lift Rule",
+        "body": "Tonal layering establishes structure; shadow is evidence that an object has changed elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use the midnight-indigo family as the complete neutral depth system.",
+      "Do reserve Antique Gold for actions, focus, selection, and reveal.",
+      "Do use transform-based FLIP motion, bounded single-shot lamplight effects, and a reduced-motion alternative.",
+      "Do retain 44px targets, visible focus, keyboard control, and WCAG 2.2 AA contrast."
+    ],
+    "donts": [
+      "Don't resemble neon-cyber occult dashboards.",
+      "Don't resemble casino wins, mobile-game loot openings, or confetti-like particle effects.",
+      "Don't use generic glassmorphism or cartoon magic.",
+      "Don't use random motion, continuous particles, or slow spectacle that delays action.",
+      "Don't compete with the illustrated deck with replacement art or sketchy SVG ornament."
+    ]
+  }
+}

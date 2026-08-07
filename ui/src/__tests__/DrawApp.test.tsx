@@ -80,7 +80,7 @@ describe("DrawApp", () => {
     const cut = await screen.findByRole(
       "slider",
       { name: "Cut here" },
-      { timeout: 2_000 },
+      { timeout: 3_000 },
     );
     await waitFor(() => expect(document.activeElement).toBe(cut));
     await user.keyboard("[Home][ArrowUp][ArrowUp][ArrowUp]");
@@ -170,9 +170,7 @@ describe("DrawApp", () => {
     for (const card of faceDownCards) {
       expect((card as HTMLButtonElement).disabled).toBe(false);
     }
-    expect(
-      screen.getByRole("button", { name: "Turn card 2" }),
-    ).not.toBeNull();
+    expect(screen.getByRole("button", { name: "Turn card 2" })).not.toBeNull();
     await user.click(screen.getByRole("button", { name: "Turn card 3" }));
     expect(
       screen.getByRole("button", { name: "The World. View card details" }),
