@@ -117,7 +117,9 @@ describe("LocalBrowserHandoff", () => {
       mode: "auto",
       port: 0,
       opener,
-      env: { NODE_ENV: "production" },
+      // Isolated from process.env so CI=true does not suppress auto-open.
+      // Linux still requires a display socket before launching a browser.
+      env: { NODE_ENV: "production", DISPLAY: ":0" },
     });
 
     const draw = await beginThreeCard(tarotServer);
@@ -292,6 +294,24 @@ describe("LocalBrowserHandoff", () => {
       confirmedReading.readingId,
     );
   });
+
+  it.skipIf(process.platform !== "linux")(
+    "does not auto-open a browser on headless Linux",
+    async () => {
+      const tarotServer = await TarotServer.create();
+      const opener = vi.fn(async () => true);
+      handoff = new LocalBrowserHandoff(tarotServer, {
+        mode: "auto",
+        port: 0,
+        opener,
+        env: { NODE_ENV: "production" },
+      });
+
+      const opened = await handoff.open(await beginThreeCard(tarotServer));
+      expect(opened).toMatchObject({ opened: false, reused: false });
+      expect(opener).not.toHaveBeenCalled();
+    },
+  );
 
   it("rejects untrusted origins, Host headers, and missing or invalid tokens", async () => {
     const tarotServer = await TarotServer.create();
