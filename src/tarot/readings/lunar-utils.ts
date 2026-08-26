@@ -4,6 +4,8 @@
 
 import { Language } from "../shared/types.js";
 import { pick } from "../shared/i18n.js";
+import { TAROT_SPREADS, isValidSpreadType } from "./spreads.js";
+import { localizedSpread } from "./spread-localizations.js";
 
 export interface MoonPhaseInfo {
   phase: "new" | "waxing_crescent" | "first_quarter" | "waxing_gibbous" | "full" | "waning_gibbous" | "last_quarter" | "waning_crescent";
@@ -230,8 +232,11 @@ export function getMoonPhaseRecommendations(
     `\n## Recommended Spreads:\n`,
     `\n## 推荐牌阵：\n`,
   );
-  moonInfo.recommendedSpreads.forEach(spread => {
-    recommendations += `• ${spread.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}\n`;
+  moonInfo.recommendedSpreads.forEach((spreadId) => {
+    const name = isValidSpreadType(spreadId)
+      ? localizedSpread(TAROT_SPREADS[spreadId], spreadId, language).name
+      : spreadId;
+    recommendations += `• ${name}\n`;
   });
 
   const next = getNextMoonPhase(date);

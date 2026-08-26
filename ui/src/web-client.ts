@@ -1,6 +1,7 @@
 import {
   assertCompleteVisualDeck,
   extractError,
+  isRecord,
   normalizeBeginPayload,
   normalizeConfirmedReading,
 } from "./normalize.js";
@@ -123,10 +124,6 @@ async function postHandoffJson(
   if (!response.ok)
     throw extractError(body, `Request failed (${response.status})`);
   return body;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 type InitialHandoff =

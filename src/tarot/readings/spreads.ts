@@ -1,4 +1,4 @@
-import { SpreadType, TarotSpread } from "../shared/types.js";
+import type { SpreadType, TarotSpread } from "../shared/types.js";
 
 /**
  * Tarot spread definitions. `satisfies` keeps the keys in compile-time sync
@@ -831,11 +831,9 @@ export const TAROT_SPREADS = {
   }
 } satisfies Record<SpreadType, TarotSpread>;
 
-/**
- * Get all available spreads
- */
-export function getAllSpreads(): TarotSpread[] {
-  return Object.values(TAROT_SPREADS);
+/** Stable id for a custom spread, e.g. "My Spread" → "custom_my_spread". */
+export function customSpreadTypeId(spreadName: string): string {
+  return `custom_${spreadName.toLowerCase().replace(/\s+/g, "_")}`;
 }
 
 /**

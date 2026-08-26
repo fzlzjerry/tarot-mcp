@@ -282,6 +282,22 @@ describe("MCP tool behavior", () => {
     expect(bad).toContain("Error: Invalid language");
   });
 
+  it("returns structuredContent for moon phase readings", async () => {
+    const result = await server.executeTool(TOOL_NAMES.getMoonPhaseReading, {
+      question: "What should I release?",
+      customDate: "2023-07-03",
+    });
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.text).toContain("Your Moon Phase Reading");
+    const structured = result.structured as {
+      spreadType: string;
+      cards: unknown[];
+    };
+    expect(structured.spreadType).toBeTruthy();
+    expect(structured.cards.length).toBeGreaterThan(0);
+  });
+
   it("rejects get_random_cards parameters that are not exposed in the MCP schema", async () => {
     const result = await executeTool("getRandomCards", {
       count: 1,

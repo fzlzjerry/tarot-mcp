@@ -9,8 +9,14 @@ import {
   Language,
   TarotCard,
 } from "../shared/types.js";
-import { TAROT_SPREADS, getSpread, isValidSpreadType } from "./spreads.js";
-import { generateId, getSecureRandomInt } from "../shared/utils.js";
+import {
+  TAROT_SPREADS,
+  customSpreadTypeId,
+  getSpread,
+  isValidSpreadType,
+} from "./spreads.js";
+import { generateId, randomOrientation } from "../shared/utils.js";
+import { VISUAL_CARD_ASSET_BASE } from "../shared/artwork.js";
 import { sanitizeString } from "../shared/validation.js";
 import {
   InvalidSpreadTypeError,
@@ -161,7 +167,7 @@ export class TarotReadingManager {
       positions: positions,
       cardCount: positions.length
     };
-    const customType = `custom_${spreadName.toLowerCase().replace(/\s+/g, '_')}`;
+    const customType = customSpreadTypeId(spreadName);
 
     return this.executeReading(customSpread, customType, question, session, language);
   }
@@ -285,7 +291,7 @@ export class TarotReadingManager {
               question,
               drawnCard.positionMeaning,
             ),
-            imageUri: `/assets/cards/midnight-art-nouveau-v1/${cardId}.webp`,
+            imageUri: `${VISUAL_CARD_ASSET_BASE}/${cardId}.webp`,
           };
         }),
       },
@@ -334,13 +340,6 @@ export class TarotReadingManager {
     return renderAvailableSpreads(localized, language);
   }
 
-  /**
-   * Generate cryptographically secure random orientation
-   */
-  private getSecureRandomOrientation(): CardOrientation {
-    return getSecureRandomInt(2) === 0 ? "upright" : "reversed";
-  }
-
   private drawCards(count: number): TarotCard[] {
     return this.randomSource.drawCards
       ? this.randomSource.drawCards(count)
@@ -350,6 +349,6 @@ export class TarotReadingManager {
   private drawOrientation(): CardOrientation {
     return this.randomSource.drawOrientation
       ? this.randomSource.drawOrientation()
-      : this.getSecureRandomOrientation();
+      : randomOrientation();
   }
 }

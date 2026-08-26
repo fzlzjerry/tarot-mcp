@@ -1,5 +1,5 @@
 import { CardMeanings, DrawnCard, Language } from "../../shared/types.js";
-import { pick } from "../../shared/i18n.js";
+import { localizedElement, pick } from "../../shared/i18n.js";
 
 /**
  * Themes evoked when a card number appears more than once in a reading.
@@ -37,13 +37,6 @@ const REPEATED_NUMBER_THEMES_ZH: Record<number, string> = {
   12: "行动与坚定追求",
   13: "滋养的成熟与直觉",
   14: "权威与领导力",
-};
-
-const ELEMENT_NAMES_ZH: Record<string, string> = {
-  fire: "火",
-  water: "水",
-  air: "风",
-  earth: "土",
 };
 
 /**
@@ -307,7 +300,7 @@ function interpretElementalBalance(
     interpretation += pick(
       language,
       `The absence of ${missingElements.join(" and ")} energy suggests you may need to cultivate these qualities to achieve balance. `,
-      `${missingElements.map((element) => ELEMENT_NAMES_ZH[element] ?? element).join("与")}元素能量的缺席，提示你可能需要培养这些特质来达到平衡。`,
+      `${missingElements.map((element) => localizedElement(element, "zh")).join("与")}元素能量的缺席，提示你可能需要培养这些特质来达到平衡。`,
     );
   }
 

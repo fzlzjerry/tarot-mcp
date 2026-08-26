@@ -142,9 +142,7 @@ export interface LayoutPoint {
   layer?: number;
 }
 
-export interface SpreadTemplate {
+export interface SpreadLayoutTemplate {
   id: string;
-  name: Record<Language, string>;
-  positions: string[];
   layout: LayoutPoint[];
 }

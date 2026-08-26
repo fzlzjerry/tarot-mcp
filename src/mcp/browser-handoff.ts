@@ -4,20 +4,18 @@ import express, {
   type Response,
 } from "express";
 import rateLimit from "express-rate-limit";
-import {
-  createHash,
-  createHmac,
-  randomBytes,
-  timingSafeEqual,
-} from "node:crypto";
+import { createHash, createHmac, randomBytes } from "node:crypto";
 import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
 import type { Server as HttpServer } from "node:http";
-import { dirname, join } from "node:path";
+import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { logger } from "../tarot/shared/logger.js";
 import type { VisualBeginPayload } from "../tarot/readings/visual-draw-manager.js";
 import { HTTP_ENDPOINTS, TOOL_NAMES } from "./public-api.js";
+import {
+  mountVisualWebAssets,
+  timingSafeStringEqual,
+} from "./static-assets.js";
 import type { TarotServer, ToolResult } from "./tarot-service.js";
 
 export const BROWSER_FALLBACK_MODES = ["auto", "off", "force", "link"] as const;
@@ -87,18 +85,8 @@ const LOOPBACK_HOST = "127.0.0.1";
 const CONFIRMED_RETENTION_MS = 24 * 60 * 60 * 1000;
 const MODULE_DIRECTORY = dirname(fileURLToPath(import.meta.url));
 
-function firstExistingDirectory(candidates: string[]): string | undefined {
-  return candidates.find((candidate) => existsSync(candidate));
-}
-
 function sha256(value: string): string {
   return createHash("sha256").update(value).digest("hex");
-}
-
-function safeStringEqual(a: string, b: string): boolean {
-  const first = Buffer.from(a);
-  const second = Buffer.from(b);
-  return first.length === second.length && timingSafeEqual(first, second);
 }
 
 function parseFallbackPort(value: string | undefined): number {
@@ -572,14 +560,14 @@ export class LocalBrowserHandoff implements VisualBrowserFallback {
         return;
       }
       if (
-        !safeStringEqual(req.headers.host ?? "", new URL(this.baseUrl).host)
+        !timingSafeStringEqual(req.headers.host ?? "", new URL(this.baseUrl).host)
       ) {
         res.status(403).json({ error: "Forbidden: host not allowed" });
         return;
       }
       if (
         req.method !== "GET" &&
-        !safeStringEqual(req.headers.origin ?? "", this.baseUrl)
+        !timingSafeStringEqual(req.headers.origin ?? "", this.baseUrl)
       ) {
         res.status(403).json({ error: "Forbidden: origin not allowed" });
         return;
@@ -602,76 +590,12 @@ export class LocalBrowserHandoff implements VisualBrowserFallback {
   }
 
   private setupRoutes(): void {
-    const webDirectory = firstExistingDirectory([
-      join(MODULE_DIRECTORY, "..", "ui", "web"),
-      join(process.cwd(), "dist", "ui", "web"),
-    ]);
-    const cardDirectory = firstExistingDirectory([
-      join(MODULE_DIRECTORY, "..", "assets", "cards"),
-      join(process.cwd(), "dist", "assets", "cards"),
-      join(process.cwd(), "assets", "cards"),
-    ]);
-
-    if (webDirectory) {
-      const indexPath = join(webDirectory, "index.html");
-      this.app.get(
-        [HTTP_ENDPOINTS.draw, `${HTTP_ENDPOINTS.draw}/`],
-        (_req, res, next) => {
-          this.setDocumentHeaders(res);
-          res.sendFile(indexPath, (error) => {
-            if (error && !res.headersSent) next(error);
-          });
-        },
-      );
-      this.app.use(
-        HTTP_ENDPOINTS.draw,
-        express.static(webDirectory, {
-          index: false,
-          fallthrough: true,
-          setHeaders: (res, filePath) => {
-            res.setHeader("X-Content-Type-Options", "nosniff");
-            res.setHeader(
-              "Cache-Control",
-              filePath.endsWith(".html")
-                ? "no-store"
-                : "public, max-age=31536000, immutable",
-            );
-          },
-        }),
-      );
-    } else {
-      this.app.get(
-        [HTTP_ENDPOINTS.draw, `${HTTP_ENDPOINTS.draw}/`],
-        (_req, res) => {
-          this.setDocumentHeaders(res);
-          res
-            .status(503)
-            .type("text/plain")
-            .send(
-              "Visual reading Web build is not available. Run npm run build.",
-            );
-        },
-      );
-    }
-
-    if (cardDirectory) {
-      this.app.use(
-        HTTP_ENDPOINTS.visualCardAssets,
-        express.static(cardDirectory, {
-          index: false,
-          fallthrough: true,
-          immutable: true,
-          maxAge: "1y",
-          setHeaders: (res) => {
-            res.setHeader(
-              "Cache-Control",
-              "public, max-age=31536000, immutable",
-            );
-            res.setHeader("X-Content-Type-Options", "nosniff");
-          },
-        }),
-      );
-    }
+    mountVisualWebAssets(this.app, MODULE_DIRECTORY, {
+      htmlCacheControl: "no-store",
+      missingBuildMessage:
+        "Visual reading Web build is not available. Run npm run build.",
+      setDocumentHeaders: (res) => this.setDocumentHeaders(res),
+    });
 
     this.app.post(HTTP_ENDPOINTS.api.visualHandoffResolve, (req, res, next) => {
       void this.handleResolve(req, res).catch(next);

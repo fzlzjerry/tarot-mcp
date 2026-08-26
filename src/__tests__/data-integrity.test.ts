@@ -1,5 +1,8 @@
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
-import { SPREAD_LOCALIZATIONS_ZH } from "../tarot/readings/spread-localizations.js";
+import {
+  SPREAD_LOCALIZATIONS_ZH,
+  getSpreadPickerCatalog,
+} from "../tarot/readings/spread-localizations.js";
 import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
 import { SPREAD_TYPES, TarotCard } from "../tarot/shared/types.js";
 import {
@@ -181,6 +184,20 @@ describe("tarot card data integrity", () => {
 describe("spread type registry consistency", () => {
   it("keeps SPREAD_TYPES in sync with the TAROT_SPREADS registry", () => {
     expect([...SPREAD_TYPES].sort()).toEqual(Object.keys(TAROT_SPREADS).sort());
+  });
+
+  it("exposes the same localized names in the visual picker catalog", () => {
+    const catalog = getSpreadPickerCatalog("zh");
+    expect(catalog.map((entry) => entry.id)).toEqual([...SPREAD_TYPES]);
+    expect(catalog.find((entry) => entry.id === "career_path")?.name).toBe(
+      "职业发展牌阵",
+    );
+    expect(catalog.find((entry) => entry.id === "weekly_forecast")?.name).toBe(
+      "一周运势",
+    );
+    expect(catalog.find((entry) => entry.id === "single_card")?.name).toBe(
+      "单牌阵",
+    );
   });
 });
 

@@ -1,3 +1,4 @@
+import { formatCardCatalog, formatCardInfo } from "../tarot/cards/card-formatter.js";
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
 
 describe("TarotCardManager", () => {
@@ -7,66 +8,73 @@ describe("TarotCardManager", () => {
     cardManager = await TarotCardManager.create();
   });
 
-  describe("getCardInfo", () => {
+  describe("formatCardInfo", () => {
     it("should return card information for valid card name", () => {
-      const result = cardManager.getCardInfo("The Fool", "upright");
+      const card = cardManager.findCard("The Fool")!;
+      const result = formatCardInfo(card, "upright");
       expect(result).toContain("The Fool (Upright)");
       expect(result).toContain("new beginnings");
       expect(result).toContain("Major Arcana");
     });
 
     it("should return card information for reversed orientation", () => {
-      const result = cardManager.getCardInfo("The Fool", "reversed");
+      const card = cardManager.findCard("The Fool")!;
+      const result = formatCardInfo(card, "reversed");
       expect(result).toContain("The Fool (Reversed)");
       expect(result).toContain("recklessness");
     });
 
-    it("should return error message for invalid card name", () => {
-      const result = cardManager.getCardInfo("Invalid Card", "upright");
-      expect(result).toContain('Card "Invalid Card" not found');
+    it("should return undefined for invalid card name", () => {
+      expect(cardManager.findCard("Invalid Card")).toBeUndefined();
     });
 
     it("should default to upright orientation", () => {
-      const result = cardManager.getCardInfo("The Fool");
+      const card = cardManager.findCard("The Fool")!;
+      const result = formatCardInfo(card);
       expect(result).toContain("The Fool (Upright)");
     });
 
     it("accepts a Chinese card name for localized lookup", () => {
-      const result = cardManager.getCardInfo("愚者", "upright", "zh");
+      const card = cardManager.findCard("愚者")!;
+      const result = formatCardInfo(card, "upright", "zh");
       expect(result).toContain("# 愚者（The Fool）（正位）");
       expect(result).toContain("全新开始");
     });
   });
 
-  describe("listAllCards", () => {
+  describe("formatCardCatalog", () => {
     it("should list all cards by default", () => {
-      const result = cardManager.listAllCards();
+      const result = formatCardCatalog(cardManager.getAllCards());
       expect(result).toContain("Tarot Cards");
       expect(result).toContain("Major Arcana");
       expect(result).toContain("The Fool");
     });
 
     it("should filter by major arcana", () => {
-      const result = cardManager.listAllCards("major_arcana");
+      const result = formatCardCatalog(cardManager.getAllCards(), "major_arcana");
       expect(result).toContain("Major Arcana");
       expect(result).toContain("The Fool");
       expect(result).toContain("The Magician");
     });
 
     it("should filter by minor arcana", () => {
-      const result = cardManager.listAllCards("minor_arcana");
+      const result = formatCardCatalog(cardManager.getAllCards(), "minor_arcana");
       expect(result).toContain("Wands");
       expect(result).toContain("Cups");
     });
 
     it("should filter by specific suit", () => {
-      const result = cardManager.listAllCards("wands");
+      const result = formatCardCatalog(cardManager.getAllCards(), "wands");
       expect(result).toContain("Wands");
       expect(result).toContain("Ace of Wands");
     });
 
     it("lists localized card names and keywords in Chinese", () => {
-      const result = cardManager.listAllCards("major_arcana", "zh");
+      const result = formatCardCatalog(
+        cardManager.getAllCards(),
+        "major_arcana",
+        "zh",
+      );
       expect(result).toContain("## 大阿卡纳（22 张）");
       expect(result).toContain("愚者（The Fool）");
       expect(result).toContain("全新开始");

@@ -7,7 +7,7 @@ import {
   Language,
   TarotSpread,
 } from "../shared/types.js";
-import { getSecureRandomInt } from "../shared/utils.js";
+import { randomOrientation } from "../shared/utils.js";
 import {
   PerformedReading,
   ReadingPayload,
@@ -15,10 +15,15 @@ import {
   TarotReadingManager,
 } from "./reading-manager.js";
 
-export const VISUAL_ARTWORK_VERSION = "midnight-art-nouveau-v1";
-export const VISUAL_CARD_ASSET_BASE =
-  "/assets/cards/midnight-art-nouveau-v1";
-export const VISUAL_CARD_BACK_URI = `${VISUAL_CARD_ASSET_BASE}/back.webp`;
+export {
+  VISUAL_ARTWORK_VERSION,
+  VISUAL_CARD_ASSET_BASE,
+  VISUAL_CARD_BACK_URI,
+} from "../shared/artwork.js";
+import {
+  VISUAL_ARTWORK_VERSION,
+  VISUAL_CARD_BACK_URI,
+} from "../shared/artwork.js";
 
 export type VisualReadingKind = "spread" | "daily" | "moon" | "custom";
 
@@ -166,9 +171,7 @@ export class VisualDrawManager {
   ) {
     this.now = options.now ?? Date.now;
     this.randomUuid = options.randomUuid ?? randomUUID;
-    this.drawOrientation =
-      options.drawOrientation ??
-      (() => (getSecureRandomInt(2) === 0 ? "upright" : "reversed"));
+    this.drawOrientation = options.drawOrientation ?? randomOrientation;
     this.pendingTtlMs =
       options.pendingTtlMs ?? VisualDrawManager.DEFAULT_PENDING_TTL_MS;
     this.retentionTtlMs =
@@ -373,13 +376,6 @@ export class VisualDrawManager {
       record.confirmationPromise = undefined;
       throw error;
     }
-  }
-
-  public getPendingCount(): number {
-    this.sweep(this.now());
-    return [...this.records.values()].filter(
-      (record) => record.status === "pending" || record.status === "confirming",
-    ).length;
   }
 
   private validateSelection(

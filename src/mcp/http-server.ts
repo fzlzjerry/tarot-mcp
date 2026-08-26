@@ -1,10 +1,9 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
 import rateLimit from "express-rate-limit";
-import { randomUUID, timingSafeEqual } from "node:crypto";
-import { existsSync } from "node:fs";
+import { randomUUID } from "node:crypto";
 import type { Server as HttpServer } from "node:http";
-import { dirname, join } from "node:path";
+import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
@@ -12,6 +11,10 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { HTTP_ENDPOINTS, MCP_SERVER_INFO, TOOL_NAMES } from "./public-api.js";
 import { createMcpProtocolServer } from "./protocol-server.js";
+import {
+  mountVisualWebAssets,
+  timingSafeStringEqual,
+} from "./static-assets.js";
 import { TarotServer, ToolResult } from "./tarot-service.js";
 import { logger } from "../tarot/shared/logger.js";
 import type { Language } from "../tarot/shared/types.js";
@@ -28,10 +31,13 @@ interface McpTransportSession<TTransport> {
 
 const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
 const MODULE_DIRECTORY = dirname(fileURLToPath(import.meta.url));
-
-function firstExistingDirectory(candidates: string[]): string | undefined {
-  return candidates.find((candidate) => existsSync(candidate));
-}
+const PUBLIC_DRAW_HEADERS = {
+  "Cache-Control": "public, max-age=300",
+  "Referrer-Policy": "no-referrer",
+  "X-Content-Type-Options": "nosniff",
+  "Content-Security-Policy":
+    "default-src 'self'; connect-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'",
+} as const;
 
 function parseCsvEnv(value: string | undefined): string[] {
   return (value ?? "")
@@ -52,15 +58,6 @@ function stripPort(host: string): string {
   // "[::1]:3000" -> "[::1]", "example.com:3000" -> "example.com"
   const match = /^(\[[^\]]+\]|[^:]+)/.exec(host);
   return match ? match[1] : host;
-}
-
-function timingSafeStringEqual(a: string, b: string): boolean {
-  const bufferA = Buffer.from(a);
-  const bufferB = Buffer.from(b);
-  if (bufferA.length !== bufferB.length) {
-    return false;
-  }
-  return timingSafeEqual(bufferA, bufferB);
 }
 
 /**
@@ -220,76 +217,16 @@ export class TarotHttpServer {
    * behind the normal authentication middleware.
    */
   private setupPublicStaticAssets(): void {
-    const webDirectory = firstExistingDirectory([
-      join(MODULE_DIRECTORY, "..", "ui", "web"),
-      join(process.cwd(), "dist", "ui", "web"),
-    ]);
-    const cardDirectory = firstExistingDirectory([
-      join(MODULE_DIRECTORY, "..", "assets", "cards"),
-      join(process.cwd(), "dist", "assets", "cards"),
-      join(process.cwd(), "assets", "cards"),
-    ]);
-
-    if (webDirectory) {
-      const indexPath = join(webDirectory, "index.html");
-      this.app.get(
-        [HTTP_ENDPOINTS.draw, `${HTTP_ENDPOINTS.draw}/`],
-        (_req, res, next) => {
-          res.setHeader("Cache-Control", "public, max-age=300");
-          res.setHeader("Referrer-Policy", "no-referrer");
-          res.setHeader("X-Content-Type-Options", "nosniff");
-          res.setHeader(
-            "Content-Security-Policy",
-            "default-src 'self'; connect-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'",
-          );
-          res.sendFile(indexPath, (error) => {
-            if (error && !res.headersSent) next(error);
-          });
-        },
-      );
-      this.app.use(
-        HTTP_ENDPOINTS.draw,
-        express.static(webDirectory, {
-          index: false,
-          fallthrough: true,
-          setHeaders: (res, filePath) => {
-            res.setHeader("X-Content-Type-Options", "nosniff");
-            res.setHeader(
-              "Cache-Control",
-              filePath.endsWith(".html")
-                ? "public, max-age=300"
-                : "public, max-age=31536000, immutable",
-            );
-          },
-        }),
-      );
-    } else {
-      this.app.get(
-        [HTTP_ENDPOINTS.draw, `${HTTP_ENDPOINTS.draw}/`],
-        (_req, res) => {
-          res
-            .status(503)
-            .type("text/plain")
-            .send("Visual reading Web build is not available. Run npm run build:ui.");
-        },
-      );
-    }
-
-    if (cardDirectory) {
-      this.app.use(
-        HTTP_ENDPOINTS.visualCardAssets,
-        express.static(cardDirectory, {
-          index: false,
-          fallthrough: true,
-          immutable: true,
-          maxAge: "1y",
-          setHeaders: (res) => {
-            res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-            res.setHeader("X-Content-Type-Options", "nosniff");
-          },
-        }),
-      );
-    }
+    mountVisualWebAssets(this.app, MODULE_DIRECTORY, {
+      htmlCacheControl: "public, max-age=300",
+      missingBuildMessage:
+        "Visual reading Web build is not available. Run npm run build:ui.",
+      setDocumentHeaders: (res) => {
+        for (const [name, value] of Object.entries(PUBLIC_DRAW_HEADERS)) {
+          res.setHeader(name, value);
+        }
+      },
+    });
   }
 
   /**

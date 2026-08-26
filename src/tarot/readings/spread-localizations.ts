@@ -1,4 +1,6 @@
-import { Language, SpreadType, TarotSpread } from "../shared/types.js";
+import { SPREAD_TYPES } from "../shared/types.js";
+import type { Language, SpreadType, TarotSpread } from "../shared/types.js";
+import { TAROT_SPREADS } from "./spreads.js";
 
 export interface SpreadLocalization {
   name: string;
@@ -347,4 +349,24 @@ export function localizedSpread(
       meaning: localization.positions[index]?.meaning ?? position.meaning,
     })),
   };
+}
+
+export interface SpreadPickerEntry {
+  id: SpreadType;
+  name: string;
+  cardCount: number;
+}
+
+/** Built-in spreads for the visual setup picker. Names match the server catalog. */
+export function getSpreadPickerCatalog(
+  language: Language,
+): SpreadPickerEntry[] {
+  return SPREAD_TYPES.map((id) => {
+    const spread = localizedSpread(TAROT_SPREADS[id], id, language);
+    return {
+      id,
+      name: spread.name,
+      cardCount: spread.cardCount,
+    };
+  });
 }

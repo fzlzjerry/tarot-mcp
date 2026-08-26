@@ -1,3 +1,5 @@
+import { VISUAL_CARD_ASSET_BASE } from "../tarot/shared/artwork.js";
+
 export const MCP_SERVER_INFO = {
   name: "tarot-mcp-server",
   version: "1.0.0",
@@ -9,7 +11,7 @@ export const HTTP_ENDPOINTS = {
   legacyMessages: "/messages",
   health: "/health",
   draw: "/draw",
-  visualCardAssets: "/assets/cards/midnight-art-nouveau-v1",
+  visualCardAssets: VISUAL_CARD_ASSET_BASE,
   api: {
     info: "/api/info",
     spreads: "/api/spreads",

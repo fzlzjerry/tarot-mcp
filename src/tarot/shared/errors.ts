@@ -12,5 +12,3 @@ export class TarotDomainError extends Error {
 export class SessionNotFoundError extends TarotDomainError {}
 
 export class InvalidSpreadTypeError extends TarotDomainError {}
-
-export class CardNotFoundError extends TarotDomainError {}

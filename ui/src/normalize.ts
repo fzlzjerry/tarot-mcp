@@ -1,4 +1,3 @@
-import { getSpreadTemplate } from "./spreads.js";
 import type {
   BeginReadingInputSnapshot,
   BeginReadingPayload,
@@ -12,7 +11,7 @@ import type {
 
 type UnknownRecord = Record<string, unknown>;
 
-function isRecord(value: unknown): value is UnknownRecord {
+export function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
@@ -125,13 +124,11 @@ export function normalizeBeginPayload(
       spread.type,
       input.spreadType,
     ) ?? (readingKind === "daily" ? "daily_guidance" : readingKind);
-  const template = getSpreadTemplate(spreadType);
   const language = languageValue(payload.language, input.language ?? "en");
   const positions =
     normalizePositions(payload.positions) ??
     normalizePositions(spread.positions) ??
-    input.customSpread?.positions ??
-    template?.positions.map((name) => ({ name }));
+    input.customSpread?.positions;
   const requiredCount = Math.max(
     1,
     Math.min(
@@ -164,7 +161,6 @@ export function normalizeBeginPayload(
     spreadName:
       stringValue(payload.spreadName, payload.spread_name, spread.name) ??
       input.customSpread?.name ??
-      template?.name[language] ??
       spreadType,
     question: stringValue(payload.question, input.question) ?? "",
     language,
@@ -254,7 +250,6 @@ export function normalizeConfirmedReading(
   const language = languageValue(nested.language, begin?.language ?? "en");
   const spreadType =
     stringValue(nested.spreadType, begin?.spreadType) ?? "custom";
-  const template = getSpreadTemplate(spreadType);
   const spread = isRecord(nested.spread) ? nested.spread : {};
   return {
     readingId: stringValue(nested.readingId, nested.id),
@@ -263,7 +258,6 @@ export function normalizeConfirmedReading(
     spreadType,
     spreadName:
       stringValue(nested.spreadName, spread.name, begin?.spreadName) ??
-      template?.name[language] ??
       spreadType,
     question: stringValue(nested.question, begin?.question) ?? "",
     language,

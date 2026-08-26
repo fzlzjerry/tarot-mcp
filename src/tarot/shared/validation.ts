@@ -109,16 +109,6 @@ export const validateCardCategory = validateEnum(
 export const validateSpreadType = validateEnum(SPREAD_TYPES, "spread type");
 
 /**
- * Validates that a value is an optional string (can be undefined)
- */
-export const validateOptionalString: Validator<string | undefined> = (value: unknown) => {
-  if (value === undefined || value === null) {
-    return success(undefined);
-  }
-  return validateString(value);
-};
-
-/**
  * Validates an optional reading-session ID.
  *
  * Some tool-calling clients populate optional string fields with an empty

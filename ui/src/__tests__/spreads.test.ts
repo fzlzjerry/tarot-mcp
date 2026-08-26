@@ -1,18 +1,31 @@
-import { autoLayout, layoutForSpread, SPREAD_TEMPLATES } from "../spreads.js";
+import { SPREAD_TYPES } from "@tarot/shared/types.js";
+import { getSpreadPickerCatalog } from "@tarot/readings/spread-localizations.js";
+import { TAROT_SPREADS } from "@tarot/readings/spreads.js";
+import { autoLayout, layoutForSpread, SPREAD_LAYOUTS } from "../spreads.js";
 
 describe("spread layouts", () => {
   it("defines a complete layout for all 25 built-in spreads", () => {
-    expect(SPREAD_TEMPLATES).toHaveLength(25);
-    expect(new Set(SPREAD_TEMPLATES.map((spread) => spread.id)).size).toBe(25);
-    for (const spread of SPREAD_TEMPLATES) {
-      expect(spread.layout, spread.id).toHaveLength(spread.positions.length);
-      for (const position of spread.layout) {
+    expect(Object.keys(SPREAD_LAYOUTS).sort()).toEqual([...SPREAD_TYPES].sort());
+    for (const id of SPREAD_TYPES) {
+      expect(SPREAD_LAYOUTS[id], id).toHaveLength(TAROT_SPREADS[id].cardCount);
+      for (const position of SPREAD_LAYOUTS[id]) {
         expect(position.x).toBeGreaterThanOrEqual(0);
         expect(position.x).toBeLessThanOrEqual(100);
         expect(position.y).toBeGreaterThanOrEqual(0);
         expect(position.y).toBeLessThanOrEqual(100);
       }
     }
+  });
+
+  it("uses the server catalog names in the setup picker", () => {
+    const chinese = getSpreadPickerCatalog("zh");
+    const career = chinese.find((spread) => spread.id === "career_path");
+    const weekly = chinese.find((spread) => spread.id === "weekly_forecast");
+    expect(career?.name).toBe("职业发展牌阵");
+    expect(weekly?.name).toBe("一周运势");
+    expect(chinese.map((spread) => spread.id).sort()).toEqual(
+      [...SPREAD_TYPES].sort(),
+    );
   });
 
   it("falls back to a centered automatic layout for custom spreads", () => {

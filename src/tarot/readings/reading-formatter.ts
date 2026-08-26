@@ -1,5 +1,10 @@
 import { Language, TarotReading, TarotSpread } from "../shared/types.js";
-import { localizedCardName, localizedKeywords, pick } from "../shared/i18n.js";
+import {
+  localizedCardName,
+  localizedKeywords,
+  localizedOrientation,
+  pick,
+} from "../shared/i18n.js";
 import { DrawnCard } from "../shared/types.js";
 
 /**
@@ -75,10 +80,8 @@ export function orientationLabel(
   orientation: "upright" | "reversed",
   language: Language,
 ): string {
-  if (language === "zh") {
-    return orientation === "upright" ? "（正位）" : "（逆位）";
-  }
-  return ` (${orientation})`;
+  const label = localizedOrientation(orientation, language);
+  return language === "zh" ? `（${label}）` : ` (${label})`;
 }
 
 /**

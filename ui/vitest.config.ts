@@ -3,9 +3,15 @@ import { defineConfig } from "vitest/config";
 import { fileURLToPath, URL } from "node:url";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
+const tarotRoot = fileURLToPath(new URL("../src/tarot", import.meta.url));
 
 export default defineConfig({
   root,
+  resolve: {
+    alias: {
+      "@tarot": tarotRoot,
+    },
+  },
   plugins: [react()],
   test: {
     globals: true,

@@ -1,4 +1,5 @@
 import { webcrypto } from "node:crypto";
+import type { CardOrientation } from "./types.js";
 
 const UINT32_RANGE = 0x100000000;
 
@@ -52,4 +53,9 @@ export function generateId(prefix: string): string {
   const timestamp = Date.now();
   const randomPart = getSecureRandomInt(1000000000).toString(36);
   return `${prefix}_${timestamp}_${randomPart}`;
+}
+
+/** Fair 50/50 upright or reversed orientation. */
+export function randomOrientation(): CardOrientation {
+  return getSecureRandomInt(2) === 0 ? "upright" : "reversed";
 }
