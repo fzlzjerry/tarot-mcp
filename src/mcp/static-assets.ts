@@ -1,7 +1,7 @@
 import { timingSafeEqual } from "node:crypto";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import express, { type Express, type Response } from "express";
+import express, { type Application, type Response } from "express";
 import { HTTP_ENDPOINTS } from "./public-api.js";
 
 export function firstExistingDirectory(
@@ -41,7 +41,7 @@ export interface VisualWebAssetOptions {
 
 /** Mount `/draw` and versioned card assets. Callers keep their own CSP/cache. */
 export function mountVisualWebAssets(
-  app: Express,
+  app: Application,
   moduleDirectory: string,
   options: VisualWebAssetOptions,
 ): void {
