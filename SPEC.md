@@ -46,6 +46,8 @@ deck, secure randomization, sessions, and canonical tarot data.
 - REST: `POST /api/visual-readings`,
   `POST /api/visual-readings/:drawId/confirm`.
 - Web: `GET /draw` and versioned local card-art assets.
+- Browser WebMCP: `document.modelContext` registers catalog, begin-reading and
+  reading-state tools on the standalone page. See [WebMCP notes](docs/webmcp.md).
 - Local stdio browser handoff: an ephemeral loopback-only `/draw` page plus
   internal resolve/confirm endpoints scoped to one prepared draw. These routes
   are not a remotely hosted HTTP/SSE fallback.

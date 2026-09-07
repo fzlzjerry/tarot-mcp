@@ -29,6 +29,7 @@ export function ReadingCloth({
     <section
       className={`reading-cloth reading-cloth--${size}${sparse ? " reading-cloth--sparse" : ""}`}
       aria-label={label}
+      data-card-count={cardCount}
     >
       <div className="reading-cloth__lamp" aria-hidden="true" />
       {children}

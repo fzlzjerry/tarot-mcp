@@ -75,7 +75,6 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
   const scroller = useRef<HTMLDivElement>(null);
   const nodes = useRef<Array<HTMLButtonElement | null>>([]);
   const liftCurrent = useRef<Float64Array>(new Float64Array(0));
-  const liftTarget = useRef<Float64Array>(new Float64Array(0));
   const pointerX = useRef<number | undefined>(undefined);
   const frame = useRef<number | undefined>(undefined);
   const lastActivity = useRef(0);
@@ -100,7 +99,6 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
 
   if (liftCurrent.current.length !== total) {
     liftCurrent.current = new Float64Array(total);
-    liftTarget.current = new Float64Array(total);
   }
 
   /** One pass of arc placement. Reads scroll state, writes transforms only. */
@@ -112,7 +110,9 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     const viewWidth = view.clientWidth;
     const apex = scrollLeft + viewWidth / 2;
     const stripPointer =
-      pointerX.current === undefined ? undefined : pointerX.current + scrollLeft;
+      pointerX.current === undefined
+        ? undefined
+        : pointerX.current + scrollLeft;
 
     const margin = config.step * 6;
     const first = Math.max(
@@ -136,7 +136,6 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
       if (index === focusedIndex) target = Math.max(target, FOCUS_LIFT);
       if (selectedSet.has(slotIds[index]))
         target = Math.max(target, SELECTED_LIFT);
-      liftTarget.current[index] = target;
 
       let lift = liftCurrent.current[index];
       if (reduced) {

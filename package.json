@@ -80,7 +80,13 @@
   },
   "files": [
     "dist/**/*",
+    "docs/**/*.md",
     "README.md",
+    "SPEC.md",
+    "DESIGN.md",
+    "PRODUCT.md",
+    "assets/ASSET_LICENSE.md",
+    "scripts/art/README.md",
     "LICENSE"
   ],
   "repository": {

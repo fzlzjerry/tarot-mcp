@@ -10,6 +10,7 @@ export function useCardImage(
   useEffect(() => {
     let active = true;
     setFailed(false);
+    setSource(undefined);
     void client
       .resolveImage?.(card)
       .then((value) => {

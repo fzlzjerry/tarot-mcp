@@ -8,7 +8,7 @@
  *
  * The offset is applied through custom properties rather than by overwriting
  * `transform`, because the destination already carries its own centring and
- * spread rotation. See `.staged-position` in styles.css for the composition.
+ * spread rotation. See `.cloth-slot` in styles/draw.css for the composition.
  */
 
 export interface FlipRect {

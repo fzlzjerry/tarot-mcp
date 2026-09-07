@@ -13,10 +13,6 @@ export function toggleSelection(
   return [...selected, slotId];
 }
 
-export function undoSelection(selected: readonly string[]): string[] {
-  return selected.slice(0, -1);
-}
-
 export function nextGridIndex(
   current: number,
   key: string,

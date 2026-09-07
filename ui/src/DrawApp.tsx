@@ -7,37 +7,29 @@ import { SetupForm } from "./SetupForm.js";
 import { ritualOrder } from "./deck-order.js";
 import { type FlipRect, prefersReducedMotion } from "./flip.js";
 import { t } from "./i18n.js";
-import { assertCompleteVisualDeck } from "./normalize.js";
-import { toggleSelection, undoSelection } from "./selection.js";
-import type {
-  BeginReadingInput,
-  BeginReadingPayload,
-  ConfirmedReading,
-  DrawClient,
-  Language,
-} from "./types.js";
+import { toggleSelection } from "./selection.js";
+import type { DrawClient, Language } from "./types.js";
+import { useDrawSession } from "./useDrawSession.js";
+import { useWebMcp } from "./webmcp/useWebMcp.js";
 
 interface DrawAppProps {
   client: DrawClient;
 }
 
-type Stage =
-  "setup" | "waiting" | "ritual" | "selecting" | "confirming" | "reading";
-
-function asError(error: unknown): Error {
-  return error instanceof Error ? error : new Error(String(error));
-}
-
 export function DrawApp({ client }: DrawAppProps) {
-  const [language, setLanguage] = useState<Language>(() =>
-    navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en",
-  );
-  const [stage, setStage] = useState<Stage>(
-    client.target === "web" && !client.startsWithHandoff?.()
-      ? "setup"
-      : "waiting",
-  );
-  const [draw, setDraw] = useState<BeginReadingPayload>();
+  const session = useDrawSession(client);
+  const {
+    language,
+    setLanguage,
+    stage,
+    setStage,
+    draw,
+    reading,
+    error,
+    pendingBegin,
+    beginReading,
+    retryBegin,
+  } = session;
   const [deckOrder, setDeckOrder] = useState<string[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [origins, setOrigins] = useState<Record<string, FlipRect>>({});
@@ -45,9 +37,6 @@ export function DrawApp({ client }: DrawAppProps) {
     slotId: string;
     target: FlipRect;
   }>();
-  const [reading, setReading] = useState<ConfirmedReading>();
-  const [error, setError] = useState<Error>();
-  const [pendingBegin, setPendingBegin] = useState(false);
   const arcRef = useRef<ArcFanHandle | null>(null);
 
   const baseOrder = useMemo(
@@ -56,89 +45,19 @@ export function DrawApp({ client }: DrawAppProps) {
   );
 
   useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
-
-  const startDraw = useCallback((payload: BeginReadingPayload): void => {
-    setDraw(payload);
-    setLanguage(payload.language);
-    setDeckOrder(payload.slots.map((slot) => slot.slotId));
+    setDeckOrder(baseOrder);
     setSelected([]);
     setOrigins({});
     setReturning(undefined);
-    setReading(undefined);
-    setError(undefined);
-    setStage("ritual");
-  }, []);
+  }, [baseOrder]);
 
-  useEffect(() => {
-    return client.subscribeInitial?.({
-      onBegin(payload) {
-        try {
-          assertCompleteVisualDeck(payload);
-          startDraw(payload);
-        } catch (nextError) {
-          setDraw(undefined);
-          setError(asError(nextError));
-          setStage("waiting");
-        }
-      },
-      onConfirmed(payload) {
-        setReading(payload);
-        setLanguage(payload.language);
-        setError(undefined);
-        setStage("reading");
-      },
-      onError(nextError) {
-        setError(nextError);
-      },
-    });
-  }, [client, startDraw]);
+  useWebMcp(client.target === "web", {
+    ...session,
+    selectedCount: selected.length,
+  });
 
-  const beginReading = async (input: BeginReadingInput): Promise<void> => {
-    setPendingBegin(true);
-    setError(undefined);
-    try {
-      const payload = await client.beginReading(input);
-      assertCompleteVisualDeck(payload);
-      startDraw(payload);
-    } catch (nextError) {
-      setError(asError(nextError));
-    } finally {
-      setPendingBegin(false);
-    }
-  };
-
-  const confirm = async (): Promise<void> => {
-    if (!draw || selected.length !== draw.requiredCount) return;
-    setStage("confirming");
-    setError(undefined);
-    try {
-      const payload = await client.confirmReading(draw.drawId, selected);
-      if (payload.cards.length !== draw.requiredCount) {
-        throw new Error(
-          `Expected ${draw.requiredCount} cards, received ${payload.cards.length}.`,
-        );
-      }
-      setReading(payload);
-      setStage("reading");
-    } catch (nextError) {
-      setError(asError(nextError));
-      setStage("selecting");
-    }
-  };
-
-  const restart = (): void => {
-    client.clearHandoff?.();
-    setDraw(undefined);
-    setDeckOrder([]);
-    setReading(undefined);
-    setSelected([]);
-    setOrigins({});
-    setReturning(undefined);
-    setError(undefined);
-    setStage(client.target === "web" ? "setup" : "waiting");
-  };
+  const confirm = () => session.confirm(selected);
+  const restart = session.restart;
 
   const commitRemove = useCallback((slotId: string) => {
     setSelected((current) => current.filter((id) => id !== slotId));
@@ -183,7 +102,6 @@ export function DrawApp({ client }: DrawAppProps) {
   const undo = useCallback(() => {
     const last = selected[selected.length - 1];
     if (last) removeCard(last);
-    else setSelected((current) => undoSelection(current));
   }, [removeCard, selected]);
 
   const clearAll = useCallback(() => {
@@ -199,11 +117,11 @@ export function DrawApp({ client }: DrawAppProps) {
           language={language}
           client={client}
           onLanguageChange={setLanguage}
-          onSubmit={(input) => void beginReading(input)}
+          onSubmit={(input) => void beginReading(input).catch(() => undefined)}
           isPending={pendingBegin}
         />
         {error ? (
-          <ErrorBanner error={error} language={language} onRetry={restart} />
+          <ErrorBanner error={error} language={language} onRetry={retryBegin} />
         ) : null}
       </>
     );

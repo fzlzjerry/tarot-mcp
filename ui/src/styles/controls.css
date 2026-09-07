@@ -1,0 +1,49 @@
+/* --------------------------------------------------------------- actions */
+
+.primary-action,
+.text-action {
+  min-height: 44px;
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 650;
+  transition:
+    background-color 170ms ease,
+    color 170ms ease,
+    border-color 170ms ease,
+    transform 170ms var(--ease-out);
+}
+
+.primary-action {
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: var(--on-gold);
+}
+
+.primary-action:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--gold) 88%, white);
+  transform: translateY(-1px);
+}
+
+.text-action {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.text-action:hover:not(:disabled) {
+  border-color: var(--gold-line);
+  color: var(--gold);
+}
+
+button:disabled,
+button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.primary-action:active:not(:disabled),
+.text-action:active:not(:disabled) {
+  transform: translateY(1px);
+}

@@ -118,10 +118,14 @@ export interface DrawClient {
   readonly target: "web" | "mcp";
   startsWithHandoff?(): boolean;
   clearHandoff?(): void;
-  beginReading(input: BeginReadingInput): Promise<BeginReadingPayload>;
+  beginReading(
+    input: BeginReadingInput,
+    options?: { signal?: AbortSignal },
+  ): Promise<BeginReadingPayload>;
   confirmReading(
     drawId: string,
     selectedSlotIds: string[],
+    options?: { signal?: AbortSignal },
   ): Promise<ConfirmedReading>;
   subscribeInitial?(handlers: {
     onBegin(payload: BeginReadingPayload): void;
@@ -140,9 +144,4 @@ export interface LayoutPoint {
   y: number;
   rotation?: number;
   layer?: number;
-}
-
-export interface SpreadLayoutTemplate {
-  id: string;
-  layout: LayoutPoint[];
 }

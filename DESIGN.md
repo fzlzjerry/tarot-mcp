@@ -124,7 +124,7 @@ A low-chroma midnight-indigo field lets restrained antique gold and print ivory 
 ## 3. Typography
 
 **Display Font:** Iowan Old Style, with Palatino, Georgia, and CJK serif fallbacks  
-**Body Font:** Inter, with platform sans-serif and CJK UI fallbacks
+**Body Font:** Platform sans-serif with CJK UI fallbacks
 
 **Character:** The old-style serif gives headings the gravity of a printed divination text. The neutral sans keeps labels, controls, counts, instructions, and interpretation copy immediate in both English and Chinese.
 
@@ -220,3 +220,18 @@ The ritual pile uses 22 real card-back layers to stage one 1500ms physical riffl
 - **Don't** pair static panel borders with broad decorative shadows; surfaces are tonal until state gives them lift.
 - **Don't** use side-stripe accents, gradient text, decorative grid backgrounds, or repeating stripe textures.
 - **Don't** exceed 14px card or panel radii; pills are reserved for controls, values, and keywords.
+
+## 7. Entry page and style ownership
+
+The entry page pairs an illustrated deck introduction with a focused reading
+form. Language lives in the header. A native radio group chooses reading kind;
+the spread selector previews the canonical localized description and positions.
+The form remains one column and moves below the introduction on narrow screens.
+Primary setup controls use a 7px radius; stage controls retain the pill treatment.
+The deck preview is explicitly illustrative and is not the pending reading.
+
+Styles are imported in cascade order by `ui/src/styles/index.css`. Setup,
+controls, waiting, ritual, draw, reading and overlay styles have separate files;
+shared responsive and reduced-motion rules come last. Card selection does not
+permanently raise a chosen card over its neighbors, so adjacent cards stay
+clickable. Keyboard focus still raises the focused card.

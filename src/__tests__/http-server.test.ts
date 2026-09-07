@@ -311,6 +311,8 @@ describe("HTTP MCP server", () => {
     const confirmedJson = await confirm.json();
     expect(confirmedJson.reading.drawId).toBe(beginJson.draw.drawId);
     expect(confirmedJson.reading.cards).toHaveLength(3);
+    expect(confirmedJson.reading.interpretation.length).toBeGreaterThan(100);
+    expect(confirmedJson.result).toContain(confirmedJson.reading.interpretation);
     expect(confirmedJson.reading.cards[0].imageUri).toMatch(
       /^\/assets\/cards\/midnight-art-nouveau-v1\/.+\.webp$/,
     );

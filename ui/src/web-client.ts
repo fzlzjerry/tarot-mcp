@@ -80,10 +80,15 @@ function writeSessionToken(token: string): void {
   }
 }
 
-async function postJson(path: string, bodyValue: unknown): Promise<unknown> {
+async function postJson(
+  path: string,
+  bodyValue: unknown,
+  signal?: AbortSignal,
+): Promise<unknown> {
   const token = readSessionToken();
   const response = await fetch(path, {
     method: "POST",
+    signal,
     headers: {
       "content-type": "application/json",
       ...(token ? { authorization: `Bearer ${token}` } : {}),
@@ -99,6 +104,7 @@ async function postJson(path: string, bodyValue: unknown): Promise<unknown> {
 async function postHandoffJson(
   path: string,
   bodyValue: unknown,
+  signal?: AbortSignal,
 ): Promise<unknown> {
   const token = readHandoffToken();
   if (!token) throw new Error("The visual-reading handoff has expired.");
@@ -106,19 +112,21 @@ async function postHandoffJson(
   try {
     response = await fetch(path, {
       method: "POST",
+      signal,
       headers: {
         "content-type": "application/json",
         authorization: `Tarot-Handoff ${token}`,
       },
       body: JSON.stringify(bodyValue),
     });
-  } catch {
+  } catch (error) {
+    if (signal?.aborted) throw error;
     const language: Language = document.documentElement.lang
       .toLowerCase()
       .startsWith("zh")
       ? "zh"
       : "en";
-    throw new Error(t(language, "handoffDisconnected"));
+    throw new Error(t(language, "handoffDisconnected"), { cause: error });
   }
   const body = (await response.json().catch(() => ({}))) as unknown;
   if (!response.ok)
@@ -191,8 +199,15 @@ export function createWebClient(): DrawClient {
         active = false;
       };
     },
-    async beginReading(input: BeginReadingInput): Promise<BeginReadingPayload> {
-      const result = await postJson("/api/visual-readings", input);
+    async beginReading(
+      input: BeginReadingInput,
+      options,
+    ): Promise<BeginReadingPayload> {
+      const result = await postJson(
+        "/api/visual-readings",
+        input,
+        options?.signal,
+      );
       const payload = normalizeBeginPayload(result, input);
       assertCompleteVisualDeck(payload);
       starts.set(payload.drawId, payload);
@@ -201,14 +216,20 @@ export function createWebClient(): DrawClient {
     async confirmReading(
       drawId: string,
       selectedSlotIds: string[],
+      options,
     ): Promise<ConfirmedReading> {
       const result = readHandoffToken()
-        ? await postHandoffJson("/api/visual-handoff/confirm", {
-            selectedSlotIds,
-          })
+        ? await postHandoffJson(
+            "/api/visual-handoff/confirm",
+            {
+              selectedSlotIds,
+            },
+            options?.signal,
+          )
         : await postJson(
             `/api/visual-readings/${encodeURIComponent(drawId)}/confirm`,
             { selectedSlotIds },
+            options?.signal,
           );
       return normalizeConfirmedReading(result, starts.get(drawId));
     },

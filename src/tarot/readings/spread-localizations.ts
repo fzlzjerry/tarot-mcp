@@ -355,6 +355,8 @@ export interface SpreadPickerEntry {
   id: SpreadType;
   name: string;
   cardCount: number;
+  description: string;
+  positions: Array<{ name: string; meaning: string }>;
 }
 
 /** Built-in spreads for the visual setup picker. Names match the server catalog. */
@@ -367,6 +369,8 @@ export function getSpreadPickerCatalog(
       id,
       name: spread.name,
       cardCount: spread.cardCount,
+      description: spread.description,
+      positions: spread.positions,
     };
   });
 }

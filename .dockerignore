@@ -29,6 +29,8 @@ logs
 # Tooling and CI
 .claude
 .github
+.gitea
+.impeccable
 .vscode
 .idea
 

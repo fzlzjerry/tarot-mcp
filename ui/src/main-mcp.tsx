@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { DrawApp } from "./DrawApp.js";
 import { createMcpClient } from "./mcp-client.js";
-import "./styles.css";
+import "./styles/index.css";
 
 const root = document.getElementById("root");
 if (!root) throw new Error("Missing #root element");

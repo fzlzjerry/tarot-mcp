@@ -1,3 +1,4 @@
+import { VISUAL_BEGIN_INPUT_SCHEMA } from "../tarot/shared/visual-reading-schema.js";
 import { SPREAD_TYPES } from "../tarot/shared/types.js";
 import { TOOL_NAMES } from "./public-api.js";
 
@@ -28,6 +29,10 @@ const READING_OUTPUT_SCHEMA: Record<string, unknown> = {
     spreadType: { type: "string" },
     spreadName: { type: "string" },
     question: { type: "string" },
+    interpretation: {
+      type: "string",
+      description: "Localized reading interpretation in Markdown.",
+    },
     timestamp: { type: "string", description: "ISO 8601" },
     cards: {
       type: "array",
@@ -136,58 +141,6 @@ const VISUAL_INTERACTIVE_OUTPUT_SCHEMA: Record<string, unknown> = {
   type: "object",
   oneOf: [VISUAL_BEGIN_OUTPUT_SCHEMA, VISUAL_READING_OUTPUT_SCHEMA],
 };
-
-const VISUAL_COMMON_INPUT_PROPERTIES = {
-  readingKind: {
-    type: "string",
-    enum: ["spread", "daily", "moon", "custom"],
-  },
-  language: {
-    type: "string",
-    enum: ["en", "zh"],
-    default: "en",
-  },
-  question: {
-    type: "string",
-    description: "Question or focus for the visual reading.",
-  },
-  idempotencyKey: {
-    type: "string",
-    maxLength: 128,
-    description:
-      "Optional high-entropy client key (a random UUID is recommended). Reusing it with identical parameters returns the same prepared draw; treat it as a draw capability and do not share it between callers.",
-  },
-} as const;
-
-const VISUAL_SESSION_ID_PROPERTY = {
-  type: "string",
-  description:
-    "Continuation only: pass an exact server-issued session_... ID; omit for a new session.",
-} as const;
-
-const VISUAL_CUSTOM_SPREAD_PROPERTY = {
-  type: "object",
-  additionalProperties: false,
-  properties: {
-    name: { type: "string" },
-    description: { type: "string" },
-    positions: {
-      type: "array",
-      minItems: 1,
-      maxItems: 15,
-      items: {
-        type: "object",
-        additionalProperties: false,
-        properties: {
-          name: { type: "string" },
-          meaning: { type: "string" },
-        },
-        required: ["name"],
-      },
-    },
-  },
-  required: ["name", "positions"],
-} as const;
 
 // Definitions are static; build them once at module load.
 const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
@@ -336,69 +289,7 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     },
     description:
       "Start an interactive visual tarot draw. Embedded MCP Apps receive the pending 78-card deck and confirm it with confirm_visual_reading. Local stdio clients without MCP Apps keep this tool call open while the browser is used, then receive the confirmed reading as this same tool result.",
-    inputSchema: {
-      type: "object",
-      properties: {
-        ...VISUAL_COMMON_INPUT_PROPERTIES,
-        spreadType: { type: "string", enum: [...SPREAD_TYPES] },
-        sessionId: VISUAL_SESSION_ID_PROPERTY,
-        customDate: {
-          type: "string",
-          pattern: "^\\d{4}-\\d{2}-\\d{2}$",
-        },
-        customSpread: VISUAL_CUSTOM_SPREAD_PROPERTY,
-      },
-      required: ["readingKind"],
-      oneOf: [
-        {
-          type: "object",
-          additionalProperties: false,
-          properties: {
-            ...VISUAL_COMMON_INPUT_PROPERTIES,
-            readingKind: { const: "spread" },
-            spreadType: {
-              type: "string",
-              enum: [...SPREAD_TYPES],
-            },
-            sessionId: VISUAL_SESSION_ID_PROPERTY,
-          },
-          required: ["readingKind", "spreadType", "question"],
-        },
-        {
-          type: "object",
-          additionalProperties: false,
-          properties: {
-            ...VISUAL_COMMON_INPUT_PROPERTIES,
-            readingKind: { const: "daily" },
-          },
-          required: ["readingKind"],
-        },
-        {
-          type: "object",
-          additionalProperties: false,
-          properties: {
-            ...VISUAL_COMMON_INPUT_PROPERTIES,
-            readingKind: { const: "moon" },
-            customDate: {
-              type: "string",
-              pattern: "^\\d{4}-\\d{2}-\\d{2}$",
-            },
-          },
-          required: ["readingKind"],
-        },
-        {
-          type: "object",
-          additionalProperties: false,
-          properties: {
-            ...VISUAL_COMMON_INPUT_PROPERTIES,
-            readingKind: { const: "custom" },
-            customSpread: VISUAL_CUSTOM_SPREAD_PROPERTY,
-            sessionId: VISUAL_SESSION_ID_PROPERTY,
-          },
-          required: ["readingKind", "question", "customSpread"],
-        },
-      ],
-    },
+    inputSchema: VISUAL_BEGIN_INPUT_SCHEMA,
     outputSchema: VISUAL_INTERACTIVE_OUTPUT_SCHEMA,
   },
   {

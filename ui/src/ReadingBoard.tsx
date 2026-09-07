@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CardDetails } from "./CardDetails.js";
 import { ClothSlot, ReadingCloth } from "./ReadingCloth.js";
 import { PositionKey } from "./PositionKey.js";
+import { ReadingInterpretation } from "./ReadingInterpretation.js";
 import { cardBackStyle } from "./card-style.js";
 import { prefersReducedMotion } from "./flip.js";
 import { t } from "./i18n.js";
@@ -228,7 +229,18 @@ export function ReadingBoard({
       {allRevealed ? (
         <section className="interpretation-panel">
           <h2>{t(language, "interpretation")}</h2>
-          <p>{reading.interpretation ?? t(language, "noInterpretation")}</p>
+          {reading.interpretation ? (
+            <ReadingInterpretation text={reading.interpretation} />
+          ) : (
+            <p>
+              {t(
+                language,
+                client.target === "web"
+                  ? "noWebInterpretation"
+                  : "noInterpretation",
+              )}
+            </p>
+          )}
         </section>
       ) : null}
 

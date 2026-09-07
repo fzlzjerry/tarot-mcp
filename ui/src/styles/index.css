@@ -1,0 +1,9 @@
+@import "./base.css";
+@import "./setup.css";
+@import "./controls.css";
+@import "./waiting.css";
+@import "./ritual.css";
+@import "./draw.css";
+@import "./reading.css";
+@import "./overlays.css";
+@import "./responsive.css";

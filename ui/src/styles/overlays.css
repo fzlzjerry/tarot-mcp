@@ -1,0 +1,136 @@
+/* ---------------------------------------------------------------- dialog */
+
+.modal-backdrop {
+  position: fixed;
+  z-index: var(--z-backdrop);
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  padding: 20px;
+}
+
+.card-dialog {
+  position: relative;
+  z-index: var(--z-dialog);
+  display: grid;
+  grid-template-columns: minmax(180px, 300px) minmax(0, 1fr);
+  width: min(820px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--surface-raised);
+  box-shadow: 0 28px 70px rgb(0 0 0 / 68%);
+}
+
+.dialog-close {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-raised);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.dialog-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.dialog-art {
+  min-height: 430px;
+  background: var(--card-stock);
+}
+
+.dialog-copy {
+  overflow-y: auto;
+  padding: clamp(28px, 5vw, 48px);
+}
+
+.dialog-copy h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.dialog-copy p {
+  color: var(--muted);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.position-label {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.orientation-label {
+  color: var(--gold) !important;
+  font-weight: 650;
+}
+
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 0;
+  list-style: none;
+}
+
+.keyword-list li {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* ------------------------------------------------------------ misc chrome */
+
+.mobile-position-key {
+  display: none;
+}
+
+.error-banner {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: var(--z-banner);
+  display: flex;
+  width: min(480px, calc(100vw - 36px));
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid color-mix(in srgb, var(--danger) 55%, var(--line));
+  border-radius: 12px;
+  background: var(--surface-raised);
+  padding: 14px;
+}
+
+.error-banner div {
+  display: grid;
+  gap: 3px;
+}
+
+.error-banner span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.error-banner button {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+  cursor: pointer;
+  font-weight: 700;
+}

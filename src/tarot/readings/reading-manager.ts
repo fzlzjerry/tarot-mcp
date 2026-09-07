@@ -49,6 +49,7 @@ export interface ReadingPayload {
   spreadType: string;
   spreadName: string;
   question: string;
+  interpretation: string;
   timestamp: string;
   cards: Array<{
     name: string;
@@ -264,6 +265,7 @@ export class TarotReadingManager {
         spreadType,
         spreadName: spread.name,
         question,
+        interpretation: reading.interpretation,
         timestamp: reading.timestamp.toISOString(),
         cards: drawnCards.map((drawnCard) => {
           const meanings = localizedMeanings(

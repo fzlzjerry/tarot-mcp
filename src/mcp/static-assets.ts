@@ -4,7 +4,7 @@ import { join } from "node:path";
 import express, { type Application, type Response } from "express";
 import { HTTP_ENDPOINTS } from "./public-api.js";
 
-export function firstExistingDirectory(
+function firstExistingDirectory(
   candidates: string[],
 ): string | undefined {
   return candidates.find((candidate) => existsSync(candidate));

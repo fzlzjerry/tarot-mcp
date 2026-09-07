@@ -18,7 +18,7 @@ import type { Language } from "./types.js";
 const PILE = 22;
 
 /**
- * One riffle shuffle. Published to CSS as `--shuffle-duration`; styles.css
+ * One riffle shuffle. Published to CSS as `--shuffle-duration`; styles/ritual.css
  * writes every beat as a fraction of it, so the whole choreography — split,
  * riffle, bridge — retimes from this single number.
  *

@@ -5,7 +5,7 @@ import {
   EXTENSION_ID,
   RESOURCE_MIME_TYPE,
 } from "@modelcontextprotocol/ext-apps/server";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { request } from "node:http";
 import type { Response as ExpressResponse } from "express";
 import {
@@ -504,7 +504,15 @@ describe("LocalBrowserHandoff", () => {
     const [webHtml, mcpHtml, styles] = await Promise.all([
       readFile("ui/index.html", "utf8"),
       readFile("ui/mcp-app.html", "utf8"),
-      readFile("ui/src/styles.css", "utf8"),
+      readdir("ui/src/styles").then(async (files) =>
+        (
+          await Promise.all(
+            files
+              .filter((file) => file.endsWith(".css"))
+              .map((file) => readFile(`ui/src/styles/${file}`, "utf8")),
+          )
+        ).join("\n"),
+      ),
     ]);
 
     for (const html of [webHtml, mcpHtml]) {

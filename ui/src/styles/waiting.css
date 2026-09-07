@@ -1,0 +1,78 @@
+/* --------------------------------------------------------------- waiting */
+
+.waiting-shell {
+  align-content: center;
+  color: var(--muted);
+  text-align: center;
+}
+
+.waiting-symbol {
+  color: var(--gold);
+  font-size: 42px;
+}
+
+.confirming-shell {
+  gap: 18px;
+  background:
+    radial-gradient(
+      circle at 50% 46%,
+      color-mix(in srgb, var(--gold) 8%, transparent),
+      transparent 32%
+    ),
+    var(--bg);
+}
+
+.confirming-sigil {
+  position: relative;
+  display: grid;
+  width: 112px;
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.confirming-sigil__orbit {
+  position: absolute;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.confirming-sigil__orbit--outer {
+  inset: 0;
+  border-color: var(--gold-line) transparent;
+  animation: confirming-orbit 4.8s linear infinite;
+}
+
+.confirming-sigil__orbit--inner {
+  inset: 22%;
+  border-color: transparent var(--gold);
+  animation: confirming-orbit-inner 3.4s linear infinite;
+}
+
+.confirming-sigil__star {
+  color: var(--gold);
+  font-size: 30px;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--gold) 55%, transparent);
+  animation: confirming-star 1.5s var(--ease-out-quint) infinite alternate;
+}
+
+@keyframes confirming-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes confirming-orbit-inner {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(-315deg);
+  }
+}
+
+@keyframes confirming-star {
+  to {
+    opacity: 0.72;
+    transform: scale(0.88);
+  }
+}

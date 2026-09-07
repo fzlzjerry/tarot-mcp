@@ -2,6 +2,17 @@ import type { Language } from "./types.js";
 
 const messages = {
   en: {
+    noWebInterpretation: "Select a revealed card to explore its meaning and position.",
+    deckEdition: "The Midnight Deck",
+    deckPreview: "Original deck artwork · 78 illustrated cards",
+    prepareReading: "Begin with a question",
+    spreadCount: "{count} spreads",
+    skipToForm: "Skip to reading setup",
+    choiceNote: "Choose your cards before any faces are revealed.",
+    reflectionNote: "A quiet moment for reflection.",
+    stepIntention: "Set an intention",
+    stepChoose: "Choose your cards",
+    stepReflect: "Explore the reading",
     title: "Choose your cards",
     subtitle:
       "Set a question, choose a spread, then select card backs in the order that feels right.",
@@ -77,6 +88,17 @@ const messages = {
       "Use left and right arrows to move along the spread, up and down to jump ten, Space to select, Backspace to undo, and Ctrl or Command + Enter to confirm.",
   },
   zh: {
+    noWebInterpretation: "点击已翻开的牌，查看它的牌义与牌位。",
+    deckEdition: "午夜牌组",
+    deckPreview: "原创牌面插画 · 完整 78 张牌",
+    prepareReading: "从一个问题开始",
+    spreadCount: "{count} 种牌阵",
+    skipToForm: "跳至抽牌设置",
+    choiceNote: "亲自选好牌，再揭晓牌面。",
+    reflectionNote: "留一点时间，与自己对话。",
+    stepIntention: "写下问题",
+    stepChoose: "亲自选牌",
+    stepReflect: "阅读解读",
     title: "选择你的牌",
     subtitle: "写下问题、选择牌阵，再按直觉依次点选牌背。",
     question: "问题或关注点",

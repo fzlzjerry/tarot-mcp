@@ -1,0 +1,553 @@
+/* --------------------------------------------------- ritual: shuffle, cut */
+
+.ritual-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  align-content: center;
+  gap: clamp(20px, 3vw, 34px);
+  background:
+    radial-gradient(
+      circle at 50% 58%,
+      color-mix(in srgb, var(--gold) 7%, transparent),
+      transparent 34%
+    ),
+    var(--bg);
+  text-align: center;
+}
+
+.ritual-header {
+  max-width: 46ch;
+}
+
+.ritual-header p {
+  margin: 0 auto;
+}
+
+.ritual-header,
+.ritual-status,
+.ritual-actions {
+  position: relative;
+  z-index: 2;
+}
+
+/*
+ * The pile is one physical object with its own choreography, so it owns a
+ * stacking context: nothing it throws — packets, bridge, or the arc it opens
+ * into — can paint over the heading, the status line, or the actions.
+ *
+ * Height = card + the deck's own 42px of edge + 58px of working headroom.
+ * 58px is the tallest anything here ever reaches: the deepest cut lifts its
+ * packet 50px off a 42px stack, and a packet bent open under the thumb tops
+ * out at 60px. Nothing in this block is allowed to exceed either.
+ */
+.ritual-pile {
+  --pile-w: clamp(140px, 26vw, 188px);
+  --pile-h: calc(var(--pile-w) * 1.5);
+  /* One card of edge in the stack: 22 layers ≈ 42px of deck. */
+  --stack-step: 2px;
+  /* The same gap once a packet is bent open, ready to riffle. */
+  --comb-step: 6px;
+  /* Half a card each way: the halves part until their inner edges meet. */
+  --packet-x: calc(var(--pile-w) * 0.5);
+  --packet-tilt: 6deg;
+  /* How ragged the riffle leaves the deck before the bridge squares it. */
+  --mesh-x: 3.5px;
+  --mesh-tilt: 0.9deg;
+  /* A deeper cut is a thicker packet, lifted higher and carried further. */
+  --cut-rise: calc(20px + var(--cut-ratio) * 30px);
+  --cut-slide: calc(12px + var(--cut-ratio) * 16px);
+  --cut-tilt: calc(0.6deg + var(--cut-ratio) * 1.8deg);
+
+  position: relative;
+  z-index: 1;
+  width: var(--pile-w);
+  height: calc(var(--pile-h) + 100px);
+  cursor: default;
+}
+
+/* Only the settled deck is draggable, so only it claims the vertical swipe. */
+.ritual-pile.is-cut {
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.ritual-aura {
+  position: absolute;
+  z-index: 0;
+  top: 42%;
+  left: 50%;
+  width: calc(100% + 136px);
+  aspect-ratio: 1;
+  color: var(--gold);
+  opacity: 0.68;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.ritual-aura__ring {
+  position: absolute;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.ritual-aura__ring--outer {
+  inset: 0;
+  border-color: color-mix(in srgb, var(--gold-line) 72%, transparent)
+    transparent;
+  transform: rotate(18deg);
+}
+
+.ritual-aura__ring--inner {
+  inset: 19%;
+  border-color: transparent color-mix(in srgb, var(--gold) 44%, transparent);
+  transform: rotate(-28deg);
+}
+
+.ritual-aura__star {
+  position: absolute;
+  color: var(--gold-line);
+  font-size: 13px;
+  line-height: 1;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--gold) 42%, transparent);
+}
+
+.ritual-aura__star--north,
+.ritual-aura__star--south {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ritual-aura__star--east,
+.ritual-aura__star--west {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ritual-aura__star--north {
+  top: -6px;
+}
+
+.ritual-aura__star--east {
+  right: -6px;
+}
+
+.ritual-aura__star--south {
+  bottom: -6px;
+}
+
+.ritual-aura__star--west {
+  left: -6px;
+}
+
+/* The arena settles into place under the split, then holds. */
+.ritual-pile.is-shuffling .ritual-aura__ring--outer {
+  animation: ritual-orbit-in calc(var(--shuffle-duration) * 0.42)
+    var(--ease-out-expo) both;
+}
+
+.ritual-pile.is-shuffling .ritual-aura__ring--inner {
+  animation: ritual-orbit-in-reverse calc(var(--shuffle-duration) * 0.42)
+    var(--ease-out-expo) both;
+}
+
+.ritual-pile.is-opening .ritual-aura {
+  animation: ritual-aperture var(--open-duration) var(--ease-out-expo) both;
+}
+
+.ritual-pile.is-opening .ritual-aura__star {
+  animation: ritual-star-flare calc(var(--open-duration) * 0.9)
+    var(--ease-out-quint) both;
+}
+
+/* Lamplight behind the deck, never washed across the artwork in front. */
+.ritual-pile::after {
+  position: absolute;
+  z-index: 0;
+  top: 42%;
+  left: 50%;
+  width: calc(100% + 70px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--gold) 34%, transparent),
+    color-mix(in srgb, var(--gold) 8%, transparent) 38%,
+    transparent 70%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.42);
+}
+
+.ritual-pile.is-opening::after {
+  animation: ritual-flash var(--open-duration) var(--ease-out-expo) both;
+}
+
+@keyframes ritual-orbit-in {
+  from {
+    opacity: 0.2;
+    transform: rotate(-24deg) scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(18deg) scale(1);
+  }
+}
+
+@keyframes ritual-orbit-in-reverse {
+  from {
+    opacity: 0.2;
+    transform: rotate(18deg) scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-28deg) scale(1);
+  }
+}
+
+@keyframes ritual-aperture {
+  0% {
+    opacity: 0.62;
+    transform: translate(-50%, -50%) scale(0.86);
+  }
+  54% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.28);
+  }
+}
+
+@keyframes ritual-star-flare {
+  0%,
+  100% {
+    opacity: 0.28;
+    filter: brightness(1);
+  }
+  52% {
+    opacity: 1;
+    filter: brightness(1.8);
+  }
+}
+
+@keyframes ritual-flash {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.42);
+  }
+  44% {
+    opacity: 0.82;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.16);
+  }
+}
+
+/*
+ * Two contact shadows, one per packet. They exist only while the deck is in
+ * two pieces — one object casts one shadow — and the cards' own edges carry
+ * the weight again as soon as the halves are back together.
+ */
+.ritual-shade {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: -12px;
+  left: 0;
+  height: 30px;
+  background: radial-gradient(
+    closest-side ellipse,
+    rgb(0 0 0 / 62%),
+    rgb(0 0 0 / 0) 78%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ritual-pile.is-shuffling .ritual-shade {
+  animation: ritual-shade-part var(--shuffle-duration) var(--ease-out) both;
+}
+
+@keyframes ritual-shade-part {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  8% {
+    opacity: 0.5;
+  }
+  25% {
+    transform: translateX(calc(var(--side) * var(--packet-x)));
+  }
+  55% {
+    opacity: 0.5;
+    transform: translateX(calc(var(--side) * var(--packet-x)));
+  }
+  72% {
+    opacity: 0.3;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+.ritual-pile__card {
+  /* 0 while the card lies in the deck, 1 while it rides the lifted packet. */
+  --lift: 0;
+  /* Where the card sits once its half is squared off on the table… */
+  --pack-square: calc((var(--layer) - var(--rank)) * var(--stack-step));
+  /* …and where it sits once that half is bent open under the thumb. */
+  --pack-comb: calc(
+    var(--layer) * var(--stack-step) - var(--rank) * var(--comb-step)
+  );
+  /*
+   * The arc the deck opens into. Dip and rotation are tangent to the same
+   * parabola the fan is built from, read at this much shorter span.
+   */
+  --deal-x: calc(var(--u) * var(--pile-w) * 1.15);
+  --deal-y: calc(var(--dip) * 30px - 8px);
+  --deal-rotate: calc(var(--u) * 16deg);
+  /* Beat map — see the comment on .ritual-pile.is-shuffling below. */
+  --split-for: calc(var(--shuffle-duration) * 0.25);
+  --split-at: calc(var(--rank) * var(--shuffle-duration) * 0.005);
+  --riffle-for: calc(var(--shuffle-duration) * 0.16);
+  --riffle-step: calc(var(--layer) * var(--shuffle-duration) * 0.01);
+  --riffle-at: calc(var(--shuffle-duration) * 0.32 + var(--riffle-step));
+  --bridge-for: calc(var(--shuffle-duration) * 0.18);
+  --bridge-step: calc(var(--layer) * var(--shuffle-duration) * 0.005);
+  --bridge-at: calc(var(--shuffle-duration) * 0.7 + var(--bridge-step));
+
+  position: absolute;
+  right: 0;
+  bottom: calc(var(--layer) * var(--stack-step));
+  left: 0;
+  z-index: calc(var(--layer) + 1);
+  height: var(--pile-h);
+  border: 1px solid color-mix(in srgb, var(--gold-line) 70%, transparent);
+  border-radius: 8px;
+  background-color: var(--on-gold);
+  background-image: var(--deck-back-image);
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 45%);
+  /* Identity until --lift flips, so one declaration covers every phase. */
+  transform: translate(
+      calc(var(--lift) * var(--cut-slide)),
+      calc(var(--lift) * var(--cut-rise) * -1)
+    )
+    rotate(calc(var(--lift) * var(--cut-tilt)));
+  transition: transform 180ms var(--ease-out);
+}
+
+.ritual-pile__card.is-lifted {
+  --lift: 1;
+}
+
+/* The packet's underside is the one face that gains real elevation. */
+.ritual-pile__card.is-cut-face {
+  filter: drop-shadow(0 14px 12px rgb(0 0 0 / 62%));
+}
+
+/*
+ * The shuffle, in three beats. Each hands the next its exact end pose and
+ * fills forward until that one begins, so the deck is never between poses:
+ *
+ *   split    0–450ms     the deck divides; both halves bend open
+ *   riffle   480–1035ms  the packets zip together, alternating side by side
+ *   bridge   1050–1478ms the meshed deck arches, then cascades square
+ *
+ * Every time is a fraction of --shuffle-duration, which RitualStage sets, so
+ * the whole sequence retimes from one number in one file.
+ *
+ * A card's packet is its parity and its depth in that packet is half its
+ * layer, which is exactly what a riffle produces — so the last beat can land
+ * every card back on the resting slot it started from.
+ */
+.ritual-pile.is-shuffling .ritual-pile__card {
+  animation:
+    ritual-split var(--split-for) var(--ease-out-quint) var(--split-at) forwards,
+    ritual-riffle var(--riffle-for) var(--ease-out-expo) var(--riffle-at)
+      forwards,
+    ritual-bridge var(--bridge-for) var(--ease-out-expo) var(--bridge-at)
+      forwards;
+  will-change: transform;
+}
+
+@keyframes ritual-split {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  46% {
+    transform: translate(
+        calc(var(--side) * var(--packet-x) * 0.84),
+        var(--pack-square)
+      )
+      rotate(calc(var(--side) * var(--packet-tilt) * 0.28));
+  }
+  100% {
+    transform: translate(calc(var(--side) * var(--packet-x)), var(--pack-comb))
+      rotate(calc(var(--side) * var(--packet-tilt)));
+  }
+}
+
+@keyframes ritual-riffle {
+  0% {
+    transform: translate(calc(var(--side) * var(--packet-x)), var(--pack-comb))
+      rotate(calc(var(--side) * var(--packet-tilt)));
+  }
+  34% {
+    transform: translate(
+        calc(var(--side) * var(--packet-x) * 0.7),
+        calc(var(--pack-comb) - 9px)
+      )
+      rotate(calc(var(--side) * var(--packet-tilt) * 1.4));
+  }
+  100% {
+    transform: translate(calc(var(--side) * var(--mesh-x)), 0)
+      rotate(calc(var(--side) * var(--mesh-tilt)));
+  }
+}
+
+@keyframes ritual-bridge {
+  0% {
+    transform: translate(calc(var(--side) * var(--mesh-x)), 0)
+      rotate(calc(var(--side) * var(--mesh-tilt)));
+  }
+  38% {
+    transform: translate(
+        calc(var(--side) * var(--mesh-x) * 0.45),
+        calc((1 - var(--dip)) * -15px)
+      )
+      rotate(calc(var(--side) * var(--mesh-tilt) * 0.3));
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/*
+ * Confirming the cut: the lifted packet comes home, the squared deck gathers,
+ * then every card sweeps out along the fan's own parabola. The last frame is
+ * an arc of card backs, so handing over to the deck stage is a match cut
+ * rather than a blank beat.
+ */
+.ritual-pile.is-opening .ritual-pile__card {
+  animation: ritual-deal calc(var(--open-duration) * 0.75) var(--ease-out-expo)
+    calc(var(--layer) * var(--open-duration) * 0.01) forwards;
+  will-change: transform;
+}
+
+@keyframes ritual-deal {
+  0% {
+    transform: translate(
+        calc(var(--lift) * var(--cut-slide)),
+        calc(var(--lift) * var(--cut-rise) * -1)
+      )
+      rotate(calc(var(--lift) * var(--cut-tilt))) scale(1);
+  }
+  34% {
+    transform: translate(0, -6px) rotate(0deg) scale(1.006);
+  }
+  100% {
+    transform: translate(var(--deal-x), var(--deal-y))
+      rotate(var(--deal-rotate)) scale(0.8);
+  }
+}
+
+.ritual-cut {
+  position: absolute;
+  right: -30px;
+  bottom: calc(var(--cut-ratio) * 100%);
+  left: -30px;
+  z-index: var(--z-lifted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 26px;
+  margin-bottom: -13px;
+  cursor: ns-resize;
+  animation: ritual-cut-in 240ms var(--ease-out) both;
+}
+
+@keyframes ritual-cut-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Ring the chip and thicken the rule, rather than boxing the whole drag band. */
+.ritual-cut:focus-visible {
+  outline: none;
+}
+
+.ritual-cut:focus-visible .ritual-cut__rule {
+  height: 3px;
+}
+
+.ritual-cut:focus-visible .ritual-cut__value {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.ritual-cut__rule {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 16%,
+    var(--gold) 84%,
+    transparent
+  );
+}
+
+.ritual-cut__value {
+  flex: 0 0 auto;
+  min-width: 32px;
+  border-radius: 999px;
+  background: var(--gold);
+  padding: 2px 8px;
+  color: var(--on-gold);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.ritual-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ritual-shell--opening .ritual-header > p:last-child,
+.ritual-shell--opening .ritual-status {
+  color: var(--gold);
+}
+
+.ritual-shell--opening .ritual-actions {
+  opacity: 0.58;
+  transform: translateY(3px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms var(--ease-out);
+}
+
+.ritual-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}

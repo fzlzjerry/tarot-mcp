@@ -1,0 +1,198 @@
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 819px) {
+  .draw-header,
+  .reading-header {
+    align-items: flex-start;
+  }
+  .staging__header,
+  .deck-section__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .reading-cloth--full {
+    --slot-width: clamp(48px, 11vw, 80px);
+
+    aspect-ratio: 4 / 5;
+    min-height: 560px;
+  }
+  .reading-cloth--full.reading-cloth--sparse {
+    --slot-width: clamp(74px, 14vw, 110px);
+
+    aspect-ratio: 16 / 9;
+    min-height: 330px;
+  }
+  .reading-cloth--compact {
+    --slot-width: clamp(40px, 8vw, 60px);
+
+    aspect-ratio: 16 / 9;
+  }
+  .slot-caption {
+    width: 240%;
+    margin-inline: -70%;
+  }
+}
+
+@media (max-width: 560px) {
+  .draw-header,
+  .reading-header,
+  .draw-toolbar,
+  .reveal-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .selection-meter {
+    align-self: flex-start;
+  }
+  .reading-cloth--full {
+    --slot-width: clamp(44px, 12vw, 64px);
+
+    min-height: 520px;
+  }
+  .reading-cloth--full.reading-cloth--sparse {
+    --slot-width: clamp(64px, 18vw, 90px);
+
+    aspect-ratio: 1.15;
+    min-height: 280px;
+  }
+  .reading-cloth--compact {
+    --slot-width: clamp(44px, 12vw, 54px);
+
+    min-height: 280px;
+  }
+  .staging .slot-caption,
+  .reading-shell .slot-caption {
+    display: none;
+  }
+  .mobile-position-key {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 12px;
+    margin: 14px 0 0;
+    border-top: 1px solid var(--line);
+    padding: 12px;
+    list-style: none;
+  }
+  .mobile-position-key li {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    align-items: start;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+  .mobile-position-key strong {
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+  .deck-section {
+    padding-top: 14px;
+  }
+  .toolbar-actions,
+  .reading-actions,
+  .reveal-toolbar > div {
+    justify-content: stretch;
+  }
+  .toolbar-actions > button,
+  .reading-actions > button,
+  .reveal-toolbar button {
+    flex: 1 1 auto;
+  }
+  .ritual-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+  .card-dialog {
+    grid-template-columns: 1fr;
+    max-height: calc(100dvh - 24px);
+  }
+  .dialog-art {
+    min-height: 0;
+    height: min(46vh, 390px);
+  }
+  .dialog-copy {
+    padding: 24px;
+  }
+  .error-banner {
+    right: 10px;
+    bottom: 10px;
+    width: calc(100vw - 20px);
+  }
+}
+
+.reading-cloth--full.reading-cloth--sparse[data-card-count="1"] {
+  --slot-width: clamp(124px, 22vw, 190px);
+}
+
+/* --------------------------------------------------------- reduced motion */
+
+/*
+ * Designed alternatives first: the ritual still works, the cards still turn,
+ * nothing depends on an animation having run. The blanket rule below is only
+ * a backstop for anything not named here.
+ */
+@media (prefers-reduced-motion: reduce) {
+  /*
+   * The ritual opens directly on an operable cut: no beat of the shuffle,
+   * no entrance on the slider, and the packet lifts the instant the reader
+   * moves it.
+   */
+  .ritual-pile.is-shuffling .ritual-pile__card,
+  .ritual-pile.is-shuffling .ritual-shade,
+  .ritual-pile.is-shuffling .ritual-aura__ring,
+  .ritual-cut {
+    animation: none;
+  }
+  .ritual-pile__card {
+    transition: none;
+  }
+
+  /* Cross-fade instead of a 3D flip. */
+  .reading-card__inner {
+    transform: none !important;
+  }
+  .reading-card__back,
+  .reading-card__face {
+    backface-visibility: visible;
+    transition: opacity 140ms linear;
+  }
+  .reading-card__face {
+    opacity: 0;
+    transform: none;
+  }
+  .reading-card.is-revealed .reading-card__face {
+    opacity: 1;
+  }
+  .reading-card.is-revealed .reading-card__back {
+    opacity: 0;
+  }
+
+  .confirming-sigil__orbit,
+  .confirming-sigil__star {
+    animation: none;
+  }
+
+  .arc-fan::before,
+  .arc-card.is-drawn::after,
+  .cloth-slot.is-dealing::before,
+  .cloth-slot.is-dealing::after,
+  .cloth-slot.is-dealing .staged-card::before,
+  .reading-card.is-revealed::before {
+    display: none;
+  }
+
+  .reading-card.is-revealed .reading-card__face {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

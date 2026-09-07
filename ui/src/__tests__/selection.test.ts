@@ -1,4 +1,4 @@
-import { nextGridIndex, toggleSelection, undoSelection } from "../selection.js";
+import { nextGridIndex, toggleSelection } from "../selection.js";
 
 describe("deck selection helpers", () => {
   it("preserves selection order, toggles cards, and enforces the limit", () => {
@@ -8,7 +8,6 @@ describe("deck selection helpers", () => {
     expect(selected).toEqual(["a", "b"]);
     expect(toggleSelection(selected, "c", 2)).toEqual(["a", "b"]);
     expect(toggleSelection(selected, "a", 2)).toEqual(["b"]);
-    expect(undoSelection(selected)).toEqual(["a"]);
   });
 
   it("moves focus predictably across responsive grids", () => {

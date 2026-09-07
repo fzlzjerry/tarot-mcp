@@ -69,6 +69,43 @@ function createClient() {
 }
 
 describe("DrawApp", () => {
+  it("retries preparing the same question after a network failure", async () => {
+    const user = userEvent.setup();
+    const { client, beginReading } = createClient();
+    beginReading.mockRejectedValueOnce(new TypeError("Connection interrupted"));
+    render(<DrawApp client={client} />);
+    await user.type(
+      screen.getByLabelText("Question or focus"),
+      "Keep this question",
+    );
+    await user.click(screen.getByRole("button", { name: "Lay out the deck" }));
+    await screen.findByText("Connection interrupted");
+    await user.click(screen.getByRole("button", { name: "Try again" }));
+    await screen.findByRole("heading", { name: "Shuffle and cut" });
+    expect(beginReading).toHaveBeenCalledTimes(2);
+    expect(beginReading.mock.calls[1][0]).toEqual(
+      beginReading.mock.calls[0][0],
+    );
+  });
+
+  it("focuses the invalid field and allows daily guidance without a question", async () => {
+    const user = userEvent.setup();
+    const { client, beginReading } = createClient();
+    render(<DrawApp client={client} />);
+    await user.click(screen.getByRole("button", { name: "Lay out the deck" }));
+    const question = screen.getByLabelText("Question or focus");
+    expect(question.getAttribute("aria-invalid")).toBe("true");
+    expect(document.activeElement).toBe(question);
+    expect(beginReading).not.toHaveBeenCalled();
+    await user.click(screen.getByRole("radio", { name: "Daily guidance" }));
+    await user.click(screen.getByRole("button", { name: "Lay out the deck" }));
+    await screen.findByRole("heading", { name: "Shuffle and cut" });
+    expect(beginReading.mock.calls[0][0]).toMatchObject({
+      readingKind: "daily",
+      language: "en",
+    });
+  });
+
   it("applies the chosen cut to the cards later confirmed", async () => {
     const user = userEvent.setup();
     const { client, confirmReading } = createClient();
@@ -100,7 +137,11 @@ describe("DrawApp", () => {
     const expected = ritualOrder(baseOrder, 3, 148).slice(0, 3);
     expect(expected).not.toEqual(baseOrder.slice(0, 3));
     await waitFor(() =>
-      expect(confirmReading).toHaveBeenCalledWith("draw_test", expected),
+      expect(confirmReading).toHaveBeenCalledWith(
+        "draw_test",
+        expected,
+        expect.objectContaining({ signal: expect.any(AbortSignal) }),
+      ),
     );
   });
 
@@ -148,11 +189,11 @@ describe("DrawApp", () => {
     await user.click(screen.getByRole("button", { name: "Confirm selection" }));
 
     await waitFor(() =>
-      expect(confirmReading).toHaveBeenCalledWith("draw_test", [
-        "opaque-1",
-        "opaque-2",
-        "opaque-3",
-      ]),
+      expect(confirmReading).toHaveBeenCalledWith(
+        "draw_test",
+        ["opaque-1", "opaque-2", "opaque-3"],
+        expect.objectContaining({ signal: expect.any(AbortSignal) }),
+      ),
     );
     expect(
       await screen.findByRole("heading", { name: "Your reading" }),
@@ -229,11 +270,11 @@ describe("DrawApp", () => {
       await screen.findByRole("heading", { name: "Your reading" }),
     ).not.toBeNull();
     expect(confirmReading).toHaveBeenCalledTimes(2);
-    expect(confirmReading).toHaveBeenLastCalledWith("draw_test", [
-      "opaque-1",
-      "opaque-2",
-      "opaque-3",
-    ]);
+    expect(confirmReading).toHaveBeenLastCalledWith(
+      "draw_test",
+      ["opaque-1", "opaque-2", "opaque-3"],
+      expect.objectContaining({ signal: expect.any(AbortSignal) }),
+    );
   });
 
   it("waits for a browser handoff and clears it before starting a new reading", async () => {
