@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { SetStateAction } from "react";
 import { assertCompleteVisualDeck, extractError } from "./normalize.js";
 import { restoreUiSnapshot } from "./ui-state.js";
+import { t } from "./i18n.js";
 import type {
   BeginReadingInput,
   BeginReadingPayload,
@@ -9,15 +10,15 @@ import type {
   DrawClient,
   DrawError,
   Language,
+  PendingConfirmation,
   TarotUiSnapshot,
 } from "./types.js";
 
 export type DrawStageName =
   "setup" | "waiting" | "ritual" | "selecting" | "confirming" | "reading";
 
-interface ConfirmationSnapshot {
+interface ConfirmationSnapshot extends PendingConfirmation {
   drawId: string;
-  selectedSlotIds: string[];
   requiredCount: number;
 }
 
@@ -96,7 +97,22 @@ export function useDrawSession(client: DrawClient) {
       if (restored?.confirmedReading?.readingId) {
         seenReadingIds.current.add(restored.confirmedReading.readingId);
       }
-      setError(undefined);
+      if (restored?.pendingConfirmation) {
+        confirmation.current = {
+          ...restored.pendingConfirmation,
+          drawId: payload.drawId,
+          requiredCount: payload.requiredCount,
+        };
+        setSelectionLocked(true);
+        setError(
+          Object.assign(
+            new Error(t(payload.language, "confirmationUnknown")),
+            restored.pendingConfirmation.failure,
+          ),
+        );
+      } else {
+        setError(undefined);
+      }
       setStage(
         restored?.confirmedReading
           ? "reading"
@@ -123,6 +139,7 @@ export function useDrawSession(client: DrawClient) {
       }
       activeDrawId.current = nextDrawId;
       lastInput.current = undefined;
+      clearConfirmation();
       setRestoredUiSnapshot(
         restoreUiSnapshot(client.readUiState?.(), nextReading),
       );
@@ -131,7 +148,7 @@ export function useDrawSession(client: DrawClient) {
       setError(undefined);
       setStage("reading");
     },
-    [client, setStage],
+    [client, clearConfirmation, setStage],
   );
 
   useEffect(
@@ -217,13 +234,39 @@ export function useDrawSession(client: DrawClient) {
   );
 
   const submitConfirmation = useCallback(
-    async (snapshot: ConfirmationSnapshot): Promise<void> => {
+    async (
+      snapshot: ConfirmationSnapshot,
+      deckOrder?: string[],
+    ): Promise<void> => {
       if (request.current || stageRef.current === "reading") return;
       const controller = new AbortController();
       request.current = controller;
       setStage("confirming");
       setError(undefined);
+      const activeDraw = currentDraw.current;
+      const previous =
+        client.writeUiState && deckOrder === undefined && activeDraw
+          ? restoreUiSnapshot(client.readUiState?.(), activeDraw)
+          : undefined;
+      confirmation.current = { ...snapshot, failure: undefined };
+      const checkpoint =
+        client.writeUiState && activeDraw
+          ? restoreUiSnapshot(
+              {
+                version: 1,
+                drawId: snapshot.drawId,
+                deckOrder: deckOrder ?? previous?.deckOrder,
+                selectedSlotIds: snapshot.selectedSlotIds,
+                pendingConfirmation: confirmation.current,
+                revealedIndices: [],
+                continuationSent: false,
+              },
+              activeDraw,
+            )
+          : undefined;
       try {
+        // Freeze the submitted slots before the host can discard this iframe.
+        if (checkpoint) client.writeUiState?.(checkpoint);
         const payload = await client.confirmReading(
           snapshot.drawId,
           [...snapshot.selectedSlotIds],
@@ -250,6 +293,24 @@ export function useDrawSession(client: DrawClient) {
               failure.code === "INVALID_SLOT")
           ) {
             clearConfirmation();
+          } else {
+            confirmation.current = {
+              ...snapshot,
+              failure: {
+                ...(typeof failure.code === "string"
+                  ? { code: failure.code }
+                  : {}),
+                ...(typeof failure.httpStatus === "number"
+                  ? { httpStatus: failure.httpStatus }
+                  : {}),
+              },
+            };
+          }
+          if (checkpoint) {
+            client.writeUiState?.({
+              ...checkpoint,
+              pendingConfirmation: confirmation.current,
+            });
           }
           setError(failure);
           setStage("selecting");
@@ -262,7 +323,7 @@ export function useDrawSession(client: DrawClient) {
   );
 
   const confirm = useCallback(
-    async (selected: string[]): Promise<void> => {
+    async (selected: string[], deckOrder?: string[]): Promise<void> => {
       const activeDraw = currentDraw.current;
       if (
         request.current ||
@@ -279,7 +340,7 @@ export function useDrawSession(client: DrawClient) {
       };
       confirmation.current = snapshot;
       setSelectionLocked(true);
-      await submitConfirmation(snapshot);
+      await submitConfirmation(snapshot, deckOrder);
     },
     [submitConfirmation],
   );
@@ -319,6 +380,7 @@ export function useDrawSession(client: DrawClient) {
     error,
     pendingBegin,
     selectionLocked,
+    pendingConfirmation: confirmation.current,
     beginReading,
     confirm,
     retryConfirm,

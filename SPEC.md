@@ -143,13 +143,21 @@ immediately instead of leaving an unreachable waiter.
 - When the host exposes `widgetState` and synchronous `setWidgetState`, the MCP
   App saves a versioned, widget-scoped checkpoint under `privateContent.tarot`
   with empty `modelContent`. It contains opaque presentation order/selection,
+  an optional frozen pending confirmation with machine-readable failure metadata,
   the whitelisted confirmed reading, revealed indices, and acknowledged send
-  state—never artwork, image URIs, or credentials. Web stays in memory.
+  state—never artwork, image URIs, transport error text, or credentials. Web stays in memory.
 - A remounted iframe first waits for the authoritative host result. Only a
   matching draw ID, valid unique 78-slot deck, valid selection, and compatible
   revealed-card indices can restore presentation. Confirmed results resume on
-  the reading page; pending selections resume at selection without confirmation.
+  the reading page. Unsubmitted pending selections remain editable; a submitted
+  pending confirmation restores a retry-only lock with the original ordered slots.
+  Its frozen order must exactly match the saved selection and required count.
   Invalid or foreign snapshots are discarded, not used to initialize another draw.
+- The frozen confirmation is checkpointed synchronously before the request leaves
+  the widget, not just in the later confirming render. Lost responses retain it
+  through remounts. Only an explicit input rejection clears it for correction;
+  confirmed success removes it. Expiry/conflict/authorization metadata remains
+  available for the original recovery action after restoration.
 - The complete revealed result is checkpointed synchronously before requesting
   host continuation, so a host remount cannot turn that result into a new ritual.
   Only acknowledged delivery marks it sent. A remount before acknowledgement

@@ -79,6 +79,67 @@ describe("private UI checkpoint validation", () => {
     expect(restoreUiSnapshot(pending, foreignDeck)).toBeUndefined();
   });
 
+  it("restores a frozen submission and only its machine-readable failure metadata", () => {
+    const pending = {
+      ...snapshot(),
+      confirmedReading: undefined,
+      revealedIndices: [],
+      pendingConfirmation: {
+        selectedSlotIds: ["slot-12", "slot-4"],
+        failure: {
+          code: "DRAW_EXPIRED",
+          httpStatus: 410,
+          message: "private-transport-detail",
+          token: "private-token",
+        },
+      },
+    };
+    const restored = restoreUiSnapshot(pending, beginPayload());
+    expect(restored?.pendingConfirmation).toEqual({
+      selectedSlotIds: ["slot-12", "slot-4"],
+      failure: { code: "DRAW_EXPIRED", httpStatus: 410 },
+    });
+    expect(JSON.stringify(restored)).not.toMatch(
+      /private-transport-detail|private-token/,
+    );
+    const confirmed = restoreUiSnapshot(pending, confirmedReading());
+    expect(confirmed?.confirmedReading?.readingId).toBe("reading-one");
+    expect(confirmed?.pendingConfirmation).toBeUndefined();
+  });
+
+  it("rejects frozen selections that differ from the displayed order or required count", () => {
+    const pending = {
+      ...snapshot(),
+      confirmedReading: undefined,
+      revealedIndices: [],
+    };
+    for (const selectedSlotIds of [
+      ["slot-12"],
+      ["slot-4", "slot-12"],
+      ["slot-12", "foreign"],
+      ["slot-12", "slot-12"],
+    ]) {
+      expect(
+        restoreUiSnapshot(
+          { ...pending, pendingConfirmation: { selectedSlotIds } },
+          beginPayload(),
+        ),
+      ).toBeUndefined();
+    }
+    expect(
+      restoreUiSnapshot(
+        {
+          ...pending,
+          pendingConfirmation: {
+            selectedSlotIds: pending.selectedSlotIds,
+            failure: { httpStatus: "410" },
+          },
+        },
+        beginPayload(),
+      ),
+    ).toBeUndefined();
+  });
+
   it.each([
     { name: "unsupported version", patch: { version: 2 } },
     { name: "short deck", patch: { deckOrder: ["slot-0"] } },

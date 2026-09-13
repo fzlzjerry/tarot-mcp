@@ -42,6 +42,7 @@ function DrawTable({ client }: DrawAppProps) {
     draw,
     reading,
     restoredUiSnapshot,
+    pendingConfirmation,
     error,
     pendingBegin,
     beginReading,
@@ -114,13 +115,22 @@ function DrawTable({ client }: DrawAppProps) {
       drawId: tableDrawId,
       deckOrder,
       selectedSlotIds: selected,
+      ...(!reading && pendingConfirmation ? { pendingConfirmation } : {}),
       ...(reading?.drawId === tableDrawId ? { confirmedReading: reading } : {}),
       revealedIndices:
         progress.drawId === tableDrawId ? progress.revealedIndices : [],
       continuationSent:
         progress.drawId === tableDrawId && progress.continuationSent,
     });
-  }, [client, tableDrawId, placementDrawId, deckOrder, selected, reading]);
+  }, [
+    client,
+    tableDrawId,
+    placementDrawId,
+    deckOrder,
+    selected,
+    reading,
+    pendingConfirmation,
+  ]);
 
   useEffect(() => {
     if (
@@ -152,7 +162,7 @@ function DrawTable({ client }: DrawAppProps) {
   };
   const confirm = () => {
     if (selectionLocked || returningSlot.current) return;
-    void session.confirm(selected);
+    void session.confirm(selected, deckOrder);
   };
   const restart = session.restart;
 

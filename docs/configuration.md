@@ -133,6 +133,14 @@ revealed cards, and acknowledged continuation state. The result is saved before
 calling either continuation bridge. Recreating the iframe and replaying the same
 pending tool result restores the confirmed result page, not the shuffle stage.
 
+Submitted selections also persist an exact frozen confirmation before dispatch.
+If a confirmation response is lost and the widget remounts, the cards stay locked:
+removal, clearing, card selection, and ordinary confirmation cannot replace them.
+The notification retries only the original draw and ordered slots. An explicit
+input rejection clears that lock and persists the editable selection; known
+expiry or conflict still requires a new reading. Recovery metadata keeps only
+machine codes/statuses, not raw transport error messages.
+
 Restoration waits for the original host payload and validates draw identity,
 the complete unique deck, selection membership/count, and revealed indices.
 Snapshots for a different draw are never reused. No image bytes/URIs or secrets

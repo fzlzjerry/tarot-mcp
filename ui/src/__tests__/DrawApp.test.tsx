@@ -94,6 +94,181 @@ function persistentWidget(
 }
 
 describe("DrawApp widget state recovery", () => {
+  it("preserves restart-only recovery for a frozen confirmation already known to be expired", async () => {
+    const remote = createClient();
+    const draw = await remote.beginReading({
+      readingKind: "spread",
+      spreadType: "three_card",
+      question: "What next?",
+      language: "en",
+    });
+    const selectedSlotIds = ["opaque-3", "opaque-1", "opaque-2"];
+    const widget = persistentWidget(remote.client, {
+      snapshot: {
+        version: 1,
+        drawId: draw.drawId,
+        deckOrder: draw.slots.map((slot) => slot.slotId),
+        selectedSlotIds,
+        pendingConfirmation: {
+          selectedSlotIds,
+          failure: { code: "DRAW_EXPIRED", httpStatus: 410 },
+        },
+        revealedIndices: [],
+        continuationSent: false,
+      },
+    });
+    render(<DrawApp client={widget.client} />);
+    act(() => widget.host.onBegin(draw));
+    const notice = within(screen.getByRole("alert"));
+    expect(notice.queryByRole("button", { name: "Try again" })).toBeNull();
+    expect(notice.getByRole("button", { name: "New reading" })).not.toBeNull();
+    expect(remote.confirmReading).not.toHaveBeenCalled();
+  });
+
+  it("keeps a lost confirmation frozen after remount and retries only the original ordered slots", async () => {
+    const user = userEvent.setup();
+    const remote = createClient();
+    const draw = await remote.beginReading({
+      readingKind: "spread",
+      spreadType: "three_card",
+      question: "What next?",
+      language: "en",
+    });
+    const result = { ...(await remote.confirmReading()), drawId: draw.drawId };
+    const store: { snapshot?: TarotUiSnapshot } = {};
+    const ordered = ["opaque-3", "opaque-1", "opaque-2"];
+    let delivered = false;
+    const confirmReading = vi.fn<DrawClient["confirmReading"]>(
+      async (_drawId, slots) => {
+        expect(store.snapshot?.pendingConfirmation?.selectedSlotIds).toEqual(
+          ordered,
+        );
+        expect(slots).toEqual(ordered);
+        if (!delivered) {
+          delivered = true;
+          throw Object.assign(
+            new Error("Successful confirmation response was lost"),
+            { code: -32000 },
+          );
+        }
+        return result;
+      },
+    );
+    const client = { ...remote.client, confirmReading };
+    const first = persistentWidget(client, store);
+    const mounted = render(
+      <StrictMode>
+        <DrawApp client={first.client} />
+      </StrictMode>,
+    );
+    act(() => first.host.onBegin(draw));
+    await user.click(
+      screen.getByRole("button", { name: "Skip remaining ritual" }),
+    );
+    for (const n of [3, 1, 2])
+      await user.click(screen.getByRole("button", { name: `Card back ${n}` }));
+    await user.click(screen.getByRole("button", { name: "Confirm selection" }));
+    await screen.findByRole("alert");
+    expect(confirmReading).toHaveBeenCalledOnce();
+    mounted.unmount();
+
+    const second = persistentWidget(client, store);
+    render(
+      <StrictMode>
+        <DrawApp client={second.client} />
+      </StrictMode>,
+    );
+    act(() => second.host.onBegin(draw));
+    expect(
+      screen.getByRole("heading", { name: "Select the cards" }),
+    ).not.toBeNull();
+    const positions = within(
+      screen.getByRole("list", { name: "Spread positions" }),
+    );
+    for (const button of positions.getAllByRole<HTMLButtonElement>("button")) {
+      expect(button.disabled).toBe(true);
+      await user.click(button);
+    }
+    await user.click(screen.getByRole("button", { name: "Clear selection" }));
+    await user.click(screen.getByRole("button", { name: "Undo last" }));
+    await user.click(screen.getByRole("button", { name: "Card back 4" }));
+    screen.getByRole("button", { name: /^Card back 1\b/ }).focus();
+    await user.keyboard("[Backspace][Space]{Control>}[Enter]{/Control}");
+    expect(
+      screen.getByRole<HTMLButtonElement>("button", {
+        name: "Confirm selection",
+      }).disabled,
+    ).toBe(true);
+    expect(store.snapshot?.selectedSlotIds).toEqual(ordered);
+    expect(confirmReading).toHaveBeenCalledOnce();
+    await user.click(screen.getByRole("button", { name: "Try again" }));
+    await screen.findByRole("heading", { name: "Your reading" });
+    expect(confirmReading.mock.calls.map(([id, slots]) => [id, slots])).toEqual(
+      [
+        [draw.drawId, ordered],
+        [draw.drawId, ordered],
+      ],
+    );
+    expect(store.snapshot?.pendingConfirmation).toBeUndefined();
+    expect(store.snapshot?.confirmedReading?.readingId).toBe(result.readingId);
+  });
+
+  it("removes a restored lock only after an explicit input rejection and preserves that correction state", async () => {
+    const user = userEvent.setup();
+    const remote = createClient();
+    const draw = await remote.beginReading({
+      readingKind: "spread",
+      spreadType: "three_card",
+      question: "What next?",
+      language: "en",
+    });
+    const store: { snapshot?: TarotUiSnapshot } = {
+      snapshot: {
+        version: 1,
+        drawId: draw.drawId,
+        deckOrder: draw.slots.map((slot) => slot.slotId),
+        selectedSlotIds: ["opaque-3", "opaque-1", "opaque-2"],
+        pendingConfirmation: {
+          selectedSlotIds: ["opaque-3", "opaque-1", "opaque-2"],
+        },
+        revealedIndices: [],
+        continuationSent: false,
+      },
+    };
+    const confirmReading = vi
+      .fn<DrawClient["confirmReading"]>()
+      .mockRejectedValueOnce(
+        Object.assign(new Error("Invalid selection"), {
+          code: "INVALID_SLOT",
+          httpStatus: 400,
+        }),
+      );
+    const client = { ...remote.client, confirmReading };
+    const first = persistentWidget(client, store);
+    const mounted = render(<DrawApp client={first.client} />);
+    act(() => first.host.onBegin(draw));
+    await user.click(screen.getByRole("button", { name: "Try again" }));
+    await waitFor(() =>
+      expect(store.snapshot?.pendingConfirmation).toBeUndefined(),
+    );
+    const remove = within(
+      screen.getByRole("list", { name: "Spread positions" }),
+    ).getByRole("button", { name: "Remove selection 1 from Past" });
+    await user.click(remove);
+    expect(store.snapshot?.selectedSlotIds).toEqual(["opaque-1", "opaque-2"]);
+    mounted.unmount();
+    const second = persistentWidget(client, store);
+    render(<DrawApp client={second.client} />);
+    act(() => second.host.onBegin(draw));
+    expect(screen.queryByRole("button", { name: "Try again" })).toBeNull();
+    expect(
+      within(screen.getByRole("list", { name: "Spread positions" }))
+        .getAllByRole<HTMLButtonElement>("button")
+        .every((button) => !button.disabled),
+    ).toBe(true);
+    expect(confirmReading).toHaveBeenCalledOnce();
+  });
+
   it("keeps the revealed result when sending immediately unmounts the widget and the host replays its original pending draw", async () => {
     const user = userEvent.setup();
     const remote = createClient();

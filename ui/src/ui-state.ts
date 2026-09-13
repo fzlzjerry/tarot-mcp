@@ -158,6 +158,49 @@ export function restoreUiSnapshot(
         return undefined;
     }
 
+    let pendingConfirmation: TarotUiSnapshot["pendingConfirmation"];
+    if (value.pendingConfirmation !== undefined) {
+      const pending = value.pendingConfirmation;
+      const selectedSlotIds = value.selectedSlotIds;
+      if (
+        !isRecord(pending) ||
+        !uniqueStrings(pending.selectedSlotIds) ||
+        pending.selectedSlotIds.length !== requiredCount ||
+        selectedSlotIds.length !== requiredCount ||
+        pending.selectedSlotIds.some(
+          (slot, index) => slot !== selectedSlotIds[index],
+        )
+      )
+        return undefined;
+      const failure = pending.failure;
+      if (
+        failure !== undefined &&
+        (!isRecord(failure) ||
+          (failure.code !== undefined && !nonemptyString(failure.code)) ||
+          (failure.httpStatus !== undefined &&
+            (typeof failure.httpStatus !== "number" ||
+              !Number.isInteger(failure.httpStatus) ||
+              failure.httpStatus < 100 ||
+              failure.httpStatus > 599)))
+      )
+        return undefined;
+      pendingConfirmation = {
+        selectedSlotIds: [...pending.selectedSlotIds],
+        ...(failure !== undefined
+          ? {
+              failure: {
+                ...(typeof failure.code === "string"
+                  ? { code: failure.code }
+                  : {}),
+                ...(typeof failure.httpStatus === "number"
+                  ? { httpStatus: failure.httpStatus }
+                  : {}),
+              },
+            }
+          : {}),
+      };
+    }
+
     let confirmedReading: ConfirmedReading | undefined;
     if (value.confirmedReading !== undefined) {
       if (
@@ -168,6 +211,7 @@ export function restoreUiSnapshot(
       )
         return undefined;
       confirmedReading = value.confirmedReading;
+      if (pendingConfirmation && !incomingConfirmed) return undefined;
     }
     const revealedIndices = value.revealedIndices;
     if (
@@ -206,6 +250,7 @@ export function restoreUiSnapshot(
       )
         return undefined;
       confirmedReading = payload;
+      pendingConfirmation = undefined;
     }
 
     return {
@@ -213,6 +258,7 @@ export function restoreUiSnapshot(
       drawId: payload.drawId,
       deckOrder: [...value.deckOrder],
       selectedSlotIds: [...value.selectedSlotIds],
+      ...(pendingConfirmation ? { pendingConfirmation } : {}),
       ...(confirmedReading
         ? { confirmedReading: modelReadingContext(confirmedReading) }
         : {}),

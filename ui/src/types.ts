@@ -119,11 +119,17 @@ export interface ConfirmedReading {
   deckBackImageUri?: string;
 }
 
+export interface PendingConfirmation {
+  selectedSlotIds: string[];
+  failure?: Pick<DrawError, "code" | "httpStatus">;
+}
+
 export interface TarotUiSnapshot {
   version: 1;
   drawId: string;
   deckOrder: string[];
   selectedSlotIds: string[];
+  pendingConfirmation?: PendingConfirmation;
   confirmedReading?: ConfirmedReading;
   revealedIndices: number[];
   continuationSent: boolean;
