@@ -1,8 +1,44 @@
 import {
   assertCompleteVisualDeck,
+  extractError,
   normalizeBeginPayload,
   normalizeConfirmedReading,
 } from "../normalize.js";
+
+describe("draw error normalization", () => {
+  it("preserves error identity and explicit machine metadata across transports", () => {
+    const original = Object.assign(new TypeError("Network disconnected"), {
+      code: "TRANSPORT_LOST",
+    });
+    expect(extractError(original, "fallback")).toBe(original);
+    expect(
+      extractError(
+        { code: "DRAW_EXPIRED", error: "Deck unavailable" },
+        "fallback",
+        410,
+      ),
+    ).toMatchObject({
+      code: "DRAW_EXPIRED",
+      httpStatus: 410,
+      message: "Deck unavailable",
+    });
+    expect(
+      extractError(
+        {
+          isError: true,
+          content: [{ type: "text", text: "Conflict" }],
+          _meta: {
+            tarotError: { code: "DRAW_ALREADY_CONFIRMED", httpStatus: 409 },
+          },
+        },
+        "fallback",
+      ),
+    ).toMatchObject({ code: "DRAW_ALREADY_CONFIRMED", httpStatus: 409 });
+    expect(extractError({}, "fallback", 401)).toMatchObject({
+      httpStatus: 401,
+    });
+  });
+});
 
 describe("visual draw payload normalization", () => {
   it("combines structured content with the MCP-only visual deck metadata", () => {

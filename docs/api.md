@@ -48,7 +48,7 @@ When running in HTTP mode, the following endpoints are available:
   ```
 - `GET /api/spreads?language=en|zh` - List all available spread types with descriptions
 - `POST /api/visual-readings` - Prepare an opaque two-stage visual draw (`readingKind`: `spread`, `daily`, `moon`, or `custom`)
-- `POST /api/visual-readings/:drawId/confirm` - Confirm ordered slot IDs and reveal exactly one idempotent reading
+- `POST /api/visual-readings/:drawId/confirm` - Confirm ordered slot IDs and return one idempotent reading; UI reveal remains manual
 - `POST /api/tools/:toolName` - Invoke any MCP tool over REST using the request body as its arguments. This provides HTTP parity for search, recommendations, analytics, daily/lunar readings, comparison, and session-history tools.
 
 ### Visual UI and artwork
@@ -116,12 +116,38 @@ tool result. Opaque slots alone stay in begin-result `_meta`; the single-file MC
 App bundles its own lightweight artwork, while REST/Web responses retain their
 versioned static `imageUri` values.
 
+All 16 tools provide titles, explicit read-only/destructive/open-world hints,
+and top-level `securitySchemes: [{type: "noauth"}]`. Here `noauth` means no
+additional end-user OAuth flow; the personal tunnel still authenticates upstream
+and adds the configured Bearer header to the private MCP service. Only begin has
+`_meta.ui.resourceUri` with model/app visibility; confirmation is app-only with
+no UI template. A missing built App resource fails `resources/read` with an
+internal error, while text tools remain available.
+
+REST failures retain `{code, error}` and the HTTP status. MCP domain failures
+retain `isError`/text plus `_meta.tarotError: {code, httpStatus}`. UI recovery uses
+these machine fields, never English-message matching:
+
+| Failure | UI recovery |
+| --- | --- |
+| `INVALID_SELECTION_COUNT`, `DUPLICATE_SLOT`, `INVALID_SLOT` | Unlock so the reader can correct the selection |
+| Network/uncoded errors or HTTP 5xx | Keep the table locked; retry the saved draw and ordered slots |
+| `DRAW_ALREADY_CONFIRMING` | Retry the original selection only |
+| `DRAW_ALREADY_CONFIRMED` | Show the conflict and require a new reading |
+| `DRAW_NOT_FOUND`, `DRAW_EXPIRED`, or confirmation REST 404/410 | Restart only; never automatically replace the draw |
+| HTTP 401 | Preserve state; repair Web connection settings or check the private MCP tunnel, then retry |
+
 The server also exposes MCP **resources** (`tarot://cards`,
 `tarot://cards/{id}`, `tarot://spreads`, `tarot://spreads/{type}`) and
 the MCP App resource `ui://tarot-mcp/visual-reading.html` using
 `text/html;profile=mcp-app`, plus **prompts** (`perform-reading`, `daily-draw`).
 
 ## Two-stage visual reading
+
+These are the server's two operations; the manual ritual and reveal are UI
+stages. In the private deployment, include `Authorization: Bearer <MCP_AUTH_TOKEN>`
+when making these REST calls. New begin submissions use new idempotency keys;
+retries must retain the original input/key.
 
 ```bash
 curl -X POST http://localhost:3000/api/visual-readings \
@@ -134,8 +160,8 @@ curl -X POST http://localhost:3000/api/visual-readings \
   }'
 ```
 
-Choose the required opaque `slotId` values from the returned 78-card deck in
-the desired position order, then confirm once:
+Use the ordered opaque `slotId` values chosen by the reader in the UI, then
+confirm that exact order. Do not have a model choose these slots:
 
 ```bash
 curl -X POST http://localhost:3000/api/visual-readings/DRAW_ID/confirm \

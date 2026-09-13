@@ -2,6 +2,7 @@ import type {
   BeginReadingInputSnapshot,
   BeginReadingPayload,
   ConfirmedReading,
+  DrawError,
   DrawSlot,
   EmbeddedImage,
   Language,
@@ -269,19 +270,34 @@ export function normalizeConfirmedReading(
   };
 }
 
-export function extractError(value: unknown, fallback: string): Error {
-  if (value instanceof Error) return value;
-  if (isRecord(value)) {
-    const contentMessage = Array.isArray(value.content)
-      ? value.content.find(
-          (entry): entry is UnknownRecord =>
-            isRecord(entry) &&
-            entry.type === "text" &&
-            typeof entry.text === "string",
-        )?.text
-      : undefined;
-    const message = stringValue(value.error, value.message, contentMessage);
-    if (message) return new Error(message);
+export function extractError(
+  value: unknown,
+  fallback: string,
+  httpStatus?: number,
+): DrawError {
+  if (value instanceof Error) {
+    const error: DrawError = value;
+    if (httpStatus !== undefined) error.httpStatus = httpStatus;
+    return error;
   }
-  return new Error(fallback);
+  const record = isRecord(value) ? value : {};
+  const contentMessage = Array.isArray(record.content)
+    ? record.content.find(
+        (entry): entry is UnknownRecord =>
+          isRecord(entry) &&
+          entry.type === "text" &&
+          typeof entry.text === "string",
+      )?.text
+    : undefined;
+  const error: DrawError = new Error(
+    stringValue(record.error, record.message, contentMessage) ?? fallback,
+  );
+  const metadata =
+    isRecord(record._meta) && isRecord(record._meta.tarotError)
+      ? record._meta.tarotError
+      : record;
+  if (typeof metadata.code === "string") error.code = metadata.code;
+  const status = httpStatus ?? metadata.httpStatus;
+  if (typeof status === "number") error.httpStatus = status;
+  return error;
 }

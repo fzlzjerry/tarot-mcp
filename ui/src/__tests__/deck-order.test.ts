@@ -5,9 +5,7 @@ import {
   arcStripWidth,
   clamp,
   cutDeck,
-  deriveSeed,
   proximityLift,
-  ritualOrder,
   shuffleWithSeed,
 } from "../deck-order.js";
 
@@ -58,41 +56,6 @@ describe("shuffleWithSeed", () => {
     const original = [...deck];
     shuffleWithSeed(deck, 7);
     expect(deck).toEqual(original);
-  });
-});
-
-describe("ritualOrder", () => {
-  it("preserves the full 78-card deck", () => {
-    const order = ritualOrder(deck, 33, 812);
-    expect(order).toHaveLength(78);
-    expect(new Set(order).size).toBe(78);
-  });
-
-  it("replays identically for the same cut and drag", () => {
-    expect(ritualOrder(deck, 33, 812)).toEqual(ritualOrder(deck, 33, 812));
-  });
-
-  it("gives a different deck when the cut lands elsewhere", () => {
-    expect(ritualOrder(deck, 20, 500)).not.toEqual(ritualOrder(deck, 21, 500));
-  });
-
-  it("gives a different deck when the drag differs", () => {
-    expect(ritualOrder(deck, 20, 500)).not.toEqual(ritualOrder(deck, 20, 501));
-  });
-});
-
-describe("deriveSeed", () => {
-  it("returns an unsigned 32-bit integer", () => {
-    for (const [cut, entropy] of [
-      [0, 0],
-      [77, 4096],
-      [-5, -900],
-    ]) {
-      const seed = deriveSeed(cut, entropy);
-      expect(Number.isInteger(seed)).toBe(true);
-      expect(seed).toBeGreaterThanOrEqual(0);
-      expect(seed).toBeLessThanOrEqual(0xffffffff);
-    }
   });
 });
 

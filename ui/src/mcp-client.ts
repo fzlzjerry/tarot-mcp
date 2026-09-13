@@ -6,6 +6,8 @@ import {
   normalizeBeginPayload,
   normalizeConfirmedReading,
 } from "./normalize.js";
+import { modelReadingContext, restoreUiSnapshot } from "./ui-state.js";
+import type { ModelReadingContext } from "./ui-state.js";
 import type {
   BeginReadingInput,
   BeginReadingInputSnapshot,
@@ -14,6 +16,7 @@ import type {
   DrawClient,
   EmbeddedImage,
   ReadingCard,
+  TarotUiSnapshot,
 } from "./types.js";
 
 type InitialHandlers = Parameters<
@@ -22,29 +25,16 @@ type InitialHandlers = Parameters<
 
 const HOST_CONTINUATION_TIMEOUT_MS = 10_000;
 
-interface ModelReadingCard {
-  id: string;
-  name: string;
-  displayName: string;
-  orientation: "upright" | "reversed";
-  position?: string;
-  positionMeaning?: string;
-  meaning?: string;
-  keywords?: string[];
-}
-
-interface ModelReadingContext {
-  status: "confirmed";
-  readingId?: string;
-  sessionId?: string;
-  drawId?: string;
-  spreadType: string;
-  spreadName: string;
-  question: string;
-  language: ConfirmedReading["language"];
-  timestamp?: string;
-  cards: ModelReadingCard[];
-  interpretation?: string;
+interface OpenAiFollowUpBridge {
+  sendFollowUpMessage?: (args: {
+    prompt: string;
+    scrollToBottom?: boolean;
+  }) => Promise<void>;
+  widgetState?: { privateContent?: { tarot?: unknown } };
+  setWidgetState?: (state: {
+    modelContent: Record<string, never>;
+    privateContent: { tarot: TarotUiSnapshot };
+  }) => void;
 }
 
 function applyHostContext(app: App): void {
@@ -54,6 +44,12 @@ function applyHostContext(app: App): void {
   document.documentElement.lang = context?.locale?.startsWith("zh")
     ? "zh"
     : "en";
+  for (const side of ["top", "right", "bottom", "left"] as const) {
+    document.documentElement.style.setProperty(
+      `--host-safe-area-${side}`,
+      `${context?.safeAreaInsets?.[side] ?? 0}px`,
+    );
+  }
 }
 
 function blobUrl(image: EmbeddedImage): string {
@@ -70,36 +66,6 @@ function hasCards(value: unknown): boolean {
   return typeof root.reading === "object" && root.reading !== null
     ? Array.isArray((root.reading as Record<string, unknown>).cards)
     : false;
-}
-
-/** Keep binary card art out of model context while retaining the full reading. */
-function modelReadingContext(reading: ConfirmedReading): ModelReadingContext {
-  return {
-    status: "confirmed",
-    ...(reading.readingId ? { readingId: reading.readingId } : {}),
-    ...(reading.sessionId ? { sessionId: reading.sessionId } : {}),
-    ...(reading.drawId ? { drawId: reading.drawId } : {}),
-    spreadType: reading.spreadType,
-    spreadName: reading.spreadName,
-    question: reading.question,
-    language: reading.language,
-    ...(reading.timestamp ? { timestamp: reading.timestamp } : {}),
-    cards: reading.cards.map((card) => ({
-      id: card.id,
-      name: card.name,
-      displayName: card.displayName,
-      orientation: card.orientation,
-      ...(card.position ? { position: card.position } : {}),
-      ...(card.positionMeaning
-        ? { positionMeaning: card.positionMeaning }
-        : {}),
-      ...(card.meaning ? { meaning: card.meaning } : {}),
-      ...(card.keywords?.length ? { keywords: [...card.keywords] } : {}),
-    })),
-    ...(reading.interpretation
-      ? { interpretation: reading.interpretation }
-      : {}),
-  };
 }
 
 function readingContinuationText(reading: ModelReadingContext): string {
@@ -160,10 +126,50 @@ export function createMcpClient(
   const handlers = new Set<InitialHandlers>();
   const imageCache = new Map<string, string>();
   const continuedReadings = new Set<string>();
+  const continuingReadings = new Map<string, Promise<"sent" | "unsupported">>();
   let lastInput: BeginReadingInputSnapshot = {};
   let lastBegin: BeginReadingPayload | undefined;
   let lastConfirmed: ConfirmedReading | undefined;
   let lastError: Error | undefined;
+
+  const readUiState = (): unknown => {
+    try {
+      const openai = (window as Window & { openai?: OpenAiFollowUpBridge })
+        .openai;
+      return typeof openai?.setWidgetState === "function"
+        ? openai.widgetState?.privateContent?.tarot
+        : undefined;
+    } catch {
+      return undefined;
+    }
+  };
+
+  const matchingSnapshot = (value: unknown): TarotUiSnapshot | undefined => {
+    const payload = lastConfirmed ?? lastBegin;
+    if (!payload) return undefined;
+    return restoreUiSnapshot(
+      value,
+      lastConfirmed && lastBegin && lastBegin.drawId === lastConfirmed.drawId
+        ? { ...lastConfirmed, slots: lastBegin.slots }
+        : payload,
+    );
+  };
+
+  const writeUiState = (state: TarotUiSnapshot): void => {
+    try {
+      const openai = (window as Window & { openai?: OpenAiFollowUpBridge })
+        .openai;
+      if (typeof openai?.setWidgetState !== "function") return;
+      const snapshot = matchingSnapshot(state);
+      if (!snapshot) return;
+      openai.setWidgetState({
+        modelContent: {},
+        privateContent: { tarot: snapshot },
+      });
+    } catch {
+      // Optional host persistence must not interrupt the in-memory ritual.
+    }
+  };
 
   const emit = (): void => {
     for (const handler of handlers) {
@@ -181,7 +187,7 @@ export function createMcpClient(
     };
     assertCompleteVisualDeck(payload);
     lastBegin = payload;
-    lastConfirmed = undefined;
+    if (lastConfirmed?.drawId !== payload.drawId) lastConfirmed = undefined;
     lastError = undefined;
     return payload;
   };
@@ -193,25 +199,26 @@ export function createMcpClient(
     return payload;
   };
 
-  /**
-   * Best-effort bridge from an App-only confirm tool call back into the host
-   * conversation. Updating context gives the model the exact cards; the user
-   * message starts a new assistant turn. Neither request may delay or fail the
-   * card reveal in the App.
-   */
-  const continueInHost = (reading: ConfirmedReading): void => {
+  /** Send the revealed reading only when the user explicitly requests it. */
+  const continueInHost = (
+    reading: ConfirmedReading,
+  ): Promise<"sent" | "unsupported"> => {
     const key = continuationKey(reading);
-    if (continuedReadings.has(key)) return;
-    continuedReadings.add(key);
+    if (continuedReadings.has(key)) return Promise.resolve("sent");
+    const saved = matchingSnapshot(readUiState());
+    if (
+      saved?.continuationSent &&
+      saved.confirmedReading &&
+      restoreUiSnapshot(saved, reading)?.continuationSent
+    ) {
+      continuedReadings.add(key);
+      return Promise.resolve("sent");
+    }
+    const pending = continuingReadings.get(key);
+    if (pending) return pending;
 
-    void (async () => {
-      let capabilities: ReturnType<App["getHostCapabilities"]>;
-      try {
-        capabilities = app.getHostCapabilities();
-      } catch {
-        return;
-      }
-
+    const continuation = (async (): Promise<"sent" | "unsupported"> => {
+      const capabilities = app.getHostCapabilities();
       const context = modelReadingContext(reading);
       const text = readingContinuationText(context);
       const contextCapability = capabilities?.updateModelContext;
@@ -238,19 +245,50 @@ export function createMcpClient(
       }
 
       if (capabilities?.message?.text) {
+        const result = await app.sendMessage(
+          {
+            role: "user",
+            content: [{ type: "text", text }],
+          },
+          { timeout: HOST_CONTINUATION_TIMEOUT_MS },
+        );
+        if (result.isError === true) {
+          throw new Error("The host rejected the interpretation request.");
+        }
+      } else {
+        const openai = (window as Window & { openai?: OpenAiFollowUpBridge })
+          .openai;
+        if (typeof openai?.sendFollowUpMessage !== "function")
+          return "unsupported";
+        // Select one advertised bridge before sending. Never switch bridges
+        // after a rejection or uncertain delivery from the standard API.
+        let timer: number | undefined;
         try {
-          await app.sendMessage(
-            {
-              role: "user",
-              content: [{ type: "text", text }],
-            },
-            { timeout: HOST_CONTINUATION_TIMEOUT_MS },
-          );
-        } catch {
-          // Host continuation is additive; the confirmed cards stay visible.
+          await Promise.race([
+            openai.sendFollowUpMessage({ prompt: text }),
+            new Promise<never>((_, reject) => {
+              timer = window.setTimeout(
+                () =>
+                  reject(
+                    new Error("The host interpretation request timed out."),
+                  ),
+                HOST_CONTINUATION_TIMEOUT_MS,
+              );
+            }),
+          ]);
+        } finally {
+          if (timer !== undefined) window.clearTimeout(timer);
         }
       }
-    })();
+      continuedReadings.add(key);
+      const snapshot = matchingSnapshot(readUiState());
+      if (snapshot?.confirmedReading && restoreUiSnapshot(snapshot, reading)) {
+        writeUiState({ ...snapshot, continuationSent: true });
+      }
+      return "sent";
+    })().finally(() => continuingReadings.delete(key));
+    continuingReadings.set(key, continuation);
+    return continuation;
   };
 
   app.ontoolinput = (params) => {
@@ -303,10 +341,12 @@ export function createMcpClient(
       });
       if (result.isError)
         throw extractError(result, "Could not confirm reading");
-      const reading = captureConfirmed(result);
-      continueInHost(reading);
-      return reading;
+      return captureConfirmed(result);
     },
+    continueReading: continueInHost,
+    readUiState,
+    writeUiState,
+    getPreviewImage: getMcpCardArt,
     async resolveImage(card: ReadingCard): Promise<string | undefined> {
       if (card.embeddedImage) {
         if (card.embeddedImage.data.startsWith("data:")) {

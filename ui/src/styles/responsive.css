@@ -1,5 +1,19 @@
 /* ------------------------------------------------------------ responsive */
 
+/*
+ * The staging cloth is a scale model of the table; its captions are too
+ * small to read at any width, so the position key beneath it carries the
+ * names and the cloth keeps only the numerals.
+ */
+.staging .slot-caption {
+  display: none;
+}
+
+.staging .position-key {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+
 @media (max-width: 819px) {
   .draw-header,
   .reading-header {
@@ -24,9 +38,12 @@
     min-height: 330px;
   }
   .reading-cloth--compact {
-    --slot-width: clamp(40px, 8vw, 60px);
+    --slot-width: clamp(44px, 8vw, 60px);
 
     aspect-ratio: 16 / 9;
+  }
+  .reading-cloth--compact.reading-cloth--sparse {
+    --slot-width: clamp(56px, 12vw, 80px);
   }
   .slot-caption {
     width: 240%;
@@ -41,6 +58,10 @@
   .reveal-toolbar {
     align-items: stretch;
     flex-direction: column;
+  }
+  .draw-toolbar,
+  .reveal-toolbar {
+    gap: 12px;
   }
   .selection-meter {
     align-self: flex-start;
@@ -57,52 +78,63 @@
     min-height: 280px;
   }
   .reading-cloth--compact {
-    --slot-width: clamp(44px, 12vw, 54px);
+    --slot-width: clamp(44px, 12vw, 60px);
 
     min-height: 280px;
   }
-  .staging .slot-caption,
-  .reading-shell .slot-caption {
+  .reading-cloth--compact.reading-cloth--sparse {
+    --slot-width: clamp(56px, 16vw, 80px);
+  }
+  /*
+   * On a phone the card is the art alone. Its position lives in the key
+   * below, and name and orientation join it there once the card is turned.
+   */
+  .reading-shell .slot-caption,
+  .reading-card__caption {
     display: none;
   }
-  .mobile-position-key {
-    display: grid;
+  .reading-card {
+    aspect-ratio: 2 / 3;
+  }
+  .reading-card__face {
+    grid-template-rows: 1fr;
+  }
+  .position-key {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px 12px;
-    margin: 14px 0 0;
-    border-top: 1px solid var(--line);
-    padding: 12px;
-    list-style: none;
-  }
-  .mobile-position-key li {
-    display: grid;
-    grid-template-columns: 22px minmax(0, 1fr);
-    align-items: start;
-    gap: 6px;
-    color: var(--muted);
-    font-size: 0.72rem;
-    line-height: 1.25;
-  }
-  .mobile-position-key strong {
-    color: var(--gold);
-    font-variant-numeric: tabular-nums;
+    gap: 6px 8px;
   }
   .deck-section {
     padding-top: 14px;
   }
+  /*
+   * Two columns, in document order: the primary action comes first and
+   * spans the row, the secondaries share the next. A lone secondary takes
+   * the full row rather than half of it. No `order` — the visual sequence
+   * is the focus sequence.
+   */
   .toolbar-actions,
-  .reading-actions,
-  .reveal-toolbar > div {
-    justify-content: stretch;
+  .reveal-toolbar > div,
+  .ritual-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
-  .toolbar-actions > button,
-  .reading-actions > button,
-  .reveal-toolbar button {
-    flex: 1 1 auto;
+  .toolbar-actions > .primary-action,
+  .reveal-toolbar > div > .primary-action,
+  .ritual-actions > .primary-action,
+  .toolbar-actions > :nth-child(2):last-child,
+  .reveal-toolbar > div > :nth-child(2):last-child,
+  .ritual-actions > :nth-child(2):last-child {
+    grid-column: 1 / -1;
   }
   .ritual-actions {
-    align-items: stretch;
-    flex-direction: column-reverse;
+    width: 100%;
+  }
+  .toolbar-actions > button,
+  .reveal-toolbar > div > button,
+  .ritual-actions > button {
+    min-width: 0;
+    padding-inline: 12px;
   }
   .card-dialog {
     grid-template-columns: 1fr;
@@ -114,11 +146,6 @@
   }
   .dialog-copy {
     padding: 24px;
-  }
-  .error-banner {
-    right: 10px;
-    bottom: 10px;
-    width: calc(100vw - 20px);
   }
 }
 
@@ -167,11 +194,6 @@
   }
   .reading-card.is-revealed .reading-card__back {
     opacity: 0;
-  }
-
-  .confirming-sigil__orbit,
-  .confirming-sigil__star {
-    animation: none;
   }
 
   .arc-fan::before,

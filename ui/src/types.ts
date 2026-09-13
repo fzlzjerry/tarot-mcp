@@ -1,6 +1,11 @@
 export type Language = "en" | "zh";
 export type ReadingKind = "spread" | "daily" | "moon" | "custom";
 
+export interface DrawError extends Error {
+  code?: string;
+  httpStatus?: number;
+}
+
 export interface CustomSpreadInput {
   name: string;
   description?: string;
@@ -114,6 +119,16 @@ export interface ConfirmedReading {
   deckBackImageUri?: string;
 }
 
+export interface TarotUiSnapshot {
+  version: 1;
+  drawId: string;
+  deckOrder: string[];
+  selectedSlotIds: string[];
+  confirmedReading?: ConfirmedReading;
+  revealedIndices: number[];
+  continuationSent: boolean;
+}
+
 export interface DrawClient {
   readonly target: "web" | "mcp";
   startsWithHandoff?(): boolean;
@@ -130,8 +145,12 @@ export interface DrawClient {
   subscribeInitial?(handlers: {
     onBegin(payload: BeginReadingPayload): void;
     onConfirmed(payload: ConfirmedReading): void;
-    onError(error: Error): void;
+    onError(error: DrawError): void;
   }): () => void;
+  continueReading?(reading: ConfirmedReading): Promise<"sent" | "unsupported">;
+  readUiState?(): unknown;
+  writeUiState?(state: TarotUiSnapshot): void;
+  getPreviewImage?(cardId: "moon" | "back" | "star"): string | undefined;
   resolveImage?(card: ReadingCard): Promise<string | undefined>;
   canRequestFullscreen?(): boolean;
   requestFullscreen?(): Promise<void>;

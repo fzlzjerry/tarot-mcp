@@ -1,5 +1,6 @@
 import {
   type CSSProperties,
+  type ReactNode,
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
   useEffect,
@@ -9,6 +10,7 @@ import {
 import { clamp } from "./deck-order.js";
 import { prefersReducedMotion } from "./flip.js";
 import { t } from "./i18n.js";
+import { RitualProgress } from "./RitualProgress.js";
 import type { Language } from "./types.js";
 
 /**
@@ -58,9 +60,11 @@ interface RitualStageProps {
   spreadName: string;
   deckBackImageUri?: string;
   language: Language;
-  /** Cut the deck at `cutIndex`, seeded with how far the hand travelled. */
-  onReady(cutIndex: number, entropy: number): void;
-  /** Leave the deck exactly as the server dealt it. */
+  notice?: ReactNode;
+  /** Reorder opaque slots only when the reader requests a shuffle. */
+  onShuffle(): void;
+  onReady(cutIndex: number): void;
+  /** Keep the current order when skipping the remaining ritual. */
   onSkip(): void;
 }
 
@@ -69,18 +73,20 @@ export function RitualStage({
   spreadName,
   deckBackImageUri,
   language,
+  notice,
+  onShuffle,
   onReady,
   onSkip,
 }: RitualStageProps) {
-  const [phase, setPhase] = useState<"shuffling" | "cut" | "opening">(() =>
-    prefersReducedMotion() ? "cut" : "shuffling",
-  );
+  const [phase, setPhase] = useState<
+    "ready" | "shuffling" | "shuffled" | "cut" | "opening"
+  >("ready");
   const [ratio, setRatio] = useState(0.5);
   const pile = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const cutHandle = useRef<HTMLDivElement>(null);
-  const travel = useRef(0);
-  const lastPointer = useRef<number | undefined>(undefined);
+  const primaryAction = useRef<HTMLButtonElement>(null);
+  const shuffling = useRef(false);
   const openingTimer = useRef<number | undefined>(undefined);
   const opening = useRef(false);
   const dragging = useRef(false);
@@ -91,7 +97,10 @@ export function RitualStage({
 
   useEffect(() => {
     if (phase !== "shuffling") return;
-    const timer = window.setTimeout(() => setPhase("cut"), SHUFFLE_MS);
+    const timer = window.setTimeout(() => {
+      shuffling.current = false;
+      setPhase("shuffled");
+    }, SHUFFLE_MS);
     return () => window.clearTimeout(timer);
   }, [phase]);
 
@@ -101,6 +110,7 @@ export function RitualStage({
     const shouldMoveFocus =
       active === document.body ||
       active === heading.current ||
+      active === primaryAction.current ||
       (active !== null && pile.current?.contains(active));
     if (shouldMoveFocus) cutHandle.current?.focus({ preventScroll: true });
   }, [phase]);
@@ -128,18 +138,29 @@ export function RitualStage({
   );
 
   const cutIndex = Math.round(ratio * (total - 1));
+  const cutDescription =
+    cutIndex === 0
+      ? t(language, "keepUncut")
+      : t(language, "cutDepth", { count: cutIndex });
+
+  const shuffle = (): void => {
+    if (shuffling.current || (phase !== "ready" && phase !== "shuffled"))
+      return;
+    onShuffle();
+    shuffling.current = !prefersReducedMotion();
+    setPhase(shuffling.current ? "shuffling" : "shuffled");
+  };
 
   const commitCut = (): void => {
     if (phase !== "cut" || opening.current) return;
-    const entropy = Math.round(travel.current);
+    opening.current = true;
     if (prefersReducedMotion()) {
-      onReady(cutIndex, entropy);
+      onReady(cutIndex);
       return;
     }
-    opening.current = true;
     setPhase("opening");
     openingTimer.current = window.setTimeout(
-      () => onReady(cutIndex, entropy),
+      () => onReady(cutIndex),
       OPENING_MS,
     );
   };
@@ -147,17 +168,12 @@ export function RitualStage({
   const setFromPointer = (clientY: number): void => {
     const box = pile.current?.getBoundingClientRect();
     if (!box || box.height === 0) return;
-    if (lastPointer.current !== undefined) {
-      travel.current += Math.abs(clientY - lastPointer.current);
-    }
-    lastPointer.current = clientY;
     setRatio(clamp(1 - (clientY - box.top) / box.height, 0, 1));
   };
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>): void => {
     if (phase !== "cut") return;
     dragging.current = true;
-    lastPointer.current = undefined;
     event.currentTarget.setPointerCapture(event.pointerId);
     setFromPointer(event.clientY);
   };
@@ -169,15 +185,14 @@ export function RitualStage({
 
   const endDrag = (): void => {
     dragging.current = false;
-    lastPointer.current = undefined;
   };
 
   const nudge = (delta: number): void => {
-    travel.current += 37;
     setRatio((current) => clamp(current + delta, 0, 1));
   };
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
+    if (phase !== "cut" || opening.current) return;
     const stride = 1 / Math.max(1, total - 1);
     switch (event.key) {
       case "ArrowUp":
@@ -200,12 +215,10 @@ export function RitualStage({
         break;
       case "Home":
         event.preventDefault();
-        travel.current += 37;
         setRatio(0);
         break;
       case "End":
         event.preventDefault();
-        travel.current += 37;
         setRatio(1);
         break;
       case "Enter":
@@ -225,7 +238,7 @@ export function RitualStage({
    * the pose the reader left the deck in.
    */
   const liftedCount =
-    phase === "shuffling" ? 0 : Math.round(ratio * (PILE - 1));
+    phase === "cut" || phase === "opening" ? Math.round(ratio * (PILE - 1)) : 0;
   /** Lowest card of the lifted packet; PILE while the deck is still whole. */
   const cutFace = PILE - liftedCount;
 
@@ -234,6 +247,10 @@ export function RitualStage({
       className={`ritual-shell ritual-shell--${phase}`}
       aria-busy={phase === "opening"}
     >
+      <RitualProgress
+        current={phase === "cut" || phase === "opening" ? "cut" : "shuffle"}
+        language={language}
+      />
       <header className="ritual-header">
         <p className="spread-label">{spreadName}</p>
         <h1 ref={heading} tabIndex={-1}>
@@ -244,7 +261,9 @@ export function RitualStage({
             ? t(language, "shuffling")
             : phase === "opening"
               ? t(language, "openingDeck")
-              : t(language, "cutHint")}
+              : phase === "cut"
+                ? t(language, "cutHint")
+                : t(language, "shuffleHint")}
         </p>
       </header>
 
@@ -312,7 +331,7 @@ export function RitualStage({
             aria-valuemin={0}
             aria-valuemax={total - 1}
             aria-valuenow={cutIndex}
-            aria-valuetext={t(language, "cutDepth", { count: cutIndex })}
+            aria-valuetext={cutDescription}
             aria-orientation="vertical"
             onKeyDown={onKeyDown}
           >
@@ -324,15 +343,51 @@ export function RitualStage({
         ) : null}
       </div>
 
-      <p className="ritual-status" aria-live="polite">
+      <p
+        className="ritual-status"
+        aria-live={phase === "cut" ? "off" : "polite"}
+      >
         {phase === "shuffling"
           ? t(language, "shuffling")
           : phase === "opening"
             ? t(language, "openingDeck")
-            : t(language, "cutDepth", { count: cutIndex })}
+            : phase === "cut"
+              ? cutDescription
+              : t(language, "shuffleHint")}
       </p>
 
+      {notice}
+
       <div className="ritual-actions">
+        <button
+          ref={primaryAction}
+          type="button"
+          className="primary-action"
+          disabled={phase === "shuffling" || phase === "opening"}
+          onClick={
+            phase === "ready"
+              ? shuffle
+              : phase === "shuffled"
+                ? () => setPhase("cut")
+                : commitCut
+          }
+        >
+          {t(
+            language,
+            phase === "ready"
+              ? "startShuffle"
+              : phase === "shuffling"
+                ? "shuffling"
+                : phase === "shuffled"
+                  ? "enterCut"
+                  : "cutAction",
+          )}
+        </button>
+        {phase === "shuffled" ? (
+          <button type="button" className="text-action" onClick={shuffle}>
+            {t(language, "shuffleAgain")}
+          </button>
+        ) : null}
         <button
           type="button"
           className="text-action"
@@ -340,14 +395,6 @@ export function RitualStage({
           onClick={onSkip}
         >
           {t(language, "skipShuffle")}
-        </button>
-        <button
-          type="button"
-          className="primary-action"
-          disabled={phase !== "cut"}
-          onClick={commitCut}
-        >
-          {t(language, "cutAction")}
         </button>
       </div>
     </main>

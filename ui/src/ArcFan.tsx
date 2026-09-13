@@ -54,6 +54,12 @@ interface ArcFanProps {
   requiredCount: number;
   deckBackImageUri?: string;
   language: Language;
+  /**
+   * Freeze the selection while a confirmation is in flight or a card is still
+   * flying back. Browsing stays open: cards keep focus, arrows and dragging
+   * still move along the spread, but pick, undo and confirm are inert.
+   */
+  disabled?: boolean;
   onToggle(slotId: string, origin: FlipRect): void;
   onUndo(): void;
   onConfirm(): void;
@@ -66,6 +72,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     requiredCount,
     deckBackImageUri,
     language,
+    disabled = false,
     onToggle,
     onUndo,
     onConfirm,
@@ -252,7 +259,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     if (Number.isNaN(current)) return;
     if (event.key === "Backspace") {
       event.preventDefault();
-      onUndo();
+      if (!disabled) onUndo();
       return;
     }
     if (
@@ -261,7 +268,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
       selected.length === requiredCount
     ) {
       event.preventDefault();
-      onConfirm();
+      if (!disabled) onConfirm();
       return;
     }
     const next = nextGridIndex(current, event.key, total, PAGE_STRIDE);
@@ -271,8 +278,13 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     }
   };
 
-  const pick = (index: number, node: HTMLButtonElement): void => {
-    if (dragged.current) return;
+  const pick = (
+    index: number,
+    node: HTMLButtonElement,
+    clickDetail: number,
+  ): void => {
+    // Suppress the drag's pointer click, not keyboard or assistive activation.
+    if (disabled || (dragged.current && clickDetail > 0)) return;
     const slotId = slotIds[index];
     if (!selectedSet.has(slotId) && atLimit) return;
     const view = scroller.current;
@@ -364,7 +376,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
               data-slot-index={index}
               tabIndex={index === tabStopIndex ? 0 : -1}
               aria-pressed={isDrawn}
-              aria-disabled={atLimit && !isDrawn}
+              aria-disabled={disabled || (atLimit && !isDrawn)}
               aria-label={
                 isDrawn
                   ? `${t(language, "deckCard", { number: index + 1 })}, ${t(language, "selectedOrder", { number: order + 1 })}`
@@ -375,7 +387,9 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
                 setFocusedIndex(index);
                 wake();
               }}
-              onClick={(event) => pick(index, event.currentTarget)}
+              onClick={(event) =>
+                pick(index, event.currentTarget, event.detail)
+              }
             >
               {isDrawn ? (
                 <span className="arc-card__order" aria-hidden="true">

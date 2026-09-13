@@ -44,8 +44,9 @@ this imperative provider.
 | `begin_visual_reading`     | Starts the visible reading from setup; rejects overlapping/active readings |
 | `get_visual_reading_state` | Read-only stage, selection count, and result after confirmation            |
 
-Users choose and confirm their cards in the table. The browser provider exposes
-no tool for selecting or finalizing on their behalf. State results omit hidden
+Users explicitly shuffle, cut, choose, confirm, and reveal in the table. The
+browser provider still exposes no tool for selecting or finalizing on their behalf.
+State results omit hidden
 card identities before confirmation, opaque slot IDs, draw capabilities, session
 authentication and image bytes. Reading output can include the user's question,
 so it carries `untrustedContentHint`.
@@ -85,9 +86,11 @@ console.log(JSON.parse(result));
 ```
 
 To verify the full flow, invoke `begin_visual_reading` with a valid reading input,
-check that the page changes to shuffle/cut, select and confirm cards in the UI,
-then invoke `get_visual_reading_state`. It must return the same confirmed reading
-shown in the table. Starting a second reading while the first is active must
+check that the page waits for an explicit shuffle or skip, complete the manual
+cut/selection and confirmation, then invoke `get_visual_reading_state`. It must
+return the same server-confirmed reading even though visual reveal is a separate
+manual action. No WebMCP tool or browser LLM key is added for host continuation.
+Starting a second reading while the first is active must
 fail. Reloading/unmounting must not leave duplicate tool registrations.
 
 Automated UI tests additionally cover StrictMode cleanup, permission rejection,

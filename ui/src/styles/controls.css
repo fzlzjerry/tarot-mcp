@@ -21,20 +21,24 @@
   color: var(--on-gold);
 }
 
-.primary-action:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--gold) 88%, white);
-  transform: translateY(-1px);
-}
-
 .text-action {
   border: 1px solid var(--line);
   background: transparent;
   color: var(--ink);
 }
 
-.text-action:hover:not(:disabled) {
-  border-color: var(--gold-line);
-  color: var(--gold);
+/* Hover is a pointer affordance; a finger never hovers, so touch keeps the
+   resting state and focus-visible carries the keyboard ring on its own. */
+@media (hover: hover) {
+  .primary-action:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--gold) 88%, white);
+    transform: translateY(-1px);
+  }
+
+  .text-action:hover:not(:disabled) {
+    border-color: var(--gold-line);
+    color: var(--gold);
+  }
 }
 
 button:disabled,
@@ -43,7 +47,144 @@ button[aria-disabled="true"] {
   opacity: 0.42;
 }
 
+/*
+ * The main action stays legible while it waits. "Confirm" with two cards
+ * still to choose is a real instruction, not a ghost: a dimmed gold wash
+ * keeps the label at full ink instead of fading the whole control out.
+ */
+.primary-action:disabled {
+  opacity: 1;
+  border-color: var(--gold-line);
+  background: color-mix(in srgb, var(--gold) 28%, var(--surface));
+  color: var(--ink);
+  transform: none;
+}
+
+/* Disabled because something is in flight, not because a step is missing. */
+.primary-action[aria-busy="true"]:disabled,
+[aria-busy="true"] .primary-action:disabled {
+  cursor: progress;
+}
+
 .primary-action:active:not(:disabled),
 .text-action:active:not(:disabled) {
   transform: translateY(1px);
+}
+
+/* ------------------------------------------------------- ritual progress */
+
+/*
+ * Six steps, one line. The current step is the only one in full ink; the
+ * next is named in gold so the reader always knows what the primary action
+ * leads to. Numbers are the step order — the ritual is a sequence and the
+ * slot the reader is in is real information.
+ */
+.ritual-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 0 0 clamp(18px, 3vw, 28px);
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  list-style: none;
+}
+
+.ritual-progress li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+}
+
+.ritual-progress__number {
+  display: grid;
+  width: 22px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ritual-progress li[aria-current="step"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.ritual-progress li[aria-current="step"] .ritual-progress__number {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--on-gold);
+}
+
+.ritual-progress li[data-next] .ritual-progress__number {
+  border-color: var(--gold-line);
+  color: var(--gold);
+}
+
+/* The ritual stage is centred text; the progress line sits centred with it. */
+.ritual-shell .ritual-progress {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 46ch);
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+/* On the setup page the line sits above the wordmark header, which carries
+   its own 100px of height and the rule beneath it. */
+.setup-shell > .ritual-progress {
+  padding-block: 20px 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 560px) {
+  /*
+   * Only the current step and the next one stay visible — the rest are
+   * moved off-canvas, not removed, so a screen reader still hears the
+   * whole sequence and the aria-current position within it.
+   */
+  .ritual-progress {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  .ritual-progress li:not([aria-current="step"]):not([data-next]) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .ritual-progress li[aria-current="step"] {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  /* A hairline runs from the current step to the next; on the last step
+     there is nothing to run to, so there is no line. */
+  .ritual-progress li[aria-current="step"]:not(:last-child)::after {
+    flex: 1 1 16px;
+    min-width: 16px;
+    height: 1px;
+    margin-left: 4px;
+    background: var(--line);
+    content: "";
+  }
+  .ritual-progress li[data-next] {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  .ritual-progress__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

@@ -2,15 +2,13 @@ services:
   tarot-mcp:
     build: .
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     environment:
       - NODE_ENV=production
       # Persist reading sessions across restarts/redeploys.
       - SESSION_STORE_PATH=/data/sessions.json
-      # Public deployments should set these (see README):
-      # - MCP_AUTH_TOKEN=<random secret>       # require Bearer auth
-      # - ALLOWED_ORIGINS=https://your.app     # browser origins beyond localhost
-      # - ALLOWED_HOSTS=tarot.example.com      # reject other Host headers
+      # The private tunnel override supplies Bearer auth and allowed hosts.
+      # Keep browser access local, or use your own SSH local forwarding.
     volumes:
       - tarot-sessions:/data
     restart: unless-stopped

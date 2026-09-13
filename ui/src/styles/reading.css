@@ -53,13 +53,13 @@
   top: 4px;
   left: 4px;
   display: grid;
-  width: clamp(17px, 2.1vw, 23px);
+  width: clamp(20px, 2.1vw, 24px);
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
   background: color-mix(in srgb, var(--on-gold) 85%, transparent);
   color: var(--gold);
-  font-size: clamp(0.52rem, 0.7vw, 0.68rem);
+  font-size: clamp(0.7rem, 0.8vw, 0.74rem);
   font-variant-numeric: tabular-nums;
   font-weight: 800;
   pointer-events: none;
@@ -99,8 +99,10 @@
   background-size: cover;
 }
 
-.reading-card:hover .reading-card__back {
-  border-color: var(--gold);
+@media (hover: hover) {
+  .reading-card:hover .reading-card__back {
+    border-color: var(--gold);
+  }
 }
 
 .reading-card__face {
@@ -124,12 +126,21 @@
   }
 }
 
-.reading-card__face img,
-.dialog-art img {
+/* On the table the art fills its card; in the dialog the whole plate shows. */
+.reading-card__face img {
   width: 100%;
   height: 100%;
   min-height: 0;
   object-fit: cover;
+}
+
+.dialog-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 16px;
+  object-fit: contain;
 }
 
 .reading-card__face img.is-reversed,
@@ -207,8 +218,4 @@
   padding-left: 20px;
   color: var(--muted);
   line-height: 1.75;
-}
-.reading-shell .reveal-toolbar {
-  max-width: 1040px;
-  margin-inline: auto;
 }

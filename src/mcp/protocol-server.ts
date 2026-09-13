@@ -281,10 +281,24 @@ export function createMcpProtocolServer(
         }
       }
 
+      if (
+        !result.ok &&
+        (result.code !== undefined || result.httpStatus !== undefined)
+      ) {
+        resultMeta = {
+          ...resultMeta,
+          tarotError: {
+            ...(result.code !== undefined ? { code: result.code } : {}),
+            ...(result.httpStatus !== undefined
+              ? { httpStatus: result.httpStatus }
+              : {}),
+          },
+        };
+      }
+
       const modelStructuredContent = withoutMcpArtwork(structuredContent);
       const modelResultMeta = withoutMcpArtwork(resultMeta) as
-        | Record<string, unknown>
-        | undefined;
+        Record<string, unknown> | undefined;
 
       return {
         ...(result.ok ? {} : { isError: true }),

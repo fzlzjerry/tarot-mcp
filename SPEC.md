@@ -10,8 +10,9 @@ number of cards.
 Core actions:
 
 1. Start a built-in, daily, moon-phase, or custom visual reading.
-2. Select and reorder the required number of face-down cards.
-3. Confirm once, reveal the cards, and inspect localized meanings.
+2. Manually shuffle, cut, and choose the required face-down cards in order.
+3. Confirm the selection, reveal the cards, then inspect localized meanings or
+   explicitly request host interpretation.
 
 ## Why MCP UI
 
@@ -27,16 +28,24 @@ deck, secure randomization, sessions, and canonical tarot data.
    fallback opens a temporary `127.0.0.1` browser table and keeps the original
    `begin_visual_reading` tool call pending. Web users configure the question,
    language, and reading kind on `/draw`.
-2. The UI shuffles the face-down deck, then lets the reader drag or use the
-   keyboard to choose a cut. Reduced-motion users start at the cut directly, and
-   readers can skip the ritual to retain the server-provided order.
-3. The chosen cut deterministically reorders the 78 opaque slots before the UI
-   displays them as a horizontally scrollable fan beside the target spread.
-4. Each click moves one card into the next spread position. Selection can be
-   undone until the required count is reached.
-5. Confirmation atomically resolves the opaque slots to cards and orientations.
-6. Cards reveal individually or together; selecting a revealed card shows its
-   position meaning, orientation, keywords, and localized meaning.
+2. The pile starts still. Each explicit shuffle uses one local presentation seed
+   to reorder opaque slots, then waits for the reader. Entering the cut is a
+   separate action; repeating a shuffle is optional and never automatic.
+3. Drag or keyboard input chooses the cut on that current order. Cutting rotates
+   the order without another shuffle; zero keeps it uncut. Explicitly skipping
+   the remaining ritual preserves the current order. Reduced motion retains all
+   manual actions but omits animation waits.
+4. Each selection fills the next spread position. Every position also has a
+   readable, operable list entry. Returning a card locks selection until its
+   departure completes; ordinary selection remains reversible before submission.
+5. Confirmation atomically resolves the ordered opaque slots. The table stays
+   mounted and locked while the request runs. Uncertain results retry only the
+   saved draw/selection; explicit input errors permit correction, and expired or
+   conflicting draws require an explicit restart.
+6. Cards remain face down until the reader turns them. Next-card reveal is the
+   primary action; reveal-all is secondary. Details are available for each
+   revealed card. The overall interpretation and optional host continuation
+   appear only after all cards have been turned.
 
 ## Interfaces
 
@@ -86,16 +95,23 @@ conversation in different ways:
   the browser HTTP response, then resolves that same MCP call with the confirmed
   reading. The host therefore receives a normal tool result and can resume the
   AI turn without requiring another user message.
-- **Embedded MCP App:** the original `begin_visual_reading` call returns the
-  pending draw immediately because that result creates the App surface. The App
-  performs `confirm_visual_reading` through the host, publishes the confirmed
-  structured reading with `ui/update-model-context`, and requests continuation
-  with `ui/message` when the host advertises those capabilities. The confirmed
-  cards are then available to the model in the host-created turn. Both bridge
-  payloads contain semantic text/JSON only—never `imageUri`, `embeddedImage`,
-  base64 artwork, or image content blocks. If the host
-  lacks model-context or message support, the App still renders the result but
-  the user may need to continue the conversation manually.
+- **Embedded MCP App:** only `begin_visual_reading` carries the UI resource URI;
+  it returns the pending draw immediately. `confirm_visual_reading` is an
+  app-only data tool and does not send a host message or create another widget.
+  After all cards are revealed, an explicit interpretation button first attempts
+  supported `ui/update-model-context`, then uses standard `ui/message` when
+  `message.text` is advertised. If that standard capability is absent, it
+  feature-detects the official ChatGPT `window.openai.sendFollowUpMessage`
+  compatibility method instead. It never switches bridges after a rejected or
+  timed-out send, so fallback cannot duplicate an uncertain delivery or bypass
+  a host rejection. Context failure does not prevent the complete semantic
+  follow-up. Concurrent requests share a promise. Standard delivery requires a
+  result without `isError: true`; the compatibility method must resolve its
+  documented `Promise<void>`. Both paths have a 10-second timeout. Failure leaves
+  the reading intact and permits a manual retry, with a warning to check the
+  conversation first; no exactly-once claim applies across lost responses. Only
+  when neither interface is available does the App show unsupported. Payloads
+  never contain image bytes/URLs, opaque slots, or credentials.
 
 Progress delivery is also how `link` mode can expose the browser URL without
 ending the long-running call. A compatibility client that provides neither an
@@ -118,6 +134,27 @@ immediately instead of leaving an unreachable waiter.
   endpoints keep their current behavior.
 - Browser handoff records are scoped to one `drawId`, inherit the pending draw's
   expiration, and cannot authorize unrelated API or MCP calls.
+- Each new form submission receives its own begin idempotency key; a begin retry
+  retains the saved input and key. Confirmation retries retain the original
+  ordered slot snapshot. Restart clears request/error/snapshot state.
+- Duplicate host notifications do not reset an active ritual or revealed reading.
+  A different draw cancels old requests and discards their late results. Explicit
+  MCP restart enters the same setup form; initial MCP mount still waits for the host.
+- When the host exposes `widgetState` and synchronous `setWidgetState`, the MCP
+  App saves a versioned, widget-scoped checkpoint under `privateContent.tarot`
+  with empty `modelContent`. It contains opaque presentation order/selection,
+  the whitelisted confirmed reading, revealed indices, and acknowledged send
+  state—never artwork, image URIs, or credentials. Web stays in memory.
+- A remounted iframe first waits for the authoritative host result. Only a
+  matching draw ID, valid unique 78-slot deck, valid selection, and compatible
+  revealed-card indices can restore presentation. Confirmed results resume on
+  the reading page; pending selections resume at selection without confirmation.
+  Invalid or foreign snapshots are discarded, not used to initialize another draw.
+- The complete revealed result is checkpointed synchronously before requesting
+  host continuation, so a host remount cannot turn that result into a new ritual.
+  Only acknowledged delivery marks it sent. A remount before acknowledgement
+  preserves the cards but never automatically retries the message. This is not
+  cross-device storage or an exactly-once message-delivery guarantee.
 
 ## Browser Fallback Policy
 
@@ -182,4 +219,6 @@ immediately instead of leaving an unreachable waiter.
 - UI supports keyboard selection and cutting, explicit focus, screen-reader
   labels, reduced motion, 320px reflow, touch targets, two-axis gesture escape
   from the card fan, and text labels for reversed cards.
-- Deployment and multi-instance shared draw state are outside this implementation.
+- Personal deployment is a single HTTP container plus the official private
+  tunnel client. No public directory submission, new OAuth account system, or
+  multi-instance shared draw state is included.

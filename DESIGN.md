@@ -166,7 +166,7 @@ Components feel restrained and legible around a highly crafted deck. Their shape
 - **Primary:** Antique Gold fill and border with Lacquer Black text; used for the next decisive ritual action.
 - **Hover / Focus / Active:** hover brightens the same gold and lifts 1px; focus uses a 3px Antique Gold outline with 3px offset; press feedback stays short and does not bounce.
 - **Secondary:** transparent with a Divider Indigo border and Print Ivory text; hover changes the line and text to gold.
-- **Disabled:** `0.42` opacity and `not-allowed`; the label remains readable.
+- **Disabled:** opaque ink text on a 28% gold / surface mix, with the gold-line border; use `not-allowed` when incomplete and `progress` during a request. Never fade the whole control.
 
 ### Chips
 
@@ -195,9 +195,14 @@ The cloth is a 14px-radius Table Indigo stage with one broad radial pool of gold
 
 Seventy-eight opaque cards form a horizontally scrollable curve. A single 820ms lamplight sweep introduces the complete fan; it never loops. Proximity and keyboard focus lift nearby cards, while selection stamps one short gold seal, moves the chosen card to the next cloth position, and leaves a clear order marker. Transform is painted directly for smooth scrubbing, without transitioning layout properties or pre-promoting all 78 cards.
 
+Finishing a drag suppresses its pointer-generated click only. Keyboard and
+assistive activation remain available on the same mounted fan without another
+pointerdown, focus reset, or page reload. Confirmation locks apply to every input
+modality independently of that drag suppression.
+
 ### Signature Component: The Ritual Pile
 
-The ritual pile uses 22 real card-back layers to stage one 1500ms physical riffle: two half-thickness packets split and bend open, cards interleave bottom-up, then the meshed deck bridges and cascades square. The settled geometry is also the cut geometry, so dragging lifts a continuously thicker packet without a layout jump. Confirming the cut keeps every card visible while the deck sweeps into a short arc for a 620ms match cut into the 78-card fan. Reduced-motion users enter the same fully operable cut state immediately and bypass both shuffle and opening choreography.
+The ritual pile starts still and uses 22 real card-back layers for each user-requested 1500ms riffle. The reader may shuffle again or explicitly enter the cut; the cut only rotates the current opaque order. Dragging lifts a continuously thicker packet without a layout jump, and zero keeps the deck uncut. Confirming the cut uses the existing 620ms match cut into the fan. Reduced-motion users perform the same manual actions with immediate transitions. Skipping the remaining ritual never resets prior shuffles.
 
 ## 6. Do's and Don'ts
 
@@ -206,7 +211,7 @@ The ritual pile uses 22 real card-back layers to stage one 1500ms physical riffl
 - **Do** use Midnight Indigo, Table Indigo, and Raised Indigo as the complete neutral depth system.
 - **Do** reserve Antique Gold for actions, focus, selection, and reveal.
 - **Do** let card artwork carry ornament; frame it with quiet geometry and precise lamplight.
-- **Do** keep every draw action reversible until confirmation and communicate order without relying on color.
+- **Do** keep selection reversible before submission and communicate its order. Lock while a card returns or confirmation is unresolved; never substitute another selection on retry.
 - **Do** build signature motion from legible physical beats—split, interleave, bridge, settle—then use bounded FLIP and lamplight effects with an immediate reduced-motion path.
 - **Do** retain 44px minimum interactive targets, visible focus, keyboard control, screen-reader status, and WCAG 2.2 AA contrast.
 
@@ -235,3 +240,19 @@ controls, waiting, ritual, draw, reading and overlay styles have separate files;
 shared responsive and reduced-motion rules come last. Card selection does not
 permanently raise a chosen card over its neighbors, so adjacent cards stay
 clickable. Keyboard focus still raises the focused card.
+
+The six-step, non-interactive progress list precedes each stage header. Narrow
+views show the current and next steps while retaining all six in the accessible
+structure. Position lists are operable at every width; small card captions are
+not the only way to identify, remove, reveal, or inspect a position. Compact
+cloth height clears the nearest vertical rim without changing spread coordinates.
+
+The selection and active reveal toolbars stay near the table and become sticky
+with safe-area padding. Remove the reveal toolbar when no reveal actions remain,
+so an empty sticky status does not cover the reading. Errors belong in document
+flow before the relevant actions. MCP shells do not impose a page-sized minimum
+height; they use the host's safe-area insets. Details contain the full original
+artwork rather than cropping it like a table thumbnail.
+In an auto-height MCP iframe, sticky positioning is local to that iframe; it is
+not a promise that controls remain pinned in the surrounding ChatGPT viewport.
+Use the host's fullscreen capability when available.

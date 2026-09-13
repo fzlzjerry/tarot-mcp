@@ -1,16 +1,19 @@
 import type { ReactNode } from "react";
 import { VISUAL_CARD_ASSET_BASE } from "@tarot/shared/artwork.js";
 import { t } from "./i18n.js";
-import type { Language } from "./types.js";
+import { RitualProgress } from "./RitualProgress.js";
+import type { DrawClient, Language } from "./types.js";
 
 /** Page identity and responsive composition, independent of form state. */
 export function SetupShell({
   language,
+  client,
   onLanguageChange,
   spreadCount,
   children,
 }: {
   language: Language;
+  client: DrawClient;
   onLanguageChange(language: Language): void;
   spreadCount: number;
   children: ReactNode;
@@ -20,10 +23,15 @@ export function SetupShell({
       <a className="skip-link" href="#reading-form">
         {t(language, "skipToForm")}
       </a>
+      <RitualProgress current="intention" language={language} />
       <header className="setup-header">
-        <a className="wordmark" href="/draw/" aria-label="Tarot">
-          <span aria-hidden="true">✦</span> Tarot
-        </a>
+        {client.target === "mcp" ? (
+          <span className="wordmark">Tarot</span>
+        ) : (
+          <a className="wordmark" href="/draw/" aria-label="Tarot">
+            <span aria-hidden="true">✦</span> Tarot
+          </a>
+        )}
         <label className="language-picker">
           <span className="sr-only">{t(language, "language")}</span>
           <select
@@ -45,27 +53,22 @@ export function SetupShell({
           <p className="setup-subtitle">{t(language, "subtitle")}</p>
           <figure className="deck-preview">
             <div className="deck-preview__cards" aria-hidden="true">
-              <img
-                className="deck-preview__moon"
-                src={`${VISUAL_CARD_ASSET_BASE}/moon.webp`}
-                width="512"
-                height="768"
-                alt=""
-              />
-              <img
-                className="deck-preview__back"
-                src={`${VISUAL_CARD_ASSET_BASE}/back.webp`}
-                width="512"
-                height="768"
-                alt=""
-              />
-              <img
-                className="deck-preview__star"
-                src={`${VISUAL_CARD_ASSET_BASE}/star.webp`}
-                width="512"
-                height="768"
-                alt=""
-              />
+              {(["moon", "back", "star"] as const).map((cardId) => {
+                const source =
+                  client.target === "mcp"
+                    ? client.getPreviewImage?.(cardId)
+                    : `${VISUAL_CARD_ASSET_BASE}/${cardId}.webp`;
+                return source ? (
+                  <img
+                    key={cardId}
+                    className={`deck-preview__${cardId}`}
+                    src={source}
+                    width="512"
+                    height="768"
+                    alt=""
+                  />
+                ) : null;
+              })}
             </div>
             <figcaption>{t(language, "deckPreview")}</figcaption>
           </figure>
@@ -80,16 +83,6 @@ export function SetupShell({
       </main>
       <footer className="setup-footer">
         <span>{t(language, "reflectionNote")}</span>
-        <ol>
-          {(["stepIntention", "stepChoose", "stepReflect"] as const).map(
-            (key, index) => (
-              <li key={key}>
-                <span>0{index + 1}</span>
-                {t(language, key)}
-              </li>
-            ),
-          )}
-        </ol>
       </footer>
     </div>
   );

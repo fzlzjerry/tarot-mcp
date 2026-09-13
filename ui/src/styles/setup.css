@@ -117,7 +117,7 @@
 .deck-preview figcaption {
   margin-top: 16px;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
 }
 .setup-panel {
@@ -139,7 +139,7 @@
 }
 .setup-panel__heading > span {
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   white-space: nowrap;
 }
 .setup-form {
@@ -181,7 +181,7 @@
   border-radius: 6px;
   color: var(--muted);
   text-align: center;
-  font-size: 0.73rem;
+  font-size: 0.78rem;
   line-height: 1.35;
   cursor: pointer;
   transition:
@@ -198,9 +198,11 @@
   outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
-.reading-kind-switch label:hover span {
-  color: var(--ink);
-  border-color: var(--gold-line);
+@media (hover: hover) {
+  .reading-kind-switch label:hover span {
+    color: var(--ink);
+    border-color: var(--gold-line);
+  }
 }
 .field {
   display: grid;
@@ -254,10 +256,8 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 18px;
-  max-height: 150px;
   margin: 0;
   padding: 0;
-  overflow-y: auto;
   list-style: none;
 }
 .spread-preview li {
@@ -265,7 +265,7 @@ textarea {
   align-items: baseline;
   gap: 7px;
   color: var(--ink);
-  font-size: 0.73rem;
+  font-size: 0.75rem;
   line-height: 1.5;
 }
 .spread-preview li > span {
@@ -286,7 +286,7 @@ textarea {
 .setup-note {
   margin: -10px 0 0;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-align: center;
   line-height: 1.5;
 }
@@ -319,28 +319,11 @@ textarea {
 .setup-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
   min-height: 88px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   line-height: 1.6;
-}
-.setup-footer ol {
-  display: flex;
-  gap: 26px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.setup-footer li {
-  display: flex;
-  gap: 8px;
-}
-.setup-footer li > span {
-  color: var(--gold);
-  font-variant-numeric: tabular-nums;
 }
 @media (max-width: 1000px) {
   .setup-layout {
@@ -353,8 +336,6 @@ textarea {
     gap: 6px;
   }
   .setup-footer {
-    flex-wrap: wrap;
-    gap: 12px;
     padding-block: 20px;
   }
 }
@@ -412,7 +393,15 @@ textarea {
     transform: rotate(10deg);
   }
   .deck-preview figcaption {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
   .setup-panel {
     padding: 24px;
@@ -424,13 +413,10 @@ textarea {
   .setup-panel__heading h2 {
     font-size: 1.5rem;
   }
-  .setup-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .setup-footer ol {
-    flex-wrap: wrap;
-    gap: 8px 20px;
+}
+@media (max-width: 560px) {
+  .reading-kind-switch {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (max-width: 400px) {
@@ -443,8 +429,5 @@ textarea {
   .setup-panel__heading {
     flex-direction: column;
     gap: 6px;
-  }
-  .reading-kind-switch {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

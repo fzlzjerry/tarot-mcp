@@ -107,17 +107,39 @@ registry-refresh SIGTERM during an active browser waiter, described above. If th
 client process itself terminates, the page reports the disconnect and a new draw
 must be started.
 
-The embedded MCP App uses a different continuation contract. Its initial
-`begin_visual_reading` returns the pending draw immediately so the host can render
-the App. After the App calls `confirm_visual_reading`, it publishes the confirmed
-structured reading through the host's model-context bridge and requests a host
-message when those MCP App capabilities are available. That new host turn lets
-the AI continue from the selected cards. The bridge contains only card ids,
-names, orientations, positions, keywords, meanings, and interpretation text;
-it never forwards image URLs, base64 artwork, or image content blocks. Hosts
-without those capabilities still
-show the completed reading in the App but may require the user to continue the
-conversation manually.
+The embedded MCP App uses a different continuation contract. Only
+`begin_visual_reading` creates the widget. Confirmation returns data without
+sending a host message. The reader reveals the cards, then explicitly chooses
+**Interpret in ChatGPT**. The App attempts supported model-context delivery and
+then a text message containing the complete semantic reading; context-update
+failure does not block the message. Standard `ui/message` is preferred when the
+host advertises `message.text`. Otherwise the App feature-detects the documented
+[ChatGPT `sendFollowUpMessage` compatibility method](https://developers.openai.com/plugins/reference#windowopenai-component-bridge)
+and sends the same semantic reading through that interface. Both paths have a
+10-second timeout. A rejected or timed-out standard send never triggers an
+automatic second attempt through the compatibility interface.
+
+Simultaneous continuation requests for one reading are merged. Success is recorded
+only after the standard result has no `isError: true`, or the documented ChatGPT
+follow-up promise resolves. Failure preserves
+the cards and permits a manual retry; check the conversation first, since a lost
+response cannot prove that the message was not delivered. Hosts with neither
+interface get a manual-continuation notice. Local interpretation stays available. Neither
+bridge payload contains image URLs, image bytes, opaque slots, or credentials.
+Explicit restart opens the shared setup form inside the same widget. On hosts
+with `window.openai.widgetState` and synchronous `setWidgetState`, the MCP App
+privately checkpoints its current order, selection, confirmed semantic reading,
+revealed cards, and acknowledged continuation state. The result is saved before
+calling either continuation bridge. Recreating the iframe and replaying the same
+pending tool result restores the confirmed result page, not the shuffle stage.
+
+Restoration waits for the original host payload and validates draw identity,
+the complete unique deck, selection membership/count, and revealed indices.
+Snapshots for a different draw are never reused. No image bytes/URIs or secrets
+are persisted, and the checkpoint's model-visible content is empty. Missing
+host persistence stays in-memory; this does not add cross-browser or cross-device
+storage. An interrupted send without acknowledgement is not marked sent and is
+never automatically repeated.
 
 ### Streamable HTTP MCP Clients
 
@@ -152,3 +174,103 @@ The legacy `/sse` endpoint advertises `/messages?sessionId=...` as the matching 
 Streamable HTTP and legacy SSE deployments do not automatically open the
 default browser on the machine running the server. Their users continue to use
 the embedded MCP App when supported or the explicitly hosted `/draw` Web page.
+
+## Private ChatGPT via Secure MCP Tunnel
+
+This deployment is for a personal developer connection. It does not create a
+public directory listing, publish an anonymous API, or add an OAuth account
+system. Follow the [official Secure MCP Tunnel guide](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels)
+and [ChatGPT connection guide](https://developers.openai.com/plugins/deploy/connect-chatgpt).
+
+### Server and secrets
+
+The topology is one `tarot-mcp` HTTP container and the pinned official
+`ghcr.io/openai/tunnel-client:v0.0.14` container on the project Docker bridge.
+No Docker socket or Cloudflare/Harpoon companion is configured. The only
+published port is `127.0.0.1:3000:3000`; tunnel health on 8080 stays private.
+The tunnel needs outbound HTTPS to `api.openai.com:443` and access to
+`http://tarot-mcp:3000/mcp`. No public domain, inbound internet port, or TLS
+reverse proxy is required.
+
+Copy `.env.example` to `.env` on the selected server and fill it privately:
+
+| Variable | Purpose |
+| --- | --- |
+| `MCP_AUTH_TOKEN` | Shared Bearer credential for the private MCP service and local Web access |
+| `CONTROL_PLANE_TUNNEL_ID` | Tunnel belonging to the intended Platform organization and associated ChatGPT workspace |
+| `CONTROL_PLANE_API_KEY` | Create a Restricted key at [Platform API keys](https://platform.openai.com/settings/organization/api-keys) with Tunnels Read + Use; never use an Admin API key |
+
+Only `tunnel-client` receives the control-plane credentials. They are not passed
+to Node, Vite, the HTML bundle, tool results, or UI state. The existing ignore
+rules exclude actual `.env` files from git and Docker build context. Do not
+print the resolved Compose configuration or enable raw HTTP logging.
+
+Before startup, verify the pinned image's official provenance; stop on failure:
+
+```sh
+gh attestation verify oci://ghcr.io/openai/tunnel-client:v0.0.14 -R openai/tunnel-client && \
+bash deploy.sh
+```
+
+If the server's `gh` does not support `attestation`, do not skip verification.
+Use a current official GitHub CLI, or verify on a trusted workstation and compare
+the server's pulled image RepoDigest with the verified digest before startup.
+After startup, confirm the running container uses that inspected image. A failed
+signature/provenance check is a stop condition, not a reason to change images or
+disable verification.
+
+Run from the repository root with a running Docker engine, Compose v2 or newer,
+curl, and the GitHub CLI. The script first runs Compose `config --quiet`, then
+`up -d --build` without a prior `down`. It checks local tarot `/health` and then
+polls tunnel `/readyz` through the Node container, with a bounded per-probe
+timeout and a 120-second readiness window. Failures identify the failing layer
+and show bounded service logs; a healthy tunnel is not a claim that ChatGPT has
+connected.
+
+The equivalent manual private readiness probe is:
+
+```sh
+docker compose -f docker-compose.yml -f docker-compose.tunnel.yml exec -T tarot-mcp node -e "fetch('http://tunnel-client:8080/readyz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+```
+
+`MCP_EXTRA_HEADERS` and `MCP_DISCOVERY_EXTRA_HEADERS` both use
+`Authorization: env:MCP_AUTHORIZATION`, resolving the service Bearer value only
+for the configured MCP origin. See the pinned [configuration reference](https://github.com/openai/tunnel-client/blob/v0.0.14/docs/configuration.md).
+Top-level tool `securitySchemes: [{type: 'noauth'}]` means no additional end-user
+OAuth; it does not make this private service publicly unauthenticated.
+
+### Connect the intended account and workspace
+
+1. Create or select a tunnel at
+   [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels).
+   Associate the personal Platform organization and the intended ChatGPT
+   workspace. Running/selecting a tunnel requires Tunnels **Read + Use**;
+   creation also requires **Manage**. Request missing permissions from the
+   appropriate administrator rather than changing account roles automatically.
+2. Enable Developer mode in ChatGPT **Settings → Security and login** when the
+   account/workspace permits it. Open [ChatGPT Plugins](https://chatgpt.com/plugins)
+   and choose **+**. Name: **Tarot**. Description:
+   **A private, interactive tarot ritual with manual shuffling, cutting, card selection, and reveal.**
+3. Choose **Tunnel** as the connection, and select or enter the same `tunnel_id`.
+   If authentication is requested, choose **No Authentication**. Do not enter
+   the service's fixed Bearer token into ChatGPT as a fabricated API-key login.
+4. After discovery, start a new conversation and request the manual visual
+   ritual. Approve any host tool/message permission prompts interactively. Only
+   begin should create a widget; confirmation should neither create another
+   widget nor request interpretation before the reader finishes revealing.
+5. Click **Interpret in ChatGPT** after all cards are revealed and verify that
+   the conversation matches their positions and orientations without drawing
+   again. After metadata or UI updates, **Refresh** this private connection and
+   use a new conversation. Test fullscreen return and same-widget restart in the
+   actual host; a narrow standalone browser window is not that proof.
+
+The standalone Web UI remains available locally or over the operator's own SSH
+local forwarding. Use the same `MCP_AUTH_TOKEN` in its existing Connection
+settings. Keep origins restricted; do not expose `/draw` publicly or set
+`ALLOWED_ORIGINS=*` for this personal setup.
+
+The `tarot-sessions` volume stays in place and retains history across restarts.
+Pending draws are memory-only: restarting tarot invalidates them, and the UI
+requires a new reading. A tunnel outage must be reported as unavailable, not as
+a successful connection. Only perform stop/restart fault drills when explicitly
+authorized by the operator.

@@ -1,4 +1,4 @@
-import { type FormEvent, useRef, useState } from "react";
+import { type FormEvent, type ReactNode, useRef, useState } from "react";
 import { getSpreadPickerCatalog } from "@tarot/readings/spread-localizations.js";
 import { SetupShell } from "./SetupShell.js";
 import { ConnectionSettings } from "./ConnectionSettings.js";
@@ -23,12 +23,15 @@ export function SetupForm({
   onLanguageChange,
   onSubmit,
   isPending,
+  notice,
 }: {
   language: Language;
   client: DrawClient;
   onLanguageChange(language: Language): void;
   onSubmit(input: BeginReadingInput): void;
   isPending: boolean;
+  /** Recovery or error notice, shown above the submit button in document flow. */
+  notice?: ReactNode;
 }) {
   const [question, setQuestion] = useState("");
   const [readingKind, setReadingKind] = useState<ReadingKind>("spread");
@@ -100,6 +103,7 @@ export function SetupForm({
   return (
     <SetupShell
       language={language}
+      client={client}
       onLanguageChange={onLanguageChange}
       spreadCount={catalog.length}
     >
@@ -163,6 +167,7 @@ export function SetupForm({
             <span>{t(language, "spread")}</span>
             <select
               value={spreadType}
+              aria-describedby="spread-description"
               onChange={(event) => setSpreadType(event.target.value)}
             >
               {catalog.map((spread) => (
@@ -174,8 +179,8 @@ export function SetupForm({
           </label>
         ) : null}
         {(readingKind === "spread" || readingKind === "daily") && preview ? (
-          <div className="spread-preview" aria-live="polite">
-            <p>{preview.description}</p>
+          <div className="spread-preview">
+            <p id="spread-description">{preview.description}</p>
             <ol>
               {preview.positions.map((position, index) => (
                 <li key={index}>
@@ -234,6 +239,7 @@ export function SetupForm({
             )}
           </p>
         ) : null}
+        {notice}
         <button
           className="primary-action field--wide"
           type="submit"

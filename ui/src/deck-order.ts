@@ -12,7 +12,7 @@ export function clamp(value: number, min: number, max: number): number {
   return value < min ? min : value > max ? max : value;
 }
 
-/** Deterministic 32-bit PRNG (mulberry32) so a given cut always replays. */
+/** Deterministic 32-bit PRNG (mulberry32) for presentation shuffles. */
 function mulberry32(seed: number): () => number {
   let a = seed >>> 0;
   return () => {
@@ -43,22 +43,6 @@ export function shuffleWithSeed<T>(order: readonly T[], seed: number): T[] {
     [result[i], result[j]] = [result[j], result[i]];
   }
   return result;
-}
-
-/** Fold the cut position and the length of the drag into one stable seed. */
-export function deriveSeed(cutIndex: number, entropy: number): number {
-  const a = Math.trunc(cutIndex) >>> 0;
-  const b = Math.trunc(entropy) >>> 0;
-  return (Math.imul(a ^ 0x9e3779b9, 0x85ebca6b) ^ Math.imul(b + 1, 0xc2b2ae35)) >>> 0;
-}
-
-/** The full ritual: cut where the reader chose, then shuffle on that cut. */
-export function ritualOrder<T>(
-  order: readonly T[],
-  cutIndex: number,
-  entropy: number,
-): T[] {
-  return shuffleWithSeed(cutDeck(order, cutIndex), deriveSeed(cutIndex, entropy));
 }
 
 export interface ArcConfig {

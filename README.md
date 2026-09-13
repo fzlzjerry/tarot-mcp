@@ -5,9 +5,13 @@ React and Vite. It includes a complete 78-card Rider–Waite–Smith deck, origi
 Midnight Art Nouveau artwork, 25 built-in spreads, and daily, moon-phase and
 custom readings.
 
-Write a question, shuffle and cut, choose face-down cards, then confirm and
-explore the reading. Card identities and orientations stay on the server until
-confirmation. Repeating the same confirmation returns the same result.
+Write a question, start each shuffle yourself, cut the current deck, and choose
+face-down cards in order. Confirmation keeps the table visible and retries the
+same selection; it never silently draws replacement cards. Reveal the cards
+individually before the overall interpretation appears. In an embedded MCP App,
+the reader can then explicitly request interpretation in ChatGPT. The standalone
+Web page keeps the server's local interpretation and does not claim to send it to
+ChatGPT.
 
 ## Run locally
 
@@ -116,14 +120,33 @@ Native browser checks are described in [WebMCP verification](docs/webmcp.md).
 
 ## Deploy
 
+The personal ChatGPT deployment uses the official **Secure MCP Tunnel**, not a
+public endpoint or directory submission. The base Compose listener is restricted
+to `127.0.0.1:3000`; the tunnel override adds container-to-container Bearer auth
+and the pinned `ghcr.io/openai/tunnel-client:v0.0.14` image on the project network.
+
+On the chosen server, with Docker running, Compose v2 or newer, curl, and the
+GitHub CLI available:
+
 ```sh
-docker compose up --build -d
+cp -n .env.example .env
+# Fill the three values privately in .env; do not commit or print the file.
+gh attestation verify oci://ghcr.io/openai/tunnel-client:v0.0.14 -R openai/tunnel-client && \
+bash deploy.sh
 ```
 
-Configure authentication, allowed hosts/origins and HTTPS for a public service.
-Compose persists reading sessions on its configured volume. Pending visual draws
-remain process-local; a multi-instance deployment needs shared draw state or
-sticky routing.
+Stop if provenance verification fails. `deploy.sh` validates required variables
+without printing resolved secrets, builds without first taking the service down,
+and checks tarot health followed by private tunnel readiness. Readiness is not
+proof that ChatGPT has discovered or used the connection.
+
+See [private ChatGPT setup](docs/configuration.md#private-chatgpt-via-secure-mcp-tunnel)
+for the runtime-key/organization/workspace requirements, No Authentication
+connection, refresh procedure, and verification commands. Use the local Web page
+or your own SSH local forwarding; this configuration does not publish `/draw` to
+the internet. The named `tarot-sessions` volume preserves reading history.
+Pending draws remain process-local and are lost on restart; the UI asks the
+reader to start again instead of retrying an invalid deck indefinitely.
 
 ## Further documentation
 

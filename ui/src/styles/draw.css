@@ -9,6 +9,14 @@
   margin-bottom: clamp(24px, 4vw, 48px);
 }
 
+/* The title block takes the slack so the meter and any header actions
+   cluster at the trailing edge instead of spreading across the row. */
+.draw-header > div:first-child,
+.reading-header > div:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .reading-header {
   align-items: center;
 }
@@ -114,13 +122,28 @@
  * Same proportions as the full cloth, just smaller. The spread coordinates are
  * percentages, so matching the aspect ratio is what keeps a card in the same
  * relative place before and after the reading is confirmed.
+ *
+ * 44px is the floor for a card that is also a button; a dense spread earns
+ * its operability from the position key underneath, not from bigger cards.
  */
 .reading-cloth--compact {
-  --slot-width: clamp(32px, 3.9vw, 52px);
+  --slot-width: clamp(44px, 4vw, 60px);
 
   width: min(100%, 760px);
   margin-inline: auto;
   aspect-ratio: 16 / 9;
+}
+
+/* Keep the existing percentage positions while clearing a card at the rim. */
+.reading-cloth--compact:not(.reading-cloth--sparse) {
+  min-height: max(
+    280px,
+    calc(var(--slot-width) * var(--compact-height-ratio, 7))
+  );
+}
+
+.reading-cloth--compact.reading-cloth--sparse {
+  --slot-width: clamp(56px, 8vw, 80px);
 }
 
 .cloth-slot {
@@ -211,7 +234,7 @@
   margin: 7px -55% 0;
   overflow: hidden;
   color: var(--muted);
-  font-size: clamp(0.52rem, 0.8vw, 0.72rem);
+  font-size: 0.75rem;
   line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -262,9 +285,11 @@
   }
 }
 
-.staged-card:hover {
-  border-color: var(--gold);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 60%);
+@media (hover: hover) {
+  .staged-card:hover:not(:disabled) {
+    border-color: var(--gold);
+    box-shadow: 0 8px 18px rgb(0 0 0 / 60%);
+  }
 }
 
 .staged-card > span {
@@ -273,13 +298,13 @@
   right: 5px;
   bottom: 5px;
   display: grid;
-  width: 21px;
+  width: 22px;
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
   background: var(--gold);
   color: var(--on-gold);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-variant-numeric: tabular-nums;
   font-weight: 800;
 }
@@ -451,16 +476,26 @@
   }
 }
 
-.arc-card:hover:not([aria-disabled="true"])::before,
 .arc-card:focus-visible::before {
   opacity: 1;
 }
 
-.arc-card:hover:not(.is-drawn):not([aria-disabled="true"]),
 .arc-card:focus-visible {
   z-index: var(--z-lifted);
   border-color: var(--gold);
   box-shadow: 0 14px 24px rgb(0 0 0 / 62%);
+}
+
+@media (hover: hover) {
+  .arc-card:hover:not([aria-disabled="true"])::before {
+    opacity: 1;
+  }
+
+  .arc-card:hover:not(.is-drawn):not([aria-disabled="true"]) {
+    z-index: var(--z-lifted);
+    border-color: var(--gold);
+    box-shadow: 0 14px 24px rgb(0 0 0 / 62%);
+  }
 }
 
 /*
@@ -487,27 +522,45 @@
   right: 6%;
   bottom: 5%;
   display: grid;
-  width: clamp(17px, 1.7vw, 24px);
+  width: clamp(20px, 1.7vw, 24px);
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
   background: var(--gold);
   color: var(--on-gold);
   filter: brightness(1.6);
-  font-size: clamp(0.58rem, 0.8vw, 0.74rem);
+  font-size: clamp(0.7rem, 0.8vw, 0.74rem);
   font-variant-numeric: tabular-nums;
   font-weight: 800;
 }
 
 /* -------------------------------------------------------------- toolbars */
 
+/*
+ * The one action bar stays within reach: it holds the bottom edge of the
+ * viewport while the table above it scrolls, on a solid ground so nothing
+ * shows through, and keeps clear of the device's and the host's bottom
+ * inset. Inside a host that grows the iframe to fit there is no inner
+ * scroll to stick within, so it simply sits under the table.
+ */
 .draw-toolbar,
 .reveal-toolbar {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--z-toolbar);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   margin-top: 22px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  padding: 12px 0
+    max(
+      12px,
+      env(safe-area-inset-bottom, 0px),
+      var(--host-safe-area-bottom, 0px)
+    );
 }
 
 .draw-toolbar p {
@@ -527,6 +580,11 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
+}
+
+/* Header actions are secondary and stay small, tucked to the right. */
+.reading-actions {
+  flex: 0 0 auto;
 }
 
 .reveal-toolbar {

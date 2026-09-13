@@ -24,7 +24,7 @@ export function ReadingCloth({
   cardCount?: number;
   children: ReactNode;
 }) {
-  const sparse = size === "full" && cardCount !== undefined && cardCount <= 3;
+  const sparse = cardCount !== undefined && cardCount <= 3;
   return (
     <section
       className={`reading-cloth reading-cloth--${size}${sparse ? " reading-cloth--sparse" : ""}`}

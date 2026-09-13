@@ -4,14 +4,17 @@ import { TOOL_NAMES } from "./public-api.js";
 
 export interface Tool {
   name: string;
+  title: string;
   description: string;
   inputSchema: Record<string, unknown>;
   outputSchema?: Record<string, unknown>;
-  annotations?: {
-    readOnlyHint?: boolean;
+  annotations: {
+    readOnlyHint: boolean;
+    destructiveHint: boolean;
     idempotentHint?: boolean;
-    openWorldHint?: boolean;
+    openWorldHint: boolean;
   };
+  securitySchemes: Array<{ type: "noauth" }>;
   _meta?: Record<string, unknown>;
 }
 
@@ -146,8 +149,11 @@ const VISUAL_INTERACTIVE_OUTPUT_SCHEMA: Record<string, unknown> = {
 const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   {
     name: TOOL_NAMES.getCardInfo,
+    title: "Get card information",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -180,8 +186,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.listAllCards,
+    title: "List tarot cards",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -215,8 +224,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.listAvailableSpreads,
+    title: "List tarot spreads",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -237,8 +249,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.performReading,
+    title: "Perform a tarot reading",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: false,
+      destructiveHint: false,
       idempotentHint: false,
       openWorldHint: false,
     },
@@ -274,41 +289,43 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.beginVisualReading,
+    title: "Begin a visual tarot ritual",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: false,
+      destructiveHint: false,
       idempotentHint: false,
-      openWorldHint: false,
-    },
-    _meta: {
-      ui: { resourceUri: VISUAL_APP_RESOURCE_URI },
-      "ui/resourceUri": VISUAL_APP_RESOURCE_URI,
-      "openai/outputTemplate": VISUAL_APP_RESOURCE_URI,
-      "openai/widgetAccessible": true,
-      "openai/toolInvocation/invoking": "Preparing the tarot deck…",
-      "openai/toolInvocation/invoked": "The tarot deck is ready",
-    },
-    description:
-      "Start an interactive visual tarot draw. Embedded MCP Apps receive the pending 78-card deck and confirm it with confirm_visual_reading. Local stdio clients without MCP Apps keep this tool call open while the browser is used, then receive the confirmed reading as this same tool result.",
-    inputSchema: VISUAL_BEGIN_INPUT_SCHEMA,
-    outputSchema: VISUAL_INTERACTIVE_OUTPUT_SCHEMA,
-  },
-  {
-    name: TOOL_NAMES.confirmVisualReading,
-    annotations: {
-      readOnlyHint: false,
-      idempotentHint: true,
       openWorldHint: false,
     },
     _meta: {
       ui: {
         resourceUri: VISUAL_APP_RESOURCE_URI,
+        visibility: ["model", "app"],
+      },
+      "openai/toolInvocation/invoking": "Preparing the tarot deck…",
+      "openai/toolInvocation/invoked": "The tarot deck is ready",
+    },
+    description:
+      "Start an interactive visual tarot ritual in which the user manually shuffles, cuts the deck, chooses card backs, and reveals the cards. Never select opaque slots on the user's behalf; wait for the user's explicit interpretation request after they reveal the cards. Embedded MCP Apps receive the pending 78-card deck and confirm the user's selection with confirm_visual_reading. Local stdio clients without MCP Apps keep this tool call open while the browser is used, then receive the confirmed reading as this same tool result.",
+    inputSchema: VISUAL_BEGIN_INPUT_SCHEMA,
+    outputSchema: VISUAL_INTERACTIVE_OUTPUT_SCHEMA,
+  },
+  {
+    name: TOOL_NAMES.confirmVisualReading,
+    title: "Confirm selected cards",
+    securitySchemes: [{ type: "noauth" }],
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    _meta: {
+      ui: {
         visibility: ["app"],
       },
-      "ui/resourceUri": VISUAL_APP_RESOURCE_URI,
-      "openai/outputTemplate": VISUAL_APP_RESOURCE_URI,
-      "openai/widgetAccessible": true,
-      "openai/toolInvocation/invoking": "Revealing the selected cards…",
-      "openai/toolInvocation/invoked": "The selected cards are revealed",
+      "openai/toolInvocation/invoking": "Confirming the selected cards…",
+      "openai/toolInvocation/invoked": "The selected cards are confirmed",
     },
     description:
       "Confirm the ordered card backs selected from begin_visual_reading and perform exactly one tarot reading. Repeating the same drawId and selection returns the same reading.",
@@ -332,8 +349,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.searchCards,
+    title: "Search tarot cards",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -414,8 +434,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.findSimilarCards,
+    title: "Find similar cards",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -446,8 +469,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.getDatabaseAnalytics,
+    title: "Explore deck statistics",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -473,8 +499,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.getRandomCards,
+    title: "Draw random cards",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: false,
       openWorldHint: false,
     },
@@ -516,8 +545,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.getDailyCard,
+    title: "Draw daily guidance",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: false,
       openWorldHint: false,
     },
@@ -543,8 +575,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.recommendSpread,
+    title: "Recommend a spread",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -604,8 +639,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.getMoonPhaseReading,
+    title: "Read the moon phase",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: false,
       openWorldHint: false,
     },
@@ -636,8 +674,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.getCardMeaningsComparison,
+    title: "Compare card meanings",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },
@@ -697,8 +738,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.createCustomSpread,
+    title: "Create a custom reading",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: false,
+      destructiveHint: false,
       idempotentHint: false,
       openWorldHint: false,
     },
@@ -760,8 +804,11 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
   },
   {
     name: TOOL_NAMES.getSessionHistory,
+    title: "View reading history",
+    securitySchemes: [{ type: "noauth" }],
     annotations: {
       readOnlyHint: true,
+      destructiveHint: false,
       idempotentHint: true,
       openWorldHint: false,
     },

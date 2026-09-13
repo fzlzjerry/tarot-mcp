@@ -1,43 +1,54 @@
 #!/bin/bash
 
-# Tarot MCP Server Deployment Script
-
+# Run from the repository root. Compose reads the operator's local .env.
 set -euo pipefail
 
-echo "🔮 Starting Tarot MCP Server deployment..."
-
-# Check prerequisites
-if ! command -v docker &> /dev/null; then
-    echo "❌ Docker is not installed. Please install Docker first."
+if ! command -v docker >/dev/null 2>&1; then
+    echo "Docker is not installed. Install Docker first." >&2
+    exit 1
+fi
+if ! docker compose version >/dev/null 2>&1; then
+    echo "Docker Compose v2 or newer is required." >&2
+    exit 1
+fi
+if ! command -v curl >/dev/null 2>&1; then
+    echo "curl is required for the local health probe." >&2
     exit 1
 fi
 
-if ! docker compose version &> /dev/null; then
-    echo "❌ Docker Compose v2 is not available. Please install/upgrade Docker."
+compose=(docker compose -f docker-compose.yml -f docker-compose.tunnel.yml)
+# Validate required variables without logging the resolved configuration/secrets.
+"${compose[@]}" config --quiet
+
+echo "Building and starting the private tarot service and official tunnel..."
+if ! "${compose[@]}" up -d --build; then
+    echo "Container startup failed. Recent service logs:" >&2
+    "${compose[@]}" logs --no-color --tail 60 tarot-mcp tunnel-client
     exit 1
 fi
 
-# Rebuild and restart the services (compose builds the image itself)
-echo "🐳 Building and starting services..."
-docker compose down || true
-docker compose up -d --build
-
-# Poll the health endpoint instead of sleeping a fixed time
-echo "⏳ Waiting for the server to become healthy..."
+echo "Waiting for tarot health..."
 deadline=$((SECONDS + 60))
-until curl -fsS http://localhost:3000/health > /dev/null 2>&1; do
+until curl -fsS --max-time 2 http://127.0.0.1:3000/health >/dev/null 2>&1; do
     if (( SECONDS >= deadline )); then
-        echo "❌ Health check failed within 60s. Logs:"
-        docker compose logs tarot-mcp
+        echo "Tarot /health did not become ready within 60 seconds." >&2
+        "${compose[@]}" logs --no-color --tail 60 tarot-mcp
         exit 1
     fi
     sleep 2
 done
 
-echo "✅ Tarot MCP Server is running successfully!"
-echo "🌐 Server URL: http://localhost:3000"
-echo "📊 Health check: http://localhost:3000/health"
-echo "📖 API info: http://localhost:3000/api/info"
-echo "🎯 MCP endpoint: http://localhost:3000/mcp"
-echo "📡 Legacy SSE endpoint: http://localhost:3000/sse"
-echo "🎉 Deployment completed successfully!"
+echo "Tarot is healthy. Waiting for tunnel readiness..."
+deadline=$((SECONDS + 120))
+until "${compose[@]}" exec -T tarot-mcp node -e "fetch('http://tunnel-client:8080/readyz', {signal: AbortSignal.timeout(1500)}).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"; do
+    if (( SECONDS >= deadline )); then
+        echo "Tarot is healthy, but tunnel /readyz did not become ready within 120 seconds." >&2
+        "${compose[@]}" logs --no-color --tail 60 tunnel-client
+        exit 1
+    fi
+    sleep 2
+done
+
+echo "Tarot and the private tunnel are ready. ChatGPT discovery still needs verification."
+echo "Local Web: http://127.0.0.1:3000/draw/ (or your own SSH local forwarding)."
+echo "Create or refresh your private Tunnel connection in https://chatgpt.com/plugins, then open a new conversation."

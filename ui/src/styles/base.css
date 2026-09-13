@@ -68,6 +68,14 @@ body {
   min-width: 320px;
   background: var(--bg);
   color: var(--ink);
+  accent-color: var(--gold);
+  caret-color: var(--gold);
+  scrollbar-color: var(--gold-line) var(--bg);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--gold) 72%, var(--bg));
+  color: var(--on-gold);
 }
 
 button,
@@ -152,6 +160,26 @@ h1 {
   min-height: 100dvh;
   margin: 0 auto;
   padding: clamp(18px, 3vw, 48px);
+}
+
+/*
+ * Inside a host iframe the page is a widget, not a screen: it takes the
+ * width it is given, grows to its content (the host auto-resizes), and keeps
+ * clear of the host's own safe-area insets on every side. The four
+ * --host-safe-area-* variables are written from the host context; unset
+ * they collapse to 0 and the 16px floor holds.
+ */
+.draw-app[data-surface="mcp"] .setup-shell,
+.draw-app[data-surface="mcp"] .waiting-shell,
+.draw-app[data-surface="mcp"] .ritual-shell,
+.draw-app[data-surface="mcp"] .draw-shell,
+.draw-app[data-surface="mcp"] .reading-shell {
+  width: 100%;
+  min-height: 0;
+  padding: max(16px, var(--host-safe-area-top, 0px))
+    max(16px, var(--host-safe-area-right, 0px))
+    max(16px, var(--host-safe-area-bottom, 0px))
+    max(16px, var(--host-safe-area-left, 0px));
 }
 
 a {

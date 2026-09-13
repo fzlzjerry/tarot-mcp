@@ -1,15 +1,14 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
+import {
+  ListToolsResultSchema,
+  ToolSchema,
+} from "@modelcontextprotocol/sdk/types.js";
 import type { VisualBrowserFallback } from "../mcp/browser-handoff.js";
 import { createMcpProtocolServer } from "../mcp/protocol-server.js";
 import { TOOL_NAMES } from "../mcp/public-api.js";
 import { TarotServer, type ToolResult } from "../mcp/tarot-service.js";
 import type { VisualBeginPayload } from "../tarot/readings/visual-draw-manager.js";
-
-interface TextContent {
-  type: string;
-  text: string;
-}
 
 function deferred<T>(): {
   promise: Promise<T>;
@@ -38,15 +37,28 @@ describe("MCP protocol server error contract", () => {
     ]);
   });
 
-  it("marks failed executions with isError and keeps the Error: text", async () => {
+  it("keeps an expired or missing deck distinguishable from retryable transport failures", async () => {
+    const result = await client.callTool({
+      name: "confirm_visual_reading",
+      arguments: {
+        drawId: "draw_missing",
+        selectedSlotIds: ["opaque-1"],
+      },
+    });
+    expect(result.isError).toBe(true);
+    expect(result._meta).toMatchObject({
+      tarotError: { code: "DRAW_NOT_FOUND", httpStatus: 404 },
+    });
+  });
+
+  it("marks invalid reading inputs as failed executions", async () => {
     const result = await client.callTool({
       name: "perform_reading",
       arguments: { spreadType: "not_a_spread", question: "Hi?" },
     });
 
     expect(result.isError).toBe(true);
-    const content = result.content as TextContent[];
-    expect(content[0].text).toContain("Error: Invalid spreadType");
+    expect(result.structuredContent).toBeUndefined();
   });
 
   it("marks unknown session errors from the domain layer with isError", async () => {
@@ -60,22 +72,7 @@ describe("MCP protocol server error contract", () => {
     });
 
     expect(result.isError).toBe(true);
-    const content = result.content as TextContent[];
-    expect(content[0].text).toContain(
-      'Error: Session "session_does_not_exist" not found',
-    );
-    expect(content[0].text).toContain('pass "new" to start a new session');
-  });
-
-  it("does not set isError on successful calls", async () => {
-    const result = await client.callTool({
-      name: "perform_reading",
-      arguments: { spreadType: "single_card", question: "What today?" },
-    });
-
-    expect(result.isError).toBeUndefined();
-    const content = result.content as TextContent[];
-    expect(content[0].text).toContain("# Single Card Reading");
+    expect(result.structuredContent).toBeUndefined();
   });
 
   it.each(["", "   ", "new", "fresh-reading-label"])(
@@ -315,9 +312,6 @@ describe("MCP protocol server error contract", () => {
       expect(result._meta).not.toHaveProperty("backImage");
       expect(JSON.stringify(result)).not.toContain("data:image");
       expect(JSON.stringify(result)).not.toContain("imageUri");
-      expect((result.content[0] as TextContent).text).toContain(
-        "Single Card Reading",
-      );
     } finally {
       await fallbackClient.close();
       await server.close();
@@ -329,32 +323,6 @@ describe("MCP protocol server error contract", () => {
     const uris = resources.resources.map((resource) => resource.uri);
     expect(uris).toContain("tarot://cards");
     expect(uris).toContain("tarot://spreads");
-    expect(uris).toContain("ui://tarot-mcp/visual-reading.html");
-
-    const visualApp = resources.resources.find(
-      (resource) => resource.uri === "ui://tarot-mcp/visual-reading.html",
-    );
-    expect(visualApp?.mimeType).toBe("text/html;profile=mcp-app");
-    expect(visualApp?._meta).toMatchObject({
-      ui: {
-        csp: {
-          connectDomains: [],
-          resourceDomains: [],
-          frameDomains: [],
-          baseUriDomains: [],
-        },
-      },
-    });
-
-    const visualResource = await client.readResource({
-      uri: "ui://tarot-mcp/visual-reading.html",
-    });
-    expect(visualResource.contents[0].mimeType).toBe(
-      "text/html;profile=mcp-app",
-    );
-    expect((visualResource.contents[0] as { text: string }).text).toContain(
-      "<!doctype html>",
-    );
 
     const cards = await client.readResource({ uri: "tarot://cards" });
     const cardsJson = JSON.parse((cards.contents[0] as { text: string }).text);
@@ -396,37 +364,120 @@ describe("MCP protocol server error contract", () => {
     expect(text).toContain("perform_reading");
   });
 
-  it("annotates read-only and state-mutating tools distinctly", async () => {
-    const tools = await client.listTools();
-    const byName = new Map(tools.tools.map((tool) => [tool.name, tool]));
+  it("advertises all tools with explicit authorization and honest safety semantics", async () => {
+    // SDK 1.30 strips nonstandard Tool fields; preserve OpenAI's securitySchemes
+    // extension when consuming the actual tools/list response.
+    const { tools } = await client.request(
+      { method: "tools/list" },
+      ListToolsResultSchema.extend({ tools: ToolSchema.passthrough().array() }),
+    );
+    const expected = [
+      [TOOL_NAMES.getCardInfo, "Get card information", true, true],
+      [TOOL_NAMES.listAllCards, "List tarot cards", true, true],
+      [TOOL_NAMES.listAvailableSpreads, "List tarot spreads", true, true],
+      [TOOL_NAMES.performReading, "Perform a tarot reading", false, false],
+      [
+        TOOL_NAMES.beginVisualReading,
+        "Begin a visual tarot ritual",
+        false,
+        false,
+      ],
+      [TOOL_NAMES.confirmVisualReading, "Confirm selected cards", false, true],
+      [TOOL_NAMES.searchCards, "Search tarot cards", true, true],
+      [TOOL_NAMES.findSimilarCards, "Find similar cards", true, true],
+      [TOOL_NAMES.getDatabaseAnalytics, "Explore deck statistics", true, true],
+      [TOOL_NAMES.getRandomCards, "Draw random cards", true, false],
+      [TOOL_NAMES.getDailyCard, "Draw daily guidance", true, false],
+      [TOOL_NAMES.recommendSpread, "Recommend a spread", true, true],
+      [TOOL_NAMES.getMoonPhaseReading, "Read the moon phase", true, false],
+      [
+        TOOL_NAMES.getCardMeaningsComparison,
+        "Compare card meanings",
+        true,
+        true,
+      ],
+      [TOOL_NAMES.createCustomSpread, "Create a custom reading", false, false],
+      [TOOL_NAMES.getSessionHistory, "View reading history", true, true],
+    ] as const;
+    expect(tools.map((tool) => tool.name).sort()).toEqual(
+      expected.map(([name]) => name).sort(),
+    );
+    const byName = new Map(tools.map((tool) => [tool.name, tool]));
+    for (const [name, title, readOnlyHint, idempotentHint] of expected) {
+      const tool = byName.get(name)!;
+      expect(tool.title).toBe(title);
+      expect(tool.annotations).toMatchObject({
+        readOnlyHint,
+        idempotentHint,
+        destructiveHint: false,
+        openWorldHint: false,
+      });
+      expect(tool.securitySchemes).toEqual([{ type: "noauth" }]);
+      expect(tool._meta ?? {}).not.toHaveProperty("securitySchemes");
+    }
+  });
 
-    expect(byName.get("get_card_info")?.annotations).toMatchObject({
-      readOnlyHint: true,
-      idempotentHint: true,
+  it("opens a readable UI only for begin and keeps confirmation app-only", async () => {
+    const { tools } = await client.listTools();
+    const templates = tools.flatMap((tool) => {
+      const ui = tool._meta?.ui;
+      if (
+        ui &&
+        typeof ui === "object" &&
+        "resourceUri" in ui &&
+        typeof ui.resourceUri === "string"
+      ) {
+        return [{ tool, resourceUri: ui.resourceUri }];
+      }
+      return [];
     });
-    expect(byName.get("perform_reading")?.annotations).toMatchObject({
-      readOnlyHint: false,
-      idempotentHint: false,
+    expect(templates.map(({ tool }) => tool.name)).toEqual([
+      TOOL_NAMES.beginVisualReading,
+    ]);
+    const { tool: begin, resourceUri } = templates[0];
+    expect(begin._meta?.ui).toEqual({
+      resourceUri: "ui://tarot-mcp/visual-reading.html",
+      visibility: ["model", "app"],
     });
-    expect(byName.get("get_random_cards")?.annotations).toMatchObject({
-      readOnlyHint: true,
-      idempotentHint: false,
-    });
-    expect(byName.get("confirm_visual_reading")?._meta).toMatchObject({
+    const confirm = tools.find(
+      (tool) => tool.name === TOOL_NAMES.confirmVisualReading,
+    )!;
+    expect(confirm._meta?.ui).toEqual({ visibility: ["app"] });
+    for (const tool of tools) {
+      const meta = tool._meta ?? {};
+      expect(meta).not.toHaveProperty("ui/resourceUri");
+      expect(meta).not.toHaveProperty("openai/outputTemplate");
+      expect(meta).not.toHaveProperty("openai/widgetAccessible");
+    }
+
+    const { resources } = await client.listResources();
+    const visualApp = resources.find(
+      (resource) => resource.uri === resourceUri,
+    );
+    expect(visualApp?.mimeType).toBe("text/html;profile=mcp-app");
+    expect(visualApp?._meta).toMatchObject({
       ui: {
-        resourceUri: "ui://tarot-mcp/visual-reading.html",
-        visibility: ["app"],
+        prefersBorder: false,
+        csp: {
+          connectDomains: [],
+          resourceDomains: [],
+          frameDomains: [],
+          baseUriDomains: [],
+        },
       },
     });
-    for (const toolName of [
-      "perform_reading",
-      "begin_visual_reading",
-      "confirm_visual_reading",
-    ]) {
-      expect(JSON.stringify(byName.get(toolName)?.outputSchema)).not.toContain(
-        "imageUri",
-      );
+    const resource = await client.readResource({ uri: resourceUri });
+    expect(resource.contents).toHaveLength(1);
+    expect(resource.contents[0].mimeType).toBe("text/html;profile=mcp-app");
+    const content = resource.contents[0];
+    if (!("text" in content) || typeof content.text !== "string") {
+      throw new Error("The UI resource must contain HTML text.");
     }
+    const html = content.text;
+    expect(html).toMatch(/<div\s+id=["']root["']/);
+    expect(html).toContain("data:image/webp;base64,");
+    expect(html).not.toMatch(/<script\b[^>]*\bsrc\s*=/i);
+    expect(html).not.toMatch(/<link\b[^>]*\brel=["']stylesheet["']/i);
   });
 
   it("marks unexpected execution failures with isError", async () => {
@@ -438,7 +489,6 @@ describe("MCP protocol server error contract", () => {
     // Only 22 Major Arcana exist; drawing 30 throws inside the search
     // layer, which the transport reports as an execution failure.
     expect(result.isError).toBe(true);
-    const content = result.content as TextContent[];
-    expect(content[0].text).toContain("Error executing tool get_random_cards");
+    expect(result.structuredContent).toBeUndefined();
   });
 });

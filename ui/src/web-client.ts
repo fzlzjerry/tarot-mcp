@@ -97,7 +97,11 @@ async function postJson(
   });
   const body = (await response.json().catch(() => ({}))) as unknown;
   if (!response.ok)
-    throw extractError(body, `Request failed (${response.status})`);
+    throw extractError(
+      body,
+      `Request failed (${response.status})`,
+      response.status,
+    );
   return body;
 }
 
@@ -130,7 +134,11 @@ async function postHandoffJson(
   }
   const body = (await response.json().catch(() => ({}))) as unknown;
   if (!response.ok)
-    throw extractError(body, `Request failed (${response.status})`);
+    throw extractError(
+      body,
+      `Request failed (${response.status})`,
+      response.status,
+    );
   return body;
 }
 

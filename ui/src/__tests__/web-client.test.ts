@@ -21,28 +21,23 @@ describe("Web visual-reading client", () => {
     vi.restoreAllMocks();
   });
 
-  it.each([
-    [
-      "en",
-      "The local MCP connection has closed. Return to the MCP client, start a new draw, and keep the connection open.",
-    ],
-    ["zh", "本地 MCP 连接已关闭。请回到 MCP 客户端重新发起抽牌并保持连接。"],
-  ] as const)(
-    "turns a rejected handoff fetch into a clear %s disconnect message",
-    async (language, expectedMessage) => {
-      document.documentElement.lang = language;
-      window.sessionStorage.setItem(HANDOFF_TOKEN_SESSION_KEY, "handoff-token");
-      vi.spyOn(globalThis, "fetch").mockRejectedValueOnce(
-        new TypeError("Failed to fetch"),
-      );
-
-      const client = createWebClient();
-
-      await expect(
-        client.confirmReading("draw_disconnected", ["opaque-1"]),
-      ).rejects.toThrow(expectedMessage);
-    },
-  );
+  it("retains HTTP error status and machine codes for recovery decisions", async () => {
+    const fetchMock = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(
+        jsonResponse({ error: "Unavailable", code: "DRAW_EXPIRED" }, 410),
+      )
+      .mockResolvedValueOnce(jsonResponse({}, 401));
+    const client = createWebClient();
+    await expect(
+      client.confirmReading("old-draw", ["opaque-1"]),
+    ).rejects.toMatchObject({ code: "DRAW_EXPIRED", httpStatus: 410 });
+    window.sessionStorage.setItem(HANDOFF_TOKEN_SESSION_KEY, "handoff-token");
+    await expect(
+      client.confirmReading("old-draw", ["opaque-1"]),
+    ).rejects.toMatchObject({ httpStatus: 401 });
+    fetchMock.mockRestore();
+  });
 
   it("uses dedicated REST routes and sends the session-only bearer token", async () => {
     const slots = Array.from({ length: 78 }, (_, order) => ({

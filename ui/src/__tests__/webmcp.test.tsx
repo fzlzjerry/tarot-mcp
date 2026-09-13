@@ -141,7 +141,7 @@ describe("WebMCP registration lifecycle", () => {
     render(<DrawApp client={client()} />);
     await waitFor(() => expect(warning).toHaveBeenCalledOnce());
     expect(
-      screen.getByRole("button", { name: "Lay out the deck" }),
+      screen.getByRole("button", { name: "Begin the ritual" }),
     ).not.toBeNull();
   });
 
@@ -192,7 +192,9 @@ describe("WebMCP uses the visible reading", () => {
       invoke("begin_visual_reading", { readingKind: "daily", language: "en" }),
     ).rejects.toThrow("already in progress");
 
-    await user.click(screen.getByRole("button", { name: "Skip and deal" }));
+    await user.click(
+      screen.getByRole("button", { name: "Skip remaining ritual" }),
+    );
     for (const index of [1, 2, 3])
       await user.click(
         screen.getByRole("button", { name: `Card back ${index}` }),
