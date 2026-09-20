@@ -9,9 +9,10 @@ Write a question, start each shuffle yourself, cut the current deck, and choose
 face-down cards in order. Confirmation keeps the table visible and retries the
 same selection; it never silently draws replacement cards. Reveal the cards
 individually before the overall interpretation appears. In an embedded MCP App,
-the reader can then explicitly request interpretation in ChatGPT. The standalone
-Web page keeps the server's local interpretation and does not claim to send it to
-ChatGPT.
+the reader can then explicitly hand the reading to the host conversation; a host
+that only stages that message says so instead of claiming it was sent. The
+standalone Web page keeps the server's local interpretation and does not claim to
+send it anywhere.
 
 ## Run locally
 
@@ -147,6 +148,14 @@ or your own SSH local forwarding; this configuration does not publish `/draw` to
 the internet. The named `tarot-sessions` volume preserves reading history.
 Pending draws remain process-local and are lost on restart; the UI asks the
 reader to start again instead of retrying an invalid deck indefinitely.
+
+Claude connects to the same container through a TLS reverse proxy instead of the
+OpenAI tunnel. Its custom connectors take a URL with no header field, so the
+proxy publishes one unguessable path that maps to `/mcp` and injects the Bearer
+token; every other path on that hostname returns 404. See
+[private Claude connector](docs/configuration.md#private-claude-connector-via-reverse-proxy)
+for the proxy requirements, buffering constraints and the host-side widget
+rendering caveats.
 
 ## Further documentation
 

@@ -80,9 +80,12 @@ const messages = {
     revealAll: "Turn all cards",
     revealedCard: "Card {number}: {name}, {orientation}.",
     allRevealed: "All cards are turned. The interpretation is below.",
-    interpretInChatGPT: "Interpret in ChatGPT",
+    interpretInChat: "Interpret in chat",
+    interpretAgain: "Hand it over again",
     interpretationSending: "Sending interpretation request…",
     interpretationSent: "Sent. Continue in the conversation.",
+    interpretationQueued:
+      "Handed to the conversation. If it is waiting in the message box, send it from there.",
     interpretationFailed:
       "Sending did not complete. Check the conversation before retrying.",
     interpretationUnsupported:
@@ -190,9 +193,11 @@ const messages = {
     revealAll: "全部翻开",
     revealedCard: "第 {number} 张：{name}，{orientation}。",
     allRevealed: "所有牌已翻开，整体解读见下方。",
-    interpretInChatGPT: "请 ChatGPT 解读",
+    interpretInChat: "请 AI 解读",
+    interpretAgain: "再交给对话一次",
     interpretationSending: "正在发送解读请求…",
     interpretationSent: "已发送，请查看对话。",
+    interpretationQueued: "已交给对话。如果内容停在输入框里，请在那里发送。",
     interpretationFailed: "发送未完成，请先查看对话；如未收到，可重试。",
     interpretationUnsupported:
       "此宿主不支持自动续解，请在对话中要求解读这副已确认牌阵。",

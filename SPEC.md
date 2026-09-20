@@ -107,11 +107,15 @@ conversation in different ways:
   a host rejection. Context failure does not prevent the complete semantic
   follow-up. Concurrent requests share a promise. Standard delivery requires a
   result without `isError: true`; the compatibility method must resolve its
-  documented `Promise<void>`. Both paths have a 10-second timeout. Failure leaves
-  the reading intact and permits a manual retry, with a warning to check the
-  conversation first; no exactly-once claim applies across lost responses. Only
-  when neither interface is available does the App show unsupported. Payloads
-  never contain image bytes/URLs, opaque slots, or credentials.
+  documented `Promise<void>`. Both paths have a 10-second timeout. Without the
+  ChatGPT component bridge an accepted standard message counts as handed over
+  rather than sent, because the host may stage it in its message box; the App
+  says so and keeps the hand-off control available for an explicit repeat.
+  Failure leaves the reading intact and permits a manual retry, with a warning to
+  check the conversation first; no exactly-once claim applies across lost
+  responses. Only when neither interface is available does the App show
+  unsupported. Payloads never contain image bytes/URLs, opaque slots, or
+  credentials.
 
 Progress delivery is also how `link` mode can expose the browser URL without
 ending the long-running call. A compatibility client that provides neither an

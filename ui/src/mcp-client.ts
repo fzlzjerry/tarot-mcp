@@ -13,6 +13,7 @@ import type {
   BeginReadingInputSnapshot,
   BeginReadingPayload,
   ConfirmedReading,
+  ContinuationOutcome,
   DrawClient,
   EmbeddedImage,
   ReadingCard,
@@ -126,7 +127,7 @@ export function createMcpClient(
   const handlers = new Set<InitialHandlers>();
   const imageCache = new Map<string, string>();
   const continuedReadings = new Set<string>();
-  const continuingReadings = new Map<string, Promise<"sent" | "unsupported">>();
+  const continuingReadings = new Map<string, Promise<ContinuationOutcome>>();
   let lastInput: BeginReadingInputSnapshot = {};
   let lastBegin: BeginReadingPayload | undefined;
   let lastConfirmed: ConfirmedReading | undefined;
@@ -199,10 +200,14 @@ export function createMcpClient(
     return payload;
   };
 
+  /** The ChatGPT component bridge, absent on hosts that speak only MCP Apps. */
+  const chatgptBridge = (): OpenAiFollowUpBridge | undefined =>
+    (window as Window & { openai?: OpenAiFollowUpBridge }).openai;
+
   /** Send the revealed reading only when the user explicitly requests it. */
   const continueInHost = (
     reading: ConfirmedReading,
-  ): Promise<"sent" | "unsupported"> => {
+  ): Promise<ContinuationOutcome> => {
     const key = continuationKey(reading);
     if (continuedReadings.has(key)) return Promise.resolve("sent");
     const saved = matchingSnapshot(readUiState());
@@ -217,7 +222,7 @@ export function createMcpClient(
     const pending = continuingReadings.get(key);
     if (pending) return pending;
 
-    const continuation = (async (): Promise<"sent" | "unsupported"> => {
+    const continuation = (async (): Promise<ContinuationOutcome> => {
       const capabilities = app.getHostCapabilities();
       const context = modelReadingContext(reading);
       const text = readingContinuationText(context);
@@ -255,9 +260,13 @@ export function createMcpClient(
         if (result.isError === true) {
           throw new Error("The host rejected the interpretation request.");
         }
+        // ChatGPT's component bridge turns an accepted ui/message into the
+        // reader's turn. A host without that bridge may instead stage the
+        // message for the reader to send, so acceptance is not delivery: keep
+        // the reading unrecorded and let the reader hand it over again.
+        if (!chatgptBridge()) return "queued";
       } else {
-        const openai = (window as Window & { openai?: OpenAiFollowUpBridge })
-          .openai;
+        const openai = chatgptBridge();
         if (typeof openai?.sendFollowUpMessage !== "function")
           return "unsupported";
         // Select one advertised bridge before sending. Never switch bridges

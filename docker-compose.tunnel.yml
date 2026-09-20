@@ -2,7 +2,9 @@ services:
   tarot-mcp:
     environment:
       MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN:?Set MCP_AUTH_TOKEN}
-      ALLOWED_HOSTS: tarot-mcp,localhost,127.0.0.1
+      # Container-to-container tunnel access plus any public reverse-proxy
+      # hostname (for example a Claude connector vhost) listed in .env.
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-tarot-mcp,localhost,127.0.0.1}
 
   tunnel-client:
     image: ghcr.io/openai/tunnel-client:v0.0.14

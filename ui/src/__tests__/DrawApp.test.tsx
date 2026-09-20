@@ -305,7 +305,7 @@ describe("DrawApp widget state recovery", () => {
     for (let n = 0; n < 3; n++)
       await user.click(screen.getByRole("button", { name: "Turn next card" }));
     await user.click(
-      screen.getByRole("button", { name: "Interpret in ChatGPT" }),
+      screen.getByRole("button", { name: "Interpret in chat" }),
     );
 
     const second = persistentWidget(
@@ -386,7 +386,7 @@ describe("DrawApp widget state recovery", () => {
     const mounted = render(<DrawApp client={first.client} />);
     act(() => first.host.onBegin(draw));
     await user.click(
-      screen.getByRole("button", { name: "Interpret in ChatGPT" }),
+      screen.getByRole("button", { name: "Interpret in chat" }),
     );
     await waitFor(() => expect(store.snapshot.continuationSent).toBe(true));
     mounted.unmount();
@@ -400,7 +400,7 @@ describe("DrawApp widget state recovery", () => {
       screen.getByRole("heading", { name: "Your reading" }),
     ).not.toBeNull();
     expect(
-      screen.queryByRole("button", { name: "Interpret in ChatGPT" }),
+      screen.queryByRole("button", { name: "Interpret in chat" }),
     ).toBeNull();
     expect(
       screen.getByRole("button", { name: "The World. View card details" }),

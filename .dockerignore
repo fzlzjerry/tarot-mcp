@@ -23,8 +23,9 @@ assets/cards/qa
 *.log
 logs
 
-# Environment files
+# Environment files and reverse-proxy connector secrets
 .env*
+.connector-path
 
 # Tooling and CI
 .claude

@@ -110,7 +110,7 @@ must be started.
 The embedded MCP App uses a different continuation contract. Only
 `begin_visual_reading` creates the widget. Confirmation returns data without
 sending a host message. The reader reveals the cards, then explicitly chooses
-**Interpret in ChatGPT**. The App attempts supported model-context delivery and
+**Interpret in chat**. The App attempts supported model-context delivery and
 then a text message containing the complete semantic reading; context-update
 failure does not block the message. Standard `ui/message` is preferred when the
 host advertises `message.text`. Otherwise the App feature-detects the documented
@@ -119,9 +119,18 @@ and sends the same semantic reading through that interface. Both paths have a
 10-second timeout. A rejected or timed-out standard send never triggers an
 automatic second attempt through the compatibility interface.
 
-Simultaneous continuation requests for one reading are merged. Success is recorded
-only after the standard result has no `isError: true`, or the documented ChatGPT
-follow-up promise resolves. Failure preserves
+What acceptance proves depends on the host. The specification lets a host stage
+a `ui/message` in its message box for the reader to send, and Claude does
+exactly that. When the ChatGPT component bridge (`window.openai`) is absent, an
+accepted standard message is therefore reported as handed over rather than sent:
+the App says the reading may be waiting in the message box, keeps the control
+available as **Hand it over again**, and records no delivery, so an explicit
+second request hands the same reading over again. With that bridge present the
+message becomes the reader's turn, which is the delivery the App records.
+
+Simultaneous continuation requests for one reading are merged. Delivery is
+recorded only on a ChatGPT-bridge host, after the standard result has no
+`isError: true` or the documented follow-up promise resolves. Failure preserves
 the cards and permits a manual retry; check the conversation first, since a lost
 response cannot prove that the message was not delivered. Hosts with neither
 interface get a manual-continuation notice. Local interpretation stays available. Neither
@@ -266,7 +275,7 @@ OAuth; it does not make this private service publicly unauthenticated.
    ritual. Approve any host tool/message permission prompts interactively. Only
    begin should create a widget; confirmation should neither create another
    widget nor request interpretation before the reader finishes revealing.
-5. Click **Interpret in ChatGPT** after all cards are revealed and verify that
+5. Click **Interpret in chat** after all cards are revealed and verify that
    the conversation matches their positions and orientations without drawing
    again. After metadata or UI updates, **Refresh** this private connection and
    use a new conversation. Test fullscreen return and same-widget restart in the
@@ -282,3 +291,91 @@ Pending draws are memory-only: restarting tarot invalidates them, and the UI
 requires a new reading. A tunnel outage must be reported as unavailable, not as
 a successful connection. Only perform stop/restart fault drills when explicitly
 authorized by the operator.
+
+## Private Claude connector via reverse proxy
+
+Claude's custom connectors (web, desktop and mobile) accept a remote MCP URL and
+an optional OAuth client; they have no field for a static `Authorization` header.
+This service authenticates with a fixed Bearer token, so a TLS reverse proxy
+publishes exactly one unguessable path that maps to `/mcp` and injects the header
+upstream. The connector URL is therefore the credential: treat it like a
+password, keep it out of access logs, and rotate it by changing the path
+segment. Everything else on the public hostname returns 404, so `/draw`, `/api`
+and the bare `/mcp` endpoint stay unpublished. The ChatGPT tunnel is unaffected;
+both connections use the same container.
+
+Requirements: a DNS record for the public hostname pointing at the server, a
+certificate for it, and the hostname in `ALLOWED_HOSTS`. Add the latter to
+`.env`, since the Compose override defaults to container/loopback hosts only:
+
+```sh
+ALLOWED_HOSTS=tarot-mcp,localhost,127.0.0.1,tarot.example.com
+```
+
+The proxy location must disable response buffering; the Streamable HTTP
+server-to-client stream is Server-Sent Events, and a buffering proxy withholds
+events until the stream ends. Dropping `Origin` keeps the service's browser
+DNS-rebinding guard from rejecting a non-browser client that sends one:
+
+```nginx
+location = /c/REPLACE_WITH_RANDOM_PATH/mcp {
+    access_log off;
+
+    proxy_pass http://127.0.0.1:3000/mcp;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header Connection "";
+    proxy_set_header Origin "";
+    # Literal MCP_AUTH_TOKEN value from .env.
+    proxy_set_header Authorization "Bearer <token>";
+
+    proxy_buffering off;
+    proxy_request_buffering off;
+    proxy_cache off;
+    chunked_transfer_encoding on;
+    proxy_read_timeout 1800s;
+    proxy_send_timeout 1800s;
+}
+
+location / {
+    return 404;
+}
+```
+
+Generate the path segment with at least 128 bits of entropy, for example
+`head -c 24 /dev/urandom | base64 | tr '+/' '-_' | tr -d '='`. Keep the rendered
+configuration file readable only by root: it contains the service token. Store
+any copy of the path outside the repository directory, because the image build
+copies the whole tree and would bake the secret into a layer.
+
+In Claude, open **Settings → Connectors → Add custom connector**, name it
+**Tarot**, paste `https://<host>/c/<secret>/mcp`, and leave the OAuth fields
+empty. Claude reports the tool count after discovery; the connector settings page
+also counts interactive tools, which confirms that `_meta.ui.resourceUri` was
+parsed. Claude caches `tools/list` per connector session, so metadata changes
+need a connector refresh, while changed tool results appear immediately.
+
+Verify the published path before connecting Claude, using a real MCP handshake
+rather than a plain GET:
+
+```sh
+curl -sS -D- -o /dev/null -X POST https://<host>/c/<secret>/mcp \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl","version":"0"}}}'
+```
+
+A successful response carries `Mcp-Session-Id`. Reuse that header on a
+`GET` with `Accept: text/event-stream` to confirm the proxy holds the stream open
+and returns `content-type: text/event-stream`.
+
+Widget rendering in Claude is not guaranteed. This server declares the MCP Apps
+extension and `_meta.ui.resourceUri` unconditionally rather than gating on the
+client's advertised capability, because Claude's web host renders apps without
+advertising the extension. Remote HTTP connectors still hit a host-side gap where
+the frame never mounts and the reply degrades to the text fallback
+([anthropics/claude-ai-mcp#61](https://github.com/anthropics/claude-ai-mcp/issues/61));
+mobile has been reported to render the same connector correctly. Claude Code does
+not advertise the UI extension at all, so it receives text tool results only, and
+HTTP transports never open a browser table: a text-only Claude client can run the
+non-visual reading tools, but cannot complete the manual draw ritual.

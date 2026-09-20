@@ -135,6 +135,16 @@ export interface TarotUiSnapshot {
   continuationSent: boolean;
 }
 
+/**
+ * Result of handing a confirmed reading to the host conversation.
+ *
+ * `sent` means the host dispatched the turn. `queued` means the host accepted
+ * the standard `ui/message` request, which the MCP Apps specification allows it
+ * to stage in its message box instead of dispatching, so acceptance alone is
+ * not proof that the reader's turn was sent.
+ */
+export type ContinuationOutcome = "sent" | "queued" | "unsupported";
+
 export interface DrawClient {
   readonly target: "web" | "mcp";
   startsWithHandoff?(): boolean;
@@ -153,7 +163,7 @@ export interface DrawClient {
     onConfirmed(payload: ConfirmedReading): void;
     onError(error: DrawError): void;
   }): () => void;
-  continueReading?(reading: ConfirmedReading): Promise<"sent" | "unsupported">;
+  continueReading?(reading: ConfirmedReading): Promise<ContinuationOutcome>;
   readUiState?(): unknown;
   writeUiState?(state: TarotUiSnapshot): void;
   getPreviewImage?(cardId: "moon" | "back" | "star"): string | undefined;

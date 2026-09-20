@@ -196,7 +196,7 @@ describe("embedded MCP App host continuation", () => {
       slotId: "opaque-private-slot",
     });
 
-    await expect(client.continueReading!(reading)).resolves.toBe("sent");
+    await expect(client.continueReading!(reading)).resolves.toBe("queued");
     expect(callServerTool).toHaveBeenCalledOnce();
     expect(updateModelContext.mock.invocationCallOrder[0]).toBeLessThan(
       sendMessage.mock.invocationCallOrder[0],
@@ -234,7 +234,7 @@ describe("embedded MCP App host continuation", () => {
     );
   });
 
-  it("merges simultaneous requests and remembers success for the same reading key", async () => {
+  it("merges simultaneous standard requests but never records them as delivered", async () => {
     const { app, callServerTool, updateModelContext, sendMessage } =
       createFakeApp({
         updateModelContext: { structuredContent: {} },
@@ -258,17 +258,18 @@ describe("embedded MCP App host continuation", () => {
     expect(updateModelContext).toHaveBeenCalledOnce();
     accept({ isError: false });
     await expect(Promise.all([first, second])).resolves.toEqual([
-      "sent",
-      "sent",
+      "queued",
+      "queued",
     ]);
-    await expect(client.continueReading!({ ...reading })).resolves.toBe("sent");
     expect(sendMessage).toHaveBeenCalledOnce();
     expect(updateModelContext).toHaveBeenCalledOnce();
     expect(callServerTool).toHaveBeenCalledOnce();
 
-    await expect(
-      client.continueReading!({ ...reading, readingId: "another-reading" }),
-    ).resolves.toBe("sent");
+    // A host may only stage the standard message, so a later explicit request
+    // hands the same reading over again instead of reporting an earlier send.
+    await expect(client.continueReading!({ ...reading })).resolves.toBe(
+      "queued",
+    );
     expect(sendMessage).toHaveBeenCalledTimes(2);
   });
 
@@ -288,7 +289,7 @@ describe("embedded MCP App host continuation", () => {
     expect(updateModelContext).toHaveBeenCalledOnce();
     expect(sendMessage).not.toHaveBeenCalled();
     capabilities.message = { text: {} };
-    await expect(client.continueReading!(reading)).resolves.toBe("sent");
+    await expect(client.continueReading!(reading)).resolves.toBe("queued");
     expect(sendMessage).toHaveBeenCalledOnce();
   });
 
@@ -448,7 +449,7 @@ describe("embedded MCP App host continuation", () => {
       "slot-2",
     ]);
 
-    await expect(client.continueReading!(reading)).resolves.toBe("sent");
+    await expect(client.continueReading!(reading)).resolves.toBe("queued");
     const text = sendMessage.mock.calls[0]![0].content[0]!.text;
     expect(text).toContain("What should I understand?");
     expect(text).toContain("Past — The Fool (upright)");
@@ -489,8 +490,7 @@ describe("embedded MCP App host continuation", () => {
       ]);
       expect(sendMessage).toHaveBeenCalledOnce();
 
-      await expect(client.continueReading!(reading)).resolves.toBe("sent");
-      await expect(client.continueReading!(reading)).resolves.toBe("sent");
+      await expect(client.continueReading!(reading)).resolves.toBe("queued");
       expect(sendMessage).toHaveBeenCalledTimes(2);
       expect(callServerTool).toHaveBeenCalledOnce();
     },
@@ -529,7 +529,7 @@ describe("embedded MCP App host continuation", () => {
       await vi.advanceTimersByTimeAsync(10_000);
       expect(sendMessage).toHaveBeenCalledOnce();
 
-      await expect(client.continueReading!(reading)).resolves.toBe("sent");
+      await expect(client.continueReading!(reading)).resolves.toBe("queued");
       expect(sendMessage).toHaveBeenCalledTimes(2);
       expect(callServerTool).toHaveBeenCalledOnce();
     } finally {
@@ -629,6 +629,7 @@ describe("embedded MCP App host continuation", () => {
     expect(bridge.widgetState?.privateContent.tarot.continuationSent).toBe(
       false,
     );
+    // The project's TS lib target predates Promise.withResolvers.
     let accept!: (result: { isError?: boolean }) => void;
     sendMessage.mockImplementationOnce(
       () =>
@@ -658,6 +659,22 @@ describe("embedded MCP App host continuation", () => {
     );
     expect(remount.sendMessage).not.toHaveBeenCalled();
     expect(remount.callServerTool).not.toHaveBeenCalled();
+  });
+
+  it("reports a staged standard message on hosts without the ChatGPT bridge and keeps it retriable", async () => {
+    const { app, sendMessage } = createFakeApp({ message: { text: {} } });
+    const client = createMcpClient(app);
+    const reading = await client.confirmReading("draw_confirmed", [
+      "slot-1",
+      "slot-2",
+    ]);
+
+    await expect(client.continueReading!(reading)).resolves.toBe("queued");
+    expect(sendMessage).toHaveBeenCalledOnce();
+    // Acceptance is not delivery here, so the reader can hand it over again.
+    await expect(client.continueReading!(reading)).resolves.toBe("queued");
+    expect(sendMessage).toHaveBeenCalledTimes(2);
+    expect(sendMessage.mock.calls[1]![0]).toEqual(sendMessage.mock.calls[0]![0]);
   });
 
   it("does not let late continuation acknowledgement overwrite a newer draw checkpoint", async () => {

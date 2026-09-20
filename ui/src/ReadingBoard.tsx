@@ -31,7 +31,7 @@ interface RevealState {
  * cards and asks the user to check the conversation before retrying.
  */
 type Continuation =
-  | { status: "idle" | "sending" | "sent" | "unsupported" }
+  | { status: "idle" | "sending" | "sent" | "queued" | "unsupported" }
   | { status: "failed"; detail: string };
 
 function orientationLabel(language: Language, card: ReadingCard): string {
@@ -302,9 +302,11 @@ export function ReadingBoard({
       ? t(language, "interpretationSending")
       : continuation.status === "sent"
         ? t(language, "interpretationSent")
-        : continuation.status === "unsupported"
-          ? t(language, "interpretationUnsupported")
-          : undefined;
+        : continuation.status === "queued"
+          ? t(language, "interpretationQueued")
+          : continuation.status === "unsupported"
+            ? t(language, "interpretationUnsupported")
+            : undefined;
   // The outcome messages already say where the interpretation lives; only the
   // idle and sending states still need the generic pointer to the conversation.
   const showInterpretationFallback =
@@ -423,7 +425,8 @@ export function ReadingBoard({
                 {continuationMessage ? <p>{continuationMessage}</p> : null}
               </div>
               {continuation.status === "idle" ||
-              continuation.status === "sending" ? (
+              continuation.status === "sending" ||
+              continuation.status === "queued" ? (
                 <p>
                   <button
                     className="primary-action"
@@ -432,7 +435,12 @@ export function ReadingBoard({
                     disabled={continuation.status === "sending"}
                     aria-busy={continuation.status === "sending"}
                   >
-                    {t(language, "interpretInChatGPT")}
+                    {t(
+                      language,
+                      continuation.status === "queued"
+                        ? "interpretAgain"
+                        : "interpretInChat",
+                    )}
                   </button>
                 </p>
               ) : null}

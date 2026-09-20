@@ -137,7 +137,9 @@ const next = () =>
 const all = () =>
   screen.getByRole<HTMLButtonElement>("button", { name: label("revealAll") });
 const interpret = () =>
-  screen.queryByRole("button", { name: label("interpretInChatGPT") });
+  screen.queryByRole("button", { name: label("interpretInChat") });
+const interpretAgain = () =>
+  screen.queryByRole("button", { name: label("interpretAgain") });
 const interpretationHeading = () =>
   screen.queryByRole("heading", { name: label("interpretation") });
 const revealedCard = (name: string) =>
@@ -467,5 +469,36 @@ describe("ReadingBoard host continuation", () => {
       screen.queryByRole("button", { name: label("tryAgain") }),
     ).toBeNull();
     expect(continueReading).toHaveBeenCalledOnce();
+  });
+
+  it("tells the reader to send a staged message and keeps the hand-off available", async () => {
+    const user = userEvent.setup();
+    const continueReading = vi
+      .fn<NonNullable<DrawClient["continueReading"]>>()
+      .mockResolvedValue("queued");
+    const { client } = createClient("mcp", { continueReading });
+    const checkpoints = vi.fn();
+    const current = reading("Local reading text");
+    render(
+      <ReadingBoard
+        reading={current}
+        client={client}
+        language="en"
+        onRestart={vi.fn()}
+        initialRevealedIndices={[0, 1, 2]}
+        onUiCheckpoint={checkpoints}
+      />,
+    );
+
+    await user.click(interpret()!);
+    expect(
+      await screen.findByText(label("interpretationQueued")),
+    ).not.toBeNull();
+    expect(screen.queryByText(label("interpretationSent"))).toBeNull();
+    expect(checkpoints).not.toHaveBeenCalledWith([0, 1, 2], true);
+
+    await user.click(interpretAgain()!);
+    expect(continueReading).toHaveBeenCalledTimes(2);
+    expect(continueReading).toHaveBeenLastCalledWith(current);
   });
 });
