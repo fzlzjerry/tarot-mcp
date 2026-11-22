@@ -1,11 +1,11 @@
 import { type ReactNode, useState } from "react";
 import {
-  VISUAL_CARD_ASSET_BASE,
+  VISUAL_CARD_V1_ASSET_BASE,
   VISUAL_CARD_V2_ASSET_BASE,
 } from "@tarot/shared/artwork.js";
 import {
   type DeckEdition,
-  V2_GATE_CARD_IDS,
+  V2_SHOWCASE_CARD_IDS,
   readInitialDeckEdition,
   setUrlDeckEdition,
 } from "./deck-edition.js";
@@ -28,7 +28,7 @@ export function SetupShell({
   children: ReactNode;
 }) {
   const [edition, setEdition] = useState<DeckEdition>(() =>
-    client.target === "web" ? readInitialDeckEdition() : "v1",
+    client.target === "web" ? readInitialDeckEdition() : "v2",
   );
 
   const switchEdition = (next: DeckEdition): void => {
@@ -36,29 +36,16 @@ export function SetupShell({
     setUrlDeckEdition(next);
   };
 
-  const heroCards =
-    edition === "v2" && client.target === "web"
-      ? ([
-          {
-            slot: "moon",
-            src: `${VISUAL_CARD_V2_ASSET_BASE}/fool.webp`,
-          },
-          {
-            slot: "back",
-            src: `${VISUAL_CARD_V2_ASSET_BASE}/back.webp`,
-          },
-          {
-            slot: "star",
-            src: `${VISUAL_CARD_V2_ASSET_BASE}/queen_of_swords.webp`,
-          },
-        ] as const)
-      : (["moon", "back", "star"] as const).map((cardId) => ({
-          slot: cardId,
-          src:
-            client.target === "mcp"
-              ? client.getPreviewImage?.(cardId)
-              : `${VISUAL_CARD_ASSET_BASE}/${cardId}.webp`,
-        }));
+  const assetBase =
+    edition === "v1" ? VISUAL_CARD_V1_ASSET_BASE : VISUAL_CARD_V2_ASSET_BASE;
+
+  const heroCards = (["moon", "back", "star"] as const).map((cardId) => ({
+    slot: cardId,
+    src:
+      client.target === "mcp"
+        ? client.getPreviewImage?.(cardId)
+        : `${assetBase}/${cardId}.webp`,
+  }));
 
   return (
     <div className="setup-shell">
@@ -79,19 +66,19 @@ export function SetupShell({
             <div className="edition-switch" role="group" aria-label={t(language, "deckEdition")}>
               <button
                 type="button"
-                className={edition === "v1" ? "is-active" : ""}
-                aria-pressed={edition === "v1"}
-                onClick={() => switchEdition("v1")}
-              >
-                {t(language, "deckEditionV1")}
-              </button>
-              <button
-                type="button"
                 className={edition === "v2" ? "is-active" : ""}
                 aria-pressed={edition === "v2"}
                 onClick={() => switchEdition("v2")}
               >
                 {t(language, "deckEditionV2")}
+              </button>
+              <button
+                type="button"
+                className={edition === "v1" ? "is-active" : ""}
+                aria-pressed={edition === "v1"}
+                onClick={() => switchEdition("v1")}
+              >
+                {t(language, "deckEditionV1")}
               </button>
             </div>
           ) : null}
@@ -123,24 +110,24 @@ export function SetupShell({
                     key={`${edition}-${slot}`}
                     className={`deck-preview__${slot}`}
                     src={src}
-                    width="512"
-                    height="768"
+                    width="640"
+                    height="960"
                     alt=""
                   />
                 ) : null,
               )}
             </div>
             <figcaption>
-              {edition === "v2" && client.target === "web"
-                ? t(language, "v2GateCaption")
+              {edition === "v2"
+                ? t(language, "v2DeckCaption")
                 : t(language, "deckPreview")}
             </figcaption>
             {edition === "v2" && client.target === "web" ? (
               <div className="v2-gate-strip" aria-hidden="true">
-                {V2_GATE_CARD_IDS.map((id) => (
+                {V2_SHOWCASE_CARD_IDS.map((id) => (
                   <img
                     key={id}
-                    src={`${VISUAL_CARD_V2_ASSET_BASE}/w320/${id}.webp`}
+                    src={`${VISUAL_CARD_V2_ASSET_BASE}/${id}.webp`}
                     width="160"
                     height="240"
                     alt=""

@@ -1,0 +1,2789 @@
+{
+  "ace_of_swords": {
+    "id": "ace_of_swords",
+    "archetypeEssence": {
+      "en": "A decisive flash of truth cutting cleanly through fog, hesitation, and competing noise.",
+      "zh": "划破迷雾与犹豫的第一道清明锋芒，让核心真相一眼落定。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Luminous hand emerging from a silver storm cloud gripping a single straight upright sword",
+        "Golden crown balanced cleanly around the upward tip of the blade",
+        "Olive branch of peace and palm frond of triumph draped from opposite sides of the crown",
+        "Six golden light droplets descending through clear mountain air",
+        "Stark jagged mountain peaks below marking the bracing ascent of honest discernment"
+      ],
+      "zh": [
+        "自银灰云层探出、稳稳竖握一柄笔直长剑的光明之手",
+        "端正套在剑尖之上的金色王冠",
+        "自王冠两侧垂落的橄榄枝与棕榈叶，象征和平与胜果",
+        "在清冽山风中缓缓垂落的六枚金色光滴",
+        "下方冷峻起伏的尖峭群山，映照直面真相所需的清明与骨气"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Moonlit ivory hand emerging from billowing midnight-slate clouds gripping one razor-straight engraved silver-and-gold sword vertically at center",
+        "Sculpted antique-gold Art Nouveau crown pierced cleanly by the sword's luminous tip",
+        "Slender gilded olive branch and silver-veined palm frond cascading gracefully from the crown",
+        "Six fine molten-gold light sparks hovering cleanly in clear air beside the gleaming blade",
+        "Crisp jagged indigo mountain silhouettes rim-lit by frost-silver starlight beneath"
+      ],
+      "zh": [
+        "自翻涌的午夜风暴云中探出、正中笔直竖握一柄铭刻古金纹银剑的月白之手",
+        "被雪亮剑尖稳稳托起的新艺术浮雕古金王冠",
+        "自王冠两侧优雅垂落的纤细金叶橄榄枝与银脉棕榈枝",
+        "悬于清澈夜空、点缀剑身两侧的六枚暖金星滴",
+        "下方被霜银星光勾勒出冷峻棱角的深靛群山剪影"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ace of Swords delivers an unmistakable mental breakthrough: the fog lifts, the real question clicks into focus, and one crisp decision outperforms weeks of circling.",
+          "zh": "宝剑王牌带来干脆利落的认知破冰：混沌瞬间散开，真正的核心问题浮出水面，一个清醒决断胜过几周原地打转。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Name the truth plainly in one sentence—clarity is the lever that unlocks everything else right now.",
+            "zh": "试着用一句话把最核心的事实说破——眼下真正能撬动局面的杠杆就是清晰本身。"
+          },
+          "foundation": {
+            "en": "A candid realization, sharp insight, or fresh intellectual commitment cut through earlier ambiguity to put you here.",
+            "zh": "正是先前一次直截了当的顿悟、坦白或果断立下的原则，替你劈开了过去的糊涂账。"
+          },
+          "present": {
+            "en": "You are holding raw clarity and fresh verbal momentum; use this sharp window to define terms before noise creeps back in.",
+            "zh": "你正握着难得的清醒与表达锐度；趁外界杂音还没涌回来，先把原则与条款定实。"
+          },
+          "resource": {
+            "en": "Your strongest asset is incisive thinking—you can distill a tangled mess into a single workable thesis.",
+            "zh": "你手中最硬的底牌是穿透表象的洞察力——能把一团乱麻提炼成清晰可执行的结论。"
+          },
+          "challenge": {
+            "en": "Even upright, Ace of Swords in a challenge slot warns against swinging truth like a blunt weapon or assuming a brilliant first concept needs no testing.",
+            "zh": "即便是正位，落在阻碍位的宝剑王牌也在提醒：别把刚看清的道理当成压人的武器，也别以为绝妙的第一念头不用落地检验。"
+          },
+          "action": {
+            "en": "Make the clean cut today: write down the core thesis, state the boundary openly, or commit to the one path that actually holds up.",
+            "zh": "今天就做一次利落的切割：写下核心论点、公开讲明底线，或干脆选定那条逻辑最站得住的路。"
+          },
+          "outcome": {
+            "en": "A decisive breakthrough clears the air—expect crisp terms, intellectual traction, and a solid starting line built on truth.",
+            "zh": "一次干脆的突破将吹散沉闷——前方会出现清晰共识、顺畅思路与建立在真相上的新起点。"
+          },
+          "advice": {
+            "en": "Keep both the olive branch and the blade in view: be uncompromising about facts while staying steady and humane in delivery.",
+            "zh": "把橄榄枝与利剑一同放在眼里：对事实绝不和稀泥，表达时则稳住分寸与体面。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Fresh clarity cuts straight to the heart of the matter. Strip away secondary distractions and act on the clean truth now standing in plain sight.",
+            "zh": "一股清冽锋利的洞察力正直指问题要害。果断剥离次要干扰与含糊借口，顺着已经显露在眼前的清晰事实坚定落子。"
+          },
+          "love": {
+            "en": "In love, Ace of Swords brings honest conversation that resets the room—defining where you stand, clearing up an assumption, or sparking an immediate meeting of minds.",
+            "zh": "在感情里，宝剑王牌带来让空气瞬间澄澈的坦诚对话——把彼此位置说清、解开长期误会，或迎来棋逢对手的思想共鸣。"
+          },
+          "career": {
+            "en": "At work, this marks a sharp strategic breakthrough, winning pitch, clear contract, or clean architectural call. Document your rationale and push the proposal forward.",
+            "zh": "在工作与学业上，它对应凌厉的策略破局、击中要害的提案或明确无误的方案裁定。把判断依据落成白纸黑字，顺势推进。"
+          },
+          "health": {
+            "en": "For wellbeing, clarity replaces vague worry—pin down the actual trigger, seek straight clinical answers, and simplify your daily routine around one clear habit.",
+            "zh": "在身心层面，宝剑王牌鼓励用明确认知替代模糊焦虑——厘清真实诱因，必要时获取清晰专业意见，并围绕一项切实习惯理顺作息。"
+          },
+          "spirituality": {
+            "en": "Spiritually, this is the bright cut of discernment: parting borrowed beliefs from lived truth so inner practice rests on unshakable honesty.",
+            "zh": "在灵性层面，这是一记清朗的辨识之刃：把人云亦云的旧观念与亲身验证的真实分开，让内在修习立在彻底诚实的地基上。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ace of Swords reversed points to foggy thinking, tangled communication, or a half-formed insight rushed out before its logic is actually sound.",
+          "zh": "宝剑王牌逆位提示思路发钝、表达错位，或把尚未想透的念头仓促抛向外界，反而添了混乱。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Mental clutter or second-guessing is dulling a clear decision you already sense underneath.",
+            "zh": "反复自我怀疑与过量杂音，正把你心里隐约摸到的清晰答案磨钝。"
+          },
+          "excess": {
+            "en": "Using sharp words to win debates or sever ties impulsively before checking all the facts.",
+            "zh": "急着用锋利措辞压倒对方，或未核实全貌就冲动一刀两断。"
+          },
+          "internalized": {
+            "en": "A genuine realization is germinating privately, not yet crisp enough to announce aloud.",
+            "zh": "一个真实的洞见正在内心酝酿，只是还不到摊开宣布的火候。"
+          },
+          "release": {
+            "en": "Dropping a rigid assumption that no longer matches reality so fresh thinking can enter.",
+            "zh": "松开一个早已脱节的旧定论，腾出空间让新视角进来。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Mixed signals, imprecise wording, or arguing from unverified premises is muddying what should be simple.",
+            "zh": "含混措辞、信息偏差或基于未经核实的假设争辩，正在把本来简单的事搅浑。"
+          },
+          "action": {
+            "en": "Pause the speech and rewrite the question on paper until every vague word is replaced with a concrete fact.",
+            "zh": "先别急着表态，把问题落到纸上重写一遍，把每个模糊字眼都换成可核对的事实。"
+          },
+          "outcome": {
+            "en": "Expect a brief delay or round of clarification before an agreement sticks; forcing a verdict too early invites rework.",
+            "zh": "落定前还需一轮澄清与校准；赶在逻辑成型前硬下结论，只会招来后续返工。"
+          },
+          "advice": {
+            "en": "Sharpen the thought quietly before you swing it—verify your key premise and check how your words will land.",
+            "zh": "出剑之前先在安静处把刃磨亮——核实最关键的前提，也留意你的话会怎样落在对方耳中。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Do not mistake loud certainty for actual clarity. Slow down, verify the missing piece, and refine the message before locking anything in.",
+            "zh": "别把嗓门大、语气硬或急着下结论误当成真正的清醒。放慢半拍补齐遗漏信息，把前提与逻辑彻底理顺后再作定夺。"
+          },
+          "love": {
+            "en": "In relationships, reversed Ace of Swords flags talking past each other, loaded remarks, or unread subtext. Ask what they actually meant before reacting.",
+            "zh": "在感情中，宝剑王牌逆位常表现为各说各话、话里带刺或过度脑补潜台词。情绪上头前先向对方核实真实意思。"
+          },
+          "career": {
+            "en": "At work, beware ambiguous briefs, premature pitches, or shaky logic masquerading as bold strategy. Tighten the spec and double-check the data first.",
+            "zh": "在职场上，警惕目标含糊的需求文档、仓促推出的方案或经不起推敲的宏大叙事。先收紧口径并复核底层数据。"
+          },
+          "health": {
+            "en": "Brain fog, mental fatigue, or conflicting advice is clouding judgment; step back from information overload and prioritize sleep and quiet focus.",
+            "zh": "脑雾、用脑过度或互相打架的养生资讯正让你无所适从；先远离信息过载，用充足睡眠与安静独处恢复清明。"
+          },
+          "spirituality": {
+            "en": "Notice where intellectualizing or chasing clever frameworks is keeping you from simple, direct awareness.",
+            "zh": "在灵性层面，觉察自己是否过度沉迷于拆解概念与寻找精巧理论，反而隔开了简单直接的内在觉知。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, razor-clean antique gold linework",
+      "scene": "A luminous Belle Epoque hand draped in an airy moonlit-ivory silk cuff emerges cleanly from swirling storm-slate and midnight-indigo clouds on the right, firmly gripping EXACTLY ONE tall, razor-straight engraved frost-silver and antique-gold sword held perfectly vertical along the central axis. The gleaming blade point pierces upward through ONE sculpted antique-gold Art Nouveau royal crown, from which drape one slender gilded olive branch to the left and one silver-veined palm frond to the right in balanced botanical arcs. Six delicate molten-gold light sparks drift in the crisp night air flanking the sword blade, catching brilliant specular highlights. Far below, jagged dark indigo mountain peaks rise beneath a sweeping veil of silver starlight, creating intense figure-ground separation around the bright vertical blade and crown.",
+      "requiredObjects": [
+        {
+          "object": "radiant hand emerging from cloud",
+          "count": 1
+        },
+        {
+          "object": "straight upright silver-gold sword",
+          "count": 1
+        },
+        {
+          "object": "antique-gold crown pierced by sword tip",
+          "count": 1
+        },
+        {
+          "object": "draped olive branch and palm frond",
+          "count": 2
+        }
+      ],
+      "compositionNote": "Iconic razor-bright vertical silver sword bisecting the entire canvas, crowned at the upper third with a horizontal luminous hand entering from mid-right and dark jagged mountains anchoring the base—instantly legible at 64x96 thumbnail.",
+      "avoid": [
+        "two or more swords",
+        "full standing person",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "two_of_swords": {
+    "id": "two_of_swords",
+    "archetypeEssence": {
+      "en": "A fragile stalemate bought by refusing to look—two balanced blades holding off a decision that waits for sight.",
+      "zh": "借由暂时闭眼换来的脆弱僵持——双剑交叉维持平衡，等待你亲手摘下眼罩作出选择。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Seated figure wearing a crisp pale blindfold across the eyes",
+        "Two straight swords held symmetrically crossed in an X across the chest",
+        "Solid stone bench forming a barrier between the sitter and the restless sea behind",
+        "Dark jagged rocks protruding from choppy moonlit water behind the bench",
+        "Bright silver waxing crescent moon hanging calmly in the night sky"
+      ],
+      "zh": [
+        "端坐不动、双眼蒙着素白绸带的身影",
+        "双手对称交叉胸前、呈十字平衡的两柄长剑",
+        "隔开人物与身后动荡海面的厚重石凳",
+        "夜色海面上隐现的嶙峋暗礁，象征尚未直面的情绪波澜",
+        "悬于清冷夜空之上的银白新月"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Poised Belle Epoque woman in draped moonlit-ivory and slate-blue silk seated straight on a carved stone bench wearing a pearl-ivory blindfold",
+        "Exactly two matching straight frost-silver and antique-gold swords held crossed in a crisp symmetrical X rising above her shoulders",
+        "Moonlit storm-slate sea studded with dark rocky reefs stretching behind the stone parapet",
+        "Luminous silver waxing crescent moon gleaming in the deep midnight-indigo sky at upper right",
+        "Sharp moonlight separating the pale blindfolded figure and bright crossed blades from the moody coastal night"
+      ],
+      "zh": [
+        "身着月白与灰蓝垂坠丝袍、蒙着珍珠白丝绸眼罩端坐石凳的美好年代女子",
+        "双手平稳交叉举至双肩上方、呈对称X形的两柄霜银鎏金直剑",
+        "石台背后月色泛涌、点缀着深色礁石的风暴青灰海面",
+        "高悬于右上方深靛夜空中的明亮银白新月",
+        "清冽月光将素白人影、亮银双剑与暗沉海夜清晰分离开来"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Two of Swords signals an intentional pause or emotional deadlock: you are holding two competing truths at arm's length because choosing either one carries a real trade-off.",
+          "zh": "宝剑二指向一场有意识的僵持或情感冷处理：你把两种互相拉扯的考量稳稳架在胸前，因为无论选哪一边，都必须承担真实的取舍代价。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Admit what you are pretending not to see—keeping both options suspended protects calm today, yet quietly stalls your next chapter.",
+            "zh": "先向自己承认你刻意不去细看的那一处——同时悬着两头虽然保住了此刻安静，却也在悄悄拖慢真正的前进。"
+          },
+          "foundation": {
+            "en": "A difficult dilemma or bruised trust led you to armor up and stay strictly neutral rather than risk another wrong call.",
+            "zh": "一次两难抉择或曾受过的信任磕碰，让你选择先拉起防线、维持中立，免得再次押错。"
+          },
+          "present": {
+            "en": "You are perched in a quiet truce between head and heart; neither path feels painless, so your mind is holding the gate shut.",
+            "zh": "你正处在理智与情感短暂休战的平衡点上；两条路看起来都有阵痛，于是大脑本能地先关上了决定之门。"
+          },
+          "resource": {
+            "en": "Your composure under pressure is real—buying a measured cooling-off window prevents a reactive mistake while you gather facts.",
+            "zh": "你在压力下稳住阵脚的能力很可贵——有分寸地按下暂停，能帮你避开情绪化拍板，腾出时间补齐信息。"
+          },
+          "challenge": {
+            "en": "Refusing to look at one uncomfortable fact turns prudence into paralysis; waiting for a painless third option keeps you stuck on the bench.",
+            "zh": "刻意回避某个不舒服的事实，会让谨慎演变成原地僵死；指望天降零代价的第三选项，只会让你一直困在石凳上。"
+          },
+          "action": {
+            "en": "Take off the blindfold on one specific question today: name your two real choices, list the actual downside of each, and set a firm decision deadline.",
+            "zh": "今天就针对一个最关键的问题摘下眼罩：写清眼前真实的两个选项、各自必须承受的代价，再定下明确的拍板日期。"
+          },
+          "outcome": {
+            "en": "Equilibrium holds only until you decide; once you look squarely at the water behind you, the stalemate breaks cleanly into motion.",
+            "zh": "这份静止的平衡只会维持到你愿意面对为止；只要肯转身看清身后的暗礁，僵局便会顺势松动。"
+          },
+          "advice": {
+            "en": "Stop waiting for certainty to dissolve the trade-off—use calm curiosity to look closely, then choose with open eyes.",
+            "zh": "别等万无一失把取舍自动抹平——带着冷静的好奇睁眼看清全貌，然后坦然落子。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A poised deadlock asks for honest sight rather than tighter control. Give yourself a brief pause to steady your nerves, then face the choice directly.",
+            "zh": "一段看似体面的僵持需要睁眼直视，而非继续紧绷维持。允许自己短暂定神，随后正面走进取舍。"
+          },
+          "love": {
+            "en": "In love, Two of Swords reflects guarded affection, an unspoken standoff, or feeling torn between safety and vulnerability. Keeping the peace by saying nothing quietly widens the gap.",
+            "zh": "在感情中，宝剑二常体现为有所保留的试探、沉默对峙，或在安全感与敞开心扉间犹豫不决。只靠闭口不谈换来的风平浪静，反而会悄悄拉远距离。"
+          },
+          "career": {
+            "en": "At work, two viable tracks—or an uncomfortable trade-off between stability and growth—are evenly matched. Gather one decisive missing data point instead of re-weighing the same pros and cons.",
+            "zh": "在工作上，两条看似势均力敌的路径，或稳妥与跃迁之间的拉锯正让你悬而未决。与其反复盘算同一份利弊表，不如去拿一个能打破平局的新证据。"
+          },
+          "health": {
+            "en": "For wellbeing, notice where ignoring a nagging symptom or tuning out bodily stress signals is creating quiet tension; gentle honesty is easier than holding your breath.",
+            "zh": "在身心层面，留意是否因为嫌麻烦而把身体的细微疲惫或紧绷挡在意识门外；坦然看见并温和照料，比一直屏气硬扛轻松得多。"
+          },
+          "spirituality": {
+            "en": "Spiritually, sitting still in the dark teaches restraint, yet wisdom ripens when silence turns into clear seeing rather than avoidance.",
+            "zh": "在灵性层面，静坐默观能培养定力，但真正的智慧成熟于看清而非回避——安静之后终究要睁眼接纳真实。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Two of Swords reversed breaks the truce: the blindfold slips off, hidden facts rush in, and the choice can no longer be shelved—whether that brings welcome relief or sudden overwhelm.",
+          "zh": "宝剑二逆位打破了原先的休战：眼罩滑落、被挡在门外的事实涌了进来，选择已无法再拖延——既可能带来豁然松动，也可能伴随一时信息过载。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Bouncing endlessly between both options without committing wears down your nerve.",
+            "zh": "在两个选项之间反复横跳却迟迟不肯落槌，持续耗干心力。"
+          },
+          "excess": {
+            "en": "Flooding yourself with too many opinions and spreadsheets until noise drowns out common sense.",
+            "zh": "不断搜集更多旁人意见与对比清单，直到过量信息彻底淹没基本判断。"
+          },
+          "internalized": {
+            "en": "Privately knowing which way your gut already leans while stalling the outward conversation.",
+            "zh": "心里其实早已倾向一边，只是迟迟不肯把决定说出口。"
+          },
+          "release": {
+            "en": "Finally removing the blindfold—seeing an awkward truth clearly enough to move forward at last.",
+            "zh": "终于亲手扯下眼罩——即便真相不算悦耳，看清之后反而能真正抬脚前行。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Information overload or trying to keep everyone happy is tearing your attention in opposite directions.",
+            "zh": "过量杂音或想两边都不得罪的心态，正把你的注意力扯向截然相反的方向。"
+          },
+          "action": {
+            "en": "Close the extra tabs, stop polling new voices, and commit to the option that holds up once all pretense is stripped away.",
+            "zh": "关掉多余的参考意见，不再四处询问旁人，按剥除客套后最站得住的事实直接做决定。"
+          },
+          "outcome": {
+            "en": "The deadlock dissolves—either through a candid revelation or your own decision to step off the fence.",
+            "zh": "僵局很快瓦解——要么迎来摊牌式的新事实，要么由你主动结束摇摆。"
+          },
+          "advice": {
+            "en": "An imperfect decision made with open eyes beats endless hedging in the dark.",
+            "zh": "睁眼作出的不完美决定，远胜过蒙眼在原地无休止地骑墙。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "The holding pattern is over. Sort signal from noise, accept that no choice pleases everyone, and step decisively onto one side.",
+            "zh": "悬置状态已经到头。筛掉多余杂音，坦然接受没有任何选择能讨好所有人，干脆站到你认定的那一边。"
+          },
+          "love": {
+            "en": "In relationships, reversed Two of Swords lifts the curtain on an avoided topic or mixed signal. Honest clarity may sting briefly, yet it frees both people from guessing.",
+            "zh": "在感情中，宝剑二逆位揭开了长期绕开的话题或模糊态度。说破的瞬间或许略带刺痛，却能把双方都从猜忌里解救出来。"
+          },
+          "career": {
+            "en": "At work, analysis paralysis or conflicting stakeholder demands can no longer sit unresolved. Pick the cleaner trade-off and document why.",
+            "zh": "在职场上，过度调研导致的停滞或相互冲突的诉求已不能继续拖延。选出更清爽的权衡方案并写明理由。"
+          },
+          "health": {
+            "en": "Mental strain from chronic indecision is draining sleep and focus; making one small concrete choice relieves pressure faster than more deliberation.",
+            "zh": "长期摇摆带来的精神内耗正悄悄吞噬精力与睡眠；先把一件具体小事拍板落定，往往比继续反复权衡更减压。"
+          },
+          "spirituality": {
+            "en": "Seeing clearly after a period of denial restores integrity—truth may disrupt comfort, yet it aligns you back with yourself.",
+            "zh": "在灵性层面，走出回避后的清醒直视会重新校准你的内在诚实——真相或许打乱安逸，却让你重新与自己对齐。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, razor-clean antique gold linework",
+      "scene": "A poised Belle Epoque woman seated squarely facing forward on a carved pale-stone parapet bench beside a nocturnal rocky coast, wearing a smooth pearl-ivory silk eye-sash resting serenely across her eyes in classical allegorical Justice-style contemplation. Draped in sculptural moonlit-ivory and storm-slate blue pleated silk with delicate antique-gold trim, she holds EXACTLY TWO matching straight gleaming frost-silver and antique-gold ceremonial swords crossed symmetrically across her chest in a wide, clean X, their twin blades rising high and unmistakably separated against the midnight sky. Behind her low stone bench, dark serrated coastal reefs jut from rippling moonlit slate-cyan waves under a velvety deep midnight-indigo night sky. A crisp, luminous frost-silver waxing crescent moon gleams clearly in the upper right, casting cool rim-light over her serene profile, crossed hands, and twin sword blades.",
+      "requiredObjects": [
+        {
+          "object": "seated woman wearing silk eye-sash on stone bench",
+          "count": 1
+        },
+        {
+          "object": "crossed straight silver-gold swords",
+          "count": 2
+        },
+        {
+          "object": "silver crescent moon",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Strong symmetrical X formed by TWO gleaming silver-gold blades rising above a pale central seated silhouette against dark midnight water and sky—effortlessly distinct at 64x96 thumbnail.",
+      "avoid": [
+        "one sword or three swords",
+        "blindfold removed",
+        "standing figure",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "three_of_swords": {
+    "id": "three_of_swords",
+    "archetypeEssence": {
+      "en": "Sharp, honest sorrow when reality pierces a cherished expectation—painful yet clarifying.",
+      "zh": "期待被冰冷真相刺穿时的清澈痛感——锐利直白，却也把虚幻一并剥离。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Large crimson heart suspended prominently in stormy open air",
+        "Three straight swords piercing cleanly through the heart at symmetrical angles",
+        "Heavy slate storm clouds rolling across the upper sky",
+        "Slanting silver rain pouring down steadily to wash grief into the open"
+      ],
+      "zh": [
+        "悬于风雨半空之中、鲜明醒目的赤红之心",
+        "以对称角度干净利落穿透红心的三柄笔直长剑",
+        "低垂翻涌在天幕背后的浓重风暴灰云",
+        "斜洒而下、将压抑悲伤冲刷至明处的银色密雨"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Sculptural jewel-like faceted crimson enamel and ruby-glass ceremonial heart trimmed with antique-gold filigree suspended at center",
+        "Exactly three gleaming straight frost-silver and antique-gold swords piercing cleanly through the jeweled heart—one vertical and two symmetrical diagonals",
+        "Billowing midnight-indigo and storm-slate clouds parted by cool moonlit silver highlights",
+        "Fine slanting frost-silver rain filaments catching delicate starlight across the stormy sky"
+      ],
+      "zh": [
+        "悬于画面正中、饰以古金掐丝的宝石刻面赤红珐琅礼仪之心",
+        "一竖两斜对称穿透红心、剑柄与剑尖清晰可数的三柄霜银鎏金长剑",
+        "翻涌于深靛夜幕中的风暴灰云与冷冽月白边缘光",
+        "斜斜垂落、折射微弱星辉的细密银雨丝线"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Three of Swords faces emotional pain without euphemism: a betrayal, hard truth, rejection, or grief has landed cleanly. Feeling the sting honestly is what stops it from hardening into lifelong armor.",
+          "zh": "宝剑三毫不粉饰地直面心碎与痛楚：一次失信、落空、直白拒绝或失去已经实打实落下。诚实承认这份刺痛，反而能防止它在日后结成冰冷硬壳。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Do not talk yourself out of what hurts—naming the exact disappointment aloud is the first honest step past it.",
+            "zh": "别急着用大道理劝自己“不该难过”——如实说出真正刺痛你的地方，才是走出阴影的第一步。"
+          },
+          "foundation": {
+            "en": "A sharp disillusionment, harsh exchange, or painful parting shook your trust and still echoes in how you read this situation.",
+            "zh": "先前一次戳破幻想的失落、锋利争执或痛彻的告别震动了你的信任，余波至今仍在影响当下。"
+          },
+          "present": {
+            "en": "An uncomfortable truth is cutting through an illusion right now; it aches, yet at least you are no longer guessing in the dark.",
+            "zh": "一个让人不好受的事实正在刺破原有幻想；此刻确实扎心，但至少你不再被蒙在鼓里。"
+          },
+          "resource": {
+            "en": "Your clearest strength here is radical honesty—because nothing is sugarcoated, you can finally grieve cleanly and choose on real terms.",
+            "zh": "眼下最难得的力量是彻底清醒——既然表象已经剥净，你终于能痛快消化情绪，按真实条件重新打算。"
+          },
+          "challenge": {
+            "en": "Numbly intellectualizing heartbreak or replaying the wound to prove you were right keeps the blades twisting longer than needed.",
+            "zh": "用冷冰冰的理性把悲伤压下去，或反复咀嚼伤痛来证明自己没错，只会让剑锋在心里停留更久。"
+          },
+          "action": {
+            "en": "Give grief a clean, bounded outlet today—speak plainly with someone safe, stop bargaining with what broke, and protect your peace.",
+            "zh": "今天给情绪一个体面且真实的出口——找信得过的人坦诚倾诉，停止和已经破裂的事讨价还价，护住自己的安宁。"
+          },
+          "outcome": {
+            "en": "A painful truth lands without ambiguity, clearing the storm air; once the rain finishes falling, you emerge wiser and free of a false hope.",
+            "zh": "一个无法回避的真相将彻底落定并冲散郁结；待这场雨落完，你会带着清醒走出虚幻期待。"
+          },
+          "advice": {
+            "en": "Let the rain fall instead of pretending it is sunny—acknowledging loss cleanly shortens the storm.",
+            "zh": "下雨时就让雨痛快落下，不必硬装晴天——坦然承认失去，反而会让风暴更早散去。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A sharp disappointment or sobering truth pierces an old expectation. Treat the hurt with dignity and candor rather than denial.",
+            "zh": "一次直白的失落或刺耳真相戳破了原本的期待。带着尊严与诚实接住这份痛，不要急着否认或硬撑。"
+          },
+          "love": {
+            "en": "In love, Three of Swords points to heartbreak, a breach of trust, painful candor, or a third-party strain cutting deep. Honest grief clears space that polite denial never can.",
+            "zh": "在感情里，宝剑三对应情伤、失信、刺痛的坦白或外部介入带来的裂痕。允许自己如实哀伤，比强颜欢笑更能腾出疗愈空间。"
+          },
+          "career": {
+            "en": "At work, this reflects a stinging rejection, harsh critique, broken promise, or project cancellation. Separate legitimate lesson from wounded pride before deciding your next move.",
+            "zh": "在职场上，它常指向落选、尖锐批评、失约或心血项目被叫停。先给情绪留一点缓冲，再把有用反馈和受挫自尊拆开来看。"
+          },
+          "health": {
+            "en": "Emotional sorrow carries physical weight—tight chest, fatigue, or ragged sleep. Seek gentle rest and supportive company rather than isolating under stress.",
+            "zh": "情绪上的低落与刺痛同样会落在身体上，化作疲惫或睡眠变浅。此刻更适合温和休养与温暖陪伴，不必独自躲进角落硬扛。"
+          },
+          "spirituality": {
+            "en": "Spiritually, sorrow strips away sentimentality and deepens compassion—truth hurts only where an attachment refused to bend.",
+            "zh": "在灵性层面，痛楚剥落了虚浮的自我安慰，也让共情变得更深沉——真相之所以刺痛，是因为旧执着曾不肯松手。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Three of Swords reversed turns toward healing and release—pulling the blades out slowly, forgiving where healthy, or noticing where suppressed grief still asks to be felt.",
+          "zh": "宝剑三逆位转向修复与松动——一点点拔出旧刺、在合理边界内释怀，或觉察尚未消化干净的隐痛仍需被看见。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Swallowing hurt to look resilient keeps old resentment quietly alive under the surface.",
+            "zh": "为了显得坚强把委屈生吞下去，反而让旧怨在暗处一直没散。"
+          },
+          "excess": {
+            "en": "Rehearsing an old betrayal over and over until identity fuses with the wound.",
+            "zh": "一遍遍重放过去受过的伤，久而久之把伤痕当成了自我定义。"
+          },
+          "internalized": {
+            "en": "Carrying private sorrow silently because you fear burdening anyone else with it.",
+            "zh": "因为怕麻烦别人而把所有难过锁在心里独自消化。"
+          },
+          "release": {
+            "en": "The sharpest ache is fading; honest forgiveness or clean closure lets the heart breathe again.",
+            "zh": "最尖锐的痛感正在退潮；真诚释怀或干脆翻篇，让心重新透进空气。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Either you are rushing past grief before it heals, or clinging to an old grudge that still drains today's energy.",
+            "zh": "要么还没真正缓过来就急着催自己“赶紧翻篇”，要么紧抓旧怨不放，继续消耗今天的精力。"
+          },
+          "action": {
+            "en": "Release one grudge or self-blaming loop deliberately—forgive for your own freedom, or state clearly what repair requires.",
+            "zh": "有意识地放下一条反复折磨自己的责怪或心结——为了自己的自由选择释怀，或明确提出修复所需的条件。"
+          },
+          "outcome": {
+            "en": "Emotional clouds thin out steadily; relief, softer perspective, and renewed capacity to trust begin returning.",
+            "zh": "笼罩心头的乌云逐步散薄；久违的轻快、柔和视角与重新信任的能力正在回流。"
+          },
+          "advice": {
+            "en": "Honor the scar without living inside the moment it happened—healing works best at an unhurried, honest pace.",
+            "zh": "尊重那道让你成长的疤，但别一直住在受伤的那一天——不慌不忙、如实面对，复原才会扎实。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "The worst sting is easing, provided you stop picking at the scab or pretending nothing happened. Give recovery room to finish.",
+            "zh": "最难熬的刺痛正在过去，前提是既不反复揭疤，也不假装从未受伤。给复原留足收尾的时间。"
+          },
+          "love": {
+            "en": "In love, reversed Three of Swords supports reconciliation after honest repair, or finally releasing heartbreak so new warmth can reach you.",
+            "zh": "在感情中，宝剑三逆位支持经过真诚修补后的破冰和解，或终于彻底放下旧伤，让新的暖意能照进生活。"
+          },
+          "career": {
+            "en": "At work, you are recovering confidence after a rough setback or clearing the air after tense team friction. Keep the boundary, drop the bitterness.",
+            "zh": "在职场上，你正从先前受挫中找回底气，或化解一场僵硬的团队摩擦。留住清醒边界，放下多余芥蒂。"
+          },
+          "health": {
+            "en": "Emotional pressure is lifting; gentle movement, steady routines, and talking things out help release lingering physical tension.",
+            "zh": "心理压抑正在逐步退散；温和活动身体、稳住日常作息并适度倾诉，能帮助把积存的紧绷慢慢散开。"
+          },
+          "spirituality": {
+            "en": "Forgiveness here is not erasing memory; it is choosing to stop paying interest on past pain.",
+            "zh": "在灵性层面，真正的宽恕并不是强迫自己抹掉痛苦记忆，而是清醒而温柔地决定不再继续为过往的伤痛支付情绪利息。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, faceted crimson ruby-enamel accent, razor-clean antique gold linework",
+      "scene": "A refined, strictly symbolic Belle Epoque Art Nouveau emblem with zero human figures, zero blood, and zero gore, set against billowing midnight-indigo and storm-slate clouds. Suspended majestically at the center of the sky is ONE sculptural, jewel-like faceted crimson enamel and ruby-glass ceremonial heart edged with delicate antique-gold filigree. Piercing cleanly and symmetrically through the jeweled heart from top to bottom are EXACTLY THREE slender, gleaming straight frost-silver and antique-gold swords—one dead-vertical through the center and two crossing cleanly at balanced opposing diagonals—so all three ornate hilts above and all three bright pointed tips below are crisp, separated, and unmistakably countable. Cool moonlight breaks behind the dark storm clouds to rim-light the silver blades and luminous ruby facets, while fine slanting frost-silver rain filaments shimmer delicately across the atmospheric dark negative space.",
+      "requiredObjects": [
+        {
+          "object": "faceted crimson jeweled ceremonial heart",
+          "count": 1
+        },
+        {
+          "object": "straight silver-gold swords piercing the heart",
+          "count": 3
+        }
+      ],
+      "compositionNote": "Bold, museum-grade central emblem of ONE glowing ruby-crimson faceted heart pierced by a symmetrical fan of THREE razor-bright frost-silver swords against dark storm clouds—unmistakable at 64x96 thumbnail.",
+      "avoid": [
+        "blood",
+        "gore",
+        "dripping red liquid",
+        "anatomical organ",
+        "graphic violence",
+        "human figures",
+        "two or four swords",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "four_of_swords": {
+    "id": "four_of_swords",
+    "archetypeEssence": {
+      "en": "Deliberate stillness and mental ceasefire—resting cleanly now so your sharpest judgment returns intact.",
+      "zh": "有意识的休战与静养——此刻彻底撤出喧嚣，是为了让清明判断完好归来。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Peaceful figure reclining motionless atop a carved stone chapel tomb with palms pressed in prayer",
+        "Three straight swords mounted vertically side-by-side on the stone sanctuary wall above",
+        "One single fourth sword resting horizontally beneath the figure along the carved plinth",
+        "Luminous stained-glass window glowing warmly over the quiet chamber"
+      ],
+      "zh": [
+        "双手合十静卧于教堂雕花石台之上、神态安宁的身影",
+        "并排垂直悬于上方石壁的三柄笔直长剑",
+        "平置于下方石座侧面、与身影相伴的第四柄长剑",
+        "在静谧圣堂一角洒下柔和光影的彩绘玻璃窗"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Serene Belle Epoque figure in silver-trimmed ivory and slate garments resting peacefully atop a carved pale-limestone sanctuary plinth, hands gently folded and eyes closed in calm meditation",
+        "Three gleaming straight silver-and-gold swords mounted vertically in neat parallel spacing on the recessed stone wall above",
+        "One matching fourth silver-and-gold sword resting horizontally along the front face of the carved stone plinth below",
+        "Tall Art Nouveau stained-glass lancet window at upper left glowing in sapphire, frost-cyan, and warm amber-gold",
+        "Hushed moonlit silver highlights framing the restful sanctuary against velvety midnight chapel shadows"
+      ],
+      "zh": [
+        "身着银边月白与灰蓝长袍、双手轻合闭目静休于雕花浅石台上的美好年代身影",
+        "规整并排垂直悬于上方石墙的三柄霜银古金长剑",
+        "平稳横置在下方石台正面的第四柄霜银古金长剑",
+        "左上方透出蓝宝石、冰青与暖琥珀柔光的新艺术彩绘高窗",
+        "静谧月色在深靛圣堂阴影中勾勒出安稳休养的明暗层次"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Four of Swords calls a disciplined timeout: step off the mental battlefield, quiet the debates, and let genuine recovery restore the clarity exhaustion has been chipping away.",
+          "zh": "宝剑四宣告一次有纪律的中场休整：主动退出无休止的脑内拉锯，让真正的安静与复原把被疲惫磨钝的判断力修补回来。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Stop pushing for an answer tonight—silence and real rest will solve what another hour of worrying cannot.",
+            "zh": "今晚别再硬逼自己想出答案——彻底安静下来好好休息，能解决再熬一小时焦虑也解不开的结。"
+          },
+          "foundation": {
+            "en": "Recent friction, heavy thinking, or an intense sprint drained your reserves and created a clear need for quiet recovery.",
+            "zh": "近来接连的摩擦、高强度思考或漫长冲刺耗空了储备，让你迫切需要一段不受打扰的回血期。"
+          },
+          "present": {
+            "en": "You are in a necessary lull between active chapters; treat this stillness as strategic repair rather than wasted time.",
+            "zh": "你正处于两段奔忙之间的必要间歇；把这份安静看作战略维修，而不是虚度光阴。"
+          },
+          "resource": {
+            "en": "Your greatest ally right now is solitude—unplugging from outside noise lets your own perspective settle cleanly.",
+            "zh": "你此刻最可靠的助力是独处与留白——屏蔽外界杂音后，你原本敏锐的判断才会慢慢沉淀出来。"
+          },
+          "challenge": {
+            "en": "Even upright, Four of Swords in a challenge slot asks whether restorative retreat is slipping into procrastination or hiding from a conversation you know is due.",
+            "zh": "即便是正位，落在阻碍位的宝剑四也在追问：原本用来回血的撤退，是否正悄悄滑向拖延，或借“需要休息”回避那场该谈的对话？"
+          },
+          "action": {
+            "en": "Schedule an actual pause—mute non-urgent threads, decline extra debates for forty-eight hours, and sleep before making the next call.",
+            "zh": "给自己排一段货真价实的离线时间——静音非紧急消息，接下来两天不接新的争论，睡饱后再做下一步决定。"
+          },
+          "outcome": {
+            "en": "Peace of mind returns alongside sharper strategic focus; you re-enter the arena steadier and far less reactive.",
+            "zh": "内心重新归于沉静，策略视野也随之清亮；等你再度回到牌桌时，会稳健从容得多。"
+          },
+          "advice": {
+            "en": "Keep one sword close at hand while resting—stepping back does not mean surrendering your boundaries or readiness.",
+            "zh": "静养时依然把一柄剑留在身侧——主动退场休整，并不意味着放弃你的底线与准备。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Pause, unplug, and let the dust settle. Thoughtful stillness now prevents sloppy decisions later.",
+            "zh": "按下暂停键、暂时离线，让浮尘落定。此刻踏实的静养，能替你省去日后仓促出错的代价。"
+          },
+          "love": {
+            "en": "In love, Four of Swords favors a calm breather over rehashing an argument while tempers are raw—or quiet solo space to hear your own heart after emotional strain.",
+            "zh": "在感情中，宝剑四主张在情绪紧绷时先体面休战冷静，别趁疲惫反复翻旧账；也适合在经历情感消耗后留出安静独处空间。"
+          },
+          "career": {
+            "en": "At work, take a genuine break between sprints, hold off on signing until rested, or step back from office drama to review the big picture calmly.",
+            "zh": "在职场上，适合在冲刺间隙认真休假或留白，等精力回位再签关键决定，也宜暂时跳出职场纷争，冷静复盘大局。"
+          },
+          "health": {
+            "en": "For wellbeing, deep sleep, nervous-system decompression, and screen-free quiet are top priority—recovery is active maintenance, not laziness.",
+            "zh": "在身心调理上，优质睡眠、让紧绷神经彻底松弛以及远离屏幕刺激是头等要务——认真休养是必要维护，绝非偷懒。"
+          },
+          "spirituality": {
+            "en": "Spiritually, this is sanctuary: silent meditation, journaling without agenda, and trusting that clarity ripens in stillness.",
+            "zh": "在灵性层面，宝剑四代表一座内在圣堂：无所求地静坐、不带评判地书写沉淀，信任清澈会在安静中自行成熟。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Four of Swords reversed flags either restless burnout—refusing to stop when your tank is empty—or the healthy moment of waking up from prolonged retreat and rejoining motion.",
+          "zh": "宝剑四逆位指向两种转折：要么油箱见底仍焦躁硬撑、停不下来，要么长期蛰伏已经足够，终于到了起身重启行动的时刻。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Lingering in isolation past its usefulness until rest hardens into stagnation.",
+            "zh": "把原本用来休整的退缩拖得太久，静养渐渐变成了停滞。"
+          },
+          "excess": {
+            "en": "Running on nervous caffeine and overthinking, treating every quiet hour as guilt.",
+            "zh": "靠焦虑与透支惯性连轴转，一停下来就充满愧疚感。"
+          },
+          "internalized": {
+            "en": "Body sitting still while the mind keeps rehearsing twelve arguments behind closed eyes.",
+            "zh": "人明明躺着没动，脑子里却闭着眼连轴演练了十几场争辩。"
+          },
+          "release": {
+            "en": "Recovery has done its work; steady energy and clear readiness return for re-entry.",
+            "zh": "休养已经到位；沉稳的精力与清醒状态正在回归，准备重返节奏。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Restlessness is sabotaging recovery—you either cannot shut off the mental treadmill or waited too long to re-engage.",
+            "zh": "躁动不安正在破坏复原——要么脑子停不下空转，要么拖得太久迟迟不敢重回正轨。"
+          },
+          "action": {
+            "en": "Check which pole fits you today: if exhausted, drop two non-essentials and rest for real; if fully rested, take one crisp re-entry step now.",
+            "zh": "先诚实核对自己的状态：如果已经透支，立刻砍掉两件非要事彻底休息；如果早已蓄满力，就迈出清晰的重返第一步。"
+          },
+          "outcome": {
+            "en": "Stagnation breaks and active motion resumes—smoothly if you actually recharged, bumpily if you skipped rest.",
+            "zh": "静默期即将结束、生活重新转动——若已充分蓄能便顺滑衔接，若一直硬撑则难免带着疲态。"
+          },
+          "advice": {
+            "en": "Respect the rhythm of exhale and inhale: finish resting completely, then stand up cleanly without dragging your feet.",
+            "zh": "顺应呼气与吸气的节律：该休养时就彻底松手，缓过劲来就利落起身，别在半休半忙里消耗自己。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Notice whether burnout is demanding an overdue stop, or whether quiet retreat has finished its job and it is time to step back into the world.",
+            "zh": "先分清当下是持续过载在催你立刻停下刹车，还是沉寂蛰伏期已经届满、该收拾行装重新走回人群与现实行动之中。"
+          },
+          "love": {
+            "en": "In relationships, reversed Four of Swords signals coming out of a cool-down to talk again—or realizing that bottling stress is making you snappy with people you love.",
+            "zh": "在感情中，宝剑四逆位既可能意味着冷静期结束、适合温和重启沟通，也可能提醒积压的疲惫正让你对亲近的人变得焦躁。"
+          },
+          "career": {
+            "en": "At work, either burnout is impairing your accuracy right now, or a quiet planning hiatus is ready to turn back into visible execution.",
+            "zh": "在职场上，要么持续透支已开始拉低你的专注与准确率，要么前期的沉淀休整已告一段落，该重新交出可见行动了。"
+          },
+          "health": {
+            "en": "Wired exhaustion and restless nights point to an overstimulated nervous system; wind down deliberately instead of scrolling through fatigue.",
+            "zh": "越累越睡不着、身心紧绷难以松弛，说明神经系统处于过度拉紧状态；有意识地减少刺激、慢下来，别靠硬撑透支。"
+          },
+          "spirituality": {
+            "en": "Quiet contemplation was meant to renew engagement with life, not turn into permanent hiding; carry your hard-won calm back into ordinary motion.",
+            "zh": "在灵性层面，退守静观本是为了滋养现实生活，而非永久躲避；把修得的沉静重新带回日常流动里。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, soft stained-glass sapphire and amber glow, razor-clean antique gold linework",
+      "scene": "A hushed Belle Epoque stone chapel alcove illuminated by cool moonlit silver and gentle jewel-toned stained-glass light. In the lower foreground, ONE serene figure in flowing silver-embroidered ivory and slate-blue robes reclines calmly atop a carved pale-limestone sanctuary plinth, hands folded gently over the chest and eyes peacefully closed in restorative stillness. Mounted vertically side-by-side in crisp, evenly spaced parallel alignment on the recessed stone wall directly above the resting figure are THREE gleaming straight silver-and-antique-gold swords pointing downward. Resting horizontally along the front carved face of the stone plinth beneath the figure is ONE matching fourth gleaming straight silver-and-antique-gold sword—making EXACTLY FOUR unmistakably distinct, countable swords in total. At upper left, a tall Art Nouveau stained-glass lancet window glows softly in deep sapphire, cyan, and warm antique amber against velvety midnight-indigo sanctuary shadows.",
+      "requiredObjects": [
+        {
+          "object": "peacefully resting figure on stone plinth",
+          "count": 1
+        },
+        {
+          "object": "straight silver-gold swords (three vertical on wall and one horizontal on plinth)",
+          "count": 4
+        },
+        {
+          "object": "glowing Art Nouveau stained-glass window",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Clean horizontal anchor of the luminous resting figure and 1 horizontal sword below, balanced by 3 crisp parallel vertical silver swords on the dark upper wall and a glowing stained-glass window at upper left—instantly legible at 64x96 thumbnail.",
+      "avoid": [
+        "corpse or morbid decay",
+        "three or five swords",
+        "blurry overlapping blades",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "five_of_swords": {
+    "id": "five_of_swords",
+    "archetypeEssence": {
+      "en": "A hollow victory won at the expense of trust—counting blades while allies walk away.",
+      "zh": "赢下争执却输掉人心的空洞胜利——怀里抱着战利品，同路人却转身远去。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Foreground figure with a cool sideways glance clutching three captured swords",
+        "Two abandoned swords lying scattered in the foreground dirt at their feet",
+        "Two dejected rivals walking away toward the distant shore with slumped shoulders",
+        "Jagged, wind-shredded storm clouds tearing across an unsettled sky",
+        "Choppy gray coastal water reflecting sharp discord and tension"
+      ],
+      "zh": [
+        "立于前景、侧目回望并怀抱三柄长剑的冷峻胜者",
+        "弃置在脚边沙地上的另外两柄长剑",
+        "垂头丧气、转身朝水边缓步离去的两道落败身影",
+        "天空中被疾风撕裂成锯齿状的翻涌风暴云",
+        "岸畔起伏不安、映照冷战张力的铁灰色海浪"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Windswept Belle Epoque duelist in a slate-indigo and silver-trimmed cloak standing in right foreground with a cool sidelong glance, holding three gleaming silver-gold swords",
+        "Two matching silver-and-antique-gold swords lying distinctly on the moonlit rocky ground in left foreground, completing five countable blades",
+        "Two cloaked figures walking quietly away along the misty shoreline in the middle distance",
+        "Ragged storm-slate clouds torn by sharp silver-cyan wind gusts over choppy midnight water",
+        "Dramatic silver moonlight rim-lighting all five sword blades against deep velvety coastal shadows"
+      ],
+      "zh": [
+        "立于右前景、披着灰靛银边披风侧目回望并握持三柄霜银古金长剑的风中决斗者",
+        "清晰散落在左前景月光碎石地上的两柄银金长剑，共同构成可数的五柄宝剑",
+        "中景水雾岸边背身缓步远去的两道披风身影",
+        "被凌冽霜青疾风撕裂的锯齿风暴云与起伏午夜海面",
+        "冷冽月光在深邃海岸阴影中勾出五柄雪亮剑刃的锐利轮廓"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Five of Swords surfaces sharp friction, ego contests, and pyrrhic wins: someone may score the point or keep the upper hand, yet the cost in goodwill and safety leaves the field bleak.",
+          "zh": "宝剑五映照尖锐冲突、意气之争与得不偿失的“赢”：嘴上或筹码上或许占了上风，但换来的信任流失与寒心，让整片战场显得荒凉。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Ask what winning this exact fight would actually cost you—some arguments leave you holding every sword in an empty room.",
+            "zh": "先算清赢下这一局究竟要付什么代价——有些争辩就算赢到手里一把剑不剩，四周也空无一人了。"
+          },
+          "foundation": {
+            "en": "A bruising power struggle, sharp words, or self-serving tactic fractured trust and set a guarded tone.",
+            "zh": "先前一场互不相让的较劲、刻薄交锋或只顾自己的手段伤了和气，埋下了眼下的戒备底色。"
+          },
+          "present": {
+            "en": "Tension is playing out as zero-sum scoring rather than problem-solving; notice who is pushing for dominance over fairness.",
+            "zh": "眼前的局面正滑向非输即赢的压制博弈，而不是一起解决问题；看清究竟是谁在争输赢而非讲公道。"
+          },
+          "resource": {
+            "en": "Your strongest move is clear-eyed discernment—knowing which battles deserve your steel and which petty traps to walk straight past.",
+            "zh": "你手中最管用的力量是清醒止损的眼光——分清哪些底线值得坚守，哪些意气陷阱直接绕开就好。"
+          },
+          "challenge": {
+            "en": "Pride, defensiveness, or playing dirty to avoid looking weak is escalating friction past the point of easy repair.",
+            "zh": "好胜心、死要面子或为了不示弱而使出尖锐手段，正把矛盾推向越来越难收拾的边缘。"
+          },
+          "action": {
+            "en": "Refuse the bait: protect your concrete boundary cleanly without gloating, retaliating, or trying to prove superiority.",
+            "zh": "别上情绪的钩：干脆利落地守住你的现实底线，既不趁机挖苦，也不纠缠报复，更不必非争个高下。"
+          },
+          "outcome": {
+            "en": "An uneasy victory or cold standoff settles unless someone chooses dignity over scorekeeping; expect distance afterward.",
+            "zh": "如果没人主动把体面放在赢面之前，收尾往往是一场冰冷对峙或带着疏离感的惨胜。"
+          },
+          "advice": {
+            "en": "Pick your battles by what builds your future, not what satisfies wounded pride for five minutes.",
+            "zh": "按什么能成就长远来挑选战场，别为了五分钟的扬眉吐气透支宝贵的关系与名声。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Sharp disagreement and ego friction test your restraint. Guard your boundaries firmly, yet walk away from contests whose victory costs too much.",
+            "zh": "尖锐分歧与意气较劲正在考验你的克制。坚定守好底线，但果断退出那些赢了也得不偿失的消耗战。"
+          },
+          "love": {
+            "en": "In love, Five of Swords warns against weaponizing weak spots, keeping score, or insisting on the last sharp word. When one partner 'wins' a fight harshly, the relationship loses.",
+            "zh": "在感情中，宝剑五提醒警惕拿对方软肋当武器、翻旧账记分或非要抢占最后一句上风。亲密关系里，一人赢得越狠，两人输得越深。"
+          },
+          "career": {
+            "en": "At work, watch for office politics, credit grabbing, cutthroat negotiation, or hostile competition. Document agreements carefully and avoid getting dragged into petty turf wars.",
+            "zh": "在职场上，留意办公室权谋、抢功、零和谈判或伤人损己的恶性竞争。把关键共识留痕，别被卷进无意义的山头拉扯。"
+          },
+          "health": {
+            "en": "Chronic hostility and defensive adrenaline drain the body fast; stepping out of toxic friction protects your nervous system better than proving a point.",
+            "zh": "长期处在戒备与对立的紧绷状态里极耗元气；果断撤离有毒摩擦，比执意争输赢更能护住你的身心节奏。"
+          },
+          "spirituality": {
+            "en": "Spiritually, notice how fiercely the ego craves being right—humility that refuses humiliation without returning cruelty is real strength.",
+            "zh": "在灵性层面，观照自我有多执着于“我才是对的”——既不委屈自己吞下羞辱，也不以刻薄回敬，才是沉稳的力量。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Five of Swords reversed signals a desire to end the standoff—putting blades down, walking away from unwinnable drama, or confronting festering resentment before it boils over again.",
+          "zh": "宝剑五逆位意味着厌倦了无休止的拉扯——愿意放下锋芒、干脆退出消耗局，或正视暗中发酵的积怨以免战火重燃。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Refusing to forgive or let a past slight go keeps a cold war humming in the background.",
+            "zh": "抓着旧账不肯翻篇，让一场早已结束的冲突仍在暗地里持续冷战。"
+          },
+          "excess": {
+            "en": "Escalating a lingering grudge into public blow-ups or silent sabotage.",
+            "zh": "任由积怨升级为公开翻脸或暗中使绊子。"
+          },
+          "internalized": {
+            "en": "Replaying an unfair fight inside your head long after everyone else left the field.",
+            "zh": "旁人早已散场，你却仍在脑海里反复重演那场委屈的交锋。"
+          },
+          "release": {
+            "en": "Choosing peace over payback—laying down the feud and reclaiming your energy cleanly.",
+            "zh": "把安宁放在报复前面——主动结束消耗战，利落收回属于自己的精力。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Lingering distrust or fear of losing face is making a clean truce harder to accept than it needs to be.",
+            "zh": "挥之不去的戒心或放不下面子，让原本触手可及的和解或体面退场变得格外别扭。"
+          },
+          "action": {
+            "en": "Call a clean ceasefire: either initiate a calm, no-blame repair conversation or exit the conflict entirely without parting shots.",
+            "zh": "果断喊停内耗：要么发起一次不翻旧账的平实修复对话，要么干脆离场，不再丢下任何带刺的回头话。"
+          },
+          "outcome": {
+            "en": "Hostility cools and space opens for either pragmatic repair or a cleaner, drama-free parting of ways.",
+            "zh": "剑拔弩张的气氛逐步降温，局面转向务实修补，或体面而清爽地各自安好。"
+          },
+          "advice": {
+            "en": "Let the past argument stay finished—protect your energy rather than trying to rewrite yesterday's scoreboard.",
+            "zh": "让昨天的争执留在昨天——守护眼前的精力，远比试图改写过去的比分重要。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "An exhausting conflict is ready to wind down. Drop the need for vengeance or validation and move toward calmer ground.",
+            "zh": "一场反复拉扯、消耗心力的纷争已到收尾时刻。放下讨回口舌之快或证明自己全对的执念，转身朝更清净的地面走去。"
+          },
+          "love": {
+            "en": "In love, reversed Five of Swords opens a genuine window for apology and de-escalation—or finally ending a cyclical fight neither person can win.",
+            "zh": "在感情中，宝剑五逆位打开了真诚道歉与降温的窗口，或让你终于决心结束一场谁也赢不了的循环争吵。"
+          },
+          "career": {
+            "en": "At work, toxic rivalry eases when you stop competing on someone else's terms; settle disputes pragmatically or pivot to a healthier arena.",
+            "zh": "在职场上，当你不再按别人的规则陪跑较劲，消耗便会减轻；务实了结分歧，或干脆转往更健康的平台。"
+          },
+          "health": {
+            "en": "Letting go of simmering anger relieves real physical tension—redirect that adrenaline into clearing your head and resting well.",
+            "zh": "松开闷在心口的火气，能切实缓解紧绷与内耗——把消耗在较劲上的劲头转回梳理日常与好好休养。"
+          },
+          "spirituality": {
+            "en": "True sovereignty needs no defeated opponent; releasing resentment returns your clarity to yourself.",
+            "zh": "在灵性层面，真正的笃定从不需要踩着败者来证明；放下怨怼，你的清明便重新完整归位。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, razor-clean antique gold linework",
+      "scene": "A stark, windswept Belle Epoque coastal headland beneath jagged midnight-indigo and storm-slate clouds torn by silver wind gusts. Standing tall in the right foreground in a billowing dark slate-indigo cloak with silver embroidery, ONE cool-eyed duelist glances sharply back over one shoulder while holding THREE gleaming straight frost-silver and antique-gold swords—two resting upright over his left shoulder and one held point-down in his right hand, all three blades and hilts clearly separated. Lying distinctly on the moonlit pale rocky ground in the lower-left foreground are TWO abandoned matching straight silver-and-antique-gold swords—making EXACTLY FIVE unmistakably countable swords across the foreground. In the misty middle distance beside choppy steel-cyan water, TWO smaller cloaked rivals walk steadily away toward the sea with bowed shoulders.",
+      "requiredObjects": [
+        {
+          "object": "foreground victorious duelist glancing back",
+          "count": 1
+        },
+        {
+          "object": "retreating distant cloaked figures",
+          "count": 2
+        },
+        {
+          "object": "straight silver-gold swords (three held and two on foreground ground)",
+          "count": 5
+        }
+      ],
+      "compositionNote": "Crisp diagonal contrast between the dark-cloaked foreground victor holding 3 bright silver blades on the right, 2 horizontal bright blades on the lower-left rocks, and 2 small retreating silhouettes against pale moonlit water—clear at 64x96 thumbnail.",
+      "avoid": [
+        "four or six swords",
+        "active sword fighting clash",
+        "blood",
+        "gore",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "six_of_swords": {
+    "id": "six_of_swords",
+    "archetypeEssence": {
+      "en": "A quiet, resolute passage from rough water toward calmer ground—moving forward even while carrying tender memory.",
+      "zh": "离开风浪驶向平静的沉静渡口——哪怕怀里仍带着淡淡不舍，船已坚定离岸。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Standing ferryman steadily poling a wooden skiff away from the near bank",
+        "Cloaked passenger and child seated quietly together in the boat facing the far shore",
+        "Six upright swords planted neatly in the forward bow of the skiff",
+        "Choppy rippled water on the right transitioning smoothly into calm glassy water on the left",
+        "Distant tree-lined shore emerging softly through silver twilight mist"
+      ],
+      "zh": [
+        "立于船尾、稳稳撑篙离岸的摆渡人",
+        "并肩端坐船中、面朝彼岸的披风旅人与孩童",
+        "整齐竖插在船头木板上的六柄笔直长剑",
+        "右侧波澜起伏、左侧却逐渐归于平镜般宁静的水面",
+        "薄雾远方缓缓浮现林木轮廓的安稳彼岸"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Slender dark-timber Belle Epoque ferry skiff gliding obliquely away from choppy right-hand storm waves into glassy moonlit-cyan calm water on the left",
+        "Standing hooded ferryman poling steadily at the stern with one slender gilded oar-pole",
+        "Cloaked woman and small sheltered child seated quietly side-by-side facing the misty far shore",
+        "Exactly six gleaming straight frost-silver and antique-gold swords planted upright in a crisp, evenly spaced row along the boat's prow",
+        "Soft pale-ivory twilight mist illuminating the distant wooded bank beneath clearing midnight-indigo skies"
+      ],
+      "zh": [
+        "从右侧碎浪平稳滑入左侧月青静水的新艺术纤细木舟",
+        "立于船尾手持细长鎏金船篙沉稳摆渡的兜帽舟人",
+        "相依静坐船身中段、面向微光彼岸的披风女子与孩童",
+        "在船头整齐列队竖立、间距清明的六柄霜银古金直剑",
+        "深靛云层渐开处洒满月白薄雾的远方林岸"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Six of Swords marks a necessary, steadying transition: you are leaving turbulent circumstances behind for quieter, more workable territory, even if your heart still feels the weight of departure.",
+          "zh": "宝剑六代表一次必要而沉稳的渡江转型：你正在把混乱消耗留在身后，驶向更平静可控的新水域，纵然心里还带着几分告别时的沉重。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Keep moving across the water—relief does not require feeling thrilled on day one, only refusing to turn back toward the storm.",
+            "zh": "稳稳把船划向对岸——走出低谷不必在第一天就雀跃欢呼，只要不再掉头驶回风浪里就够了。"
+          },
+          "foundation": {
+            "en": "A hard stretch or honest turning point convinced you that staying put was no longer sustainable.",
+            "zh": "一段耗神的风波或清醒的转折，让你看清留在原地已经无以为继。"
+          },
+          "present": {
+            "en": "You are mid-crossing right now: the old turbulence is receding behind you while the new shore is still taking shape through the mist.",
+            "zh": "你正处在渡河途中：旧日的喧嚣已在身后退远，新岸的细节则正透过薄雾慢慢清晰。"
+          },
+          "resource": {
+            "en": "Quiet guidance, practical planning, or a steady ally—the ferryman beside you—helps carry you safely through the shift.",
+            "zh": "冷静理性的规划或身边一位稳重的引路人，就像船尾的摆渡者，正托着你平稳穿越过渡期。"
+          },
+          "challenge": {
+            "en": "Even upright, Six of Swords in a challenge slot points to bittersweet grief during transition—looking backward over the stern slows your arrival.",
+            "zh": "即便是正位，落在阻碍位的宝剑六也提示过渡期的淡淡惆怅——频繁回头张望旧岸，会拖慢抵达新岸的节奏。"
+          },
+          "action": {
+            "en": "Pack only the lessons that travel well, accept practical help for the move, and take the next concrete step toward calmer conditions.",
+            "zh": "只带上真正有用的经验，大方接住过渡期的现实援手，踏实迈向更清净的新环境。"
+          },
+          "outcome": {
+            "en": "Calmer waters lie ahead—gradual emotional relief, cleaner perspective, and a workable fresh environment replace recent friction.",
+            "zh": "前方水面正归于平静——情绪逐步松弛、视野更加清爽，更顺手的新局面将取代近来的摩擦。"
+          },
+          "advice": {
+            "en": "Trust steady momentum over dramatic leaps; a quiet boat still reaches the far shore intact.",
+            "zh": "相信平稳推进胜过剧烈跳崖；安静前行的木舟，同样能把你完好送到彼岸。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A steady transition carries you away from turbulence toward clearer, gentler terrain. Accept that leaving can feel solemn and still be completely right.",
+            "zh": "一次稳健的迁移正带你远离风浪、走向平缓地带。接纳离别难免略带肃静，这丝毫不减它的正确。"
+          },
+          "love": {
+            "en": "In love, Six of Swords brings moving past a rocky chapter—either healing together with new ground rules, or parting peacefully from a dynamic that kept churning the water.",
+            "zh": "在感情中，宝剑六指向共同翻过动荡一页、以新默契重新磨合，或平静体面地离开一段反复掀起内耗的关系。"
+          },
+          "career": {
+            "en": "At work, this favors a smart role shift, relocation, system migration, or stepping out of a chaotic project into a calmer, more focused lane.",
+            "zh": "在工作上，它非常支持稳妥的转岗、迁移、换赛道或系统重构，带你走出混乱项目，进入节奏更清晰的位置。"
+          },
+          "health": {
+            "en": "For wellbeing, a change of scenery, quieter routine, or steady recuperation helps you leave a stressful spell behind without rushing.",
+            "zh": "在身心层面，换个清净环境、调整日常节奏或循序渐进地休养，正帮助你安稳走出先前的紧绷阶段。"
+          },
+          "spirituality": {
+            "en": "Spiritually, this is a rite of passage: carrying hard-won wisdom softly into the next chapter while letting old storms stay behind.",
+            "zh": "在灵性层面，这是一场安静的过渡仪式：把风浪中沉淀下的智慧轻放船头，让旧日的雷雨留在身后。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Six of Swords reversed flags resistance to an overdue crossing: dragging heavy baggage aboard, circling back to familiar turbulence, or hitting a logistical delay mid-move.",
+          "zh": "宝剑六逆位提示对本该启程的过渡犹豫不前：把过重的旧包袱全搬上船、反复折返熟悉的漩涡，或半途遇上现实延误。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Holding onto the mooring rope out of fear of the misty unknown keeps you stuck in rough water.",
+            "zh": "因为害怕对岸的未知雾气而死抓缆绳，结果一直留在浪大的岸边。"
+          },
+          "excess": {
+            "en": "Trying to outrun an unresolved pattern geographically only to find it sitting in the boat beside you.",
+            "zh": "想靠仓促换地方逃避未解的心结，却发现旧模式也跟着坐在船里。"
+          },
+          "internalized": {
+            "en": "Outwardly relocating or moving on while inwardly replaying the old chapter nonstop.",
+            "zh": "人虽已离开旧处境，心里却还停在原地反复咀嚼旧事。"
+          },
+          "release": {
+            "en": "Lightening the boat—finally setting down one piece of old baggage so the crossing resumes smoothly.",
+            "zh": "替小船减重——终于放下那件压船的旧执念，渡河重新顺畅前行。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Unfinished emotional business or fear of starting over is weighing the boat down right at departure.",
+            "zh": "尚未理清的情绪余账或对重新开始的胆怯，正在离岸当口拖住船身。"
+          },
+          "action": {
+            "en": "Name the single tie still anchoring you to choppy water, settle what must be settled, and leave the rest on the old bank.",
+            "zh": "认清仍把你拴在风浪岸边的那根绳索，把必须了结的尾事办完，其余干脆留在旧岸。"
+          },
+          "outcome": {
+            "en": "The transition takes longer or feels choppier until you trim emotional cargo and commit to landing on the new shore.",
+            "zh": "在卸下多余情绪包袱、真正决意登岸之前，过渡期会略显颠簸或拉长。"
+          },
+          "advice": {
+            "en": "Familiar chaos is still chaos—do not mistake nostalgia for a reason to row backward.",
+            "zh": "熟悉的混乱依然是混乱——别把一时怀旧当成掉头划回风浪里的理由。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check what is slowing your departure: practical loose ends to tie up, or reluctance to outgrow an uncomfortable habit.",
+            "zh": "排查究竟是什么拖慢了启程：是有待收尾的现实手续，还是舍不得告别早已不合身的旧习惯。"
+          },
+          "love": {
+            "en": "In love, reversed Six of Swords shows trouble letting an old hurt stay behind—bringing past grievances into a fresh start or hesitating to leave an exhausting loop.",
+            "zh": "在感情中，宝剑六逆位反映旧伤迟迟难以翻篇——要么把旧怨带进新关系，要么对早该离开的拉扯循环迟疑难断。"
+          },
+          "career": {
+            "en": "At work, a planned transition, handoff, or pivot may stall over unfinished details or fear of leaving a known role. Close the loose ends systematically.",
+            "zh": "在职场上，原定的转岗、交接或转向可能卡在未清尾项或恋旧心理上。逐条收拢未竟事项，别停在半渡。"
+          },
+          "health": {
+            "en": "Lingering stress from an old routine is trailing into today; let go of guilt about resting and give adjustment a realistic pace.",
+            "zh": "先前积压的疲惫惯性仍在拖着当下；放下对慢下来的愧疚，给身体和心绪留出切实的缓冲节奏。"
+          },
+          "spirituality": {
+            "en": "Growth asks you to bless what taught you and still let it stay on the bank you are leaving.",
+            "zh": "在灵性层面，真正的成熟是向过往教给你的功课道一声谢，同时允许它安稳留在你即将离开的那一岸。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, pale twilight mist, razor-clean antique gold linework",
+      "scene": "An atmospheric Belle Epoque nocturnal river crossing where choppy dark storm-slate waves on the right side smoothly calm into glassy, luminous moonlit-cyan water on the left leading toward a softly mist-lit distant wooded shore. Gliding obliquely away from the foreground toward the calm distant bank is ONE slender dark-timber Art Nouveau ferry skiff. Standing upright at the stern, ONE hooded ferryman in slate-indigo robes steadily poles the boat forward with a long slender gilded pole, while ONE cloaked woman in moonlit silver-blue and ONE small huddled child sit quietly beside each other in the midsection facing the far shore. Planted vertically in a crisp, evenly spaced parallel row inside the boat's forward bow are EXACTLY SIX gleaming straight frost-silver and antique-gold swords—every hilt and frost-silver blade cleanly silhouetted against the bright pale silver-cyan water and clearing mist.",
+      "requiredObjects": [
+        {
+          "object": "standing ferryman with pole",
+          "count": 1
+        },
+        {
+          "object": "seated cloaked passengers (woman and child)",
+          "count": 2
+        },
+        {
+          "object": "wooden ferry skiff",
+          "count": 1
+        },
+        {
+          "object": "upright straight silver-gold swords planted in boat bow",
+          "count": 6
+        }
+      ],
+      "compositionNote": "Dark diagonal ferryboat crossing from choppy shadowed right water into calm pale luminous left water, anchored by the vertical ferryman on the right and a razor-clear picket row of SIX bright silver upright swords in the bow—effortless to read at 64x96 thumbnail.",
+      "avoid": [
+        "five or seven swords",
+        "blurry overlapping blades",
+        "extra boats or extra passengers",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "seven_of_swords": {
+    "id": "seven_of_swords",
+    "archetypeEssence": {
+      "en": "Lateral cleverness and quiet stealth—walking the fine line between nimble strategy and evasive shortcuts.",
+      "zh": "剑走偏锋的机巧与潜行——在灵巧破局与侥幸绕道之间，踩着一线微妙分寸。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Agile figure striding swiftly away on tiptoe while glancing alertly back over one shoulder",
+        "Five straight swords bundled carefully in the figure's arms during the quiet retreat",
+        "Two remaining swords left planted upright in the ground behind them",
+        "Cluster of colorful military pavilion tents pitched across the background camp",
+        "Small distant soldiers gathered near the tents unaware of the stealthy move"
+      ],
+      "zh": [
+        "轻步疾行、一边回头警惕张望的灵巧身影",
+        "被抱在怀中悄悄带走的五柄长剑",
+        "仍留在身后原地、笔直插于土中的两柄长剑",
+        "远方营地上错落支起的彩饰尖顶军帐",
+        "营帐旁尚未察觉动静的几道远景人影"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Lithe Belle Epoque rogue in a silver-embroidered midnight doublet and slate cloak slipping swiftly left across a moonlit ridge while glancing back over his shoulder",
+        "Five gleaming straight frost-silver and antique-gold swords fanned cleanly in his arms with every hilt and blade clearly separated",
+        "Two matching straight silver-and-antique-gold swords standing upright side-by-side in the moonlit turf behind him on the right, completing seven countable blades",
+        "Distant cluster of striped slate-blue, ivory, and antique-gold silk pavilion tents glowing warmly under twilight clouds",
+        "Crisp moonlight highlighting the glancing face, five carried blades, and two planted blades against deep midnight grass"
+      ],
+      "zh": [
+        "身着银线刺绣午夜短衣与灰蓝披风、一边回眸张望一边向左疾行的灵巧潜行者",
+        "在怀中清晰错落展开、剑柄与剑锋分明可数的五柄霜银古金长剑",
+        "右侧月光草地上并排竖立的两柄银金长剑，与怀中五剑共成七柄",
+        "远方微光中错落支起的灰蓝、象牙与古金条纹丝绸营帐",
+        "清冽月色将回望神情、怀中五剑与立于原地的两剑清晰托出"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Seven of Swords highlights strategic maneuvering and independent resourcefulness—alongside a sharp check on integrity. Working quietly around a blocked front gate can be brilliant, while cutting corners or hiding motives invites backlash.",
+          "zh": "宝剑七聚焦于迂回策略与独行机变，同时敲响诚信警钟：绕开僵硬正面另辟蹊径可能极为聪明，但若沦为偷巧隐瞒或占便宜，迟早招致反噬。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Think strategically and verify who holds all the facts—outsmart the bottleneck cleanly, and do not rely on a shortcut you would be ashamed to explain.",
+            "zh": "动脑子找巧路径，同时核清谁握着真实信息——用体面策略绕开死胡同，别指望一个摊到台面上就站不住脚的捷径。"
+          },
+          "foundation": {
+            "en": "An unconventional workaround, closely guarded plan, or unspoken omission shaped the current board.",
+            "zh": "先前一次不走寻常路的变通、秘而不宣的安排或有所隐瞒的细节，塑成了眼前的格局。"
+          },
+          "present": {
+            "en": "Not every card is face-up on the table right now; read incentives carefully before assuming full transparency.",
+            "zh": "眼下牌桌并非所有底牌都亮在明处；在默认大家都坦诚之前，先看清各自的真实动机。"
+          },
+          "resource": {
+            "en": "Your agility and lateral thinking are real advantages—you can slip past a rigid stalemate without forcing a frontal clash.",
+            "zh": "你的灵活应变与绕行思路是实打实的优势——不必正面硬撞，也能轻巧穿过死局。"
+          },
+          "challenge": {
+            "en": "Trying to operate solo in secret, dodging accountability, or trusting a smooth pitch without verification puts your footing at risk.",
+            "zh": "什么都想一个人暗中操作、回避正面交代，或轻信漂亮说辞而不加核验，正让你的位置变得脆弱。"
+          },
+          "action": {
+            "en": "Keep your strategy discreet until ready, audit the fine print for hidden gaps, and drop any half-truth before it undermines your credibility.",
+            "zh": "计划成熟前稳住口风，仔细核查条款里容易藏雷的角落，同时收起任何可能折损信誉的侥幸话术。"
+          },
+          "outcome": {
+            "en": "A clever maneuver buys breathing room, yet notice the two swords still left behind—short-term finesse only holds if you follow through cleanly.",
+            "zh": "灵巧的一步会换来宝贵周旋空间，但别忘了背后还插着两柄没带走的剑——一时机变若想长久生效，仍须后续补全底盘。"
+          },
+          "advice": {
+            "en": "Be clever without becoming slippery: tactical privacy is wise, whereas deception always leaves footprints.",
+            "zh": "可以机敏，但别滑头：审慎保密是谋略，刻意欺瞒总会留下后患。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Strategy, discretion, and reading between the lines matter right now. Outthink rigid obstacles cleanly while checking closely for blind spots or evasions.",
+            "zh": "此刻需要谋略、分寸感与听出弦外之音的敏锐。用巧劲绕开僵化阻力，同时细查潜在漏洞与回避心态。"
+          },
+          "love": {
+            "en": "In love, Seven of Swords flags guardedness, withheld feelings, or dodging an awkward conversation. Check whether you or a partner are keeping an exit open instead of speaking straight.",
+            "zh": "在感情里，宝剑七提示有所保留、刻意避重就轻或暗留退路。诚实看看彼此是否在逃避一次必须摊开的对话，而不是靠打太极拖过去。"
+          },
+          "career": {
+            "en": "At work, this favors clever diplomacy, guarding unlaunched IP, and auditing vendor or competitor claims carefully—while steering strictly clear of shortcuts that fail compliance or peer trust.",
+            "zh": "在工作上，它支持巧妙斡旋、保护尚未公布的方案，并审慎核查合作方或对手的承诺；同时坚决避开经不起审查、透支口碑的捷径。"
+          },
+          "health": {
+            "en": "For wellbeing, notice where you are bargaining with yourself—cutting corners on sleep, skipping recovery, or rationalizing a habit you know drains you.",
+            "zh": "在身心管理上，留意那些悄悄糊弄自己的小侥幸——比如克扣睡眠、跳过恢复，或替明知耗神的习惯找借口。"
+          },
+          "spirituality": {
+            "en": "Spiritually, cleverness can become the subtlest mask of avoidance; observe where the mind invents detours to dodge simple honesty.",
+            "zh": "在灵性层面，聪明有时是最隐蔽的逃避面具；觉察大脑是否在不断发明精巧弯路，只为绕开最简单的自我诚实。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Seven of Swords reversed pulls the curtain back: a quiet secret surfaces, a shaky workaround runs out of road, or you choose plain honesty over carrying the fatigue of hiding.",
+          "zh": "宝剑七逆位把幕布掀开：藏在暗处的真相浮出水面，勉强维系的绕道方案走到尽头，或你终于厌倦遮掩，选择坦荡直言。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Doubting your own strategy or over-explaining yourself gives away healthy leverage.",
+            "zh": "过度怀疑自己的筹划或毫无保留地自曝底牌，白白丢掉原本稳妥的筹码。"
+          },
+          "excess": {
+            "en": "Doubling down on a tangled cover story even as the facts clearly unravel.",
+            "zh": "破绽已现却仍硬圆旧谎，把原本可收场的小失误越描越黑。"
+          },
+          "internalized": {
+            "en": "Catching yourself in quiet self-deception—the story you told yourself no longer convinces you.",
+            "zh": "终于识破了自己讲给自己的那套说辞——你心里其实比谁都清楚真相。"
+          },
+          "release": {
+            "en": "Coming clean and stepping back into direct, uncluttered integrity.",
+            "zh": "干脆摊牌说明白，卸下遮掩的包袱，回到坦荡清爽的位置。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Self-deception or an awkward truth coming to light demands accountability instead of another dodge.",
+            "zh": "自我欺骗或骤然曝光的尴尬事实，此刻需要正面担当，再绕弯子只会雪上加霜。"
+          },
+          "action": {
+            "en": "Own what needs owning in plain words, abandon the convoluted workaround, and reset the plan on transparent terms.",
+            "zh": "用平实干脆的话认领该承担的部分，放弃绕来绕去的权宜之计，在透明条款上重启方案。"
+          },
+          "outcome": {
+            "en": "Hidden motives or flaws come out into the open; after a brief sting, clean air and restored credibility take hold.",
+            "zh": "暗藏的动机或漏洞终将见光；熬过最初一阵难堪，反而迎来更轻省的局面与重新建立的信誉。"
+          },
+          "advice": {
+            "en": "Tell the plain truth to yourself first—dropping a flimsy pretense feels far lighter than defending it.",
+            "zh": "先对自己讲最直白的真话——丢掉一个经不起推敲的伪装，比每天提心吊胆护着它轻松得多。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Concealment has reached its expiration date. Choose clean candor, fix the exposed gap, and stop expending energy keeping stories straight.",
+            "zh": "遮掩、绕路与侥幸迂回都已到期限。选择清爽坦诚地面对现实、主动修补暴露出的缺口，别再把精力耗在反复圆场上。"
+          },
+          "love": {
+            "en": "In relationships, reversed Seven of Swords brings confession, clearing the air, or admitting an unspoken doubt instead of quietly pulling away.",
+            "zh": "在感情中，宝剑七逆位对应坦白真相、把藏着的心事摊开说清，或停止暗中抽离，正面回应关系里的问题。"
+          },
+          "career": {
+            "en": "At work, a hidden flaw, quiet shortcut, or misattribution surfaces—address it proactively with clean documentation rather than waiting to be called out.",
+            "zh": "在职场上，暗藏的隐患、权宜捷径或归属不清的问题正在浮现——趁还没被动点破，主动用清晰记录与坦诚方案修补。"
+          },
+          "health": {
+            "en": "Drop the excuses around a draining habit; honest tracking makes steady improvement straightforward.",
+            "zh": "放下替透支作息或回避体检辩护的种种借口；如实记录身体发出的真实信号，改善状态反而会变得直接而轻松许多。"
+          },
+          "spirituality": {
+            "en": "Seeing through your own rationalizations is a quiet breakthrough—integrity begins where self-flattery ends.",
+            "zh": "在灵性层面，亲眼看穿自己的合理化借口是一次珍贵的突破——真正的真诚，恰恰始于不再哄骗自己。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, warm distant pavilion gold, razor-clean antique gold linework",
+      "scene": "A crisp moonlit hillside overlooking a distant Belle Epoque tournament encampment of three striped slate-blue, ivory, and antique-gold silk pavilion tents softly glowing under deep midnight clouds. Striding swiftly and lightly from right to left across the foreground while glancing alertly back over his right shoulder, ONE agile figure in a tailored silver-embroidered midnight doublet, slate-cyan cloak, and soft boots cradles FIVE gleaming straight frost-silver and antique-gold swords fanned cleanly in his arms so every single hilt and blade separates crisply against his dark attire. Planted upright side-by-side in the pale moonlit turf on the right behind him stand TWO matching straight silver-and-antique-gold swords—totaling EXACTLY SEVEN unmistakably countable swords across the composition. Cool moonlit rim-light illuminates his observant profile, hands, the five carried blades, and the two planted blades with sharp figure-ground clarity.",
+      "requiredObjects": [
+        {
+          "object": "agile glancing figure striding left",
+          "count": 1
+        },
+        {
+          "object": "straight silver-gold swords (five cradled in arms and two planted upright behind)",
+          "count": 7
+        },
+        {
+          "object": "distant silk pavilion tents",
+          "count": 3
+        }
+      ],
+      "compositionNote": "Dynamic striding left-facing silhouette carrying a crisp bright fan of FIVE silver swords in the center-left, counterbalanced by TWO vertical bright swords planted on the right and glowing camp silhouettes behind—distinct at 64x96 thumbnail.",
+      "avoid": [
+        "six or eight swords",
+        "blurry overlapping blades",
+        "extra foreground people",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "eight_of_swords": {
+    "id": "eight_of_swords",
+    "archetypeEssence": {
+      "en": "A prison built more from anxious assumptions than locked bars—the path forward stands open once you look.",
+      "zh": "更多由焦虑假设搭成的心理围栏——看似步履维艰，一旦松眼直视，前方其实留着出口。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Standing blindfolded woman wrapped loosely in cloth bindings with feet unbound and free to move",
+        "Eight tall straight swords planted in the ground around her leaving an open front gap",
+        "Shallow rippled water pooling across muddy flats around her feet",
+        "Distant stone castle perched atop a high rocky cliff in the background",
+        "Pale overcast sky beginning to clear beyond the surrounding blades"
+      ],
+      "zh": [
+        "蒙着双眼、身缠松散布带却双脚自由站立的女子",
+        "在身周插成半环、唯独正前方留出空隙的八柄笔直长剑",
+        "漫过脚畔湿地的浅浅水洼，象征游移不定的情绪",
+        "远方峭壁之巅巍然矗立的石砌城堡",
+        "剑阵之外正透出微明清光的灰白天空"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Graceful Belle Epoque woman in a crimson-slate and ivory silk gown standing in shallow silver ripples, eyes covered by a pale silk blindfold and torso wrapped in visibly slack silver-gold ribbons while her feet remain completely free",
+        "Eight tall gleaming frost-silver and antique-gold swords planted vertically point-down in two symmetrical clusters—four on the left and four on the right—leaving the forward water clearly open",
+        "Shallow moonlit cyan-silver tidal flats reflecting the standing blades and pale silk folds",
+        "Distant moonlit stone citadel rising cleanly atop a misty indigo cliff behind her",
+        "High-contrast moonlight separating every single one of the eight vertical blades from velvety twilight storm clouds"
+      ],
+      "zh": [
+        "立于银色浅水之中、身着暗红灰蓝丝裙、蒙着素白眼罩且身上金银丝带明显松弛、双脚完全自由的美好年代女子",
+        "左右各四柄、对称插立成半环且正前方留出宽敞空路的八柄霜银古金长剑",
+        "映出剑影与衣褶微光的月青色浅滩涟漪",
+        "远方靛蓝悬崖之上清晰勾勒的月光石堡",
+        "清亮月色将八柄笔直立剑逐一从深沉暮云中锐利分离"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Eight of Swords captures the claustrophobia of feeling trapped by rules, fears, or worst-case narratives—yet the bindings are slack and the ground in front of your feet is open. Your agency is far larger than your current story admits.",
+          "zh": "宝剑八刻画了被规则、顾虑或最坏念头困在原地的窒息感——但仔细一看，束缚本就松散，脚下前路也并没封死。你实际拥有的主动权，远比脑中故事承认的更大。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Test the constraint you think is unbreakable—at least half of what feels off-limits right now is an outdated assumption.",
+            "zh": "去碰一碰那个你以为铁板一块的限制——眼下让你动弹不得的条框，至少有一半只是过时的假设。"
+          },
+          "foundation": {
+            "en": "Past criticism, fear of getting burned again, or rigid expectations taught you to shrink your options before anyone else did.",
+            "zh": "过往的苛责、怕重蹈覆辙的阴影或刻板要求，让你在外界真正阻拦之前就先替自己缩窄了选择。"
+          },
+          "present": {
+            "en": "You feel hemmed in on all sides, yet the real bottleneck is tunnel vision—looking only at risks makes every step feel impossible.",
+            "zh": "你正觉得四面受掣，但真正的卡点其实是视野收窄——眼里只盯着风险时，迈出半步都会显得寸步难行。"
+          },
+          "resource": {
+            "en": "Your feet are already free—one grounded reality check or outside perspective can show you the gap between the blades immediately.",
+            "zh": "你的双脚其实一直自由——一次平实的现实核验或旁观者的清醒视角，就能立刻指给你剑阵正面的缺口。"
+          },
+          "challenge": {
+            "en": "Waiting to be rescued or rehearsing every reason you 'cannot' move keeps loose ribbons acting like steel chains.",
+            "zh": "坐等外力解围，或在脑中反复罗列“我为什么动不了”的理由，会让原本松散的丝带活生生发挥出铁链的效力。"
+          },
+          "action": {
+            "en": "Pick one 'I have no choice' belief and challenge it with a tiny concrete test today—ask the question, send the inquiry, or step two feet forward.",
+            "zh": "挑出一条“我别无选择”的念头，今天就用一个小动作去打破它——直接发问、打听新路或向前踏出切实一步。"
+          },
+          "outcome": {
+            "en": "Stagnation persists only while the blindfold stays on; the moment you check actual facts instead of fear, breathing room opens fast.",
+            "zh": "困局只会在蒙眼猜测时持续；一旦用真实核查替换脑内恐吓，回旋空间很快就会打开。"
+          },
+          "advice": {
+            "en": "Stop arguing for your own limitations—look down at your feet and take the small step already available.",
+            "zh": "别再替自己的限制做辩护了——低头看清脚下，先把眼前已经够得着的那一小步走出去。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "You have more room to maneuver than anxious thinking admits. Question inherited rules, lift the blindfold, and walk through the open front gap.",
+            "zh": "你手里的腾挪空间远大于焦虑所描绘的模样。质疑未经检验的条框，摘下眼罩，顺着正前方的空隙走出去。"
+          },
+          "love": {
+            "en": "In love, Eight of Swords reflects feeling silenced, walking on eggshells, or staying in a cramped pattern out of fear of being alone. Honest voice breaks the spell.",
+            "zh": "在感情里，宝剑八常表现为如履薄冰、有话不敢直说，或因害怕孤单而把自己缩在逼仄模式里。真实说出感受，困局便会松动。"
+          },
+          "career": {
+            "en": "At work, imposter syndrome, golden handcuffs, or rigid internal scripts are shrinking your perceived options. Talk to peers outside your bubble to test what is actually possible.",
+            "zh": "在工作上，自我怀疑、路径依赖或既定条条框框正在压缩你眼中的出路。主动和圈外同行聊一聊，核实外面究竟有哪些真实选择。"
+          },
+          "health": {
+            "en": "Stress and anxious rumination can make minor setbacks feel inescapable; ground yourself in one simple physical action—breath, a walk, or calling a trusted support.",
+            "zh": "焦虑反刍容易把小困扰放大成无解困局；先回到一件触手可及的身体动作——深呼吸、出门走一段或联系信赖的人——迅速松开窒息感。"
+          },
+          "spirituality": {
+            "en": "Spiritually, notice how fiercely the mind defends a familiar cage; freedom starts the second you recognize a thought as a thought, not a wall.",
+            "zh": "在灵性层面，看清头脑有多习惯守着熟悉的笼子；当你认出一个念头只是念头而非铁墙的那一秒，自由就已经开始了。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Eight of Swords reversed signals the moment the ribbons loosen and sight returns: you see through an old limiting story and reclaim your right to choose—or wrestle with self-blame on the way out.",
+          "zh": "宝剑八逆位标志着松绑与重见天光：你看穿了一直困住自己的旧剧本、重新拿回选择权，或在脱身前与自我苛责做最后拉锯。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Seeing the exit clearly yet still hesitating to step out because old fear feels familiar.",
+            "zh": "明明已经看见出口，却因为习惯了旧顾虑而迟迟不肯迈脚。"
+          },
+          "excess": {
+            "en": "Turning harsh self-criticism inward—blaming yourself mercilessly for ever feeling stuck.",
+            "zh": "把所有锋芒对准自己——苛刻责怪自己当初为何那么久没走出来。"
+          },
+          "internalized": {
+            "en": "Quietly dismantling an old fear in private before making your visible move.",
+            "zh": "正在内心悄悄拆掉旧日枷锁，为接下来的明面行动蓄势。"
+          },
+          "release": {
+            "en": "Slipping the blindfold off and walking cleanly past the blades with renewed agency.",
+            "zh": "利落摘下眼罩，带着重新握紧的主动权走出剑阵。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Self-blame or lingering hesitation at the doorway is slowing a liberation that is already within reach.",
+            "zh": "自我责怪或站在门口的最后犹豫，正在拖慢一场明明已经触手可及的松绑。"
+          },
+          "action": {
+            "en": "Act on the clear perspective you just gained—make the call, decline the unfair constraint, and step into open ground.",
+            "zh": "趁这份难得的清醒立刻落到行动上——拨出那通电话、拒绝不合理的束缚，直接走上开阔地。"
+          },
+          "outcome": {
+            "en": "Real relief and regained autonomy unfold; options multiply once you stop filtering everything through fear.",
+            "zh": "切实的松弛感与自主权随之回归；当你不再透过恐惧滤镜看世界，可行之路会迅速变多。"
+          },
+          "advice": {
+            "en": "Do not scold yourself for how long you wore the blindfold—just enjoy seeing clearly and keep walking.",
+            "zh": "别回头数落自己戴了多久眼罩——珍惜此刻清明的视野，稳步往前走就好。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Mental barriers are dissolving. Trust your fresh perspective, release self-imposed guilt, and exercise the freedom now in front of you.",
+            "zh": "心里那堵看不见的墙正在瓦解。相信你新获得的清醒视角，放下无谓自责，坦然用起眼前的自由。"
+          },
+          "love": {
+            "en": "In love, reversed Eight of Swords brings candid self-advocacy—dropping fear-based compliance and speaking plainly about what healthy partnership looks like.",
+            "zh": "在感情中，宝剑八逆位带来清醒的自我表达——不再因为害怕失去而委屈迎合，坦然说出健康关系应有的模样。"
+          },
+          "career": {
+            "en": "At work, you spot the exit out of a dead-end routine or outgrow self-doubt that kept you from negotiating or pitching boldly.",
+            "zh": "在职场上，你终于看清跳出停滞循环的出口，或摆脱了长期拦着你大胆谈判与争取机会的自我设限。"
+          },
+          "health": {
+            "en": "Anxiety loosens its grip as you replace helplessness with small, manageable habits that remind you of your own steadiness.",
+            "zh": "焦虑的紧箍正慢慢松开；用几项小而可控的日常习惯替代无力感，会让你重新摸到踏实掌控感。"
+          },
+          "spirituality": {
+            "en": "Liberation here feels grounded and ordinary: dropping an old fear script and meeting reality with open eyes.",
+            "zh": "在灵性层面，真正的解脱未必惊天动地，往往就落在你亲手丢掉旧恐惧剧本、平静睁开双眼平视真实当下的这一刻。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, muted crimson-slate silk, razor-clean antique gold linework",
+      "scene": "A luminous moonlit coastal tidal flat stretching toward a high misty cliff crowned by a distant dark stone citadel. Standing upright at center in shallow rippling pale silver-cyan water, ONE poised Belle Epoque woman in a flowing crimson-slate and ivory silk gown wears a clean pearl-ivory blindfold over her eyes while visibly loose, slack antique-gold and silver silk ribbons drape lightly around her arms and waist—her ankles and feet standing completely unbound and free. Rising tall and cleanly spaced around her in two balanced four-sword picket clusters—FOUR vertical blades clearly separated on the left and FOUR vertical blades clearly separated on the right, leaving the foreground path visibly wide open—are EXACTLY EIGHT gleaming straight frost-silver and antique-gold swords planted point-down in the wet flats. Bright silver moonlight illuminates her face, blindfold, water ripples, and all eight razor-bright vertical blades against velvety midnight twilight clouds.",
+      "requiredObjects": [
+        {
+          "object": "standing blindfolded woman with loose silk ribbons",
+          "count": 1
+        },
+        {
+          "object": "upright straight silver-gold swords planted in ground (four left and four right)",
+          "count": 8
+        },
+        {
+          "object": "distant cliffside stone castle",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Tall central pale woman standing in bright silver water framed symmetrically by 4 vertical silver blades on the left and 4 on the right (8 total) with a clear open gap in front—unmistakably distinct at 64x96 thumbnail.",
+      "avoid": [
+        "seven or nine swords",
+        "tight chains or rope torture",
+        "seated figure",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "nine_of_swords": {
+    "id": "nine_of_swords",
+    "archetypeEssence": {
+      "en": "The sleepless 3 a.m. spiral where silent worry looms larger than daylight reality.",
+      "zh": "凌晨三点独坐难眠的思绪漩涡——夜色把悬而未决的担忧放大到远超白日的真实比例。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Sleepless figure sitting upright in bed pressing both hands over their face",
+        "Nine straight swords mounted horizontally in parallel rows across the dark wall behind",
+        "Patchwork quilt embroidered with roses and zodiacal emblems draped over the bed",
+        "Carved wooden bed panel showing two figures in tense struggle",
+        "Deep enveloping nighttime darkness emphasizing private anxiety and insomnia"
+      ],
+      "zh": [
+        "在床畔猛然坐起、双手掩面难掩焦虑的失眠身影",
+        "在背后漆黑墙面上齐整横排悬列的九柄笔直长剑",
+        "覆于床面、绣满玫瑰与星象格纹的拼布锦被",
+        "床榻下方雕琢着争执场景的深色木雕护板",
+        "四面合围的深夜黑幕，映照孤立无援的思虑煎熬"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Sleepless Belle Epoque figure in a moonlit-ivory silk nightgown sitting upright on a carved dark walnut bed, pressing both hands gently over their face",
+        "Exactly nine gleaming straight frost-silver and antique-gold swords suspended horizontally in crisp, evenly spaced parallel rows along the velvety midnight-indigo wall above",
+        "Ornate Art Nouveau quilt patterned with pale ivory roses, antique-gold star grids, and storm-slate diamond embroidery",
+        "Cool silver moonlight streaming obliquely from an unseen window to illuminate the hands, nightgown folds, embroidered quilt, and every horizontal blade",
+        "Deep, hushed midnight shadows highlighting psychological solitude with zero gore or grotesque imagery"
+      ],
+      "zh": [
+        "身着月白丝绸睡袍、坐于胡桃木雕花床畔双手掩面的失眠美好年代身影",
+        "在上方深靛绒夜墙面上间距均整、水平悬列的九柄霜银古金直剑",
+        "绣有月白玫瑰、古金星辰方格与风暴灰菱纹的新艺术拼花织被",
+        "自窗外斜洒入室的清冷月光，清晰照亮掩面双手、织被花纹与九道水平剑锋",
+        "静默深沉的午夜暗影，以克制诗意呈现内心孤忧，毫无血腥惊悚"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Nine of Swords speaks honestly to acute worry, guilt, and late-night catastrophizing. Notice the decisive visual cue: every blade hangs on the wall of thought rather than touching your skin—fear is peaking in the dark, not predicting doom.",
+          "zh": "宝剑九如实映照深重焦虑、内疚反刍与深夜灾难化想象。留意牌面最关键的真相：九柄剑全都悬在思绪墙上，并没真正刺中你——此刻到达顶峰的是暗夜里的恐惧，而非注定的厄运。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Do not trust conclusions written at 3 a.m.—bring the fear out of solitary silence into daylight and factual checking.",
+            "zh": "别相信凌晨三点脑中写出的判决书——把那份担忧带出孤立夜色，放到白日与客观核对下再看。"
+          },
+          "foundation": {
+            "en": "Accumulated stress, an unspoken regret, or prolonged uncertainty wore down your calm until worry took over the room.",
+            "zh": "日积月累的压力、未说出口的愧疚或悬而未决的煎熬慢慢磨薄了防线，让焦虑占了上风。"
+          },
+          "present": {
+            "en": "Your mind is running worst-case rehearsals on repeat, making an already tough issue feel twice as heavy as its actual facts.",
+            "zh": "你的大脑正循环播放最坏剧本，让本来就棘手的问题在体感上平白翻倍。"
+          },
+          "resource": {
+            "en": "Your sensitivity flags what genuinely matters to you—once separated from panic, it points directly to the one concrete thing worth tending.",
+            "zh": "这份敏锐其实标出了你真正珍视的东西——只要把惊慌剥离，它便能直指那件最值得着手处理的实事。"
+          },
+          "challenge": {
+            "en": "Isolating with anxious thoughts turns manageable problems into monsters; keeping everything locked in your own head magnifies distress.",
+            "zh": "把焦虑锁在自己脑子里独自消化，会把原本可解的问题喂成巨兽；越沉默硬扛，煎熬越会被放大。"
+          },
+          "action": {
+            "en": "Write the three loudest fears on paper, mark which parts are verified fact versus prediction, and share one of them aloud with a grounded ally today.",
+            "zh": "把最吵闹的三条担忧写到纸上，标清哪些是已发生事实、哪些只是猜测，今天选其中一条向稳重可信的人说出口。"
+          },
+          "outcome": {
+            "en": "Mental strain hits its crest and begins to break once brought into honest light; relief starts the moment secrecy and isolation end.",
+            "zh": "精神紧绷在触顶后将随摊开直视而松动；只要结束独自硬熬，轻省便会从那一刻开始回流。"
+          },
+          "advice": {
+            "en": "Treat yourself with daylight kindness—rest your mind first, and refuse to negotiate with catastrophic thoughts in the dark.",
+            "zh": "用白天的温和对待自己——先稳住身心休息，拒绝在夜色里和灾难化念头讨价还价。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Worry and mental exhaustion are amplifying real stress into nightmare proportions. Ground yourself in verified facts and trusted conversation.",
+            "zh": "过度思虑与精神倦怠正把现实压力放大成噩梦比例。回到可核对的事实与可信赖的交流中，先稳住重心。"
+          },
+          "love": {
+            "en": "In love, Nine of Swords reflects agonizing over unspoken doubts, fear of abandonment, or replaying a painful mistake alone. Calmly voicing the worry beats silently suffering it.",
+            "zh": "在感情里，宝剑九反映独自揣测未说破的怀疑、害怕失去，或反复为旧失误自责。平静把担忧讲出来，远胜过独自在夜里反复煎熬。"
+          },
+          "career": {
+            "en": "At work, high-stakes pressure, imposter anxiety, or dreading a single error is stealing sleep. Break the looming dread into one concrete checklist and ask for backup where needed.",
+            "zh": "在职场上，高压截止日、担心出错或过度自我审视正在偷走你的睡眠。把庞大的恐惧拆成一张具体清单，需要协同处大方开口。"
+          },
+          "health": {
+            "en": "Disrupted sleep, racing thoughts, and nervous tension deserve genuine care—protect evening wind-down and reach out to trusted people or qualified support rather than white-knuckling alone.",
+            "zh": "睡眠变浅、思绪停不下来与神经紧绷值得认真对待——守好睡前缓冲，必要时主动向亲友或专业人士求助，别一个人咬牙死撑。"
+          },
+          "spirituality": {
+            "en": "Spiritually, dark nights of worry reveal where you are demanding total certainty from an uncertain world; compassion quiets what perfectionism inflames.",
+            "zh": "在灵性层面，焦虑难眠的暗夜照出你对绝对掌控的执念；完美主义越煽风点火，温和慈悲越能替你止息风暴。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Nine of Swords reversed signals the nightmare loosening its grip as morning perspective returns—or warns that hidden panic and shame are being swept under the rug instead of healed.",
+          "zh": "宝剑九逆位提示噩梦开始松动、白日视角回归，也提醒留意自己是否把深层焦虑与羞愧硬压到台面下假装没事。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Refusing to admit how stressed you are keeps low-grade dread humming beneath a calm exterior.",
+            "zh": "硬撑着不肯承认压力太大，让隐性恐慌在体面外表下持续嗡鸣。"
+          },
+          "excess": {
+            "en": "Spiraling deeper into private shame or convincing yourself nobody would understand.",
+            "zh": "滑向更深的隐秘自责，固执以为没人能理解你的处境。"
+          },
+          "internalized": {
+            "en": "Quietly realizing that the worst fear you braced for never actually materialized.",
+            "zh": "内心已隐隐察觉，当初最害怕的那场灾难其实并没有真正发生。"
+          },
+          "release": {
+            "en": "Opening the curtains—speaking the worry aloud shrinks it back to manageable daylight size.",
+            "zh": "拉开窗帘——把恐惧说出口的那一刻，它便缩回了白天能处理的正常尺寸。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Pride or embarrassment about feeling anxious is keeping you from taking the simple relief or support already close by.",
+            "zh": "碍于面子不好意思承认焦虑，拦住了原本近在咫尺的安慰与实际帮助。"
+          },
+          "action": {
+            "en": "Open the window on one secret worry today—talk it through honestly, fix the small practical piece you can control, and drop the rest.",
+            "zh": "今天把一件闷在心里的担忧摊开透气——找人平实聊透，处理掉可控的那一小块，其余顺其自然。"
+          },
+          "outcome": {
+            "en": "The darkest stretch of rumination gives way to clearer mornings, steadier sleep, and grounded perspective.",
+            "zh": "最折磨人的胡思乱想逐步退场，更清爽的清晨、安稳的睡眠与踏实的判断正慢慢回来。"
+          },
+          "advice": {
+            "en": "Let daylight measure the problem—most fears lose half their teeth once spoken plainly.",
+            "zh": "把问题交给白天的阳光去丈量——大多数恐惧只要平实说出口，立刻就会失去一半锋芒。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Perspective is returning after intense mental strain. Drop hidden shame, accept support, and measure what is actually in front of you today.",
+            "zh": "熬过一段紧绷煎熬后，清醒视角正在回流。放下多余羞耻感、接住善意支持，按眼下真实情况重新衡量局势。"
+          },
+          "love": {
+            "en": "In relationships, reversed Nine of Swords brings honest disclosure that clears away private dread, restoring warmth after an anxious spiral.",
+            "zh": "在感情中，宝剑九逆位对应把藏着的不安坦白说出、驱散独自脑补的阴霾，让亲密在坦诚后重新回温。"
+          },
+          "career": {
+            "en": "At work, the looming crisis proves far more manageable than feared; lean on transparent communication and practical prioritization.",
+            "zh": "在职场上，此前悬在头顶的危机其实远比想象中可控；靠透明沟通与务实排序就能一步步理顺。"
+          },
+          "health": {
+            "en": "Sleep and nervous balance begin recovering as you stop battling anxious thoughts alone and rebuild gentle daily rhythms.",
+            "zh": "当你不再在深夜独自与焦虑角力、愿意寻求支持并逐步恢复温和规律的作息，睡眠质量与情绪稳态就会开始切实回升。"
+          },
+          "spirituality": {
+            "en": "Self-forgiveness breaks the silent courtroom inside your head; dawn arrives gently once you stop prosecuting yourself.",
+            "zh": "在灵性层面，自我宽恕终结了脑中无休止的自我审判；当你停止苛责自己，晨光便会温柔照进房间。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, muted rose-gold quilt embroidery, razor-clean antique gold linework",
+      "scene": "An intimate, poignant Belle Epoque midnight bedchamber bathed in cool oblique silver moonlight against velvety midnight-indigo shadows. Sitting upright on a carved dark-walnut bed draped in an ornate Art Nouveau patchwork quilt embroidered with pale ivory roses, antique-gold star grids, and storm-slate diamond motifs, ONE sleepless figure in a flowing moonlit-ivory silk nightgown leans slightly forward with both hands gently pressed over their face in quiet distress. Mounted horizontally in crisp, evenly spaced parallel rows spanning left to right across the dark bedroom wall directly above the bed are EXACTLY NINE gleaming straight frost-silver and antique-gold swords—every hilt on the left and every pointed blade tip on the right cleanly separated by dark negative space so all nine blades are effortlessly countable. Soft moonlight catches the ivory nightgown folds, clasped hands, embroidered quilt, and the rhythmic horizontal gleam of all nine swords with zero gore or monsters.",
+      "requiredObjects": [
+        {
+          "object": "sleepless seated figure with hands over face",
+          "count": 1
+        },
+        {
+          "object": "horizontal parallel straight silver-gold swords mounted on dark wall",
+          "count": 9
+        },
+        {
+          "object": "bed with embroidered rose-and-star quilt",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Luminous pale seated figure and patterned quilt anchoring the lower half beneath a razor-clean rhythmic ladder of NINE horizontal gleaming silver swords slicing across the velvety dark upper wall—instantly legible at 64x96 thumbnail.",
+      "avoid": [
+        "eight or ten swords",
+        "blurry overlapping blades",
+        "monsters",
+        "blood",
+        "gore",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "ten_of_swords": {
+    "id": "ten_of_swords",
+    "archetypeEssence": {
+      "en": "An unmistakable ending at rock bottom—painful finality paired with the first band of dawn on the far horizon.",
+      "zh": "彻底触底的明确终结——刺痛已达极点，而远方地平线正透出第一道微明。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Fallen figure pinned beneath ten swords marking an undeniable conclusion",
+        "Dark storm sky parting at the distant horizon into pale golden dawn",
+        "Still water beyond the shore reflecting quiet aftermath"
+      ],
+      "zh": [
+        "身负十柄长剑伏倒在地的身影，标志无可挽回的落幕",
+        "远方黑云撕开一道清亮金光的黎明地平线",
+        "岸外归于平静的水面，映出风波之后的沉寂"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Ten tall gleaming frost-silver swords standing vertically across a dark rocky shore against a breaking dawn horizon",
+        "Figure resting peacefully beneath a richly draped crimson-and-antique-gold silk mantle in quiet symbolic closure",
+        "Radiant molten-gold sunrise slicing beneath dark storm clouds over calm reflecting water",
+        "Nocturnal white lilies blooming gently in the dark foreground, signaling clean release and a new cycle"
+      ],
+      "zh": [
+        "十柄笔直矗立在幽暗礁岸之上的雪亮银金长剑，与破晓天际线形成鲜明剪影",
+        "身覆深红鎏金丝绸长袍、在沉静象征性终结中彻底放手歇息的人物",
+        "深蓝风暴云层下方刺破海面的炽亮金红晨曦，映亮平静水面",
+        "前景暗影中悄然绽放的月白百合，象征旧章彻底落幕与新周期开启"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ten of Swords upright signals a clear, painful ending—not a smooth upward trend. Something has run completely out of road, which finally frees you from pouring energy into a finished chapter.",
+          "zh": "宝剑十正位意味着一段明确而刺痛的终结，绝不是平稳向好的顺风局。某条路已经彻底走到尽头，这反而让你不必再往已经结束的章节里耗费心血。"
+        },
+        "byRole": {
+          "outcome": {
+            "en": "A definitive close or hard burnout boundary arrives; accepting that this chapter is over is what lets dawn begin.",
+            "zh": "一个干脆彻底的句号即将落下；承认这一章已经结束，黎明才会真正开始。"
+          },
+          "action": {
+            "en": "Stop reviving a dead plan—call time cleanly, grieve what stung, and redirect your energy toward recovery.",
+            "zh": "停止抢救已经失效的方案——干脆画上句号，允许自己消化痛感，把力气转回休养与重启。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "An undeniable conclusion closes the loop. The worst of the uncertainty is over; now recovery and a clean slate can begin.",
+            "zh": "一个无法回避的终结为旧循环画上句号。最折磨人的悬而未决已经触底，接下来可以安心止损并迎来新起点。"
+          },
+          "love": {
+            "en": "A painful realization, betrayal, or final closure ends a draining cycle. Give yourself real space to heal rather than bargaining with the past.",
+            "zh": "一段消耗极深的关系模式或悬念迎来痛彻却彻底的落幕。给自己真实疗伤的空间，不再和过去讨价还价。"
+          },
+          "career": {
+            "en": "A project, role, or approach has hit a hard dead end or severe burnout. Close it cleanly and take the lessons into a fresh direction.",
+            "zh": "在工作与事业上，某个项目、岗位或原有打法已经走到死胡同或严重透支。利落收尾止损，把沉淀下来的经验带向全新方向。"
+          },
+          "health": {
+            "en": "Exhaustion has reached its floor; stop pushing and treat deep rest and support as urgent priority.",
+            "zh": "在身心状态上，精力与情绪消耗已经明显触底；请立刻停止咬牙硬撑，把深度休养、卸载非必要负荷与寻求专业照护放在首位。"
+          },
+          "spirituality": {
+            "en": "A painful illusion dies completely, leaving quiet space for dawn after the darkest hour.",
+            "zh": "在灵性层面，一个长期消耗你心神的旧执念或执着故事终于彻底熄灭，在最暗的时刻之后，为你腾出迎接破晓微光的静默空间。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ten of Swords reversed marks gradual recovery after hitting bottom—pulling the blades out one by one—or reluctance to accept an ending that already happened.",
+          "zh": "宝剑十逆位指向触底之后的逐步复原——一根根拔出旧伤，或尚未完全甘心放下早已落幕的旧事。"
+        },
+        "lenses": {
+          "release": {
+            "en": "The sharpest pain has passed; steady healing and renewed perspective are returning.",
+            "zh": "最剧烈的痛点已经过去，稳定的复原与新视野正在回流。"
+          },
+          "blocked": {
+            "en": "Replaying an old wound keeps the ending from actually finishing.",
+            "zh": "反复回放旧伤，让原本该翻篇的事迟迟结束不了。"
+          },
+          "internalized": {
+            "en": "Quietly gathering strength behind the scenes before stepping back out.",
+            "zh": "在无人看见的地方默默回血，准备重新出发。"
+          },
+          "excess": {
+            "en": "Catastrophizing a setback as total ruin when you still have room to recover.",
+            "zh": "把局部挫折想成彻底毁灭，忽略了眼前依然存在的回旋余地。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Recovery is underway if you stop rehearsing what went wrong. The worst is behind you.",
+            "zh": "宝剑十逆位说明只要停止反复咀嚼过去的失败与委屈，真正的复原就已经在悄然发生。最艰难沉重的谷底已落在你身后，天色正在转亮。"
+          },
+          "love": {
+            "en": "Healing after heartbreak or finally refusing to reopen an old wound; let closure actually stick.",
+            "zh": "在感情中，你正从情伤与心寒里慢慢缓过神来，或终于下定决心不再反复揭开旧疤；把重心收回当下生活，让翻篇真正落地生效。"
+          },
+          "career": {
+            "en": "Bouncing back from a tough setback or narrow escape from total burnout; rebuild with firmer boundaries.",
+            "zh": "在职场上，你正从一次重挫或险些彻底崩盘的透支中重新站起身来；带着这次换来的更清晰边界与判断力，稳步展开下一轮布局。"
+          },
+          "health": {
+            "en": "Slow, real recuperation is taking hold—pace your return without rushing back to full load.",
+            "zh": "在身心状态上，切实的恢复与元气回升正在逐步启动——顺着身体的反馈循序渐进地调高节奏，别急着一好转就立刻拉满负荷。"
+          },
+          "spirituality": {
+            "en": "Dawn is no longer just a thin line; resilience grows from integrating what hurt.",
+            "zh": "在灵性层面，远方地平线上的黎明不再只是一道遥远细线；当你诚实接纳并整合过往伤痛之后，更沉稳真实的韧性正在内在生长。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, molten golden dawn horizon, razor-clean antique gold linework",
+      "scene": "A solemn, dignified Belle Epoque coastal dawn rendered in tasteful, strictly symbolic Art Nouveau chiaroscuro with zero blood, zero wounds, and zero gore. Resting face-down in quiet ceremonial stillness along a dark wet rocky shoreline is ONE cloaked figure draped cleanly in a sculptural deep crimson-plum and midnight-indigo mantle, head turned peacefully toward the horizon with one open hand resting calmly on the stone. Standing tall, straight, and evenly spaced in a single rhythmic vertical row planted neatly along the draped cloak's ridge are EXACTLY TEN gleaming straight frost-silver and antique-gold swords—every ornate hilt and luminous blade crisply separated against the dark storm sky so all ten swords are unmistakably countable. Beyond the shore stretches glassy calm slate-cyan water reflecting a glowing horizontal band of molten antique gold and pale ivory dawn breaking sharply beneath heavy midnight-indigo storm clouds across the distant horizon.",
+      "requiredObjects": [
+        {
+          "object": "cloaked recumbent figure on rocky shore",
+          "count": 1
+        },
+        {
+          "object": "tall upright straight silver-gold swords planted in clean row",
+          "count": 10
+        },
+        {
+          "object": "golden dawn horizon band over still water",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Stark dark foreground shoreline and blazing golden horizon band bisecting the lower-middle frame while EXACTLY TEN tall vertical frost-silver swords rise cleanly into the dark indigo storm clouds—instantly recognizable at 64x96 thumbnail.",
+      "avoid": [
+        "blood",
+        "gore",
+        "wounds",
+        "graphic violence",
+        "nine or eleven or twelve swords",
+        "blurry overlapping blades",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "page_of_swords": {
+    "id": "page_of_swords",
+    "archetypeEssence": {
+      "en": "Restless curiosity and quick wits—testing fresh ideas and scanning the wind before making a move.",
+      "zh": "机敏好奇的年轻锋芒——迎风察看四方动静，在发问与试探中磨炼清澈眼光。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Agile youth standing atop a breezy hilltop gripping one straight sword with both hands",
+        "Body angled forward while glancing alertly over one shoulder to scan the surroundings",
+        "Billowing silver-gray storm clouds sweeping briskly across an open sky",
+        "Flock of dark birds wheeling high in the shifting air currents",
+        "Uneven windswept turf and bending foliage under fresh gusts"
+      ],
+      "zh": [
+        "立于迎风山坡之上、双手紧握一柄笔直长剑的机敏青年",
+        "身姿向前却回眸警觉扫视四周的观察姿态",
+        "在开阔天幕间迅速奔涌的银灰风起云层",
+        "顺着高空气流盘旋翻飞的一群飞鸟",
+        "脚下起伏不平、随疾风摇曳的山坡草木"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Alert Belle Epoque youth standing in dynamic contrapposto on a windswept moonlit ridge, wearing a tailored slate-cyan and ivory doublet with a fluttering silver-edged cape",
+        "Exactly one long, gleaming straight frost-silver and antique-gold sword gripped firmly in both hands angled crisply upward across the open sky",
+        "Sharp curious gaze glancing back over one shoulder with bright moonlit-ivory highlights sculpting face and wind-tousled hair",
+        "Sweeping storm-slate clouds and a small wheeling flock of dark swallows riding the midnight breeze overhead",
+        "Bending highland grasses and silver-rimmed stones anchoring the restless foreground"
+      ],
+      "zh": [
+        "立于月色风岭之上、身着灰青象牙修身短衣与飞扬银边短披风的敏锐美好年代青年",
+        "双手稳稳斜举向开阔夜空的一柄霜银鎏金直剑",
+        "回眸轻睨、被月白高光清晰勾勒出眉眼与风中发丝的好奇神情",
+        "翻涌而过的风暴灰云与高空乘风盘旋的几只夜燕剪影",
+        "随风伏动的高地草叶与微泛银光的山石前景"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Page of Swords brings nimble curiosity, sharp observation, and fresh intellectual nerve: ask the candid question, verify the details firsthand, and stay light on your feet as new information arrives.",
+          "zh": "宝剑侍从带来灵动的好奇心、敏锐观察与敢于发问的锐气：亲自核实细节、抛出直白问题，在新信息不断涌来时保持脚步轻快。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Stay curious and check the source—one sharp, unafraid question right now reveals more than guessing from afar.",
+            "zh": "保持好奇并直接追源头——此刻一句坦率而精准的发问，比隔岸猜半天有用得多。"
+          },
+          "foundation": {
+            "en": "An inquisitive spark, fresh piece of news, or skeptical second look set this whole inquiry in motion.",
+            "zh": "一个灵光一闪的疑问、刚传来的新风声，或一次不盲从的复核，开启了眼前这件事。"
+          },
+          "present": {
+            "en": "You are in active discovery mode—gathering clues, learning fast, and keeping your guard up while testing what holds true.",
+            "zh": "你正处在高频探索期——一边敏捷收集线索、飞快学习，一边留着警惕验证什么站得住脚。"
+          },
+          "resource": {
+            "en": "Your agility of mind is your edge: fast research, candid curiosity, and noticing small details others gloss over.",
+            "zh": "你最大的优势是脑子转得快——查证迅速、敢问外行看似尖锐却切中要害的问题，一眼捕捉别人漏看的细节。"
+          },
+          "challenge": {
+            "en": "Even upright, Page of Swords in a challenge slot warns against mistaking clever skepticism for depth or swinging a sharp comment before hearing the whole answer.",
+            "zh": "即便是正位，落在阻碍位的宝剑侍从也在提醒：别把嘴快质疑当成洞见，也别等对方话还没讲完就急着抛出一记犀利反驳。"
+          },
+          "action": {
+            "en": "Do your homework today: ask the direct question, compare two independent sources, and draft the fresh idea while energy is crisp.",
+            "zh": "今天就动手做足功课：问出那个关键问题、交叉比对两个独立信源，趁思路正锐利把新点子落成初稿。"
+          },
+          "outcome": {
+            "en": "Useful news, a fresh mental breakthrough, or a sharper angle arrives—giving you real clarity for the next bigger step.",
+            "zh": "一条关键消息、新的思路突破或更刁钻有效的切入角即将到位，为下一步大动作铺好情报基础。"
+          },
+          "advice": {
+            "en": "Keep your curiosity brave and your tone clean—seek truth to understand, not merely to catch someone out.",
+            "zh": "让好奇心保持坦荡、语气保持干净——追问真相是为了真正弄懂，而不是为了抓别人小辫子。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Fresh curiosity, alert observation, and candid fact-finding guide the day. Stay observant, verify what you hear, and welcome lively mental challenge.",
+            "zh": "敏锐好奇、警觉观察与亲自查证是当下的主旋律。睁亮眼睛核实听闻，大方迎接充满活力的头脑碰撞。"
+          },
+          "love": {
+            "en": "In love, Page of Swords brings witty banter, genuine curiosity about how the other person thinks, and a call to ask straight instead of decoding texts from the sidelines.",
+            "zh": "在感情中，宝剑侍从带来机智有趣的对话与想真正了解对方思维的好奇；有疑问就直接坦白问，别躲在屏幕外反复解读字眼。"
+          },
+          "career": {
+            "en": "At work, this shines for research, auditing, learning a sharp new tool, drafting proposals, or spotting an overlooked edge case early.",
+            "zh": "在工作与学业上，它非常适合深度调研、审计排雷、快速掌握新技能、起草新方案，或抢先发现别人忽略的边界隐患。"
+          },
+          "health": {
+            "en": "For wellbeing, stay curious about what your patterns actually show—track sleep, stress triggers, or energy shifts objectively instead of guessing.",
+            "zh": "在身心层面，带着冷静好奇观察自己的真实规律——如实记录睡眠、压力源与精力起伏，比凭感觉猜测更管用。"
+          },
+          "spirituality": {
+            "en": "Spiritually, honest questioning refreshes stale dogma; true inquiry respects mystery without checking its brain at the door.",
+            "zh": "在灵性层面，坦诚发问能吹散僵化教条；真正的探索既敬畏未知，也从不要求你放弃独立思考。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Page of Swords reversed warns of sharp talk outrunning substance: rumor, reactive snark, scattered curiosity, or firing off half-checked conclusions.",
+          "zh": "宝剑侍从逆位提醒嘴快跑在实力前面：轻信传闻、冲动挑刺、注意力四处发散，或把没核实的半成品结论随口抛出去。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Second-guessing your voice or holding back a fair question out of fear of sounding naive.",
+            "zh": "怕问出“外行问题”而憋住原本非常合理的质疑。"
+          },
+          "excess": {
+            "en": "Gossip, nitpicking, or turning curiosity into defensive surveillance and sharp remarks.",
+            "zh": "陷入闲话与吹毛求疵，把好奇心用成了处处挑刺与暗中盯梢。"
+          },
+          "internalized": {
+            "en": "Over-monitoring every tiny signal in silence while building anxious theories nobody confirmed.",
+            "zh": "独自紧盯每一丝风吹草动，在脑中拼出一堆未经证实的猜想。"
+          },
+          "release": {
+            "en": "Slowing the tongue, checking facts first, and turning scattered talk into one concrete follow-through.",
+            "zh": "收住急着表态的冲动，先核实事实，把零散议论落实成一件真正做完的事。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Unverified rumors, defensive sarcasm, or jumping between half-baked ideas is eroding credibility.",
+            "zh": "未经核实的小道消息、带刺的反唇相讥，或在半生不熟的想法间来回跳票，正在消耗你的公信力。"
+          },
+          "action": {
+            "en": "Verify before repeating, shorten the hot take, and back one claim with real evidence before speaking again.",
+            "zh": "未核实的话不传、带火气的点评先按住，拿出一份过硬证据再去支撑你的观点。"
+          },
+          "outcome": {
+            "en": "Small misunderstandings or wasted detours happen if words fly ahead of preparation; tightening accuracy clears them fast.",
+            "zh": "若话跑在准备前面，容易招来小误会或绕弯路；只要把准确度收紧，风波很快就能平息。"
+          },
+          "advice": {
+            "en": "Listen twice before swinging once—smart restraint makes your words carry ten times the weight.",
+            "zh": "出言之前多听两遍——懂得克制的机敏，才能让你的话真正掷地有声。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Filter out gossip, reactive chatter, and scattered distractions. Slow down long enough to check facts and finish what you start.",
+            "zh": "主动屏蔽零碎流言、意气口水战与四处分心的信息噪音。沉下心来逐条核实事实，先把已经开头的事踏实收尾落地。"
+          },
+          "love": {
+            "en": "In love, reversed Page of Swords flags sarcastic jabs, snooping, or jumping to conclusions from a brief message. Pause and verify calmly.",
+            "zh": "在感情中，宝剑侍从逆位警惕阴阳怪气的试探、暗自翻查或仅凭只言片语就乱扣帽子。先停一拍，平心核实。"
+          },
+          "career": {
+            "en": "At work, watch for all-talk pitches without execution, sloppy data, or workplace rumor mills. Let verified output speak louder than commentary.",
+            "zh": "在职场上，警惕光说不练的空谈、草率疏漏的数据或茶水间传言。用核验过硬的产出说话，胜过滔滔不绝的点评。"
+          },
+          "health": {
+            "en": "Restless scrolling and hyper-vigilant mental chatter are frazzling your focus; step away from feeds and quiet the sensory static.",
+            "zh": "停不下来的刷屏与高度警觉的脑内杂音正在耗散精力；暂时离开信息流，给感官清出安静空间。"
+          },
+          "spirituality": {
+            "en": "Beware mistaking cynicism for discernment; real clarity stays humble enough to admit what it does not yet know.",
+            "zh": "在灵性层面，切忌把冷嘲热讽或挑刺当成通透；真正成熟的洞察力始终保有坦然承认“我尚未知晓”的谦逊与开放心态。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, razor-clean antique gold linework",
+      "scene": "A breezy moonlit highland crest beneath sweeping silver-slate clouds and a small wheeling flock of dark swallows riding the high wind. Standing alertly in a lively contrapposto stance amid bending highland grasses and silver-rimmed stones, ONE slender, sharp-eyed Belle Epoque youth in a tailored storm-cyan and moonlit-ivory doublet with a fluttering silver-trimmed cape grips EXACTLY ONE long, straight, gleaming frost-silver and antique-gold sword firmly in both hands, angling the bright blade boldly upward into the open midnight sky. Their body faces forward while their bright moonlit head turns alertly back over one shoulder with keen curiosity, wind catching their tousled hair and flowing cloak edges. High-contrast moonlit ivory highlights separate the youth's face, both hands, and the single crisp sword cleanly against deep midnight-indigo clouds.",
+      "requiredObjects": [
+        {
+          "object": "alert standing youth on hilltop",
+          "count": 1
+        },
+        {
+          "object": "straight silver-gold sword held in both hands",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Dynamic standing youthful figure anchored on a breezy hillside raising ONE razor-bright diagonal silver sword cleanly into negative sky space—instantly distinct from the mounted Knight and seated monarchs at 64x96 thumbnail.",
+      "avoid": [
+        "horse",
+        "throne",
+        "crown",
+        "two or more swords",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "knight_of_swords": {
+    "id": "knight_of_swords",
+    "archetypeEssence": {
+      "en": "Unstoppable intellectual velocity—charging straight through obstacles before hesitation can catch up.",
+      "zh": "所向披靡的思维加速度——趁犹豫追上之前，直取核心目标一举破局。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Armored knight leaning forward at full gallop aboard a powerful white warhorse",
+        "Single straight sword raised high and thrust cleanly ahead into the wind",
+        "Crimson-plumed helm and billowing scarlet cape streaming horizontally in the charge",
+        "Slender trees bending sharply beneath the force of the rushing wind",
+        "Racing storm clouds and diving birds matching the knight's relentless speed"
+      ],
+      "zh": [
+        "策马疾驰、俯身前冲于白色战马之上的披甲骑士",
+        "高举向前、直劈长风的一柄笔直长剑",
+        "在狂风中水平翻飞的绯红盔羽与猎猎披风",
+        "顺着疾风大幅弯折的远景林木",
+        "与冲锋节奏同频奔涌的云浪与掠空飞鸟"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Sleekly armored Belle Epoque knight in burnished frost-silver plate and a billowing storm-cyan and deep-crimson cloak surging diagonally right-to-left",
+        "Powerful luminous pale-ivory galloping warhorse adorned with antique-gold and slate-blue barding, mane flying cleanly in the gale",
+        "Exactly one long, straight, gleaming frost-silver and antique-gold sword raised high and thrust forward in the knight's right gauntlet",
+        "Wind-whipped dark highland cypresses bending sharply beneath rushing midnight storm clouds",
+        "Electric silver moonlight slicing across armor, white steed, and raised sword blade against deep velvety night"
+      ],
+      "zh": [
+        "身披抛光霜银轻甲、风暴青与深绯红披风猎猎飞扬、自右向左疾冲的美好年代骑士",
+        "披挂古金与灰蓝马具、鬃毛迎风飞舞的月白骏马",
+        "骑士右甲手高举前指、寒光夺目的一柄霜银古金直剑",
+        "在奔涌午夜风暴云下随狂风剧烈弯折的高地暗色柏树",
+        "凌厉月光划过银甲、白马与高举长剑，在深邃夜幕中拉出极强动势"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Knight of Swords is pure forward thrust: decisive ambition, fearless candor, and the stamina to slice straight through red tape. Brilliant when timing demands speed—provided you still steer around collateral damage.",
+          "zh": "宝剑骑士是纯粹的破风推力：果决的野心、毫不拐弯的坦率，以及一剑劈开繁文缛节的冲劲。需要抢窗口期时威力惊人，前提是别把沿途该顾及的细节一并撞翻。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Move fast and speak straight—this moment rewards bold initiative far more than polite circling.",
+            "zh": "迅速行动、直来直去——此刻奖励的是果断出手，而不是客客气气地兜圈子。"
+          },
+          "foundation": {
+            "en": "A decisive push, urgent deadline, or fiercely defended conviction accelerated everything to its current pace.",
+            "zh": "先前一次毫不迟疑的发力、紧迫节点或强烈信念，把整件事推上了如今的高速轨道。"
+          },
+          "present": {
+            "en": "Momentum is surging at full gallop; channel this razor focus onto the single highest-value target before it scatters.",
+            "zh": "势头正处在全速疾驰状态；把这份凌厉专注对准唯一最有价值的靶心，别让火力分散。"
+          },
+          "resource": {
+            "en": "Your greatest asset is fearless execution—you can cut through paralysis and turn a stalled debate into live motion in hours.",
+            "zh": "你最强的资本是毫无畏惧的执行力——能一刀斩断无休止扯皮，几小时内把停滞的讨论变成真实进展。"
+          },
+          "challenge": {
+            "en": "Even upright, Knight of Swords in a challenge slot warns of tunnel vision at high speed—interrupted allies or missed fine print can trip an otherwise bold charge.",
+            "zh": "即便是正位，落在阻碍位的宝剑骑士也在警示高速带来的视野盲区——打断协作者或漏看关键细则，可能绊倒一场原本漂亮的冲锋。"
+          },
+          "action": {
+            "en": "Seize the window cleanly: make the direct pitch, ship the decisive fix, or confront the core bottleneck head-on without hedging.",
+            "zh": "果断抓紧窗口期：直接抛出核心提案、上线关键修复，或正面直击最大卡点，不再左右试探。"
+          },
+          "outcome": {
+            "en": "Rapid progress and unmistakable movement arrive fast; expect brisk results and crisp clarity on where everyone stands.",
+            "zh": "局势会以极快速度推进并见分晓；前方将迎来利落成果，以及各方立场的彻底明朗。"
+          },
+          "advice": {
+            "en": "Keep your courage fierce and your steering wheel steady—speed wins only when aimed at the right gate.",
+            "zh": "保持勇往直前的锐气，同时握稳缰绳方向——速度只有瞄准正确的城门，才能真正赢下战局。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Decisive momentum cuts straight through inertia. Act boldly and speak clearly, while sparing two seconds to check who is standing in your path.",
+            "zh": "一股果决凌厉的推进力正在迅速劈开长期停滞。大胆落子、直白表态以抢占节奏，同时留出两秒确认别误伤沿途同路人。"
+          },
+          "love": {
+            "en": "In love, Knight of Swords brings electric candor, swift pursuit, or an overdue direct talk that clears stagnation—just watch that intensity stays respectful rather than steamrolling.",
+            "zh": "在感情里，宝剑骑士带来火花四溅的直率、热烈推进或一场打破沉闷的痛快深谈——只需留意把控分寸，别让急切变成逼迫。"
+          },
+          "career": {
+            "en": "At work, this excels in rapid launches, decisive crisis response, sharp negotiations, and cutting bureaucracy. Pair your velocity with one quick sanity check before hitting send.",
+            "zh": "在职场上，他极为擅长闪电上线、危机救急、干脆谈判与破除流程内耗。按下发送或拍板前，顺手做一次简短复核即可万无一失。"
+          },
+          "health": {
+            "en": "High drive and adrenaline feel exhilarating, yet running permanently at sprint pace invites crashes; build crisp recovery breaks between intense pushes.",
+            "zh": "充沛冲劲与肾上腺素让人酣畅，但长期只按百米冲刺节奏运转极易后劲透支；在高强度推进间隙留出利落的回血段落。"
+          },
+          "spirituality": {
+            "en": "Spiritually, fierce devotion slices through comfortable apathy—channel that fire toward truth rather than conquering others.",
+            "zh": "在灵性层面，炽烈而清醒的求真意志能斩破安逸麻木——把这份锋芒用来照亮真理，而非压服他人。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Knight of Swords reversed flags reckless haste, blunt outbursts, or spinning wheels at high RPM without a map—time to pull back on the reins before speed creates avoidable wreckage.",
+          "zh": "宝剑骑士逆位警示盲目狂飙、口不择言的冲撞，或没有地图却拉满转速的空耗——是时候勒住缰绳，免得一味求快酿成原本可避开的碰撞。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Impatient frustration building up because an external gate refuses to move at your pace.",
+            "zh": "外界节奏不随你心意，积攒出一肚子急躁与憋闷。"
+          },
+          "excess": {
+            "en": "Charging headlong into conflict, interrupting everyone, and burning bridges for the thrill of speed.",
+            "zh": "不看路况一头撞进冲突、频频打断别人，为了图快烧掉宝贵信任。"
+          },
+          "internalized": {
+            "en": "Racing mental restlessness that keeps firing off urges without a clear target.",
+            "zh": "内心焦躁奔涌、念头四处乱撞，却始终没瞄准一个真正落点。"
+          },
+          "release": {
+            "en": "Deliberately easing off the throttle to aim straight instead of merely moving fast.",
+            "zh": "主动收油门降速，把精力从“拼命跑快”转回“先瞄准方向”。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Haste, impatience, or abrasive bluntness is triggering resistance that slows you down more than careful pacing ever would.",
+            "zh": "急躁、冲动或过于刺耳的直白正在激起反弹，反而比稳扎稳打拖得更慢。"
+          },
+          "action": {
+            "en": "Hit pause before firing off the sharp reply or half-baked launch—check one critical assumption and hear one dissenting view first.",
+            "zh": "发那条带火气的回复或推半成品上线前先踩刹车——核实一个关键前提，先听完一句不同意见。"
+          },
+          "outcome": {
+            "en": "Expect friction, rework, or a sudden jolt unless you trade brute speed for disciplined aim.",
+            "zh": "如果不把蛮力求快换成有章法的瞄准，前方容易遇到摩擦、返工或急刹震荡。"
+          },
+          "advice": {
+            "en": "Slow down enough to aim—a calm sniper beats a blind cavalry charge every time.",
+            "zh": "慢下两拍先看清靶心——冷静精准的一击，永远胜过蒙头乱冲的骑兵。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Pull back from impulsive haste and reactive arguments. Precision and timing matter far more right now than raw velocity.",
+            "zh": "从冲动赶路和意气争辩里收一收脚。眼下真正决定成败的是准度与时机，而不是一味求快。"
+          },
+          "love": {
+            "en": "In love, reversed Knight of Swords cautions against snapping in frustration, rushing intimacy too hard, or pushing a partner into a corner for an instant answer.",
+            "zh": "在感情中，宝剑骑士逆位提醒别在焦躁时脱口伤人、别把关系进度推得太急，也别步步紧逼要对方立刻给答复。"
+          },
+          "career": {
+            "en": "At work, beware rushed deliverables, combative emails, and shipping before checking edge cases. A fifteen-minute review saves days of cleanup.",
+            "zh": "在职场上，警惕仓促交付、火药味十足的沟通以及跳过验收直接上线。花十五分钟复核，能省下后面几天的返工。"
+          },
+          "health": {
+            "en": "Overclocked nerves, impatience, and rushing through meals or rest take a quick toll; consciously downshift your tempo today.",
+            "zh": "神经长期超频、凡事火急火燎甚至连吃饭休息都在赶场，极易耗伤状态；今天刻意把生活挡位降下一格。"
+          },
+          "spirituality": {
+            "en": "Notice where urgency masks anxiety—wisdom never has to shout or sprint to prove it is real.",
+            "zh": "在灵性层面，觉察那股停不下来的紧迫感背后是否藏着焦虑——真正的智慧从不需要靠疾驰或提高嗓门来证明自己。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, deep crimson plume accent, razor-clean antique gold linework",
+      "scene": "An electrifying Belle Epoque nocturnal chivalric ride surging diagonally from right to left across a windswept highland ridge where slender dark cypresses bend in the gale. Mounted astride ONE powerful, luminous pale-ivory steed in full stride—draped with ornate antique-gold and slate-blue caparison and flying silver-white mane—ONE sleekly armored Art Nouveau knight in burnished frost-silver ceremonial plate and a billowing storm-cyan and deep-crimson cloak leans boldly forward with crisp crimson helmet plumes streaming behind. In their raised right armored gauntlet, the knight holds EXACTLY ONE long, straight, gleaming frost-silver and antique-gold ceremonial sword aloft and forward into rushing silver-rimmed midnight clouds. Brilliant cool moonlight catches the galloping white steed, polished armor facets, and the single upright sword blade against deep velvety indigo shadows.",
+      "requiredObjects": [
+        {
+          "object": "armored riding knight",
+          "count": 1
+        },
+        {
+          "object": "galloping white steed",
+          "count": 1
+        },
+        {
+          "object": "raised straight silver-gold sword",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Dynamic right-to-left diagonal silhouette of a luminous white galloping horse and armored rider lifting ONE razor-bright silver sword across dark storm clouds—unmistakable velocity even at 64x96 thumbnail.",
+      "avoid": [
+        "two or more swords",
+        "standing on foot",
+        "throne",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "queen_of_swords": {
+    "id": "queen_of_swords",
+    "archetypeEssence": {
+      "en": "Lucid discernment earned through experience—compassionate truth spoken without sugarcoating.",
+      "zh": "历经沉淀后的清明裁断——不敷衍、不情绪化，却有分寸的坦诚。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Regal seated Queen facing in clear profile on a carved stone throne",
+        "One straight, upright sword held vertically in her right hand",
+        "Left hand raised palm-outward in measured invitation and firm boundary",
+        "High windswept clouds, lone soaring bird, and carved butterflies/moths symbolizing mental clarity"
+      ],
+      "zh": [
+        "端坐于雕花石座之上、侧颜沉静锐利的王后",
+        "右手笔直竖握的一柄雪亮长剑",
+        "左手掌心微扬，兼具坦荡邀约与清晰边界",
+        "高空流动的云岚、飞鸟与蝶纹石雕，象征清澈理智"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Poised silver-eyed Queen seated in crisp three-quarter profile on a high carved stone throne above windswept clouds",
+        "Exactly one straight, gleaming engraved silver-and-gold sword held vertically in her right hand",
+        "Left hand lifted openly in calm, unmistakable discernment and boundary",
+        "Cool moonlight ivory, storm-slate silver, and razor-clean antique gold linework with nocturnal moths etched into the throne"
+      ],
+      "zh": [
+        "端坐于云岚高处雕花石座、侧颜清冷敏锐的王后",
+        "右手笔直竖握的一柄铭刻金纹的雪亮银剑",
+        "左手舒展微扬，展现冷静透彻的裁断与边界感",
+        "月白高光、风暴银灰与利落古金刻线，石座浮雕夜蛾与星云"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Queen of Swords calls for crisp, honest clarity: cut through polite fog, name facts plainly, and enforce fair boundaries without cruelty or guilt.",
+          "zh": "宝剑王后要求清晰直接的判断：剥离客套与模糊地带，如实说出事实，在不伤人也不委屈自己的前提下立住公平边界。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Say the true thing cleanly and simply; clarity is kinder right now than cushioning the facts.",
+            "zh": "把真话简明干脆地说出来；此刻的坦诚清晰，比绕弯子照顾情绪更善意。"
+          },
+          "foundation": {
+            "en": "A past lesson, loss, or sharp realization taught you to see patterns quickly and never trade truth for flattery.",
+            "zh": "过往的历练或清醒时刻教会了你一眼看穿本质，不再拿事实去换表面迎合。"
+          },
+          "present": {
+            "en": "You have the intellectual distance to assess this objectively; separate verified facts from anxious stories.",
+            "zh": "你现在具备客观审视的冷静距离；把已核实的事实与焦虑脑补彻底分开。"
+          },
+          "resource": {
+            "en": "Your strongest asset is sharp editorial judgment—knowing exactly what to cut, what question to ask, and where to draw the line.",
+            "zh": "你最强的资本是精准的删减与判断力——知道该剪掉什么、该问哪句关键问题、边界画在哪里。"
+          },
+          "challenge": {
+            "en": "Even upright, Queen of Swords in a challenge slot asks whether protective detachment or bluntness is making an ally feel interrogated rather than heard.",
+            "zh": "落在阻碍位时，正位宝剑王后提醒你留意：为了自保而保持的抽离或过于锋利的措辞，是否让同路人感到像在受审？"
+          },
+          "action": {
+            "en": "Write down the exact terms, ask the direct clarifying question, and cut one ambiguous obligation cleanly.",
+            "zh": "把确切条款写明白，直接抛出那个澄清问题，干脆剪掉一件含糊不清的负担。"
+          },
+          "outcome": {
+            "en": "The fog lifts into clean air: an honest agreement, firm boundary, or decisive verdict restores your self-respect and momentum.",
+            "zh": "迷雾散成清朗空气：一份坦诚共识、稳固边界或果断裁决，让你重新握回主动权。"
+          },
+          "advice": {
+            "en": "Be direct without being cold—hold the sword straight so truth clears the path rather than wounds for sport.",
+            "zh": "直率而不刻薄——把剑握直是为了劈开迷雾，而不是借锋利泄愤。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Independent judgment and plain speech serve you best. Strip away assumptions, check the evidence directly, and set clean boundaries.",
+            "zh": "宝剑王后正位提示独立判断与直白沟通此刻最有效。剥除想当然的猜测与客套，直接核对可验证的事实，并划出清爽明确的边界。"
+          },
+          "love": {
+            "en": "In love, Queen of Swords values candid adult conversation over mind-reading. State your needs and deal-breakers calmly; genuine closeness thrives on honesty, not guessing games.",
+            "zh": "在感情里，宝剑王后看重成年人之间坦诚直白的对话而非互相猜心。平静说出需求与底线，真正长久的亲密建立在诚实之上。"
+          },
+          "career": {
+            "en": "At work, this is crisp strategy, editing, legal/contractual rigor, and saying no to scope creep. Rely on clear criteria rather than office politics.",
+            "zh": "在工作上，她代表利落的策略裁剪、条款严谨与对需求蔓延的干脆拒绝。用明确标准说话，而不是卷入职场揣测。"
+          },
+          "health": {
+            "en": "For wellbeing, look at your habits and symptoms objectively—track real data or seek a second expert opinion instead of brushing issues aside.",
+            "zh": "在健康与精力管理上，客观记录真实数据或寻求专业第二意见，别靠侥幸把反复出现的问题糊弄过去。"
+          },
+          "spirituality": {
+            "en": "Spiritually, discernment itself is wisdom: seeing reality clearly without wishful illusions frees energy for what is true.",
+            "zh": "在灵性层面，清明辨识本身即是智慧：放下自我安慰的幻觉如实观照，才能把力量留给真正重要之事。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Queen of Swords reversed signals clouded objectivity—either sharp bitterness is turning discernment into cynicism, or old hurt is making it hard to set a clear boundary.",
+          "zh": "宝剑王后逆位提示清明度受情绪波及——要么过往委屈让犀利变成冷嘲与防备，要么心软迟疑让你迟迟划不出清晰边界。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Swallowing an important truth to keep false peace, leaving resentment to simmer.",
+            "zh": "为了维持表面和平把真话咽回肚子，反而让积怨暗自发酵。"
+          },
+          "excess": {
+            "en": "Cutting people off preemptively or using razor sarcasm as armor against vulnerability.",
+            "zh": "先发制人地冷处理，或拿尖锐讽刺当盾牌来遮掩脆弱。"
+          },
+          "internalized": {
+            "en": "Turning that merciless inner critic entirely onto yourself.",
+            "zh": "把毫不留情的严苛审视全都对准了自己。"
+          },
+          "release": {
+            "en": "Softening defensive armor without giving up hard-won wisdom.",
+            "zh": "卸下过度戒备的硬壳，同时保住历经世事修来的清醒判断。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Unprocessed hurt is coloring your read of someone's motives—either assuming the worst too fast or tolerating blurred lines too long.",
+            "zh": "尚未消化的旧伤正在左右你对他人动机的判断——要么过快往坏处定性，要么对模糊越界忍让太久。"
+          },
+          "action": {
+            "en": "Draft the blunt message, let it sit ten minutes, strip out the sting, and send only the clear boundary.",
+            "zh": "把犀利的话先写下来放十分钟，删掉带刺的情绪词，只发出清晰坚定的边界。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check whether your edge is protecting clarity or defending an old bruise. Speak plainly without punishing.",
+            "zh": "宝剑王后逆位提醒你先确认自己的锋芒是在守护清晰，还是在护着一道旧伤。把事实与底线说清楚即可，不必带着惩罚或尖刻语气。"
+          },
+          "love": {
+            "en": "In love, reversed Queen of Swords cautions against icy withdrawal, keeping score, or testing a partner instead of stating what hurt.",
+            "zh": "在感情中，宝剑王后逆位提醒警惕冷战疏离、暗自记账，或用带刺的试探反复考验伴侣，却始终不肯坦白真正令你受伤的痛点。"
+          },
+          "career": {
+            "en": "At work, beware hyper-critical feedback that shuts teammates down, or letting personal bias distort an evaluation. Return to concrete evidence.",
+            "zh": "在职场上，避免过度挑剔或居高临下的措辞把协作者推远，也警惕个人成见左右评审判断，重新回到客观可验证的事实依据上。"
+          },
+          "health": {
+            "en": "Notice where harsh self-talk or mental rumination is adding tension; give your nervous system space to decompress.",
+            "zh": "在身心状态上，留意严苛的自我批判、过度思虑与紧绷的戒备感是否在持续消耗睡眠与精力，给神经系统留出真正的缓冲空间。"
+          },
+          "spirituality": {
+            "en": "Release the belief that staying guarded equals staying wise; open perception sees further than suspicion.",
+            "zh": "在灵性层面，放下必须时刻戒备才算清醒的执念；敞开、沉静而温和的洞察力，往往比处处设防的猜疑看得更透彻、更长远。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "crisp ice-silver, storm-slate blue, luminous moonlit ivory, burnished antique gold",
+      "scene": "A regal, lucid Belle Epoque Queen seated in sharp three-quarter profile upon a high carved pale-stone throne set above windswept silver-blue twilight clouds. Her posture is upright, poised, and sovereign. In her right hand, she holds EXACTLY ONE long, straight, gleaming engraved silver-and-antique-gold SWORD perfectly vertical, blade bright and unmistakable against the midnight sky. Her left hand is gracefully raised outward in calm discernment and clear boundary. She wears a sculptural slate-blue and silver-embroidered silk gown with crisp ivory collar highlights and a delicate silver-gold filigree diadem. Subtle Art Nouveau moths and wind-swept cloud spirals are carved into the pale limestone throne, with a single lone bird soaring high in the bright pale silver moonlit sky.",
+      "requiredObjects": [
+        {
+          "object": "seated Queen in profile",
+          "count": 1
+        },
+        {
+          "object": "upright straight silver-gold sword held in right hand",
+          "count": 1
+        },
+        {
+          "object": "carved stone throne",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Razor-clear vertical silver sword blade and luminous profile silhouette cut cleanly across negative cloud space so the Queen + vertical sword read instantly at 64x96 thumbnail.",
+      "avoid": [
+        "glowing orb",
+        "crystal ball",
+        "cup",
+        "chalice",
+        "wand",
+        "pentacle",
+        "holding nothing",
+        "text",
+        "numerals",
+        "border",
+        "frame"
+      ]
+    }
+  },
+  "king_of_swords": {
+    "id": "king_of_swords",
+    "archetypeEssence": {
+      "en": "Sovereign, principled intellect—delivering impartial judgment and strategic command unshaken by noise.",
+      "zh": "沉稳笃定的原则权威——不为噪音与私心所动，以公正理智立定大局。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Composed King seated squarely facing forward upon a tall carved stone throne",
+        "One straight upright sword held firmly in his right hand tilted slightly at calm attention",
+        "Deep blue tunic and royal slate-violet mantle denoting intellectual discipline and ethics",
+        "Butterflies and crescent moons carved cleanly into the high throne back",
+        "Still towering clouds, twin soaring birds, and upright cypresses framing a lucid horizon"
+      ],
+      "zh": [
+        "正面端坐于高背雕花石座、神情沉静威严的国王",
+        "右手沉稳竖握、微斜戒备的一柄雪亮直剑",
+        "象征严谨理智与法度原则的深蓝内袍与灰紫披风",
+        "高耸石座靠背上精致雕刻的蝶翼与新月浮雕",
+        "高空沉静云层、双飞高鸟与挺立柏树映出的开阔视野"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Commanding Belle Epoque King seated squarely front-facing on a monumental carved pale-limestone throne above serene high-altitude twilight clouds",
+        "Exactly one broad, straight, gleaming frost-silver and antique-gold sword held upright at a subtle poised tilt in his right hand",
+        "Sculptural midnight-cobalt tunic, draped storm-slate and deep-plum velvet mantle, and architectural antique-gold circlet crown",
+        "Intricate Art Nouveau butterflies and silver crescent moons etched into the tall rectangular throne back, flanked by two dark upright cypresses",
+        "Two distant birds gliding smoothly across crisp moonlit silver air above the King's steady, impartial gaze"
+      ],
+      "zh": [
+        "端坐于高空静云之上雕花浅石王座、正面平视前方的威严美好年代国王",
+        "右手稳稳握持、笔直微倾的一柄霜银古金阔刃直剑",
+        "深钴蓝修身礼袍、风暴灰与暗紫丝绒披风以及规整古金冠冕",
+        "高背方正石座上精雕的新艺术蝶纹与银月浮雕，两侧挺立两株暗色柏树",
+        "清朗月色高空中振翅滑翔的两只远景飞鸟，呼应国王沉稳公正的凝视"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "King of Swords embodies mature analytical authority: apply fair standards consistently, think three moves ahead, and decide from clear evidence and ethics rather than impulse or favoritism.",
+          "zh": "宝剑国王体现成熟沉稳的理智权威：始终如一地执行公正标准、提前想清三步后的格局，依据事实与原则拍板，而不被情绪或私情牵着走。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Step into executive clarity—set objective criteria, seek expert counsel if needed, and make the fair call cleanly.",
+            "zh": "拿出一锤定音的清明格局——立定客观标准，必要时请教顶尖专业人士，干脆利落地作出公正裁决。"
+          },
+          "foundation": {
+            "en": "Strict standards, seasoned expertise, or a clear framework of rules established the structure you are operating inside.",
+            "zh": "严谨的规则意识、长期沉淀的专业口碑或明确的制度框架，搭起了如今运行的基础。"
+          },
+          "present": {
+            "en": "This situation calls for cool headship: rise above emotional noise, examine the whole system, and hold everyone—including yourself—to the same standard.",
+            "zh": "当下需要能镇住场面的冷静统领：跳出情绪噪音，从全局审视机制，对包括自己在内的所有人执行同一把尺子。"
+          },
+          "resource": {
+            "en": "Your leverage lies in unshakable reasoning and credibility—whether your own mastery or a seasoned advisor, lawyer, architect, or mentor in your corner.",
+            "zh": "你手里最硬的倚仗是站得住脚的逻辑与公信力——既可以是你自身的专业积淀，也可以是身边那位值得信赖的资深专家、法务或导师。"
+          },
+          "challenge": {
+            "en": "Even upright, King of Swords in a challenge slot asks whether austere logic is leaving out human warmth or turning reasonable standards into an unapproachable wall.",
+            "zh": "即便是正位，落在阻碍位的宝剑国王也在提醒：一丝不苟的理性是否遗漏了人情温度，或把原本合理的标准垒成了难以靠近的高墙？"
+          },
+          "action": {
+            "en": "Define the governing principle in writing, review the key facts systematically, and deliver a firm, transparent decision with zero ambiguity.",
+            "zh": "把核心原则白纸黑字立清，系统核查全部关键事实，随后给出明确透明、毫无含糊的最终拍板。"
+          },
+          "outcome": {
+            "en": "Order, sound governance, and lasting respect follow—a clean ruling or disciplined strategy holds steady under scrutiny.",
+            "zh": "秩序、稳健的治理与长久敬重随之落定——一份经得起检验的裁定或战略布局将稳稳站住。"
+          },
+          "advice": {
+            "en": "Lead with ethics as well as intellect—the sharpest authority earns trust because its rules protect fairness, not ego.",
+            "zh": "把道义与理智一同握在手里——最高级的权威之所以令人信服，是因为它的规则守护公正，而非只服务于面子。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Disciplined reasoning, ethical consistency, and strategic altitude resolve this cleanly. Let verified principles govern the outcome.",
+            "zh": "严谨思辨、表里如一的原则与全局高度能干净解开此局。让经得起验证的准则主导最终走向。"
+          },
+          "love": {
+            "en": "In love, King of Swords values integrity, reliability, and clear commitments over theatrical promises. Show care through fairness and kept words, while remembering to let warmth show too.",
+            "zh": "在感情中，宝剑国王看重守信、坦荡与清晰承诺，远胜华丽誓言。用公平担当与说到做到表达爱意，同时也别忘了留出柔软温度。"
+          },
+          "career": {
+            "en": "At work, this is executive leadership, sound architecture, legal or financial rigor, and impartial governance. Rely on transparent metrics and seasoned expertise.",
+            "zh": "在工作与事业上，他代表高阶统筹、扎实架构、法务与风控严谨以及公正决策。依靠透明标准与专业深度稳步推进。"
+          },
+          "health": {
+            "en": "For wellbeing, take an informed, structured approach—consult qualified specialists when needed and follow a clear, evidence-backed routine steadily.",
+            "zh": "在身心管理上，适合采取理性而系统的方法——必要时请教专业人士，并稳步执行有据可依的规律方案。"
+          },
+          "spirituality": {
+            "en": "Spiritually, this is sovereignty of mind: observing passions without being swept away, aligning thought, speech, and action in quiet integrity.",
+            "zh": "在灵性层面，宝剑国王代表心智的清明主权：如实觉察情绪起伏却不被裹挟，让所思、所言与所行在静定诚实中合而为一。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "King of Swords reversed warns of distorted authority—either weaponizing sharp logic to dominate and control, or abdicating judgment into icy detachment and drift.",
+          "zh": "宝剑国王逆位警示权威失衡——要么把精明逻辑当成压迫与操控他人的工具，要么陷入冷漠抽离，在需要拍板时放弃担当。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Withholding a needed decision out of detachment or fear of being accountable for the ruling.",
+            "zh": "因过度抽离或不想替后果担责，迟迟不肯作出该由你下的决断。"
+          },
+          "excess": {
+            "en": "Rigid authoritarianism, intellectual arrogance, or twisting technicalities to win at others' expense.",
+            "zh": "居高临下的强硬专断、智力傲慢，或钻规则空子压制别人。"
+          },
+          "internalized": {
+            "en": "Policing your own feelings with a cold internal magistrate that leaves zero room for vulnerability.",
+            "zh": "在心里安了一位冷冰冰的法官时刻审查自己的情绪，绝不允许一丝脆弱露面。"
+          },
+          "release": {
+            "en": "Stepping down from rigid control and letting fair dialogue replace unilateral decrees.",
+            "zh": "从僵硬控制中退一步，用平等透明的讨论取代独断发令。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Either someone is hiding bias behind cold logic, or lack of clear leadership is letting bad structure slide unchecked.",
+            "zh": "要么有人正拿冷静逻辑包装私心与偏见，要么缺少明确主心骨，任由松散规则持续失序。"
+          },
+          "action": {
+            "en": "Audit the logic for hidden self-interest, invite one honest check on your blind spots, and enforce fairness without bullying.",
+            "zh": "先检查推论背后有没有夹带私心，主动听取一位敢讲真话者的校验，在不压人的前提下守住公道。"
+          },
+          "outcome": {
+            "en": "Resentment or stalled direction builds if control replaces fairness; resetting transparency restores respect quickly.",
+            "zh": "若继续拿控制替代公正，只会积攒抵触或让方向失焦；重新立起透明原则，信任很快便能修复。"
+          },
+          "advice": {
+            "en": "Check your motives before citing the rulebook—real authority serves the truth rather than winning compliance.",
+            "zh": "搬出规则之前先检视自己的动机——真正的权威服务于事实，而不是用来逼人顺从。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Watch for manipulative rhetoric, rigid control, or detached indecision. Anchor back in transparent facts and humble accountability.",
+            "zh": "警惕精致却带私心的说辞、僵化控制或冷眼旁观式的推诿。重新锚定在透明事实与坦荡担当上。"
+          },
+          "love": {
+            "en": "In love, reversed King of Swords warns against intellectualizing away hurt feelings, lecturing a partner, or using cold silence to keep the upper hand.",
+            "zh": "在感情中，宝剑国王逆位提醒警惕拿讲道理掩盖情感冷漠、居高临下说教，或用冰冷沉默维持关系里的控制权。"
+          },
+          "career": {
+            "en": "At work, look out for micromanagement, weaponized policy, biased reviews, or leadership ducking tough calls. Keep every commitment documented and objective.",
+            "zh": "在职场上，留意过度管控、拿制度卡人、夹带私心的评审，或管理者回避关键拍板。把关键承诺落于客观记录。"
+          },
+          "health": {
+            "en": "Rigid self-policing or ignoring bodily signals because they do not fit your schedule backfires; temper discipline with real responsiveness.",
+            "zh": "过度刻板的自律，或因“不在计划内”而无视身体疲惫信号，终究适得其反；给克制配上真诚倾听身体的弹性。"
+          },
+          "spirituality": {
+            "en": "Intellect without compassion turns brittle; soften the urge to judge everything from a high perch and reconnect with lived humility.",
+            "zh": "在灵性层面，失去悲悯的理智终将变得干硬脆弱；从居高临下的评判席上走下来，重新连接踏实谦逊的日常。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "crisp frost-silver, storm-slate cyan, moonlit ivory, midnight-cobalt and plum velvet, razor-clean antique gold linework",
+      "scene": "A commanding, composed Belle Epoque King seated squarely front-facing in solemn symmetry upon a tall carved pale-limestone throne elevated above calm, moonlit high-altitude twilight clouds. Wearing a sculptural midnight-cobalt tunic, draped storm-slate and deep-plum velvet royal mantle, and a clean architectural antique-gold circlet crown, he gazes straight ahead with calm, impartial silver-lit authority. In his right hand he holds EXACTLY ONE broad, straight, gleaming frost-silver and antique-gold sword upright at a subtle poised tilt, while his left hand rests steadily upon the stone armrest. Intricate Art Nouveau butterflies and crescent moons are carved cleanly into the rectangular throne back, flanked in the distance by two slender dark upright cypresses and TWO small birds gliding smoothly across crisp pale-silver moonlit air against deep midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "front-facing seated King on throne",
+          "count": 1
+        },
+        {
+          "object": "upright straight silver-gold sword held in right hand",
+          "count": 1
+        },
+        {
+          "object": "tall carved stone throne",
+          "count": 1
+        },
+        {
+          "object": "soaring distant birds",
+          "count": 2
+        }
+      ],
+      "compositionNote": "Monumental front-facing symmetrical King enthroned vertically with ONE gleaming upright sword held cleanly on the left-of-center axis and twin cypresses framing the sides—unmistakably distinct from the profile Queen at 64x96 thumbnail.",
+      "avoid": [
+        "side profile pose",
+        "two or more swords",
+        "horse",
+        "cups",
+        "chalices",
+        "wands",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  }
+}

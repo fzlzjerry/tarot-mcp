@@ -1,0 +1,2748 @@
+{
+  "ace_of_cups": {
+    "id": "ace_of_cups",
+    "archetypeEssence": {
+      "en": "An unguarded wellspring of feeling—the heart opening to love, grace, or creative overflow.",
+      "zh": "尚未设防的情感源泉——心门向爱意、灵感与丰沛共鸣敞开。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Luminous hand emerging from a silver cloud offering a single brimming golden chalice",
+        "Five streams of clear water arcing from the cup into a lotus-strewn pool below",
+        "White dove descending toward the chalice rim bearing a small radiant wafer",
+        "Floating water lilies and ripples symbolizing emotional fertility and renewal"
+      ],
+      "zh": [
+        "自银云中探出的发光之手，托起一只满溢的金色圣杯",
+        "五道清泉自杯口喷涌而出，落入下方莲池",
+        "衔着微光圣饼飞向杯沿的白鸽",
+        "随涟漪舒展的睡莲，象征丰沛的情感与新生"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Radiant ivory hand emerging from moonlit cerulean-and-indigo clouds cradling one gleaming ornate golden chalice",
+        "Five luminous pearl-and-sapphire water streams cascading into a dark mirror pool dotted with glowing ivory lotus blossoms",
+        "Single luminous white dove descending gracefully toward the cup's rim with outstretched wings",
+        "Shimmering golden droplets and Art Nouveau water ripples glowing against deep midnight-indigo sky"
+      ],
+      "zh": [
+        "自月色蓝云中伸出的温润象牙之手，稳稳托起一只古金雕花圣杯",
+        "五道泛着珍珠与蓝宝石微光的水流倾泻入盛放白莲的暗夜水面",
+        "振翅俯冲向杯沿的洁白鸽影",
+        "在深邃午夜靛蓝背景下跃动的鎏金水珠与新艺术风格波纹"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ace of Cups marks an authentic emotional opening: new affection, creative inspiration, or a quiet wave of compassion arriving fresh and unguarded. Receive what is offered before analysis talks you out of feeling it.",
+          "zh": "圣杯王牌标志着一次真诚的情感敞开：新的爱意、创作灵感或柔和的共鸣正毫无保留地涌来。在理智急着挑剔之前，先允许自己接住这份馈赠。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Let the feeling land cleanly—an invitation to love, create, or forgive is already in your palm.",
+            "zh": "让这份真实的心意落下来——去爱、去创作或去释怀的契机，此刻已经递到你掌心。"
+          },
+          "foundation": {
+            "en": "A genuine spark of affection, intuition, or creative longing planted the seed of this whole chapter.",
+            "zh": "最初那点真挚的心动、直觉或创作渴望，为整段经历埋下了最初的种子。"
+          },
+          "present": {
+            "en": "Your emotional bandwidth is unusually open right now; welcome new warmth, honest vulnerability, and fresh inspiration.",
+            "zh": "你当下的情感接收度格外敞开，适合迎接新关系、坦诚脆弱与自然涌现的灵感。"
+          },
+          "resource": {
+            "en": "Your strongest asset is emotional sincerity—people respond immediately when warmth is real rather than rehearsed.",
+            "zh": "你最有力的优势是未经雕饰的真诚——当善意发自内心时，旁人会立刻感受到回应。"
+          },
+          "challenge": {
+            "en": "Even upright, Ace of Cups in a challenge slot asks whether fear of overflow is making you hold the chalice at arm's length.",
+            "zh": "落在阻碍位时，正位圣杯王牌提醒你留意：是否因为害怕投入过深，而在好意递来时下意识缩手？"
+          },
+          "action": {
+            "en": "Say yes to the heartfelt gesture—send the warm note, start the expressive work, or meet someone with your guard lowered.",
+            "zh": "顺着心意迈出一步——发去那句真诚的问候、动笔开启创作，或卸下防备赴一场约。"
+          },
+          "outcome": {
+            "en": "A nourishing new emotional chapter begins, bringing renewed tenderness, creative flow, and quiet inner fullness.",
+            "zh": "一段滋养人心的新情感周期即将展开，带来回暖的柔情、顺畅的灵感与踏实的内在丰盈。"
+          },
+          "advice": {
+            "en": "Keep the cup upright and open; you do not need to ration joy to stay safe.",
+            "zh": "让圣杯端正敞开着；你不必靠克扣喜悦来换取安全感。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A fresh emotional current is entering your life, bringing sincerity, creative spark, and renewed receptivity. Meet this opening with an unguarded heart rather than old skepticism.",
+            "zh": "一股清澈崭新的情感暖流正进入生活，带来真诚、灵感与重新敞开的可能。请带着不设防的心意去接住它，而非用旧怀疑先拒之门外。"
+          },
+          "love": {
+            "en": "In love, Ace of Cups heralds a genuine new attraction, a tender reset in an existing bond, or deep emotional honesty. Let affection be spoken plainly instead of kept behind polite reserve.",
+            "zh": "在感情中，圣杯王牌预示着令人心动的新缘分、旧关系里的温柔回暖，或一次直抵心底的坦诚交流。把真实喜欢说出口，别再藏在客套之后。"
+          },
+          "career": {
+            "en": "At work, this signals a project that genuinely moves you, a warm new alliance, or a surge of creative intuition. Follow the work that feels alive and let enthusiasm guide your craft.",
+            "zh": "在工作与事业上，这张牌指向真正点燃你热情的新项目、默契投缘的合作契机，或源源不断的创意直觉。顺着让你感到有生命力的方向投入进去。"
+          },
+          "health": {
+            "en": "For wellbeing, emotional nourishment restores physical vitality—hydration, gentle rest, artistic expression, and releasing held tension help your whole system soften and recover.",
+            "zh": "在身心状态上，情绪滋养正直接带动精力回升——充足补水、温和休养、艺术表达与释放积压情绪，都能让紧绷的身体重新松弛下来。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Ace of Cups is pure grace and receptivity: quiet your striving long enough to feel gratitude, wonder, and the steady current of compassion already present.",
+            "zh": "在灵性层面，圣杯王牌象征纯粹的恩典与接纳：先停下急于索取的用力感，静静体会此刻本就流淌在身边的感恩、惊奇与慈悲。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ace of Cups reversed points to a guarded heart, unexpressed feelings, or pouring out so much for others that your own well runs dry. Tend your own vessel first before asking it to overflow.",
+          "zh": "圣杯王牌逆位指向紧闭的心门、憋在心里的情绪，或一味向外倾倒而把自己掏空。先照顾并注满自己的杯子，再谈向外给予。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Old bruises are keeping the lid tightly shut against new affection or creative vulnerability.",
+            "zh": "过去的伤痕让你把心门捂得太紧，挡住了新的善意与创作流露。"
+          },
+          "excess": {
+            "en": "Emotional spillover—reacting from raw sensitivity or giving too much too soon without boundaries.",
+            "zh": "情绪失衡外溢，或在边界未稳时过快倾尽全部投入。"
+          },
+          "internalized": {
+            "en": "Deep feeling is present beneath the surface, still waiting for a safe private outlet.",
+            "zh": "内心其实涌动着真切感受，只是尚未找到安心安放的出口。"
+          },
+          "release": {
+            "en": "Letting out pent-up grief or fatigue so genuine tenderness can circulate again.",
+            "zh": "允许积压的委屈或疲惫自然流出，让真实的温柔重新循环起来。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Emotional numbness or self-protective cynicism is blocking a genuinely good offering right in front of you.",
+            "zh": "习惯性的情感麻木或自我保护式的怀疑，正挡住眼前一份原本真诚的好意。"
+          },
+          "action": {
+            "en": "Refill your own cup first—name what you actually feel in private, rest, and stop performing warmth you do not have.",
+            "zh": "先把自己的杯子注满——私下诚实写下真实感受、好好休息，别再勉强挤出透支的体贴。"
+          },
+          "outcome": {
+            "en": "Once you honor your own emotional limits, guardedness softens and authentic feeling returns at a steadier pace.",
+            "zh": "当你真正尊重自身的情绪边界后，僵硬的防备会慢慢松动，真挚感受将以更稳的节奏回流。"
+          },
+          "advice": {
+            "en": "Self-love is not selfish here; patch the leak in your own vessel before pouring for anyone else.",
+            "zh": "此刻的自我滋养绝非自私；先把杯底的消耗堵住，再去谈照料旁人。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Notice where you are holding feelings back out of fear of rejection, or draining yourself dry to please others. Restore quiet self-care before opening a new chapter.",
+            "zh": "圣杯王牌逆位提醒你觉察自己是否在因怕受伤而压抑心意，或为了讨好旁人而过度透支。在开启新阶段前，先安静地把自己的内在能量补满。"
+          },
+          "love": {
+            "en": "In relationships, reversed Ace of Cups flags emotional guardedness, unspoken hurt, or seeking validation from a partner to fill an inner void. Rebuild trust with yourself first.",
+            "zh": "在感情中，圣杯王牌逆位常对应不敢交付真心、憋着未说出口的委屈，或指望伴侣来填补内在空缺。先稳住自我关爱，关系才不会失衡。"
+          },
+          "career": {
+            "en": "At work, creative dryness or feeling disconnected from what you produce signals burnout rather than lack of talent. Step back briefly to reconnect with why the work matters.",
+            "zh": "在工作上，灵感枯竭或对产出提不起劲，往往是情绪倦怠而非能力不足。短暂抽离杂务、重新找回做事的初心，手感会自然恢复。"
+          },
+          "health": {
+            "en": "Suppressed stress or emotional fatigue may be showing up physically as heaviness or low energy. Give yourself permission to rest and process feelings without rushing.",
+            "zh": "长期压抑的情绪与疲惫正以沉重感或精力低迷的方式浮现出来。给自己留出不被催促的休整与情绪释放空间，别再硬撑着装作无事。"
+          },
+          "spirituality": {
+            "en": "Feeling dry or disconnected does not mean the spring has vanished; clear out old resentment and sit quietly until your inner receptivity gently returns.",
+            "zh": "灵性上的干涸感并不意味着内在源泉消失了；先清理掉积压的失望与自我苛责，在安静独处中等待那份细腻的感知力慢慢回潮。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalice, moonlit ivory",
+      "scene": "Emerging from a luminous swirl of moonlit cerulean and pearl-ivory clouds on the left, a graceful, radiant ivory hand holds aloft EXACTLY ONE magnificent, ornate antique-gold chalice at the center of the composition. From the brimming gilded rim, five shimmering arcs of pearl-and-sapphire water pour gracefully downward into a tranquil midnight-indigo pool blooming with glowing ivory water lilies and golden ripples. Directly above the chalice, ONE luminous white dove with outstretched wings descends serenely toward the cup's glowing rim, carrying a tiny radiant golden disc in its beak. Bright celestial moonlight and warm molten-gold specular highlights illuminate the single chalice, the five water streams, the dove, and the hand against velvety deep sapphire-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalice",
+          "count": 1
+        },
+        {
+          "object": "radiant hand emerging from cloud",
+          "count": 1
+        },
+        {
+          "object": "descending white dove",
+          "count": 1
+        },
+        {
+          "object": "streams of overflowing water",
+          "count": 5
+        }
+      ],
+      "compositionNote": "Iconic centered vertical composition: one large gleaming golden chalice held at center, white dove poised directly above its rim, and five bright water arcs fanning into the lower lotus pool—instantly recognizable at 64x96 thumbnail size.",
+      "avoid": [
+        "extra cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "full human body",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "two_of_cups": {
+    "id": "two_of_cups",
+    "archetypeEssence": {
+      "en": "Mutual recognition between equals—two hearts choosing respect, reciprocity, and shared trust.",
+      "zh": "势均力敌的双向奔赴——两颗心在尊重、对等与信赖中彼此确认。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Two figures standing face-to-face exchanging two golden cups in mutual pledge",
+        "Winged caduceus of Hermes rising between them as an emblem of harmony and healing",
+        "Winged red lion's head hovering above the caduceus representing passion guided by nobility",
+        "Gentle hillside village and calm horizon suggesting grounded, lasting union"
+      ],
+      "zh": [
+        "面对面站立、彼此交换两只金色圣杯以示契约的两人",
+        "升起在二人之间的双蛇杖，象征和谐与疗愈",
+        "凌于双蛇杖之上的带翼狮首，代表高贵而炽热的心意",
+        "远方宁静的山丘与居所，预示踏实长久的联结"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Two Belle Epoque figures standing as equals on a moonlit garden terrace, each extending one gleaming golden chalice toward the other",
+        "Exactly two ornate antique-gold chalices meeting cleanly in the luminous center space",
+        "Delicate gilded Art Nouveau caduceus with twin serpents and a small winged golden lion emblem glowing softly between them",
+        "Cerulean-sapphire and moonlit-ivory silk drapery warmed by golden twilight glow against deep midnight-indigo hills"
+      ],
+      "zh": [
+        "在月色庭院露台上平等相对的两位美好年代身影，各自向对方递出一只金色圣杯",
+        "在画面中心明亮空间里清晰交汇的两只古金雕花圣杯",
+        "在二人之间泛起柔光的鎏金双蛇杖与带翼金狮徽章",
+        "深午夜靛蓝山影前被暖金暮色照亮的蓝宝石与月白丝绸长袍"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Two of Cups celebrates genuine reciprocity: two people meeting as equals, offering care without keeping score, and sealing a bond built on mutual attraction, trust, or shared purpose.",
+          "zh": "圣杯二赞颂真诚的对等联结：两个独立的人以平等姿态相遇，不计较得失地彼此回应，在吸引、信任或共同愿景中缔结稳固契约。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Meet the other person halfway—mutual honesty and respect can turn a promising spark into a real alliance.",
+            "zh": "主动走向彼此中间——坦诚与尊重能让眼前的好感或共识，落地成一段真正稳固的盟约。"
+          },
+          "foundation": {
+            "en": "A sincere mutual agreement, warm chemistry, or moment of deep understanding established the trust beneath this situation.",
+            "zh": "一次真诚的双向约定、投契的默契或彼此读懂的瞬间，为眼下局面打下了信任底色。"
+          },
+          "present": {
+            "en": "Harmony and mutual goodwill are active right now; this is an ideal moment to deepen a partnership or reconcile.",
+            "zh": "眼下正处于彼此善意呼应的窗口期，非常适合深化合作、推进亲密关系或温和冰释前嫌。"
+          },
+          "resource": {
+            "en": "Your greatest strength is a true ally—someone whose commitment matches yours and multiplies what either of you can do alone.",
+            "zh": "你最宝贵的资源是一位真正同频的伙伴——对方与你投入相当，能让双方合力远超单打独斗。"
+          },
+          "challenge": {
+            "en": "Even upright, Two of Cups in a challenge slot asks whether you are preserving healthy individuality inside a close bond.",
+            "zh": "落在阻碍位时，正位圣杯二提醒你审视：在高度默契的亲密关系里，是否仍保留了彼此独立的边界？"
+          },
+          "action": {
+            "en": "Make the gesture explicit—extend the olive branch, confirm the partnership, or voice your appreciation face-to-face.",
+            "zh": "把心意落到明面上——主动递出橄榄枝、正式确认合作，或当面说出你对对方的珍视。"
+          },
+          "outcome": {
+            "en": "A balanced, heartfelt partnership takes root, marked by ease, mutual loyalty, and shared momentum.",
+            "zh": "一段平等而温暖的伙伴关系或亲密联结将稳步扎根，带来轻松、忠诚与共同向前的动力。"
+          },
+          "advice": {
+            "en": "Honor the equality of the exchange: give generously, receive graciously, and keep communication clean.",
+            "zh": "守住这段关系里的对等感：大方付出，也坦然接受回报，让沟通始终清澈透明。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Mutual respect and heartfelt partnership define this moment. Whether in friendship, romance, or collaboration, two people meeting as equals create lasting harmony.",
+            "zh": "相互尊重与真诚对等的联结是此刻的主旋律。无论友情、爱情还是合作，两个独立个体平等相待，就能生出长久的和谐与默契。"
+          },
+          "love": {
+            "en": "In love, Two of Cups is the classic card of mutual attraction, tender commitment, and emotional reciprocity. Both partners feel seen, chosen, and safe to open up.",
+            "zh": "在感情中，圣杯二是经典的双向奔赴、温柔承诺与情感对等之牌。彼此都感到被真正看见、被坚定选择，也安心展露真实的自己。"
+          },
+          "career": {
+            "en": "At work, this points to a strong co-founder, trusted colleague, or win-win client partnership. Align values and terms clearly so both sides thrive together.",
+            "zh": "在工作与事业上，这张牌预示契合的搭档、值得信赖的同僚或双赢的合作方。把目标与权责谈清，双方将彼此成就。"
+          },
+          "health": {
+            "en": "For wellbeing, supportive one-on-one care—a trusted practitioner, workout partner, or loving confidant—helps restore emotional and physical equilibrium.",
+            "zh": "在身心调节上，一对一的可靠陪伴——无论是信任的医师、结伴运动的朋友还是知心伴侣——都能温和地帮你找回身心平衡。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Two of Cups reflects inner union: reconciling head and heart, or meeting another soul with genuine reverence and presence.",
+            "zh": "在灵性层面，圣杯二象征内在的圆满合一：让理智与情感不再拉扯，也在与他人相遇时带着纯粹的敬意与临在感。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Two of Cups reversed signals a wobble in reciprocity: miscommunication, lopsided effort, or pulling back from a bond that needs an honest conversation to rebalance.",
+          "zh": "圣杯二逆位提示对等感出现晃动：沟通错频、付出失衡，或在一段需要坦诚对话的关系里悄悄退缩。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Unspoken resentment or guarded pride is keeping two people talking past each other.",
+            "zh": "没说出口的委屈或拉不下来的面子，让两个人反复错过彼此真正的意思。"
+          },
+          "excess": {
+            "en": "Over-investing or losing your own center just to keep someone else pleased.",
+            "zh": "为了维持融洽而过度迁就，不知不觉丢掉了自己的立场与重心。"
+          },
+          "internalized": {
+            "en": "Inner conflict between wanting closeness and fearing you will be let down.",
+            "zh": "内心在渴望亲近与害怕再次失望之间反复拉扯。"
+          },
+          "release": {
+            "en": "Stepping away cleanly from a one-sided dynamic that no longer honors both people.",
+            "zh": "干脆离开一段长期单方面消耗、不再彼此尊重的关系模式。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "One side is carrying more of the emotional weight, or mismatched expectations have gone unnamed too long.",
+            "zh": "关系里的情绪分量明显倾斜，或者双方截然不同的期待被搁置得太久没有摊开。"
+          },
+          "action": {
+            "en": "Stop guessing what the other person means—have one direct, calm check-in to see if both cups are still offered freely.",
+            "zh": "别再暗自揣测对方的态度——约一次平静坦诚的对话，确认双方是否仍愿意平等投入。"
+          },
+          "outcome": {
+            "en": "Clarity replaces quiet tension: either the partnership rebalances on fairer terms, or you release a mismatch cleanly.",
+            "zh": "清醒将取代暗自内耗：要么关系在更公平的基础上重新对齐，要么干脆体面地各自归位。"
+          },
+          "advice": {
+            "en": "Check your own inner alignment first; you cannot negotiate a fair bond while abandoning your own needs.",
+            "zh": "先站稳自己的内在立场；如果连你自己都忽视自身需求，就很难谈出一段平等的关系。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A disconnect or imbalance in a key bond calls for honest recalibration. Name what feels uneven plainly instead of letting quiet distance harden into a rift.",
+            "zh": "圣杯二逆位提醒你留意重要关系中的失衡或错频。把让你感到不对等的地方平静说出来，别让沉默的距离慢慢凝成真正的隔阂。"
+          },
+          "love": {
+            "en": "In love, reversed Two of Cups highlights mixed signals, hurt feelings left unspoken, or uneven emotional labor. Re-establish mutual respect before making bigger promises.",
+            "zh": "在感情中，圣杯二逆位映照出信号混乱、积压未说的心结或付出不对等。在许下更重承诺之前，先重建彼此尊重的对话节奏。"
+          },
+          "career": {
+            "en": "At work, watch for a lopsided partnership, unclear division of credit, or a client mismatch. Put expectations in writing so goodwill is backed by fair structure.",
+            "zh": "在职场上，警惕合作分工失衡、功劳归属模糊或与搭档理念不合。把权责与预期落到纸面上，让善意有清晰的制度托底。"
+          },
+          "health": {
+            "en": "Relational stress or neglecting your own rhythm to accommodate others may be draining your energy. Reclaim simple boundaries around rest and personal space.",
+            "zh": "关系里的内耗或一味迁就他人节奏正在悄悄耗损你的精力。为自己的睡眠、休息与独处空间重新划出温和而坚定的边界。"
+          },
+          "spirituality": {
+            "en": "Notice where self-criticism has split you against yourself; restoring kindness toward your own heart is the first step toward healthier connection.",
+            "zh": "在灵性层面，觉察严苛的自我挑剔是否让你与自己站到了对立面；先恢复对内心的温柔接纳，对外联结才会重新舒展。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "On a serene moonlit stone terrace overlooking softly glowing indigo hills, TWO graceful Belle Epoque figures—one in flowing cerulean-sapphire embroidered robes and one in moonlit ivory and amethyst silk—stand facing each other as equals with warm, open expressions. Between them at chest height, each extends ONE gleaming, ornate antique-gold chalice toward the other so EXACTLY TWO chalices are cleanly separated and brightly lit at the heart of the frame. Floating softly in the luminous negative space directly above the two raised cups is a slender gilded Art Nouveau caduceus entwined with twin serpents and crowned by a small radiant winged golden lion emblem. Warm ivory moonlight and subtle golden reflections illuminate their faces, outstretched hands, and twin chalices against a deep starry midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalices exchanged between two figures",
+          "count": 2
+        },
+        {
+          "object": "facing Belle Epoque companions",
+          "count": 2
+        },
+        {
+          "object": "gilded winged caduceus emblem",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Balanced symmetrical pairing of two figures framing TWO bright golden chalices in the center, crowned by the glowing caduceus emblem—reads cleanly as mutual union even at 64x96 thumbnail size.",
+      "avoid": [
+        "three or more cups",
+        "extra people",
+        "wands",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "three_of_cups": {
+    "id": "three_of_cups",
+    "archetypeEssence": {
+      "en": "Shared joy, mutual celebration, and emotional sustenance found in trusted company.",
+      "zh": "被信任同伴托住的共庆时刻，在彼此呼应中获得情感滋养。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Three figures gathered in a lively circle raising three golden cups in a toast",
+        "Abundant flowers, fruit, and garlands at their feet symbolizing harvest",
+        "Flowing festive garments turning inward toward shared celebration",
+        "Open, unguarded posture showing mutual warmth and camaraderie"
+      ],
+      "zh": [
+        "围成欢快圆环、共同举起三只金色圣杯祝酒的三位同伴",
+        "脚畔丰盛的花果与花环，象征共同收获",
+        "彼此面向圆心、随舞步轻扬的节庆衣裙",
+        "敞开而舒展的姿态，流露真诚情谊与默契"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Three joyous Belle Epoque companions forming a bright celebratory circle on a lantern-lit terrace",
+        "Exactly three gleaming antique-gold chalices lifted together at center in a toast",
+        "Sapphire, amethyst, and moon-ivory silk dresses catching warm golden lantern light",
+        "Flowering midnight fountain and garlands framing the joyous gathering"
+      ],
+      "zh": [
+        "在灯火温润的庭院露台围成欢聚圆环的三位美好年代挚友",
+        "正中齐举碰杯、光泽清晰的三只古金雕花圣杯",
+        "在暖金灯影与月色下流动的蓝宝石、紫晶与月白丝绸衣裙",
+        "周围盛放的花环与静静流淌的庭院喷泉"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Three of Cups marks genuine fellowship: celebrating a milestone together, leaning on allies who actually cheer for you, and letting joy be shared rather than carried alone.",
+          "zh": "圣杯三代表真实可感的情谊与共庆：和真正为你高兴的人分享阶段性成果，把喜悦与情绪放进彼此支持的社群里，而不独自硬扛。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Bring people you trust into the moment—shared encouragement or a candid gathering unlocks momentum you cannot manufacture solo.",
+            "zh": "把信任的伙伴拉进这件事里——一场真诚的相聚或彼此打气，能带来一个人硬撑不出的推动力。"
+          },
+          "foundation": {
+            "en": "Warm camaraderie, mutual support, or a joyful shared memory laid the emotional ground for where things stand now.",
+            "zh": "良好的同伴默契、互相扶持，或一段愉快的共同经历，为当下局面铺好了情感底色。"
+          },
+          "present": {
+            "en": "You are in a window of warmth and social receptivity—good for collaboration, reunions, and acknowledging progress already made.",
+            "zh": "你正处于人际顺畅、情感回暖的窗口期——适合协作、重聚，并认真肯定已经走出的成绩。"
+          },
+          "resource": {
+            "en": "Your strongest resource is your circle: ask friends, peers, or allies for perspective, introductions, or simply celebration.",
+            "zh": "你最可靠的资源就在身边的圈子里：主动向朋友、同路人或盟友寻求视角、引荐或情绪支持。"
+          },
+          "challenge": {
+            "en": "Even in upright form, Three of Cups in a challenge slot asks whether fitting in with the group—or chasing social harmony—is muffling your own honest opinion.",
+            "zh": "即便正位，落在阻碍位的圣杯三也在提醒：你是否为了维持融洽氛围或融入群体，而压低了自己真实的想法？"
+          },
+          "action": {
+            "en": "Reach out to two or three trusted people and co-create or celebrate openly instead of working behind closed doors.",
+            "zh": "主动联系两三位信得过的人，把事情摊开共创或好好庆祝一次，别再关起门来单打独斗。"
+          },
+          "outcome": {
+            "en": "A warm gathering, collaborative win, or restored ease among allies brings a real sense of belonging.",
+            "zh": "一次舒心的相聚、协作成效或同伴间重新找回的轻松感，会为你带来切实的归属感。"
+          },
+          "advice": {
+            "en": "Pause to celebrate what is already working with the people who showed up for you; gratitude strengthens alliances.",
+            "zh": "停下来和一路相伴的人好好庆祝已有的进展；表达感谢会让同盟更稳固。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Shared joy and trusted community are central here. Let allies celebrate with you and collaborate openly, while keeping your own voice clear inside the group.",
+            "zh": "核心在于共享喜悦与可信赖的社群支持。大方与同路人协作共庆，同时在群体融洽中保持自己独立清醒的声音。"
+          },
+          "love": {
+            "en": "In love, Three of Cups brings playful ease, friendship inside romance, and welcoming each other's social worlds. Notice whether outside voices enrich the bond or crowd it.",
+            "zh": "在感情里，圣杯三带来像挚友般轻松愉悦的互动，以及融入彼此生活圈的暖意。也留意旁人的声音是在滋养关系，还是挤占了二人空间。"
+          },
+          "career": {
+            "en": "At work, Three of Cups signals strong team chemistry, a launch worth marking together, or opportunities coming through warm peer networks rather than cold outreach.",
+            "zh": "在工作上，圣杯三意味着融洽的团队化学反应、值得共庆的阶段成果，或经由熟人口碑与同行互助带来的好机会。"
+          },
+          "health": {
+            "en": "For wellbeing, social connection is restorative right now—a shared meal, walk with friends, or supportive group lifts morale better than isolation.",
+            "zh": "在身心调节上，高质量的陪伴此刻最能回血——一顿轻松的聚餐、与朋友散步或支持性社群，比独自封闭更有疗愈感。"
+          },
+          "spirituality": {
+            "en": "Spiritually, joy itself is a practice: gratitude, song, and community remind you that growth does not have to be solemn or solitary.",
+            "zh": "在灵性层面，由衷的欢喜本身就是修习：感恩、共鸣与群体联结温和地提醒你，内在成长不必总是严肃克制而孤单独行。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Three of Cups reversed points to social friction, overindulgence, or feeling like an outsider in a crowd—time to trim noise and reconnect with the few bonds that feel real.",
+          "zh": "圣杯三逆位指向人际消耗、过度应酬或在人群中的疏离感——适合缩减无效社交，回到真正真诚的少数连结。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Isolation or pulling away from people who would actually help if invited.",
+            "zh": "把自己孤立起来，退出了原本愿意伸手相助的圈子。"
+          },
+          "excess": {
+            "en": "Social burnout, gossip, or celebrating distractions to avoid a quiet truth.",
+            "zh": "社交透支、流言纷扰，或用热闹聚会回避真正该面对的问题。"
+          },
+          "internalized": {
+            "en": "Smiling along in public while privately feeling unseen or out of step.",
+            "zh": "表面配合热闹，内心却觉得格格不入或不被真正理解。"
+          },
+          "release": {
+            "en": "Stepping back from draining obligations to reclaim quiet, authentic connection.",
+            "zh": "退出消耗精力的应酬局，把时间留给真正舒心的关系。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Group politics, third-party noise, or social exhaustion is muddying a decision that needs quiet clarity.",
+            "zh": "圈子里的杂音、过多旁人意见或社交疲惫，正在干扰原本需要静心判断的决定。"
+          },
+          "resource": {
+            "en": "Permission to skip the crowd and meet one-on-one—small, honest conversations beat performative gatherings now.",
+            "zh": "允许自己推掉大场面的聚会，改为一对一深聊——小而真诚的交流此刻最管用。"
+          },
+          "action": {
+            "en": "Decline one draining social commitment this week and clear the air directly with the one person who actually matters.",
+            "zh": "这周推掉一场消耗你的应酬，把精力留给直接和最关键的那个人把话说开。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Step back from crowded expectations, gossip, or social fatigue. Quality of connection matters far more than keeping up appearances right now.",
+            "zh": "圣杯三逆位提醒你从拥挤的社交期待、闲话或应酬疲惫里退后一步。眼下少数关系的真实质量，远比维持表面的热闹更重要。"
+          },
+          "love": {
+            "en": "In love, reversed Three of Cups flags third-party interference, unspoken jealousy, or letting friends' opinions steer a private relationship. Bring the conversation back between the two of you.",
+            "zh": "在感情中，圣杯三逆位提示第三方干扰、未说破的醋意，或被外界评价牵着走。把对话重新拉回两个人之间。"
+          },
+          "career": {
+            "en": "In work, watch for misaligned team cliques, credit friction, or meetings that drain energy without advancing real work. Clarify roles directly.",
+            "zh": "在职场上，圣杯三逆位提醒留意小圈子内耗、功劳分配不清或空耗精力的热闹会议，把精力收回明确职责与清晰边界上。"
+          },
+          "health": {
+            "en": "Ease up on late nights, overstimulation, or over-scheduling social plans; quiet recovery restores balance faster than pushing through.",
+            "zh": "在身心状态上，适当减少熬夜应酬与过度社交刺激，主动给自己留出独处与安静休息的时间，恢复速度会比硬撑快得多。"
+          },
+          "spirituality": {
+            "en": "Solitude is not failure here; stepping outside the chorus lets you hear your own inner compass again.",
+            "zh": "在灵性层面，此刻的主动独处并非退步或孤立；暂时离开喧闹的合唱，反而能让你重新听清自己内心沉稳而真实的指南针。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "luminous cerulean sapphire, amethyst violet, warm candlelit antique gold, moonlit ivory",
+      "scene": "Three joyful Belle Epoque friends—two women and one man or three women in distinct flowing jewel-toned sapphire, amethyst-plum, and pearl-ivory embroidered gowns—gathered tightly in a dynamic celebratory circle on a moonlit stone garden terrace hung with warm golden lanterns. At the bright center of the composition, all three raise their arms in a jubilant toast, clinking EXACTLY THREE gleaming, ornate antique-gold chalices together so all three cups are unmistakably prominent, clearly separated, and illuminated by warm golden highlights. Lush ivory roses, trailing vines, and a softly gleaming stone water fountain frame the foreground and terrace edge under a starry midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "celebrating companions",
+          "count": 3
+        },
+        {
+          "object": "raised ornate golden chalices",
+          "count": 3
+        }
+      ],
+      "compositionNote": "Closed joyful triangular circle of three figures converging on THREE brightly lit golden chalices held high in the upper-center focal zone; high warm-vs-cool contrast makes the three raised cups pop instantly at 64x96 thumbnail size.",
+      "avoid": [
+        "tree planting",
+        "kneeling somber figures",
+        "fourth or fifth person",
+        "extra background cups",
+        "text",
+        "numerals",
+        "border",
+        "frame"
+      ]
+    }
+  },
+  "four_of_cups": {
+    "id": "four_of_cups",
+    "archetypeEssence": {
+      "en": "Inward withdrawal and quiet satiation—so absorbed in what feels flat that a fresh offering goes unnoticed.",
+      "zh": "向内退守与情绪倦怠——沉溺于眼前的乏味，险些错过近在手边的新契机。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Seated youth beneath a gnarled tree with arms and legs folded in quiet withdrawal",
+        "Three golden cups lined neatly on the grass before the seated figure",
+        "Fourth golden cup offered from a floating cloud right beside the figure's line of sight",
+        "Still hillside and muted sky reflecting contemplation, boredom, or emotional pause"
+      ],
+      "zh": [
+        "独坐树下、双臂环抱陷入沉思与抽离的青年",
+        "整齐排放在面前草地上的三只金色圣杯",
+        "自云端伸手递至眼侧却尚未被留意的第四只圣杯",
+        "静谧山坡与沉静天色，映照出倦怠与向内停驻"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Pensive Belle Epoque youth seated beneath a sinuous moonlit willow tree with arms folded and gaze cast downward",
+        "Three ornate golden chalices standing in a neat row on the mossy midnight grass in front of the figure",
+        "A luminous fourth golden chalice offered from a drifting silver-sapphire cloud at shoulder height to the right",
+        "Cool moonstone-amethyst shadows and soft ivory moonlight separating the three grounded cups from the fourth suspended cup"
+      ],
+      "zh": [
+        "独坐于月色垂柳下、双臂交抱低眉沉思的美好年代青年",
+        "整齐立于面前苔藓草地上的三只古金雕花圣杯",
+        "右侧一缕银蓝云雾中伸手托举的第四只微光金杯",
+        "冷调月光紫晶阴影与柔和象牙月色，清晰区分地面三杯与空中第四杯"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Four of Cups describes emotional saturation and quiet detachment: what you already have feels stale, yet turning completely inward can blind you to a fresh invitation hovering right beside you.",
+          "zh": "圣杯四描绘的是情绪饱和后的倦怠与抽离：眼前已有的东西让你提不起劲，但一味低头沉浸在失落或麻木里，容易让你漏看正递到眼前的第四只杯子。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Pause to rest if you need it, then lift your eyes—an understated opportunity is sitting closer than your mood admits.",
+            "zh": "累了可以先歇一歇，但别忘了抬头看一眼——一个低调却真实的契机，比你情绪以为的更近。"
+          },
+          "foundation": {
+            "en": "Routine, mild disappointment, or emotional overstimulation led you to pull back and disengage.",
+            "zh": "重复的日常、细微的失落或此前的过度消耗，促使你选择退回树下暂时抽离。"
+          },
+          "present": {
+            "en": "You are in a contemplative lull where nothing feels urgent; use the quiet to sort real discernment from mere apathy.",
+            "zh": "你正处于一段安静的停顿期，对周遭提不起太大波澜；正好借此分清哪些是清醒的拒绝，哪些只是单纯倦了。"
+          },
+          "resource": {
+            "en": "Your ability to say no to mediocre distractions protects your energy—you do not have to chase every shiny cup.",
+            "zh": "不被平庸热闹牵着走的定力是你的优势——你确实不必对每一只递来的杯子都照单全收。"
+          },
+          "challenge": {
+            "en": "Tunnel vision on what feels lacking is turning healthy reflection into stubborn boredom and missed timing.",
+            "zh": "一直盯着“不够满意”的地方，正在把原本健康的沉淀变成固执的意兴阑珊，甚至错失良机。"
+          },
+          "action": {
+            "en": "Look up from the three familiar cups and inspect one new option with genuine curiosity before dismissing it.",
+            "zh": "把视线从面前熟悉的三只杯子上移开，带着真正的好奇去打量那个新选项，别急着一口回绝。"
+          },
+          "outcome": {
+            "en": "A quiet reset clarifies what actually deserves your yes; once the fog of apathy lifts, selective engagement returns.",
+            "zh": "一段安静的沉淀会帮你理清什么才真正值得投入；当倦怠散去，你将更有选择性地重新出发。"
+          },
+          "advice": {
+            "en": "Rest without closing your eyes forever—distinguish genuine misalignment from temporary emotional fatigue.",
+            "zh": "允许自己短暂休整，但别就此闭上眼睛——分清眼前的无感究竟是真不合适，还是暂时累了。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A spell of apathy or inward reflection invites honest appraisal. Before deciding nothing excites you, lift your gaze and examine the fresh option quietly offered nearby.",
+            "zh": "一段情绪平淡或向内退缩的时期，正邀请你做一次诚实盘点。在断定眼前毫无新意之前，先抬头看看近旁悄然递来的那份新可能。"
+          },
+          "love": {
+            "en": "In love, Four of Cups points to taking a partner for granted, feeling uninspired by dating, or guarding your heart after minor disappointments. Notice sincere warmth before it passes.",
+            "zh": "在感情中，圣杯四常对应习惯成自然后的倦怠、对约会提不起兴致，或因小失望而缩回壳里。别让真诚的善意在沉默中悄悄溜走。"
+          },
+          "career": {
+            "en": "At work, boredom with familiar tasks can make you overlook a lateral project, mentor, or skill path right in front of you. Test one fresh angle instead of coasting.",
+            "zh": "在工作上，对熟悉流程的乏味感可能让你忽略眼前的跨界项目、贵人或新技能入口。与其消极应付，不如主动试探一个新切口。"
+          },
+          "health": {
+            "en": "Mental flatness or low mood may signal sensory overload or monotony rather than laziness. Gentle novelty—a different walk, real rest, or unplugging—helps reset your baseline.",
+            "zh": "提不起劲或情绪发闷，往往源于感官过载或生活过于单调。换条散步路线、减少信息噪音并好好睡一觉，能温和重启你的状态。"
+          },
+          "spirituality": {
+            "en": "Spiritually, quiet withdrawal is useful for contemplation, yet gratitude is the bridge back to aliveness; notice the subtle gift already arriving in stillness.",
+            "zh": "在灵性层面，独处沉思有助于沉淀杂念，但感恩才是回到鲜活感的桥梁；在静默中留意那份正悄然抵达的细微馈赠。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Four of Cups reversed marks the moment the fog lifts: shaking off stagnation, noticing the overlooked cup, and stepping back into life with fresh curiosity.",
+          "zh": "圣杯四逆位标志着倦怠散开的转折点：走出停滞、看见此前忽略的那只圣杯，带着重新亮起的好奇心回到生活之中。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Clinging to cynicism or self-pity even after the stalemate has already begun to thaw.",
+            "zh": "局面明明已经开始松动，却仍习惯性抓着消极或自怜不放。"
+          },
+          "excess": {
+            "en": "Jumping at any distraction just to escape boredom instead of choosing what truly fits.",
+            "zh": "为了逃离无聊而随手抓住任何刺激，却没看清是否真正契合。"
+          },
+          "internalized": {
+            "en": "A quiet inner click of realization that you are ready to move again.",
+            "zh": "内心悄然响起一声松动——你知道自己已经准备好重新动身了。"
+          },
+          "release": {
+            "en": "Leaving stagnation behind and accepting a fresh invitation with clear eyes.",
+            "zh": "告别原地发呆的停滞期，清醒地接过那份崭新的邀约。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Lingering hesitation after a dry spell could make you second-guess a genuinely energizing fresh start.",
+            "zh": "低潮期残留的惯性迟疑，可能让你对一个真正能点燃活力的新起点犹豫不决。"
+          },
+          "action": {
+            "en": "Accept the invitation, reply to the message, or change your scenery today—momentum returns as soon as you re-engage.",
+            "zh": "今天就接下那份邀约、回复那条消息或换个环境——只要重新投入，流动感就会立刻回来。"
+          },
+          "outcome": {
+            "en": "Renewed awareness breaks the lull, opening the door to a lively new interest, connection, or creative spark.",
+            "zh": "重新醒来的觉察力将打破沉闷，为你推开一段鲜活的新兴趣、新连结或灵感之门。"
+          },
+          "advice": {
+            "en": "Welcome the shift in energy without overthinking it; curiosity is returning for a reason.",
+            "zh": "顺势接住这股回升的活力，不必反复推演；好奇心重新回来自有它的道理。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Stagnation is breaking up. You are ready to look up, shake off emotional numbness, and engage with a promising new possibility that was waiting all along.",
+            "zh": "圣杯四逆位说明停滞正在瓦解。你已经准备好抬起头、抖落此前的麻木感，重新投入到那份一直等在旁边的崭新可能之中。"
+          },
+          "love": {
+            "en": "In relationships, reversed Four of Cups brings renewed openness—stepping out of a lonely rut, appreciating a partner again, or saying yes to a fresh connection.",
+            "zh": "在感情中，圣杯四逆位带来重新敞开的转机——走出孤单或冷淡的惯性，重新看见伴侣的珍贵，或对一段新缘分点头。"
+          },
+          "career": {
+            "en": "At work, motivation returns as you spot a fresh path, pitch an idea, or break out of a repetitive rut. Act on the spark before old routine pulls you back.",
+            "zh": "在工作上，动力正随着新思路或新机会重新回流。趁着这股清醒劲果断提案或转向，别让旧惯性把你拉回原地。"
+          },
+          "health": {
+            "en": "Energy is lifting out of a sluggish phase; reintroduce light movement, social warmth, and habits that make you feel actively engaged in your day.",
+            "zh": "精力正从低迷迟缓中慢慢回升；可以逐步恢复轻度运动、与人相聚以及能让你对每一天产生参与感的日常习惯。"
+          },
+          "spirituality": {
+            "en": "A quiet awakening ends a dry stretch: you see clearly what no longer nourishes you and turn willingly toward what brings genuine presence.",
+            "zh": "一次安静的内在苏醒结束了此前的枯燥期：你看清了什么已不再滋养自己，并心甘情愿地转向真正带来临在感的方向。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "Beneath the sinuous silver-veined branches of a moonlit Art Nouveau willow tree on a quiet midnight hill, ONE pensive Belle Epoque youth in an amethyst-and-indigo embroidered cloak sits cross-legged on the mossy ground with arms folded and gaze cast downward. Lined up cleanly in a neat horizontal row on the grass directly in front of the figure are EXACTLY THREE gleaming antique-gold chalices. Hovering to the right at shoulder height, a luminous ivory hand emerges from a drifting cerulean-silver cloud offering EXACTLY ONE radiant fourth ornate golden chalice directly beside the youth's periphery. Soft moonlight illuminates the youth's face, the three grounded cups, and the brightly gleaming fourth cloud-offered cup against deep midnight-indigo foliage and starry sky.",
+      "requiredObjects": [
+        {
+          "object": "seated pensive youth beneath tree",
+          "count": 1
+        },
+        {
+          "object": "ornate golden chalices lined on the grass",
+          "count": 3
+        },
+        {
+          "object": "ornate golden chalice offered from a cloud",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Clear visual split between the seated figure + THREE grounded golden chalices along the lower foreground and ONE brightly haloed fourth golden chalice floating from the right cloud—exact 3+1=4 cup count reads immediately at 64x96 thumbnail size.",
+      "avoid": [
+        "five cups",
+        "two cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "extra people",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "five_of_cups": {
+    "id": "five_of_cups",
+    "archetypeEssence": {
+      "en": "Honest grief over what spilled—while two intact cups still stand quietly behind your shoulder.",
+      "zh": "为倾覆之物诚实哀伤——而身后仍有两只完好的圣杯静静伫立。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Cloaked figure standing with bowed head staring at three overturned cups on the ground",
+        "Dark liquid pooling from the three spilled chalices representing real loss and regret",
+        "Two upright golden cups standing intact behind the mourner's back",
+        "Stone bridge crossing a flowing river toward a distant castle symbolizing the path forward"
+      ],
+      "zh": [
+        "身披暗色斗篷、低头凝视地上三只倾倒圣杯的身影",
+        "自三只倾覆杯中流淌而出的深色酒液，象征真实的失落与懊悔",
+        "静静立于身影背后、依然完好直立的两只金色圣杯",
+        "跨越河流、通往远方城堡的石桥，象征尚可前行的出路"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Solitary Belle Epoque mourner in a deep midnight-sapphire hooded cloak bowing toward three overturned golden chalices on the wet stone bank",
+        "Three spilled antique-gold chalices in the foreground with dark amethyst-indigo liquid pooling across the ground",
+        "Exactly two upright, gleaming antique-gold chalices standing intact and softly lit behind the figure's back",
+        "Moonlit stone bridge arching over a shimmering cerulean river toward a warm lantern-lit distant manor"
+      ],
+      "zh": [
+        "身披深午夜蓝宝石连帽斗篷、立于河岸低首凝视三只倾倒金杯的独行者",
+        "前景中倾倒的三只古金圣杯与漫过石阶的暗紫蓝酒液",
+        "在身影背后依然直立、泛起柔和金光的两只完好圣杯",
+        "跨过微光河流、通向远方暖灯庄园的月色石桥"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Five of Cups honors genuine disappointment without pretending it didn't hurt: three cups really did spill. Yet grief becomes a trap only when you stare at the ground so long that you forget the two full cups—and the bridge—still behind you.",
+          "zh": "圣杯五如实接纳失落与痛感，并不粉饰太平：那三只杯子确实打翻了。但悲伤只有在你一直低头盯着残局、忘了身后还有两只完好圣杯与渡河石桥时，才会变成困局。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Give yourself room to feel the disappointment honestly, then turn around and take stock of what remains intact.",
+            "zh": "允许自己坦诚消化这份失落，然后转过身来，认真看清手里还完好留着什么。"
+          },
+          "foundation": {
+            "en": "A real loss, missed expectation, or painful letdown shaped the emotional weight you are carrying now.",
+            "zh": "一次真实的失去、落空的期待或令人心寒的遗憾，构成了你此刻背负的情绪重量。"
+          },
+          "present": {
+            "en": "You are standing in the aftermath of a setback where regret feels loud; remember that partial loss is not total ruin.",
+            "zh": "你正站在挫折之后的余波里，懊悔的声音格外响亮；但请记住，局部失去绝不等于满盘皆输。"
+          },
+          "resource": {
+            "en": "Two cups are still upright—trusted allies, hard-won lessons, or intact parts of your plan remain ready to support you.",
+            "zh": "两只圣杯依然稳稳立着——可靠的人、沉淀下来的经验或尚未受损的核心盘面，仍在等着托住你。"
+          },
+          "challenge": {
+            "en": "Fixating on what went wrong is draining the energy you need to cross the bridge toward what can still be saved.",
+            "zh": "反复盯着打翻的部分，正在耗光你本可以用来走过石桥、保住余下成果的力气。"
+          },
+          "action": {
+            "en": "Acknowledge the loss plainly without self-blame, then turn toward one intact relationship or asset and tend it today.",
+            "zh": "不带自我苛责地承认失去，随后转向身边依然完好的一段关系或一份资源，今天就开始好好经营它。"
+          },
+          "outcome": {
+            "en": "Once mourning has its honest moment, perspective widens and you cross into steadier ground carrying what truly endures.",
+            "zh": "当哀伤得到诚实安放后，视野会重新打开，你将带着真正留存下来的珍贵部分走过低谷。"
+          },
+          "advice": {
+            "en": "Do not bypass the grief, and do not build a house inside it—feel it, turn around, and walk toward the bridge.",
+            "zh": "既不必假装洒脱跳过难过，也别在遗憾里长期安家——痛快感受过，然后转身走向那座桥。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A setback or loss stings deeply right now, and it deserves honest acknowledgment. Still, not everything is gone—when you are ready to turn around, real continuity and a path forward remain.",
+            "zh": "眼下的失落或遗憾确实令人刺痛，值得被认真对待。但并非一切都已失去——当你准备好转过身时，完好的根基与前行的桥梁依然在那里。"
+          },
+          "love": {
+            "en": "In love, Five of Cups reflects heartbreak, regret over past words, or mourning a version of a relationship that changed. Heal honestly while noticing the care that still surrounds you.",
+            "zh": "在感情中，圣杯五映照心碎、对过往言行的懊悔，或哀悼一段已经改变的关系模样。允许自己好好疗伤，同时别忽略身边依然存在的善意。"
+          },
+          "career": {
+            "en": "At work, a rejected proposal, lost client, or missed milestone hurts, yet your core skills and remaining relationships are intact. Salvage the lesson and pivot toward what still stands.",
+            "zh": "在工作与事业上，方案被拒、客户流失或目标落空固然挫败，但你的核心能力与其余人脉依然完好。收拢教训，把精力转回尚存的筹码。"
+          },
+          "health": {
+            "en": "Emotional heaviness or grief can weigh directly on sleep and vitality. Treat yourself gently, talk to someone you trust, and let recovery unfold without harsh self-judgment.",
+            "zh": "情绪低落与遗憾感会直接牵动睡眠与体能。温和对待自己，找信得过的人倾诉，在不自我苛责的节奏里慢慢恢复。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Five of Cups teaches that sorrow and gratitude can coexist: honoring what ended opens the heart to receive what still endures.",
+            "zh": "在灵性层面，圣杯五教会你悲伤与感恩可以并存：诚实告别已逝去的部分，心才会有空间重新看见依然长存的恩典。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Five of Cups reversed marks the quiet turning point after grief: lifting your head, accepting what cannot be undone, and finally noticing the two upright cups waiting behind you.",
+          "zh": "圣杯五逆位标志着走出哀伤的转折点：抬起头来、接纳无法挽回的部分，终于看见并转身接住身后那两只完好的圣杯。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Trying to rush past grief too fast, leaving unprocessed regret humming underneath.",
+            "zh": "急着逼自己立刻翻篇，反而让没消化完的遗憾在心底隐隐作痛。"
+          },
+          "excess": {
+            "en": "Dwelling in self-blame or replaying 'if only' loops long after the moment has passed.",
+            "zh": "事情早已过去，却仍反复陷入“如果当初”的自责循环。"
+          },
+          "internalized": {
+            "en": "Quiet private forgiveness—making peace with a past chapter on your own terms.",
+            "zh": "内心悄然生出的自我和解——按自己的节奏与旧日遗憾达成平静。"
+          },
+          "release": {
+            "en": "Turning toward the bridge: acceptance, emotional recovery, and renewed hope.",
+            "zh": "正式转身走向石桥：接纳现实、情绪回暖，并重新看见前路的希望。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Old regret still tugs at your sleeve, testing whether you will truly let the past stay in the past.",
+            "zh": "旧日懊悔偶尔仍会拉扯你，考验你是否真的愿意让过去留在过去。"
+          },
+          "action": {
+            "en": "Forgive one past mistake—yours or someone else's—and take a concrete step across the bridge into your next chapter.",
+            "zh": "宽恕一个过去的失误（无论属于自己还是他人），然后踏实迈出一步，走过石桥进入下一章。"
+          },
+          "outcome": {
+            "en": "Emotional relief and steady acceptance arrive, restoring warmth and readiness for what comes next.",
+            "zh": "情绪上的松绑与踏实的接纳即将到来，为你重新带回暖意与继续前行的底气。"
+          },
+          "advice": {
+            "en": "Let the spilled cups stay spilled; your hands are needed for what is still full.",
+            "zh": "打翻的杯子就让它留在地上吧；你的双手需要留给此刻依然满盈的东西。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Acceptance and emotional recovery are taking hold. You are turning away from regret, forgiving what went sideways, and reclaiming the good that remains.",
+            "zh": "圣杯五逆位预示接纳与复原正在发生。你正从懊悔中慢慢转身，宽恕那些偏离预期的过往，重新握紧身边依然珍贵的部分。"
+          },
+          "love": {
+            "en": "In love, reversed Five of Cups signals healing after heartbreak, releasing old resentment, or rebuilding trust with clearer eyes. Space opens again for warmth.",
+            "zh": "在感情中，圣杯五逆位象征情伤逐步愈合、放下旧怨，或带着更清醒的心境重建信任。心门正重新为温暖腾出空间。"
+          },
+          "career": {
+            "en": "At work, you are moving past a setback with valuable wisdom intact—re-engaging allies, salvaging what works, and steering toward a steadier opportunity.",
+            "zh": "在职场上，你正带着宝贵经验走出此前的挫败——重新联络盟友、保住有效成果，并稳步转向更有前景的新机会。"
+          },
+          "health": {
+            "en": "Emotional weight is lightening and resilience is returning; support the rebound with gentle routines and honest self-compassion.",
+            "zh": "压在心头的沉重感正在减轻，身心韧性逐步回升；用温和规律的作息与自我关怀接住这股回暖势头。"
+          },
+          "spirituality": {
+            "en": "Forgiveness becomes practical liberation here—blessing what taught you and walking lighter into the present.",
+            "zh": "在灵性层面，宽恕此刻成为切实的松绑——心怀感恩地祝福过往教会你的一切，然后更加轻盈而笃定地走进当下。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "Along a quiet moonlit riverbank in deep twilight, ONE solitary Belle Epoque figure in a flowing dark midnight-sapphire hooded cloak stands with head bowed in quiet sorrow. On the wet stone ground directly in front of the figure lie EXACTLY THREE overturned antique-gold chalices, dark amethyst-indigo wine spilling from their rims into shallow reflective puddles. Standing upright and completely intact on the grassy bank behind the figure's back are EXACTLY TWO gleaming, brightly moonlit antique-gold chalices. Beyond the figure, an arched stone bridge spans a shimmering cerulean river leading toward a warm golden lantern-lit manor on the far hill against a starry indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "cloaked grieving figure",
+          "count": 1
+        },
+        {
+          "object": "spilled overturned golden chalices on the ground",
+          "count": 3
+        },
+        {
+          "object": "upright intact golden chalices standing behind",
+          "count": 2
+        },
+        {
+          "object": "arched stone bridge over river",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Unmistakable narrative contrast: cloaked dark silhouette in mid-ground separating THREE spilled cups on the left foreground from TWO upright gleaming golden cups on the right behind them, with the lit bridge leading the eye upward—reads effortlessly at 64x96 thumbnail size.",
+      "avoid": [
+        "all five cups upright",
+        "all five cups spilled",
+        "six cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "extra people",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "six_of_cups": {
+    "id": "six_of_cups",
+    "archetypeEssence": {
+      "en": "Tender remembrance and simple generosity—warmth from the past nourishing the present without trapping it.",
+      "zh": "温润的旧日记忆与纯粹善意——让过往的暖意滋养当下，而非将人困在从前。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Older child offering a flower-filled golden cup to a younger child in a sunlit courtyard",
+        "Six golden cups brimming with white star-shaped blossoms arranged across the foreground and pedestal",
+        "Sheltered stone village courtyard evoking safety, innocence, and shared roots",
+        "Distant figure walking away down the lane hinting at the gentle passage of time"
+      ],
+      "zh": [
+        "在宁静庭院中将盛满花朵的金杯递给同伴的少年身影",
+        "错落陈列在前景与石台之上、盛开白花的六只金色圣杯",
+        "庇护感十足的古老石砌庭院，唤起纯真与归属记忆",
+        "巷口渐行渐远的身影，轻声提示时光的流转"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Two warm Belle Epoque youths in a lantern-lit midnight garden courtyard, one tenderly handing a flower-filled golden chalice to the other",
+        "Exactly six ornate antique-gold chalices brimming with glowing ivory star-blossoms—four lined in the foreground, one held between the youths, and one on a carved stone pedestal",
+        "Soft cerulean, pearl-ivory, and warm amber-gold courtyard lantern glow framing ivy-draped stone arches",
+        "Gentle starry twilight sky and nostalgic warmth illuminating their faces and shared blossoms"
+      ],
+      "zh": [
+        "在灯火柔暖的午夜石砌庭院中，一位美好年代少年将盛满白花的金杯递给同伴",
+        "清晰可数的六只古金圣杯，皆盛放微光白花——前景四只、手中一只、石台一只",
+        "蓝宝石、月白与暖金灯影映照着爬满常春藤的石拱庭院",
+        "星光微明下温润柔和的面容与花束高光"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Six of Cups brings sweet nostalgia, uncalculated kindness, and reconnection with roots that still warm you. Let fond memories or an old bond remind you of who you are at your simplest and most sincere.",
+          "zh": "圣杯六带来温润的怀旧情怀、不求回报的善意，以及与滋养过你的根脉重新联结。让美好的旧记忆或老朋友提醒你，内心最纯粹柔软的样子。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Offer or receive a simple, heartfelt kindness—reconnecting with your roots or an old ally brings unexpected ease.",
+            "zh": "送出或接住一份纯粹不带算计的善意——回到熟悉根脉或联络老友，会带来意想不到的松弛。"
+          },
+          "foundation": {
+            "en": "Early memories, childhood values, or a long-standing bond quietly shaped the emotional tone of this situation.",
+            "zh": "早年的记忆、成长底色或一段相识已久的旧情，正温和地影响着当下的局面。"
+          },
+          "present": {
+            "en": "Warmth, familiarity, and gentle reunion energy surround you; savor the comfort without rushing past it.",
+            "zh": "熟悉、温和与重逢的暖意正围绕着你；安心品味这份舒展，不必急着催促节奏。"
+          },
+          "resource": {
+            "en": "Your strongest asset is goodwill built over time—old friendships, playful curiosity, and sincere generosity open doors effortlessly.",
+            "zh": "你最可靠的优势是经年累积的善意——旧交情、童心般的好奇与真诚待人，能自然为你打开门。"
+          },
+          "challenge": {
+            "en": "Even upright, Six of Cups in a challenge slot asks whether idealizing how things used to be is making you hesitant to meet today as it is.",
+            "zh": "落在阻碍位时，正位圣杯六提醒你留意：是否因为美化了从前，而对当下的真实变化产生轻微抗拒？"
+          },
+          "action": {
+            "en": "Reach out to someone from your past, revisit a creative joy you loved years ago, or do one small generous act with no strings attached.",
+            "zh": "联络一位久未联系的老友、重拾年少时热爱的小事，或做一件不求回报的温柔善举。"
+          },
+          "outcome": {
+            "en": "A heartwarming reunion, restored innocence, or genuine emotional comfort settles in like coming home.",
+            "zh": "一次令人心暖的重逢、重新找回的纯粹感或如归家般的安稳慰藉，将温柔落定。"
+          },
+          "advice": {
+            "en": "Keep the warmth of the past as fuel for today, not a museum you live inside.",
+            "zh": "把过去的暖意当作滋养今天的燃料，而不是一座只供怀念的博物馆。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Warm nostalgia, simple generosity, and reconnection with trusted roots brighten this chapter. Let sincere kindness soften recent edges and remind you what truly feels like home.",
+            "zh": "温润的怀旧、纯粹的善意与重返熟悉根脉的安定感正照亮这一阶段。让不带算计的温柔抚平近期的锋利，找回真正像家一样的松弛。"
+          },
+          "love": {
+            "en": "In love, Six of Cups brings tender affection, playful sweetness, or a meaningful reconnection with someone familiar. Nurture the bond through small thoughtful gestures.",
+            "zh": "在感情中，圣杯六带来细水长流的柔情、轻松俏皮的甜蜜，或与旧识之间温暖的重逢。用日常里不经意的小体贴去滋养彼此。"
+          },
+          "career": {
+            "en": "At work, an old colleague, returning client, or earlier passion project may resurface with fresh value. Goodwill from past collaborations pays quiet dividends now.",
+            "zh": "在工作上，老同事、回头客或早年搁置却真心热爱的方向可能重新带来机会。过往合作积攒下的好口碑，此刻正悄然回馈于你。"
+          },
+          "health": {
+            "en": "For wellbeing, return to simple, comforting basics that have always steadied you—unhurried rest, nourishing home food, and playful movement without pressure.",
+            "zh": "在身心调理上，回到那些从小到大总能让你安稳下来的朴素习惯——好好吃饭、踏实睡觉与不带胜负心的轻松活动。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Six of Cups honors the inner child: reconnecting with wonder, forgiveness, and uncomplicated gratitude heals weary cynicism.",
+            "zh": "在灵性层面，圣杯六温柔照见内在小孩：重新拾起纯粹的惊奇、宽恕与不加修饰的感恩，能悄然疗愈疲惫的世故感。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Six of Cups reversed signals that the past is either holding you back or ready to be outgrown: stop measuring today against rose-tinted memories and step into adult presence.",
+          "zh": "圣杯六逆位提示过去正拉住你的脚步，或已经到了该长大的节点：别再用滤镜化的旧回忆衡量今天，带着成熟的清醒走进当下。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Living in nostalgia or waiting for a bygone chapter to repeat itself stalls present growth.",
+            "zh": "沉溺在怀旧里，或期待旧日好时光原样重演，拖慢了当下的成长。"
+          },
+          "excess": {
+            "en": "Romanticizing an old dynamic while forgetting why you needed to move on.",
+            "zh": "过度美化一段旧关系或旧环境，忘了当初为什么必须离开。"
+          },
+          "internalized": {
+            "en": "Quietly grieving a childhood or earlier version of yourself that you have now outgrown.",
+            "zh": "在心里默默告别已经不再合身的旧日自己与过往篇章。"
+          },
+          "release": {
+            "en": "Maturing forward—keeping the love from the past while stepping cleanly into today's reality.",
+            "zh": "带着过去的爱意成熟向前，干脆利落地踏入今天的真实生活。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Comparing current people or opportunities to an idealized past is keeping you from seeing what is good right now.",
+            "zh": "总拿眼前的人和机会去对比被美化的从前，让你看不见当下原本就很好的部分。"
+          },
+          "action": {
+            "en": "Thank the old chapter for what it gave you, put down one outdated habit or expectation, and commit to a present-day choice.",
+            "zh": "感谢旧篇章曾给过的滋养，放下一个过时的习惯或期待，为当下的自己做一次清醒选择。"
+          },
+          "outcome": {
+            "en": "Grounded maturity replaces wistful longing, freeing you to build something fresh rather than replaying reruns.",
+            "zh": "踏实的成熟感将取代怅然若失的怀念，让你自由创造新篇章，而非反复重播旧片。"
+          },
+          "advice": {
+            "en": "Honor your roots without letting them become anchors; the best chapter is not behind you.",
+            "zh": "珍视来路，但别让它变成拴住双脚的锚；最好的章节并不只在身后。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "It is time to step out of rose-tinted nostalgia and meet the present on its own terms. Keep the wisdom of earlier years while letting outdated stories go.",
+            "zh": "圣杯六逆位提醒你走出滤镜化的怀旧，以当下的真实标准面对生活。留下早年沉淀的善意与智慧，松开已经过时的旧剧本。"
+          },
+          "love": {
+            "en": "In love, reversed Six of Cups warns against clinging to an ex, repeating childhood attachment scripts, or expecting a partner to read your mind. Choose adult honesty.",
+            "zh": "在感情中，圣杯六逆位提醒别再沉溺旧爱滤镜、重复原生依恋惯性或指望对方无条件猜心。用成熟坦诚的沟通经营眼前人。"
+          },
+          "career": {
+            "en": "At work, relying on how things 'always used to be done' limits your next step. Update your methods and step into a more independent, current role.",
+            "zh": "在工作上，一味沿用“以前一直这么做”的旧经验会限制进阶。主动更新打法，站上更独立、更契合当下的位置。"
+          },
+          "health": {
+            "en": "Outdated comfort habits that once soothed you may no longer serve your body today; replace them with care that fits your current season of life.",
+            "zh": "过去曾安抚过你的某些旧习惯，如今未必再适合现在的身体节奏；换上更契合当下人生阶段的照顾方式。"
+          },
+          "spirituality": {
+            "en": "Release the wish to stay forever innocent; true spiritual maturity integrates experience with compassion rather than retreating into yesterday.",
+            "zh": "放下永远停留在无忧过往的幻想；真正的灵性成熟是把历练与慈悲融为一体，而非退回昨天。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "Inside a charming, sheltered moonlit stone garden courtyard draped with Art Nouveau ivy and warm golden lanterns, TWO Belle Epoque youths in cerulean-sapphire and pearl-ivory embroidered tunics share a tender moment: the slightly taller youth leans forward gently to offer ONE ornate antique-gold chalice brimming with luminous white star-blossoms to the younger companion. Lined clearly across the carved stone foreground steps are EXACTLY FOUR matching ornate golden chalices overflowing with glowing ivory blossoms, and resting on a carved stone pedestal to the left is EXACTLY ONE more flower-filled golden chalice—making EXACTLY SIX distinct, countable golden chalices in total. Warm lantern light and silvery moonlight illuminate their gentle faces, the six flower-filled chalices, and the cobblestone courtyard against a deep starry midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalices filled with white blossoms",
+          "count": 6
+        },
+        {
+          "object": "youths sharing a tender gift in courtyard",
+          "count": 2
+        },
+        {
+          "object": "carved stone courtyard pedestal",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Warm, intimate courtyard framing with SIX bright golden chalices clearly arranged (4 across foreground, 1 offered at center, 1 elevated on left pedestal) so the tender gift and exact count of six read effortlessly at 64x96 thumbnail size.",
+      "avoid": [
+        "five or seven cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "dark gloomy atmosphere",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "seven_of_cups": {
+    "id": "seven_of_cups",
+    "archetypeEssence": {
+      "en": "A dazzling mirage of seven possibilities—imagination wide open, yet only real testing separates treasure from smoke.",
+      "zh": "云雾中浮现的七重幻景——想象力空前丰沛，但唯有落地检验才能分清瑰宝与泡影。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Dark silhouetted figure gazing upward at seven floating golden cups in billowy clouds",
+        "Seven distinct visions rising from the cups: castle, jewels, laurel wreath, dragon, shrouded figure, serpent, and serene head",
+        "Swirling mist blurring the line between genuine opportunity and seductive illusion",
+        "Open, mesmerized posture showing fascination paired with indecision"
+      ],
+      "zh": [
+        "背影立于前景、仰望云端七只悬浮金杯的观望者",
+        "杯中浮现的七种意象：城堡、珠宝、桂冠、火龙、蒙面灵影、灵蛇与沉静人像",
+        "缭绕云雾模糊了真实机会与诱人幻象的边界",
+        "驻足凝望的姿态，流露着迷与难以抉择"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Silhouetted Belle Epoque dreamer in a midnight-indigo cloak standing in the lower foreground looking up at luminous moonlit clouds",
+        "Exactly seven gleaming antique-gold chalices arranged cleanly in two arched rows across swirling cerulean-and-amethyst clouds",
+        "Distinct glowing miniature visions rising from each of the seven cups—a golden castle, radiant jewels, emerald laurel wreath, tiny crimson-gold dragon, glowing veiled spirit, coiled silver serpent, and serene ivory bust",
+        "High-contrast moonlight and molten-gold highlights separating every cup and its rising emblem against deep velvety midnight sky"
+      ],
+      "zh": [
+        "立于前景暗影中、仰望月色云海的美好年代追梦者剪影",
+        "在蓝宝石与紫晶云雾间排成上下两弧的七只清晰古金圣杯",
+        "七只杯口各自升腾的微光幻象：城堡、珠宝、桂冠、小龙、蒙面灵影、银蛇与静谧人像",
+        "明暗对比鲜明的月光与古金高光，让每只圣杯与意象清晰分离"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Seven of Cups is a rich field of imagination and tempting choices—some genuinely promising, others pure smoke. Dream freely, then pick one or two options to test against daylight before committing.",
+          "zh": "圣杯七是一片充满想象力与诱人选项的云海——其中藏着真机会，也混着华而不实的泡影。可以尽情构想，但落子前务必挑出一两项放到现实光线下检验。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Not every glittering cup holds what it promises—narrow the field and test what is real before you reach.",
+            "zh": "并非每只闪闪发光的杯子都装着真东西——先收窄清单，核实哪一项经得起现实检验。"
+          },
+          "foundation": {
+            "en": "Big daydreams, multiple open doors, or conflicting desires created the sprawling set of options in front of you.",
+            "zh": "丰沛的畅想、同时出现的多个入口，或彼此拉扯的愿望，铺开了眼前令人眼花缭乱的局面。"
+          },
+          "present": {
+            "en": "You are surrounded by possibilities and distractions alike; excitement is high, yet clarity requires subtraction.",
+            "zh": "你正被众多可能性与诱人分心物包围；灵感很旺，但真正看清方向需要主动做减法。"
+          },
+          "resource": {
+            "en": "Your creative imagination is wide open—use it to brainstorm boldly, then apply simple real-world criteria to filter.",
+            "zh": "你的想象力与发散思维此刻格外丰沛——先大胆构思，再用简单的现实标准筛出可行项。"
+          },
+          "challenge": {
+            "en": "Wishful thinking or choice overload is keeping you suspended in fantasy instead of building one real thing.",
+            "zh": "一厢情愿的幻想或选项过载，正让你停留在反复畅想里，迟迟没有落手做成任何一件实事。"
+          },
+          "action": {
+            "en": "Write down your top seven ideas, cross out five immediately, and run one concrete reality check on the remaining two.",
+            "zh": "把脑中盘旋的选项写下来，立刻划掉五个，只对剩下的两个做一次扎实的现实核查。"
+          },
+          "outcome": {
+            "en": "Imagination sparks a compelling direction, provided you ground your pick in facts rather than mist.",
+            "zh": "只要你用事实而非幻想来定夺，这场灵感风暴最终会沉淀出真正值得投入的方向。"
+          },
+          "advice": {
+            "en": "Look past the sparkle—ask what each cup actually costs to hold once the clouds clear.",
+            "zh": "穿透表面的光彩——问问自己，云雾散去后，端稳这只杯子真正需要付出什么代价。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Abundant choices and vivid imagination invite exploration, yet fog can disguise illusion as opportunity. Filter your options through concrete facts before investing deeply.",
+            "zh": "众多选项与丰沛想象力带来探索乐趣，但云雾也容易把幻觉包装成机会。在深度投入之前，请用具体事实逐一筛选，去伪存真。"
+          },
+          "love": {
+            "en": "In love, Seven of Cups flags romantic projection, mixed options, or falling for someone's potential rather than their actual behavior. Watch actions, not just chemistry.",
+            "zh": "在感情中，圣杯七提示浪漫投射、选择摇摆，或爱上对方被想象出来的样子而非真实行为。多看实际行动，别只凭氛围下结论。"
+          },
+          "career": {
+            "en": "At work, shiny pitches and competing paths abound—some are lucrative distractions. Rank opportunities by real evidence, timeline, and fit before saying yes.",
+            "zh": "在工作与事业上，诱人的提案与分叉路很多，其中不乏华丽的分心项。按真实数据、周期与匹配度排序，再决定把精力押在哪里。"
+          },
+          "health": {
+            "en": "Scattered attention, escapism, or chasing too many wellness trends at once dilutes results. Pick one grounded daily habit and stick with it.",
+            "zh": "注意力涣散、逃避现实或同时追逐太多调理方法只会稀释效果。选定一个朴实可行的日常习惯，踏实坚持下去。"
+          },
+          "spirituality": {
+            "en": "Spiritually, rich visions and symbols need discernment; true insight feels calm and clear rather than intoxicating or grandiose.",
+            "zh": "在灵性层面，丰沛的直觉与意象更需要清明辨别；真正的洞见往往沉静透彻，而非令人飘飘然的宏大幻觉。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Seven of Cups reversed brings the clouds down to earth: illusions dissolve, overwhelm clears, and you finally commit to one concrete, realistic choice.",
+          "zh": "圣杯七逆位让云雾落回地面：滤镜消散、选择焦虑退潮，你终于看清现实，把心神收束到一个具体可行的决定上。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Paralysis from overthinking every option until the window quietly closes.",
+            "zh": "在反复权衡所有选项中陷入瘫痪，眼看时机悄悄滑走。"
+          },
+          "excess": {
+            "en": "Escaping into daydreaming or denial to avoid an uncomfortable real-world decision.",
+            "zh": "躲进白日梦或自我安慰里，回避眼前不得不做的现实决定。"
+          },
+          "internalized": {
+            "en": "Sober private realization that only one path actually aligns with your real life.",
+            "zh": "内心悄然清醒过来——其实只有一条路真正契合你的现实生活。"
+          },
+          "release": {
+            "en": "Cutting through fantasy with crisp focus and choosing one grounded cup.",
+            "zh": "利落斩断虚幻选项，把专注力稳稳落在一只真实可握的圣杯上。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Letting go of glamorous 'what-ifs' feels slightly sobering, even though clarity is exactly what you need.",
+            "zh": "放弃那些华丽的“万一”多少有点扫兴，但这份清醒正是此刻最需要的解药。"
+          },
+          "action": {
+            "en": "Make the single grounded call today and close the tabs on the six distractions you are not choosing.",
+            "zh": "今天就把那个脚踏实地的决定敲定，顺手关掉其余六个不会去选的分心窗口。"
+          },
+          "outcome": {
+            "en": "Mental fog clears into decisive focus; putting your energy behind one real choice produces tangible traction.",
+            "zh": "迷雾散成利落的专注力；把精力集中到唯一真实的选择上，很快就会看到扎实进展。"
+          },
+          "advice": {
+            "en": "Trust sober clarity over dazzling promises—one real step beats seven imagined worlds.",
+            "zh": "相信朴素的清醒胜过华丽的许诺——扎实迈出一步，胜过在云端构想七个世界。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "The mirage is clearing. You can now separate real substance from wishful thinking and commit cleanly to one practical, aligned direction.",
+            "zh": "圣杯七逆位意味着海市蜃楼正在散去。你终于能把真实分量与一厢情愿区分开来，干脆利落地投入到一个踏实契合的方向。"
+          },
+          "love": {
+            "en": "In love, reversed Seven of Cups brings sober clarity—seeing a partner as they truly are, ending mixed signals, or choosing real intimacy over fantasy.",
+            "zh": "在感情中，圣杯七逆位带来清醒的落地感——如实看见伴侣本来的样子、结束暧昧摇摆，或放弃幻想选择真实可触的亲密。"
+          },
+          "career": {
+            "en": "At work, scattered brainstorming narrows into an actionable plan. Drop vanity projects and focus your resources on the single path with real traction.",
+            "zh": "在工作上，发散的构想正收束为可执行的计划。砍掉虚浮的面子工程，把资源集中到真正能跑通的那条路径上。"
+          },
+          "health": {
+            "en": "Clarity returns around what actually supports your wellbeing; trade escapist habits for one simple, realistic daily routine.",
+            "zh": "你开始清楚什么才真正有益于身心；放下逃避式的消耗习惯，换上一个简单却能长期落实的日常节奏。"
+          },
+          "spirituality": {
+            "en": "Grounded discernment replaces spiritual daydreaming; quiet daily practice now matters far more than chasing dramatic signs.",
+            "zh": "踏实的辨识力取代了悬浮的灵性幻想；眼下平实稳定的日常修习，远比追逐戏剧化的神秘讯号更有力量。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "In the lower foreground, ONE dark silhouetted Belle Epoque figure in a midnight-indigo cloak stands seen from behind with one hand slightly raised in wonder, gazing upward into a billowing expanse of moonlit cerulean and amethyst-silver clouds. Floating cleanly across the luminous clouds in two tidy, unmistakable arched rows (four on the upper arc, three on the lower arc) are EXACTLY SEVEN gleaming antique-gold chalices. Rising softly from each of the seven cups is a crisp, glowing miniature vision: a tiny golden castle, sparkling jewels, an emerald laurel wreath, a small crimson-gold dragon, a radiant veiled spirit, a coiled silver serpent, and a serene ivory bust. Bright moonlight and molten-gold highlights make all seven chalices and their seven visions pop crisply against the velvety midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalices floating in clouds with miniature visions",
+          "count": 7
+        },
+        {
+          "object": "silhouetted dreamer gazing upward",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Dark lower silhouette anchoring the bottom third while EXACTLY SEVEN bright golden chalices glow in a clean 4-over-3 cloud arc across the upper two-thirds—count and dreamlike silhouette read cleanly at 64x96 thumbnail size.",
+      "avoid": [
+        "six or eight cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "extra people",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "eight_of_cups": {
+    "id": "eight_of_cups",
+    "archetypeEssence": {
+      "en": "Courageous departure from what is merely enough—walking into the night in search of deeper meaning.",
+      "zh": "主动离开“尚算体面却已不再滋养”的旧局——迎着夜色动身，去寻更深层的意义。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Cloaked traveler with a wooden walking staff turning away toward steep moonlit mountains",
+        "Eight stacked golden cups left standing in the foreground with a noticeable missing gap",
+        "Waning crescent and shadowed lunar eclipse glowing overhead in a quiet night sky",
+        "Tidal stream and rocky trail marking the deliberate crossing into unfamiliar terrain"
+      ],
+      "zh": [
+        "手持木杖、披着旅袍转身走向月色群山的远行者",
+        "前景中整齐码放却留出一处空缺的八只金色圣杯",
+        "夜空中半明半暗的月蚀弯月，映照深层内在觉醒",
+        "溪流与蜿蜒山径，象征清醒跨入未知旅程"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Solitary Belle Epoque traveler in a deep plum-and-indigo cloak holding a slender gilded staff, striding away toward moonlit sapphire peaks",
+        "Exactly eight gleaming antique-gold chalices neatly stacked in the lower foreground—five along the base and three on top with one unmistakable empty gap",
+        "Luminous pale ivory crescent-and-eclipse moon glowing softly in a velvety midnight-indigo sky",
+        "Shimmering cerulean tidal creek and rocky mountain path separating the left-behind cups from the rising horizon"
+      ],
+      "zh": [
+        "身披深紫蓝旅袍、手执纤细鎏金木杖走向月色群峰的美好年代行者",
+        "前景石阶上清晰可数的八只古金圣杯——下排五只、上排三只，留出一处醒目空缺",
+        "深邃午夜靛蓝天幕中微明静谧的月白月蚀之月",
+        "微光泛蓝的潮汐溪水与蜿蜒山路，将身后旧杯与远方高地清晰分隔"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Eight of Cups is the quiet honesty of outgrowing something that still looks fine from the outside. Nothing exploded—yet your heart knows a deeper truth is waiting uphill, and staying would only shrink you.",
+          "zh": "圣杯八代表一种安静却坚定的清醒：外人眼里一切尚算体面，甚至没有爆发激烈冲突，但你心里清楚这一章已经盛不下你的成长，继续留着只会慢慢消耗自己。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Honor the quiet nudge to move on—leaving what no longer fulfills you is an act of self-respect, not failure.",
+            "zh": "尊重内心那股想动身的安静直觉——离开不再滋养你的处境，是清醒自爱，绝非半途而废。"
+          },
+          "foundation": {
+            "en": "You invested sincerely and built something real, only to realize over time that a vital piece is still missing.",
+            "zh": "你曾认真投入并搭建出一番成果，却在日积月累中发现，心里最在乎的那一块始终空着。"
+          },
+          "present": {
+            "en": "You are standing at the threshold of departure; the cups behind you are orderly, yet your compass already points toward the hills.",
+            "zh": "你正站在转身启程的门槛上；身后的八只杯子依然整齐，但你的心早已指向远方山路。"
+          },
+          "resource": {
+            "en": "Your strongest asset is emotional honesty—willingness to walk away cleanly instead of settling for hollow comfort.",
+            "zh": "你最可贵的力量是情感上的诚实——宁可迎着夜色重新出发，也不愿将就于空心的安稳。"
+          },
+          "challenge": {
+            "en": "Sunk-cost guilt or fear of disappointing others is tempting you to linger beside cups that already feel empty.",
+            "zh": "沉没成本带来的愧疚感或怕令旁人失望，正拉扯着你继续守在早已不再满盈的杯子旁。"
+          },
+          "action": {
+            "en": "Pack light, set a clear departure date or boundary, and take the first honest step toward what actually calls to you.",
+            "zh": "轻装收拾、定下明确的告别节点或边界，然后朝着真正召唤你的方向迈出第一步。"
+          },
+          "outcome": {
+            "en": "A meaningful transition unfolds: leaving behind a finished chapter clears the road for deeper purpose and genuine peace.",
+            "zh": "一场有分量的转向即将展开：体面告别已走完的章节，前路会为你腾出更深的意义与踏实。"
+          },
+          "advice": {
+            "en": "Walk away without bitterness—you can appreciate what those eight cups held while knowing it is time to seek the ninth.",
+            "zh": "不带怨怼地转身离开——你可以感谢这八只圣杯曾给过的一切，同时笃定地去寻找更深层的答案。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Outgrowing a familiar chapter asks for quiet courage. Leave behind what no longer nourishes your spirit—even if it still looks respectable—and follow the deeper pull uphill.",
+            "zh": "走出已经不再合身的熟悉章节需要沉静的勇气。即便眼下一切在外人看来依然体面，只要它已不再滋养你，就值得体面转身去追寻更深的意义。"
+          },
+          "love": {
+            "en": "In love, Eight of Cups signals stepping back from an emotionally stagnant dynamic, or leaving surface habits behind to seek deeper authenticity and mutual presence.",
+            "zh": "在感情中，圣杯八指向主动离开情感停滞的关系模式，或告别流于表面的相处惯性，去寻找真正有回应、有深度的亲密联结。"
+          },
+          "career": {
+            "en": "At work, this is walking away from a role, project, or prestige track that no longer matches your values. Transition deliberately toward work with real personal meaning.",
+            "zh": "在工作与事业上，这张牌代表告别一份看似光鲜却已让你内心空洞的岗位或赛道，有计划地转向真正契合价值观与长期意义的方向。"
+          },
+          "health": {
+            "en": "Stepping away from draining environments, late-night habits, or emotional noise restores vitality faster than forcing yourself to endure what depletes you.",
+            "zh": "主动远离持续消耗精力的环境、作息或人际噪音，比咬牙硬撑更能迅速恢复你的身心元气与内在清明。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Eight of Cups is the sacred pilgrimage: answering an inner call that asks you to trade familiar comfort for lived truth.",
+            "zh": "在灵性层面，圣杯八是一场安静的内在朝圣：回应心底深处的召唤，愿意放下熟悉的安逸，去亲身走近更真实的生命体验。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Eight of Cups reversed highlights hesitation at the edge of departure: either clinging to a drained situation out of fear of the unknown, or drifting from place to place without facing what needs healing.",
+          "zh": "圣杯八逆位映照启程边缘的摇摆：要么因害怕未知而死守早已耗竭的现状，要么没有看清内心真正缺什么就盲目四处漂泊。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Staying past the expiration date because the familiar ache feels safer than an unmarked trail.",
+            "zh": "明明早已过期，却因为熟悉的疲惫比未知山路更有安全感而迟迟不肯走。"
+          },
+          "excess": {
+            "en": "Restlessly bolting at the first sign of friction instead of staying long enough to build depth.",
+            "zh": "一遇摩擦就匆忙抽身逃离，没给自己留出沉淀与深耕的时间。"
+          },
+          "internalized": {
+            "en": "Already emotionally checked out while still going through the motions on the outside.",
+            "zh": "外表仍在按部就班配合，内心其实早已悄悄收拾好行囊离开。"
+          },
+          "release": {
+            "en": "Finally deciding whether to stay and repair wholeheartedly, or leave cleanly once and for all.",
+            "zh": "结束悬而未决的消耗：要么全心留下修补，要么干脆彻底告别。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Hovering with one foot out the door drains both your present and your future—indecision is heavier than leaving.",
+            "zh": "一只脚已经跨出门槛却迟迟不肯迈步，既耗着当下也耽误前路——摇摆本身比离开更累。"
+          },
+          "action": {
+            "en": "Give yourself an honest deadline: test whether this situation can genuinely renew, and if not, commit to walking away cleanly.",
+            "zh": "给自己定一个诚实的观察期限：确认眼前局面是否真有焕新可能；若没有，就干脆利落地启程。"
+          },
+          "outcome": {
+            "en": "Ending the limbo restores your energy—either a renewed commitment heals the gap, or a clean exit finally frees you.",
+            "zh": "结束悬停状态会让精力迅速回流——要么重新投入填平空缺，要么彻底离开迎来松绑。"
+          },
+          "advice": {
+            "en": "Stop running in circles and stop stalling out of fear; pick one honest direction and walk it.",
+            "zh": "既别盲目逃避，也别因恐惧原地打转；选定一个诚实的方向，稳稳走下去。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Notice whether fear of the unknown is keeping you stuck in a finished chapter, or restlessness is making you bolt too soon. Choose deliberately instead of drifting.",
+            "zh": "圣杯八逆位提醒你分辨自己究竟是因怕未知而困在旧局，还是因浮躁而过早逃离。停止漫无目的地消耗，做一个清醒而干脆的决定。"
+          },
+          "love": {
+            "en": "In love, reversed Eight of Cups flags staying in an unfulfilling bond out of habit, or running from intimacy right when real depth begins. Be honest about what you truly want.",
+            "zh": "在感情中，圣杯八逆位常对应因习惯而滞留在缺乏滋养的关系里，或在亲密刚刚深入时突然退缩。先对自己诚实，再决定去留。"
+          },
+          "career": {
+            "en": "At work, lingering in a dead-end role out of comfort—or job-hopping without knowing what you are seeking—keeps you tired. Define what fulfillment actually requires first.",
+            "zh": "在职场上，因安逸而滞留无前景的岗位，或还没想清要什么就频繁跳槽，都会让你倍感疲惫。先写清真正看重的价值，再动身。"
+          },
+          "health": {
+            "en": "Emotional ambivalence is exhausting your nervous system; making one clean decision about a draining commitment will bring immediate physical relief.",
+            "zh": "长期悬而未决的内耗正悄悄拖垮神经与睡眠；对那件反复消耗你的事做出干脆决定，身体会立刻轻松许多。"
+          },
+          "spirituality": {
+            "en": "You cannot outrun an inner question by changing scenery alone; pause, listen closely, and let clarity guide your next step.",
+            "zh": "单靠更换外在风景无法逃开内心真正的课题；先停下来诚实倾听自己，再让清明指引下一步去向。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "Under a velvety midnight-indigo sky featuring a luminous pale ivory crescent-and-eclipse moon, ONE solitary Belle Epoque traveler in a flowing deep amethyst-plum and indigo cloak walks away seen from behind, holding a slender gilded wooden staff and stepping along a rocky moonlit trail toward steep sapphire mountain peaks. Stacked neatly on a mossy stone ledge in the lower foreground are EXACTLY EIGHT gleaming antique-gold chalices—five lined evenly across the bottom row and three balanced cleanly on the upper row with one unmistakable empty gap between them. A shimmering cerulean tidal stream winds between the eight left-behind cups and the uphill mountain path. Silver moonlight and warm antique-gold rim highlights clearly separate the eight stacked chalices, the retreating traveler, and the eclipsed moon.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalices stacked in foreground with a clear gap",
+          "count": 8
+        },
+        {
+          "object": "cloaked traveler walking away with staff",
+          "count": 1
+        },
+        {
+          "object": "eclipsed crescent moon",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Clear foreground-to-background storytelling: EXACTLY EIGHT bright golden chalices (5 lower + 3 upper with gap) anchored across the lower foreground while the retreating cloaked traveler climbs toward the luminous moonlit mountain peak—reads unmistakably at 64x96 thumbnail size.",
+      "avoid": [
+        "seven or nine cups",
+        "no gap in cup stack",
+        "wands",
+        "swords",
+        "pentacles",
+        "extra people",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "nine_of_cups": {
+    "id": "nine_of_cups",
+    "archetypeEssence": {
+      "en": "Earned satisfaction and heartfelt pleasure—savoring a wish fulfilled with gratitude and ease.",
+      "zh": "水到渠成的满足与惬意——带着感恩与从容，好好享用已经实现的愿望。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Contented figure seated comfortably on a wooden bench with arms relaxed and an easy smile",
+        "Nine gleaming golden cups arranged in a neat, proud arc across a draped table behind the host",
+        "Rich blue draped cloth framing the display of abundance and hospitality",
+        "Open, unhurried posture radiating self-sufficiency and emotional fulfillment"
+      ],
+      "zh": [
+        "神态从容、面带笃定微笑安坐于长椅上的主人",
+        "身后蓝色帷布长案上排成整齐弧线的九只闪亮金杯",
+        "垂坠华美的蓝绒台布，衬托丰盛与款待之感",
+        "舒展放松的坐姿，流露自足与心愿达成的喜悦"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Poised, beaming Belle Epoque host seated comfortably on a carved mahogany bench in a candlelit salon alcove, arms relaxed in quiet satisfaction",
+        "Exactly nine gleaming antique-gold chalices arrayed in a crisp, symmetrical curved arc along a sapphire-velvet draped banquette directly behind the figure",
+        "Warm golden candlelight and moonlit ivory highlights illuminating the host's serene face, embroidered silk waistcoat, and all nine golden chalices",
+        "Deep midnight-indigo arched alcove with subtle Art Nouveau botanical goldwork framing the display of abundance"
+      ],
+      "zh": [
+        "安坐于烛光沙龙雕花木椅上、神情满足舒展的美好年代主人",
+        "身后蓝宝石丝绒长案上呈完美弧线整齐陈列的九只古金雕花圣杯",
+        "暖金烛光与月白高光照亮主人温润笑容、刺绣丝绸礼服与九只圣杯",
+        "深午夜靛蓝拱形壁龛与细腻新艺术金线花纹，烘托丰盈氛围"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Nine of Cups is the classic wish-fulfillment card: genuine contentment, sensory enjoyment, and pride in what you have cultivated. Let yourself actually enjoy the win instead of immediately moving the goalpost.",
+          "zh": "圣杯九是经典的“心愿达成”之牌：发自内心的满足感、对生活质感的享受，以及对自己亲手耕耘出成果的笃定自豪。允许自己真正品味这份收获，别急着立刻把标准再往上挪。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Savor what is working right now—a heartfelt wish or personal milestone is landing cleanly in your favor.",
+            "zh": "安心享受此刻的顺遂——一个发自内心的愿望或个人里程碑，正稳稳朝你有利的方向落地。"
+          },
+          "foundation": {
+            "en": "Patient emotional maturity, good taste, and steady self-belief built the abundance you are resting in now.",
+            "zh": "长期沉淀的情绪成熟度、好品味与稳定自信，为你铺就了今天可以安心享用的丰盛。"
+          },
+          "present": {
+            "en": "You are in a sweet spot of comfort, gratitude, and personal satisfaction; enjoy the warmth generously.",
+            "zh": "你正处于舒心、自足且充满感恩的甜蜜窗口期；大方享用这份来之不易的从容。"
+          },
+          "resource": {
+            "en": "Your strongest asset is grounded confidence—when you feel genuinely whole, you attract goodwill without chasing it.",
+            "zh": "你最迷人的底气是踏实的自足感——当你内心本就丰盈时，好运与善意会自然向你靠拢。"
+          },
+          "challenge": {
+            "en": "Even upright, Nine of Cups in a challenge slot asks whether comfort is turning into complacency or quiet smugness.",
+            "zh": "落在阻碍位时，正位圣杯九提醒你留意：这份安逸是否正悄悄滑向自满、懈怠或不再倾听旁人？"
+          },
+          "action": {
+            "en": "Celebrate your progress openly, treat yourself with real appreciation, and share a slice of the abundance with someone you care about.",
+            "zh": "坦然庆祝已有的成绩，认真犒劳自己，也把这份丰盛的暖意分给在乎的人。"
+          },
+          "outcome": {
+            "en": "A deeply gratifying result arrives—a wish fulfilled, a joyful milestone, or a stretch of genuine emotional ease.",
+            "zh": "一个令人由衷欣喜的结果即将到来——心愿落地、阶段圆满，或一段真正舒心自在的好时光。"
+          },
+          "advice": {
+            "en": "Receive the good without guilt; gratitude keeps satisfaction warm and generous rather than hollow.",
+            "zh": "不必带着愧疚去接住好运；常怀感恩，能让满足始终温暖慷慨，而不流于浅薄。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Contentment, gratitude, and personal fulfillment take center stage. Enjoy the fruits of your effort openly and let this period of ease replenish your spirit.",
+            "zh": "发自内心的满足、感恩与个人成就感成为此刻核心。大方享用你用心换来的成果，让这段舒心顺遂的时光好好滋养自己。"
+          },
+          "love": {
+            "en": "In love, Nine of Cups radiates warmth, sensuality, and emotional security—feeling genuinely happy in your own skin makes intimacy relaxed, playful, and generous.",
+            "zh": "在感情中，圣杯九散发着温暖、愉悦与安稳的魅力——先在自己身上感到踏实欢喜，亲密互动也会随之变得松弛、甜蜜而慷慨。"
+          },
+          "career": {
+            "en": "At work, this marks well-earned recognition, a satisfying reward, or a project landing just as you hoped. Take pride in the craft and share credit warmly.",
+            "zh": "在工作与事业上，这张牌代表实至名归的认可、令人满意的回报，或项目如愿顺利收官。为自己的手艺感到自豪，也大方分享这份喜悦。"
+          },
+          "health": {
+            "en": "For wellbeing, pleasure and rest are restorative right now—good food, deep sleep, and unhurried enjoyment support vitality far better than rigid self-denial.",
+            "zh": "在身心调理上，适度的愉悦与放松此刻格外养人——美味饮食、安稳睡眠与不赶时间的享受，比严苛克制更能提升生命活力。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Nine of Cups teaches that joy and gratitude are not distractions from growth; appreciating what is already abundant is a form of deep wisdom.",
+            "zh": "在灵性层面，圣杯九提醒你喜悦与感恩本身就是修习；由衷珍惜此刻已然丰盛的一切，便是最踏实的智慧。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Nine of Cups reversed reveals the gap between looking successful and feeling fulfilled: chasing surface indulgence, smugness, or realizing a wish still feels strangely hollow inside.",
+          "zh": "圣杯九逆位照见“表面风光”与“内心满足”之间的落差：过度纵容感官、流于自满，或发现如愿以偿后心里却莫名空落落的。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Refusing to let yourself enjoy good things because you are waiting for the next shoe to drop.",
+            "zh": "总担心好运转瞬即逝，明明事情很顺却不肯允许自己真正开心。"
+          },
+          "excess": {
+            "en": "Overindulgence, vanity, or boasting to cover up a quieter inner restlessness.",
+            "zh": "用过度享乐、虚荣或炫耀来遮盖心底那份挥之不去的不安。"
+          },
+          "internalized": {
+            "en": "Private dissatisfaction—getting what you thought you wanted and realizing your heart wants something deeper.",
+            "zh": "独自品尝的微妙空虚——拿到了当初以为想要的，才发现内心渴望的其实更深。"
+          },
+          "release": {
+            "en": "Trading shallow status-chasing for simpler, more honest contentment.",
+            "zh": "放下浮于表面的攀比与堆砌，回到更朴素而真实的满足感。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Seeking applause or quick comfort is distracting you from what would actually make you feel whole.",
+            "zh": "追逐外界掌声或即时慰藉，正让你偏离真正能令内心踏实的事物。"
+          },
+          "action": {
+            "en": "Check your motive before indulging or boasting—scale back one excess and ask what genuinely nourishes you when nobody is watching.",
+            "zh": "在放纵或炫耀前先停一秒自问：缩减一项过度消耗，找回无人注视时依然让你舒心的事。"
+          },
+          "outcome": {
+            "en": "Honest recalibration replaces hollow glitter with quieter, much more durable satisfaction.",
+            "zh": "诚实的校准会用沉静而长久的满足感，取代转瞬即逝的表面光鲜。"
+          },
+          "advice": {
+            "en": "Distinguish real nourishment from numbing excess; enough is a feeling, not a number.",
+            "zh": "分清真正的滋养与麻木式的过量消费；“足够”是一种内在感受，从来不是一个数字。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Surface comfort is not quite matching inner fulfillment. Step back from overindulgence or keeping up appearances and ask what your heart actually hungers for.",
+            "zh": "圣杯九逆位提示外在的丰盛尚未真正填满内心。从过度放纵或维持体面中退后一步，诚实问问自己心里真正渴望的是什么。"
+          },
+          "love": {
+            "en": "In love, reversed Nine of Cups cautions against superficial charm, emotional smugness, or expecting a partner to validate your ego. Cultivate deeper honesty.",
+            "zh": "在感情中，圣杯九逆位提醒警惕流于表面的取悦、自我中心的傲慢，或指望伴侣来满足虚荣心。回到真诚平等的深层互动。"
+          },
+          "career": {
+            "en": "At work, hitting a metric that leaves you cold—or getting complacent after an early win—calls for a sharper sense of purpose and humility.",
+            "zh": "在职场上，达成目标却毫无喜悦，或因小有成就而松懈自满，都在提醒你保持谦逊，重新校准真正有意义的追求。"
+          },
+          "health": {
+            "en": "Watch for comfort eating, late-night excess, or ignoring moderation; gentler balance restores energy better than extremes.",
+            "zh": "留意用暴饮暴食、熬夜放纵来解压的惯性；温和有节制的日常节奏，比大起大落的放纵更能真正滋养身体。"
+          },
+          "spirituality": {
+            "en": "Notice where chasing shiny external wishes has crowded out quiet inner peace; true abundance begins with honest self-acceptance.",
+            "zh": "觉察追逐外在光鲜愿望是否挤占了内心的安静；真正的丰盛始于诚实接纳自己，而非不断向外索取证明。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "Seated comfortably in the center of a warm, candlelit Belle Epoque salon alcove, ONE contented, warmly smiling figure in an embroidered ivory silk shirt and sapphire-velvet waistcoat sits relaxed on a carved wooden bench with arms comfortably folded in quiet pride. Directly behind the figure, draped in rich cerulean-sapphire velvet across a curved semicircular console, stand EXACTLY NINE gleaming, ornate antique-gold chalices arranged in a crisp, symmetrical, unbroken curved arc so every single cup is clearly separated and easily countable. Warm golden candlelight and soft moonlit highlights illuminate the figure's joyful face, hands, and all nine gilded chalices against velvety deep midnight-indigo Art Nouveau paneled walls.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalices arrayed in a curved arc behind host",
+          "count": 9
+        },
+        {
+          "object": "contented seated host",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Symmetrical celebratory portrait: centered contented host framed cleanly beneath an unmistakable glowing arc of EXACTLY NINE golden chalices against dark indigo-sapphire velvet—reads instantly at 64x96 thumbnail size.",
+      "avoid": [
+        "eight or ten cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "extra people",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "ten_of_cups": {
+    "id": "ten_of_cups",
+    "archetypeEssence": {
+      "en": "Emotional belonging that ripples outward—shared harmony, home, and lasting joy.",
+      "zh": "向外荡漾的情感归属——家人与所爱之人共筑的和谐、安稳与长久欢喜。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Embracing couple raising their arms joyfully toward a luminous rainbow spanning the sky",
+        "Ten gleaming golden cups arrayed cleanly along the radiant rainbow arc overhead",
+        "Two playful children dancing beside them in carefree security",
+        "Peaceful riverside cottage nestled among green hills symbolizing lasting home"
+      ],
+      "zh": [
+        "相拥举臂、满怀喜悦仰望天际彩虹的伴侣",
+        "整齐悬列在绚丽虹弧之上的十只闪亮金杯",
+        "身旁无忧无虑翩然起舞的两个孩子",
+        "远方临水而建的宁静小屋，象征长久安稳的家园"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Joyous Belle Epoque couple standing in warm embrace on a moonlit hillside meadow, lifting their arms toward a radiant celestial rainbow arc",
+        "Exactly ten gleaming antique-gold chalices arrayed evenly and unmistakably along the luminous pearl-sapphire-gold rainbow spanning the upper sky",
+        "Two cheerful children dancing hand-in-hand in the foreground meadow beside a glowing cerulean river and warm lantern-lit cottage",
+        "High-key luminous ivory, cerulean, amethyst, and molten-gold atmosphere glowing against starry deep twilight indigo"
+      ],
+      "zh": [
+        "在月色山坡草地上相拥举臂、仰望璀璨天际虹弧的美好年代伴侣",
+        "沿着珍珠蓝金微光彩虹清晰排布的十只古金雕花圣杯",
+        "身旁牵手欢舞的两个孩童、微光河流与远方亮着暖灯的河畔小屋",
+        "星夜靛蓝背景中明亮温润的月白、蓝宝石、紫晶与鎏金光辉"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ten of Cups is emotional fulfillment shared with the people who matter most: harmony at home, genuine belonging, and the quiet relief of knowing your heart has a place to land.",
+          "zh": "圣杯十代表与最重要的人共享的情感圆满：家与亲密圈里的和谐安定，以及心有所栖、彼此托底的踏实松弛。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Invest in the bonds that feel like home—lasting happiness here is built together, not hoarded alone.",
+            "zh": "把心力投向那些让你有归属感的关系——这里的长久喜悦是彼此共筑出来的，而非独自占有。"
+          },
+          "foundation": {
+            "en": "Shared values, loyalty, and deep mutual care laid the warm emotional foundation supporting you now.",
+            "zh": "共同的价值观、长久忠诚与彼此照拂，搭起了此刻托住你的温暖根基。"
+          },
+          "present": {
+            "en": "Harmony and emotional alignment are flowing freely; pause to appreciate the people standing beside you.",
+            "zh": "和谐与情感共鸣正顺畅流动；停下来好好珍惜此刻站在你身边的这些人。"
+          },
+          "resource": {
+            "en": "Your strongest asset is a loving, aligned circle—family, chosen family, or a deeply united team that has your back.",
+            "zh": "你最厚实的底气是一个彼此对齐、充满爱意的圈子——家人、挚友或高度默契的团队正稳稳支持着你。"
+          },
+          "challenge": {
+            "en": "Even upright, Ten of Cups in a challenge slot asks whether chasing a picture-perfect ideal is distracting you from appreciating real, imperfect love.",
+            "zh": "落在阻碍位时，正位圣杯十提醒你留意：是否因为执着于“完美无瑕的理想画面”，而忽略了眼前真实却带点烟火气的幸福？"
+          },
+          "action": {
+            "en": "Gather your people, express clear gratitude, and make a concrete choice that protects your shared peace and home life.",
+            "zh": "把在乎的人聚在一起、真诚说出感谢，并做一个切实守护共同安宁与家庭生活的决定。"
+          },
+          "outcome": {
+            "en": "A deeply fulfilling chapter of harmony, belonging, and shared joy unfolds—something durable enough to build a life on.",
+            "zh": "一段充满归属感、和谐与共享欢喜的丰盛篇章即将展开，稳固得足以托起长远生活。"
+          },
+          "advice": {
+            "en": "Protect what gives your life warmth; true wealth is measured in the ease you feel when you walk through the door.",
+            "zh": "守护那些让生活有温度的人与事；真正的富足，是推开家门那一刻由衷的安心。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Lasting harmony, heartfelt belonging, and shared joy define this moment. Align your choices with the people and values that make life feel genuinely whole.",
+            "zh": "长久的和谐、真挚的归属感与共享的喜悦定义着这一刻。让你的选择与那些真正让生命感到完整的人和价值保持一致。"
+          },
+          "love": {
+            "en": "In love, Ten of Cups marks deep commitment, emotional safety, and building a joyful shared future together—where affection, trust, and daily life fit hand in glove.",
+            "zh": "在感情中，圣杯十象征深厚承诺、情感安全感与共同搭建幸福未来的愿景——爱意、信任与日常烟火彼此严丝合缝。"
+          },
+          "career": {
+            "en": "At work, this reflects a genuinely supportive culture, meaningful work-life harmony, or a milestone that benefits your whole team and household alike.",
+            "zh": "在工作与事业上，这张牌映照出彼此托举的团队氛围、舒心的工作生活平衡，或一项让团队与家人都共享红利的圆满成果。"
+          },
+          "health": {
+            "en": "Emotional peace and supportive loved ones create a strong container for wellbeing; shared meals, laughter, and calm home rhythms nourish you deeply.",
+            "zh": "内心的安稳与亲友的温暖陪伴是最好的身心容器；一顿热腾腾的家常饭、轻松笑声与规律生活都在深层滋养着你。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Ten of Cups sees the sacred inside ordinary love: gratitude, community, and peace shared across generations.",
+            "zh": "在灵性层面，圣杯十在寻常爱意中看见神圣：感恩、联结与代代相传的温暖安宁，本身就是最圆满的祝福。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ten of Cups reversed points to friction beneath a polished surface—unspoken family tension, misaligned values, or chasing a storybook ideal instead of tending real-world connection.",
+          "zh": "圣杯十逆位揭示体面表象下的细微裂痕——未说破的家庭摩擦、价值观错位，或执着于童话滤镜而忽略了真实关系的日常经营。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Polite silence around home or relational tensions keeps real warmth from circulating.",
+            "zh": "对家庭或亲密关系里的分歧避而不谈，让真正的暖意流通不起来。"
+          },
+          "excess": {
+            "en": "Perfectionism about 'how a happy life should look' creating pressure instead of joy.",
+            "zh": "执着于“幸福生活该有的标准模板”，反而制造出沉重压力而非喜悦。"
+          },
+          "internalized": {
+            "en": "Quietly feeling out of place even inside a familiar circle or household.",
+            "zh": "身处熟悉的圈子或家庭之中，内心却隐约感到格格不入。"
+          },
+          "release": {
+            "en": "Letting go of performative harmony so honest, imperfect, real closeness can heal.",
+            "zh": "放下刻意维持的表面圆满，让诚实、带点瑕疵却真实的亲密慢慢修复。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Comparing your real life to an idealized rainbow—or avoiding an honest household conversation—is draining genuine joy.",
+            "zh": "拿真实生活去对比完美滤镜，或回避一场早该进行的坦诚家常对话，正在悄悄耗损真实的快乐。"
+          },
+          "action": {
+            "en": "Drop the performance of perfection and have one kind, honest talk about what everyone actually needs right now.",
+            "zh": "放下“必须显得一切完美”的包袱，发起一次温和坦诚的对话，听听彼此当下真正需要什么。"
+          },
+          "outcome": {
+            "en": "Releasing unrealistic expectations clears the air, allowing steadier, more authentic harmony to rebuild.",
+            "zh": "松开不切实际的期待会让空气重新清朗，更踏实、更经得起日常考验的和谐将逐步重建。"
+          },
+          "advice": {
+            "en": "Real harmony is repaired in plain daylight, never maintained by pretending nothing is wrong.",
+            "zh": "真正的和谐是在坦诚对话中一点点修补出来的，从不是靠假装风平浪静撑出来的。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A gap between idealized harmony and messy reality asks for honest care. Release perfectionist expectations and address small disconnections warmly before they widen.",
+            "zh": "圣杯十逆位提醒你正视理想圆满与琐碎现实之间的落差。放下完美主义标准，趁小隔阂尚未扩大时温和沟通、及时修补。"
+          },
+          "love": {
+            "en": "In love, reversed Ten of Cups flags mismatched domestic expectations, family pressure, or feeling disconnected under the same roof. Rebuild intimacy through plain, gentle truth.",
+            "zh": "在感情中，圣杯十逆位对应生活步调不合、家庭意见介入或同处一室却心有距离。用温和坦诚的日常对话重新接通彼此。"
+          },
+          "career": {
+            "en": "At work, values friction or work spilling over into personal peace needs firmer boundaries. Reclaim time for what actually sustains you outside the job.",
+            "zh": "在职场上，团队理念摩擦或工作过度挤占私人生活，都在提示你重新划清边界，把精力还给真正滋养你的生活根基。"
+          },
+          "health": {
+            "en": "Household stress or trying to keep everyone else happy can quietly wear you down; protect simple personal downtime without guilt.",
+            "zh": "家庭琐事的压力或总想让所有人都满意的操心正悄悄透支你；不带愧疚地为自己留出安静独处的喘息时间。"
+          },
+          "spirituality": {
+            "en": "True belonging starts when you stop editing yourself to fit a borrowed picture of happiness.",
+            "zh": "当你不再为了迎合他人眼中的幸福模板而修剪自己时，真正踏实的归属感才会从内在生根。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalices, moonlit ivory",
+      "scene": "On a radiant moonlit hillside meadow overlooking a shimmering cerulean stream and a cozy warm-lit stone cottage in the distance, ONE joyful Belle Epoque couple in flowing sapphire and ivory-gold garments stand closely embraced from behind, lifting their arms joyfully toward the sky while TWO laughing children dance hand-in-hand beside them. Spanning cleanly across the luminous upper twilight sky is a glowing iridescent pearl, cerulean, amethyst, and gold rainbow arc along which EXACTLY TEN gleaming, ornate antique-gold chalices are spaced evenly and unmistakably in one continuous sweeping curve. Warm celestial moonlight and radiant golden highlights illuminate the ten rainbow chalices, the embracing family, and the blooming meadow against a starry deep indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalices arrayed along a luminous rainbow arc",
+          "count": 10
+        },
+        {
+          "object": "embracing couple raising arms in joy",
+          "count": 2
+        },
+        {
+          "object": "dancing children in meadow",
+          "count": 2
+        },
+        {
+          "object": "distant warm-lit cottage by river",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Sweeping radiant upper rainbow arch carrying EXACTLY TEN bright golden chalices cleanly spaced above the warm silhouetted family and glowing cottage—joyful arc reads instantaneously at 64x96 thumbnail size.",
+      "avoid": [
+        "nine or eleven cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "stormy dark mood",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "page_of_cups": {
+    "id": "page_of_cups",
+    "archetypeEssence": {
+      "en": "Playful intuition and an unexpected tender spark—curiosity greeting wonder with an open hand.",
+      "zh": "灵动好奇的直觉与意想不到的温柔讯息——带着少年般的敞开去迎接惊喜。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Youthful Page standing at the edge of gentle sea waves in a lotus-patterned tunic",
+        "Single golden chalice held up at eye level with a small blue fish peeking playfully out of the rim",
+        "Soft flowing beret and open, delighted expression signaling imaginative receptivity",
+        "Calm coastal shoreline symbolizing the meeting of conscious craft and intuitive tides"
+      ],
+      "zh": [
+        "立于轻柔海浪岸边、身着莲纹长衫的年轻侍从",
+        "平举在眼前的单只金色圣杯，一条小蓝鱼正俏皮地从杯口探出头",
+        "轻盈柔软的帽饰与欣喜好奇的神情，象征丰沛想象力",
+        "平缓海岸线，代表现实探索与直觉浪潮的交汇"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Luminous Belle Epoque Page standing on a moonlit coastal shore in a cerulean-and-ivory silk tunic embroidered with golden water lilies",
+        "Exactly one gleaming ornate antique-gold chalice held steadily in the Page's right hand, with ONE small iridescent silver-sapphire fish peeking curiously from the cup's rim",
+        "Gentle curling pearl-crested midnight waves lapping behind the Page under a starry sapphire sky",
+        "Warm moonlit-ivory highlights on the Page's delighted face, graceful hands, and the single chalice with its peeking fish"
+      ],
+      "zh": [
+        "立于月色海滨、身着绣有金色睡莲纹的蓝白丝绸短袍的美好年代侍从",
+        "右手稳稳托起的一只古金雕花圣杯，杯沿探出一条泛着银蓝珠光的灵动小鱼",
+        "身后在星夜蓝天下轻拍海岸的珍珠微光海浪",
+        "温润月白色高光点亮侍从惊喜柔和的面容、双手与杯中小鱼"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Page of Cups brings a sweet, unexpected creative nudge or heartfelt message: a shy confession, a fresh artistic idea, or an intuitive hunch that feels slightly whimsical yet surprisingly true.",
+          "zh": "圣杯侍从带来一份轻盈而意想不到的灵感或温柔讯息：也许是一句真诚示好、一个灵光一闪的创意，或某个看似天马行空却格外准确的直觉。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Stay curious and lightly playful—an unexpected creative idea or warm message is peeking right out of the cup.",
+            "zh": "保持轻盈的好奇心——一个出人意料的创意或温暖讯息，正从杯口俏皮地探出头来。"
+          },
+          "foundation": {
+            "en": "A tender early curiosity, gentle crush, or playful artistic impulse set this whole story in motion.",
+            "zh": "最初那份纯粹的好奇、青涩的好感或好玩的心动，轻轻推开了整段故事。"
+          },
+          "present": {
+            "en": "Fresh emotional openness and creative sensitivity are active right now; treat small hunches as worth exploring.",
+            "zh": "你当下的情感感受力与创意直觉格外敏锐；别轻视那些细小却鲜活的念头，它们很值得顺藤摸瓜。"
+          },
+          "resource": {
+            "en": "Your strongest asset is beginner's wonder—approaching this with warmth and playfulness disarms stiffness immediately.",
+            "zh": "你最灵动的优势是赤子般的好奇心——带着温和与玩心切入，能瞬间化解紧绷与僵局。"
+          },
+          "challenge": {
+            "en": "Even upright, Page of Cups in a challenge slot asks whether daydreaming or shyness is keeping a lovely idea from being spoken aloud.",
+            "zh": "落在阻碍位时，正位圣杯侍从提醒你留意：是否因为害羞或只顾着沉浸在幻想里，而没把好主意说出口？"
+          },
+          "action": {
+            "en": "Follow the small intuitive spark—sketch the rough draft, send the kind note, or ask the curious question today.",
+            "zh": "顺着那个小小的直觉火花行动——画出第一版草图、发去那句温柔问候，或抛出那个好奇的问题。"
+          },
+          "outcome": {
+            "en": "A pleasant surprise, heartfelt invitation, or blooming creative seed brings fresh lightness into your week.",
+            "zh": "一个令人微笑的小惊喜、真诚邀约或正在萌芽的创意种子，将为生活注入轻盈新意。"
+          },
+          "advice": {
+            "en": "Do not laugh off the fish in the cup—gentle imagination often spots truths that rigid logic misses.",
+            "zh": "别急着把杯里探头的小鱼当成玩笑——柔和的想象力常常能看见死板逻辑漏掉的真相。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Curiosity, gentle intuition, and pleasant surprises brighten the path. Meet new impressions with an open, unguarded mind and let small sparks grow before judging them.",
+            "zh": "好奇心、柔和直觉与意想不到的小惊喜正点亮前路。用不设防的敞开心态接住新鲜灵感，在急着评判之前先让它自然生长。"
+          },
+          "love": {
+            "en": "In love, Page of Cups brings sweet flirtation, a sincere apology, or tender vulnerability. Small thoughtful gestures and playful honesty warm the connection right away.",
+            "zh": "在感情中，圣杯侍从带来青涩甜蜜的好感、真诚的致歉或温柔的敞开心扉。一个细心的小举动和俏皮的坦诚，就能立刻拉近彼此。"
+          },
+          "career": {
+            "en": "At work, this is fresh creative ideation, a promising entry-level spark, or good news arriving through an unexpected channel. Prototype playfully before over-engineering.",
+            "zh": "在工作与学业上，这张牌代表鲜活的创意萌芽、值得尝试的新机会，或意料之外的好消息。先轻巧做出原型试水，不必一开始就过度设计。"
+          },
+          "health": {
+            "en": "For wellbeing, gentle creative play, music, dreaming, and listening to subtle bodily cues restore lightness without harsh discipline.",
+            "zh": "在身心调节上，轻松的艺术小消遣、音乐、好梦与倾听身体细微的信号，比严苛自律更能帮你找回轻盈状态。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Page of Cups is intuitive listening: notice synchronicities, dreams, and quiet inner nudges with humble delight.",
+            "zh": "在灵性层面，圣杯侍从代表敏锐的直觉倾听：带着谦逊而欢喜的心，去留意梦境、巧合与心底轻轻响起的提示。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Page of Cups reversed points to creative shyness, touchy sensitivity, or retreating into moody escapism instead of voicing what you genuinely feel.",
+          "zh": "圣杯侍从逆位指向创作上的自我怀疑、敏感玻璃心，或用赌气与逃避代替直接说出真实感受。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Self-doubt or fear of looking naive is bottling up a genuine creative or emotional impulse.",
+            "zh": "怕显得幼稚或被挑剔，把原本真挚的创意与心意死死捂在心里。"
+          },
+          "excess": {
+            "en": "Taking minor feedback personally or sulking instead of naming a hurt directly.",
+            "zh": "把一点小反馈过度放大成针对自己，或用闷闷不乐代替直接沟通。"
+          },
+          "internalized": {
+            "en": "Rich private daydreams that never quite cross the bridge into real-world expression.",
+            "zh": "内心戏与白日梦很丰富，却迟迟没有跨过门槛变成现实表达。"
+          },
+          "release": {
+            "en": "Outgrowing touchiness and sharing your real voice with steady, grounded confidence.",
+            "zh": "走出敏感防备，带着更稳的自信把真实想法落落大方地说出来。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Touchy pride or creative hesitation is turning a small vulnerability into unnecessary drama or silence.",
+            "zh": "敏感的自尊或创作怯场，正把一点小小的脆弱放大成不必要的内耗或沉默。"
+          },
+          "action": {
+            "en": "Name the feeling plainly without sulking, and share one rough unfinished piece before your inner critic edits it to death.",
+            "zh": "不带赌气地直接说出感受，也趁着内在挑剔者还没下手前，先交出一版不完美的初稿。"
+          },
+          "outcome": {
+            "en": "Once sensitivity is grounded in honesty, creative flow and emotional ease return without the drama.",
+            "zh": "当敏感落回诚实表达，创作灵感与情绪轻盈感都会重新回来，不再被内耗拖累。"
+          },
+          "advice": {
+            "en": "Protect your tender ideas without hiding them forever; imperfect expression beats silent resentment.",
+            "zh": "保护你柔软的想法，但别永远藏着它；不完美的表达胜过沉默的委屈。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check for bruised sensitivity, creative procrastination, or escapist daydreaming. Ground your feelings in plain words and one small real-world step.",
+            "zh": "圣杯侍从逆位提醒你留意过度敏感、创作拖延或沉溺空想。把情绪落回直白表达，并用一个微小却真实的行动打破卡顿。"
+          },
+          "love": {
+            "en": "In love, reversed Page of Cups flags mixed emotional maturity—pouting, fishing for reassurance, or holding back a sincere message out of fear of rejection.",
+            "zh": "在感情中，圣杯侍从逆位常对应不够成熟的情绪试探、暗自赌气求安抚，或因怕被拒绝而把真心话吞回去。直接说清反而更轻松。"
+          },
+          "career": {
+            "en": "At work, creative block or taking critique too personally slows progress. Treat feedback as craft data rather than a verdict on your worth.",
+            "zh": "在工作上，灵感卡壳或把修改意见当成个人否定会拖慢节奏。把反馈当作打磨作品的数据，而不是对你价值的宣判。"
+          },
+          "health": {
+            "en": "Emotional moodiness or escapist scrolling may be masking simple tiredness; soothe yourself with real rest and quiet offline time.",
+            "zh": "情绪起伏或靠刷屏逃避现实，往往只是单纯累了；用真正高质量的休息和安静的离线时光来安抚自己。"
+          },
+          "spirituality": {
+            "en": "Doubting your intuition—or mistaking wishful anxiety for a sign—clouds perception; return to calm, grounded breathing.",
+            "zh": "在灵性层面，过度怀疑直觉或把焦虑臆测当成神秘讯号都会搅浑感知；回到平稳呼吸与踏实当下，清澈感自会归来。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalice, moonlit ivory",
+      "scene": "Standing gracefully along a tranquil moonlit coastal shore with gentle pearl-crested sapphire waves curling behind them, ONE youthful Belle Epoque Page in a flowing cerulean-and-ivory silk tunic embroidered with golden water lilies and a soft velvet beret looks with bright, delighted curiosity at the cup in their hand. Held steadily at chest height in the Page's right hand is EXACTLY ONE gleaming, ornate antique-gold chalice, from whose rim ONE small iridescent silver-blue fish peeks playfully upward toward the Page's smiling face. Luminous moonlight and warm antique-gold specular highlights illuminate the Page's face, graceful fingers, the single golden chalice, and the peeking fish against a starry deep midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalice held by Page",
+          "count": 1
+        },
+        {
+          "object": "small iridescent silver-blue fish peeking upward",
+          "count": 1
+        },
+        {
+          "object": "youthful Page standing by the sea",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Clean three-quarter portrait silhouette against calm moonlit sea: the Page's delighted gaze locks onto ONE bright golden chalice with the peeking silver-blue fish at center-right—reads instantly at 64x96 thumbnail size.",
+      "avoid": [
+        "two or more cups",
+        "wands",
+        "swords",
+        "pentacles",
+        "horse",
+        "throne",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "knight_of_cups": {
+    "id": "knight_of_cups",
+    "archetypeEssence": {
+      "en": "Devoted idealism in motion—bearing beauty, romance, and heartfelt purpose forward with grace.",
+      "zh": "奔赴理想的浪漫行动者——带着深情、美感与赤诚邀约优雅前行。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Armored Knight riding a calm white horse at a measured, graceful pace",
+        "Winged helmet and winged boots symbolizing elevated imagination and poetic messenger energy",
+        "Single gleaming golden cup held steadily forward like a cherished offering",
+        "Winding river crossing a quiet landscape toward distant hills of aspiration"
+      ],
+      "zh": [
+        "身披铠甲、骑乘沉稳白马从容缓行的骑士",
+        "带翼头盔与翼靴，象征高飞的想象力与诗意信使",
+        "向前稳稳托举的单只金色圣杯，宛如郑重递出的邀约",
+        "蜿蜒穿过旷野流向远山的河流，映照追寻理想的旅程"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Poetic Belle Epoque Knight in engraved silver-and-sapphire armor with delicate gilded wings on the helm, riding a luminous pale ivory horse beside a moonlit river",
+        "Exactly one gleaming ornate antique-gold chalice held steadily forward in the Knight's right hand as a graceful offering",
+        "Flowing cerulean-and-amethyst surcoat embroidered with shimmering golden fish and wave motifs",
+        "Moonlit silver water reflections and distant indigo peaks framing the composed equestrian silhouette"
+      ],
+      "zh": [
+        "身着雕花银蓝铠甲、头盔饰有精致鎏金双翼的美好年代骑士，骑乘月白骏马沿河缓行",
+        "骑士右手平稳向前托举的一只古金雕花圣杯，宛如郑重奉上的心意",
+        "随风轻扬、绣有金鱼与波纹图案的蓝宝石与紫晶战袍",
+        "微光河流倒影与远方靛蓝山影衬托出优雅从容的骑行剪影"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Knight of Cups moves toward what moves the heart: a romantic overture, a creative quest, or a diplomatic invitation carried with grace and sincerity. Follow beauty and conviction—just keep your eyes on the road as well as the horizon.",
+          "zh": "圣杯骑士朝着令内心震颤的方向优雅前行：一份浪漫邀约、一场创意奔赴，或带着诚意与风度的主动靠近。追随美感与热爱，同时别忘了看清脚下真实的路。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Lead with genuine charm, artistry, and heart—a heartfelt invitation or creative pursuit is ready to move forward.",
+            "zh": "带着真诚风度、美感与热忱主动迈步——一份发自内心的邀约或创意追求正适合向前推进。"
+          },
+          "foundation": {
+            "en": "A romantic ideal, artistic vision, or sincere desire to win someone's trust set this movement in motion.",
+            "zh": "一份浪漫理想、艺术愿景或赢得对方信赖的真挚愿望，推动了眼前的行动。"
+          },
+          "present": {
+            "en": "Warmth, diplomacy, and creative momentum are flowing; an inviting offer or inspiring pursuit is drawing closer.",
+            "zh": "柔情、外交风度与创意动能正在流动；一份令人心动的邀约或灵感奔赴正朝你靠近。"
+          },
+          "resource": {
+            "en": "Your strongest asset is magnetic sincerity—combining aesthetic taste with real empathy wins allies effortlessly.",
+            "zh": "你最具感染力的优势是真诚与好品味兼具——用共情与美感打动人心，往往事半功倍。"
+          },
+          "challenge": {
+            "en": "Even upright, Knight of Cups in a challenge slot asks whether chasing an ideal vision is glossing over practical timelines or mundane details.",
+            "zh": "落在阻碍位时，正位圣杯骑士提醒你留意：全心追逐浪漫愿景时，是否略过了现实排期或琐碎细节？"
+          },
+          "action": {
+            "en": "Make the graceful move—extend the invitation, pitch the creative vision, or show up with unmistakable sincerity and care.",
+            "zh": "优雅而大方地迈出这一步——发出那份邀约、呈现你的创意愿景，或带着清晰的诚意主动赴约。"
+          },
+          "outcome": {
+            "en": "A charming offer, romantic deepening, or inspiring creative breakthrough arrives with memorable grace.",
+            "zh": "一份迷人的邀约、升温的浪漫进展或令人欣喜的创意突破，将带着优雅姿态到来。"
+          },
+          "advice": {
+            "en": "Keep the horse's pace steady—devotion carried with patience and follow-through outlasts grand gestures alone.",
+            "zh": "稳住座驾的步伐——配合耐心与实际兑现的深情，远比昙花一现的宏大姿态更长久。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Heartfelt pursuit, creative grace, and sincere invitations move this chapter forward. Follow what genuinely inspires you while keeping your promises grounded in action.",
+            "zh": "真诚奔赴、创意风度与动人邀约正推动这一阶段向前。追随真正打动你的人与事，同时用踏实兑现托住这份浪漫。"
+          },
+          "love": {
+            "en": "In love, Knight of Cups is classic romance, thoughtful courtship, and emotional devotion. Express affection with warmth and imagination, backed by steady presence.",
+            "zh": "在感情中，圣杯骑士代表经典浪漫、用心的追求与深情投入。用温暖与想象力表达爱意，并以稳定陪伴让它真正落地。"
+          },
+          "career": {
+            "en": "At work, this favors creative pitches, diplomacy, client charm, and missions you genuinely care about. Pair your inspiring vision with a clear execution plan.",
+            "zh": "在工作与事业上，这张牌利于创意提案、外交斡旋、赢得客户好感以及投身真正热爱的使命。给动人的愿景配上一份清晰的落地计划。"
+          },
+          "health": {
+            "en": "For wellbeing, beauty and emotional uplift matter—gentle expressive movement, soothing surroundings, and pacing yourself calmly restore harmony.",
+            "zh": "在身心调理上，美感与好心情同样是良药——温和舒展的运动、赏心悦目的环境与不急不躁的节奏，能让你恢复和谐。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Knight of Cups is devotion in action: treating everyday craft, kindness, and beauty as a living pilgrimage.",
+            "zh": "在灵性层面，圣杯骑士代表行动中的虔敬：把日常里的善意、美感与专注，都当作一场活生生的内在旅程。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Knight of Cups reversed warns of moody idealism: sweeping promises without follow-through, falling in love with the chase, or letting shifting feelings steer the wheel.",
+          "zh": "圣杯骑士逆位警惕情绪化的浪漫主义：空有动听承诺却缺乏兑现、只沉迷追逐感，或任由起伏不定的心情左右方向。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Waiting for the perfect mood or cinematic moment before taking real action.",
+            "zh": "总在等完美的情绪或戏剧化时机，迟迟不肯落地行动。"
+          },
+          "excess": {
+            "en": "Over-romanticizing, dramatic mood swings, or charming words that outrun real commitment.",
+            "zh": "过度滤镜化、情绪大起大落，或动人辞藻远远跑在实际承诺前面。"
+          },
+          "internalized": {
+            "en": "Quiet disillusionment when reality fails to match an impossibly polished fantasy.",
+            "zh": "当现实达不到完美幻想时，心底悄然涌上的失落与意兴阑珊。"
+          },
+          "release": {
+            "en": "Grounding romance and creativity in steady, reliable deeds rather than fleeting highs.",
+            "zh": "把浪漫与创意从短暂激情里拉回地面，用稳定可靠的行动来承接。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Unrealistic expectations or inconsistent follow-through is eroding trust faster than charm can repair it.",
+            "zh": "不切实际的期待或时冷时热的兑现度，正比风度修补得更快地消耗信任。"
+          },
+          "action": {
+            "en": "Check actions against words—keep one small concrete promise this week instead of offering another grand speech.",
+            "zh": "拿行动对照承诺——这周踏实兑现一件具体小事，胜过再说一番动听宣言。"
+          },
+          "outcome": {
+            "en": "Sobering up from fleeting highs restores credibility and separates genuine devotion from empty theater.",
+            "zh": "从短暂激情中清醒过来会重新赢回信赖，也能分清什么是真心，什么是表演。"
+          },
+          "advice": {
+            "en": "Let reliability be your new romance—consistency speaks louder than poetry when trust is on the line.",
+            "zh": "把可靠当成新的浪漫——当信任面临考验时，稳定兑现比任何诗意都更有说服力。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Watch for mood-driven decisions, charming half-promises, or chasing an unrealistic ideal. Ground your enthusiasm in clear facts and steady follow-through.",
+            "zh": "圣杯骑士逆位提醒警惕被情绪牵着走、华而不实的半吊子承诺，或追逐脱离现实的完美幻想。用清晰事实与稳定兑现托住热情。"
+          },
+          "love": {
+            "en": "In love, reversed Knight of Cups flags hot-and-cold affection, love-bombing, or projecting a storybook script onto a real partner. Trust consistent behavior over sweet talk.",
+            "zh": "在感情中，圣杯骑士逆位常对应忽冷忽热、前期过度殷勤或把童话剧本强加给现实伴侣。看长期稳定的行动，别只听甜言蜜语。"
+          },
+          "career": {
+            "en": "At work, inspiring pitches need operational backbone—avoid overpromising to impress, and double-check glamorous offers that lack concrete terms.",
+            "zh": "在工作上，漂亮的创意提案需要扎实的执行骨架——避免为了讨好而过度许诺，对缺少具体条款的光鲜邀约也要多核实。"
+          },
+          "health": {
+            "en": "Emotional highs and lows can throw off sleep and energy; anchor your week with steady, unglamorous routines that do not depend on your mood.",
+            "zh": "情绪大起大落容易打乱睡眠与状态；用不依赖心情好坏的朴素日常节奏，替自己稳住身心底盘。"
+          },
+          "spirituality": {
+            "en": "Notice where chasing emotional peak experiences is replacing quiet daily integrity; true devotion stays steady on ordinary Tuesdays.",
+            "zh": "觉察追逐强烈情绪高峰体验是否取代了平实修习；真正的虔诚体现在平凡日子里的稳定如一。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalice, moonlit ivory",
+      "scene": "Riding gracefully at a calm, measured walk along a moonlit winding river beneath starry indigo hills, ONE poised Belle Epoque Knight in engraved silver-and-sapphire armor sits tall upon a luminous pale ivory horse. Delicate antique-gold wings adorn the Knight's helmet and boots, and a flowing cerulean-and-amethyst surcoat embroidered with gilded wave and fish motifs drapes over the saddle. In their outstretched right hand, the Knight holds EXACTLY ONE gleaming, ornate antique-gold chalice steadily forward like a sacred offering, keeping it clearly silhouetted against the bright moonlit sky. Soft ivory moonlight and molten-gold highlights illuminate the Knight's serene profile, the white horse's arched neck, and the single golden chalice against deep velvety midnight-indigo shadows.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalice held forward by Knight",
+          "count": 1
+        },
+        {
+          "object": "mounted Knight with winged helmet",
+          "count": 1
+        },
+        {
+          "object": "calm pale ivory horse",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Classic composed equestrian profile moving left-to-right: luminous pale horse and winged Knight framing ONE brightly gleaming golden chalice extended into clean negative sky space—reads effortlessly at 64x96 thumbnail size.",
+      "avoid": [
+        "two or more cups",
+        "galloping battle charge",
+        "wands",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "queen_of_cups": {
+    "id": "queen_of_cups",
+    "archetypeEssence": {
+      "en": "Deep empathic wisdom and calm intuition—holding space for feeling without drowning in it.",
+      "zh": "深邃而沉静的共情智慧——安稳承接万千情绪，却不被浪潮淹没。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Serene Queen seated on a carved stone throne at the very edge of calm sea waves",
+        "Ornate lidded golden chalice with angel-wing handles held attentively in both hands",
+        "Flowing sea-toned robes spilling softly toward the water's rim",
+        "Shell and cherub carvings on the throne reflecting intuitive depth and protective grace"
+      ],
+      "zh": [
+        "端坐于平静海浪岸边雕花石座上的沉静王后",
+        "双手专注捧持的一只带盖、饰有双翼手柄的华丽金杯",
+        "如水波般垂落至岸畔的流动长袍",
+        "石座上雕刻的贝壳与海灵纹饰，象征深厚直觉与温柔守护"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Luminous, compassionate Belle Epoque Queen seated in serene three-quarter profile on a sculpted pearl-stone throne beside moonlit sapphire waves",
+        "Exactly one intricate, lidded antique-gold chalice with sculpted golden angel handles cradled attentively in both hands",
+        "Flowing cerulean, pearl-ivory, and moonstone-amethyst silk gown echoing the gentle ripples at her feet",
+        "Carved Art Nouveau seashells and shimmering water reflections illuminating her gentle gaze against a starry midnight sky"
+      ],
+      "zh": [
+        "端坐于月色海浪畔珍珠石座上、侧颜慈悲沉静的美好年代王后",
+        "双手轻柔专注捧起的一只带盖古金雕花圣杯，杯柄化作精致金翼",
+        "与脚畔微光水波呼应的蓝宝石、月白与紫晶丝绸长裙",
+        "石座浮雕贝壳与水面柔光映照她澄澈温和的凝视"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Queen of Cups embodies mature emotional intelligence: listening deeply, trusting your quiet inner knowing, and offering genuine compassion while keeping the lid on your own sacred vessel.",
+          "zh": "圣杯王后象征成熟深邃的情绪智慧：沉静倾听、信赖心底清澈的直觉，既能给出真挚温柔的共情，也懂得护住自己内心的神圣容器。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Trust what your intuition has already sensed—meet this situation with calm empathy rather than sharp force.",
+            "zh": "相信直觉早已感知到的真相——此刻用沉静温柔的共情去承接，远比强硬对抗更有效。"
+          },
+          "foundation": {
+            "en": "Deep care, emotional sensitivity, or someone's quiet devotion created the safe ground beneath this situation.",
+            "zh": "深沉的体贴、细腻的感知力或某人安静持久的守护，为眼下局面铺好了温柔底色。"
+          },
+          "present": {
+            "en": "Your intuitive clarity and emotional warmth are strong right now; people naturally feel safe opening up around you.",
+            "zh": "你此刻的直觉清明度与情绪温度都很饱满；身边人很容易在你面前卸下防备、坦露心声。"
+          },
+          "resource": {
+            "en": "Your strongest asset is attuned listening—reading the unspoken room lets you respond with rare grace and timing.",
+            "zh": "你最难得的优势是敏锐的共情倾听——读懂言外之意，让你总能拿捏出恰到好处的回应。"
+          },
+          "challenge": {
+            "en": "Even upright, Queen of Cups in a challenge slot asks whether absorbing everyone else's feelings is leaving too little quiet for your own.",
+            "zh": "落在阻碍位时，正位圣杯王后提醒你留意：是否因为替太多人承接情绪，而挤压了自己安静独处的空间？"
+          },
+          "action": {
+            "en": "Listen without rushing to fix, trust your first quiet gut impression, and lead with steady kindness.",
+            "zh": "先安静倾听而不急着替人解决，相信心底第一时间的澄澈直觉，用沉稳善意化解僵局。"
+          },
+          "outcome": {
+            "en": "Emotional healing, deeper trust, and serene inner alignment settle in like calm water after a breeze.",
+            "zh": "情绪上的疗愈、更深层的信任与沉静的内在笃定，将如微风过后的水面般温柔落定。"
+          },
+          "advice": {
+            "en": "Keep your feet on dry stone even while sitting by the tide—compassion works best with clean boundaries.",
+            "zh": "即便坐在海浪边，双脚也要稳稳踩在干爽石阶上——带着清晰边界的慈悲，才能走得最远。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Intuitive clarity, deep compassion, and calm emotional presence guide you best. Trust your quiet inner knowing and respond with warmth rather than defensiveness.",
+            "zh": "清澈的直觉、深沉的慈悲与沉稳的情绪临在感此刻最能指引你。信赖心底安静的笃定，用温和而非防备去回应眼前的局面。"
+          },
+          "love": {
+            "en": "In love, Queen of Cups brings tender devotion, emotional safety, and effortless attunement. Listening with an open, non-judgmental heart deepens intimacy naturally.",
+            "zh": "在感情中，圣杯王后带来温柔深情、踏实的安全感与心照不宣的默契。不带评判地敞开倾听，亲密感会自然流向更深处。"
+          },
+          "career": {
+            "en": "At work, emotional intelligence, mentoring, counseling, and creative intuition shine. Read the human dynamics in the room and guide people with calm steadiness.",
+            "zh": "在工作上，高情商、辅导支持、团队凝聚与创意直觉正大放异彩。读懂场内的人心流动，用沉静笃定的方式带动协作。"
+          },
+          "health": {
+            "en": "For wellbeing, honor your sensitivity—hydration, soothing water rituals, quiet rest, and protecting your nervous system from harsh noise keep you balanced.",
+            "zh": "在身心养护上，尊重自己细腻的感受力——温和补水、舒缓放松、充足睡眠以及远离尖锐噪音，最能维持内在平衡。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Queen of Cups is still water reflecting the moon: quiet contemplation reveals far more than forcing answers.",
+            "zh": "在灵性层面，圣杯王后如映月静水：安住于沉静观照之中，答案会比用力追寻更清晰地自然浮现。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Queen of Cups reversed signals emotional overwhelm or porous boundaries: soaking up other people's storms until you feel drained, moody, or tempted to martyr yourself.",
+          "zh": "圣杯王后逆位提示情绪过载或边界过软：把旁人的风雨全揽进自己怀里，直到疲惫委屈、心绪翻涌，甚至陷入自我牺牲的消耗。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Shutting down your intuition or numbing out because feeling everything felt too heavy.",
+            "zh": "因为感受太沉重而索性关掉直觉与感受力，用麻木来硬撑。"
+          },
+          "excess": {
+            "en": "Over-empathizing, people-pleasing, or rescuing others at the expense of your own peace.",
+            "zh": "过度共情、习惯性讨好或替别人兜底，耗干了自己的安宁。"
+          },
+          "internalized": {
+            "en": "Quietly carrying unspoken hurt while continuing to play the caretaker for everyone else.",
+            "zh": "自己心里已经满是委屈，表面却仍在继续扮演照顾所有人的角色。"
+          },
+          "release": {
+            "en": "Closing the lid on your chalice—reclaiming healthy emotional boundaries and self-care.",
+            "zh": "重新盖好圣杯的盖子——收回清晰的情绪边界，把温柔先还给自己。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Porous boundaries are letting someone else's anxiety flood your own calm center.",
+            "zh": "过于柔软的边界，正让别人的焦虑顺着情绪通道淹没你原本平静的内心。"
+          },
+          "action": {
+            "en": "Step back from caretaker mode today—say a gentle no, unplug from emotional noise, and tend your own heart first.",
+            "zh": "今天就从“照顾所有人”的模式里退一步——温和说一次不、隔绝情绪噪音，先把自己的心照顾好。"
+          },
+          "outcome": {
+            "en": "Restoring clear emotional boundaries brings rapid relief, letting your natural intuition clear like settling water.",
+            "zh": "重新立住清晰的情绪边界会立刻带来松弛，原本浑浊的心绪也将如沉淀的水面般恢复清澈。"
+          },
+          "advice": {
+            "en": "Empathy without boundaries is just exhaustion; you can care deeply without carrying what is not yours.",
+            "zh": "没有边界的共情只会变成内耗；你可以真心在乎一个人，但无需替对方扛起本属于他的课题。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Emotional fatigue or blurred boundaries need gentle repair. Step back from absorbing other people's moods and give your own sensitivity quiet shelter.",
+            "zh": "圣杯王后逆位提醒你及时修补情绪透支与模糊边界。别再替旁人消化情绪风暴，给细腻敏感的自己留出一处安静避风港。"
+          },
+          "love": {
+            "en": "In love, reversed Queen of Cups flags codependency, silent martyrdom, or expecting a partner to intuit your hurt. Speak your needs plainly instead of suffering quietly.",
+            "zh": "在感情中，圣杯王后逆位提示过度依附、默默委屈或指望对方猜中你的心事。把需求温和而直白地说出来，别再独自暗自伤神。"
+          },
+          "career": {
+            "en": "At work, taking on teammates' stress or avoiding firm limits leads straight to burnout. Separate kind professionalism from emotional over-responsibility.",
+            "zh": "在职场上，替同事扛情绪或不好意思拒绝额外负担会迅速引发耗竭。分清温和专业与过度兜底，守住清晰职责边界。"
+          },
+          "health": {
+            "en": "Emotional overload is likely draining your sleep and nervous system; prioritize solitude, gentle rest, and decompressing away from demands.",
+            "zh": "情绪过载正直接消耗你的睡眠与神经能量；把独处、温和休养和远离外界索取当作当下最优先的调理。"
+          },
+          "spirituality": {
+            "en": "Ground your sensitivity before trying to read the room—quiet self-compassion restores the clarity that overwhelm muddied.",
+            "zh": "在灵性层面，在急着感知外界情绪之前请先稳住自己的重心——对自己的温柔接纳，能迅速洗清过载带来的迷雾。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalice, moonlit ivory",
+      "scene": "Seated gracefully in serene three-quarter profile upon an ornate carved pale-stone throne set right at the edge of calm moonlit sapphire waves, ONE luminous Belle Epoque Queen wears a flowing cerulean, pearl-ivory, and amethyst silk gown that ripples like water around her feet. Cradled attentively in both hands before her chest is EXACTLY ONE intricate, lidded antique-gold chalice with delicate sculpted golden angel-wing handles. Subtle Art Nouveau seashells and water spirits are carved into the pale limestone throne, while shimmering silver-blue water reflections and soft moonlight illuminate her compassionate face, gentle hands, and the single lidded golden chalice against a velvety starry midnight-indigo sea and sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate lidded golden chalice held in both hands",
+          "count": 1
+        },
+        {
+          "object": "seated Queen in serene profile",
+          "count": 1
+        },
+        {
+          "object": "carved sea-edge stone throne",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Graceful seated profile silhouette beside calm moonlit waves, her gentle gaze focused directly on ONE brightly lit lidded golden chalice held in both hands—reads unmistakably at 64x96 thumbnail size.",
+      "avoid": [
+        "two or more cups",
+        "sword",
+        "wand",
+        "pentacle",
+        "stormy violent sea",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "king_of_cups": {
+    "id": "king_of_cups",
+    "archetypeEssence": {
+      "en": "Sovereign emotional steadiness—commanding calm counsel and compassion even atop turbulent waters.",
+      "zh": "沉稳笃定的情感定力——纵使身处起伏浪潮之上，依然从容宽厚、进退有度。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Composed King seated on a heavy stone throne resting steadily amid rolling sea waves",
+        "Single golden chalice held calmly in his right hand and short golden scepter in his left",
+        "Fish amulet pendant resting on his chest symbolizing mastery over intuitive depths",
+        "Leaping fish and distant sailing ship on the choppy horizon showing poise amid motion"
+      ],
+      "zh": [
+        "端坐于翻涌海浪之上雕花石座、神态沉稳的国王",
+        "右手从容持握的一只金色圣杯，左手轻握短金杖",
+        "垂于胸前的鱼形吊坠，象征对潜意识深海的驾驭",
+        "海面跃起的鱼影与远方航船，映照风浪中的定力"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Dignified, composed Belle Epoque King seated squarely on a carved stone throne resting steadily atop rolling moonlit sapphire waves",
+        "Exactly one gleaming ornate antique-gold chalice held calmly in his right hand, paired with a slender short golden scepter in his left hand",
+        "Rich cerulean-sapphire velvet robes lined with warm antique gold and a small gilded fish pendant gleaming at his chest",
+        "One leaping silver fish and a small distant ship cresting luminous pearl-tipped waves under a deep starry midnight sky"
+      ],
+      "zh": [
+        "端坐于翻涌月色蓝海石座之上、气度沉稳的美好年代国王",
+        "右手稳稳持握的一只古金雕花圣杯，左手轻执纤细短金杖",
+        "滚有暖金镶边的深蓝宝石丝绒长袍，胸前垂挂一枚微光金鱼坠饰",
+        "远方珍珠浪花间跃起的银鱼与航船，在星夜蓝天下勾勒出大将风度"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "King of Cups represents emotional mastery under pressure: feeling deeply without being swept away, offering wise diplomatic counsel, and holding steady warmth when everyone else is rattled.",
+          "zh": "圣杯国王代表风浪之下的情绪定力：内心依然丰沛敏感，却不被浪头掀翻；能在众人慌乱时给出温和有分寸的判断与支撑。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Lead with calm emotional steadiness—diplomacy, patience, and composed empathy will carry the room.",
+            "zh": "用沉稳的情绪定力主导局面——外交风度、耐心与克制而真诚的共情，自然能稳住全场。"
+          },
+          "foundation": {
+            "en": "Mature judgment, hard-earned self-control, or a wise mentor's steady counsel grounded this situation.",
+            "zh": "成熟的阅历、练就的自控力，或一位通透长辈的稳妥指引，为眼下局面打下了定盘星。"
+          },
+          "present": {
+            "en": "Even if circumstances feel choppy, you have the composure to steer calmly without reacting from impulse.",
+            "zh": "即便外在局势略有起伏，你此刻具备足够定力稳舵前行，不会被一时冲动牵着走。"
+          },
+          "resource": {
+            "en": "Your strongest asset is balanced authority—combining genuine kindness with cool-headed perspective inspires deep trust.",
+            "zh": "你最有分量的优势是刚柔并济的威信——把真挚善意与冷静大局观合二为一，极易赢得信赖。"
+          },
+          "challenge": {
+            "en": "Even upright, King of Cups in a challenge slot asks whether staying perpetually composed is making it hard for others to see what you personally need.",
+            "zh": "落在阻碍位时，正位圣杯国王提醒你留意：总在扮演沉稳支柱，是否让旁人看不见你其实也需要被照顾？"
+          },
+          "action": {
+            "en": "Step into the steady mediator role—hear both sides calmly, keep your tone measured, and make a fair, humane call.",
+            "zh": "站出来担任沉稳的调和者——平静听取各方声音、保持克制语调，做出既公平又有人情味的决定。"
+          },
+          "outcome": {
+            "en": "Turbulence settles under wise stewardship, yielding lasting respect, emotional balance, and trustworthy resolution.",
+            "zh": "在稳妥掌舵下风波渐平，最终收获长久尊重、情绪平衡与令人信服的解决。"
+          },
+          "advice": {
+            "en": "Master the wave by staying centered rather than freezing the sea—true strength stays warm.",
+            "zh": "驾驭风浪靠的是稳住重心，而不是把大海冻成冰块——真正的力量始终保有温度。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Emotional balance, wise counsel, and diplomatic poise anchor this moment. Stay calm amid moving parts and let mature compassion guide your decisions.",
+            "zh": "情绪平衡、通透建言与从容外交风度正稳住这一刻。在变化起伏中守住内在定盘星，让成熟的慈悲与清醒共同指引决策。"
+          },
+          "love": {
+            "en": "In love, King of Cups offers loyal, protective tenderness and mature communication—holding space for a partner's feelings without losing his own grounded center.",
+            "zh": "在感情中，圣杯国王带来忠诚笃定的温柔与成熟沟通——既能稳稳接住伴侣的情绪起伏，也不会丢掉自己的沉着底色。"
+          },
+          "career": {
+            "en": "At work, this is diplomatic leadership, trusted advisory roles, and calm crisis management. People look to you for steady judgment when stakes run high.",
+            "zh": "在工作与事业上，这张牌代表温和而有威信的领导力、值得托付的顾问角色与沉着应对危机的定力。越是关键时刻，旁人越信赖你的判断。"
+          },
+          "health": {
+            "en": "For wellbeing, steady emotional regulation protects physical resilience; calm pacing, measured stress habits, and wise professional counsel keep you centered.",
+            "zh": "在身心状态上，稳定的情绪调节直接护住体能底盘；张弛有度的节奏、平和减压方式与专业建议，让你始终保持从容。"
+          },
+          "spirituality": {
+            "en": "Spiritually, King of Cups unites heart and mind: deep compassion paired with quiet equanimity in the middle of an unpredictable world.",
+            "zh": "在灵性层面，圣杯国王实现了心与智的平衡：在变幻莫测的世事之中，依然怀抱深沉慈悲与不动声色的平和。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "King of Cups reversed warns of emotional control slipping sideways: either bottling up feelings behind an icy mask, or using charm and guilt subtly to steer others.",
+          "zh": "圣杯国王逆位警示情绪掌控出现偏差：要么用冷漠克制的面具死死压抑真实感受，要么暗中借情绪、愧疚感或人情去左右他人。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Repressing vulnerability behind stoic composure until pressure leaks out as coldness or moodiness.",
+            "zh": "拿滴水不漏的镇定死死压住脆弱，直到压力以冷淡或暗涌的脾气漏出来。"
+          },
+          "excess": {
+            "en": "Subtle emotional manipulation, passive-aggression, or letting unchecked moods undermine authority.",
+            "zh": "隐蔽的情绪操控、冷处理施压，或任由失控心绪削弱自身威信。"
+          },
+          "internalized": {
+            "en": "Privately feeling overwhelmed by responsibility while refusing to admit you are rattled.",
+            "zh": "内心其实已被重担压得翻涌不止，却死要面子不肯承认自己动摇了。"
+          },
+          "release": {
+            "en": "Dropping emotional games and stoic armor in favor of plain, accountable honesty.",
+            "zh": "放下情绪博弈与僵硬外壳，回到坦荡、负责任的直白沟通。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Bottled-up feelings or subtle emotional power plays are clouding trust beneath a polite surface.",
+            "zh": "憋在心底的压抑情绪或不动声色的情感博弈，正在礼貌表象下悄悄侵蚀信任。"
+          },
+          "action": {
+            "en": "Drop the poker face or subtle pressure—state your real concern plainly and let others make a free, honest choice.",
+            "zh": "卸下故作镇定的面具或隐性施压——把真实顾虑坦荡说清，让对方自由而诚实地回应。"
+          },
+          "outcome": {
+            "en": "Naming repressed tension clears the undercurrent, restoring genuine emotional integrity and calmer footing.",
+            "zh": "把压抑的暗流说开后，水下的紧绷随之消散，真诚的担当与更稳的立足点将重新归位。"
+          },
+          "advice": {
+            "en": "Repression is not mastery—honest self-regulation lets feelings move through without steering from the shadows.",
+            "zh": "压抑从来不是情绪掌控——真正的定力是允许感受诚实流过，而非躲在暗处暗中较劲。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check for emotional repression, passive-aggressive undertones, or feeling secretly tossed by waves you pretend not to notice. Honest transparency restores real steadiness.",
+            "zh": "圣杯国王逆位提醒你排查情绪压抑、暗自冷处理，或表面镇定内心却早已被风浪掀翻的状态。坦诚透明，才是找回真正定力的起点。"
+          },
+          "love": {
+            "en": "In love, reversed King of Cups flags emotional withdrawal, subtle guilt-tripping, or keeping a partner at arm's length to stay in control. Trade guardedness for honest warmth.",
+            "zh": "在感情中，圣杯国王逆位常对应冷漠抽离、隐蔽的情绪施压，或为了握住主导权而刻意保持距离。放下防备，用坦诚暖意修复信任。"
+          },
+          "career": {
+            "en": "At work, watch for office politics played through charm, moody leadership, or swallowing frustration until it snaps. Keep communication transparent and fair.",
+            "zh": "在职场上，警惕借人情圆滑搞暗箱博弈、情绪化的管理风格，或长期憋着不满直到爆发。保持透明、公正且直接的沟通。"
+          },
+          "health": {
+            "en": "Swallowing stress behind a calm facade takes a quiet physical toll; find a safe, honest outlet to release pressure before tension hardens.",
+            "zh": "把所有压力吞进肚子里硬装镇定，正悄悄在身体上留下消耗；找一个安全坦诚的出口及时释放，别等紧绷积劳成疾。"
+          },
+          "spirituality": {
+            "en": "True equanimity never requires pretending you feel nothing; meet your own shadow with the same compassion you offer others.",
+            "zh": "真正的平和从不需要假装无动于衷；用你对待旁人时的那份宽厚与理解，去诚实面对自己内心的暗涌。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "luminous cerulean-sapphire, moonstone amethyst, shimmering pearl water highlights, gleaming gilded chalice, moonlit ivory",
+      "scene": "Seated with sovereign composure upon a massive carved stone throne resting steadily atop rolling, luminous moonlit sapphire ocean waves, ONE dignified Belle Epoque King wears rich cerulean-sapphire velvet robes lined with molten antique gold, an ornate gilded crown, and a small gleaming golden fish amulet pendant on his chest. Held calmly and clearly in his right hand is EXACTLY ONE ornate antique-gold chalice, while his left hand rests steadily on a slender short golden scepter. In the rolling pearl-crested midnight waves behind the throne, ONE silver fish leaps gracefully on the right while a small distant sailing ship rides the moonlit swell on the left. Clear moonlight and warm golden highlights illuminate the King's serene, wise face, his robes, and the single golden chalice against a deep starry midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "ornate golden chalice held in right hand",
+          "count": 1
+        },
+        {
+          "object": "composed seated King on wave-borne stone throne",
+          "count": 1
+        },
+        {
+          "object": "short golden scepter in left hand",
+          "count": 1
+        },
+        {
+          "object": "leaping silver fish in rolling waves",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Monumental centered enthroned silhouette rising steadily out of rolling luminous sapphire waves, with ONE bright golden chalice clearly separated in his right hand—reads unmistakably at 64x96 thumbnail size.",
+      "avoid": [
+        "two or more cups",
+        "sword",
+        "wand",
+        "pentacle",
+        "calm dry land only",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  }
+}

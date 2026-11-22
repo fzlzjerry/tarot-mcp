@@ -1,0 +1,2690 @@
+{
+  "ace_of_pentacles": {
+    "id": "ace_of_pentacles",
+    "archetypeEssence": {
+      "en": "A tangible seed of prosperity placed directly into your open hands—real ground waiting to be cultivated.",
+      "zh": "一枚落入掌心的现实丰盛种子——触手可及的沃土正等待你亲手耕耘。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Luminous hand emerging from a cloud offering a single embossed golden pentacle",
+        "Walled lush garden blooming with white lilies and verdant foliage below",
+        "Winding stone path leading through a floral archway toward distant mountain peaks",
+        "Clear bright sky signaling material blessing and grounded potential"
+      ],
+      "zh": [
+        "自云端伸出、托举一枚浮雕古金星币的明亮之手",
+        "下方盛开白百合与繁茂绿意的围墙花园",
+        "穿过鲜花拱门、通往远山峰峦的蜿蜒石径",
+        "澄明晴朗的天光，象征落地可期的现实福泽"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Radiant Belle Epoque hand emerging from moonlit ivory-gold clouds holding exactly one large embossed antique-gold pentacle coin",
+        "Lush nocturnal-and-dawn terraced garden overflowing with luminous white lilies and emerald-verdigris foliage",
+        "Graceful rose-and-ivy stone archway framing a winding golden-lit path toward misty indigo mountain peaks",
+        "Sunlit ivory rim-light and molten gold specular gleam illuminating the single pentacle against deep midnight-indigo sky"
+      ],
+      "zh": [
+        "自月白金云中探出、稳稳托举一枚硕大浮雕古金星币的优雅之手",
+        "下方盛放月白百合与祖母绿繁叶的晨曦花园",
+        "爬满藤蔓与玫瑰的石拱门，框出通往靛蓝远山的暖金小径",
+        "晨光象牙白与熔金高光在深邃午夜蓝天幕下点亮这枚唯一星币"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ace of Pentacles marks a concrete, grounded opening: a real offer, resource, skill, or healthy habit you can actually build on. It is not a finished fortune yet, but a fertile seed that rewards steady care.",
+          "zh": "星币王牌标志一个扎实可落地的开端：一份真实的机会、资源、技能或健康习惯正递到你面前。它还不是现成的丰收，却是一颗只要持续照料就能长出硕果的良种。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Take the practical offer seriously—plant it in real soil with a concrete budget, schedule, or first deliverable.",
+            "zh": "认真接住眼前这份务实的契机——用明确预算、日程或首个交付物把它真正种进土里。"
+          },
+          "foundation": {
+            "en": "A tangible grant, job offer, material windfall, or grounded commitment laid the fertile starting ground here.",
+            "zh": "一份切实的资助、工作机会、物质积累或踏实承诺，为眼下铺好了肥沃的起点。"
+          },
+          "present": {
+            "en": "A real-world doorway is open right now; focus on what is measurable and sustainable rather than abstract speculation.",
+            "zh": "一扇通往现实成果的门正敞开着；把注意力放在可衡量、可持续的实事上，而非空想。"
+          },
+          "resource": {
+            "en": "You have genuine material leverage—funding, health, a marketable craft, or a reliable ally—ready to be put to work.",
+            "zh": "你手里握着实打实的现实资本——资金、体力、硬技能或可靠支持——正待投入运作。"
+          },
+          "challenge": {
+            "en": "Even upright, Ace of Pentacles in a challenge slot warns against treating a promising seed as if it were already harvested; neglect or impatience can waste good ground.",
+            "zh": "即便正位，落在阻碍位的星币王牌也在提醒：别把刚发芽的良种当成已经到手的收成，疏忽或急躁都会浪费好地基。"
+          },
+          "action": {
+            "en": "Say yes to one concrete opportunity, set up the basic infrastructure, and make the first physical deposit of time or money.",
+            "zh": "接下那个最实在的机会，搭好基础架构，投入第一笔实实在在的时间或资金。"
+          },
+          "outcome": {
+            "en": "A durable, rewarding chapter takes root—tangible stability, income, or physical wellbeing that grows stronger over time.",
+            "zh": "一段稳健丰厚的新周期将扎下根来——看得见的安稳、收入或身心底气会随时间越养越厚。"
+          },
+          "advice": {
+            "en": "Honor the small beginnings: tend the garden path step by step instead of waiting for overnight riches.",
+            "zh": "敬重微小的起点：顺着花园石径一步步打理，别指望一夜暴富。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A fertile, practical beginning is in your hands. Ground your vision in concrete steps so promising potential becomes lasting reality.",
+            "zh": "一个肥沃务实的开端正落在你掌心。把构想落到具体步骤上，好苗头才能长成经得起考验的现实成果。"
+          },
+          "love": {
+            "en": "In love, Ace of Pentacles favors steady, dependable affection—a relationship with real-world footing, shared home-building, or showing care through consistent presence rather than empty grand gestures.",
+            "zh": "在感情中，星币王牌青睐踏实可靠的亲密——有现实根基的关系、共同筑巢的意愿，或用日常兑现而非空口承诺去表达爱意。"
+          },
+          "career": {
+            "en": "At work, this signals a strong new role, client, grant, or business seed with real upside. Negotiate clear terms and invest early in quality foundations.",
+            "zh": "在工作与财务上，它预示一份极具潜力的岗位、客户、资金或事业良种。谈清条款，尽早把基础打牢。"
+          },
+          "health": {
+            "en": "For wellbeing, a fresh physical routine—better sleep, nourishing food, or a realistic training plan—will take root quickly if you start gently and stay consistent.",
+            "zh": "在身心状态上，一套全新的养护节奏（规律睡眠、踏实饮食或循序渐进的锻炼）只要温和起步并坚持，很快就能见效。"
+          },
+          "spirituality": {
+            "en": "Spiritually, the sacred lives inside ordinary matter: treating your body, home, and daily craft with reverence is the practice itself.",
+            "zh": "在灵性层面，神圣就在日常烟火与物质之中：怀着敬意照料身体、居所与手头工作，本身就是最好的修行。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ace of Pentacles reversed points to a missed window, shaky financial footing, or a good idea lacking practical planning before launch.",
+          "zh": "星币王牌逆位指向错失窗口、现实基础不牢，或好点子在落地前缺少扎实规划。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Hesitation or disorganized preparation is delaying a tangible opportunity from landing.",
+            "zh": "犹豫拖延或准备零散，让原本可落地的机会迟迟未能兑现。"
+          },
+          "excess": {
+            "en": "Chasing quick money or overextending resources before the foundation can support it.",
+            "zh": "急于求成或过度透支资源，地基尚未稳固就贸然加码。"
+          },
+          "internalized": {
+            "en": "Doubting you deserve stability or quietly fearing that good fortune will slip away.",
+            "zh": "暗自怀疑自己配不上安稳丰盛，或隐隐担心好机会终会落空。"
+          },
+          "release": {
+            "en": "Passing on a flashy but hollow deal to wait for an offer with real substance.",
+            "zh": "主动放弃华而不实的诱饵，把筹码留给真正有含金量的机会。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Rushed execution or poor resource planning is undermining an otherwise solid prospect.",
+            "zh": "仓促上马或资源盘点不清，正在削弱一个原本不错的机会。"
+          },
+          "action": {
+            "en": "Audit the numbers, tighten your budget, and fix the missing operational link before committing money or signing.",
+            "zh": "先核清账目、收紧预算，补齐缺失的执行环节，再掏钱或签字。"
+          },
+          "outcome": {
+            "en": "Progress slows until the practical groundwork is repaired; a short pause now saves costly rework later.",
+            "zh": "在现实基础补牢前，进展会放缓；此刻主动停下来补课，能省去日后高昂返工。"
+          },
+          "advice": {
+            "en": "Do not confuse a delayed harvest with a barren field—recheck the soil and terms before planting.",
+            "zh": "别把延迟落地当成全盘无望——落种前先重新核查土壤与条款。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Slow down and check the practical math. Either an offer needs sharper vetting, or your own groundwork needs shoring up before you commit.",
+            "zh": "星币王牌逆位提醒你放慢半拍核对现实账本：要么眼前的机会需要更严格的尽调，要么你自己的基础准备还需要先加固。"
+          },
+          "love": {
+            "en": "In love, reversed Ace of Pentacles highlights mismatched practical timelines, financial stress, or reluctance to invest real consistency.",
+            "zh": "在感情中，它提示双方现实节奏错位、外部物质压力偏重，或某一方迟迟停留在口头承诺而不愿给出稳定持续的投入。"
+          },
+          "career": {
+            "en": "At work, watch for underfunded plans, vague compensation, or a missed opportunity due to slow follow-up. Verify ROI and terms in writing.",
+            "zh": "在工作与财务上，警惕预算不足的方案、含糊的回报承诺或因跟进太慢错失良机。把收益与条款落到纸面再决定。"
+          },
+          "health": {
+            "en": "Skipping basic physical maintenance—hydration, rest, checkups—erodes resilience; return to one simple daily anchor.",
+            "zh": "忽略最基础的身体维护（饮水、睡眠、体检）会悄悄透支底气；先恢复一个最简单的日常锚点。"
+          },
+          "spirituality": {
+            "en": "Notice where floating in pure theory disconnects you from embodied life; ground your insights in one small physical act.",
+            "zh": "觉察自己是否停留在抽象空泛的灵性理念里却脱离了真实生活；用一件具体踏实的日常小事把内在洞见真正落回地面。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "A luminous Belle Epoque hand emerges gracefully from a radiant swirl of sunlit ivory and warm parchment-ochre clouds in the upper-center sky, holding upright EXACTLY ONE large, gleaming, intricately embossed antique-gold pentacle coin with a crisp five-pointed star. Below the hovering hand stretches a lush, walled Art Nouveau garden bursting with glowing white lilies, verdant emerald-verdigris foliage, and manicured hedges. A winding warm-lit stone path leads through a graceful blooming rose-and-ivy stone archway toward distant misty midnight-indigo mountain peaks touched with golden dawn light. High-key golden-ivory illumination makes the single embossed pentacle coin, the open hand, and the floral archway gleam vividly against velvety deep twilight-indigo upper sky.",
+      "requiredObjects": [
+        {
+          "object": "hand emerging from cloud",
+          "count": 1
+        },
+        {
+          "object": "large embossed golden pentacle coin",
+          "count": 1
+        },
+        {
+          "object": "blooming garden archway",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Bold centered vertical axis: ONE bright embossed gold pentacle coin held by a luminous ivory hand in the upper-center focal zone above a glowing floral archway, reading unmistakably at 64x96 thumbnail size.",
+      "avoid": [
+        "second coin",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "two_of_pentacles": {
+    "id": "two_of_pentacles",
+    "archetypeEssence": {
+      "en": "Agile balance in motion—juggling shifting priorities with rhythm, humor, and light feet.",
+      "zh": "动态中的灵巧平衡——带着节奏感与轻盈步法，在起伏之间稳稳腾挪。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Playful juggler balancing two golden pentacles in opposite hands",
+        "Glowing infinity ribbon looping continuously around both coins",
+        "Tall rolling ocean waves rising and falling behind the figure",
+        "Two sailing ships riding the crest and trough of the shifting sea"
+      ],
+      "zh": [
+        "双手一高一低灵巧抛接两枚古金星币的杂耍者",
+        "连续缠绕两枚星币的无限循环丝带",
+        "身后翻涌起伏的高大浪涛",
+        "在浪峰与浪谷间稳健航行的两艘帆船"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Lithe Belle Epoque acrobat in emerald-and-ochre tunic dancing lightly on a moonlit coastal quay",
+        "Exactly two gleaming embossed antique-gold pentacle coins balanced in left and right hands",
+        "Luminous golden infinity ribbon weaving in a continuous figure-eight around both pentacles",
+        "Two distant sailing vessels riding dramatic midnight-indigo and sunlit-ivory ocean swells behind the dancer"
+      ],
+      "zh": [
+        "身着祖母绿与赭金舞衣、在月色海岸石堤轻盈起舞的美好年代杂耍者",
+        "左右手清晰托举抛接的恰好两枚浮雕古金星币",
+        "以清晰“8”字无限轨迹环绕两枚星币的流光金带",
+        "后方在午夜蓝与象牙白浪涛中起伏前行的两艘帆船"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Two of Pentacles is skilled adaptability: keeping two competing demands alive through rhythm, prioritization, and good-humored flexibility while the tide keeps moving.",
+          "zh": "星币二代表游刃有余的动态调适：在浪潮持续起伏的环境里，靠节奏感、主次切换与好心态同时稳住两头事务。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Treat balance as a live dance rather than a frozen spreadsheet—adjust your cadence as conditions shift.",
+            "zh": "把平衡当成动态起舞而不是僵死表格——随环境起伏灵活调整自己的节奏。"
+          },
+          "foundation": {
+            "en": "Managing overlapping roles, budgets, or timelines trained you to stay nimble under changing currents.",
+            "zh": "过去同时兼顾多重角色、预算或时间线的经历，练就了你临机应变的身手。"
+          },
+          "present": {
+            "en": "You are actively juggling two real commitments; you can keep both aloft if you protect your rhythm and avoid adding a third.",
+            "zh": "你眼下正同时托着两件要事；只要守住节奏、不再随意加塞第三件，就能稳稳接住。"
+          },
+          "resource": {
+            "en": "Your greatest asset right now is agility—the ability to reallocate time, cash, or attention smoothly without panicking.",
+            "zh": "你此刻最大的优势是灵活度——能在不慌乱的前提下顺畅调配时间、资金与注意力。"
+          },
+          "challenge": {
+            "en": "Even upright, Two of Pentacles in a challenge slot flags decision fatigue from keeping every option in the air instead of committing.",
+            "zh": "落在阻碍位时，正位星币二提示你：把所有选项一直抛在半空迟迟不落定，正在悄悄制造决策疲惫。"
+          },
+          "action": {
+            "en": "Time-block your two main priorities clearly, review cashflow weekly, and keep your schedule light enough to absorb one surprise.",
+            "zh": "为两项核心事务划出清晰时间块，每周复盘一次现金流或进度，给日程留出承接意外的缓冲。"
+          },
+          "outcome": {
+            "en": "You ride out the choppy stretch cleanly, landing both commitments intact with sharper timing and resilience.",
+            "zh": "你会稳稳度过这段起伏期，把两头事务都妥帖落地，同时练出更精准的节奏感。"
+          },
+          "advice": {
+            "en": "Stay light on your feet and keep your eyes on the rhythm, not just the waves behind you.",
+            "zh": "脚步放轻，眼睛盯住手里的节奏，别被身后起伏的浪花吓乱了阵脚。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Adaptability and steady cadence carry you through shifting circumstances. Keep the two essentials moving smoothly and don't overcomplicate the routine.",
+            "zh": "灵活应变与稳定节奏会带你穿过变动期。把最关键的两件事顺畅衔接起来，别把流程搞得过度复杂。"
+          },
+          "love": {
+            "en": "In love, Two of Pentacles calls for balancing romance with work, family, or personal space—keeping playfulness alive while honoring real-world schedules.",
+            "zh": "在感情中，星币二提醒在亲密与工作、家庭或个人空间之间找到活络的平衡——兼顾现实日程的同时保住轻松趣味。"
+          },
+          "career": {
+            "en": "At work, you are navigating dual projects, side income, or shifting budgets. Clear weekly cadence and nimble reprioritization keep everything profitable.",
+            "zh": "在职场上，你可能正并行推进两个项目、兼顾副业或应对预算波动。清晰的周节奏与果断重排优先级能保住产出。"
+          },
+          "health": {
+            "en": "For wellbeing, alternate effort with recovery like a wave—steady moderation beats rigid all-or-nothing regimens.",
+            "zh": "在身心调理上，像浪潮一样让发力与恢复交替进行——温和有节律的平衡远胜极端苛刻的打卡。"
+          },
+          "spirituality": {
+            "en": "Spiritually, equilibrium is not stillness free of waves; it is staying centered while life rises and falls.",
+            "zh": "在灵性层面，真正的平衡并非风平浪静的一动不动，而是在现实生活的起落波动之间依然保有内在的从容定力与觉知。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Two of Pentacles reversed signals dropped balls, overcommitment, or financial/schedule whiplash—too many spinning plates for one set of hands.",
+          "zh": "星币二逆位指向失衡掉拍、过度承诺或收支与日程的剧烈摇摆——同时转动的盘子已经超出了双手的极限。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Disorganization or scattered focus keeps even simple tasks colliding.",
+            "zh": "缺乏条理或注意力分散，让原本简单的事务互相撞车。"
+          },
+          "excess": {
+            "en": "Saying yes to every request until stress and exhaustion force a drop.",
+            "zh": "对每个请求都硬着头皮答应，直到压力与透支逼得你失手。"
+          },
+          "internalized": {
+            "en": "Performing effortless poise on the outside while privately scrambling to keep up.",
+            "zh": "表面装作游刃有余，私下却焦头烂额地疲于补洞。"
+          },
+          "release": {
+            "en": "Intentionally setting one ball down so the remaining priority gets real depth.",
+            "zh": "主动放下一件次要事务，把真正的专注力还给核心要事。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Over-scheduling and reactive multitasking are draining your focus and budget.",
+            "zh": "塞满的日程与被动多线切换，正在快速掏空你的精力与预算。"
+          },
+          "action": {
+            "en": "Cut one non-essential obligation today, consolidate your calendar, and automate or defer everything that isn't urgent.",
+            "zh": "今天就砍掉一项非必要事务，收拢日程表，把不紧急的事项延期或简化。"
+          },
+          "outcome": {
+            "en": "Once you stop juggling extras, stability returns quickly and the frantic noise subsides.",
+            "zh": "只要停止强撑多余盘子，稳定感会迅速回归，手忙脚乱的杂音也会退去。"
+          },
+          "advice": {
+            "en": "Drop the performance of doing it all; pick the one ball that actually matters most this week.",
+            "zh": "别再硬演“样样兼顾”的好手；先选出这周真正不能掉的那一枚。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "You are stretched too thin. Simplify your commitments and restore basic order before the next wave hits.",
+            "zh": "星币二逆位说明你同时铺开的战线拉得太长了。在下一波现实变动到来之前，先果断做减法、砍掉低优事项并恢复秩序。"
+          },
+          "love": {
+            "en": "In love, reversed Two of Pentacles warns that hectic schedules or divided attention are leaving a partner feeling squeezed into leftover margins.",
+            "zh": "在感情中，它提醒忙碌日程或分散的精力正让伴侣觉得自己只被塞在边角时间里，需要重新留出完整陪伴。"
+          },
+          "career": {
+            "en": "At work, beware missed deadlines, messy cashflow, or spreading yourself across too many half-finished initiatives. Narrow your focus immediately.",
+            "zh": "在工作与财务上，警惕延期、现金流紊乱或在太多半成品之间反复横跳。立刻收窄战线、聚焦核心。"
+          },
+          "health": {
+            "en": "Irregular sleep, skipped meals, and constant context-switching are taxing your nervous system; re-establish one predictable daily rhythm.",
+            "zh": "作息紊乱、凑合应付饮食与频繁切换任务正在持续磨损你的神经系统；先从睡眠与三餐重建一条可预测的日常稳态节律。"
+          },
+          "spirituality": {
+            "en": "Step off the treadmill of busyness; clarity returns when you stop equating motion with progress.",
+            "zh": "从停不下来的忙碌惯性里迈下来；当你不再把“忙个不停”等同于“在前进”，清明自然回来。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "A lithe, poised Belle Epoque acrobat in a fitted emerald-verdigris and warm parchment-ochre embroidered tunic with flowing ivory sleeves balances playfully on one foot atop a moonlit stone coastal quay. With outstretched hands—right hand raised high, left hand lowered—the dancer juggles EXACTLY TWO gleaming embossed antique-gold pentacle coins, each clearly defined with a five-pointed star. A luminous, continuous molten-gold infinity ribbon loops cleanly in a graceful figure-eight around both pentacles. Behind the figure, dramatic curling ocean waves in deep midnight-indigo and shimmering ivory foam rise and fall beneath TWO small sailing ships riding the crest and trough under a luminous twilight sky.",
+      "requiredObjects": [
+        {
+          "object": "dancing acrobat",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coins",
+          "count": 2
+        },
+        {
+          "object": "glowing golden infinity ribbon",
+          "count": 1
+        },
+        {
+          "object": "sailing ships on waves",
+          "count": 2
+        }
+      ],
+      "compositionNote": "Dynamic S-curve dancer silhouette with EXACTLY TWO bright gold pentacles linked by a luminous figure-eight ribbon framing the center; unmistakable balance motif even at 64x96 thumbnail size.",
+      "avoid": [
+        "third coin",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "three_of_pentacles": {
+    "id": "three_of_pentacles",
+    "archetypeEssence": {
+      "en": "Craftsmanship honed in public through disciplined collaboration and visible mastery.",
+      "zh": "在分工协作与反复雕琢中落地成形的专业匠心。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Master mason standing on a stone bench carving a Gothic cathedral arch",
+        "Three sculpted golden pentacles inlaid cleanly into the vaulted stone arch",
+        "Architect or patron and monk examining an unrolled blueprint together",
+        "Chisel and mallet in the artisan's hands representing skilled execution"
+      ],
+      "zh": [
+        "立于长凳上专注雕琢哥特式拱门的工匠大师",
+        "规整镶嵌在石拱顶端的枚枚浮雕金币（共三枚星币）",
+        "共阅展开设计蓝图的委托人与修士",
+        "工匠手中的凿子与木槌，象征扎实技艺与落实"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Master artisan on a carved wooden bench chiseling a soaring candlelit cathedral arch",
+        "Exactly three embossed antique-gold pentacle medallions inlaid in a triangle inside the warm limestone arch",
+        "Two collaborators below—a robed scholar and a velvet-cloaked patron—consulting an illuminated parchment blueprint",
+        "Emerald-verdigris, warm parchment ochre, and glowing candlelight contrasting against deep midnight cathedral shadow"
+      ],
+      "zh": [
+        "立于木凳上雕琢高耸教堂石拱的匠师",
+        "以三角阵列规整镶嵌在暖色石拱中的三枚浮雕古金星币",
+        "拱下并肩审阅发光羊皮纸蓝图的长袍学者与赞助者",
+        "在深邃午夜穹顶阴影中跃出的暖烛光、羊皮纸赭金与祖母绿点缀"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Three of Pentacles honors real craft built with others: aligning on the blueprint, respecting distinct expertise, and letting patient skill produce work that stands on its own.",
+          "zh": "星币三赞许落地生根的协作匠心：先对齐蓝图、尊重各自专业分工，再用经得起检验的手艺把成果真正做出来。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Treat this as a craft problem, not a solo performance—review the plan with peers whose skill complements yours and refine the details.",
+            "zh": "把这件事当作需要打磨的工艺而非个人独角戏——找能力互补的伙伴一起审图、扣细节。"
+          },
+          "foundation": {
+            "en": "Early competence, structured planning, or a solid working partnership created the foundation you are building on.",
+            "zh": "前期的扎实基本功、清晰规划或靠谱的分工协作，搭起了今天能继续加建的底座。"
+          },
+          "present": {
+            "en": "Work is visibly taking shape through feedback and iteration; welcome critique from people who know the craft.",
+            "zh": "作品或计划正借由反馈与迭代迅速成形；坦然接纳懂行人的挑刺与建议。"
+          },
+          "resource": {
+            "en": "Your leverage comes from complementary skills—pairing hands-on execution with someone else's design eye or sponsorship.",
+            "zh": "你手里的杠杆是互补分工——把一线实操与他人的结构视野或资源支持结合起来。"
+          },
+          "challenge": {
+            "en": "Even upright, Three of Pentacles in a challenge position points to perfectionism slowing delivery or difficulty letting collaborators share ownership of the design.",
+            "zh": "落在阻碍位时，正位星币三提示你可能因过度打磨细节而拖慢交付，或难以放心让协作者共同主导设计。"
+          },
+          "action": {
+            "en": "Put the blueprint on the table: share a concrete draft, agree on clear standards and owners, and execute the next tangible piece.",
+            "zh": "把蓝图摊到桌面上：拿出一版具体草稿，明确验收标准与各自权责，然后扎实做完下一块。"
+          },
+          "outcome": {
+            "en": "Visible, durable progress earns respect from peers and stakeholders—recognition built on real quality rather than hype.",
+            "zh": "看得见、站得住的阶段成果将赢得同行与关键方的认可——这是靠真功夫挣来的口碑。"
+          },
+          "advice": {
+            "en": "Value feedback over flattery and build to a shared standard; lasting reputation grows stone by stone.",
+            "zh": "看重专业反馈胜过表面恭维，按共同标准把每一块石头砌牢；长久声誉正由此累积。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Skilled collaboration and measurable craft move this forward. Align expectations around a shared plan and refine the work through honest peer feedback.",
+            "zh": "扎实协作与可衡量的工艺水准是破局关键。围绕共同蓝图对齐预期，通过坦诚的专业互评不断打磨。"
+          },
+          "love": {
+            "en": "In relationships, Three of Pentacles is the quiet art of building a shared life—dividing responsibilities fairly, learning each other's rhythms, and treating partnership as something you actively construct together.",
+            "zh": "在感情中，星币三代表共同经营生活的踏实默契——合理分工、磨合节奏，把关系当作双方一起用心搭建的作品。"
+          },
+          "career": {
+            "en": "In work or study, this is a classic card of teamwork, apprenticeship, code/design review, and earning trust through reliable execution. Show your work early and co-own the standard.",
+            "zh": "在工作与学业上，这是典型的团队协作、专业评审与凭借可靠交付赢得信任的牌。尽早展示阶段成果，与伙伴共担质量标准。"
+          },
+          "health": {
+            "en": "For wellbeing, consistent fundamentals and qualified guidance—a trainer, clinician, or structured program—outperform improvised hacks.",
+            "zh": "在身心管理上，循序渐进的基础训练与专业人士指导（教练、医师或系统方案），远胜临时起意的偏方。"
+          },
+          "spirituality": {
+            "en": "Spiritually, devotion shows up in ordinary craft: bringing patience, care, and humility to what your hands shape every day.",
+            "zh": "在灵性修习上，星币三代表虔敬体现在日常打磨之中：带着耐心、专注与谦逊对待双手每日所造之物，本身就是踏实的修行。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Three of Pentacles reversed points to misaligned teamwork, cutting corners, or working in silos without a shared blueprint.",
+          "zh": "星币三逆位指向协作错位、急于求成偷工减料，或各干各的却没有对齐同一张蓝图。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Unclear roles or missing feedback loops are stalling solid skill from landing.",
+            "zh": "权责不清或缺少反馈闭环，让原本不错的能力卡在半路落不了地。"
+          },
+          "excess": {
+            "en": "Over-polishing trivial details or micromanaging every teammate's chisel.",
+            "zh": "在次要细节上过度较真，或忍不住替每个协作者握凿子。"
+          },
+          "internalized": {
+            "en": "Underestimating your own workmanship or hiding unfinished work out of fear of critique.",
+            "zh": "低估自己的专业水准，或因为怕被挑错而把半成品藏起来不让人看。"
+          },
+          "release": {
+            "en": "Stepping out of a chaotic committee to rebuild clear ownership and quality standards.",
+            "zh": "跳出混乱扯皮的多头决策，重新确立清晰的责任人与质量门槛。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Different people are building from different mental blueprints, creating rework and quiet resentment.",
+            "zh": "不同人按各自脑中的图纸施工，造成返工与隐形摩擦。"
+          },
+          "action": {
+            "en": "Stop building in parallel for one hour: write down who owns what, what 'done' looks like, and which shortcut must be fixed.",
+            "zh": "先停工一小时把话说透：写清谁负责哪块、完成标准是什么，以及哪个草率角落必须返修。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check for mismatched expectations, rushed workmanship, or trying to carry a group effort alone without agreeing on the plan.",
+            "zh": "星币三逆位提醒你排查协作中的摩擦点：是否存在预期没对齐、仓促应付品质，或在未统一蓝图的情况下独自硬扛团队事务。"
+          },
+          "love": {
+            "en": "In relationships, reversed Three of Pentacles surfaces lopsided effort or operating like roommates on separate schedules. Re-negotiate shared responsibilities openly.",
+            "zh": "在感情中，星币三逆位常对应付出失衡或各过各的节奏错位，需要把共同事务的边界与期待重新谈清。"
+          },
+          "career": {
+            "en": "At work, watch for poor handoffs, ignored reviews, or undervalued craft. Clarify scope and ownership in writing before investing more hours.",
+            "zh": "在职场上，警惕交接断层、敷衍评审或专业付出被轻视。在继续投入工时前，先把范围与权责写清。"
+          },
+          "health": {
+            "en": "Inconsistent follow-through or skipping foundational habits undercuts results; simplify the routine so you can actually sustain it.",
+            "zh": "在身心层面，计划断断续续或跳过基础环节会让调理效果大打折扣；把养生与训练方案精简到当下真正能长期坚持的程度。"
+          },
+          "spirituality": {
+            "en": "Notice where ego or comparison is turning practice into competition rather than steady service.",
+            "zh": "在灵性层面，觉察是否因为虚荣、外界掌声与横向比较，把原本沉静踏实的日常修习，扭曲成了急于证明自己的无声竞赛。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-key",
+      "suitAccent": "emerald-verdigris, warm parchment ochre, glowing amber candlelight, burnished antique gold",
+      "scene": "An architectural interior beneath a soaring candlelit Gothic-Art Nouveau stone cathedral arch. On the left, a master sculptor in a richly detailed emerald-and-ochre artisan tunic stands on a low carved wooden bench holding a small mallet and chisel, carving the warm sunlit-ivory limestone archway. Inlaid cleanly inside the upper curve of the stone arch are EXACTLY THREE large, distinct, embossed antique-gold pentacle medallions arranged in a crisp, symmetrical triangle. Standing below on the right side of the nave, TWO collaborators—a scholarly figure in a dark emerald cloak and a noble patron in amber-trimmed velvet—hold open an illuminated cream parchment architectural blueprint, pointing upward toward the arch. Warm golden candlelight illuminates the stone arch, the three golden pentacles, the parchment scroll, and the artisan's hands against deep midnight-indigo vaulted shadows.",
+      "requiredObjects": [
+        {
+          "object": "master sculptor on bench with chisel",
+          "count": 1
+        },
+        {
+          "object": "collaborators reading blueprint below",
+          "count": 2
+        },
+        {
+          "object": "embossed golden pentacles inlaid in arch",
+          "count": 3
+        }
+      ],
+      "compositionNote": "Strong vertical architectural Gothic arch framing the upper third with THREE bright gold pentacle medallions clearly visible in a triangular triad; completely distinct geometric silhouette and warm amber-emerald palette from Three of Cups even at 64x96 thumbnail.",
+      "avoid": [
+        "outdoor garden toast",
+        "cups",
+        "extra coins or stars mistaken for pentacles",
+        "text",
+        "numerals",
+        "border",
+        "frame"
+      ]
+    }
+  },
+  "four_of_pentacles": {
+    "id": "four_of_pentacles",
+    "archetypeEssence": {
+      "en": "Guarded security—holding tightly to what you have built, where prudence borders on rigidity.",
+      "zh": "紧握不放的安全感——死守已筑成的城池，审慎与僵硬只在一线之间。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Crowned figure seated rigidly on a stone bench clutching a pentacle tightly to the chest",
+        "One golden pentacle balanced squarely atop the crown",
+        "Two golden pentacles pinned firmly beneath both planted feet",
+        "Walled prosperous city rising behind the seated figure's back"
+      ],
+      "zh": [
+        "端坐于石凳之上、双臂紧抱一枚星币于胸前的戴冠者",
+        "稳稳压在头冠之巅的一枚古金星币",
+        "被双脚牢牢踩在脚底的两枚古金星币",
+        "背倚其后的繁华围城与塔楼剪影"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Regal, guarded Belle Epoque magnate seated squarely on a carved stone plinth in emerald-velvet and ochre robes",
+        "Exactly four embossed antique-gold pentacle coins locked to the body: one perched on the golden crown, one hugged tightly against the chest, and two pinned under the boots",
+        "Illuminated walled medieval-Art Nouveau city skyline glowing in warm parchment-gold behind the seated figure",
+        "Crisp chiaroscuro rim-light emphasizing the closed posture and gleaming metallic coins against deep midnight-indigo sky"
+      ],
+      "zh": [
+        "身着祖母绿天鹅绒与赭金长袍、正襟危坐于石台之上的戒备贵族",
+        "紧锁在身体四处的恰好四枚浮雕古金星币：头顶一枚、怀抱一枚、双足各踩一枚",
+        "背后在暖金灯火中矗立的围墙古城天际线",
+        "利落明暗轮廓光勾勒出紧绷姿态与四枚金属星币，映衬深邃午夜蓝夜空"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Four of Pentacles highlights preservation and control: protecting hard-won resources, saving prudently, and holding firm boundaries—while warning that gripping too tightly freezes both generosity and growth.",
+          "zh": "星币四聚焦守护与掌控：稳妥看护辛苦挣来的资源、审慎储蓄并立住边界——同时也提醒，抓得太死会同时冻住流动与成长。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Protect your core reserves wisely, then ask honestly whether you are guarding stability or clinging out of fear.",
+            "zh": "理智守好核心家底，同时诚实自问：你现在是在稳健防御，还是出于恐惧而死抓不放？"
+          },
+          "foundation": {
+            "en": "Past scarcity or hard-earned discipline taught you to prioritize security, savings, and self-protection.",
+            "zh": "过往的匮乏经历或咬牙自律，教会了你把安全感、储蓄与自我保护放在首位。"
+          },
+          "present": {
+            "en": "Your footing is solid and controlled, yet your hands are so full of holding on that nothing new can easily enter.",
+            "zh": "你的现实底盘稳固可控，但双手抱得太满，新机会与新流动也因此很难进来。"
+          },
+          "resource": {
+            "en": "Financial discipline, clear boundaries, and conservative risk management are keeping your position safe right now.",
+            "zh": "严明的财务纪律、清晰边界与稳健风控，此刻正牢牢护住你的基本盘。"
+          },
+          "challenge": {
+            "en": "Stubborn possessiveness or fear of losing control is turning healthy prudence into stagnation and isolation.",
+            "zh": "执拗的占有欲或害怕失控的焦虑，正把原本健康的谨慎变成停滞与封闭。"
+          },
+          "action": {
+            "en": "Ring-fence a clear safety reserve, then intentionally loosen your grip on one controlled area—delegate, invest, or share.",
+            "zh": "先划出明确的安全底仓，随后有意识地在一件可控的事上松手——去授权、投入或分享。"
+          },
+          "outcome": {
+            "en": "Material stability holds firm; how alive it feels depends on whether you let resources circulate instead of locking them away.",
+            "zh": "物质底盘依然稳健；但日子是否鲜活，取决于你愿不愿意让资源流动起来，而不是彻底锁进保险箱。"
+          },
+          "advice": {
+            "en": "Keep your foundation secure without turning your fortress into a cage.",
+            "zh": "守住地基的安稳，但别把自己的堡垒修成密不透风的牢笼。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Stability and conservation are strong here, but watch where fear of loss makes you overly rigid. True security breathes.",
+            "zh": "稳健与守成是主调，但留意对失去的恐惧是否让你变得过于僵硬。真正踏实的安全感是可以呼吸与流动的。"
+          },
+          "love": {
+            "en": "In love, Four of Pentacles flags guardedness, jealousy, or keeping emotional distance to stay safe. Trust grows when you risk a little openness.",
+            "zh": "在感情中，星币四提示防备心重、占有欲或为了不受伤而刻意保持距离。信任需要在适度敞开中生长。"
+          },
+          "career": {
+            "en": "At work, this favors conservative budgeting, protecting IP, and holding your ground—yet warns against hoarding tasks or resisting necessary updates.",
+            "zh": "在工作与财务上，它支持稳健预算、守护核心成果与站稳立场——但也提醒别死攥所有事务不放权，或抗拒必要升级。"
+          },
+          "health": {
+            "en": "Holding tension in your jaw, shoulders, or habits mirrors emotional gripping; gentle stretching and letting go of rigid control help you unwind.",
+            "zh": "紧绷的肩颈、咬紧的牙关或刻板习惯，往往映照着内心的紧抓；温和舒展与松开过度控制更能帮你卸压。"
+          },
+          "spirituality": {
+            "en": "Notice where attachment to certainty or possessions narrows your spirit; generosity is a practical antidote to scarcity fear.",
+            "zh": "觉察对确定性或拥有物的执着是否收窄了心量；适度的给予与分享，正是化解匮乏恐惧的务实解药。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Four of Pentacles reversed marks a shift in grip—either finally loosening fear-based hoarding to let life flow, or leaking money and boundaries through impulsive spending.",
+          "zh": "星币四逆位标志握力的变化——要么终于松开出于恐惧的死守让生活重新流动，要么因冲动消费或边界松散而出现漏财。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Clinging even harder as anxiety spikes, refusing every change out of panic.",
+            "zh": "越焦虑越死抓不放，出于恐慌拒绝任何变动。"
+          },
+          "excess": {
+            "en": "Rebound overspending or reckless generosity that erodes your actual safety net.",
+            "zh": "报复性挥霍或失去分寸的慷慨，反而掏空了原本的安全垫。"
+          },
+          "internalized": {
+            "en": "Quietly realizing that hoarding never cured the underlying fear of not having enough.",
+            "zh": "内心逐渐看清：一味囤积从未真正治好“不够用”的底层不安。"
+          },
+          "release": {
+            "en": "Unclenching your hands—decluttering, forgiving, investing, and trusting healthy circulation.",
+            "zh": "主动松开紧握的拳头——断舍离、释怀、合理投入，重新信任健康的流通。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Swinging between tight scarcity fear and impulsive leaks is destabilizing your sense of security.",
+            "zh": "在过度吝啬的匮乏焦虑与冲动破财之间来回摆荡，正在动摇你的安全感。"
+          },
+          "action": {
+            "en": "Clear out what you are only keeping out of fear, and set one simple guardrail on discretionary spending.",
+            "zh": "清理掉那些只因害怕失去才留着的东西，同时给非必要支出设一条简单护栏。"
+          },
+          "outcome": {
+            "en": "A healthier flow replaces stagnant clutching once you pair openness with clear financial boundaries.",
+            "zh": "只要把敞开流动与清晰财务边界结合起来，沉闷的死守就会转化为更轻盈的良性循环。"
+          },
+          "advice": {
+            "en": "Release what has gone stale, but keep your core reserve intact.",
+            "zh": "放走已经僵死陈旧的部分，同时守好真正托底的核心储备。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check which way the grip broke: are you ready to release stale control, or do you need to plug a quiet leak in your resources?",
+            "zh": "星币四逆位提醒你分辨眼下的松动：你是准备好了放下陈旧控制，还是需要赶紧堵住一处悄然流失的资源漏洞？"
+          },
+          "love": {
+            "en": "In love, reversed Four of Pentacles can soften old defenses and welcome vulnerability—or flag insecurity that tries to buy or control affection.",
+            "zh": "在感情中，它既可能代表卸下旧防备、愿意真诚靠近，也提醒警惕因缺乏安全感而试图用物质或控制绑住对方。"
+          },
+          "career": {
+            "en": "At work, review recurring expenses and unguarded commitments; if you've been hoarding control, delegate one clear piece this week.",
+            "zh": "在工作与财务上，排查持续漏财的固定开支与含糊承诺；若此前事必躬亲，这周就把一块明确工作放手交出去。"
+          },
+          "health": {
+            "en": "Letting go of perfectionist rigidity brings real physical relief—just avoid swinging into total neglect of sleep or routine.",
+            "zh": "放下对饮食、体重或训练计划过度苛刻的自律执念会带来明显松弛——只需留心节奏，避免从一个极端滑向彻底放任作息。"
+          },
+          "spirituality": {
+            "en": "Practicing non-attachment in small, concrete ways frees energy that fear used to lock up.",
+            "zh": "在日常具体的小事里持续练习松手与不执着，会把原本被匮乏恐惧牢牢锁死的生命能量与信任感重新释放回流动之中。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "A regal, guarded Belle Epoque magnate sits rigidly upright on a carved limestone block facing forward, wearing a heavy emerald-verdigris velvet cloak trimmed with warm parchment-ochre embroidery and a gleaming antique-gold crown. EXACTLY FOUR large embossed antique-gold pentacle coins are locked firmly to the figure's body: ONE pentacle balanced squarely atop the golden crown, ONE pentacle clutched tightly against the chest with both arms wrapped protectively around it, and TWO pentacles pinned flat beneath the left and right booted feet. Behind the seated figure rises a warmly lantern-lit walled medieval-Art Nouveau city skyline against a deep velvety midnight-indigo night sky. Dramatic chiaroscuro illumination highlights the guarded face, clenched hands, and all FOUR gleaming golden pentacles with unmistakable clarity.",
+      "requiredObjects": [
+        {
+          "object": "seated crowned magnate",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coins (1 on crown, 1 hugged at chest, 2 under feet)",
+          "count": 4
+        },
+        {
+          "object": "walled city skyline behind figure",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Tight, symmetrical vertical fortress silhouette with FOUR bright gold coins placed at crown, chest, and both feet—instantly recognizable even at 64x96 thumbnail size.",
+      "avoid": [
+        "3 or 5 coins",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "five_of_pentacles": {
+    "id": "five_of_pentacles",
+    "archetypeEssence": {
+      "en": "Material or emotional scarcity felt in the cold—right beside a lit sanctuary window waiting to be noticed.",
+      "zh": "寒风中真切感受到的匮乏与孤立——而近旁那扇亮着暖光的窗正等着被抬头看见。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Two weary travelers trudging through winter snow in hardship",
+        "Warm glowing stained-glass church window bearing five pentacles right behind them",
+        "Crutches and threadbare cloaks showing real vulnerability and need for shelter"
+      ],
+      "zh": [
+        "顶着寒雪艰难跋涉的两位疲惫旅人",
+        "近在咫尺却尚未被抬头留意的暖光五币彩绘花窗",
+        "拐杖与单薄衣袍，显露出真实的脆弱与求助需求"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Two weathered winter travelers in dark cloaks walking through moonlit twilight snow beside an ancient stone cathedral wall",
+        "Warm glowing stained-glass cathedral arch window above them illuminated with EXACTLY FIVE radiant golden pentacles",
+        "Stark dramatic contrast between cold slate-indigo snowdrifts outside and golden emerald sanctuary warmth shining within reach",
+        "Luminous Art Nouveau frost filigree and stone lancet ribs framing the sanctuary window"
+      ],
+      "zh": [
+        "两位披着深色斗篷、在月下暮雪中沿古教堂石墙并肩前行的旅人",
+        "石墙高处散发温暖金光的哥特花窗，窗内清晰镶嵌着五枚璀璨星币",
+        "窗外冷冽靛蓝雪地与咫尺之遥的暖金翡翠庇护所之间强烈的明暗反差",
+        "环绕教堂花窗的细腻霜纹与新艺术石雕拱肋"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Five of Pentacles upright speaks honestly of scarcity, worry, or feeling left out in the cold—while reminding you that real shelter and help are closer than pride or tunnel vision lets you see.",
+          "zh": "星币五正位如实映照物质吃紧、缺乏安全感或被冷落的孤立感，同时也提醒：真正的庇护与援手就在近旁，只是窘迫或自尊让你低头赶路而未抬头求助。"
+        },
+        "domains": {
+          "general": {
+            "en": "A lean stretch feels isolating, yet support exists nearby if you look up and ask clearly.",
+            "zh": "星币五正位坦言眼下确实处于捉襟见肘或倍感孤立的低潮期，但支持与暖意就在咫尺之外，抬头开口求助比闷头硬扛更有出路。"
+          },
+          "love": {
+            "en": "Feeling emotionally out in the cold or worrying together through hardship—honest solidarity beats suffering in silence.",
+            "zh": "在感情中，双方可能感到彼此情感冷落或正共同面对现实压力——坦诚说出脆弱并选择相濡以沫，远胜过各自关门沉默硬熬。"
+          },
+          "career": {
+            "en": "Budget squeeze, job insecurity, or feeling excluded from resources; map concrete aid, allies, and lean cashflow steps immediately.",
+            "zh": "在工作与财务上，可能遭遇预算紧张、岗位不安或资源边缘化；请立刻盘点手头可借力的盟友、外部支持渠道与稳健现金流对策。"
+          },
+          "health": {
+            "en": "Low energy or feeling run down deserves real care and medical/community support rather than toughing it out alone.",
+            "zh": "在身心状态上，体能透支、受寒疲倦或情绪低落此刻需要切实的照护、规律补给与专业支持，不要再把所有不适藏起来一个人硬挺。"
+          },
+          "spirituality": {
+            "en": "Scarcity shrinks perspective; humility to receive help opens the door back into warmth.",
+            "zh": "在灵性层面，匮乏感最容易让人把视野缩得很窄；愿意放下羞耻感、允许自己接受他人的善意与帮助，本身就是走进暖光的门。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Five of Pentacles reversed is a genuine turn toward recovery: warming up after a lean stretch, finding the right door, accepting help, and rebuilding material or emotional footing.",
+          "zh": "星币五逆位是切实走向回暖的信号：走出捉襟见肘的低谷、看见并推开那扇亮灯的门、接纳援手，重新站稳现实与心理脚跟。"
+        },
+        "lenses": {
+          "release": {
+            "en": "Emerging from financial or emotional winter; relief and practical support are entering.",
+            "zh": "正在走出财务或情感寒冬，松动感与切实帮助开始进场。"
+          },
+          "blocked": {
+            "en": "Stubborn pride slowing down help that is already offered.",
+            "zh": "碍于面子推迟了其实已经递到眼前的援手。"
+          },
+          "internalized": {
+            "en": "Shaking off a lingering scarcity mindset even as concrete conditions improve.",
+            "zh": "现实条件已开始好转，内心仍在适应放下匮乏惯性。"
+          },
+          "excess": {
+            "en": "Overspending in relief before new stability fully settles.",
+            "zh": "刚一松口气就急着透支，需要给稳固留出缓冲。"
+          }
+        },
+        "byRole": {
+          "outcome": {
+            "en": "Conditions visibly mend—practical support, renewed income/resources, or emotional warmth brings you back inside from the cold.",
+            "zh": "局面将切实回暖——现实援助、资源回流或情感暖意会带你重新走出寒风。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Recovery and practical aid are arriving. Walk through the open door and let go of scarcity fear.",
+            "zh": "星币五逆位预示低谷松动，切实的复原与外部支持正在靠近。请大方走进面前敞开的门，逐步松开长期紧绷的匮乏焦虑与防备。"
+          },
+          "love": {
+            "en": "Warmth returns after a lonely stretch; forgiving past distance and letting someone show up for you mends the bond.",
+            "zh": "在感情中，熬过一段孤单冷淡或现实承压的低谷后，暖意正在回流；适当放下防备允许对方靠近分担，关系迎来真诚修复的契机。"
+          },
+          "career": {
+            "en": "Financial or job strain starts easing—a lead, mentor, grant, or steadier footing helps you climb out of the dip.",
+            "zh": "在工作与财务上，持续的紧缩压力开始松动——一条新的合作线索、关键贵人相助或更稳健的收支节奏，正带你逐步走出低谷期。"
+          },
+          "health": {
+            "en": "Energy and resilience begin rebounding after a depleted spell; stay gentle as strength returns.",
+            "zh": "在身心状态上，经历一段消耗与低潮后，体能、睡眠与心理韧性正稳步回升；顺着恢复的势头温和养护，不必急于求成。"
+          },
+          "spirituality": {
+            "en": "Rebuilding trust that you do not have to earn shelter through endless struggle.",
+            "zh": "在灵性层面，你正在重新建立一份踏实的笃定感：你不必靠无休止地吃苦、忍耐或证明自己，去换取被接纳、被支持与内心安稳。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "In a quiet twilight snowstorm, TWO weathered Belle Epoque travelers in worn emerald-grey and muted indigo wool cloaks trudge past a stone cathedral wall—one leaning on wooden crutches with a wrapped foot, the other pulling a shawl tight against drifting ivory snowflakes. Directly above and behind them glows a tall, arched stained-glass sanctuary window radiating rich warm parchment-ochre and molten-gold light into the freezing night. Set cleanly inside the illuminated stained glass are EXACTLY FIVE bright, distinct embossed golden pentacle medallions arranged in a symmetrical tree-like cluster so all FIVE pentacles shine unmistakably through the window. Dramatic chiaroscuro contrast pits the warm golden sanctuary light against deep midnight-indigo winter shadows, keeping both travelers' silhouettes and the five glowing pentacles razor-clear.",
+      "requiredObjects": [
+        {
+          "object": "weary winter travelers",
+          "count": 2
+        },
+        {
+          "object": "glowing stained-glass cathedral window",
+          "count": 1
+        },
+        {
+          "object": "illuminated golden pentacle medallions in stained glass",
+          "count": 5
+        }
+      ],
+      "compositionNote": "High-contrast diagonal split: tall warm-lit gothic window holding EXACTLY FIVE bright gold pentacles on the upper right, framing TWO dark cloaked figures trudging through moonlit snow along the lower foreground—reads effortlessly at 64x96 thumbnail size.",
+      "avoid": [
+        "4 or 6 coins",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "six_of_pentacles": {
+    "id": "six_of_pentacles",
+    "archetypeEssence": {
+      "en": "Measured generosity and fair reciprocity—weighing what is given, what is received, and the balance between them.",
+      "zh": "有度而公允的施予与回流——在手握天平的往来中，看清给予、接纳与彼此的平衡。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Prosperous merchant holding balanced brass scales in one hand",
+        "Hand pouring coins cleanly into the outstretched palms of a kneeling recipient",
+        "Two kneeling figures below receiving or awaiting measured support",
+        "Six golden pentacles suspended symmetrically along the upper arch"
+      ],
+      "zh": [
+        "一手平稳托举黄铜天平的富足商贾",
+        "另一手将钱币倾入下方受助者掌心的施予之姿",
+        "跪于脚畔接受或等待公允分配的两位求助者",
+        "对称悬列于画面上方的六枚古金星币"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Dignified Belle Epoque benefactor in emerald-and-ochre velvet robe holding a gleaming antique-gold balance scale in the left hand",
+        "Right hand extending open-handed generosity toward two kneeling recipients in a moonlit stone courtyard",
+        "Exactly six luminous embossed antique-gold pentacle coins arranged cleanly in two vertical columns of three flanking the upper arch",
+        "Warm parchment-gold and sunlit ivory highlights illuminating the scales, hands, and six coins against deep midnight-indigo architecture"
+      ],
+      "zh": [
+        "身着祖母绿与赭金天鹅绒长袍、左手稳托古金天平的端庄施予者",
+        "右手向月色石庭中两位屈膝者坦然递出资助的温和姿态",
+        "以左右各三枚的工整双列悬于画面上方的恰好六枚浮雕古金星币",
+        "暖羊皮纸金与象牙白高光在深邃午夜蓝建筑影调中点亮天平、双手与六枚星币"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Six of Pentacles centers on fair exchange: giving from genuine surplus, receiving help with dignity, and keeping generosity balanced by clear terms rather than resentment.",
+          "zh": "星币六的核心是公允流动：在自身富余时坦然施予，在需要时体面接受，并用清晰尺度守住善意与公平，不让付出变成委屈。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Let resources circulate fairly—either share what you have in surplus or accept the support being offered without guilt.",
+            "zh": "让资源公平流动起来——要么大方分享你手头的富余，要么坦然接住递到眼前的支持，不必心怀愧疚。"
+          },
+          "foundation": {
+            "en": "A timely loan, mentorship, grant, or fair partnership helped stabilize the ground you stand on.",
+            "zh": "一次及时的资助、提携、借款或公平合作，帮你稳住了脚下的局面。"
+          },
+          "present": {
+            "en": "You are in a season of active give-and-take; keep the scales transparent so everyone knows where they stand.",
+            "zh": "你正处在资源互通与礼尚往来的阶段；把天平摆在明处，彼此都会更踏实。"
+          },
+          "resource": {
+            "en": "Goodwill, patronage, or a balanced network is ready to back you—ask cleanly or pay it forward strategically.",
+            "zh": "善意口碑、贵人助力或互惠人脉正站在你这边——坦荡开口，或有策略地回馈同行。"
+          },
+          "challenge": {
+            "en": "Even upright, Six of Pentacles in a challenge slot asks you to check the power dynamic: is the help truly fair, or does it leave one side subtly indebted?",
+            "zh": "落在阻碍位时，正位星币六提醒你审视其中的权力不对等：这份帮助是真正公平，还是暗中让一方背上了人情债？"
+          },
+          "action": {
+            "en": "Make one fair exchange concrete—pay what is owed, set clear terms on a favor, or mentor someone who will put it to real use.",
+            "zh": "把一笔公平往来落到实处——结清应付款项、把人情边界说清，或帮扶一位真正能用好资源的人。"
+          },
+          "outcome": {
+            "en": "Balanced reciprocity restores trust and material ease; what you circulate with integrity returns in kind.",
+            "zh": "公允的互惠会修复信任并带来现实宽裕；带着诚意流出的善意，也会以实在的方式回流。"
+          },
+          "advice": {
+            "en": "Hold the scales level: generosity without boundaries drains you, and receiving without dignity shrinks you.",
+            "zh": "把天平端稳：没有边界的慷慨会掏空你，不肯体面受助也会委屈你。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Fair give-and-take unlocks momentum. Whether you are the giver or the receiver today, keep the exchange transparent and respectful.",
+            "zh": "公平的施与受能打通局面。无论今天你是给予方还是接收方，都让往来保持透明与彼此尊重。"
+          },
+          "love": {
+            "en": "In love, Six of Pentacles brings balanced care, mutual effort, and showing up for each other's practical needs without keeping a petty ledger.",
+            "zh": "在感情中，星币六代表双向奔赴的照料与体贴，彼此在现实生活中互相托举，而不斤斤计较。"
+          },
+          "career": {
+            "en": "At work, this signals fair compensation, funding, mentorship, or a mutually profitable deal. Make sure value delivered and value received match.",
+            "zh": "在工作与财务上，它预示公允的报酬、融资、导师提携或双赢交易。确保产出价值与所获回报彼此匹配。"
+          },
+          "health": {
+            "en": "For wellbeing, balance output with replenishment—accept help with daily chores or care so you aren't pouring from an empty cup.",
+            "zh": "在身心调节上，让消耗与补给保持平衡——允许他人分担日常事务，别总是空着杯子还硬往外倒。"
+          },
+          "spirituality": {
+            "en": "Spiritually, true generosity honors the dignity of both hands; giving and receiving are two halves of the same breath.",
+            "zh": "在灵性层面，真正的慷慨同时尊重施与受双方的尊严；给予与接纳本就是同一口呼吸的一呼一吸。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Six of Pentacles reversed exposes lopsided exchange: strings-attached favors, unpaid debts, over-giving until resentful, or unequal power dynamics.",
+          "zh": "星币六逆位揭露失衡的往来：附带条件的人情、拖欠的账目、过度付出后的委屈，或不对等的权力博弈。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Withholding fair credit, pay, or support—or refusing help when you genuinely need it.",
+            "zh": "吝于给出应得的认可、报酬或支持——或在真正需要时固执拒绝援手。"
+          },
+          "excess": {
+            "en": "Over-giving to buy approval or stay indispensable while quietly burning out.",
+            "zh": "靠不断透支付出来换取认可或维持被需要感，暗自消耗殆尽。"
+          },
+          "internalized": {
+            "en": "Feeling silently indebted or keeping score in your head instead of naming the imbalance.",
+            "zh": "心里暗自记账或背负沉重人情压力，却迟迟不把失衡说出口。"
+          },
+          "release": {
+            "en": "Walking away from one-sided arrangements and restoring clean, equal footing.",
+            "zh": "主动退出单方面消耗的安排，重新立起清爽平等的往来规则。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Hidden strings, unequal effort, or unclear financial terms are tilting the scales.",
+            "zh": "暗藏条件、付出不对等或模糊的财务条款，正在让天平明显倾斜。"
+          },
+          "action": {
+            "en": "Stop subsidizing a one-sided dynamic—put terms in writing, collect what is owed, or decline a favor that costs your autonomy.",
+            "zh": "停止补贴单向消耗的关系——把条款写明、追回应得款项，或婉拒会让你丧失自主权的人情。"
+          },
+          "outcome": {
+            "en": "Naming the imbalance clears quiet resentment and resets the relationship onto honest terms.",
+            "zh": "把失衡挑明后，积压的怨气会散去，关系也能重新回到坦荡平等的轨道。"
+          },
+          "advice": {
+            "en": "Check the fine print on every 'gift' and stop giving what you cannot afford to give freely.",
+            "zh": "看清每份“馈赠”背后的隐形代价，也别再勉强给出自己其实给不起的东西。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Rebalance the scales. Address one-sided obligations, unpaid debts, or generosity that has quietly turned into leverage.",
+            "zh": "星币六逆位提醒你重新校准天平。正视单方面透支、未结清的账目，或已经变味为筹码的“好意”。"
+          },
+          "love": {
+            "en": "In love, reversed Six of Pentacles flags one partner doing most of the emotional or financial lifting, or using favors as subtle control.",
+            "zh": "在感情中，它提示某一方承担了绝大多数情绪或物质重担，或有人把付出当作隐形拿捏的筹码。"
+          },
+          "career": {
+            "en": "At work, watch for underpayment, unpaid scope creep, or favors with political strings attached. Renegotiate terms cleanly.",
+            "zh": "在工作与财务上，警惕薪酬不公、无偿加活或附带职场人情债的资源。干脆利落地重新谈清条件。"
+          },
+          "health": {
+            "en": "Putting everyone else's needs ahead of your own recovery is draining your reserves; put yourself back on the receiving end of care.",
+            "zh": "长期把别人的需求排在自己休养之前正在悄悄掏空身心底气；收回过度透支的善意，把自己重新放回被认真照料的位置。"
+          },
+          "spirituality": {
+            "en": "Notice where martyr-like giving masks a fear of not being loved for who you are.",
+            "zh": "诚实觉察那种带有牺牲感的讨好式付出背后，是否仍藏着“如果不持续证明有用与付出，就不配被爱”的陈旧匮乏信念。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "In a serene moonlit stone courtyard framed by an Art Nouveau arch, a dignified Belle Epoque benefactor in a rich emerald-verdigris velvet cloak and warm parchment-ochre tunic stands tall at center, holding a gleaming antique-gold balance scale level in their left hand while extending their right hand gracefully downward to offer support to TWO kneeling travelers below. Floating symmetrically in the upper midnight-indigo space flanking the benefactor are EXACTLY SIX large, bright embossed antique-gold pentacle coins arranged cleanly in two crisp vertical columns of three (three on the left, three on the right) so every single coin is unmistakable and countable. Warm golden-ivory light illuminates the level brass scales, the benefactor's calm face, the outstretched hands, and all SIX golden pentacles against deep velvety midnight-indigo stonework.",
+      "requiredObjects": [
+        {
+          "object": "standing benefactor with balance scales",
+          "count": 1
+        },
+        {
+          "object": "kneeling recipients below",
+          "count": 2
+        },
+        {
+          "object": "embossed golden pentacle coins in two vertical columns of three",
+          "count": 6
+        }
+      ],
+      "compositionNote": "Balanced pyramidal triad of figures centered beneath EXACTLY SIX bright gold pentacles arranged cleanly 3-left and 3-right, with the gleaming scales high at center—effortlessly readable at 64x96 thumbnail size.",
+      "avoid": [
+        "5 or 7 coins",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "seven_of_pentacles": {
+    "id": "seven_of_pentacles",
+    "archetypeEssence": {
+      "en": "The patient pause mid-season—leaning on the hoe to weigh what is ripening before deciding whether to prune or wait.",
+      "zh": "耕耘中段的沉静驻足——倚锄审视枝头渐熟的果实，判断该继续守候还是修枝调整。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Gardener leaning contemplatively on a long wooden hoe",
+        "Thick leafy shrub bearing six golden pentacles among its branches",
+        "Seventh golden pentacle resting cleanly on the earth at the gardener's feet",
+        "Open cultivated field stretching under a quiet, patient sky"
+      ],
+      "zh": [
+        "双手倚在长柄锄头之上沉思凝望的农人",
+        "繁茂绿丛枝叶间结出的六枚古金星币",
+        "稳稳落在农人脚畔泥土上的第七枚古金星币",
+        "在静谧天光下绵延铺展的已耕田野"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Thoughtful Belle Epoque gardener in verdant emerald tunic and warm ochre apron resting chin on hands atop a slender gilded wooden hoe",
+        "Lush nocturnal-and-dawn berry-and-ivy bush gleaming with six embossed antique-gold pentacle coins nestled cleanly among its leaves",
+        "Exactly one seventh embossed golden pentacle resting clearly on the sunlit-ivory earth beside the gardener's boots (seven total)",
+        "Warm parchment-gold horizon glow illuminating the quiet vineyard rows against deep midnight-indigo twilight"
+      ],
+      "zh": [
+        "身着祖母绿短衫与赭金围裙、倚在鎏金木锄上凝神审视的美好年代园丁",
+        "繁茂常春藤灌木枝叶间清晰闪耀的六枚浮雕古金星币",
+        "安放于园丁靴畔暖色泥土上的第七枚古金星币（共恰好七枚）",
+        "暖羊皮纸金天际微光照亮静谧田垄，映衬深邃午夜蓝暮色"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Seven of Pentacles is the honest mid-course review: real effort has already produced visible buds, and now patience, measurement, and smart pruning matter more than frantic extra labor.",
+          "zh": "星币七代表诚实的中盘复盘：此前的扎实投入已经结出看得见的雏形，此刻比埋头苦干更重要的，是耐心评估、看清回报率并做精准修剪。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Pause and evaluate your yield before pushing harder—what you planted is growing, just on an organic timeline.",
+            "zh": "在继续加码前先停下来盘点收成——你种下的东西正在生长，只是它需要自然的成熟周期。"
+          },
+          "foundation": {
+            "en": "Months of quiet, unglamorous groundwork brought this venture to its current stage of visible growth.",
+            "zh": "过去数月默默无闻的扎实耕耘，把这件事推到了如今初见成效的阶段。"
+          },
+          "present": {
+            "en": "You are in the waiting-and-weighing window: far enough along to see real results, early enough to adjust what isn't paying off.",
+            "zh": "你正处在等待与权衡的窗口期：走得够远已能看见苗头，也还来得及调整不划算的分支。"
+          },
+          "resource": {
+            "en": "Long-horizon patience and an eye for compounding returns are your sharpest advantages right now.",
+            "zh": "放眼长线的耐心以及识别复利回报的眼光，是你眼下最锐利的优势。"
+          },
+          "challenge": {
+            "en": "Even upright, Seven of Pentacles in a challenge slot flags restless doubt—pulling up the roots too early just to check if they are growing.",
+            "zh": "落在阻碍位时，正位星币七提示焦躁的怀疑——总忍不住提前把根拔出来看看长没长好。"
+          },
+          "action": {
+            "en": "Review your metrics honestly: keep tending the branches that show real fruit and prune one low-yield effort.",
+            "zh": "诚实复盘关键指标：继续照料已经结果的主枝，果断修剪掉一条低回报的旁枝。"
+          },
+          "outcome": {
+            "en": "Steady, sustainable harvest arrives—not overnight fireworks, but durable results worth the wait.",
+            "zh": "稳健可持续的收获终会到来——不是一夜烟火，而是经得起时间检验的扎实回报。"
+          },
+          "advice": {
+            "en": "Measure by seasons, not days; trust compounding while staying willing to refine your method.",
+            "zh": "以季节而不是以天来衡量进展；信任复利，同时保留优化方法的清醒。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Step back and assess your return on effort. Good work is ripening—pair patience with calm, objective pruning.",
+            "zh": "先退后一步冷静评估过往投入与当前产出比。扎实成果正在慢慢成熟——把沉得住气的耐心与务实精准的微调结合起来。"
+          },
+          "love": {
+            "en": "In love, Seven of Pentacles invites taking stock of where a relationship is heading—honoring the slow trust you've built while asking if both of you are tending the same garden.",
+            "zh": "在感情中，星币七邀请你盘点关系的走向——珍视慢慢积累的信任，同时确认双方是否在共同照料同一座花园。"
+          },
+          "career": {
+            "en": "At work, this is a quarterly review moment: investments, skills, or long projects need patience to mature, plus a clear-eyed check on what deserves more runway.",
+            "zh": "在工作与财务上，这是典型的阶段复盘时刻：长期项目、技能或投资需要时间发酵，也值得冷静评估哪些方向该继续加注。"
+          },
+          "health": {
+            "en": "For wellbeing, sustainable physical change happens slowly; track subtle gains in stamina and sleep rather than demanding instant transformation.",
+            "zh": "在身心调理上，真正稳固的改善往往润物细无声；多留意体能与睡眠的细微回升，别苛求立竿见影。"
+          },
+          "spirituality": {
+            "en": "Spiritually, waiting is active soil work—learning to stay present in the quiet middle between planting and harvest.",
+            "zh": "在灵性层面，等待本身就是扎实的培土工夫——学会在播种与收获之间安静的留白期安住当下。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Seven of Pentacles reversed points to impatience, sunken-cost frustration, or pouring effort into a patch that isn't yielding—time to pivot instead of forcing barren ground.",
+          "zh": "星币七逆位指向急躁失衡、沉没成本带来的焦灼，或把力气耗在不结果的田地里——该果断调整方向，而非死磕贫瘠土壤。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Doubting your own progress so much that you stall right before the payoff.",
+            "zh": "过度怀疑自己的进展，反而在临近收获前停了下来。"
+          },
+          "excess": {
+            "en": "Overworking the same flawed approach and expecting different fruit.",
+            "zh": "沿着同一套低效打法加倍苦干，却指望结出不同果实。"
+          },
+          "internalized": {
+            "en": "Quietly resenting how long something is taking while still afraid to walk away.",
+            "zh": "暗自怨怼耗时太久，却又因舍不得沉没成本而不敢转身。"
+          },
+          "release": {
+            "en": "Cutting a low-yield commitment cleanly so your energy returns to fertile work.",
+            "zh": "干脆利落地砍掉低回报投入，把精力重新收回真正肥沃的事上。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Impatience or attachment to sunk costs is clouding your judgment about what is actually working.",
+            "zh": "急于求成或恋战沉没成本，正在遮蔽你对“什么真正有效”的判断。"
+          },
+          "action": {
+            "en": "Set a clear review deadline: if a project or habit still shows zero traction by then, stop watering it and reallocate.",
+            "zh": "立一个明确的复盘期限：如果到期仍毫无起色，就停止继续浇水，把资源重新配置。"
+          },
+          "outcome": {
+            "en": "Redirecting wasted effort frees immediate relief and opens a far more productive path.",
+            "zh": "把无效消耗抽回来后，紧绷感会立刻松开，也会腾出通往更高产出路径的空间。"
+          },
+          "advice": {
+            "en": "Do not confuse stubbornness with patience—know the difference between slow growth and a dead end.",
+            "zh": "别把死磕错当成耐心——分清“缓慢生长”和“此路不通”的区别。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check whether you are abandoning a good plant too soon out of impatience, or watering a dead branch out of habit.",
+            "zh": "星币七逆位提醒你分清两种偏差：你是因急躁差点过早放弃好苗子，还是出于惯性还在给枯枝浇水？"
+          },
+          "love": {
+            "en": "In love, reversed Seven of Pentacles surfaces frustration over slow emotional returns or questioning whether your investment is truly mutual.",
+            "zh": "在感情中，它映照出对迟迟不见回应的疲惫，或开始认真审视这段投入究竟是不是双向的。"
+          },
+          "career": {
+            "en": "At work, audit projects with poor ROI, missed milestones, or endless busywork. Pivot your strategy rather than doubling down on a weak bet.",
+            "zh": "在工作与财务上，果断盘点回报率低、反复延期或空耗工时的项目。调整打法，别在弱势筹码上继续加注。"
+          },
+          "health": {
+            "en": "If a wellness plan leaves you drained instead of stronger, stop forcing it and switch to something your body actually responds to.",
+            "zh": "如果某套锻炼、节食或养生方案坚持一阵反而让你越练越虚，就别为了沉没成本硬撑照搬，换回身体真正买账的节奏。"
+          },
+          "spirituality": {
+            "en": "Release the urge to micromanage timing; trust what is alive and let go of what has run its course.",
+            "zh": "松开对成长时间表的焦虑掌控；温和地信任仍在暗处扎根生长的部分，同时坦然放下那些已经走到尽头的陈旧执念。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "In a quiet, cultivated Art Nouveau garden at golden twilight, a contemplative Belle Epoque gardener in a verdant emerald tunic, warm parchment-ochre apron, and sturdy boots leans thoughtfully with chin resting on both hands atop a tall wooden hoe. Beside the gardener grows a lush, sculptural emerald-green shrub holding EXACTLY SIX bright, cleanly separated embossed antique-gold pentacle coins arranged visibly among its leaves, while EXACTLY ONE seventh embossed golden pentacle rests clearly on the pale sunlit earth right beside the gardener's boots (making SEVEN unmistakable pentacles in total). Warm golden-ivory twilight illuminates the gardener's reflective profile, the wooden hoe, and all SEVEN gleaming coins against deep midnight-indigo hills and dusk clouds.",
+      "requiredObjects": [
+        {
+          "object": "gardener leaning on wooden hoe",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coins (6 on the lush bush, 1 on the ground at feet)",
+          "count": 7
+        }
+      ],
+      "compositionNote": "Clear left-right balance: meditative gardener leaning on vertical hoe on the right, lush bush glowing with 6 gold coins on the left plus 1 bright coin at foot level—all SEVEN coins read crisply even at 64x96 thumbnail size.",
+      "avoid": [
+        "6 or 8 coins",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "eight_of_pentacles": {
+    "id": "eight_of_pentacles",
+    "archetypeEssence": {
+      "en": "Devoted apprenticeship—turning quiet repetition and honest care into unmistakable mastery.",
+      "zh": "潜心打磨的匠人精神——借由沉静重复与毫不敷衍的专注，把功夫练成真本事。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Focused artisan seated at a wooden workbench engraving a golden pentacle",
+        "Hammer and chisel in skilled hands shaping fine metalwork",
+        "Six finished golden pentacles hung neatly in a vertical row on a timber post",
+        "Distant town behind the workshop showing deliberate retreat into deep craft"
+      ],
+      "zh": [
+        "伏案于木工长凳前专注雕琢一枚星币的匠人",
+        "稳稳握在手中的小锤与刻刀，象征反复锤炼",
+        "整齐悬列在木柱上的六枚已完工古金星币",
+        "远离喧嚣的远方城镇剪影，映衬潜心打磨的心境"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Dedicated Belle Epoque goldsmith in emerald apron and rolled ivory sleeves bent over a warm lantern-lit oak workbench",
+        "Exactly eight embossed antique-gold pentacle coins: six displayed cleanly down a tall carved timber post, one clamped on the bench under the chisel, and one resting neatly beside the bench base",
+        "Fine brass engraving tools, curls of gold filigree, and warm amber workshop light",
+        "Distant twilight town spires glowing softly beyond the quiet studio arch against midnight-indigo sky"
+      ],
+      "zh": [
+        "身系祖母绿皮围裙、卷起象牙白衣袖在暖灯橡木工作台前埋首精雕的美好年代金匠",
+        "恰好八枚清晰可数的浮雕古金星币：六枚沿木柱垂直陈列、一枚在台面刻刀下精修、一枚置于凳脚旁",
+        "精致黄铜刻刀、细碎金丝与温润琥珀工作台灯光",
+        "静谧工坊拱门外，在午夜蓝暮色中微微发亮的远方城镇尖顶"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Eight of Pentacles honors deliberate practice: shutting out noise, refining one craft piece by piece, and letting steady diligence build skill nobody can counterfeit.",
+          "zh": "星币八赞许沉心蓄力的刻意练习：屏蔽浮躁杂音，一枚接一枚地打磨手艺，让日复一日的扎实功夫沉淀为谁也拿不走的硬实力。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Put your head down and do the reps—quality repetition right now matters far more than chasing a shortcut.",
+            "zh": "沉下心把基本功练透——眼下高质量的重复打磨，远比到处找捷径更管用。"
+          },
+          "foundation": {
+            "en": "Quiet study, disciplined training, or consistent daily effort built the competence carrying you today.",
+            "zh": "过往默默无闻的研习、系统训练或每日坚持，铸就了你今天站得住脚的专业底气。"
+          },
+          "present": {
+            "en": "You are in a productive groove of deep work; protect uninterrupted hours so your craft can compound.",
+            "zh": "你正处在高效深耕的心流期；护住不被打断的整块时间，让手艺稳步复利。"
+          },
+          "resource": {
+            "en": "Your greatest edge is work ethic paired with attention to detail—you actually finish what others only sketch.",
+            "zh": "你最强的优势是踏实肯干加上细节把控——别人只画草图，你能真正把它做精做完。"
+          },
+          "challenge": {
+            "en": "Even upright, Eight of Pentacles in a challenge slot warns against getting lost in routine execution without lifting your head to check the larger direction.",
+            "zh": "落在阻碍位时，正位星币八提醒你：埋头苦干太久可能只见树木不见森林，别忘了抬头核对大方向。"
+          },
+          "action": {
+            "en": "Pick one high-value skill or deliverable, block daily focused sessions, and refine each iteration with clear standards.",
+            "zh": "选定一项最值钱的核心技能或作品，每天划出专注时段，按清晰标准一版一版精修。"
+          },
+          "outcome": {
+            "en": "Visible mastery and a stronger portfolio emerge—people notice the unmistakable polish of work done with care.",
+            "zh": "扎实过硬的本事与亮眼作品集将水到渠成——经得起细看的好活儿自然会被看见。"
+          },
+          "advice": {
+            "en": "Fall in love with the craft itself; steady polish beats bursts of frantic inspiration.",
+            "zh": "爱上打磨本身；细水长流的精进，胜过一时兴起的爆发。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Focused diligence and skill-building are your best levers. Show up consistently, refine the details, and let the work speak.",
+            "zh": "专注勤勉与日复一日的技能打磨是你此刻最稳妥的杠杆。保持稳定出勤、反复精修细节，让扎实的成品替你自己说话。"
+          },
+          "love": {
+            "en": "In love, Eight of Pentacles shows devotion expressed through steady effort—learning how to listen better, showing up reliably, and tending small daily habits that keep trust strong.",
+            "zh": "在感情中，星币八体现为落在日常里的用心经营——认真倾听、稳定兑现，用点滴细微习惯把信任越养越牢。"
+          },
+          "career": {
+            "en": "At work, this is apprenticeship, upskilling, deep technical polish, and building a reputation for rock-solid craftsmanship. Mastery pays dividends here.",
+            "zh": "在工作与学业上，这是精进专业、考证深造与靠过硬交付建立口碑的黄金期。扎实手艺会直接转化为长期溢价。"
+          },
+          "health": {
+            "en": "For wellbeing, consistent micro-habits—daily mobility, steady sleep hours, mindful nutrition—compound into durable strength.",
+            "zh": "在身心管理上，每天雷打不动的小习惯（拉伸、规律睡眠、踏实饮食）会复利成稳健体魄。"
+          },
+          "spirituality": {
+            "en": "Spiritually, repetition with presence turns ordinary work into moving meditation.",
+            "zh": "在灵性层面，当你带着全神贯注的觉知去反复打磨眼前的日常事务，平凡的手艺与劳作本身就是最扎实的流动静心修习。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Eight of Pentacles reversed flags either perfectionist paralysis, bored corner-cutting, or grinding hard on busywork that no longer grows your craft.",
+          "zh": "星币八逆位提示完美主义卡壳、厌倦后的敷衍赶工，或在不再带来成长的机械杂务里空耗精力。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Perfectionism or fear of shipping keeps you endlessly tweaking instead of finishing.",
+            "zh": "过度追求完美或害怕交卷，让你在细节里无限打转却迟迟不收尾。"
+          },
+          "excess": {
+            "en": "Workaholic tunnel vision—grinding for its own sake until craft turns into joyless drudgery.",
+            "zh": "把埋头苦干变成惯性逃避，把原本热爱的手艺熬成了麻木苦差。"
+          },
+          "internalized": {
+            "en": "Quietly doubting your competence despite evidence of real skill.",
+            "zh": "明明已有扎实积累，内心却仍隐隐觉得自己不够格。"
+          },
+          "release": {
+            "en": "Stepping away from dead-end drudgery to invest your focus in work that actually stretches you.",
+            "zh": "跳出毫无成长空间的机械消耗，把专注力投向真正能让你精进的新课题。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Sloppy shortcuts or obsessive nitpicking is undermining both quality and momentum.",
+            "zh": "敷衍省事或死抠无关紧要的细节，正在同时拖垮质量与进度。"
+          },
+          "action": {
+            "en": "Set a 'good enough to ship' bar on one stalled piece, or stop repeating a rote task that no longer teaches you anything.",
+            "zh": "为一件卡住的作品定下“可交付标准”立刻交卷，或果断停掉一项不再让你成长的机械活儿。"
+          },
+          "outcome": {
+            "en": "Refreshing your method restores pride in the work and breaks the monotonous rut.",
+            "zh": "调整打法后会重新找回对作品的自豪感，也能顺利跳出沉闷的重复循环。"
+          },
+          "advice": {
+            "en": "Aim for honest craft, not neurotic perfection—and make sure the bench you sit at still leads somewhere.",
+            "zh": "追求扎实手艺而非焦虑的完美主义——同时确认你埋头耕耘的这张工作台，依然通往你想去的地方。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check whether you are rushing past fundamentals or over-polishing out of fear. Reconnect effort with purpose.",
+            "zh": "星币八逆位提醒你检查两极：是在敷衍跳过基本功，还是出于焦虑过度打磨？把努力重新对齐目标。"
+          },
+          "love": {
+            "en": "In love, reversed Eight of Pentacles warns against putting a relationship on autopilot or nitpicking minor flaws while missing the bigger warmth.",
+            "zh": "在感情中，它提醒别让关系陷入机械敷衍的惯性，也别总盯住鸡毛蒜皮挑刺而忽略了彼此的温情。"
+          },
+          "career": {
+            "en": "At work, watch for burnout from repetitive tasks, lack of focus, or perfectionism delaying a launch. Ship clean work and seek fresh challenge.",
+            "zh": "在职场上，警惕重复性杂务带来的倦怠、注意力涣散，或因过度雕琢耽误上线。按标准利落交付，并寻找能提升段位的新挑战。"
+          },
+          "health": {
+            "en": "Rigid tracking or abandoning basics out of boredom both stall progress; simplify your routine so it feels sustainable again.",
+            "zh": "过度苛刻的打卡或因枯燥彻底摆烂都会打断节奏；把日常养护精简到重新顺手、愿意坚持的状态。"
+          },
+          "spirituality": {
+            "en": "When discipline turns mechanical, pause and remember why you began the practice.",
+            "zh": "当原本滋养你的日常自律退化成毫无生气的机械打卡，不妨停下来安静重温你最初开启这份修习时那份真实而鲜活的初心。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "In a cozy, lantern-lit Belle Epoque artisan studio, a focused goldsmith in a verdant emerald apron over rolled sunlit-ivory shirt sleeves sits at a sturdy carved oak workbench, using a small brass hammer and chisel to engrave an embossed antique-gold pentacle coin. EXACTLY EIGHT gleaming embossed antique-gold pentacle coins are clearly visible and countable: SIX finished golden pentacles hang neatly in a single vertical column down a tall wooden display post on the left, ONE pentacle is clamped flat on the workbench directly beneath the artisan's chisel, and ONE pentacle rests cleanly on the studio floor beside the bench base. Warm amber workshop lantern light illuminates the artisan's concentrated face, skilled hands, and all EIGHT golden coins against deep midnight-indigo shadows, with distant twilight town spires visible through an arched studio window.",
+      "requiredObjects": [
+        {
+          "object": "seated goldsmith with hammer and chisel at workbench",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coins (6 vertically on post, 1 on workbench, 1 at base)",
+          "count": 8
+        }
+      ],
+      "compositionNote": "Clean vertical column of 6 glowing gold pentacles on the left balancing the illuminated artisan working on coin #7 at right and coin #8 below—unmistakable craft workshop silhouette at 64x96 thumbnail size.",
+      "avoid": [
+        "7 or 9 coins",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "nine_of_pentacles": {
+    "id": "nine_of_pentacles",
+    "archetypeEssence": {
+      "en": "Earned self-sufficiency—walking unhurriedly through the abundant garden you cultivated with your own discipline.",
+      "zh": "亲手挣来的丰盛自在——从容漫步在靠自己自律与眼光培植出的繁茂庄园之中。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Poised woman in an opulent gown strolling calmly through a lush private vineyard",
+        "Hooded falcon perched with quiet discipline on her gloved left hand",
+        "Nine golden pentacles gleaming amid heavy clusters of ripe grapes and vines",
+        "Manor house rising in the sunlit distance symbolizing self-built independence"
+      ],
+      "zh": [
+        "身着华美长裙、在私人葡萄园中从容信步的优雅女子",
+        "戴着眼罩、驯服停驻在她左手皮套上的猎隼",
+        "掩映在累累成熟葡萄与藤蔓间的九枚古金星币",
+        "远方晨光中矗立的庄园宅邸，象征独立稳固的家业"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Sovereign Belle Epoque chatelaine in a flowing warm parchment-ochre and emerald-brocade gown strolling gracefully through a moonlit-and-dawn vineyard",
+        "Hooded falcon with antique-gold jesses perched serenely on her raised gloved left hand",
+        "Exactly nine gleaming embossed antique-gold pentacle coins nestled cleanly among lush grape trellises—six clustered on the left trellis and three on the right",
+        "Distant ivory-lit manor silhouette and golden-hour rim-light framing her poised autonomy against deep midnight-indigo sky"
+      ],
+      "zh": [
+        "身着暖羊皮纸金与祖母绿织锦长裙、在晨昏交织的葡萄园中从容漫步的美好年代庄园女主人",
+        "稳稳停驻在她微扬的左手皮套之上、配戴古金脚绊的蒙眼猎隼",
+        "清晰点缀在繁茂葡萄花架间的恰好九枚浮雕古金星币：左侧花架六枚、右侧花架三枚",
+        "远方泛起象牙白微光的庄园剪影与暖金轮廓光，在午夜蓝天幕下衬出独立气度"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Nine of Pentacles celebrates mature independence: enjoying the comfort, taste, and freedom earned through patient self-command, without needing anyone else to validate your worth.",
+          "zh": "星币九礼赞成熟的独立丰足：坦然享用凭借长期自律与智慧换来的体面、自由与余裕，不必仰仗他人来证明自身价值。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Stand proudly in what you have built—savor the quality of your life and protect your hard-won autonomy.",
+            "zh": "大方站进你亲手筑起的好日子里——细品生活的质感，并守护来之不易的自主权。"
+          },
+          "foundation": {
+            "en": "Years of self-reliance, prudent choices, and refined standards built the comfortable ground beneath you.",
+            "zh": "过往的自立自强、审慎选择与对品质的坚持，为你铺就了今天从容的底气。"
+          },
+          "present": {
+            "en": "You are in a season of self-contained abundance—financially steadier, clearer in taste, and free to choose on your own terms.",
+            "zh": "你正处在自给自足的丰盈期——财务更稳、审美更笃定，可以按自己的尺度做选择。"
+          },
+          "resource": {
+            "en": "Your strongest asset is disciplined independence: you can fund, steer, and enjoy your own path without rushing into compromises.",
+            "zh": "你最硬的底牌是自律换来的独立：你有能力自己兜底、掌舵并享受人生，不必仓促妥协。"
+          },
+          "challenge": {
+            "en": "Even upright, Nine of Pentacles in a challenge slot asks whether enjoying your walled garden has made you hesitant to let genuine intimacy or collaboration past the gate.",
+            "zh": "落在阻碍位时，正位星币九温和提醒：你在自己的精致花园里过得太自在，是否也因此不太敢让真正的亲密或合作走进门来？"
+          },
+          "action": {
+            "en": "Invest in quality over volume, celebrate a milestone with unhurried pleasure, and keep your financial independence non-negotiable.",
+            "zh": "选择重质不重量的投入，从容犒劳自己一处阶段成果，同时把经济与人格独立守作底线。"
+          },
+          "outcome": {
+            "en": "Refined stability, financial comfort, and quiet pride arrive—a life that feels both abundant and unmistakably yours.",
+            "zh": "体面安稳、财务余裕与沉静的笃定将如期而至——一种丰盛且完全属于你的生活状态。"
+          },
+          "advice": {
+            "en": "Enjoy the fruit you worked for without guilt, and keep the falcon of self-discipline close at hand.",
+            "zh": "坦然享用你辛苦挣来的果实，同时把自律这只猎隼稳稳留在手边。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Self-sufficiency, cultivated taste, and well-earned ease define this moment. Honor the discipline that made this freedom possible.",
+            "zh": "自给自足、讲究质感与实至名归的从容丰盛是此刻主调。大方享受成果，并继续珍视那份为你换来真正自由的长期自律。"
+          },
+          "love": {
+            "en": "In love, Nine of Pentacles favors whole, independent partners who choose each other from fullness rather than neediness—or a deeply satisfying solo chapter.",
+            "zh": "在感情中，星币九青睐彼此完整独立的伴侣——因丰盈而相吸，而非因匮乏而依附；若单身，也是极舒展丰盛的独处时光。"
+          },
+          "career": {
+            "en": "At work, this signals strong solo consulting, senior mastery, financial cushion, or a venture finally paying steady dividends. Price your work for its true quality.",
+            "zh": "在工作与财务上，它预示稳健的独立业务、资深专业溢价、充裕缓冲或进入稳定分红期。按真实含金量为自己定价。"
+          },
+          "health": {
+            "en": "For wellbeing, unhurried self-care—good food, time outdoors, restorative rest—sustains your vitality far better than frantic hustle.",
+            "zh": "在身心状态上，不疾不徐的精致养护（好食材、户外散步、高质量休养）比拼命内卷更能长久滋养元气。"
+          },
+          "spirituality": {
+            "en": "Spiritually, gratitude and dignity walk together: savoring beauty mindfully is a form of quiet reverence.",
+            "zh": "在灵性层面，深沉的感恩与清醒的尊严并行不悖：带着敏锐觉知去细品日常之美与丰盛，本身就是沉静而丰沛的内在修持。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Nine of Pentacles reversed points to over-reliance on external validation, living beyond your means for appearances, or working so hard for independence that you forget to enjoy it.",
+          "zh": "星币九逆位指向过度依赖外界认可、为了体面超前消费，或一味拼命追求独立却忘了真正享受生活。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Undervaluing your own achievements or leaning too heavily on someone else's safety net.",
+            "zh": "低估自己的积累，或过度依附他人的安全垫而迟迟不敢独立。"
+          },
+          "excess": {
+            "en": "Status spending or curating an image of luxury that quietly drains real savings.",
+            "zh": "为了撑起精致表象而过度消费，暗中掏空了真正的积蓄。"
+          },
+          "internalized": {
+            "en": "Feeling lonely inside self-sufficiency or guilty whenever you rest and enjoy comfort.",
+            "zh": "在独立外壳下暗感孤单，或一停下来享受安逸就心生愧疚。"
+          },
+          "release": {
+            "en": "Dropping performative status symbols to build quiet, genuine financial freedom.",
+            "zh": "卸下演给外人看的体面标签，回归安静而扎实的财务自由。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Chasing appearances or compromising your autonomy for short-term comfort is eroding real security.",
+            "zh": "追逐表面体面，或为图一时省心让渡自主权，正在悄悄侵蚀真正底气。"
+          },
+          "action": {
+            "en": "Trim one status expense, reclaim a piece of personal independence, and verify that your comfort rests on solid numbers.",
+            "zh": "砍掉一笔撑场面的无效开销，收回一块个人自主权，确保你的体面建立在真实账本上。"
+          },
+          "outcome": {
+            "en": "Stripping away pretense brings back authentic peace of mind and steadier self-worth.",
+            "zh": "去掉虚饰之后，踏实的心安与稳固的自我价值感会重新回到你手里。"
+          },
+          "advice": {
+            "en": "Build real freedom behind the scenes rather than performing abundance for an audience.",
+            "zh": "把功夫花在幕后真正的自由上，而不是演一场给旁人看的丰盛戏码。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check the gap between looking prosperous and actually feeling secure. Reclaim quiet self-reliance and drop unnecessary performance.",
+            "zh": "星币九逆位提醒你核对“看起来体面”与“真正有底气”之间的落差。收回安静的自立，放下多余表演。"
+          },
+          "love": {
+            "en": "In love, reversed Nine of Pentacles warns against financial or emotional overdependence—or staying guarded in gilded isolation.",
+            "zh": "在感情中，它提醒警惕经济或情绪上的过度依附，也留意是否把自己关在华丽却孤单的高墙里。"
+          },
+          "career": {
+            "en": "At work, beware undercharging, lifestyle creep, or trading long-term independence for a gilded cage. Rebuild your personal runway.",
+            "zh": "在工作与财务上，警惕报低价、消费膨胀，或为了表面光鲜困在金色牢笼里。重新加厚自己的独立跑道。"
+          },
+          "health": {
+            "en": "Overwork disguised as ambition is robbing you of simple pleasure; schedule genuine rest without needing to earn it first.",
+            "zh": "伪装成上进心的过度劳累正在夺走生活滋味；无需先拿成绩交换，现在就给自己安排真正休整。"
+          },
+          "spirituality": {
+            "en": "True worth cannot be bought or performed; reconnect with the quiet sufficiency already inside you.",
+            "zh": "真正的自我价值既无法靠昂贵标签买来，也不必靠精致人设演给别人看；安静回连你内在原本就具足的沉静底气与定力。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "In a serene, flourishing Belle Epoque vineyard garden at luminous golden dawn, a poised, independent woman in a flowing warm parchment-ochre and emerald-brocade gown stands gracefully at center, holding her gloved left hand raised where ONE hooded falcon with antique-gold jesses perches calmly. Her right hand rests lightly near lush grape-laden emerald-verdigris trellises flanking her on both sides. Nestled cleanly and unmistakably among the vines are EXACTLY NINE bright embossed antique-gold pentacle coins—SIX clearly spaced coins gleaming on the left trellis and THREE clearly spaced coins gleaming on the right trellis. Beyond the sunlit garden path rises an ivory-lit manor silhouette against a velvety midnight-indigo and warm gold horizon sky.",
+      "requiredObjects": [
+        {
+          "object": "poised woman in brocade gown",
+          "count": 1
+        },
+        {
+          "object": "hooded falcon perched on gloved hand",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coins (6 on left trellis, 3 on right trellis)",
+          "count": 9
+        }
+      ],
+      "compositionNote": "Graceful upright central figure framed by twin lush vineyard trellises holding 6 gold coins left and 3 gold coins right plus the raised falcon silhouette—instantly readable at 64x96 thumbnail size.",
+      "avoid": [
+        "8 or 10 coins",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "ten_of_pentacles": {
+    "id": "ten_of_pentacles",
+    "archetypeEssence": {
+      "en": "Enduring legacy—abundance that outlives a single season and shelters generations under one roof.",
+      "zh": "绵延传承的家业与丰盛——超越一时得失、足以庇护几代人的长久根基。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Silver-haired elder in embroidered robes seated peacefully at the estate gateway",
+        "Two loyal white hounds resting affectionately beside the elder's knees",
+        "Younger couple and child standing together beneath a carved stone family archway",
+        "Ten golden pentacles arranged in the sacred Tree-of-Life constellation across the foreground"
+      ],
+      "zh": [
+        "身着绣袍、安详端坐于庄园门廊下的银发长者",
+        "依偎在长者膝畔的两只忠实白犬",
+        "立于雕花石拱门下相伴交谈的年轻伴侣与孩童",
+        "按生命之树星图排布于画面前景的十枚古金星币"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Luminous stone family courtyard archway bathed in warm parchment-gold and sunlit-ivory lantern light",
+        "Wise silver-haired elder in emerald-and-gold brocade seated with two calm white hounds beside a younger couple and child",
+        "Exactly ten gleaming embossed antique-gold pentacle coins arranged cleanly in the symmetrical Tree-of-Life constellation spanning the archway",
+        "Deep midnight-indigo twilight sky and carved Art Nouveau botanical stonework framing generational warmth"
+      ],
+      "zh": [
+        "沐浴在暖羊皮纸金与象牙白灯火中的宏阔石雕家族庭院拱门",
+        "身着祖母绿鎏金绣袍、携两只温顺白犬安坐的银发长者，以及拱门下相伴的年轻伴侣与孩童",
+        "以工整对称的生命之树星图阵列悬浮于拱门前的恰好十枚浮雕古金星币",
+        "深邃午夜蓝暮色与新艺术植物石雕，衬托出世代传承的温润气象"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ten of Pentacles is culmination built to last: generational wealth, home, institutional stability, and the quiet satisfaction of creating something sturdy enough to pass forward.",
+          "zh": "星币十代表经得起时间考验的圆满：稳固的家业、归属感、长青制度，以及把可靠根基交到下一代或后来者手中的踏实欣慰。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Think in decades, not weeks—make the decision that strengthens your long-term home, family, or enduring legacy.",
+            "zh": "以十年而非以周为单位思考——做出那个能夯实长远家园、家族或持久声誉的选择。"
+          },
+          "foundation": {
+            "en": "Family roots, ancestral wisdom, established institutions, or long-term savings formed the sturdy bedrock beneath this story.",
+            "zh": "家族根基、前人积累、成熟体系或长期储蓄，为当下铺下了厚实底座。"
+          },
+          "present": {
+            "en": "You are standing inside a chapter of tangible permanence—home, heritage, or a mature enterprise reaching full stability.",
+            "zh": "你正站在切实稳固的阶段之中——居所、传承或成熟事业已步入长青格局。"
+          },
+          "resource": {
+            "en": "Generational support, trusted community, equity, or proven institutional knowledge backs you up right now.",
+            "zh": "家族与社群托举、长期资产或经过验证的成熟经验，此刻都是你最可靠的后盾。"
+          },
+          "challenge": {
+            "en": "Even upright, Ten of Pentacles in a challenge slot asks whether honoring tradition or family expectations is leaving too little room for your own fresh voice.",
+            "zh": "落在阻碍位时，正位星币十提醒你审视：维护传统与家族期待，是否悄悄挤压了你表达自我新意的空间？"
+          },
+          "action": {
+            "en": "Formalize the long-term plan—estate, equity, documentation, or family agreement—so what you built stays protected.",
+            "zh": "把长远安排落到制度与纸面上——资产规划、股权架构、文档沉淀或家庭共识——让成果稳稳传下去。"
+          },
+          "outcome": {
+            "en": "Lasting prosperity, a secure home, and a proud legacy settle into place—abundance that shelters more than just you.",
+            "zh": "长久稳健的丰盛、安心居所与值得骄傲的传承将稳稳落定——这份富足不仅照亮你自己，也庇护身边之人。"
+          },
+          "advice": {
+            "en": "Build with permanence in mind, and honor both the elders who laid the stones and the future that walks through the arch.",
+            "zh": "怀着长远之心去建造，既敬重当年铺石的前人，也为即将穿过拱门的后来者留路。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Long-term stability, shared heritage, and lasting material fulfillment anchor this reading. Invest in what endures.",
+            "zh": "长远稳固的根基、可延续的共同传承与持久的现实圆满是此刻核心基调。把心力与资源投向经得起岁月沉淀的人事与结构。"
+          },
+          "love": {
+            "en": "In love, Ten of Pentacles speaks of deep commitment, building a home together, blending families, and a partnership sturdy enough to weather decades.",
+            "zh": "在感情中，星币十指向深厚承诺、共同筑家、融入彼此家庭，以及足以携手走过漫长岁月的稳固伴侣关系。"
+          },
+          "career": {
+            "en": "At work, this signals wealth preservation, retirement planning, real estate, family business, or creating durable systems and mentorship that outlast your tenure.",
+            "zh": "在工作与财务上，它预示资产保值、长期规划、房产置业、家族事业，或搭建出超越个人任期的长青体系。"
+          },
+          "health": {
+            "en": "For wellbeing, look to lifelong longevity habits and family health history—steady preventative care protects your future self.",
+            "zh": "在身心管理上，着眼终生受用的长寿习惯与家族健康脉络——踏实的预防养护是对未来最好的投资。"
+          },
+          "spirituality": {
+            "en": "Spiritually, you are part of an unbroken lineage: gratitude for those who came before and stewardship for those who follow.",
+            "zh": "在灵性层面，你正身处绵延不断的传承之中：感恩前人铺路，也为后来者尽一份温柔的守护之责。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ten of Pentacles reversed highlights strain around legacy: family disputes over money, shaky long-term plans, or outgrowing an inherited script that no longer fits.",
+          "zh": "星币十逆位指向传承与根基处的张力：围绕钱财家产的家庭摩擦、不够稳固的长远规划，或旧有家族剧本已不再合身。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Short-term thinking or unspoken family tensions are undermining long-term stability.",
+            "zh": "短视决策或未说破的家庭心结，正在动摇长远安稳。"
+          },
+          "excess": {
+            "en": "Clinging to outdated family rules or status expectations at the cost of genuine happiness.",
+            "zh": "死守过时的家规或门面期待，牺牲了真实的生活愉悦。"
+          },
+          "internalized": {
+            "en": "Carrying heavy pressure to live up to an inherited legacy you never chose.",
+            "zh": "内心背负着沉重期待，勉强去接一份自己从未主动选择的剧本。"
+          },
+          "release": {
+            "en": "Redefining home and legacy on your own honest terms rather than repeating old patterns.",
+            "zh": "不再机械重复旧模式，按自己真诚的价值观重新定义“家”与“传承”。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Conflicts over shared assets, inheritance, or conflicting generational values are creating friction.",
+            "zh": "围绕共同资产、分配或代际观念差异的分歧，正在制造现实摩擦。"
+          },
+          "action": {
+            "en": "Put shared finances and expectations in plain writing, and separate loving your family from obeying every outdated expectation.",
+            "zh": "把共同财务与权责落到清晰纸面，同时分清“爱家人”与“顺从所有过时期望”的区别。"
+          },
+          "outcome": {
+            "en": "Clearing up financial ambiguity or stepping into your own values builds a healthier foundation going forward.",
+            "zh": "理清财务模糊地带或忠于自己的价值尺度，会为你接下来的日子搭起更健康的新地基。"
+          },
+          "advice": {
+            "en": "Keep what is wise from the past, renegotiate what is brittle, and protect your long-term solvency.",
+            "zh": "保留前人留下的智慧，重谈已经脆弱失灵的旧约，同时牢牢护住你的长远偿付力。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Examine where long-term foundations have cracks—financial overextension, family friction, or clinging to an inherited mold you have outgrown.",
+            "zh": "星币十逆位提醒你检查长远地基上的裂缝：是否存在财务透支、家庭摩擦，或仍硬塞在早已不合身的旧框架里？"
+          },
+          "love": {
+            "en": "In love, reversed Ten of Pentacles flags tension with in-laws, mismatched visions of home and money, or fear of deep long-term commitment.",
+            "zh": "在感情中，它提示与双方家庭的磨合压力、对居所与金钱观的分歧，或对长久承诺的隐隐退缩。"
+          },
+          "career": {
+            "en": "At work, beware unstable partnerships, neglected succession planning, or chasing quick wins that jeopardize long-term reputation.",
+            "zh": "在工作与财务上，警惕不稳固的合伙架构、疏于交接的体系风险，或为了短线收益透支长期口碑。"
+          },
+          "health": {
+            "en": "Don't ignore recurring hereditary patterns or long-term wear and tear; address foundational care now.",
+            "zh": "别再忽视家族遗传倾向、环境因素或日积月累的慢性损耗；趁现在还有充分余地，把基础体检与长期养护安排提上日程。"
+          },
+          "spirituality": {
+            "en": "Healing ancestral patterns means honoring your roots without letting old fears dictate your future.",
+            "zh": "疗愈代际流传下来的惯性模式，意味着既能敬重先辈与来路的馈赠，又不再让上一代的匮乏恐惧替你决定今天的未来。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "Beneath a grand, warmly lantern-lit Belle Epoque stone courtyard archway adorned with carved botanical vines, a serene silver-haired elder in rich emerald-and-gold brocade robes sits peacefully on the right with TWO gentle white hounds resting beside them, while a younger couple and a child stand together in warm conversation beneath the luminous arch. Suspended cleanly across the foreground in the unmistakable symmetrical Tree-of-Life constellation are EXACTLY TEN gleaming embossed antique-gold pentacle coins (1 at top crown, 2 upper flanking, 2 mid-upper flanking, 1 center heart, 2 mid-lower flanking, 1 lower center, 1 bottom base) so every single coin of the TEN is bright, cleanly separated, and countable. Warm parchment-ochre courtyard glow contrasts richly with the deep midnight-indigo twilight sky beyond the estate towers.",
+      "requiredObjects": [
+        {
+          "object": "seated silver-haired elder with two white hounds",
+          "count": 1
+        },
+        {
+          "object": "younger family couple and child under stone arch",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coins arranged in the 10-node Tree-of-Life constellation",
+          "count": 10
+        }
+      ],
+      "compositionNote": "Architectural stone archway framing generational figures, anchored by EXACTLY TEN bright gold pentacles in the unmistakable Tree-of-Life geometric constellation—reads crisply even at 64x96 thumbnail size.",
+      "avoid": [
+        "9 or 11 coins",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "page_of_pentacles": {
+    "id": "page_of_pentacles",
+    "archetypeEssence": {
+      "en": "Earnest apprenticeship—holding a bright new skill or practical dream with absorbed, unhurried curiosity.",
+      "zh": "沉静笃实的求学初心——双手捧着崭新的技艺或务实梦想，全神贯注地踏出第一步。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Attentive youth standing in a flowering meadow gazing closely at a raised pentacle",
+        "Single golden pentacle cradled lightly between both hands as if studying its craft",
+        "Freshly plowed fields and budding trees stretching across the fertile plain",
+        "Distant blue mountain range promising a long, rewarding climb of mastery"
+      ],
+      "zh": [
+        "立于繁花草甸之上、全神贯注凝望手中星币的年轻学徒",
+        "双手轻捧于胸前细细端详的一枚古金星币",
+        "眼前新翻的沃土田垄与初绽新绿的树林",
+        "远方绵延的群山，预示值得稳步攀登的成长之路"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Earnest Belle Epoque apprentice in verdant emerald tunic, ochre neckerchief, and soft velvet cap standing in a blooming meadow",
+        "Exactly one gleaming embossed antique-gold pentacle coin held delicately between both raised hands at eye level",
+        "Luminous wildflowers, plowed twilight-and-dawn garden rows, and distant midnight-indigo hills",
+        "Warm sunlit-ivory glow illuminating the youth's absorbed face, open hands, and the single golden pentacle"
+      ],
+      "zh": [
+        "身着祖母绿短衫、赭金领巾与软绒帽，立于繁花草甸中的专注美好年代学徒",
+        "双手轻捧至眉眼间细细研读的恰好一枚浮雕古金星币",
+        "脚畔盛放的野花、晨光田垄与远方午夜蓝山峦",
+        "暖象牙白晨光照亮少年专注的眉眼、双手与这枚唯一星币"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Page of Pentacles brings diligent curiosity: studying a new craft, testing a practical opportunity, or receiving welcome tangible news that rewards patience and real homework.",
+          "zh": "星币侍从带来踏实的好奇心：潜心学习一门新技能、认真试水一个务实机会，或迎来值得用心跟进的好消息。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Approach this as a dedicated student—read the details, practice the basics, and turn curiosity into a concrete skill.",
+            "zh": "以认真学徒的心态面对眼前的事——啃透细节、练好基本功，把好奇变成实打实的本事。"
+          },
+          "foundation": {
+            "en": "A fresh course, early prototype, scholarship, or modest practical goal sparked this path.",
+            "zh": "一门新课程、早期雏形、资助机会或一个具体小目标，开启了这段旅程。"
+          },
+          "present": {
+            "en": "You are in a fertile learning phase; stay humble, ask sharp questions, and let tangible practice guide you.",
+            "zh": "你正处在吸收力极强的成长期；保持谦逊、多问务实问题，用动手实践带动理解。"
+          },
+          "resource": {
+            "en": "Willingness to learn from scratch and pay close attention to small details is your quiet superpower right now.",
+            "zh": "愿意从零学起且肯在细节上下功夫，是你此刻最稳妥的加分项。"
+          },
+          "challenge": {
+            "en": "Even upright, Page of Pentacles in a challenge slot warns against staying in eternal preparation mode—studying the coin so long you forget to put it into circulation.",
+            "zh": "落在阻碍位时，正位星币侍从提醒你：别一直停在准备与学习阶段，盯着星币研究太久却迟迟不肯下场实践。"
+          },
+          "action": {
+            "en": "Enroll, build the small sample, draft the budget, or send the earnest inquiry today.",
+            "zh": "今天就报下那门课、做出小样、列出预算，或发出那封诚恳务实的联络信。"
+          },
+          "outcome": {
+            "en": "A promising offer, accepted application, or solid new capability takes root cleanly.",
+            "zh": "一份充满潜力的邀约、顺利通过的申请或一项扎实新技能将稳稳落地。"
+          },
+          "advice": {
+            "en": "Stay curious, keep your promises small and kept, and respect the early steps of mastery.",
+            "zh": "保持求知欲，许下小而必兑现的承诺，认真走好成长的头几步。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Practical learning and earnest first steps open real doors. Treat this moment as fertile training ground.",
+            "zh": "务实谦逊的学习态度与诚恳扎实的起步正为你悄悄打开现实大门。把当下这一步当作最肥沃的练兵场，边做边攒硬本领。"
+          },
+          "love": {
+            "en": "In love, Page of Pentacles shows sincere, grounded affection—learning what makes a partner feel cared for through thoughtful small actions rather than drama.",
+            "zh": "在感情中，星币侍从体现为真诚笨拙却极可靠的用心——不靠花哨戏码，而是认真了解并记住让对方安心的小细节。"
+          },
+          "career": {
+            "en": "At work or study, this is a classic card of internships, certifications, new tools, grants, or pitching a well-researched pilot project.",
+            "zh": "在工作与学业上，它常对应进修考证、掌握新工具、申请资助或提交一份做足功课的试点方案。"
+          },
+          "health": {
+            "en": "For wellbeing, educate yourself on one foundational habit—sleep hygiene, form, or nutrition—and test it patiently for two weeks.",
+            "zh": "在身心调理上，认真弄懂一个基础原则（睡眠节律、动作规范或营养搭配），先踏实试行两周。"
+          },
+          "spirituality": {
+            "en": "Spiritually, awe shows up in close attention: studying the living world with patience and humility.",
+            "zh": "在灵性层面，真正的敬畏往往藏在细致耐心的专注里：带着初学者的谦卑去真实观察、亲手练习并感受眼前具体世界。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Page of Pentacles reversed points to procrastination, scattered focus, or daydreaming about results while dodging the unglamorous homework.",
+          "zh": "星币侍从逆位指向拖延观望、注意力分散，或憧憬成果却迟迟不肯动手做枯燥的基础功课。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Overthinking the first step or fearing beginner mistakes keeps the plan stuck on paper.",
+            "zh": "把第一步想得太复杂，或怕犯新手错误，让计划一直停在纸面上。"
+          },
+          "excess": {
+            "en": "Hoarding courses, books, and tools without actually finishing or applying one.",
+            "zh": "囤了一堆课程、资料与工具，却没有真正学完并落地用起来。"
+          },
+          "internalized": {
+            "en": "Feeling behind compared to peers and losing confidence before you give yourself time to learn.",
+            "zh": "拿自己和别人横向比较而暗自气馁，还没给自己留出成长时间就先打了退堂鼓。"
+          },
+          "release": {
+            "en": "Dropping a goal you only pursued out of obligation so your energy returns to genuine curiosity.",
+            "zh": "放下那些只是为了应付期待才硬啃的目标，把精力还给真正让你眼睛发亮的事。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Lack of follow-through, distraction, or skipping basic preparation is stalling real progress.",
+            "zh": "缺乏持续跟进、分心走神或跳过基础准备，正在卡住实质进展。"
+          },
+          "action": {
+            "en": "Shrink the task to one 25-minute concrete step today and finish it before reading another tutorial.",
+            "zh": "把任务缩成今天就能做完的 25 分钟具体小步，先动手做完再去看下一篇教程。"
+          },
+          "outcome": {
+            "en": "Momentum returns the moment you trade passive planning for one finished, imperfect attempt.",
+            "zh": "只要把空想换成一次虽不完美但真正完成的尝试，局面就会立刻松动。"
+          },
+          "advice": {
+            "en": "Stop waiting to feel ready; competence is built by doing the work badly once and then better.",
+            "zh": "别等完全准备好才开始；本事都是在先笨拙做一次、再越做越顺里长出来的。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Close the gap between good intentions and actual practice. Pick one concrete task and see it through.",
+            "zh": "星币侍从逆位提醒你补上“想得好”和“真去做”之间的断层。挑一件具体小事，亲手做完它。"
+          },
+          "love": {
+            "en": "In love, reversed Page of Pentacles flags inconsistent effort, broken small promises, or reluctance to grow up into steady reliability.",
+            "zh": "在感情中，它提示忽冷忽热的投入、小承诺频频落空，或不愿承担起稳定可靠的日常责任。"
+          },
+          "career": {
+            "en": "At work, watch for missed details, half-finished learning, or procrastination on an important application. Build a simple checklist and execute.",
+            "zh": "在工作与学业上，警惕粗心漏项、浅尝辄止或一再拖延关键申请。列张极简清单，逐项落地。"
+          },
+          "health": {
+            "en": "Starting and quitting routines every Monday drains morale; lower the bar until daily consistency feels easy.",
+            "zh": "每周一热血立下严苛目标、周三就放弃最消耗自我信任；把锻炼和作息门槛降到每天即使疲惫也能轻松做到的微小程度。"
+          },
+          "spirituality": {
+            "en": "Notice where collecting spiritual concepts replaces actually living them in ordinary moments.",
+            "zh": "坦诚觉察自己是否把不断收藏灵性概念、买书听课当成了成长本身，却忘了在最平凡的日常小事里真正践行哪怕一条洞见。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "Standing upright in a lush, sunlit-and-moonlit Art Nouveau wildflower meadow, an earnest Belle Epoque youth in a tailored emerald-verdigris tunic, warm parchment-ochre scarf, and soft velvet cap gazes with absorbed wonder at EXACTLY ONE gleaming embossed antique-gold pentacle coin cradled delicately between both raised hands at chest-to-eye level. Freshly plowed fertile earth rows, blooming ivory meadow flowers, and slender emerald saplings stretch behind the figure toward distant misty midnight-indigo hills touched by golden dawn light. High-key sunlit-ivory illumination makes the apprentice's focused profile, open hands, and the single glowing golden pentacle read with effortless clarity.",
+      "requiredObjects": [
+        {
+          "object": "standing apprentice youth in meadow",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coin held between both hands",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Clean vertical standing silhouette holding EXACTLY ONE bright gold pentacle coin aloft against open sky—unmistakable attentive learner pose at 64x96 thumbnail size.",
+      "avoid": [
+        "second coin",
+        "extra coins",
+        "horse",
+        "throne",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "knight_of_pentacles": {
+    "id": "knight_of_pentacles",
+    "archetypeEssence": {
+      "en": "Unshakeable reliability—the steady craftsman of the long haul who finishes every furrow without fanfare.",
+      "zh": "稳如磐石的可靠执行——不慕虚名、一步一印，把漫长田垄踏踏实实耕到尽头。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Armored knight seated calmly atop a heavy, sturdy black draft horse",
+        "Single golden pentacle held steadily forward in the knight's right hand",
+        "Sprigs of green leaves adorning helmet and horse harness",
+        "Broad, freshly plowed dark fields stretching patiently toward the horizon"
+      ],
+      "zh": [
+        "稳坐于敦实健壮黑马之上的披甲骑士",
+        "右手平稳托举于身前的一枚古金星币",
+        "头盔与马具上点缀的翠绿枝叶",
+        "眼前开阔规整、等待深耕的宽广田野"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Steadfast Belle Epoque knight in burnished bronze-and-emerald plate armor mounted on a powerful, stationary dark charger",
+        "Exactly one gleaming embossed antique-gold pentacle coin held level and steady in the knight's gauntleted right hand",
+        "Verdant oak-leaf plumes crowning the helmet and bridle, overlooking neat plowed twilight fields",
+        "Warm parchment-gold rim-light carving out horse, armor, and single pentacle against deep midnight-indigo sky"
+      ],
+      "zh": [
+        "身披古铜祖母绿雕花板甲、稳坐于沉稳黑骏马上的美好年代骑士",
+        "右手护手稳稳托举于身前的恰好一枚浮雕古金星币",
+        "头盔与马缰上点缀的翠绿橡叶，眼前是整齐绵延的暮色耕田",
+        "暖羊皮纸金轮廓光在深邃午夜蓝天幕下清晰勾勒战马、铠甲与这枚唯一星币"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Knight of Pentacles is methodical follow-through: showing up on time, respecting process, and grinding out durable results long after flashier players have wandered off.",
+          "zh": "星币骑士代表极度可靠的稳步推进：守时守信、尊重流程，在爱凑热闹的人早已散场之后，依然一步一印把成果做扎实。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Choose consistency over speed—a boring, repeatable system executed daily will win this race.",
+            "zh": "选择稳定而非冒进——一套看似平淡却每天照做不误的系统，最终会赢得这场长跑。"
+          },
+          "foundation": {
+            "en": "Dependable routines, conservative planning, and patient persistence built the solid traction you have today.",
+            "zh": "可靠的日常节律、稳健规划与不急不躁的坚持，为你积累了今天的扎实进展。"
+          },
+          "present": {
+            "en": "Progress may look slow from close up, yet every step is locking into place permanently; keep the pace steady.",
+            "zh": "近看或许觉得走得慢，但每一步都在牢牢夯实地基；稳住这个配速别乱。"
+          },
+          "resource": {
+            "en": "Your strongest asset is rock-solid dependability—when you give your word, people know the job will actually get done.",
+            "zh": "你最值钱的资产是说到做到——只要你点头接手，旁人就彻底放心这件事一定能落地。"
+          },
+          "challenge": {
+            "en": "Even upright, Knight of Pentacles in a challenge slot warns that excessive caution or perfectionist routine can miss a nimble opening.",
+            "zh": "落在阻碍位时，正位星币骑士提醒你：过度求稳或死守既定流程，可能会让你错过一个需要灵巧出手的窗口。"
+          },
+          "action": {
+            "en": "Map the checklist, honor the schedule, and complete the unglamorous maintenance step everyone else avoids.",
+            "zh": "按清单逐项推进，守住时间表，把别人都嫌枯燥的那道基础工序踏实做完。"
+          },
+          "outcome": {
+            "en": "Reliable, lasting success arrives on schedule—earned trust, steady income, and a finished work built to endure.",
+            "zh": "稳妥长久的成果会按期兑现——赢得深厚信任、稳定回报，以及一件真正耐用的成品。"
+          },
+          "advice": {
+            "en": "Keep both hooves on the ground; slow and thorough outlasts fast and sloppy every time.",
+            "zh": "四蹄踏实踩在地面上；慢而透彻，永远比快而潦草走得更远。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Patience, routine, and methodical craftsmanship carry the day. Trust steady increments over dramatic leaps.",
+            "zh": "沉稳的耐心、清晰的秩序与按部就班的扎实功夫将决定最终胜负。相信日积月累的稳步推进，远胜于一时兴起的戏剧豪赌。"
+          },
+          "love": {
+            "en": "In love, Knight of Pentacles is quiet devotion—loyal, protective, and proven through consistent deeds rather than poetic speeches.",
+            "zh": "在感情中，星币骑士是沉稳寡言却极长情的守护——不靠甜言蜜语，全靠日复一日的兑现与担当。"
+          },
+          "career": {
+            "en": "At work, this is operational excellence: hitting milestones, maintaining clean systems, and earning promotion through undeniable reliability.",
+            "zh": "在职场上，这是教科书级的执行力：按期交付、维护整洁系统，靠无可挑剔的靠谱赢得重任。"
+          },
+          "health": {
+            "en": "For wellbeing, steady daily fundamentals—walking, strength training, regular sleep—deliver quiet, unmistakable resilience.",
+            "zh": "在身心调理上，雷打不动的基础节奏（散步、力量训练、规律作息）会养出沉稳耐造的体能。"
+          },
+          "spirituality": {
+            "en": "Spiritually, faithfulness in small daily commitments is deeper than occasional peak experiences.",
+            "zh": "在灵性层面，在日复一日的平凡生活里稳稳守住微小的诚实、信诺与自律，远比追逐偶发炫目的高峰体验更有长久分量。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Knight of Pentacles reversed points to stubborn stagnation, joyless routine, or getting stuck in a rut while refusing to adapt.",
+          "zh": "星币骑士逆位指向固执停滞、枯燥乏味的惯性泥潭，或死守旧法不肯变通。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Rigidity or fear of deviation keeps a stalled plan frozen in place.",
+            "zh": "过于刻板或害怕偏离计划，让原本卡住的事彻底动弹不得。"
+          },
+          "excess": {
+            "en": "Obsessive perfectionism or workaholic grinding that drains all warmth and spontaneity.",
+            "zh": "偏执的完美主义或机械加班，把生活里的温度与灵气榨得一干二净。"
+          },
+          "internalized": {
+            "en": "Quiet boredom and restlessness hidden beneath a dutiful, unchanging exterior.",
+            "zh": "在尽职尽责、一成不变的外表下，内心其实早已感到沉闷与焦躁。"
+          },
+          "release": {
+            "en": "Breaking out of an outdated routine to invite fresh air and smarter methods.",
+            "zh": "主动打破过时的陈旧惯性，让新鲜空气与更聪明的方法流进来。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Stubbornness, tunnel vision, or burnout from monotonous grind is slowing everything down.",
+            "zh": "固执己见、视野变窄或单调重复带来的倦怠，正在拖慢整体节奏。"
+          },
+          "action": {
+            "en": "Change one rigid habit this week, listen to an outside suggestion, and automate or drop a tedious bottleneck.",
+            "zh": "这周主动改掉一条僵化习惯，听取一个外部建议，把拖后腿的繁琐环节简化掉。"
+          },
+          "outcome": {
+            "en": "Loosening the reins restores momentum and turns dutiful drudgery back into purposeful progress.",
+            "zh": "适当松一松缰绳后，停滞感会化开，机械苦干也会重新变成有方向的推进。"
+          },
+          "advice": {
+            "en": "Reliability is a virtue, not a prison—stay steady in purpose while staying flexible in method.",
+            "zh": "靠谱是美德而非牢笼——守住大方向的稳，同时放开方法上的活。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check where healthy persistence has hardened into stubbornness or boredom. Refresh the method without abandoning the goal.",
+            "zh": "星币骑士逆位提醒你留意：原本可贵的坚持，是否已硬化成固执或麻木？守住目标，但该换换走法了。"
+          },
+          "love": {
+            "en": "In love, reversed Knight of Pentacles flags emotional predictability turning stale, or digging heels in during a disagreement.",
+            "zh": "在感情中，它提示日复一日的过度平淡让关系失去新鲜活力，或在出现分歧时双方都固执己见、死守旧规而不肯灵活松动。"
+          },
+          "career": {
+            "en": "At work, watch for clinging to obsolete processes, micromanaging details, or feeling trapped in a dead-end routine. Propose a smarter workflow.",
+            "zh": "在职场上，警惕抱残守缺、死抠细枝末节，或困在毫无新意的旧轨道里。主动提出更高效的流程迭代。"
+          },
+          "health": {
+            "en": "Physical stiffness or sluggishness mirrors rigid habits; introduce gentle variety in movement and rest.",
+            "zh": "身体的僵硬、滞重或提不起劲往往直接呼应着过于刻板单一的作息；给日常运动、拉伸与休养节奏加入一点轻盈新鲜的变化。"
+          },
+          "spirituality": {
+            "en": "Step outside the familiar furrow; wonder returns when you stop demanding that every day look identical.",
+            "zh": "试着主动走出那条早已走惯的思维旧田垄；当你不再执着于要求每一天都按部就班一模一样，鲜活敏锐的觉知便会回来。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "In crisp three-quarter profile atop a sturdy, calm dark-coated draft charger standing planted on a sunlit-and-twilight ridge, a steadfast Belle Epoque knight in engraved antique-bronze and emerald-verdigris armor with verdant oak-leaf plumes holds EXACTLY ONE gleaming embossed antique-gold pentacle coin level and steady in their gauntleted right hand. Ahead of the stationary horse stretch broad, neatly plowed fertile dark fields glowing with warm parchment-ochre horizon light beneath a velvety midnight-indigo sky. Crisp warm rim-light defines the knight's resolute profile, the horse's muscular silhouette, and the single radiant golden pentacle.",
+      "requiredObjects": [
+        {
+          "object": "armored knight mounted on sturdy dark horse",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coin held in right hand",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Grounded, rock-solid equestrian profile paused above plowed fields, with EXACTLY ONE bright gold pentacle held clearly at chest height—distinctly calm and planted at 64x96 thumbnail size.",
+      "avoid": [
+        "second coin",
+        "extra coins",
+        "galloping horse",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "queen_of_pentacles": {
+    "id": "queen_of_pentacles",
+    "archetypeEssence": {
+      "en": "Warm, capable stewardship—turning resources, home, and care into a flourishing sanctuary where people actually thrive.",
+      "zh": "温润而能干的丰盛守护——把资源、居所与照料经营成让人真正安心生长的沃土。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Compassionate Queen seated on a stone throne carved with fruit, flowers, and cherubs",
+        "Single golden pentacle cradled warmly in both hands on her lap",
+        "Lush blooming rose bower and verdant garden surrounding her seat",
+        "Alert little hare darting beside her feet symbolizing fertility and earthy vitality"
+      ],
+      "zh": [
+        "端坐于雕满花果纹饰石座之上的温厚王后",
+        "双手温热捧护于膝间的一枚古金星币",
+        "环绕宝座盛放的玫瑰花廊与繁茂花园",
+        "跃于脚畔的小野兔，象征蓬勃生机与大地丰饶"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Warm, composed Belle Epoque Queen in deep emerald-verdigris velvet and sunlit-ivory silk gown seated on a vine-carved stone throne",
+        "Exactly one gleaming embossed antique-gold pentacle coin cradled tenderly in both hands at her lap",
+        "Blooming crimson-and-ivory rose arch, overflowing garden foliage, and one alert ivory-brown hare poised beside her hem",
+        "Luminous golden-hour light illuminating her serene face, caring hands, and the single golden pentacle against midnight-indigo garden depth"
+      ],
+      "zh": [
+        "身着深祖母绿天鹅绒与象牙白丝绸长裙、端坐于藤蔓雕花石座上的温润美好年代王后",
+        "双手稳稳捧护于膝前的恰好一枚浮雕古金星币",
+        "盛放的玫瑰花拱、繁茂绿植，以及停驻在她裙裾畔的一只灵动野兔",
+        "暖金晨昏光晕照亮她从容的眉眼、双手与这枚唯一星币，映衬深邃午夜蓝花园影调"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Queen of Pentacles unites practical competence with genuine warmth: managing money, home, and people so well that everyone around her feels both cared for and grounded.",
+          "zh": "星币王后将干练务实与真挚温厚融为一体：把财务、生活与人情打理得井井有条，让身处她照拂之下的人既踏实又被滋养。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Lead with practical care—tend the real-world details, nourish yourself first, and create an environment where good work can flourish.",
+            "zh": "用落在实处的照料去引领局面——理顺现实细节、先把自己养好，再搭出让好事情自然生长的环境。"
+          },
+          "foundation": {
+            "en": "Resourceful management, warm hospitality, or steady nurturing built the safe base supporting this situation.",
+            "zh": "精明温和的统筹、悉心照料或踏实持家，为你打下了眼下这份安心底气。"
+          },
+          "present": {
+            "en": "You have the capacity to balance ambition with comfort—stay grounded, generous, and quietly efficient.",
+            "zh": "你正具备兼顾进取与舒适的游刃能量——保持踏实、宽厚与不动声色的高效。"
+          },
+          "resource": {
+            "en": "Your strongest asset is earthy wisdom: knowing how to turn modest ingredients into lasting comfort, loyalty, and real value.",
+            "zh": "你最强的资本是接地气的智慧：懂得把寻常资源经营成长久的体面、信赖与真实价值。"
+          },
+          "challenge": {
+            "en": "Even upright, Queen of Pentacles in a challenge slot asks whether taking care of everyone's practical needs is quietly leaving your own cup last in line.",
+            "zh": "落在阻碍位时，正位星币王后温柔提醒：替所有人操心打理现实事务，是否悄悄把你自己的需求排到了最后？"
+          },
+          "action": {
+            "en": "Upgrade one practical system—home, budget, meal prep, or team workflow—so daily life feels calmer and more abundant.",
+            "zh": "升级一套日常实务系统（居所、预算、饮食或团队流程），让每天的运转更从容丰裕。"
+          },
+          "outcome": {
+            "en": "Warm prosperity, trusted stability, and a thriving home or enterprise take shape—abundance you can actually feel.",
+            "zh": "温润富足、稳固信赖与蒸蒸日上的生活或事业将逐步成形——这是真正摸得着、暖人心的丰盛。"
+          },
+          "advice": {
+            "en": "Be generous without losing your footing; practical kindness is one of the strongest forms of leadership.",
+            "zh": "慷慨而不失分寸；落在实处的善意，本身就是最具凝聚力的领导力。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Grounded abundance and capable care guide this moment. Tend both material order and human warmth with equal skill.",
+            "zh": "踏实丰盛的现实底气与能干温厚的照料力是此刻主线。既守住清晰务实的现实秩序，又保有人情温度，局面自然日渐兴旺。"
+          },
+          "love": {
+            "en": "In love, Queen of Pentacles brings sensual comfort, fierce loyalty, and love shown through home-cooked warmth, reliability, and practical support.",
+            "zh": "在感情中，星币王后带来烟火气十足的踏实宠爱、深厚忠诚，以及落在衣食住行与日常兜底里的真情。"
+          },
+          "career": {
+            "en": "At work, this is savvy operations, budget stewardship, ethical entrepreneurship, and mentoring a team so both profit and morale stay healthy.",
+            "zh": "在工作与财务上，她代表精明稳健的运营统筹、预算掌舵与有温度的带队方式，让业绩与人心双双健康。"
+          },
+          "health": {
+            "en": "For wellbeing, nourish your body like a treasured garden—wholesome food, sensory comfort, nature, and unhurried rest.",
+            "zh": "在身心养护上，像照料珍贵花园一样对待身体——温热踏实的饮食、亲近自然与从容休养最能回血。"
+          },
+          "spirituality": {
+            "en": "Spiritually, earth itself is the altar: hospitality, cooking, gardening, and caring for living things are sacred acts.",
+            "zh": "在灵性层面，大地本身即是圣坛：款待、烹茶、植花与照料生命，都是最质朴深厚的修行。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Queen of Pentacles reversed points to caretaker burnout, work-life imbalance, or smothering control disguised as 'just helping.'",
+          "zh": "星币王后逆位指向照料者透支、工作与生活失衡，或打着“为你好”旗号的过度操心与控制。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Neglecting your own rest, finances, or home order while putting out everyone else's fires.",
+            "zh": "忙着替别人灭火，却把自己的休息、财务与生活秩序晾在了一边。"
+          },
+          "excess": {
+            "en": "Over-functioning, hovering, or worrying obsessively about money and comfort.",
+            "zh": "事必躬亲地大包大揽，或围绕钱财与安稳陷入停不下来的焦虑。"
+          },
+          "internalized": {
+            "en": "Feeling resentful that nobody takes care of you the way you take care of them.",
+            "zh": "心里暗自委屈：你把大家照顾得那么周全，却没人同样来照料你。"
+          },
+          "release": {
+            "en": "Stepping back from over-caretaking so you can replenish your own garden first.",
+            "zh": "主动从过度操心中退一步，先把自己的花园重新浇灌丰盈。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Self-neglect or trying to manage everyone else's life is draining your warmth and clarity.",
+            "zh": "忽略自我养护或忍不住替别人操盘生活，正在快速耗干你的温润与清明。"
+          },
+          "action": {
+            "en": "Hand back one responsibility that isn't yours, tidy your own space, and protect one restorative evening for yourself.",
+            "zh": "把一件本不该你扛的琐事交还回去，整理好自己的空间，为自己留出一整晚真正放松的时间。"
+          },
+          "outcome": {
+            "en": "Reclaiming your own replenishment restores both ease and healthier boundaries with the people you love.",
+            "zh": "把重心收回来滋养自己后，从容感会回来，你与身边人的边界也会更舒展健康。"
+          },
+          "advice": {
+            "en": "You cannot nurture anyone well from an empty larder—restock your own reserves first.",
+            "zh": "粮仓见底时谁也滋养不好——先把你自己的精力与安全感补满。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Restore work-life balance and stop over-functioning for others. Ground yourself before carrying more.",
+            "zh": "星币王后逆位提醒你及时修复生活与工作之间的失衡，停止事无巨细地替他人大包大揽。先收回外放的精力让自己落地回血。"
+          },
+          "love": {
+            "en": "In love, reversed Queen of Pentacles warns against mothering a partner, keeping score of chores, or letting stress crowd out tenderness.",
+            "zh": "在感情中，它提醒避免把伴侣当孩子管教、在琐事里暗自计较，或让现实压力挤干了温情。"
+          },
+          "career": {
+            "en": "At work, beware taking on invisible office housework, financial anxiety, or letting career demands swallow home life. Reset boundaries.",
+            "zh": "在职场上，警惕默默包揽过多隐形杂务、预算与精力同时紧绷，或让工作彻底吞噬私人生活与休息边界，及时重画职责线。"
+          },
+          "health": {
+            "en": "Stress-related fatigue and skipped self-care are waving a flag; return to simple, warm nourishment and real sleep.",
+            "zh": "长期操劳带来的深层疲惫与习惯性疏于照顾自己已经亮起黄灯；立刻回归温热简单的日常饮食、舒缓节奏与踏实充足的睡眠。"
+          },
+          "spirituality": {
+            "en": "Release the guilt around receiving; letting yourself be supported is part of earth wisdom too.",
+            "zh": "试着放下接受他人照料与善意时的莫名愧疚感；允许自己同样被安稳托举与滋养，这本就是完整大地智慧不可或缺的一半。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "Seated serenely upon a carved limestone throne adorned with Art Nouveau fruit and foliage motifs beneath a blooming crimson-and-ivory rose archway, a warm, poised Belle Epoque Queen in a flowing deep emerald-verdigris velvet and sunlit-ivory silk gown gazes tenderly down at EXACTLY ONE gleaming embossed antique-gold pentacle coin cradled gently in both hands on her lap. Lush garden blooms surround her throne, and ONE alert ivory-brown hare perches quietly beside her gown hem in the foreground. Warm golden-ivory light illuminates the Queen's compassionate face, cradling hands, and the single golden pentacle against a rich midnight-indigo twilight garden.",
+      "requiredObjects": [
+        {
+          "object": "seated Queen on carved stone throne",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coin cradled in both hands",
+          "count": 1
+        },
+        {
+          "object": "small hare beside throne hem",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Warm, nurturing central enthroned silhouette beneath a rose arch, eyes and hands converging on EXACTLY ONE bright gold pentacle in her lap—reads effortlessly at 64x96 thumbnail size.",
+      "avoid": [
+        "second coin",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "king_of_pentacles": {
+    "id": "king_of_pentacles",
+    "archetypeEssence": {
+      "en": "Sovereign mastery of the material world—turning vision into enduring wealth, order, and dependable protection.",
+      "zh": "驾驭现实世界的沉稳王者——将远见化为经久不衰的财富、秩序与可靠庇护。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Commanding King seated on a heavy stone throne carved with bull heads",
+        "Single golden pentacle held upright and steady in his left hand",
+        "Short golden scepter of earthly authority held in his right hand",
+        "Grapevine-embroidered robes and flourishing castle garden surrounding the throne"
+      ],
+      "zh": [
+        "稳坐于雕刻公牛头石座之上的沉稳国王",
+        "左手稳稳托立于膝侧的一枚古金星币",
+        "右手执握象征现实权柄的短金权杖",
+        "绣满葡萄藤纹的华贵长袍与环绕王座的繁茂城堡花园"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Commanding Belle Epoque sovereign in rich emerald-verdigris and molten-gold grapevine-embroidered robes seated on a bull-carved stone throne",
+        "Exactly one gleaming embossed antique-gold pentacle coin held upright with quiet authority in his left hand",
+        "Ornate short antique-gold scepter resting firmly in his right hand, with armored boot visible beneath the robe",
+        "Flourishing castle garden archway and warm parchment-gold illumination contrasting against deep midnight-indigo sky"
+      ],
+      "zh": [
+        "身着祖母绿与熔金葡萄藤刺绣华袍、稳坐于公牛石雕王座上的威严美好年代国王",
+        "左手沉稳托立于膝前的恰好一枚浮雕古金星币",
+        "右手紧握古金短权杖，袍角下隐现坚固战靴",
+        "繁茂城堡花园与暖羊皮纸金光辉，在深邃午夜蓝天幕下尽显鼎盛气象"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "King of Pentacles embodies seasoned prosperity: sound judgment, financial acumen, and the calm authority to build institutions that stay solvent, generous, and rock-solid.",
+          "zh": "星币国王体现历经锤炼的鼎盛格局：老练的判断力、稳健的财商，以及把事业与家业经营得既富足又厚重可靠的沉静权威。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Think like a long-term owner—verify the fundamentals, steward resources wisely, and lead with steady, unhurried authority.",
+            "zh": "以长期掌舵者的格局去思考——看透基本面、稳健配置资源，用不疾不徐的笃定去引领全局。"
+          },
+          "foundation": {
+            "en": "Proven leadership, sound capital management, or a seasoned mentor created the durable structure you stand on.",
+            "zh": "久经考验的统筹力、稳健资本运作或老练前辈的加持，搭起了今天牢靠的盘子。"
+          },
+          "present": {
+            "en": "You have real command over the practical levers here—use patience, leverage, and disciplined execution to lock in lasting gains.",
+            "zh": "你已握住局面里最关键的现实杠杆——用耐心、资源整合与稳健执行把长期收益落袋为安。"
+          },
+          "resource": {
+            "en": "Executive judgment, strong credit, reliable networks, and calm risk management are working in your favor.",
+            "zh": "成熟的决策眼光、良好信用、可靠人脉与沉稳风控，正全面为你加分。"
+          },
+          "challenge": {
+            "en": "Even upright, King of Pentacles in a challenge slot warns against becoming overly conservative or measuring every human choice solely by ROI.",
+            "zh": "落在阻碍位时，正位星币国王提醒你：别因为过于求稳而错失新变局，也别把所有关系与选择都只按回报率来算。"
+          },
+          "action": {
+            "en": "Take full ownership of the budget and strategy, close the deal on fair solid terms, and back your team with real resources.",
+            "zh": "全面接手预算与战略拍板，按公允扎实的条款落定合作，并用实打实的资源托住团队。"
+          },
+          "outcome": {
+            "en": "Enduring financial strength, respected authority, and a thriving enterprise settle firmly into place.",
+            "zh": "长久稳固的财务实力、令人信服的威望与兴旺的事业版图将稳稳落定。"
+          },
+          "advice": {
+            "en": "Lead by building things that last; true power needs no loud display.",
+            "zh": "靠做出经得起时间检验的基业去服众；真正的底气从不需要大声张扬。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Mastery, stability, and practical leadership anchor this reading. Execute with calm confidence and long-term stewardship.",
+            "zh": "炉火纯青的实操能力、稳固可信赖的格局与务实领导力是此刻核心。带着沉静笃定的定力与长远眼光稳步落子并守成增效。"
+          },
+          "love": {
+            "en": "In love, King of Pentacles offers steadfast protection, loyalty, and a partner who backs words with real-world stability and generosity.",
+            "zh": "在感情中，星币国王代表厚重可靠的守护与担当——不空谈浪漫，而是用稳稳的现实托底与大方体贴护你周全。"
+          },
+          "career": {
+            "en": "At work, this is peak business acumen: executive leadership, profitable scaling, sound investing, and building a reputation people trust with real stakes.",
+            "zh": "在工作与财务上，这是顶级的商业与管理格局：稳健扩张、精准配置资本，建立起让人放心托付重任的信誉。"
+          },
+          "health": {
+            "en": "For wellbeing, strong constitution and disciplined lifestyle stewardship keep your energy steady over the long haul.",
+            "zh": "在身心状态上，良好的底子配合有章法的长期养护，能让你的精力在漫长赛程中始终稳健。"
+          },
+          "spirituality": {
+            "en": "Spiritually, mastery of matter serves a higher generosity—using wealth and power as instruments of shelter rather than ego.",
+            "zh": "在灵性层面，驾驭物质的最高境界是厚德载物——把财富与权柄化作庇护众人的器皿，而非满足私欲的标签。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "King of Pentacles reversed warns of stubborn materialism, controlling leadership, or poor stewardship—either clutching wealth out of greed or gambling recklessly with hard-won stability.",
+          "zh": "星币国王逆位警示僵化的物质执念、专断控制或经营失策——要么因贪恋权财而冷硬狭隘，要么在稳固家业上贸然冒进。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Stubborn resistance to necessary change or poor financial discipline undermining authority.",
+            "zh": "固执抗拒必要转型，或财务纪律松弛，正在削弱你的掌控力。"
+          },
+          "excess": {
+            "en": "Greed, status obsession, or using money as leverage to control people around you.",
+            "zh": "过度逐利、沉迷排场，或把金钱与资源当成拿捏他人的筹码。"
+          },
+          "internalized": {
+            "en": "Tying your entire self-worth to net worth and fearing collapse if numbers dip.",
+            "zh": "把全部自我价值都绑死在账面数字上，一有波动就暗自恐慌。"
+          },
+          "release": {
+            "en": "Stepping down from rigid control and redefining success beyond sheer accumulation.",
+            "zh": "卸下紧绷的掌控欲，把“成功”的定义从单纯囤积拓宽到真正有滋味的丰盛。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Rigidity, greed, or short-sighted financial risk is threatening a solid foundation.",
+            "zh": "僵化专断、贪多求快或短视的财务冒险，正在动摇原本稳固的根基。"
+          },
+          "action": {
+            "en": "Audit the books honestly, cut one ego-driven expense or risky bet, and listen to dissenting practical advice.",
+            "zh": "诚实核查账本，砍掉一笔虚荣开销或激进赌注，认真听进一句刺耳却务实的忠告。"
+          },
+          "outcome": {
+            "en": "Restoring humility and sound governance protects what you built before cracks widen.",
+            "zh": "重新找回谦逊与稳健治理，能在裂缝扩大前稳稳护住你辛苦打下的基业。"
+          },
+          "advice": {
+            "en": "Rule your resources rather than letting the fear of losing them rule you.",
+            "zh": "做资源的主人，别反过来被“害怕失去”牵着鼻子走。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Check where ambition has turned rigid, controlling, or overly transactional. Return to integrity and prudent fundamentals.",
+            "zh": "星币国王逆位提醒你审视：进取心是否已滑向僵硬、控制或过度算计？重新回到诚信与稳健基本面。"
+          },
+          "love": {
+            "en": "In love, reversed King of Pentacles flags emotional stubbornness, workaholism, or trying to substitute gifts for genuine presence.",
+            "zh": "在感情中，它提示过度固执己见、工作狂倾向压过相处质量，或试图用物质安排与金钱补偿来替代真正走心的日常情感陪伴。"
+          },
+          "career": {
+            "en": "At work, watch for authoritarian management, cutthroat greed, or sloppy risk controls. Tighten governance and lead with fairness.",
+            "zh": "在工作与财务上，警惕一言堂、短视逐利或风控松懈。收紧规范，以公允与透明重新立威。"
+          },
+          "health": {
+            "en": "Overindulgence or ignoring stress while chasing status takes a quiet toll; return to moderate, grounded habits.",
+            "zh": "频繁应酬放纵，或在持续追逐成就与安全感的过程中忽视长期慢性压力，正在悄悄透支身体底子；回到节制踏实的日常节律。"
+          },
+          "spirituality": {
+            "en": "Remember that possessions are tools, not identity; loosen your grip on status so wisdom can breathe.",
+            "zh": "清醒记住财富、资产与社会头衔都只是服务生活的工具而非你的本质；松开对身份标签的紧抓，真正的智慧与自由才能呼吸。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "verdant emerald-verdigris, warm parchment ochre, embossed antique gold pentacle coins, sunlit ivory",
+      "scene": "Seated with calm, commanding authority upon a monumental carved stone throne decorated with sculpted bull heads and trailing grapevine reliefs, a seasoned Belle Epoque King in sumptuous deep emerald-verdigris velvet robes embroidered with molten antique-gold vines holds EXACTLY ONE gleaming embossed antique-gold pentacle coin upright and steady in his left hand, while his right hand grips a short ornate golden scepter. Beneath the hem of his richly patterned robe peeks a burnished armored boot resting on sunlit stone steps. Lush garden vines and a glowing distant stone castle rise behind the throne under warm parchment-gold light and a velvety midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "seated King on bull-carved stone throne",
+          "count": 1
+        },
+        {
+          "object": "embossed golden pentacle coin held upright in left hand",
+          "count": 1
+        },
+        {
+          "object": "short golden scepter in right hand",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Broad, monumental enthroned sovereign silhouette holding scepter right and EXACTLY ONE bright gold pentacle left—unmistakable regal authority even at 64x96 thumbnail size.",
+      "avoid": [
+        "second coin",
+        "extra coins",
+        "chalice",
+        "cup",
+        "sword",
+        "wand",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  }
+}

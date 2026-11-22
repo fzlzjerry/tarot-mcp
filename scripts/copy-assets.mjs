@@ -10,10 +10,6 @@ const assets = [
     to: join(rootDir, "dist", "tarot", "cards", "card-data.json"),
   },
   {
-    from: join(rootDir, "src", "tarot", "canon", "gate-cards.json"),
-    to: join(rootDir, "dist", "tarot", "canon", "gate-cards.json"),
-  },
-  {
     from: join(rootDir, "assets", "ASSET_LICENSE.md"),
     to: join(rootDir, "dist", "assets", "ASSET_LICENSE.md"),
   },
@@ -27,12 +23,29 @@ const assets = [
       "prompt-provenance.json",
     ),
   },
+  {
+    from: join(rootDir, "assets", "artwork", "v2", "provenance.json"),
+    to: join(
+      rootDir,
+      "dist",
+      "assets",
+      "artwork",
+      "v2",
+      "provenance.json",
+    ),
+  },
 ];
 
 for (const asset of assets) {
   await mkdir(dirname(asset.to), { recursive: true });
   await copyFile(asset.from, asset.to);
 }
+
+await cp(
+  join(rootDir, "src", "tarot", "canon", "data"),
+  join(rootDir, "dist", "tarot", "canon", "data"),
+  { recursive: true, force: true },
+);
 
 const cardSource = join(rootDir, "assets", "cards");
 const cardDestination = join(rootDir, "dist", "assets", "cards");

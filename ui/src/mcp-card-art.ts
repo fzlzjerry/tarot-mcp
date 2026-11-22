@@ -1,5 +1,5 @@
 const bundledCardArt = import.meta.glob<string>(
-  "../../assets/cards/mcp/*.webp",
+  "../../assets/cards/v2/mcp/*.webp",
   {
     eager: true,
     import: "default",
@@ -14,7 +14,7 @@ const cardArtById = new Map<string, string>(
   }),
 );
 
-/** Return the bundled MCP-sized face or symmetric back as an inline data URI. */
+/** Return the bundled v2 MCP-sized face or exact-symmetric back as an inline data URI. */
 export function getMcpCardArt(cardId: string): string | undefined {
   return cardArtById.get(cardId);
 }

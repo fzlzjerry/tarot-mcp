@@ -23,7 +23,7 @@
     "typecheck:ui": "tsc -p ui/tsconfig.json",
     "lint": "eslint \"src/**/*.ts\" \"ui/src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"src/**/*.ts\" \"ui/src/**/*.{ts,tsx,css}\"",
-    "verify:assets": "node scripts/art/validate-deck.mjs",
+    "verify:assets": "node scripts/art/validate-deck.mjs && node scripts/art/validate-v2-deck.mjs",
     "verify:build": "npm run verify:assets && node scripts/verify-build-assets.mjs",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && npm run verify:build",

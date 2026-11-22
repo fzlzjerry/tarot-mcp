@@ -1,9 +1,5 @@
 import { useEffect, useRef } from "react";
-import {
-  isV2GateCard,
-  readInitialDeckEdition,
-  resolveWebCardAssetUrl,
-} from "./deck-edition.js";
+import { readInitialDeckEdition } from "./deck-edition.js";
 import { t } from "./i18n.js";
 import type { DrawClient, Language, ReadingCard } from "./types.js";
 import { useCardImage } from "./useCardImage.js";
@@ -27,12 +23,8 @@ export function CardDetails({
 }) {
   const [resolvedSource] = useCardImage(client, card);
   const isShowingV2 =
-    client.target === "web" &&
-    readInitialDeckEdition() === "v2" &&
-    isV2GateCard(card.id);
-  const source = isShowingV2
-    ? resolveWebCardAssetUrl(card.id, resolvedSource, "v2", true)
-    : resolvedSource;
+    client.target === "mcp" || readInitialDeckEdition() === "v2";
+  const source = resolvedSource;
 
   const closeButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLElement>(null);
