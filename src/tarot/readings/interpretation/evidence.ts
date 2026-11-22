@@ -41,6 +41,20 @@ const SPIRITUAL_EN =
   /\b(spiritual|spirituality|soul|purpose|calling|meditation|intuition|awakening|karma|inner growth|self-discovery)\b/;
 
 /**
+ * Detect explicit romantic intent while ignoring non-romantic workplace idioms
+ * such as "business partner" or "love my job". Shared between domain
+ * classification and spread recommendation so both stay consistent.
+ */
+export function hasExplicitLoveCue(question: string): boolean {
+  const q = question.trim().toLowerCase();
+  if (!q) return false;
+  const qForLove = q
+    .replace(BUSINESS_PARTNER_EN, " ")
+    .replace(NON_ROMANTIC_LOVE_EN, " ");
+  return LOVE_ZH.test(q) || LOVE_EN.test(qForLove);
+}
+
+/**
  * Classify the primary life domain from the USER'S QUESTION ONLY.
  * Never mixes localized position descriptions (which often contain words like
  * "energy") into the domain signal, and uses word boundaries for English so
@@ -50,11 +64,8 @@ export function classifyQuestionDomain(question: string): ReadingDomain {
   const q = question.trim().toLowerCase();
   if (!q) return "general";
 
-  const qForLove = q
-    .replace(BUSINESS_PARTNER_EN, " ")
-    .replace(NON_ROMANTIC_LOVE_EN, " ");
   const hasWorkplace = WORKPLACE_ZH.test(q) || WORKPLACE_EN.test(q);
-  const hasExplicitLove = LOVE_ZH.test(q) || LOVE_EN.test(qForLove);
+  const hasExplicitLove = hasExplicitLoveCue(q);
   const hasGenericRelationship = RELATIONSHIP_EN.test(q) || q.includes("关系");
 
   // Explicit workplace context takes precedence over generic "relationship/关系"

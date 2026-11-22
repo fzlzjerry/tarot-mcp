@@ -422,6 +422,21 @@ describe("MCP accuracy counterfactuals and invariants", () => {
 
       const datingCoworkerRecs = recommendSpreads("I am dating a coworker.");
       expect(datingCoworkerRecs[0]?.spread).toBe("venus_love");
+
+      // Genuine romantic questions mentioning work still keep love recommendations
+      expect(
+        classifyQuestionDomain("I love my partner, but work keeps us apart"),
+      ).toBe("love");
+      const partnerWorkRecs = recommendSpreads(
+        "I love my partner, but work keeps us apart",
+      );
+      expect(partnerWorkRecs[0]?.spread).toBe("venus_love");
+
+      const businessPartnerRecs = recommendSpreads(
+        "How can I resolve a disagreement with my business partner?",
+      );
+      expect(businessPartnerRecs[0]?.spread).toBe("career_path");
+      expect(businessPartnerRecs.some((r) => r.spread === "venus_love")).toBe(false);
     });
 
     it("tags Celtic Cross Near Future as outcome and prioritizes position names in inferPositionRole", () => {

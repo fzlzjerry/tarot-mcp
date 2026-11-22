@@ -1,4 +1,5 @@
 import { SpreadType } from "../shared/types.js";
+import { hasExplicitLoveCue } from "./interpretation/evidence.js";
 
 export const RECOMMENDATION_TIMEFRAMES = [
   "immediate",
@@ -40,9 +41,6 @@ interface RecommendationRule {
 const WORKPLACE_GUARD =
   /(\b(career|job|work|workplace|business|colleague|colleagues|coworker|coworkers|boss|manager|promotion|company|team|office)\b|同事|上司|老板|职场|工作|事业|职业|求职|升职|公司|团队|创业|合伙人)/i;
 
-const EXPLICIT_LOVE_GUARD =
-  /(\b(love life|in love|falling in love|fell in love|lover|lovers|romance|romantic|marriage|marry|dating|crush|breakup|boyfriend|girlfriend|husband|wife|spouse|soulmate)\b|\b(romantic|life|intimate)\s+partner\b|爱情|恋爱|感情|伴侣|对象|婚姻|分手|复合|暧昧)/i;
-
 /**
  * Intent/category/timeframe rules mapping questions to spreads.
  * Uses word-boundary matching for English (preventing "know" -> "now") and
@@ -51,12 +49,9 @@ const EXPLICIT_LOVE_GUARD =
 const RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     category: "love",
-    patterns: [
-      /\b(love|romance|romantic|partner|marriage|dating|crush|breakup|spouse)\b/i,
-      /\brelationship\b/i,
-      /(爱情|恋爱|感情|伴侣|对象|婚姻|分手|复合|暧昧)/,
-      /关系/,
-    ],
+    // Explicit romance cues match via shared `hasExplicitLoveCue`; generic
+    // relationship patterns apply only when WORKPLACE_GUARD does not match.
+    patterns: [/\brelationship\b/i, /关系/],
     excludePatterns: [WORKPLACE_GUARD],
     recommendations: [
       {
@@ -270,10 +265,10 @@ const MAX_RECOMMENDATIONS = 3;
 
 function ruleMatchesKeyword(rule: RecommendationRule, question: string): boolean {
   if (!rule.patterns || rule.patterns.length === 0) return false;
-  if (
-    rule.excludePatterns?.some((re) => re.test(question)) &&
-    !(rule.category === "love" && EXPLICIT_LOVE_GUARD.test(question))
-  ) {
+  if (rule.category === "love" && hasExplicitLoveCue(question)) {
+    return true;
+  }
+  if (rule.excludePatterns?.some((re) => re.test(question))) {
     return false;
   }
   return rule.patterns.some((re) => re.test(question));
