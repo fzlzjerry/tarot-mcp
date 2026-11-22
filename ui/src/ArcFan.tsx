@@ -351,6 +351,7 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     const view = scroller.current;
     if (!view) return;
     const onNativeWheel = (event: WheelEvent): void => {
+      if (event.ctrlKey || event.metaKey) return;
       const maxScroll = view.scrollWidth - view.clientWidth;
       if (maxScroll <= 0) return;
       if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {

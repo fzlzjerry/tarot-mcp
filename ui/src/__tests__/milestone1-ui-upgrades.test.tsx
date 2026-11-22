@@ -203,6 +203,22 @@ describe("Milestone 1 UI upgrades", () => {
     expect(
       screen.getByText(t("en", "allSlotsReady", { count: 3 })),
     ).not.toBeNull();
+
+    // Native wheel remapping translates vertical scroll without blocking Ctrl/pinch browser zoom
+    const fan = screen.getByRole("group");
+    Object.defineProperty(fan, "scrollWidth", { value: 2400, configurable: true });
+    Object.defineProperty(fan, "clientWidth", { value: 600, configurable: true });
+    fan.scrollLeft = 200;
+
+    const normalWheel = new WheelEvent("wheel", { deltaY: 80, cancelable: true });
+    fan.dispatchEvent(normalWheel);
+    expect(normalWheel.defaultPrevented).toBe(true);
+    expect(fan.scrollLeft).toBe(280);
+
+    const zoomWheel = new WheelEvent("wheel", { deltaY: 80, ctrlKey: true, cancelable: true });
+    fan.dispatchEvent(zoomWheel);
+    expect(zoomWheel.defaultPrevented).toBe(false);
+    expect(fan.scrollLeft).toBe(280);
   });
 
   it("renders starter intention chips, miniature spread map, and v2 gate preview toggle in SetupForm", async () => {
