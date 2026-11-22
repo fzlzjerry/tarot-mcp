@@ -98,14 +98,14 @@ function generateCelticCrossAnalysis(
   if (cardsHaveSimilarEnergy(possibleOutcome, finalOutcome)) {
     analysis += pick(
       language,
-      "aligns with the final outcome, suggesting the current path can mature without a drastic change. ",
-      "与最终结果的能量相合，说明当前的路径无需剧烈转向便能自然成熟。",
+      `shares a suit or elemental thread with the final outcome (${finalOutcome.card.name}), keeping the same core arena in focus—compare both cards' specific meanings and orientations to judge whether that thread steadies or shifts. `,
+      `与最终结果（${zhName(finalOutcome)}）共享同一花色或元素脉络，说明核心议题延续在同一领域——请结合两张牌各自的具体牌义与正逆位，判断这股脉络是趋于稳固还是发生转折。`,
     );
   } else {
     analysis += pick(
       language,
-      "differs from the final outcome, so the reading points to a course correction before the pattern settles. ",
-      "与最终结果并不一致，解读提示在格局尘埃落定之前需要一次方向修正。",
+      `sits in a different elemental or arcana register from the final outcome (${finalOutcome.card.name}), highlighting how later influences and choices can redirect the trajectory. `,
+      `与最终结果（${zhName(finalOutcome)}）分属不同的元素或牌组维度，说明后续的外在影响与个人选择会让局势走向发生变化。`,
     );
   }
 

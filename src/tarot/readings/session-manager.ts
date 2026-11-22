@@ -14,6 +14,9 @@ interface SessionStoreFile {
     createdAt: string;
     lastActivity: string;
   }>;
+  standaloneReceipts?: Array<
+    Omit<TarotReadingSummary, "timestamp"> & { timestamp: string }
+  >;
 }
 
 /**
@@ -33,13 +36,17 @@ export class TarotSessionManager {
   private static readonly MAX_SESSIONS = 1000;
   /** Oldest readings are evicted beyond this per-session cap. */
   private static readonly MAX_READINGS_PER_SESSION = 30;
+  /** Bounded cache for sessionless readings (daily/moon/untracked draws). */
+  private static readonly MAX_STANDALONE_RECEIPTS = 200;
 
   private sessions: Map<string, TarotSession>;
+  private standaloneReceipts: Map<string, TarotReadingSummary>;
   private readonly storePath?: string;
   private activityDirty = false;
 
   constructor(storePath?: string) {
     this.sessions = new Map();
+    this.standaloneReceipts = new Map();
     this.storePath = storePath || undefined;
     if (this.storePath) {
       this.loadFromStore();
@@ -97,36 +104,41 @@ export class TarotSessionManager {
     return session;
   }
 
+  private toReadingSummary(reading: TarotReading): TarotReadingSummary {
+    return {
+      id: reading.id,
+      spreadType: reading.spreadType,
+      question: reading.question,
+      timestamp: reading.timestamp,
+      ...(reading.language ? { language: reading.language } : {}),
+      ...(reading.deckVersion ? { deckVersion: reading.deckVersion } : {}),
+      ...(reading.knowledgeVersion
+        ? { knowledgeVersion: reading.knowledgeVersion }
+        : {}),
+      cards: reading.cards.map((drawnCard, index) => ({
+        cardId: drawnCard.card.id,
+        name: drawnCard.card.name,
+        orientation: drawnCard.orientation,
+        position: drawnCard.position,
+        positionId: drawnCard.positionId ?? `pos_${index + 1}`,
+        ...(drawnCard.positionRole
+          ? { positionRole: drawnCard.positionRole }
+          : {}),
+      })),
+      ...(reading.evidence ? { evidence: reading.evidence } : {}),
+    };
+  }
+
   /**
    * Add a reading receipt to a session, evicting the oldest receipt once the
-   * per-session cap is reached. Retains stable card IDs, position roles, and
-   * deck/knowledge versions so follow-up questions can read back the exact
-   * confirmed hand without redrawing.
+   * per-session cap is reached. Retains stable card IDs, position roles,
+   * deck/knowledge versions, and evidence so follow-up questions can read back
+   * the exact confirmed hand without redrawing.
    */
   public addReadingToSession(sessionId: string, reading: TarotReading): void {
     const session = this.sessions.get(sessionId);
     if (session) {
-      session.readings.push({
-        id: reading.id,
-        spreadType: reading.spreadType,
-        question: reading.question,
-        timestamp: reading.timestamp,
-        ...(reading.language ? { language: reading.language } : {}),
-        ...(reading.deckVersion ? { deckVersion: reading.deckVersion } : {}),
-        ...(reading.knowledgeVersion
-          ? { knowledgeVersion: reading.knowledgeVersion }
-          : {}),
-        cards: reading.cards.map((drawnCard, index) => ({
-          cardId: drawnCard.card.id,
-          name: drawnCard.card.name,
-          orientation: drawnCard.orientation,
-          position: drawnCard.position,
-          positionId: drawnCard.positionId ?? `pos_${index + 1}`,
-          ...(drawnCard.positionRole
-            ? { positionRole: drawnCard.positionRole }
-            : {}),
-        })),
-      });
+      session.readings.push(this.toReadingSummary(reading));
       session.readingCount++;
       if (session.readings.length > TarotSessionManager.MAX_READINGS_PER_SESSION) {
         session.readings.shift();
@@ -137,17 +149,47 @@ export class TarotSessionManager {
   }
 
   /**
-   * Look up a stored reading receipt by its readingId across active sessions.
+   * Store a bounded receipt for an untracked / sessionless reading (such as
+   * daily card or lunar draws) so `tarot://readings/{readingId}` resolves every
+   * `readingId` returned to clients.
+   */
+  public recordStandaloneReading(reading: TarotReading): void {
+    this.standaloneReceipts.set(reading.id, this.toReadingSummary(reading));
+    if (
+      this.standaloneReceipts.size > TarotSessionManager.MAX_STANDALONE_RECEIPTS
+    ) {
+      const oldestKey = this.standaloneReceipts.keys().next().value;
+      if (oldestKey !== undefined) {
+        this.standaloneReceipts.delete(oldestKey);
+      }
+    }
+    this.saveToStore();
+  }
+
+  /**
+   * Look up a stored reading receipt by its readingId across active sessions
+   * and standalone receipts.
    */
   public getReadingReceipt(
     readingId: string,
-  ): { sessionId: string; receipt: TarotReadingSummary } | undefined {
+  ): { sessionId?: string; receipt: TarotReadingSummary } | undefined {
     for (const session of this.sessions.values()) {
       const receipt = session.readings.find((entry) => entry.id === readingId);
       if (receipt) {
         this.touchSession(session);
         return { sessionId: session.id, receipt };
       }
+    }
+    const standalone = this.standaloneReceipts.get(readingId);
+    if (standalone) {
+      if (
+        Date.now() - standalone.timestamp.getTime() >
+        TarotSessionManager.SESSION_TTL_MS
+      ) {
+        this.standaloneReceipts.delete(readingId);
+        return undefined;
+      }
+      return { receipt: standalone };
     }
     return undefined;
   }
@@ -180,6 +222,12 @@ export class TarotSessionManager {
     for (const [sessionId, session] of this.sessions.entries()) {
       if (session.lastActivity < cutoffTime) {
         this.sessions.delete(sessionId);
+        removed++;
+      }
+    }
+    for (const [readingId, receipt] of this.standaloneReceipts.entries()) {
+      if (receipt.timestamp < cutoffTime) {
+        this.standaloneReceipts.delete(readingId);
         removed++;
       }
     }
@@ -250,6 +298,25 @@ export class TarotSessionManager {
           lastActivity,
         });
       }
+      if (Array.isArray(parsed.standaloneReceipts)) {
+        for (const stored of parsed.standaloneReceipts) {
+          if (
+            typeof stored.id !== "string" ||
+            this.standaloneReceipts.size >=
+              TarotSessionManager.MAX_STANDALONE_RECEIPTS
+          ) {
+            continue;
+          }
+          const ts = new Date(stored.timestamp);
+          if (!(ts.getTime() > cutoff)) {
+            continue;
+          }
+          this.standaloneReceipts.set(stored.id, {
+            ...stored,
+            timestamp: ts,
+          });
+        }
+      }
       logger.info("session_store_loaded", {
         path: this.storePath,
         sessions: this.sessions.size,
@@ -260,6 +327,7 @@ export class TarotSessionManager {
         error: error instanceof Error ? error.message : String(error),
       });
       this.sessions.clear();
+      this.standaloneReceipts.clear();
     }
   }
 
@@ -281,6 +349,16 @@ export class TarotSessionManager {
           createdAt: session.createdAt.toISOString(),
           lastActivity: session.lastActivity.toISOString(),
         })),
+        ...(this.standaloneReceipts.size > 0
+          ? {
+              standaloneReceipts: [...this.standaloneReceipts.values()].map(
+                (reading) => ({
+                  ...reading,
+                  timestamp: reading.timestamp.toISOString(),
+                }),
+              ),
+            }
+          : {}),
       };
       mkdirSync(dirname(this.storePath), { recursive: true });
       const tmpPath = `${this.storePath}.tmp`;

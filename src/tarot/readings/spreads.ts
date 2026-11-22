@@ -85,7 +85,7 @@ export const TAROT_SPREADS = {
         id: "near_future",
         name: "Near Future",
         meaning: "What is approaching in the immediate future",
-        role: "action",
+        role: "outcome",
       },
       {
         id: "approach",

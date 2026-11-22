@@ -6,7 +6,7 @@ import {
   inferPositionRole,
 } from "../../canon/index.js";
 import { VISUAL_ARTWORK_VERSION } from "../../shared/artwork.js";
-import { localizedElement, pick } from "../../shared/i18n.js";
+import { localizedElement, localizedSuit, pick } from "../../shared/i18n.js";
 import type {
   DrawnCard,
   Language,
@@ -26,6 +26,10 @@ const WORKPLACE_EN =
 const LOVE_ZH = /(爱情|恋爱|感情|伴侣|对象|婚姻|结婚|分手|复合|暧昧|暗恋|前任|桃花|亲密关系|恋人|另一半|婚恋)/;
 const LOVE_EN =
   /\b(love|romance|romantic|partner|marriage|marry|dating|crush|breakup|ex|boyfriend|girlfriend|husband|wife|spouse|affection|intimacy)\b/;
+const BUSINESS_PARTNER_EN =
+  /\b(?:business|managing|equity|general|senior|junior|work|project|trading|lab|study)\s+partner\b/g;
+const NON_ROMANTIC_LOVE_EN =
+  /\blove\s+(?:my|this|the|our)\s+(?:job|work|career|role|team|company|project|office)\b/g;
 const RELATIONSHIP_EN = /\brelationship\b/;
 
 const HEALTH_ZH = /(健康|身体|病情|生病|症状|睡眠|失眠|疲惫|疲劳|体力|养生|调理|康复|饮食|运动|健身|身心)/;
@@ -46,8 +50,11 @@ export function classifyQuestionDomain(question: string): ReadingDomain {
   const q = question.trim().toLowerCase();
   if (!q) return "general";
 
+  const qForLove = q
+    .replace(BUSINESS_PARTNER_EN, " ")
+    .replace(NON_ROMANTIC_LOVE_EN, " ");
   const hasWorkplace = WORKPLACE_ZH.test(q) || WORKPLACE_EN.test(q);
-  const hasExplicitLove = LOVE_ZH.test(q) || LOVE_EN.test(q);
+  const hasExplicitLove = LOVE_ZH.test(q) || LOVE_EN.test(qForLove);
   const hasGenericRelationship = RELATIONSHIP_EN.test(q) || q.includes("关系");
 
   // Explicit workplace context takes precedence over generic "relationship/关系"
@@ -98,8 +105,8 @@ export function buildReadingEvidence(
       cardId: drawn.card.id,
       orientation: drawn.orientation,
       hasCanon: Boolean(canon),
-      traditionMotifs: motifs?.tradition ?? fallbackSymbolism,
-      editionMotifs: motifs?.edition ?? [],
+      traditionMotifs: [...(motifs?.tradition ?? fallbackSymbolism)],
+      editionMotifs: [...(motifs?.edition ?? [])],
       ...(drawn.orientation === "reversed"
         ? { reversalLenses: getCanonReversalLenses(drawn.card.id, language) }
         : {}),
@@ -255,18 +262,19 @@ function computeReadingSignals(
   });
   for (const [suit, positions] of suitPositions.entries()) {
     if (positions.length >= 2) {
+      const suitLabel = localizedSuit(suit, language);
       signals.push({
         kind: "suit_focus",
         positions,
         fact: pick(
           language,
           `${positions.length} cards from the suit of ${suit}`,
-          `共出现 ${positions.length} 张 ${suit} 牌组`,
+          `共出现 ${positions.length} 张${suitLabel}牌`,
         ),
         note: pick(
           language,
           `Repeated ${suit} cards concentrate attention on that suit's core arena.`,
-          `同一花色重复出现，把焦点收束到该牌组对应的生活领域。`,
+          `同一花色（${suitLabel}）重复出现，把焦点收束到该牌组对应的生活领域。`,
         ),
       });
     }

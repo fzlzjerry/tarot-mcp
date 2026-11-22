@@ -154,6 +154,7 @@ export interface TarotReadingSummary {
     positionId?: string;
     positionRole?: PositionRole;
   }>;
+  evidence?: ReadingEvidence;
 }
 
 export interface TarotSession {

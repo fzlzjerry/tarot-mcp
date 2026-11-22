@@ -119,7 +119,11 @@ export function registerPrompts(server: Server): void {
         args?.question ?? "What should I focus on right now?";
       const spreadType = args?.spreadType || "three_card";
       const language =
-        args?.language === "zh" || /[\u4e00-\u9fff]/.test(question) ? "zh" : "en";
+        args?.language === "zh" || args?.language === "en"
+          ? args.language
+          : /[\u4e00-\u9fff]/.test(question)
+            ? "zh"
+            : "en";
       const languageInstruction =
         language === "zh"
           ? 'Pass language: "zh" and reply in Simplified Chinese.'

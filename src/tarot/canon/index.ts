@@ -110,9 +110,9 @@ export function getCanonMotifs(
   const entry = getCanonCard(cardId);
   if (!entry) return undefined;
   return {
-    tradition: entry.traditionMotifs[language],
+    tradition: [...entry.traditionMotifs[language]],
     edition:
-      deckVersion === CANON_DECK_EDITION ? entry.editionMotifs[language] : [],
+      deckVersion === CANON_DECK_EDITION ? [...entry.editionMotifs[language]] : [],
   };
 }
 
@@ -133,16 +133,7 @@ export function getCanonReversalLenses(
   return out;
 }
 
-/**
- * Fallback position role classifier for custom spreads or spreads whose
- * positions have not been explicitly tagged yet. Uses explicit role words
- * rather than generic words like "energy".
- */
-export function inferPositionRole(
-  positionName = "",
-  positionMeaning = "",
-): PositionRole {
-  const text = `${positionName} ${positionMeaning}`.toLowerCase();
+function matchPositionRole(text: string): PositionRole | undefined {
   if (/(challenge|obstacle|cross|block|divid|friction|阻碍|挑战|障碍|冲突|分歧)/.test(text)) {
     return "challenge";
   }
@@ -170,5 +161,22 @@ export function inferPositionRole(
   if (/(message|insight|theme|讯息|核心启示|主题)/.test(text)) {
     return "message";
   }
-  return "general";
+  return undefined;
+}
+
+/**
+ * Fallback position role classifier for custom spreads or spreads whose
+ * positions have not been explicitly tagged yet. Checks explicit position
+ * names first so a description mentioning another role (e.g. "Likely Outcome"
+ * described as "if you follow the advice given") never overrides the name.
+ */
+export function inferPositionRole(
+  positionName = "",
+  positionMeaning = "",
+): PositionRole {
+  return (
+    matchPositionRole(positionName.toLowerCase()) ??
+    matchPositionRole(positionMeaning.toLowerCase()) ??
+    "general"
+  );
 }

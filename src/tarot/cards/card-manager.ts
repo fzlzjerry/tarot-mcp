@@ -88,6 +88,23 @@ export class TarotCardManager {
   }
 
   /**
+   * Look up a card strictly by exact ID, exact English name, or exact localized
+   * name (case-insensitive) without substring fallback. Used for resource URIs
+   * like `tarot://cards/{id}` so incomplete IDs never resolve arbitrarily.
+   */
+  public findCardExact(identifier: string): TarotCard | undefined {
+    const normalizedIdentifier = identifier.toLowerCase().trim();
+    if (!normalizedIdentifier) {
+      return undefined;
+    }
+    return (
+      this.cards.get(normalizedIdentifier) ??
+      this.cardsByName.get(normalizedIdentifier) ??
+      this.cardsByLocalizedName.get(normalizedIdentifier)
+    );
+  }
+
+  /**
    * Resolve a card query with explicit disambiguation.
    * Returns `exact` when the identifier uniquely names one card (exact ID,
    * exact English/Chinese name, or a single unambiguous partial match), and
@@ -102,10 +119,7 @@ export class TarotCardManager {
       return { candidates: [] };
     }
 
-    const direct =
-      this.cards.get(normalizedIdentifier) ??
-      this.cardsByName.get(normalizedIdentifier) ??
-      this.cardsByLocalizedName.get(normalizedIdentifier);
+    const direct = this.findCardExact(normalizedIdentifier);
     if (direct) {
       return { exact: direct, candidates: [direct] };
     }

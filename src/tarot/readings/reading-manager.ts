@@ -364,6 +364,8 @@ export class TarotReadingManager {
 
     if (session) {
       this.sessionManager.addReadingToSession(session.id, reading);
+    } else {
+      this.sessionManager.recordStandaloneReading(reading);
     }
 
     return performed;

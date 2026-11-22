@@ -183,24 +183,32 @@ async function generateTenWandsScaffold(outputPath) {
 async function loadProvenance() {
   try {
     return JSON.parse(await readFile(provenancePath, "utf8"));
-  } catch {
-    return {
-      schemaVersion: 2,
-      deckId: "midnight-art-nouveau-v2",
-      provider: "openai-official-images-api",
-      endpointBase: API_BASE,
-      createdDate: new Date().toISOString().slice(0, 10),
-      styleBoard: null,
-      blindTest: {},
-      cardBack: null,
-      cards: {},
-    };
+  } catch (err) {
+    if (err && typeof err === "object" && "code" in err && err.code === "ENOENT") {
+      return {
+        schemaVersion: 2,
+        deckId: "midnight-art-nouveau-v2",
+        provider: "openai-official-images-api",
+        endpointBase: API_BASE,
+        createdDate: new Date().toISOString().slice(0, 10),
+        styleBoard: null,
+        blindTest: {},
+        cardBack: null,
+        cards: {},
+      };
+    }
+    throw err;
   }
 }
 
+let provenanceWriteQueue = Promise.resolve();
 async function saveProvenance(prov) {
-  await mkdir(dirname(provenancePath), { recursive: true });
-  await writeFile(provenancePath, `${JSON.stringify(prov, null, 2)}\n`);
+  const run = async () => {
+    await mkdir(dirname(provenancePath), { recursive: true });
+    await writeFile(provenancePath, `${JSON.stringify(prov, null, 2)}\n`);
+  };
+  provenanceWriteQueue = provenanceWriteQueue.then(run, run);
+  return provenanceWriteQueue;
 }
 
 function parseArgs(argv) {
@@ -271,7 +279,7 @@ if (opts.stage === "blind-test") {
   const styleRef = await fileToDataUrl(styleBoardFile);
   const qualities = ["high", "xhigh"];
   console.log(`[blind-test] running queen_of_swords on ${opts.model} for qualities=${qualities.join(",")}...`);
-  const results = await Promise.all(
+  const settled = await Promise.allSettled(
     qualities.map(async (q) => {
       const res = await callOpenAiImages("edits", {
         model: opts.model,
@@ -291,29 +299,30 @@ if (opts.stage === "blind-test") {
         cardId: "queen_of_swords",
       });
       await writeFile(outPath, tagged);
-      return { q, outPath, res, bytes: tagged.length, masterSha256: sha256(tagged) };
+      prov.blindTest[q] = {
+        cardId: "queen_of_swords",
+        masterFile: outPath,
+        model: opts.model,
+        endpoint: "edits",
+        size: res.size ?? SIZE,
+        quality: res.quality ?? q,
+        complexity: opts.complexity,
+        elapsedMs: res.elapsedMs,
+        usage: res.usage,
+        refSha256s: [styleRef.sha256],
+        promptSha256: sha256(normalizePrompt(prompt)),
+        masterSha256: sha256(tagged),
+      };
+      await saveProvenance(prov);
+      console.log(
+        `[blind-test] queen_of_swords (${q}) -> ${outPath} (${(tagged.length / 1024).toFixed(0)} KB, ${res.elapsedMs}ms, usage=${JSON.stringify(res.usage)})`,
+      );
     }),
   );
-  for (const item of results) {
-    prov.blindTest[item.q] = {
-      cardId: "queen_of_swords",
-      masterFile: item.outPath,
-      model: opts.model,
-      endpoint: "edits",
-      size: item.res.size ?? SIZE,
-      quality: item.res.quality ?? item.q,
-      complexity: opts.complexity,
-      elapsedMs: item.res.elapsedMs,
-      usage: item.res.usage,
-      refSha256s: [styleRef.sha256],
-      promptSha256: sha256(normalizePrompt(prompt)),
-      masterSha256: item.masterSha256,
-    };
-    console.log(
-      `[blind-test] queen_of_swords (${item.q}) -> ${item.outPath} (${(item.bytes / 1024).toFixed(0)} KB, ${item.res.elapsedMs}ms, usage=${JSON.stringify(item.res.usage)})`,
-    );
+  const failed = settled.filter((r) => r.status === "rejected");
+  if (failed.length > 0) {
+    throw failed[0].reason;
   }
-  await saveProvenance(prov);
 }
 
 if (opts.stage === "cards" || opts.stage === "all") {
@@ -356,6 +365,7 @@ if (opts.stage === "cards" || opts.stage === "all") {
         promptSha256: sha256(normalizePrompt(prompt)),
         masterSha256: sha256(tagged),
       };
+      await saveProvenance(prov);
       console.log(`[cards] back done (${(tagged.length / 1024).toFixed(0)} KB, ${res.elapsedMs}ms, usage=${JSON.stringify(res.usage)})`);
       return;
     }
@@ -409,17 +419,29 @@ if (opts.stage === "cards" || opts.stage === "all") {
       promptSha256: sha256(normalizePrompt(prompt)),
       masterSha256: sha256(tagged),
     };
+    await saveProvenance(prov);
     console.log(`[cards] ${targetId} done (${(tagged.length / 1024).toFixed(0)} KB, ${res.elapsedMs}ms, usage=${JSON.stringify(res.usage)})`);
   };
 
-  // Bounded concurrency of 3 so we finish fast without tripping rate limits
+  // Bounded concurrency of 3 so we finish fast without tripping rate limits;
+  // settle all active workers so completed outputs checkpoint provenance
+  // before any error is rethrown.
   const queue = [...targets];
+  const failures = [];
   const workers = Array.from({ length: Math.min(3, queue.length) }, async () => {
-    while (queue.length > 0) {
+    while (queue.length > 0 && failures.length === 0) {
       const next = queue.shift();
-      if (next) await runOne(next);
+      if (!next) continue;
+      try {
+        await runOne(next);
+      } catch (err) {
+        failures.push(err);
+      }
     }
   });
   await Promise.all(workers);
   await saveProvenance(prov);
+  if (failures.length > 0) {
+    throw failures[0];
+  }
 }

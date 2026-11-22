@@ -38,10 +38,10 @@ interface RecommendationRule {
 }
 
 const WORKPLACE_GUARD =
-  /(\b(career|job|work|workplace|colleague|colleagues|coworker|coworkers|boss|manager|promotion|company|team|office)\b|同事|上司|老板|职场|工作|事业|职业|求职|升职|公司|团队)/i;
+  /(\b(career|job|work|workplace|business|colleague|colleagues|coworker|coworkers|boss|manager|promotion|company|team|office)\b|同事|上司|老板|职场|工作|事业|职业|求职|升职|公司|团队|创业|合伙人)/i;
 
 const EXPLICIT_LOVE_GUARD =
-  /(\b(love|romance|romantic|partner|marriage|dating|crush|breakup|boyfriend|girlfriend|spouse)\b|爱情|恋爱|感情|伴侣|对象|婚姻|分手|复合|暧昧)/i;
+  /(\b(love life|in love|falling in love|fell in love|lover|lovers|romance|romantic|marriage|marry|dating|crush|breakup|boyfriend|girlfriend|husband|wife|spouse|soulmate)\b|\b(romantic|life|intimate)\s+partner\b|爱情|恋爱|感情|伴侣|对象|婚姻|分手|复合|暧昧)/i;
 
 /**
  * Intent/category/timeframe rules mapping questions to spreads.

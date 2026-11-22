@@ -99,7 +99,7 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
 
     const cardMatch = /^tarot:\/\/cards\/(.+)$/.exec(uri);
     if (cardMatch) {
-      const card = tarotServer.findCard(decodeURIComponent(cardMatch[1]));
+      const card = tarotServer.findCardExact(decodeURIComponent(cardMatch[1]));
       if (!card) {
         throw new Error(`Unknown card: ${cardMatch[1]}`);
       }
@@ -127,7 +127,7 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
       }
       return jsonContents(uri, {
         readingId: found.receipt.id,
-        sessionId: found.sessionId,
+        ...(found.sessionId ? { sessionId: found.sessionId } : {}),
         spreadType: found.receipt.spreadType,
         question: found.receipt.question,
         language: found.receipt.language,
@@ -135,6 +135,7 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
         knowledgeVersion: found.receipt.knowledgeVersion,
         timestamp: found.receipt.timestamp.toISOString(),
         cards: found.receipt.cards,
+        ...(found.receipt.evidence ? { evidence: found.receipt.evidence } : {}),
       });
     }
 

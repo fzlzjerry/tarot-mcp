@@ -3,11 +3,13 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
+import { inferPositionRole } from "../tarot/canon/index.js";
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
 import { TarotReadingManager } from "../tarot/readings/reading-manager.js";
 import { TarotSessionManager } from "../tarot/readings/session-manager.js";
 import { classifyQuestionDomain } from "../tarot/readings/interpretation/evidence.js";
 import { recommendSpreads } from "../tarot/readings/spread-recommender.js";
+import { TAROT_SPREADS } from "../tarot/readings/spreads.js";
 import { createMcpProtocolServer } from "../mcp/protocol-server.js";
 import { TOOL_NAMES } from "../mcp/public-api.js";
 import { TarotServer } from "../mcp/tarot-service.js";
@@ -399,6 +401,151 @@ describe("MCP accuracy counterfactuals and invariants", () => {
       expect(venus).toBeDefined();
       expect(venus!.reason).toContain("7-card");
       expect(venus!.reasonZh).toContain("7 张牌");
+    });
+
+    it("keeps workplace idioms like 'love my job' and 'business partner' in career rather than love", () => {
+      expect(
+        classifyQuestionDomain("How can I resolve a disagreement with my business partner?"),
+      ).toBe("career");
+      expect(
+        classifyQuestionDomain("I love my job. How can I improve my relationship with my manager?"),
+      ).toBe("career");
+      expect(
+        classifyQuestionDomain("My romantic partner and I work at the same company."),
+      ).toBe("love");
+
+      const jobLoveRecs = recommendSpreads(
+        "I love my job. How can I improve my relationship with my manager?",
+      );
+      expect(jobLoveRecs[0]?.spread).toBe("career_path");
+      expect(jobLoveRecs.some((r) => r.spread === "venus_love")).toBe(false);
+
+      const datingCoworkerRecs = recommendSpreads("I am dating a coworker.");
+      expect(datingCoworkerRecs[0]?.spread).toBe("venus_love");
+    });
+
+    it("tags Celtic Cross Near Future as outcome and prioritizes position names in inferPositionRole", () => {
+      const nearFuture = TAROT_SPREADS.celtic_cross.positions.find(
+        (p) => p.id === "near_future",
+      );
+      expect(nearFuture?.role).toBe("outcome");
+
+      // Horseshoe "Likely Outcome" mentions "advice" in its description; name wins
+      expect(
+        inferPositionRole(
+          "Likely Outcome",
+          "The probable outcome if you follow the advice given",
+        ),
+      ).toBe("outcome");
+      expect(
+        inferPositionRole("Advice", "Guidance on the best course of action to take"),
+      ).toBe("advice");
+    });
+
+    it("localizes suit names in Chinese evidence and returns independent motif array copies", () => {
+      const cups3 = cardManager.findCard("three_of_cups")!;
+      const cups2 = cardManager.findCard("two_of_cups")!;
+      const fool = cardManager.findCard("fool")!;
+      const rm = new TarotReadingManager(cardManager, new TarotSessionManager(), {
+        drawCards: () => [cups3, cups2, fool],
+        drawOrientation: () => "upright",
+      });
+      const first = rm.performReadingWithDetails("three_card", "最近人际如何？", undefined, {
+        language: "zh",
+      });
+      const suitSignal = first.reading.evidence.signals.find(
+        (s) => s.kind === "suit_focus",
+      );
+      expect(suitSignal?.fact).toContain("圣杯");
+      expect(suitSignal?.fact).not.toContain("cups");
+
+      // Mutating returned motifs must not pollute later readings
+      const originalLen = first.reading.evidence.cards[0].traditionMotifs.length;
+      first.reading.evidence.cards[0].traditionMotifs.push("MUTATED_SENTINEL");
+      const second = rm.performReadingWithDetails("three_card", "最近人际如何？", undefined, {
+        language: "zh",
+      });
+      expect(second.reading.evidence.cards[0].traditionMotifs).toHaveLength(
+        originalLen,
+      );
+      expect(second.reading.evidence.cards[0].traditionMotifs).not.toContain(
+        "MUTATED_SENTINEL",
+      );
+    });
+
+    it("avoids false Celtic Cross outcome-alignment verdicts when shared-suit outcomes diverge", () => {
+      const cards = [
+        cardManager.findCard("fool")!,
+        cardManager.findCard("magician")!,
+        cardManager.findCard("high_priestess")!,
+        cardManager.findCard("empress")!,
+        cardManager.findCard("three_of_pentacles")!, // Possible Outcome (index 4)
+        cardManager.findCard("emperor")!,
+        cardManager.findCard("hierophant")!,
+        cardManager.findCard("lovers")!,
+        cardManager.findCard("chariot")!,
+        cardManager.findCard("five_of_pentacles")!, // Final Outcome (index 9)
+      ];
+      let drawIdx = 0;
+      const rm = new TarotReadingManager(cardManager, new TarotSessionManager(), {
+        drawCards: () => cards,
+        drawOrientation: () => (drawIdx++ === 9 ? "reversed" : "upright"),
+      });
+      const res = rm.performReadingWithDetails("celtic_cross", "How will this project unfold?");
+      expect(res.text).not.toContain("mature without a drastic change");
+      expect(res.text).toContain("shares a suit or elemental thread");
+    });
+
+    it("rejects partial IDs in tarot://cards/{id}, retains evidence in receipts, resolves untracked readingIds, and honors explicit visual-reading language", async () => {
+      const tarotServer = await TarotServer.create();
+      const protocolServer = createMcpProtocolServer(tarotServer);
+      const client = new Client({ name: "regression-client", version: "1.0.0" });
+      const [cTransport, sTransport] = InMemoryTransport.createLinkedPair();
+      await Promise.all([
+        protocolServer.connect(sTransport),
+        client.connect(cTransport),
+      ]);
+
+      try {
+        // 1. Partial ID on tarot://cards/{id} must fail instead of returning candidates[0]
+        await expect(
+          client.readResource({ uri: "tarot://cards/three_of" }),
+        ).rejects.toThrow(/Unknown card/);
+
+        // 2. Exact ID still resolves cleanly
+        const exactCard = await client.readResource({ uri: "tarot://cards/three_of_cups" });
+        const exactJson = JSON.parse((exactCard.contents[0] as { text: string }).text);
+        expect(exactJson.id).toBe("three_of_cups");
+
+        // 3. Untracked reading (get_daily_card) still produces a resolvable receipt with evidence
+        const daily = await client.callTool({
+          name: TOOL_NAMES.getDailyCard,
+          arguments: { question: "What should I focus on today?", language: "en" },
+        });
+        const dailySc = daily.structuredContent as { readingId: string; sessionId?: string };
+        expect(dailySc.readingId).toBeTruthy();
+        expect(dailySc.sessionId).toBeUndefined();
+
+        const receiptRes = await client.readResource({
+          uri: `tarot://readings/${dailySc.readingId}`,
+        });
+        const receipt = JSON.parse((receiptRes.contents[0] as { text: string }).text);
+        expect(receipt.readingId).toBe(dailySc.readingId);
+        expect(receipt.evidence?.questionDomain).toBe("general");
+        expect(receipt.evidence?.cards).toHaveLength(1);
+
+        // 4. visual-reading prompt honors explicit language="en" even for a Chinese question
+        const prompt = await client.getPrompt({
+          name: "visual-reading",
+          arguments: { question: "今天适合推进项目吗？", language: "en" },
+        });
+        const promptText = (prompt.messages[0].content as { text: string }).text;
+        expect(promptText).toContain('Pass language: "en"');
+        expect(promptText).not.toContain('Pass language: "zh"');
+      } finally {
+        await client.close();
+        await protocolServer.close();
+      }
     });
   });
 });

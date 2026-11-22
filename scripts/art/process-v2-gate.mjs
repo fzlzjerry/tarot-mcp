@@ -18,7 +18,7 @@
  */
 
 import { createHash } from "node:crypto";
-import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { access, copyFile, mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -53,12 +53,33 @@ const cardData = JSON.parse(
 const cardById = new Map(cardData.map((c) => [c.id, c]));
 
 const provenance = JSON.parse(await readFile(PROV_PATH, "utf8"));
-// Ensure queen_of_swords (copied from blindTest.xhigh) is mirrored in provenance.cards
+// Ensure queen_of_swords (selected from blindTest.xhigh) has its master file
+// on disk before mirroring it into provenance.cards.
 if (!provenance.cards.queen_of_swords && provenance.blindTest?.xhigh) {
+  const targetMaster = resolve(MASTER_DIR, "queen_of_swords.png");
+  let hasTarget = true;
+  try {
+    await access(targetMaster);
+  } catch {
+    hasTarget = false;
+  }
+  if (!hasTarget) {
+    const blindCandidate =
+      provenance.blindTest.xhigh.masterFile ||
+      resolve(MASTER_DIR, "blind-queen_of_swords-xhigh.png");
+    try {
+      await access(blindCandidate);
+    } catch {
+      throw new Error(
+        `Missing queen_of_swords master (${targetMaster}) and blind-test source (${blindCandidate})`,
+      );
+    }
+    await copyFile(blindCandidate, targetMaster);
+  }
   provenance.cards.queen_of_swords = {
     id: "queen_of_swords",
     ...provenance.blindTest.xhigh,
-    masterFile: resolve(MASTER_DIR, "queen_of_swords.png"),
+    masterFile: targetMaster,
     selectedFromBlindTest: "xhigh",
   };
   await writeFile(PROV_PATH, `${JSON.stringify(provenance, null, 2)}\n`);
