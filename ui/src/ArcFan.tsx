@@ -3,7 +3,6 @@ import {
   type FocusEvent as ReactFocusEvent,
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
-  type WheelEvent as ReactWheelEvent,
   forwardRef,
   useCallback,
   useEffect,
@@ -345,21 +344,33 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     wake();
   };
 
-  const handleWheel = (event: ReactWheelEvent<HTMLDivElement>): void => {
+  // Register a native non-passive wheel listener so vertical mouse-wheel input
+  // cleanly translates into horizontal fan movement without also scrolling the
+  // page, while releasing wheel scrolling at the left/right boundaries.
+  useEffect(() => {
     const view = scroller.current;
     if (!view) return;
-    const maxScroll = view.scrollWidth - view.clientWidth;
-    if (maxScroll <= 0) return;
-    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-      const next = Math.max(0, Math.min(maxScroll, view.scrollLeft + event.deltaY));
-      if (next !== view.scrollLeft) {
-        event.preventDefault();
-        view.scrollLeft = next;
-        syncScrollProgress();
-        wake();
+    const onNativeWheel = (event: WheelEvent): void => {
+      const maxScroll = view.scrollWidth - view.clientWidth;
+      if (maxScroll <= 0) return;
+      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+        const next = Math.max(
+          0,
+          Math.min(maxScroll, view.scrollLeft + event.deltaY),
+        );
+        if (next !== view.scrollLeft) {
+          event.preventDefault();
+          view.scrollLeft = next;
+          syncScrollProgress();
+          wake();
+        }
       }
-    }
-  };
+    };
+    view.addEventListener("wheel", onNativeWheel, { passive: false });
+    return () => {
+      view.removeEventListener("wheel", onNativeWheel);
+    };
+  }, [syncScrollProgress, wake]);
 
   const nudgeScroll = (direction: -1 | 1): void => {
     const view = scroller.current;
@@ -394,7 +405,6 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
         aria-describedby="deck-help deck-status"
         onKeyDown={onKeyDown}
         onScroll={handleScroll}
-        onWheel={handleWheel}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}

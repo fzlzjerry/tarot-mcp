@@ -36,6 +36,7 @@ export class TarotSessionManager {
 
   private sessions: Map<string, TarotSession>;
   private readonly storePath?: string;
+  private activityDirty = false;
 
   constructor(storePath?: string) {
     this.sessions = new Map();
@@ -74,14 +75,24 @@ export class TarotSessionManager {
   }
 
   /**
-   * Get an existing session. Updates in-memory lastActivity without rewriting
-   * the whole persistence store on every read (writes persist on session/reading
-   * mutations and hourly cleanup).
+   * Mark a session as recently active in memory and flag the store dirty so
+   * the periodic sweep persists renewed activity without synchronous disk
+   * writes on every read.
+   */
+  private touchSession(session: TarotSession): void {
+    session.lastActivity = new Date();
+    this.activityDirty = true;
+  }
+
+  /**
+   * Get an existing session. Renews in-memory lastActivity without rewriting
+   * the persistence store on every read; renewed timestamps are flushed on
+   * subsequent mutations or the periodic cleanup sweep.
    */
   public getSession(sessionId: string): TarotSession | undefined {
     const session = this.sessions.get(sessionId);
     if (session) {
-      session.lastActivity = new Date();
+      this.touchSession(session);
     }
     return session;
   }
@@ -134,6 +145,7 @@ export class TarotSessionManager {
     for (const session of this.sessions.values()) {
       const receipt = session.readings.find((entry) => entry.id === readingId);
       if (receipt) {
+        this.touchSession(session);
         return { sessionId: session.id, receipt };
       }
     }
@@ -171,7 +183,7 @@ export class TarotSessionManager {
         removed++;
       }
     }
-    if (removed > 0) {
+    if (removed > 0 || this.activityDirty) {
       this.saveToStore();
     }
   }
@@ -274,6 +286,7 @@ export class TarotSessionManager {
       const tmpPath = `${this.storePath}.tmp`;
       writeFileSync(tmpPath, JSON.stringify(payload));
       renameSync(tmpPath, this.storePath);
+      this.activityDirty = false;
     } catch (error) {
       logger.warn("session_store_save_failed", {
         path: this.storePath,

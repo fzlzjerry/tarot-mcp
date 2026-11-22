@@ -316,7 +316,11 @@ export class TarotReadingManager {
           );
           const cardId = drawnCard.card.id;
           const positionRole = resolvePositionRole(drawnCard);
-          const motifs = getCanonMotifs(cardId, language);
+          const motifs = getCanonMotifs(
+            cardId,
+            language,
+            VISUAL_ARTWORK_VERSION,
+          );
           return {
             id: cardId,
             cardId,
@@ -347,7 +351,9 @@ export class TarotReadingManager {
             ...(motifs
               ? {
                   traditionMotifs: motifs.tradition,
-                  editionMotifs: motifs.edition,
+                  ...(motifs.edition.length > 0
+                    ? { editionMotifs: motifs.edition }
+                    : {}),
                 }
               : {}),
             imageUri: `${VISUAL_CARD_ASSET_BASE}/${cardId}.webp`,

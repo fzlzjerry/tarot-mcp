@@ -85,7 +85,7 @@ export function buildReadingEvidence(
   const cards: ReadingCardEvidence[] = drawnCards.map((drawn, index) => {
     const role = resolvePositionRole(drawn);
     const canon = getCanonCard(drawn.card.id);
-    const motifs = getCanonMotifs(drawn.card.id, language);
+    const motifs = getCanonMotifs(drawn.card.id, language, deckVersion);
     const fallbackSymbolism =
       language === "zh" && drawn.card.zh?.symbolism?.length
         ? drawn.card.zh.symbolism

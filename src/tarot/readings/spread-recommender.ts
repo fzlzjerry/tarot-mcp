@@ -61,8 +61,8 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
     recommendations: [
       {
         spread: "venus_love",
-        reason: "Focused 6-card spread for love and romantic dynamics",
-        reasonZh: "6 张牌聚焦爱情与亲密关系的流动",
+        reason: "Focused 7-card spread for love and romantic dynamics",
+        reasonZh: "7 张牌聚焦爱情与亲密关系的流动",
         confidence: 0.9,
       },
       {

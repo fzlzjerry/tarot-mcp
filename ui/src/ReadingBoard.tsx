@@ -128,16 +128,18 @@ function CardSpotlight({
 }) {
   const [resolvedSource, failed] = useCardImage(client, card);
   const [imageFailed, setImageFailed] = useState(false);
-  const source =
+  const isShowingV2 =
     client.target === "web" &&
     readInitialDeckEdition() === "v2" &&
-    isV2GateCard(card.id)
-      ? resolveWebCardAssetUrl(card.id, resolvedSource, "v2", true)
-      : resolvedSource;
+    isV2GateCard(card.id);
+  const source = isShowingV2
+    ? resolveWebCardAssetUrl(card.id, resolvedSource, "v2", true)
+    : resolvedSource;
   const showFallback = failed || imageFailed || !source;
-  const motifs = card.editionMotifs?.length
-    ? card.editionMotifs
-    : card.traditionMotifs;
+  const motifs =
+    isShowingV2 && card.editionMotifs?.length
+      ? card.editionMotifs
+      : card.traditionMotifs;
 
   useEffect(() => {
     setImageFailed(false);

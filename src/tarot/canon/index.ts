@@ -105,12 +105,14 @@ export function getCanonMeaning(
 export function getCanonMotifs(
   cardId: string,
   language: Language,
+  deckVersion?: string,
 ): { tradition: string[]; edition: string[] } | undefined {
   const entry = getCanonCard(cardId);
   if (!entry) return undefined;
   return {
     tradition: entry.traditionMotifs[language],
-    edition: entry.editionMotifs[language],
+    edition:
+      deckVersion === CANON_DECK_EDITION ? entry.editionMotifs[language] : [],
   };
 }
 

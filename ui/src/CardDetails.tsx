@@ -26,12 +26,13 @@ export function CardDetails({
   counter?: { current: number; total: number };
 }) {
   const [resolvedSource] = useCardImage(client, card);
-  const source =
+  const isShowingV2 =
     client.target === "web" &&
     readInitialDeckEdition() === "v2" &&
-    isV2GateCard(card.id)
-      ? resolveWebCardAssetUrl(card.id, resolvedSource, "v2", true)
-      : resolvedSource;
+    isV2GateCard(card.id);
+  const source = isShowingV2
+    ? resolveWebCardAssetUrl(card.id, resolvedSource, "v2", true)
+    : resolvedSource;
 
   const closeButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLElement>(null);
@@ -95,9 +96,10 @@ export function CardDetails({
     };
   }, [onClose]);
 
-  const motifs = card.editionMotifs?.length
-    ? card.editionMotifs
-    : card.traditionMotifs;
+  const motifs =
+    isShowingV2 && card.editionMotifs?.length
+      ? card.editionMotifs
+      : card.traditionMotifs;
 
   return (
     <div

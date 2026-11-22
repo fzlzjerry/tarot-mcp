@@ -40,7 +40,8 @@ function makeReading(): ConfirmedReading {
         positionMeaning: "Where you are stepping from",
         meaning: "An unscripted opening asks for curiosity and light footing.",
         keywords: ["beginnings", "curiosity"],
-        editionMotifs: ["Bright coastal cliff", "White rose", "Leaping white dog"],
+        traditionMotifs: ["Sunlit cliff edge", "White rose", "Leaping white dog"],
+        editionMotifs: ["V2 luminous coastal cliff", "V2 embroidered satchel"],
         imageUri: "/assets/cards/midnight-art-nouveau-v1/fool.webp",
       },
       {
@@ -93,7 +94,9 @@ describe("Milestone 1 UI upgrades", () => {
       name: t("en", "spotlightEyebrow"),
     });
     expect(within(spotlight).getByText("The Fool")).not.toBeNull();
-    expect(within(spotlight).getByText(/Bright coastal cliff/)).not.toBeNull();
+    // On default v1 deck, Spotlight displays traditional RWS motifs, never v2 edition claims
+    expect(within(spotlight).getByText(/Sunlit cliff edge/)).not.toBeNull();
+    expect(within(spotlight).queryByText(/V2 luminous coastal cliff/)).toBeNull();
 
     // Reveal second card -> Spotlight auto-focuses Queen of Swords, prev/next active
     await user.click(

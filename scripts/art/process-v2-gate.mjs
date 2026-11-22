@@ -19,6 +19,7 @@
 
 import { createHash } from "node:crypto";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { homedir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
@@ -29,9 +30,11 @@ import {
 } from "./frames-v2.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const MASTER_DIR =
-  process.env.TAROT_V2_MASTERS_DIR ??
-  "/home/user/.capy/work/tarot-v2-masters";
+const MASTER_DIR = resolve(
+  process.env.TAROT_V2_MASTER_DIR ??
+    process.env.TAROT_V2_MASTERS_DIR ??
+    resolve(homedir(), ".capy/work/tarot-v2-masters"),
+);
 const OUT_DIR = resolve(root, "assets/cards/v2");
 const PROV_PATH = resolve(root, "assets/artwork/v2/provenance.json");
 const DECK_ID = "midnight-art-nouveau-v2";

@@ -324,5 +324,81 @@ describe("MCP accuracy counterfactuals and invariants", () => {
         sc.cards.map((c) => c.cardId),
       );
     });
+
+    it("preserves identical positionIds and positionRoles across EN and ZH spreads", () => {
+      const fool = cardManager.findCard("fool")!;
+      const cups3 = cardManager.findCard("three_of_cups")!;
+      const wands10 = cardManager.findCard("ten_of_wands")!;
+
+      const rmSingle = new TarotReadingManager(cardManager, new TarotSessionManager(), {
+        drawCards: () => [fool],
+        drawOrientation: () => "upright",
+      });
+      const singleEn = rmSingle.performReadingWithDetails("single_card", "Today?", undefined, { language: "en" });
+      const singleZh = rmSingle.performReadingWithDetails("single_card", "今天？", undefined, { language: "zh" });
+      expect(singleZh.reading.cards[0].positionId).toBe(singleEn.reading.cards[0].positionId);
+      expect(singleZh.reading.cards[0].positionRole).toBe(singleEn.reading.cards[0].positionRole);
+      expect(singleZh.reading.cards[0].positionRole).toBe("message");
+
+      const rmThree = new TarotReadingManager(cardManager, new TarotSessionManager(), {
+        drawCards: () => [fool, cups3, wands10],
+        drawOrientation: () => "upright",
+      });
+      const threeEn = rmThree.performReadingWithDetails("three_card", "Next steps?", undefined, { language: "en" });
+      const threeZh = rmThree.performReadingWithDetails("three_card", "下一步？", undefined, { language: "zh" });
+      expect(threeZh.reading.cards.map((c) => c.positionId)).toEqual(
+        threeEn.reading.cards.map((c) => c.positionId),
+      );
+      expect(threeZh.reading.cards.map((c) => c.positionRole)).toEqual(
+        threeEn.reading.cards.map((c) => c.positionRole),
+      );
+      expect(threeZh.reading.cards[1].positionRole).toBe("present");
+    });
+
+    it("never attaches v2 editionMotifs to default v1 deck receipts", () => {
+      const queenSwords = cardManager.findCard("queen_of_swords")!;
+      const rm = new TarotReadingManager(cardManager, new TarotSessionManager(), {
+        drawCards: () => [queenSwords],
+        drawOrientation: () => "upright",
+      });
+      const res = rm.performReadingWithDetails("single_card", "How should I decide?");
+      expect(res.reading.deckVersion).toBe("midnight-art-nouveau-v1");
+      expect(res.reading.cards[0].traditionMotifs?.length).toBeGreaterThan(0);
+      expect(res.reading.cards[0].editionMotifs).toBeUndefined();
+      expect(res.reading.evidence.cards[0].editionMotifs).toEqual([]);
+    });
+
+    it("flushes read-renewed session activity during periodic cleanup without writing on every read", async () => {
+      const dir = mkdtempSync(join(tmpdir(), "tarot-retention-"));
+      try {
+        const storePath = join(dir, "sessions.json");
+        const sm = new TarotSessionManager(storePath);
+        const rm = new TarotReadingManager(cardManager, sm);
+        const res = rm.performReadingWithDetails("single_card", "Track retention");
+        const sessionId = res.reading.sessionId!;
+        const readingId = res.reading.readingId;
+
+        const mtimeAfterCreate = statSync(storePath).mtimeMs;
+        await new Promise((r) => setTimeout(r, 25));
+
+        // Follow-up receipt read renews activity in memory without immediate disk write
+        expect(sm.getReadingReceipt(readingId)?.sessionId).toBe(sessionId);
+        expect(statSync(storePath).mtimeMs).toBe(mtimeAfterCreate);
+
+        // Periodic cleanup flushes dirty renewed timestamp even with zero evictions
+        sm.cleanupOldSessions();
+        expect(statSync(storePath).mtimeMs).toBeGreaterThan(mtimeAfterCreate);
+      } finally {
+        rmSync(dir, { recursive: true, force: true });
+      }
+    });
+
+    it("reports accurate 7-card count in venus_love recommendations", () => {
+      const loveRecs = recommendSpreads("What is happening in my love life?");
+      const venus = loveRecs.find((r) => r.spread === "venus_love");
+      expect(venus).toBeDefined();
+      expect(venus!.reason).toContain("7-card");
+      expect(venus!.reasonZh).toContain("7 张牌");
+    });
   });
 });
