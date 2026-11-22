@@ -1,0 +1,1286 @@
+{
+  "knowledgeVersion": "canon-v2-gate.1",
+  "deckEdition": "midnight-art-nouveau-v2",
+  "cards": {
+    "fool": {
+      "id": "fool",
+      "archetypeEssence": {
+        "en": "An unscripted leap into experience, carrying curiosity before certainty.",
+        "zh": "尚未被成见写定的第一步，带着好奇而非确信跃入新局。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Youth poised at the brink of a sunlit cliff looking skyward",
+          "White rose held lightly in hand as a mark of unguarded sincerity",
+          "Small bundle tied to a staff slung over the shoulder",
+          "Loyal white dog leaping beside the traveler's heels",
+          "Bright celestial light opening above distant mountain peaks"
+        ],
+        "zh": [
+          "立于崖畔仰望天际的轻盈旅人",
+          "轻拈在手中的白玫瑰，象征尚未设防的真诚",
+          "斜担在肩头木杖上的简朴行囊",
+          "跃于脚畔相伴或警示的忠实白犬",
+          "远山之巅倾泻而下的清朗天光"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Belle Epoque youth stepping lightly at a luminous cliff edge beneath radiant golden-ivory sky",
+          "Single pale white rose held in an open hand",
+          "Embroidered indigo-and-gold traveler's satchel slung on a slender gilded staff",
+          "Luminous white dog springing joyfully at the traveler's heels",
+          "Distant moonlit sea and high horizon bathed in warm dawn-gold glow"
+        ],
+        "zh": [
+          "金色象牙天光下轻步跃向崖畔的美好年代旅人",
+          "摊开掌心轻握的一朵白玫瑰",
+          "挂在纤细鎏金木杖上的星纹刺绣行囊",
+          "在脚畔欢跃相随的月白小犬",
+          "远方泛起暖金微光的海面与开阔地平线"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "The Fool invites a fresh start taken without waiting for every guarantee. Curiosity, light baggage, and willingness to learn in motion matter more right now than rehearsed control.",
+            "zh": "愚者指向一次不等万事俱全就迈出的新开端。此刻更重要的是好奇心、轻装上阵以及边走边学的意愿，而不是提前把一切掌控在手。"
+          },
+          "byRole": {
+            "message": {
+              "en": "Step into what is unfamiliar with beginner's eyes; a small real experiment will teach you more than another week of hesitation.",
+              "zh": "以初学者的眼光踏入陌生处境；一次真实的小步试水，比再多犹豫一周更有收获。"
+            },
+            "foundation": {
+              "en": "This situation began from an impulsive leap, an unplanned opening, or a moment you chose possibility over a fixed script.",
+              "zh": "事情的起点源于一次不按剧本的跃入、意外开启的契机，或你当初选择了可能性而非稳妥方案。"
+            },
+            "present": {
+              "en": "You are standing on a threshold with room to improvise; treat this phase as an open prototype rather than a permanent verdict.",
+              "zh": "你正站在门槛上，拥有即兴探索的空间；把当下当作开放试错期，而非一锤定音的终局。"
+            },
+            "resource": {
+              "en": "Your strongest asset is fresh perspective—not being locked into old habits lets you try an angle seasoned insiders overlook.",
+              "zh": "你最大的优势是尚未固化的新视角——不被旧习惯束缚，反而能试出旁人忽略的路径。"
+            },
+            "challenge": {
+              "en": "The friction here is leaping without noticing the cliff edge: excitement or naive optimism may be glossing over a real practical detail.",
+              "zh": "这里的阻力在于只顾抬头仰望而忽略了脚下崖边：兴奋或过度乐观可能让你漏看了某个现实细节。"
+            },
+            "action": {
+              "en": "Take one reversible first step today—send the message, draft the prototype, or visit the unfamiliar room—before overthinking closes the window.",
+              "zh": "今天就迈出一个可逆的第一步——发那条消息、搭出原型、走进陌生场域——别让反复推演关上窗口。"
+            },
+            "outcome": {
+              "en": "An open chapter unfolds whose shape depends on what you notice once you move; expect surprise rather than a neat straight line.",
+              "zh": "一段尚未定型的新篇章即将展开，走向取决于你动身后的临场观察；前方更像惊喜转折，而非笔直轨道。"
+            },
+            "advice": {
+              "en": "Keep your pack light and listen to the dog at your heels—stay bold in direction while staying alert to small early warnings.",
+              "zh": "行囊要轻，同时留意脚畔小犬的提醒——方向上保持敢迈步的锐气，细节上不忽略早期信号。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "An unscripted opening asks for curiosity and light footing. Trust small live experiments over rehearsed caution, while keeping an eye on where your next foot lands.",
+              "zh": "一个尚未写定剧本的开端需要好奇心与轻盈步伐。相比反复纸上推演，更适合通过小步实践去感知真实地形，同时留神脚下落点。"
+            },
+            "love": {
+              "en": "In love, The Fool brings unguarded freshness—meeting someone or rediscovering a partner without dragging old defenses onto the table. Stay honest about what you actually want rather than playing out past scripts.",
+              "zh": "在感情中，愚者带来不设防的新鲜感——放下旧防备去认识彼此或重新发现伴侣。坦诚表达真实心意，而不是照搬过往感情的防御剧本。"
+            },
+            "career": {
+              "en": "At work, The Fool favors a bold pivot, pilot project, or new skill where beginner's curiosity outperforms rigid routine. Cap your downside with a small testable milestone, then move.",
+              "zh": "在工作与事业上，愚者支持一次果断的转向、试点项目或新技能探索，初学者的好奇往往胜过僵化套路。用可控的小里程碑托底，然后直接行动。"
+            },
+            "health": {
+              "en": "For wellbeing, The Fool suggests refreshing stale routines with light, playful movement or a simpler daily rhythm rather than harsh perfectionism.",
+              "zh": "在身心状态上，愚者建议用轻松有趣的新节奏替换停滞的旧习惯，以微小的日常变化唤醒活力，而非苛刻的完美主义计划。"
+            },
+            "spirituality": {
+              "en": "Spiritually, The Fool is beginner's mind: releasing the urge to look wise so genuine wonder and direct experience can return.",
+              "zh": "在灵性层面，愚者代表初学者之心：放下“必须显得成熟笃定”的执念，让真实的好奇与直接体验重新流进来。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "The Fool reversed highlights friction around taking the leap: either hesitation is keeping you frozen on the ledge, or recklessness is ignoring obvious ground conditions.",
+            "zh": "愚者逆位指向迈步时的失衡：要么过度顾虑让你僵在崖边迟迟不动，要么一时冲动忽略了显而易见的现实条件。"
+          },
+          "lenses": {
+            "blocked": {
+              "en": "Waiting for 100% certainty has turned prudence into paralysis.",
+              "zh": "执意等待百分之百稳妥，已经让谨慎变成了原地停滞。"
+            },
+            "excess": {
+              "en": "Acting on pure adrenaline while tuning out clear warnings or basic preparation.",
+              "zh": "仅凭一时兴起往前冲，屏蔽了明确提醒与基本准备。"
+            },
+            "internalized": {
+              "en": "Secret longing for a fresh start that you haven't admitted aloud yet.",
+              "zh": "内心渴望重启却尚未向自己或外界说出口。"
+            },
+            "release": {
+              "en": "Dropping performative naivety and choosing a grounded first step instead.",
+              "zh": "放下刻意装作无所谓的天真，改用脚踏实地的第一步开启变化。"
+            }
+          },
+          "byRole": {
+            "challenge": {
+              "en": "Fear of looking foolish—or rushing ahead without a safety check—is distorting your timing.",
+              "zh": "怕出丑的顾虑，或者不看路况的贸然冲刺，正在打乱你的节奏。"
+            },
+            "resource": {
+              "en": "A healthy pause right now saves you from an avoidable misstep; check one concrete assumption before committing.",
+              "zh": "此刻主动停半拍能帮你避开原本可预防的失误；落子前先核实一个最关键的假设。"
+            },
+            "action": {
+              "en": "Do a quick reality check—budget, deadline, or boundary—then take a smaller, bounded step instead of either jumping blind or stalling.",
+              "zh": "先做一次简短的现实核查（预算、期限或边界），随后迈出有护栏的小步，既不盲跳也不僵守。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Check which side of the ledge you're slipping toward: stalling out of fear of mistakes, or skipping a basic safety check out of impatience.",
+              "zh": "愚者逆位提醒你先分辨自己偏向哪一端：是因为怕犯错而迟迟不敢启程，还是嫌麻烦跳过了最基本的现实核查与底线确认。"
+            },
+            "love": {
+              "en": "In relationships, reversed Fool flags mixed readiness—either holding back from vulnerability out of fear of getting hurt, or rushing intimacy before trust has real footing.",
+              "zh": "在感情中，愚者逆位反映节奏失调——要么因为害怕受伤而紧闭心门，要么在信任尚未站稳前就贸然交付全部期待。"
+            },
+            "career": {
+              "en": "In career choices, reversed Fool warns against both analysis paralysis and an unresearched leap. Validate the key numbers or terms before you resign, pitch, or sign.",
+              "zh": "在工作决策上，愚者逆位同时提醒两种偏差：过度观望错失时机，或不做功课就盲目跳槽签约。先核准关键条款与数字再行动。"
+            },
+            "health": {
+              "en": "For wellbeing, avoid extreme all-or-nothing resets or ignoring recurring fatigue signals; choose sustainable adjustments.",
+              "zh": "在身心调理上，避免极端激进的突变计划，也别忽视身体反复发出的疲惫信号，改为温和可持续的调整。"
+            },
+            "spirituality": {
+              "en": "Notice where skepticism or perfectionism is shutting down curiosity before an experience even begins.",
+              "zh": "在灵性层面，觉察怀疑、自我审视与完美主义是否在体验尚未真正开始前，就先一步掐灭了你本来的敞开、信任与好奇。"
+            }
+          }
+        }
+      },
+      "promptSpec": {
+        "lightingKey": "high-key",
+        "suitAccent": "molten antique gold, luminous warm ivory dawn light, deep twilight sapphire",
+        "scene": "A joyous, luminous Belle Epoque youth poised mid-stride at the bright rocky edge of a high coastal cliff overlooking a moonlit-and-dawn-lit sea. They gaze upward with bright curiosity, holding ONE crisp pale white rose lightly in their outstretched right hand, and slinging a slender gilded wooden staff over their left shoulder carrying a small star-embroidered midnight-blue cloth satchel. At their heels, ONE alert, joyful luminous white dog leaps upward toward them. Radiant golden-ivory celestial light illuminates the traveler's face, billowy ivory silk sleeves, embroidered indigo-and-gold doublet, white dog, and cliff blossoms against a dramatic deep midnight-indigo starry sky with warm golden horizon clouds.",
+        "requiredObjects": [
+          {
+            "object": "traveler",
+            "count": 1
+          },
+          {
+            "object": "white rose",
+            "count": 1
+          },
+          {
+            "object": "staff with satchel",
+            "count": 1
+          },
+          {
+            "object": "white dog",
+            "count": 1
+          }
+        ],
+        "compositionNote": "Dynamic diagonal silhouette from lower-left cliff to upper-right luminous sky; generous negative space around the traveler's head and lifted foot so the pose reads unmistakably even at 64x96 thumbnail size.",
+        "avoid": [
+          "text",
+          "letters",
+          "numerals",
+          "border",
+          "frame",
+          "muddy dark face",
+          "extra people"
+        ]
+      }
+    },
+    "three_of_cups": {
+      "id": "three_of_cups",
+      "archetypeEssence": {
+        "en": "Shared joy, mutual celebration, and emotional sustenance found in trusted company.",
+        "zh": "被信任同伴托住的共庆时刻，在彼此呼应中获得情感滋养。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Three figures gathered in a lively circle raising three golden cups in a toast",
+          "Abundant flowers, fruit, and garlands at their feet symbolizing harvest",
+          "Flowing festive garments turning inward toward shared celebration",
+          "Open, unguarded posture showing mutual warmth and camaraderie"
+        ],
+        "zh": [
+          "围成欢快圆环、共同举起三只金色圣杯祝酒的三位同伴",
+          "脚畔丰盛的花果与花环，象征共同收获",
+          "彼此面向圆心、随舞步轻扬的节庆衣裙",
+          "敞开而舒展的姿态，流露真诚情谊与默契"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Three joyous Belle Epoque companions forming a bright celebratory circle on a lantern-lit terrace",
+          "Exactly three gleaming antique-gold chalices lifted together at center in a toast",
+          "Sapphire, amethyst, and moon-ivory silk dresses catching warm golden lantern light",
+          "Flowering midnight fountain and garlands framing the joyous gathering"
+        ],
+        "zh": [
+          "在灯火温润的庭院露台围成欢聚圆环的三位美好年代挚友",
+          "正中齐举碰杯、光泽清晰的三只古金雕花圣杯",
+          "在暖金灯影与月色下流动的蓝宝石、紫晶与月白丝绸衣裙",
+          "周围盛放的花环与静静流淌的庭院喷泉"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "Three of Cups marks genuine fellowship: celebrating a milestone together, leaning on allies who actually cheer for you, and letting joy be shared rather than carried alone.",
+            "zh": "圣杯三代表真实可感的情谊与共庆：和真正为你高兴的人分享阶段性成果，把喜悦与情绪放进彼此支持的社群里，而不独自硬扛。"
+          },
+          "byRole": {
+            "message": {
+              "en": "Bring people you trust into the moment—shared encouragement or a candid gathering unlocks momentum you cannot manufacture solo.",
+              "zh": "把信任的伙伴拉进这件事里——一场真诚的相聚或彼此打气，能带来一个人硬撑不出的推动力。"
+            },
+            "foundation": {
+              "en": "Warm camaraderie, mutual support, or a joyful shared memory laid the emotional ground for where things stand now.",
+              "zh": "良好的同伴默契、互相扶持，或一段愉快的共同经历，为当下局面铺好了情感底色。"
+            },
+            "present": {
+              "en": "You are in a window of warmth and social receptivity—good for collaboration, reunions, and acknowledging progress already made.",
+              "zh": "你正处于人际顺畅、情感回暖的窗口期——适合协作、重聚，并认真肯定已经走出的成绩。"
+            },
+            "resource": {
+              "en": "Your strongest resource is your circle: ask friends, peers, or allies for perspective, introductions, or simply celebration.",
+              "zh": "你最可靠的资源就在身边的圈子里：主动向朋友、同路人或盟友寻求视角、引荐或情绪支持。"
+            },
+            "challenge": {
+              "en": "Even in upright form, Three of Cups in a challenge slot asks whether fitting in with the group—or chasing social harmony—is muffling your own honest opinion.",
+              "zh": "即便正位，落在阻碍位的圣杯三也在提醒：你是否为了维持融洽氛围或融入群体，而压低了自己真实的想法？"
+            },
+            "action": {
+              "en": "Reach out to two or three trusted people and co-create or celebrate openly instead of working behind closed doors.",
+              "zh": "主动联系两三位信得过的人，把事情摊开共创或好好庆祝一次，别再关起门来单打独斗。"
+            },
+            "outcome": {
+              "en": "A warm gathering, collaborative win, or restored ease among allies brings a real sense of belonging.",
+              "zh": "一次舒心的相聚、协作成效或同伴间重新找回的轻松感，会为你带来切实的归属感。"
+            },
+            "advice": {
+              "en": "Pause to celebrate what is already working with the people who showed up for you; gratitude strengthens alliances.",
+              "zh": "停下来和一路相伴的人好好庆祝已有的进展；表达感谢会让同盟更稳固。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Shared joy and trusted community are central here. Let allies celebrate with you and collaborate openly, while keeping your own voice clear inside the group.",
+              "zh": "核心在于共享喜悦与可信赖的社群支持。大方与同路人协作共庆，同时在群体融洽中保持自己独立清醒的声音。"
+            },
+            "love": {
+              "en": "In love, Three of Cups brings playful ease, friendship inside romance, and welcoming each other's social worlds. Notice whether outside voices enrich the bond or crowd it.",
+              "zh": "在感情里，圣杯三带来像挚友般轻松愉悦的互动，以及融入彼此生活圈的暖意。也留意旁人的声音是在滋养关系，还是挤占了二人空间。"
+            },
+            "career": {
+              "en": "At work, Three of Cups signals strong team chemistry, a launch worth marking together, or opportunities coming through warm peer networks rather than cold outreach.",
+              "zh": "在工作上，圣杯三意味着融洽的团队化学反应、值得共庆的阶段成果，或经由熟人口碑与同行互助带来的好机会。"
+            },
+            "health": {
+              "en": "For wellbeing, social connection is restorative right now—a shared meal, walk with friends, or supportive group lifts morale better than isolation.",
+              "zh": "在身心调节上，高质量的陪伴此刻最能回血——一顿轻松的聚餐、与朋友散步或支持性社群，比独自封闭更有疗愈感。"
+            },
+            "spirituality": {
+              "en": "Spiritually, joy itself is a practice: gratitude, song, and community remind you that growth does not have to be solemn or solitary.",
+              "zh": "在灵性层面，由衷的欢喜本身就是修习：感恩、共鸣与群体联结温和地提醒你，内在成长不必总是严肃克制而孤单独行。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "Three of Cups reversed points to social friction, overindulgence, or feeling like an outsider in a crowd—time to trim noise and reconnect with the few bonds that feel real.",
+            "zh": "圣杯三逆位指向人际消耗、过度应酬或在人群中的疏离感——适合缩减无效社交，回到真正真诚的少数连结。"
+          },
+          "lenses": {
+            "blocked": {
+              "en": "Isolation or pulling away from people who would actually help if invited.",
+              "zh": "把自己孤立起来，退出了原本愿意伸手相助的圈子。"
+            },
+            "excess": {
+              "en": "Social burnout, gossip, or celebrating distractions to avoid a quiet truth.",
+              "zh": "社交透支、流言纷扰，或用热闹聚会回避真正该面对的问题。"
+            },
+            "internalized": {
+              "en": "Smiling along in public while privately feeling unseen or out of step.",
+              "zh": "表面配合热闹，内心却觉得格格不入或不被真正理解。"
+            },
+            "release": {
+              "en": "Stepping back from draining obligations to reclaim quiet, authentic connection.",
+              "zh": "退出消耗精力的应酬局，把时间留给真正舒心的关系。"
+            }
+          },
+          "byRole": {
+            "challenge": {
+              "en": "Group politics, third-party noise, or social exhaustion is muddying a decision that needs quiet clarity.",
+              "zh": "圈子里的杂音、过多旁人意见或社交疲惫，正在干扰原本需要静心判断的决定。"
+            },
+            "resource": {
+              "en": "Permission to skip the crowd and meet one-on-one—small, honest conversations beat performative gatherings now.",
+              "zh": "允许自己推掉大场面的聚会，改为一对一深聊——小而真诚的交流此刻最管用。"
+            },
+            "action": {
+              "en": "Decline one draining social commitment this week and clear the air directly with the one person who actually matters.",
+              "zh": "这周推掉一场消耗你的应酬，把精力留给直接和最关键的那个人把话说开。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Step back from crowded expectations, gossip, or social fatigue. Quality of connection matters far more than keeping up appearances right now.",
+              "zh": "圣杯三逆位提醒你从拥挤的社交期待、闲话或应酬疲惫里退后一步。眼下少数关系的真实质量，远比维持表面的热闹更重要。"
+            },
+            "love": {
+              "en": "In love, reversed Three of Cups flags third-party interference, unspoken jealousy, or letting friends' opinions steer a private relationship. Bring the conversation back between the two of you.",
+              "zh": "在感情中，圣杯三逆位提示第三方干扰、未说破的醋意，或被外界评价牵着走。把对话重新拉回两个人之间。"
+            },
+            "career": {
+              "en": "In work, watch for misaligned team cliques, credit friction, or meetings that drain energy without advancing real work. Clarify roles directly.",
+              "zh": "在职场上，圣杯三逆位提醒留意小圈子内耗、功劳分配不清或空耗精力的热闹会议，把精力收回明确职责与清晰边界上。"
+            },
+            "health": {
+              "en": "Ease up on late nights, overstimulation, or over-scheduling social plans; quiet recovery restores balance faster than pushing through.",
+              "zh": "在身心状态上，适当减少熬夜应酬与过度社交刺激，主动给自己留出独处与安静休息的时间，恢复速度会比硬撑快得多。"
+            },
+            "spirituality": {
+              "en": "Solitude is not failure here; stepping outside the chorus lets you hear your own inner compass again.",
+              "zh": "在灵性层面，此刻的主动独处并非退步或孤立；暂时离开喧闹的合唱，反而能让你重新听清自己内心沉稳而真实的指南针。"
+            }
+          }
+        }
+      },
+      "promptSpec": {
+        "lightingKey": "mid-high",
+        "suitAccent": "luminous cerulean sapphire, amethyst violet, warm candlelit antique gold, moonlit ivory",
+        "scene": "Three joyful Belle Epoque friends—two women and one man or three women in distinct flowing jewel-toned sapphire, amethyst-plum, and pearl-ivory embroidered gowns—gathered tightly in a dynamic celebratory circle on a moonlit stone garden terrace hung with warm golden lanterns. At the bright center of the composition, all three raise their arms in a jubilant toast, clinking EXACTLY THREE gleaming, ornate antique-gold chalices together so all three cups are unmistakably prominent, clearly separated, and illuminated by warm golden highlights. Lush ivory roses, trailing vines, and a softly gleaming stone water fountain frame the foreground and terrace edge under a starry midnight-indigo sky.",
+        "requiredObjects": [
+          {
+            "object": "celebrating companions",
+            "count": 3
+          },
+          {
+            "object": "raised ornate golden chalices",
+            "count": 3
+          }
+        ],
+        "compositionNote": "Closed joyful triangular circle of three figures converging on THREE brightly lit golden chalices held high in the upper-center focal zone; high warm-vs-cool contrast makes the three raised cups pop instantly at 64x96 thumbnail size.",
+        "avoid": [
+          "tree planting",
+          "kneeling somber figures",
+          "fourth or fifth person",
+          "extra background cups",
+          "text",
+          "numerals",
+          "border",
+          "frame"
+        ]
+      }
+    },
+    "three_of_pentacles": {
+      "id": "three_of_pentacles",
+      "archetypeEssence": {
+        "en": "Craftsmanship honed in public through disciplined collaboration and visible mastery.",
+        "zh": "在分工协作与反复雕琢中落地成形的专业匠心。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Master mason standing on a stone bench carving a Gothic cathedral arch",
+          "Three sculpted golden pentacles inlaid cleanly into the vaulted stone arch",
+          "Architect or patron and monk examining an unrolled blueprint together",
+          "Chisel and mallet in the artisan's hands representing skilled execution"
+        ],
+        "zh": [
+          "立于长凳上专注雕琢哥特式拱门的工匠大师",
+          "规整镶嵌在石拱顶端的枚枚浮雕金币（共三枚星币）",
+          "共阅展开设计蓝图的委托人与修士",
+          "工匠手中的凿子与木槌，象征扎实技艺与落实"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Master artisan on a carved wooden bench chiseling a soaring candlelit cathedral arch",
+          "Exactly three embossed antique-gold pentacle medallions inlaid in a triangle inside the warm limestone arch",
+          "Two collaborators below—a robed scholar and a velvet-cloaked patron—consulting an illuminated parchment blueprint",
+          "Emerald-verdigris, warm parchment ochre, and glowing candlelight contrasting against deep midnight cathedral shadow"
+        ],
+        "zh": [
+          "立于木凳上雕琢高耸教堂石拱的匠师",
+          "以三角阵列规整镶嵌在暖色石拱中的三枚浮雕古金星币",
+          "拱下并肩审阅发光羊皮纸蓝图的长袍学者与赞助者",
+          "在深邃午夜穹顶阴影中跃出的暖烛光、羊皮纸赭金与祖母绿点缀"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "Three of Pentacles honors real craft built with others: aligning on the blueprint, respecting distinct expertise, and letting patient skill produce work that stands on its own.",
+            "zh": "星币三赞许落地生根的协作匠心：先对齐蓝图、尊重各自专业分工，再用经得起检验的手艺把成果真正做出来。"
+          },
+          "byRole": {
+            "message": {
+              "en": "Treat this as a craft problem, not a solo performance—review the plan with peers whose skill complements yours and refine the details.",
+              "zh": "把这件事当作需要打磨的工艺而非个人独角戏——找能力互补的伙伴一起审图、扣细节。"
+            },
+            "foundation": {
+              "en": "Early competence, structured planning, or a solid working partnership created the foundation you are building on.",
+              "zh": "前期的扎实基本功、清晰规划或靠谱的分工协作，搭起了今天能继续加建的底座。"
+            },
+            "present": {
+              "en": "Work is visibly taking shape through feedback and iteration; welcome critique from people who know the craft.",
+              "zh": "作品或计划正借由反馈与迭代迅速成形；坦然接纳懂行人的挑刺与建议。"
+            },
+            "resource": {
+              "en": "Your leverage comes from complementary skills—pairing hands-on execution with someone else's design eye or sponsorship.",
+              "zh": "你手里的杠杆是互补分工——把一线实操与他人的结构视野或资源支持结合起来。"
+            },
+            "challenge": {
+              "en": "Even upright, Three of Pentacles in a challenge position points to perfectionism slowing delivery or difficulty letting collaborators share ownership of the design.",
+              "zh": "落在阻碍位时，正位星币三提示你可能因过度打磨细节而拖慢交付，或难以放心让协作者共同主导设计。"
+            },
+            "action": {
+              "en": "Put the blueprint on the table: share a concrete draft, agree on clear standards and owners, and execute the next tangible piece.",
+              "zh": "把蓝图摊到桌面上：拿出一版具体草稿，明确验收标准与各自权责，然后扎实做完下一块。"
+            },
+            "outcome": {
+              "en": "Visible, durable progress earns respect from peers and stakeholders—recognition built on real quality rather than hype.",
+              "zh": "看得见、站得住的阶段成果将赢得同行与关键方的认可——这是靠真功夫挣来的口碑。"
+            },
+            "advice": {
+              "en": "Value feedback over flattery and build to a shared standard; lasting reputation grows stone by stone.",
+              "zh": "看重专业反馈胜过表面恭维，按共同标准把每一块石头砌牢；长久声誉正由此累积。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Skilled collaboration and measurable craft move this forward. Align expectations around a shared plan and refine the work through honest peer feedback.",
+              "zh": "扎实协作与可衡量的工艺水准是破局关键。围绕共同蓝图对齐预期，通过坦诚的专业互评不断打磨。"
+            },
+            "love": {
+              "en": "In relationships, Three of Pentacles is the quiet art of building a shared life—dividing responsibilities fairly, learning each other's rhythms, and treating partnership as something you actively construct together.",
+              "zh": "在感情中，星币三代表共同经营生活的踏实默契——合理分工、磨合节奏，把关系当作双方一起用心搭建的作品。"
+            },
+            "career": {
+              "en": "In work or study, this is a classic card of teamwork, apprenticeship, code/design review, and earning trust through reliable execution. Show your work early and co-own the standard.",
+              "zh": "在工作与学业上，这是典型的团队协作、专业评审与凭借可靠交付赢得信任的牌。尽早展示阶段成果，与伙伴共担质量标准。"
+            },
+            "health": {
+              "en": "For wellbeing, consistent fundamentals and qualified guidance—a trainer, clinician, or structured program—outperform improvised hacks.",
+              "zh": "在身心管理上，循序渐进的基础训练与专业人士指导（教练、医师或系统方案），远胜临时起意的偏方。"
+            },
+            "spirituality": {
+              "en": "Spiritually, devotion shows up in ordinary craft: bringing patience, care, and humility to what your hands shape every day.",
+              "zh": "在灵性修习上，星币三代表虔敬体现在日常打磨之中：带着耐心、专注与谦逊对待双手每日所造之物，本身就是踏实的修行。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "Three of Pentacles reversed points to misaligned teamwork, cutting corners, or working in silos without a shared blueprint.",
+            "zh": "星币三逆位指向协作错位、急于求成偷工减料，或各干各的却没有对齐同一张蓝图。"
+          },
+          "lenses": {
+            "blocked": {
+              "en": "Unclear roles or missing feedback loops are stalling solid skill from landing.",
+              "zh": "权责不清或缺少反馈闭环，让原本不错的能力卡在半路落不了地。"
+            },
+            "excess": {
+              "en": "Over-polishing trivial details or micromanaging every teammate's chisel.",
+              "zh": "在次要细节上过度较真，或忍不住替每个协作者握凿子。"
+            },
+            "internalized": {
+              "en": "Underestimating your own workmanship or hiding unfinished work out of fear of critique.",
+              "zh": "低估自己的专业水准，或因为怕被挑错而把半成品藏起来不让人看。"
+            },
+            "release": {
+              "en": "Stepping out of a chaotic committee to rebuild clear ownership and quality standards.",
+              "zh": "跳出混乱扯皮的多头决策，重新确立清晰的责任人与质量门槛。"
+            }
+          },
+          "byRole": {
+            "challenge": {
+              "en": "Different people are building from different mental blueprints, creating rework and quiet resentment.",
+              "zh": "不同人按各自脑中的图纸施工，造成返工与隐形摩擦。"
+            },
+            "action": {
+              "en": "Stop building in parallel for one hour: write down who owns what, what 'done' looks like, and which shortcut must be fixed.",
+              "zh": "先停工一小时把话说透：写清谁负责哪块、完成标准是什么，以及哪个草率角落必须返修。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Check for mismatched expectations, rushed workmanship, or trying to carry a group effort alone without agreeing on the plan.",
+              "zh": "星币三逆位提醒你排查协作中的摩擦点：是否存在预期没对齐、仓促应付品质，或在未统一蓝图的情况下独自硬扛团队事务。"
+            },
+            "love": {
+              "en": "In relationships, reversed Three of Pentacles surfaces lopsided effort or operating like roommates on separate schedules. Re-negotiate shared responsibilities openly.",
+              "zh": "在感情中，星币三逆位常对应付出失衡或各过各的节奏错位，需要把共同事务的边界与期待重新谈清。"
+            },
+            "career": {
+              "en": "At work, watch for poor handoffs, ignored reviews, or undervalued craft. Clarify scope and ownership in writing before investing more hours.",
+              "zh": "在职场上，警惕交接断层、敷衍评审或专业付出被轻视。在继续投入工时前，先把范围与权责写清。"
+            },
+            "health": {
+              "en": "Inconsistent follow-through or skipping foundational habits undercuts results; simplify the routine so you can actually sustain it.",
+              "zh": "在身心层面，计划断断续续或跳过基础环节会让调理效果大打折扣；把养生与训练方案精简到当下真正能长期坚持的程度。"
+            },
+            "spirituality": {
+              "en": "Notice where ego or comparison is turning practice into competition rather than steady service.",
+              "zh": "在灵性层面，觉察是否因为虚荣、外界掌声与横向比较，把原本沉静踏实的日常修习，扭曲成了急于证明自己的无声竞赛。"
+            }
+          }
+        }
+      },
+      "promptSpec": {
+        "lightingKey": "mid-key",
+        "suitAccent": "emerald-verdigris, warm parchment ochre, glowing amber candlelight, burnished antique gold",
+        "scene": "An architectural interior beneath a soaring candlelit Gothic-Art Nouveau stone cathedral arch. On the left, a master sculptor in a richly detailed emerald-and-ochre artisan tunic stands on a low carved wooden bench holding a small mallet and chisel, carving the warm sunlit-ivory limestone archway. Inlaid cleanly inside the upper curve of the stone arch are EXACTLY THREE large, distinct, embossed antique-gold pentacle medallions arranged in a crisp, symmetrical triangle. Standing below on the right side of the nave, TWO collaborators—a scholarly figure in a dark emerald cloak and a noble patron in amber-trimmed velvet—hold open an illuminated cream parchment architectural blueprint, pointing upward toward the arch. Warm golden candlelight illuminates the stone arch, the three golden pentacles, the parchment scroll, and the artisan's hands against deep midnight-indigo vaulted shadows.",
+        "requiredObjects": [
+          {
+            "object": "master sculptor on bench with chisel",
+            "count": 1
+          },
+          {
+            "object": "collaborators reading blueprint below",
+            "count": 2
+          },
+          {
+            "object": "embossed golden pentacles inlaid in arch",
+            "count": 3
+          }
+        ],
+        "compositionNote": "Strong vertical architectural Gothic arch framing the upper third with THREE bright gold pentacle medallions clearly visible in a triangular triad; completely distinct geometric silhouette and warm amber-emerald palette from Three of Cups even at 64x96 thumbnail.",
+        "avoid": [
+          "outdoor garden toast",
+          "cups",
+          "extra coins or stars mistaken for pentacles",
+          "text",
+          "numerals",
+          "border",
+          "frame"
+        ]
+      }
+    },
+    "queen_of_swords": {
+      "id": "queen_of_swords",
+      "archetypeEssence": {
+        "en": "Lucid discernment earned through experience—compassionate truth spoken without sugarcoating.",
+        "zh": "历经沉淀后的清明裁断——不敷衍、不情绪化，却有分寸的坦诚。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Regal seated Queen facing in clear profile on a carved stone throne",
+          "One straight, upright sword held vertically in her right hand",
+          "Left hand raised palm-outward in measured invitation and firm boundary",
+          "High windswept clouds, lone soaring bird, and carved butterflies/moths symbolizing mental clarity"
+        ],
+        "zh": [
+          "端坐于雕花石座之上、侧颜沉静锐利的王后",
+          "右手笔直竖握的一柄雪亮长剑",
+          "左手掌心微扬，兼具坦荡邀约与清晰边界",
+          "高空流动的云岚、飞鸟与蝶纹石雕，象征清澈理智"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Poised silver-eyed Queen seated in crisp three-quarter profile on a high carved stone throne above windswept clouds",
+          "Exactly one straight, gleaming engraved silver-and-gold sword held vertically in her right hand",
+          "Left hand lifted openly in calm, unmistakable discernment and boundary",
+          "Cool moonlight ivory, storm-slate silver, and razor-clean antique gold linework with nocturnal moths etched into the throne"
+        ],
+        "zh": [
+          "端坐于云岚高处雕花石座、侧颜清冷敏锐的王后",
+          "右手笔直竖握的一柄铭刻金纹的雪亮银剑",
+          "左手舒展微扬，展现冷静透彻的裁断与边界感",
+          "月白高光、风暴银灰与利落古金刻线，石座浮雕夜蛾与星云"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "Queen of Swords calls for crisp, honest clarity: cut through polite fog, name facts plainly, and enforce fair boundaries without cruelty or guilt.",
+            "zh": "宝剑王后要求清晰直接的判断：剥离客套与模糊地带，如实说出事实，在不伤人也不委屈自己的前提下立住公平边界。"
+          },
+          "byRole": {
+            "message": {
+              "en": "Say the true thing cleanly and simply; clarity is kinder right now than cushioning the facts.",
+              "zh": "把真话简明干脆地说出来；此刻的坦诚清晰，比绕弯子照顾情绪更善意。"
+            },
+            "foundation": {
+              "en": "A past lesson, loss, or sharp realization taught you to see patterns quickly and never trade truth for flattery.",
+              "zh": "过往的历练或清醒时刻教会了你一眼看穿本质，不再拿事实去换表面迎合。"
+            },
+            "present": {
+              "en": "You have the intellectual distance to assess this objectively; separate verified facts from anxious stories.",
+              "zh": "你现在具备客观审视的冷静距离；把已核实的事实与焦虑脑补彻底分开。"
+            },
+            "resource": {
+              "en": "Your strongest asset is sharp editorial judgment—knowing exactly what to cut, what question to ask, and where to draw the line.",
+              "zh": "你最强的资本是精准的删减与判断力——知道该剪掉什么、该问哪句关键问题、边界画在哪里。"
+            },
+            "challenge": {
+              "en": "Even upright, Queen of Swords in a challenge slot asks whether protective detachment or bluntness is making an ally feel interrogated rather than heard.",
+              "zh": "落在阻碍位时，正位宝剑王后提醒你留意：为了自保而保持的抽离或过于锋利的措辞，是否让同路人感到像在受审？"
+            },
+            "action": {
+              "en": "Write down the exact terms, ask the direct clarifying question, and cut one ambiguous obligation cleanly.",
+              "zh": "把确切条款写明白，直接抛出那个澄清问题，干脆剪掉一件含糊不清的负担。"
+            },
+            "outcome": {
+              "en": "The fog lifts into clean air: an honest agreement, firm boundary, or decisive verdict restores your self-respect and momentum.",
+              "zh": "迷雾散成清朗空气：一份坦诚共识、稳固边界或果断裁决，让你重新握回主动权。"
+            },
+            "advice": {
+              "en": "Be direct without being cold—hold the sword straight so truth clears the path rather than wounds for sport.",
+              "zh": "直率而不刻薄——把剑握直是为了劈开迷雾，而不是借锋利泄愤。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Independent judgment and plain speech serve you best. Strip away assumptions, check the evidence directly, and set clean boundaries.",
+              "zh": "宝剑王后正位提示独立判断与直白沟通此刻最有效。剥除想当然的猜测与客套，直接核对可验证的事实，并划出清爽明确的边界。"
+            },
+            "love": {
+              "en": "In love, Queen of Swords values candid adult conversation over mind-reading. State your needs and deal-breakers calmly; genuine closeness thrives on honesty, not guessing games.",
+              "zh": "在感情里，宝剑王后看重成年人之间坦诚直白的对话而非互相猜心。平静说出需求与底线，真正长久的亲密建立在诚实之上。"
+            },
+            "career": {
+              "en": "At work, this is crisp strategy, editing, legal/contractual rigor, and saying no to scope creep. Rely on clear criteria rather than office politics.",
+              "zh": "在工作上，她代表利落的策略裁剪、条款严谨与对需求蔓延的干脆拒绝。用明确标准说话，而不是卷入职场揣测。"
+            },
+            "health": {
+              "en": "For wellbeing, look at your habits and symptoms objectively—track real data or seek a second expert opinion instead of brushing issues aside.",
+              "zh": "在健康与精力管理上，客观记录真实数据或寻求专业第二意见，别靠侥幸把反复出现的问题糊弄过去。"
+            },
+            "spirituality": {
+              "en": "Spiritually, discernment itself is wisdom: seeing reality clearly without wishful illusions frees energy for what is true.",
+              "zh": "在灵性层面，清明辨识本身即是智慧：放下自我安慰的幻觉如实观照，才能把力量留给真正重要之事。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "Queen of Swords reversed signals clouded objectivity—either sharp bitterness is turning discernment into cynicism, or old hurt is making it hard to set a clear boundary.",
+            "zh": "宝剑王后逆位提示清明度受情绪波及——要么过往委屈让犀利变成冷嘲与防备，要么心软迟疑让你迟迟划不出清晰边界。"
+          },
+          "lenses": {
+            "blocked": {
+              "en": "Swallowing an important truth to keep false peace, leaving resentment to simmer.",
+              "zh": "为了维持表面和平把真话咽回肚子，反而让积怨暗自发酵。"
+            },
+            "excess": {
+              "en": "Cutting people off preemptively or using razor sarcasm as armor against vulnerability.",
+              "zh": "先发制人地冷处理，或拿尖锐讽刺当盾牌来遮掩脆弱。"
+            },
+            "internalized": {
+              "en": "Turning that merciless inner critic entirely onto yourself.",
+              "zh": "把毫不留情的严苛审视全都对准了自己。"
+            },
+            "release": {
+              "en": "Softening defensive armor without giving up hard-won wisdom.",
+              "zh": "卸下过度戒备的硬壳，同时保住历经世事修来的清醒判断。"
+            }
+          },
+          "byRole": {
+            "challenge": {
+              "en": "Unprocessed hurt is coloring your read of someone's motives—either assuming the worst too fast or tolerating blurred lines too long.",
+              "zh": "尚未消化的旧伤正在左右你对他人动机的判断——要么过快往坏处定性，要么对模糊越界忍让太久。"
+            },
+            "action": {
+              "en": "Draft the blunt message, let it sit ten minutes, strip out the sting, and send only the clear boundary.",
+              "zh": "把犀利的话先写下来放十分钟，删掉带刺的情绪词，只发出清晰坚定的边界。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Check whether your edge is protecting clarity or defending an old bruise. Speak plainly without punishing.",
+              "zh": "宝剑王后逆位提醒你先确认自己的锋芒是在守护清晰，还是在护着一道旧伤。把事实与底线说清楚即可，不必带着惩罚或尖刻语气。"
+            },
+            "love": {
+              "en": "In love, reversed Queen of Swords cautions against icy withdrawal, keeping score, or testing a partner instead of stating what hurt.",
+              "zh": "在感情中，宝剑王后逆位提醒警惕冷战疏离、暗自记账，或用带刺的试探反复考验伴侣，却始终不肯坦白真正令你受伤的痛点。"
+            },
+            "career": {
+              "en": "At work, beware hyper-critical feedback that shuts teammates down, or letting personal bias distort an evaluation. Return to concrete evidence.",
+              "zh": "在职场上，避免过度挑剔或居高临下的措辞把协作者推远，也警惕个人成见左右评审判断，重新回到客观可验证的事实依据上。"
+            },
+            "health": {
+              "en": "Notice where harsh self-talk or mental rumination is adding tension; give your nervous system space to decompress.",
+              "zh": "在身心状态上，留意严苛的自我批判、过度思虑与紧绷的戒备感是否在持续消耗睡眠与精力，给神经系统留出真正的缓冲空间。"
+            },
+            "spirituality": {
+              "en": "Release the belief that staying guarded equals staying wise; open perception sees further than suspicion.",
+              "zh": "在灵性层面，放下必须时刻戒备才算清醒的执念；敞开、沉静而温和的洞察力，往往比处处设防的猜疑看得更透彻、更长远。"
+            }
+          }
+        }
+      },
+      "promptSpec": {
+        "lightingKey": "mid-high",
+        "suitAccent": "crisp ice-silver, storm-slate blue, luminous moonlit ivory, burnished antique gold",
+        "scene": "A regal, lucid Belle Epoque Queen seated in sharp three-quarter profile upon a high carved pale-stone throne set above windswept silver-blue twilight clouds. Her posture is upright, poised, and sovereign. In her right hand, she holds EXACTLY ONE long, straight, gleaming engraved silver-and-antique-gold SWORD perfectly vertical, blade bright and unmistakable against the midnight sky. Her left hand is gracefully raised outward in calm discernment and clear boundary. She wears a sculptural slate-blue and silver-embroidered silk gown with crisp ivory collar highlights and a delicate silver-gold filigree diadem. Subtle Art Nouveau moths and wind-swept cloud spirals are carved into the pale limestone throne, with a single lone bird soaring high in the bright pale silver moonlit sky.",
+        "requiredObjects": [
+          {
+            "object": "seated Queen in profile",
+            "count": 1
+          },
+          {
+            "object": "upright straight silver-gold sword held in right hand",
+            "count": 1
+          },
+          {
+            "object": "carved stone throne",
+            "count": 1
+          }
+        ],
+        "compositionNote": "Razor-clear vertical silver sword blade and luminous profile silhouette cut cleanly across negative cloud space so the Queen + vertical sword read instantly at 64x96 thumbnail.",
+        "avoid": [
+          "glowing orb",
+          "crystal ball",
+          "cup",
+          "chalice",
+          "wand",
+          "pentacle",
+          "holding nothing",
+          "text",
+          "numerals",
+          "border",
+          "frame"
+        ]
+      }
+    },
+    "ten_of_wands": {
+      "id": "ten_of_wands",
+      "archetypeEssence": {
+        "en": "The weight of carrying everything alone on the final stretch—time to edit, delegate, or set down what isn't yours.",
+        "zh": "在最后一段上坡路把所有担子一人扛在肩头的沉重感——是时候做减法、托付或放下本不属于你的负担。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Traveler leaning forward under a heavy bundle of ten wooden wands",
+          "Ten sprouting staves carried together blocking the carrier's forward sightline",
+          "Distant settled town visible at the top of the slope showing the goal is close",
+          "Strained posture demonstrating commitment pushed past sustainable capacity"
+        ],
+        "zh": [
+          "俯身前倾、怀抱十根沉重权杖艰难前行的旅人",
+          "成束遮挡前方视线的十根带叶木杖",
+          "坡顶不远处灯火可亲的城镇，说明终点已在视野之内",
+          "绷紧吃力的身姿，体现责任感超出合理负荷"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Resolute traveler striding uphill at glowing amber-vermilion dusk carrying a tightly fanned bundle of ten slender sprouting wooden wands",
+          "Exactly ten distinct flowering staves with warm bronze-gold tips and tiny emerald leaves arranged cleanly in a countable fan",
+          "Warm lantern-lit hilltop town glowing ahead against deep twilight indigo",
+          "Dramatic warm dusk rim-light separating traveler, ten wands, and destination silhouette"
+        ],
+        "zh": [
+          "在琥珀暮色中沿坡前行、怀抱一束整齐展开的十根发芽权杖的旅人",
+          "清晰可数的十根古铜鎏金木杖，梢头点缀细小翠叶",
+          "前方山坡顶端亮起暖黄灯火的城镇剪影",
+          "浓烈暮光勾勒出旅人、十根权杖与远方终点的明暗层次"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "Ten of Wands reflects genuine effort nearing completion, yet weighed down by carrying too many obligations at once. The town is already in sight—how you finish matters as much as finishing.",
+            "zh": "权杖十反映你离终点已经不远，但把太多责任一股脑揽在自己怀里导致视野受阻。城镇就在眼前——以怎样的方式走完最后一段，和走到终点同样重要。"
+          },
+          "byRole": {
+            "message": {
+              "en": "Audit what you are carrying right now: the load is real, not imagined, and at least two of those wands can be delegated, deferred, or dropped.",
+              "zh": "立刻盘点你怀里正抱着的所有担子：沉重是真实的，其中至少有两三件事可以转交、延后或干脆放下。"
+            },
+            "foundation": {
+              "en": "Saying yes to every opportunity or stepping in to rescue things piled up into today's heavy workload.",
+              "zh": "过去对每次机会都点头，或习惯性替别人兜底，层层叠成了今天的超负荷局面。"
+            },
+            "present": {
+              "en": "You are near the finish line, but tunnel vision from sheer workload risks burning out right before arrival.",
+              "zh": "你已接近冲线阶段，但过重的事务正遮住前路视野，稍不注意就会在到达前耗竭。"
+            },
+            "resource": {
+              "en": "Your endurance and follow-through are formidable—pair that grit with ruthless prioritization instead of brute force alone.",
+              "zh": "你的耐力与扛事能力非常扎实——把这份韧劲配上一刀切的主次排序，而别只靠蛮力硬顶。"
+            },
+            "challenge": {
+              "en": "Holding every wand yourself blocks your view of the path ahead and turns a meaningful goal into a joyless chore.",
+              "zh": "把每根权杖都死死抱在自己怀里，既挡住了看路的视线，也让原本有意义的目标变成了毫无生气的苦差。"
+            },
+            "action": {
+              "en": "Put the bundle down for ten minutes, list everything on your plate, keep only the essentials needed to reach the gate, and hand off or drop the rest.",
+              "zh": "先把手里的担子放地上十分钟，把所有事项列出来：只保留抵达城门必需的核心几项，其余果断分担或砍掉。"
+            },
+            "outcome": {
+              "en": "Completion is within reach; once you trim excess obligations, the burden lifts cleanly into a lighter next cycle.",
+              "zh": "阶段收官近在眼前；只要肯精简多余包袱，重压很快会转化为轻装进入下一轮的踏实感。"
+            },
+            "advice": {
+              "en": "Asking for help or cutting scope on the final stretch is smart stewardship, not weakness.",
+              "zh": "在最后冲刺段主动求助或收窄范围，是成熟的统筹能力，绝不是软弱。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "You are close to completion, yet overloaded by carrying more than one person should. Sort essentials from inherited extras so you reach the finish intact.",
+              "zh": "离完成只差最后一段，但你背了远超单人合理上限的重量。分清核心任务与顺手揽下的包袱，完好抵达终点。"
+            },
+            "love": {
+              "en": "In love, Ten of Wands shows emotional labor leaning too heavily on one side, or external stress crowding out tenderness. Name what feels heavy instead of silently enduring.",
+              "zh": "在感情中，权杖十显示关系里的情绪或生活照料过度压在单方肩上，或外界压力挤干了温情。直接说出哪里太沉，别默默硬撑。"
+            },
+            "career": {
+              "en": "At work, this is classic crunch time and scope overload. Ship the core deliverable, push back on non-critical add-ons, and delegate clearly.",
+              "zh": "在职场上，这是典型的冲刺期与职责过载。先保核心交付物上线，对非关键加塞说不，并明确拆解分工。"
+            },
+            "health": {
+              "en": "Physical tension, neck/shoulder strain, or sheer fatigue is your body flagging unsustainable output. Schedule real rest before exhaustion schedules it for you.",
+              "zh": "身体发紧、肩颈疲惫或持续倦怠正在提示输出超载。主动安排真正恢复，别等精力透支替你按暂停。"
+            },
+            "spirituality": {
+              "en": "Examine which 'duties' are actually old guilt in disguise; devotion is not measured by how much you suffer.",
+              "zh": "在灵性层面，权杖十邀请你审视哪些所谓责任其实是伪装的愧疚感或讨好；真正的担当从来不以自我折磨和耗竭的程度来衡量。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "Ten of Wands reversed marks the turning point of putting burdens down—either relief through delegation and boundary-setting, or the crack that happens when overload is ignored too long.",
+            "zh": "权杖十逆位指向卸下重担的转折点——要么通过放手与交接迎来松弛，要么因长期硬撑不肯松手而出现失衡预警。"
+          },
+          "lenses": {
+            "blocked": {
+              "en": "Refusing to delegate because 'it's faster if I just do it myself' keeps you trapped.",
+              "zh": "因为“自己顺手做更快”而拒绝托付，结果把自己锁死在重压里。"
+            },
+            "excess": {
+              "en": "Collapse or snapping under obligations that never should have been stacked together.",
+              "zh": "在原本就不该叠在一起的任务下濒临崩溃或情绪爆发。"
+            },
+            "internalized": {
+              "en": "Quietly admitting to yourself that you don't want to keep carrying a borrowed dream.",
+              "zh": "内心已经承认，你其实不想再继续替别人扛这份期待。"
+            },
+            "release": {
+              "en": "Choosing relief: setting down unnecessary wands and walking lighter toward what truly counts.",
+              "zh": "主动选择松绑：把多余的权杖放到路边，轻装走向真正重要的事。"
+            }
+          },
+          "byRole": {
+            "resource": {
+              "en": "Relief is already available—someone or a simpler process can take part of this weight if you release control.",
+              "zh": "减负的出口其实就在手边——只要你肯交出部分控制权，有人或更简化的流程能接走一半重量。"
+            },
+            "action": {
+              "en": "Cancel, renegotiate, or hand off at least one heavy commitment today before fatigue forces a messy drop.",
+              "zh": "今天就把至少一项沉重承诺取消、重谈或交接出去，别等彻底累垮才被动失手。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "It is time to stop equating heaviness with worth. Release what is no longer yours to carry so momentum can breathe again.",
+              "zh": "权杖十逆位提醒你停止把扛得越重等同于越有价值。果断把不再属于你的担子放下来，生活与工作的节奏才能重新自由呼吸。"
+            },
+            "love": {
+              "en": "In relationships, reversed Ten of Wands invites dropping unspoken obligations and rebalancing who holds what, bringing genuine relief.",
+              "zh": "在感情中，权杖十逆位鼓励放下未言明的单方妥协，重新分配彼此承担的分量，关系反而会轻松回温。"
+            },
+            "career": {
+              "en": "At work, drop low-leverage busywork, renegotiate unrealistic deadlines, and hand off tasks that keep you from high-impact focus.",
+              "zh": "在工作与事业上，果断砍掉低杠杆杂务、重谈不切实际的截止日期，把持续拖累核心产出的事务移交、自动化或明确婉拒。"
+            },
+            "health": {
+              "en": "Decompression is overdue—lighten the schedule and treat recovery as non-negotiable maintenance.",
+              "zh": "在身心状态上，减压与松绑早已到期——先给日程和待办清单做切实减法，把睡眠与休养当作不可妥协的基础维护来执行。"
+            },
+            "spirituality": {
+              "en": "Letting go of martyr habits opens space for genuine vitality and willing generosity.",
+              "zh": "在灵性层面，放下自我牺牲式的苦行惯性，允许自己轻装前行，真正的生命热情与心甘情愿的慷慨才会在内在重新流淌回来。"
+            }
+          }
+        }
+      },
+      "promptSpec": {
+        "lightingKey": "dramatic-chiaroscuro",
+        "suitAccent": "warm amber-vermilion dusk, burnished bronze-gold, sprouting emerald leaf highlights, deep indigo twilight",
+        "scene": "A resolute Belle Epoque traveler in a richly textured bronze-crimson coat and indigo sash striding uphill along a winding twilight path toward a small warmly lantern-lit stone town glowing on the hilltop in the upper-right distance. Leaning slightly forward under the weight, the traveler embraces a clearly fanned, cleanly separated bundle of EXACTLY TEN slender, straight wooden wands with gleaming antique-gold finials and tiny sprouting emerald leaves along their upper ends—every single one of the TEN wands is clearly visible, distinct, and countable against the glowing amber-and-ivory dusk sky behind them. Dramatic warm sunset rim-light catches the traveler's back, coat folds, and the ten wooden wands against rich midnight-indigo foreground hills.",
+        "requiredObjects": [
+          {
+            "object": "uphill traveler",
+            "count": 1
+          },
+          {
+            "object": "distinct sprouting wooden wands in fanned bundle",
+            "count": 10
+          },
+          {
+            "object": "distant warm-lit hilltop town",
+            "count": 1
+          }
+        ],
+        "compositionNote": "Strong diagonal uphill silhouette with the TEN wands fanned cleanly against bright amber-ivory dusk sky so every wand shaft and tip separates crisply; warm sunset glow on upper right contrasts deeply with indigo foreground.",
+        "avoid": [
+          "9 or 11 or 12 wands",
+          "blurry uncountable sticks",
+          "extra people",
+          "text",
+          "numerals",
+          "border",
+          "frame"
+        ]
+      }
+    },
+    "tower": {
+      "id": "tower",
+      "archetypeEssence": {
+        "en": "Sudden structural truth that collapses a fragile facade so solid ground can be seen.",
+        "zh": "骤然降临的真相闪电，震塌原本摇摇欲坠的假象，让人重新看清坚实地面。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Tall stone tower struck by a bright bolt of lightning from a dark sky",
+          "Gilded crown blown cleanly off the tower's summit",
+          "Flames bursting from high windows as brittle masonry gives way",
+          "Figures thrown outward into open air as the old shelter breaks"
+        ],
+        "zh": [
+          "漆黑夜空中劈中石塔的耀眼闪电",
+          "自塔顶被震落的金冠",
+          "自高窗喷涌而出的火光与崩落的砖石",
+          "旧庇护瓦解时跃出半空的身影"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Lightning bolt cleaving a high stone tower crown at midnight",
+          "Shards of brittle facade giving way to clear sky behind the storm"
+        ],
+        "zh": [
+          "午夜闪电劈落高塔顶冠",
+          "脆弱外墙瓦解后显露的清朗夜空"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "The Tower upright is a disruptive awakening, not comfortable smoothness: an unstable assumption, role, or structure cracks open abruptly so you can stop defending what could not hold.",
+            "zh": "高塔正位绝非风平浪静的顺境，而是一次剧烈却清醒的破局：原本就撑不住的假设、角色或结构骤然裂开，逼着你不再维护注定失效的外壳。"
+          },
+          "byRole": {
+            "outcome": {
+              "en": "Expect a sharp shake-up or undeniable revelation that clears away brittle plans; what survives the jolt is what was genuinely real.",
+              "zh": "前方可能出现一次干脆利落的震荡或无法回避的真相揭露，冲垮脆弱安排；熬过冲击留下的才是真正靠得住的东西。"
+            },
+            "challenge": {
+              "en": "Clinging to a structure that is already cracking multiplies the shock; let go of the facade before it falls on your head.",
+              "zh": "死守已经开裂的结构只会放大冲击；在旧壳砸下来前先主动撤离。"
+            },
+            "action": {
+              "en": "Name the flaw nobody wants to admit and dismantle the weakest dependency deliberately rather than waiting for an uncontrolled break.",
+              "zh": "主动指出那个大家都不愿承认的隐患，有计划地拆掉最脆弱的依赖，而不是坐等它失控崩塌。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Sudden disruption clears away an unsustainable illusion. It feels jarring in the moment, yet opens honest ground for rebuilding on truth.",
+              "zh": "突如其来的震荡正在清扫难以维系的假象。当下确实刺痛颠簸，却为你在真实地基上重建腾出了空间。"
+            },
+            "love": {
+              "en": "In love, a blunt truth or abrupt turning point breaks an unspoken facade. Honest rebuilding is only possible once pretense stops.",
+              "zh": "在感情里，一句无法再遮掩的真相或骤变打破了表面默契。只有停止粉饰，关系或个人才可能真正重建。"
+            },
+            "career": {
+              "en": "At work, anticipate sudden restructuring, a failed assumption, or a hard pivot. Protect essentials and pivot fast rather than defending sunk costs.",
+              "zh": "在事业上，做好应对突发变动、关键假设失效或硬着陆转向的准备。保住核心底牌、迅速止损转向，切忌恋战沉没成本。"
+            },
+            "health": {
+              "en": "A sharp wake-up call around ignored stress or limits; take sudden warning signs seriously and reset immediately.",
+              "zh": "在身心状态上，身体正对长期被忽视的压力与透支发出尖锐警报；请认真对待突发的疲惫或不适信号，并立刻调整作息与负荷。"
+            },
+            "spirituality": {
+              "en": "Ego defenses shatter so unvarnished reality can breathe; painful clarity is still liberation.",
+              "zh": "在灵性层面，自我筑起的防御高墙骤然松动倒塌，赤裸而清冽的真实得以透进空气；尽管伴随阵痛，这份清醒同样是一场松绑。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "The Tower reversed indicates an internal quake or delayed upheaval—either you are cushioning a necessary change, or desperately propping up walls that still need to come down.",
+            "zh": "高塔逆位指向内在震荡或被延后的剧变——要么你正在把必要变革拆小缓冲，要么仍在苦苦支撑早该拆除的危墙。"
+          },
+          "lenses": {
+            "blocked": {
+              "en": "Postponing an inevitable breakup, resignation, or structural fix only drags out anxiety.",
+              "zh": "一再拖延迟早要做的告别、转向或结构性修补，只会拉长焦虑。"
+            },
+            "internalized": {
+              "en": "A quiet private paradigm shift happening beneath an outwardly calm surface.",
+              "zh": "外表风平浪静，内心却正经历一场彻底的观念重塑。"
+            },
+            "excess": {
+              "en": "Bracing for catastrophe everywhere even after the actual risk has passed.",
+              "zh": "风波已过却仍草木皆兵，处处防备塌方。"
+            },
+            "release": {
+              "en": "A controlled demolition—dismantling what no longer fits on your own terms.",
+              "zh": "一次可控拆解——按自己的节奏撤掉不再合身的结构。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Notice where fear of disruption is keeping you inside a cramped status quo. Controlled change now prevents a rougher break later.",
+              "zh": "高塔逆位提醒你留意对动荡的恐惧是否正把你困在早已逼仄的现状里。现在主动分步拆改，能避免日后被动承受更剧烈的断裂。"
+            },
+            "love": {
+              "en": "An unspoken tension is simmering beneath polite routine; address the crack gently before it forces a blow-up.",
+              "zh": "在感情中，表面体面的日常下可能压着早已存在却未说破的裂痕；趁彼此还能温和对话时主动修补或坦白，比继续回避更稳妥。"
+            },
+            "career": {
+              "en": "A narrow miss or quiet warning exposes a brittle process—use the reprieve to refactor before the real deadline hits.",
+              "zh": "在职场上，一次险些酿成事故的预警已经暴露了流程或架构里的脆弱环节——趁眼下仍有缓冲窗口，立刻加固防线或推进转型。"
+            },
+            "health": {
+              "en": "Early stress signals are giving you a chance to adjust before burnout peaks.",
+              "zh": "在身心层面，早期疲惫与轻微不适信号其实给了你提前刹车的珍贵机会，趁尚未彻底过载前调整节奏，远比硬撑到崩盘划算。"
+            },
+            "spirituality": {
+              "en": "Deep beliefs are quietly reorganizing from within without needing outer drama.",
+              "zh": "在灵性层面，一场静悄悄的内在信念重排正在发生——无需等待外部剧烈风波，你就能主动松开那些早已不再契合的旧执念。"
+            }
+          }
+        }
+      }
+    },
+    "ten_of_swords": {
+      "id": "ten_of_swords",
+      "archetypeEssence": {
+        "en": "An unmistakable ending at rock bottom—painful finality paired with the first band of dawn on the far horizon.",
+        "zh": "彻底触底的明确终结——刺痛已达极点，而远方地平线正透出第一道微明。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Fallen figure pinned beneath ten swords marking an undeniable conclusion",
+          "Dark storm sky parting at the distant horizon into pale golden dawn",
+          "Still water beyond the shore reflecting quiet aftermath"
+        ],
+        "zh": [
+          "身负十柄长剑伏倒在地的身影，标志无可挽回的落幕",
+          "远方黑云撕开一道清亮金光的黎明地平线",
+          "岸外归于平静的水面，映出风波之后的沉寂"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Ten swords marking absolute closure against a dark sky breaking into gold dawn"
+        ],
+        "zh": [
+          "夜幕尽头泛起黎明金光下的十剑终局"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "Ten of Swords upright signals a clear, painful ending—not a smooth upward trend. Something has run completely out of road, which finally frees you from pouring energy into a finished chapter.",
+            "zh": "宝剑十正位意味着一段明确而刺痛的终结，绝不是平稳向好的顺风局。某条路已经彻底走到尽头，这反而让你不必再往已经结束的章节里耗费心血。"
+          },
+          "byRole": {
+            "outcome": {
+              "en": "A definitive close or hard burnout boundary arrives; accepting that this chapter is over is what lets dawn begin.",
+              "zh": "一个干脆彻底的句号即将落下；承认这一章已经结束，黎明才会真正开始。"
+            },
+            "action": {
+              "en": "Stop reviving a dead plan—call time cleanly, grieve what stung, and redirect your energy toward recovery.",
+              "zh": "停止抢救已经失效的方案——干脆画上句号，允许自己消化痛感，把力气转回休养与重启。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "An undeniable conclusion closes the loop. The worst of the uncertainty is over; now recovery and a clean slate can begin.",
+              "zh": "一个无法回避的终结为旧循环画上句号。最折磨人的悬而未决已经触底，接下来可以安心止损并迎来新起点。"
+            },
+            "love": {
+              "en": "A painful realization, betrayal, or final closure ends a draining cycle. Give yourself real space to heal rather than bargaining with the past.",
+              "zh": "一段消耗极深的关系模式或悬念迎来痛彻却彻底的落幕。给自己真实疗伤的空间，不再和过去讨价还价。"
+            },
+            "career": {
+              "en": "A project, role, or approach has hit a hard dead end or severe burnout. Close it cleanly and take the lessons into a fresh direction.",
+              "zh": "在工作与事业上，某个项目、岗位或原有打法已经走到死胡同或严重透支。利落收尾止损，把沉淀下来的经验带向全新方向。"
+            },
+            "health": {
+              "en": "Exhaustion has reached its floor; stop pushing and treat deep rest and support as urgent priority.",
+              "zh": "在身心状态上，精力与情绪消耗已经明显触底；请立刻停止咬牙硬撑，把深度休养、卸载非必要负荷与寻求专业照护放在首位。"
+            },
+            "spirituality": {
+              "en": "A painful illusion dies completely, leaving quiet space for dawn after the darkest hour.",
+              "zh": "在灵性层面，一个长期消耗你心神的旧执念或执着故事终于彻底熄灭，在最暗的时刻之后，为你腾出迎接破晓微光的静默空间。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "Ten of Swords reversed marks gradual recovery after hitting bottom—pulling the blades out one by one—or reluctance to accept an ending that already happened.",
+            "zh": "宝剑十逆位指向触底之后的逐步复原——一根根拔出旧伤，或尚未完全甘心放下早已落幕的旧事。"
+          },
+          "lenses": {
+            "release": {
+              "en": "The sharpest pain has passed; steady healing and renewed perspective are returning.",
+              "zh": "最剧烈的痛点已经过去，稳定的复原与新视野正在回流。"
+            },
+            "blocked": {
+              "en": "Replaying an old wound keeps the ending from actually finishing.",
+              "zh": "反复回放旧伤，让原本该翻篇的事迟迟结束不了。"
+            },
+            "internalized": {
+              "en": "Quietly gathering strength behind the scenes before stepping back out.",
+              "zh": "在无人看见的地方默默回血，准备重新出发。"
+            },
+            "excess": {
+              "en": "Catastrophizing a setback as total ruin when you still have room to recover.",
+              "zh": "把局部挫折想成彻底毁灭，忽略了眼前依然存在的回旋余地。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Recovery is underway if you stop rehearsing what went wrong. The worst is behind you.",
+              "zh": "宝剑十逆位说明只要停止反复咀嚼过去的失败与委屈，真正的复原就已经在悄然发生。最艰难沉重的谷底已落在你身后，天色正在转亮。"
+            },
+            "love": {
+              "en": "Healing after heartbreak or finally refusing to reopen an old wound; let closure actually stick.",
+              "zh": "在感情中，你正从情伤与心寒里慢慢缓过神来，或终于下定决心不再反复揭开旧疤；把重心收回当下生活，让翻篇真正落地生效。"
+            },
+            "career": {
+              "en": "Bouncing back from a tough setback or narrow escape from total burnout; rebuild with firmer boundaries.",
+              "zh": "在职场上，你正从一次重挫或险些彻底崩盘的透支中重新站起身来；带着这次换来的更清晰边界与判断力，稳步展开下一轮布局。"
+            },
+            "health": {
+              "en": "Slow, real recuperation is taking hold—pace your return without rushing back to full load.",
+              "zh": "在身心状态上，切实的恢复与元气回升正在逐步启动——顺着身体的反馈循序渐进地调高节奏，别急着一好转就立刻拉满负荷。"
+            },
+            "spirituality": {
+              "en": "Dawn is no longer just a thin line; resilience grows from integrating what hurt.",
+              "zh": "在灵性层面，远方地平线上的黎明不再只是一道遥远细线；当你诚实接纳并整合过往伤痛之后，更沉稳真实的韧性正在内在生长。"
+            }
+          }
+        }
+      }
+    },
+    "five_of_pentacles": {
+      "id": "five_of_pentacles",
+      "archetypeEssence": {
+        "en": "Material or emotional scarcity felt in the cold—right beside a lit sanctuary window waiting to be noticed.",
+        "zh": "寒风中真切感受到的匮乏与孤立——而近旁那扇亮着暖光的窗正等着被抬头看见。"
+      },
+      "traditionMotifs": {
+        "en": [
+          "Two weary travelers trudging through winter snow in hardship",
+          "Warm glowing stained-glass church window bearing five pentacles right behind them",
+          "Crutches and threadbare cloaks showing real vulnerability and need for shelter"
+        ],
+        "zh": [
+          "顶着寒雪艰难跋涉的两位疲惫旅人",
+          "近在咫尺却尚未被抬头留意的暖光五币彩绘花窗",
+          "拐杖与单薄衣袍，显露出真实的脆弱与求助需求"
+        ]
+      },
+      "editionMotifs": {
+        "en": [
+          "Two winter travelers beside a warm glowing five-pentacle stained-glass sanctuary window"
+        ],
+        "zh": [
+          "暖光五币彩窗外顶雪前行的旅人"
+        ]
+      },
+      "meaningBranches": {
+        "upright": {
+          "core": {
+            "en": "Five of Pentacles upright speaks honestly of scarcity, worry, or feeling left out in the cold—while reminding you that real shelter and help are closer than pride or tunnel vision lets you see.",
+            "zh": "星币五正位如实映照物质吃紧、缺乏安全感或被冷落的孤立感，同时也提醒：真正的庇护与援手就在近旁，只是窘迫或自尊让你低头赶路而未抬头求助。"
+          },
+          "domains": {
+            "general": {
+              "en": "A lean stretch feels isolating, yet support exists nearby if you look up and ask clearly.",
+              "zh": "星币五正位坦言眼下确实处于捉襟见肘或倍感孤立的低潮期，但支持与暖意就在咫尺之外，抬头开口求助比闷头硬扛更有出路。"
+            },
+            "love": {
+              "en": "Feeling emotionally out in the cold or worrying together through hardship—honest solidarity beats suffering in silence.",
+              "zh": "在感情中，双方可能感到彼此情感冷落或正共同面对现实压力——坦诚说出脆弱并选择相濡以沫，远胜过各自关门沉默硬熬。"
+            },
+            "career": {
+              "en": "Budget squeeze, job insecurity, or feeling excluded from resources; map concrete aid, allies, and lean cashflow steps immediately.",
+              "zh": "在工作与财务上，可能遭遇预算紧张、岗位不安或资源边缘化；请立刻盘点手头可借力的盟友、外部支持渠道与稳健现金流对策。"
+            },
+            "health": {
+              "en": "Low energy or feeling run down deserves real care and medical/community support rather than toughing it out alone.",
+              "zh": "在身心状态上，体能透支、受寒疲倦或情绪低落此刻需要切实的照护、规律补给与专业支持，不要再把所有不适藏起来一个人硬挺。"
+            },
+            "spirituality": {
+              "en": "Scarcity shrinks perspective; humility to receive help opens the door back into warmth.",
+              "zh": "在灵性层面，匮乏感最容易让人把视野缩得很窄；愿意放下羞耻感、允许自己接受他人的善意与帮助，本身就是走进暖光的门。"
+            }
+          }
+        },
+        "reversed": {
+          "core": {
+            "en": "Five of Pentacles reversed is a genuine turn toward recovery: warming up after a lean stretch, finding the right door, accepting help, and rebuilding material or emotional footing.",
+            "zh": "星币五逆位是切实走向回暖的信号：走出捉襟见肘的低谷、看见并推开那扇亮灯的门、接纳援手，重新站稳现实与心理脚跟。"
+          },
+          "lenses": {
+            "release": {
+              "en": "Emerging from financial or emotional winter; relief and practical support are entering.",
+              "zh": "正在走出财务或情感寒冬，松动感与切实帮助开始进场。"
+            },
+            "blocked": {
+              "en": "Stubborn pride slowing down help that is already offered.",
+              "zh": "碍于面子推迟了其实已经递到眼前的援手。"
+            },
+            "internalized": {
+              "en": "Shaking off a lingering scarcity mindset even as concrete conditions improve.",
+              "zh": "现实条件已开始好转，内心仍在适应放下匮乏惯性。"
+            },
+            "excess": {
+              "en": "Overspending in relief before new stability fully settles.",
+              "zh": "刚一松口气就急着透支，需要给稳固留出缓冲。"
+            }
+          },
+          "byRole": {
+            "outcome": {
+              "en": "Conditions visibly mend—practical support, renewed income/resources, or emotional warmth brings you back inside from the cold.",
+              "zh": "局面将切实回暖——现实援助、资源回流或情感暖意会带你重新走出寒风。"
+            }
+          },
+          "domains": {
+            "general": {
+              "en": "Recovery and practical aid are arriving. Walk through the open door and let go of scarcity fear.",
+              "zh": "星币五逆位预示低谷松动，切实的复原与外部支持正在靠近。请大方走进面前敞开的门，逐步松开长期紧绷的匮乏焦虑与防备。"
+            },
+            "love": {
+              "en": "Warmth returns after a lonely stretch; forgiving past distance and letting someone show up for you mends the bond.",
+              "zh": "在感情中，熬过一段孤单冷淡或现实承压的低谷后，暖意正在回流；适当放下防备允许对方靠近分担，关系迎来真诚修复的契机。"
+            },
+            "career": {
+              "en": "Financial or job strain starts easing—a lead, mentor, grant, or steadier footing helps you climb out of the dip.",
+              "zh": "在工作与财务上，持续的紧缩压力开始松动——一条新的合作线索、关键贵人相助或更稳健的收支节奏，正带你逐步走出低谷期。"
+            },
+            "health": {
+              "en": "Energy and resilience begin rebounding after a depleted spell; stay gentle as strength returns.",
+              "zh": "在身心状态上，经历一段消耗与低潮后，体能、睡眠与心理韧性正稳步回升；顺着恢复的势头温和养护，不必急于求成。"
+            },
+            "spirituality": {
+              "en": "Rebuilding trust that you do not have to earn shelter through endless struggle.",
+              "zh": "在灵性层面，你正在重新建立一份踏实的笃定感：你不必靠无休止地吃苦、忍耐或证明自己，去换取被接纳、被支持与内心安稳。"
+            }
+          }
+        }
+      }
+    }
+  }
+}

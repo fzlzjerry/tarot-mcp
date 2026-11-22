@@ -37,19 +37,84 @@ export interface TarotCard {
   zh?: CardLocalization;
 }
 
+export type PositionRole =
+  | "message"
+  | "foundation"
+  | "present"
+  | "challenge"
+  | "resource"
+  | "action"
+  | "outcome"
+  | "advice"
+  | "hidden"
+  | "self"
+  | "other"
+  | "external"
+  | "hopes_fears"
+  | "synthesis"
+  | "general";
+
+export type ReadingDomain =
+  | "general"
+  | "love"
+  | "career"
+  | "health"
+  | "spirituality";
+
+export interface ReadingSignal {
+  kind:
+    | "major_density"
+    | "orientation_balance"
+    | "element_balance"
+    | "suit_focus"
+    | "pip_numerology"
+    | "court_presence"
+    | "archetype_pair";
+  positions: number[];
+  fact: string;
+  baseline?: string;
+  note: string;
+}
+
+export interface ReadingCardEvidence {
+  positionIndex: number;
+  positionId: string;
+  positionRole: PositionRole;
+  cardId: string;
+  orientation: CardOrientation;
+  hasCanon: boolean;
+  traditionMotifs: string[];
+  editionMotifs: string[];
+  reversalLenses?: Partial<
+    Record<"blocked" | "excess" | "internalized" | "release", string>
+  >;
+}
+
+export interface ReadingEvidence {
+  knowledgeVersion: string;
+  deckVersion: string;
+  questionDomain: ReadingDomain;
+  cards: ReadingCardEvidence[];
+  signals: ReadingSignal[];
+}
+
 export interface DrawnCard {
   card: TarotCard;
   orientation: "upright" | "reversed";
   position?: string;
   positionMeaning?: string;
+  positionId?: string;
+  positionRole?: PositionRole;
 }
 
 export interface TarotSpread {
   name: string;
   description: string;
   positions: {
+    id?: string;
     name: string;
     meaning: string;
+    role?: PositionRole;
   }[];
   cardCount: number;
 }
@@ -62,21 +127,32 @@ export interface TarotReading {
   interpretation: string;
   timestamp: Date;
   sessionId?: string;
+  language?: Language;
+  deckVersion?: string;
+  knowledgeVersion?: string;
+  evidence?: ReadingEvidence;
 }
 
 /**
- * What a session stores per reading: enough for the history tool without
- * retaining the full interpretation prose in memory.
+ * What a session stores per reading: an immutable receipt carrying stable card
+ * IDs, position roles, and deck/knowledge versions so follow-up questions can
+ * inspect this exact hand without redrawing.
  */
 export interface TarotReadingSummary {
   id: string;
   spreadType: string;
   question: string;
   timestamp: Date;
+  language?: Language;
+  deckVersion?: string;
+  knowledgeVersion?: string;
   cards: Array<{
+    cardId?: string;
     name: string;
     orientation: CardOrientation;
     position?: string;
+    positionId?: string;
+    positionRole?: PositionRole;
   }>;
 }
 

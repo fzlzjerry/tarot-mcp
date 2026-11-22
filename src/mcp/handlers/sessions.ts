@@ -189,17 +189,18 @@ export const handleRecommendSpread: ToolHandler = (_ctx, args) => {
   );
 
   recommendations.forEach((rec, index) => {
-    const confidence = Math.round(rec.confidence * 100);
+    const spreadDef = TAROT_SPREADS[rec.spread];
+    const cardCount = spreadDef?.cardCount ?? 3;
     const localizedName =
       lang === "zh"
-        ? localizedSpread(TAROT_SPREADS[rec.spread], rec.spread, lang).name
+        ? localizedSpread(spreadDef, rec.spread, lang).name
         : rec.spread
             .replace(/_/g, " ")
             .replace(/\b\w/g, (letter) => letter.toUpperCase());
     response += pick(
       lang,
-      `## ${index + 1}. ${localizedName} (${confidence}% match)\n`,
-      `## ${index + 1}. ${localizedName}（匹配度 ${confidence}%）\n`,
+      `## ${index + 1}. ${localizedName} (${cardCount} ${cardCount === 1 ? "card" : "cards"})\n`,
+      `## ${index + 1}. ${localizedName}（${cardCount} 张牌）\n`,
     );
     response += `${pick(lang, rec.reason, rec.reasonZh ?? rec.reason)}\n\n`;
   });
@@ -371,8 +372,12 @@ export const handleGetSessionHistory: ToolHandler = (ctx, args) => {
       spreadType: reading.spreadType,
       question: reading.question,
       timestamp: reading.timestamp.toISOString(),
+      ...(reading.deckVersion ? { deckVersion: reading.deckVersion } : {}),
+      ...(reading.knowledgeVersion
+        ? { knowledgeVersion: reading.knowledgeVersion }
+        : {}),
       cards: reading.cards.map((card) => {
-        const fullCard = ctx.cardManager.findCard(card.name);
+        const fullCard = ctx.cardManager.findCard(card.cardId ?? card.name);
         return {
           ...card,
           name: fullCard ? localizedCardName(fullCard, lang) : card.name,

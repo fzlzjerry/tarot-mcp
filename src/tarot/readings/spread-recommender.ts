@@ -28,237 +28,223 @@ export interface SpreadRecommendation {
 }
 
 interface RecommendationRule {
-  /** Fires when the explicit category matches ... */
   category?: RecommendationCategory;
-  /** ... or the explicit timeframe matches ... */
   timeframe?: RecommendationTimeframe;
-  /** ... or any keyword appears in the lowercased question. */
-  keywords?: string[];
+  /** Explicit patterns matched with word boundaries for English and clean phrases for Chinese. */
+  patterns?: RegExp[];
+  /** Exclude this keyword rule if the question explicitly belongs to another domain. */
+  excludePatterns?: RegExp[];
   recommendations: SpreadRecommendation[];
 }
 
+const WORKPLACE_GUARD =
+  /(\b(career|job|work|workplace|colleague|colleagues|coworker|coworkers|boss|manager|promotion|company|team|office)\b|同事|上司|老板|职场|工作|事业|职业|求职|升职|公司|团队)/i;
+
+const EXPLICIT_LOVE_GUARD =
+  /(\b(love|romance|romantic|partner|marriage|dating|crush|breakup|boyfriend|girlfriend|spouse)\b|爱情|恋爱|感情|伴侣|对象|婚姻|分手|复合|暧昧)/i;
+
 /**
- * Keyword/category heuristics mapping questions to spreads. Rule order
- * matters: confidence ties keep earlier rules first (stable sort).
+ * Intent/category/timeframe rules mapping questions to spreads.
+ * Uses word-boundary matching for English (preventing "know" -> "now") and
+ * gives explicit category parameters precedence over incidental keyword collisions.
  */
 const RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     category: "love",
-    keywords: [
-      "love",
-      "relationship",
-      "partner",
-      "爱情",
-      "恋爱",
-      "感情",
-      "关系",
-      "伴侣",
-      "对象",
-      "婚姻",
+    patterns: [
+      /\b(love|romance|romantic|partner|marriage|dating|crush|breakup|spouse)\b/i,
+      /\brelationship\b/i,
+      /(爱情|恋爱|感情|伴侣|对象|婚姻|分手|复合|暧昧)/,
+      /关系/,
     ],
+    excludePatterns: [WORKPLACE_GUARD],
     recommendations: [
       {
         spread: "venus_love",
-        reason: "Perfect for love and relationship questions",
-        reasonZh: "最适合爱情与关系类问题",
+        reason: "Focused 6-card spread for love and romantic dynamics",
+        reasonZh: "6 张牌聚焦爱情与亲密关系的流动",
         confidence: 0.9,
       },
       {
         spread: "relationship_cross",
-        reason: "Comprehensive relationship analysis",
-        reasonZh: "全面的关系分析",
+        reason: "7-card spread contrasting both perspectives, what unites, and what divides",
+        reasonZh: "7 张牌对照双方立场、连结与分歧",
         confidence: 0.8,
       },
       {
         spread: "compatibility",
-        reason: "Great for understanding relationship dynamics",
-        reasonZh: "适合理解关系中的互动",
+        reason: "8-card spread exploring communication, shared goals, and long-term fit",
+        reasonZh: "8 张牌深入沟通方式、共同目标与长远契合度",
         confidence: 0.7,
       },
     ],
   },
   {
     category: "career",
-    keywords: [
-      "job",
-      "career",
-      "work",
-      "工作",
-      "事业",
-      "职业",
-      "求职",
-      "升职",
-      "职场",
+    patterns: [
+      /\b(job|career|work|workplace|colleague|colleagues|coworker|boss|manager|promotion|salary|business)\b/i,
+      /(工作|事业|职业|求职|升职|职场|同事|老板|跳槽|面试)/,
     ],
     recommendations: [
       {
         spread: "career_path",
-        reason: "Specialized for career guidance",
-        reasonZh: "专为事业指引设计",
+        reason: "6-card spread mapping skills, obstacles, hidden openings, and next step",
+        reasonZh: "6 张牌拆解现状、优势、阻碍、潜藏机会与下一步",
         confidence: 0.9,
       },
     ],
   },
   {
     category: "spiritual",
-    keywords: [
-      "spiritual",
-      "soul",
-      "purpose",
-      "灵性",
-      "灵魂",
-      "使命",
-      "人生目的",
+    patterns: [
+      /\b(spiritual|spirituality|soul|purpose|calling|awakening)\b/i,
+      /(灵性|灵魂|使命|人生目的|内在成长)/,
     ],
     recommendations: [
       {
         spread: "spiritual_guidance",
-        reason: "Focused on spiritual development",
-        reasonZh: "聚焦灵性发展",
+        reason: "6-card spread focused on inner alignment and next lessons",
+        reasonZh: "6 张牌聚焦灵性状态、阻滞与成长功课",
         confidence: 0.9,
       },
       {
         spread: "tree_of_life",
-        reason: "Deep spiritual insights",
-        reasonZh: "深层的灵性洞见",
+        reason: "10-card structural spread for deep personal and spiritual inquiry",
+        reasonZh: "10 张牌生命之树结构，适合深层自我与灵性探索",
         confidence: 0.8,
       },
     ],
   },
   {
     category: "decision",
-    keywords: [
-      "should i",
-      "decision",
-      "choose",
-      "应该",
-      "决定",
-      "抉择",
-      "选择",
+    patterns: [
+      /\b(should i|decision|decide|choose|choice|option|between)\b/i,
+      /(应该|决定|抉择|选择|选哪|要不要)/,
     ],
     recommendations: [
       {
         spread: "decision_making",
-        reason: "Designed for important decisions",
-        reasonZh: "为重要抉择而设计",
+        reason: "5-card spread comparing Option A, Option B, hidden factors, and recommended path",
+        reasonZh: "5 张牌对比方案 A/B、盲区因素与建议路径",
         confidence: 0.9,
       },
       {
         spread: "yes_no",
-        reason: "Simple yes/no guidance",
-        reasonZh: "简明的是/否指引",
+        reason: "Compact 3-card check weighing supporting and opposing forces",
+        reasonZh: "紧凑 3 张牌，对照支持面与阻力面",
         confidence: 0.7,
       },
     ],
   },
   {
     timeframe: "immediate",
-    keywords: ["today", "now", "今天", "现在", "当下"],
+    patterns: [/\b(today|now|right now|tonight)\b/i, /(今天|今日|此刻|当下)/],
     recommendations: [
       {
         spread: "daily_guidance",
-        reason: "Perfect for immediate guidance",
-        reasonZh: "最适合即时指引",
+        reason: "Single focused card for immediate clarity without overcomplicating",
+        reasonZh: "单牌直击核心，适合今日或眼前的即时指引",
         confidence: 0.8,
       },
       {
         spread: "single_card",
-        reason: "Quick insight for immediate questions",
-        reasonZh: "为紧迫问题提供快速洞见",
+        reason: "Quick 1-card insight for a direct, narrow question",
+        reasonZh: "1 张牌快速切入明确单一的问题",
         confidence: 0.7,
       },
     ],
   },
   {
     timeframe: "short_term",
-    keywords: ["week", "month", "本周", "这周", "一周", "本月", "这个月"],
+    patterns: [
+      /\b(this week|next week|weekly|this month|next month)\b/i,
+      /(本周|这周|下周|一周|本月|这个月)/,
+    ],
     recommendations: [
       {
         spread: "weekly_forecast",
-        reason: "Great for weekly planning",
-        reasonZh: "适合一周规划",
+        reason: "7-card cadence mapping day-by-day momentum across the week",
+        reasonZh: "7 张牌梳理一周内的节奏与重心变化",
         confidence: 0.8,
       },
       {
         spread: "three_card",
-        reason: "Good for short-term situations",
-        reasonZh: "适合短期形势",
+        reason: "Balanced 3-card arc (situation, action, outcome) for near-term clarity",
+        reasonZh: "3 张牌（现状/行动/走向），兼顾清晰度与轻量节奏",
         confidence: 0.7,
       },
     ],
   },
   {
     timeframe: "long_term",
-    keywords: ["year", "future", "今年", "明年", "一年", "未来", "长期"],
+    patterns: [
+      /\b(this year|next year|year ahead|whole year|long[- ]term)\b/i,
+      /(今年|明年|一整年|全年|年度|长期规划)/,
+    ],
     recommendations: [
       {
         spread: "year_ahead",
-        reason: "Comprehensive yearly guidance",
-        reasonZh: "全面的年度指引",
+        reason: "13-card annual map covering each month plus an overarching theme",
+        reasonZh: "13 张牌覆盖全年十二个月与年度总主题",
         confidence: 0.9,
       },
       {
         spread: "celtic_cross",
-        reason: "In-depth long-term analysis",
-        reasonZh: "深入的长期分析",
+        reason: "10-card comprehensive view for multi-layered long-term situations",
+        reasonZh: "10 张牌凯尔特十字，适合多维度复杂长期议题",
         confidence: 0.8,
       },
     ],
   },
   {
-    keywords: ["past life", "karma", "前世", "业力", "因果"],
+    patterns: [/\b(past life|karma|karmic)\b/i, /(前世|业力|因果)/],
     recommendations: [
       {
         spread: "past_life_karma",
-        reason: "Explores karmic patterns",
-        reasonZh: "探索业力模式",
+        reason: "6-card spread exploring recurring karmic patterns and lessons",
+        reasonZh: "6 张牌探索反复出现的业力模式与功课",
         confidence: 0.9,
       },
     ],
   },
   {
-    keywords: ["moon", "lunar", "cycle", "月亮", "月相", "月球", "周期"],
+    patterns: [/\b(moon|lunar)\b/i, /(月亮|月相|满月|新月)/],
     recommendations: [
       {
         spread: "new_moon_intentions",
-        reason: "Perfect for lunar work",
-        reasonZh: "最适合月相工作",
+        reason: "5-card lunar spread for setting grounded intentions",
+        reasonZh: "5 张牌新月牌阵，适合设定新周期意图",
         confidence: 0.8,
       },
       {
         spread: "full_moon_release",
-        reason: "Great for release work",
-        reasonZh: "适合释放与放下",
+        reason: "5-card lunar spread for clarity and releasing what is complete",
+        reasonZh: "5 张牌满月牌阵，适合沉淀收获与放下旧负担",
         confidence: 0.8,
       },
     ],
   },
   {
-    keywords: ["balance", "element", "平衡", "元素"],
+    patterns: [/\b(elemental|elements|balance)\b/i, /(元素平衡|四元素)/],
     recommendations: [
       {
         spread: "elemental_balance",
-        reason: "Examines elemental harmony",
-        reasonZh: "检视元素的和谐",
+        reason: "5-card check across Fire, Water, Air, Earth, and integration",
+        reasonZh: "5 张牌检视火水风土四元素与整合重心",
         confidence: 0.8,
       },
     ],
   },
   {
-    keywords: [
-      "shadow",
-      "hidden",
-      "unconscious",
-      "阴影",
-      "隐藏",
-      "潜意识",
-      "无意识",
+    patterns: [
+      /\b(shadow|hidden|unconscious|subconscious)\b/i,
+      /(阴影|隐藏|潜意识|无意识)/,
     ],
     recommendations: [
       {
         spread: "shadow_work",
-        reason: "Explores hidden aspects",
-        reasonZh: "探索隐藏的面向",
+        reason: "5-card spread examining blind spots and unacknowledged patterns",
+        reasonZh: "5 张牌探索潜藏盲区与尚未直面的内在模式",
         confidence: 0.9,
       },
     ],
@@ -268,37 +254,68 @@ const RECOMMENDATION_RULES: RecommendationRule[] = [
 const DEFAULT_RECOMMENDATIONS: SpreadRecommendation[] = [
   {
     spread: "three_card",
-    reason: "Versatile spread for most questions",
-    reasonZh: "适用于大多数问题的万用牌阵",
+    reason: "Balanced 3-card spread (situation, action, outcome) suited to most questions",
+    reasonZh: "3 张牌（现状/行动/走向），适用于大多数问题的清晰切入",
     confidence: 0.6,
   },
   {
     spread: "celtic_cross",
-    reason: "Comprehensive analysis for complex situations",
-    reasonZh: "复杂局面的全面分析",
+    reason: "Comprehensive 10-card view when a situation has many moving parts",
+    reasonZh: "10 张牌全景牌阵，适合脉络复杂的议题",
     confidence: 0.5,
   },
 ];
 
 const MAX_RECOMMENDATIONS = 3;
 
+function ruleMatchesKeyword(rule: RecommendationRule, question: string): boolean {
+  if (!rule.patterns || rule.patterns.length === 0) return false;
+  if (
+    rule.excludePatterns?.some((re) => re.test(question)) &&
+    !(rule.category === "love" && EXPLICIT_LOVE_GUARD.test(question))
+  ) {
+    return false;
+  }
+  return rule.patterns.some((re) => re.test(question));
+}
+
 /**
- * Recommend spreads for a question. Returns the top matches (up to 3),
- * deduplicated and ordered by confidence.
+ * Recommend spreads for a question. Explicit category and timeframe signals
+ * take precedence over raw keyword heuristics so an explicit career query
+ * containing "关系" is never hijacked by love spreads.
  */
 export function recommendSpreads(
   question: string,
   timeframe: RecommendationTimeframe = "any",
   category: RecommendationCategory = "any",
 ): SpreadRecommendation[] {
-  const questionLower = question.toLowerCase();
+  const hasExplicitCategory = category !== "any" && category !== "general";
+  const hasExplicitTimeframe = timeframe !== "any";
 
-  const matched = RECOMMENDATION_RULES.filter(
-    (rule) =>
-      (rule.category !== undefined && rule.category === category) ||
-      (rule.timeframe !== undefined && rule.timeframe === timeframe) ||
-      (rule.keywords ?? []).some((keyword) => questionLower.includes(keyword)),
-  ).flatMap((rule) => rule.recommendations);
+  const matched: SpreadRecommendation[] = [];
+
+  for (const rule of RECOMMENDATION_RULES) {
+    const explicitCategoryHit =
+      hasExplicitCategory && rule.category === category;
+    const explicitTimeframeHit =
+      hasExplicitTimeframe && rule.timeframe === timeframe;
+
+    // When caller explicitly sets a category, don't let a conflicting category's
+    // keyword heuristic hijack the top recommendation.
+    const allowKeywordHit =
+      !(hasExplicitCategory && rule.category !== undefined && rule.category !== category);
+    const keywordHit = allowKeywordHit && ruleMatchesKeyword(rule, question);
+
+    if (explicitCategoryHit || explicitTimeframeHit || keywordHit) {
+      const boost = explicitCategoryHit ? 0.05 : 0;
+      for (const rec of rule.recommendations) {
+        matched.push({
+          ...rec,
+          confidence: Math.min(1, Number((rec.confidence + boost).toFixed(2))),
+        });
+      }
+    }
+  }
 
   const candidates = matched.length > 0 ? matched : DEFAULT_RECOMMENDATIONS;
 

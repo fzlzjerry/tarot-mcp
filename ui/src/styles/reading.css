@@ -85,18 +85,76 @@
   inset: 0;
   display: grid;
   overflow: hidden;
-  border: 1px solid var(--gold-line);
   border-radius: 8px;
   backface-visibility: hidden;
-  box-shadow: 0 8px 18px rgb(0 0 0 / 55%);
+  box-shadow:
+    0 10px 22px rgb(0 0 0 / 58%),
+    0 0 0 1px rgb(255 255 255 / 7%);
 }
 
 .reading-card__back {
   place-items: center;
+  border: 1px solid color-mix(in srgb, var(--gold-line) 75%, transparent);
   background-color: var(--on-gold);
   background-image: var(--deck-back-image);
   background-position: center;
   background-size: cover;
+}
+
+/* Physical 2px gilded edge thickness visible during the 3D turn */
+.reading-card__inner::after {
+  position: absolute;
+  inset: 1px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--gold) 58%, transparent);
+  transform: translateZ(-1px);
+  content: "";
+  pointer-events: none;
+}
+
+.reading-card.is-focused .reading-card__face {
+  box-shadow:
+    0 14px 30px rgb(0 0 0 / 68%),
+    0 0 0 2px var(--gold),
+    0 0 22px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+.reading-card__foil,
+.card-spotlight__foil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    118deg,
+    transparent 24%,
+    color-mix(in srgb, var(--gold) 28%, #fff7df) 49%,
+    transparent 74%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translate3d(-130%, 0, 0);
+}
+
+.reading-card.is-revealed .reading-card__foil {
+  animation: gilded-foil-sweep 920ms var(--ease-out-expo) 120ms both;
+}
+
+.card-spotlight__frame:hover .card-spotlight__foil {
+  animation: gilded-foil-sweep 860ms var(--ease-out-expo) both;
+}
+
+@keyframes gilded-foil-sweep {
+  0% {
+    opacity: 0;
+    transform: translate3d(-120%, 0, 0);
+  }
+  38% {
+    opacity: 0.42;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(120%, 0, 0);
+  }
 }
 
 @media (hover: hover) {
@@ -171,6 +229,168 @@
   color: var(--gold);
   font-family: var(--font-display);
   font-size: clamp(0.62rem, 1vw, 0.9rem);
+}
+
+/* --------------------------------------------------- focused card spotlight */
+
+.card-spotlight {
+  display: grid;
+  grid-template-columns: minmax(170px, 240px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 36px);
+  align-items: center;
+  width: min(100%, 1040px);
+  margin: 24px auto 0;
+  padding: clamp(18px, 2.6vw, 28px);
+  border: 1px solid color-mix(in srgb, var(--gold-line) 55%, var(--line));
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--gold) 5%, var(--surface-raised)),
+    var(--surface)
+  );
+  box-shadow: 0 18px 42px rgb(0 0 0 / 42%);
+}
+
+.card-spotlight__plate {
+  display: grid;
+  place-items: center;
+}
+
+.card-spotlight__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--card-stock);
+  box-shadow:
+    0 18px 36px rgb(0 0 0 / 62%),
+    0 0 0 1px color-mix(in srgb, var(--gold-line) 50%, transparent);
+}
+
+.card-spotlight__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-spotlight__frame img.is-reversed {
+  transform: rotate(180deg);
+}
+
+.card-spotlight__copy {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.card-spotlight__eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-spotlight__eyebrow {
+  margin: 0;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.card-spotlight__counter {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-spotlight__position {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.card-spotlight__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+}
+
+.card-spotlight__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.08;
+  color: var(--ink);
+}
+
+.orientation-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border: 1px solid color-mix(in srgb, var(--gold-line) 75%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 650;
+}
+
+.orientation-pill.is-reversed {
+  border-color: color-mix(in srgb, var(--muted) 55%, var(--line));
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--ink);
+}
+
+.card-spotlight__position-meaning {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+.card-spotlight__meaning {
+  margin: 0;
+  max-width: 66ch;
+  color: var(--ink);
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.card-spotlight__motifs {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.card-spotlight__motifs strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.card-spotlight__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.card-spotlight__pager {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.card-spotlight__pager button {
+  min-width: 44px;
 }
 
 /* -------------------------------------------------------- interpretation */

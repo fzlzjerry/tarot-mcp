@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 2,
+  "deckId": "midnight-art-nouveau-v2",
+  "status": "milestone-1-gate-6",
+  "title": "Luminous Midnight Art Nouveau Tarot (v2 Gate Edition)",
+  "provider": "openai-official-images-api",
+  "model": "gpt-image-2.6-sunburst",
+  "provenancePath": "assets/artwork/v2/provenance.json",
+  "foilMaskPath": "/assets/cards/midnight-art-nouveau-v2/foil-mask.svg",
+  "cardBack": {
+    "rotationalSymmetry": "180deg-exact-decoded-pixels",
+    "decodedRotationalMismatch": 0,
+    "sourceMasterSha256": "5c5efba847800d616375e5917f7a8b8dfa2b3e112ad94ac37b38f2ad12a28ef2",
+    "web": {
+      "path": "/assets/cards/midnight-art-nouveau-v2/back.webp",
+      "width": 640,
+      "height": 960,
+      "bytes": 207864,
+      "paletteColours": 128,
+      "sha256": "55b97272c59a04f6a8c354b1110010edd47227fc49c033791e128b18840f53dd"
+    },
+    "mcp": {
+      "path": "/assets/cards/midnight-art-nouveau-v2/mcp/back.webp",
+      "width": 192,
+      "height": 288,
+      "bytes": 23000,
+      "paletteColours": 128,
+      "sha256": "8f1770257e6bf3f10b60329e21d48dd07aa62a5034e1401fc8d61e6d48250986"
+    }
+  },
+  "cards": [
+    {
+      "id": "fool",
+      "name": "The Fool",
+      "arcana": "major",
+      "suit": null,
+      "rank": 0,
+      "sourceMasterSha256": "18ebc70070f57bd76eae784672d8c880a20a64e66f17012b7c08246041a6a33f",
+      "luminance": {
+        "mean": 104.9,
+        "darkPct": 33.7,
+        "p50": 95.4,
+        "p95": 228.6
+      },
+      "v1BaselineLuminance": {
+        "mean": 33,
+        "darkPct": 84.1,
+        "p50": 21.3,
+        "p95": 103.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/fool.webp",
+        "physicalPath": "assets/cards/v2/fool.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 213796,
+        "quality": 84,
+        "sha256": "947a8a52df6e38626b25c37aecbc47896159c78c08fb5132898a8c6bb2eb40d7"
+      },
+      "variants": {
+        "w320": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w320/fool.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 58558,
+          "quality": 82
+        },
+        "w640Avif": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w640/fool.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 133087,
+          "quality": 60
+        },
+        "w1024": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/fool.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 456234,
+          "quality": 84
+        }
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/fool.webp",
+        "physicalPath": "assets/cards/v2/mcp/fool.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 17914,
+        "quality": 68,
+        "sha256": "798dee3de1b1605c596145941daaaa4691f476f5ff0e43d4a5c31c82e0e1f277"
+      }
+    },
+    {
+      "id": "three_of_cups",
+      "name": "Three of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "rank": 3,
+      "sourceMasterSha256": "4944d88ae4bc3888d68737e3f0d03a56a77b7471d26d63afe40305694e56452b",
+      "luminance": {
+        "mean": 106.9,
+        "darkPct": 32.8,
+        "p50": 97.6,
+        "p95": 230.4
+      },
+      "v1BaselineLuminance": {
+        "mean": 30.1,
+        "darkPct": 85.6,
+        "p50": 19.7,
+        "p95": 91.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_cups.webp",
+        "physicalPath": "assets/cards/v2/three_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 218126,
+        "quality": 80,
+        "sha256": "f9daa110e107b4da67f619629a3a022cd156c18f4fb67d502661eb22e0668c55"
+      },
+      "variants": {
+        "w320": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w320/three_of_cups.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 67576,
+          "quality": 82
+        },
+        "w640Avif": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w640/three_of_cups.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 151189,
+          "quality": 60
+        },
+        "w1024": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/three_of_cups.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 405534,
+          "quality": 76
+        }
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/three_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 17944,
+        "quality": 52,
+        "sha256": "8b412f9b5a43f5f31e766a061c9a19fbc6617dd372f40a0b493ead2bf4dd3724"
+      }
+    },
+    {
+      "id": "three_of_pentacles",
+      "name": "Three of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "rank": 3,
+      "sourceMasterSha256": "212828267976cf9310abcd5219d3657fdb61e8711e17d350705d2a14861d7f78",
+      "luminance": {
+        "mean": 103.3,
+        "darkPct": 32.9,
+        "p50": 94.6,
+        "p95": 219.7
+      },
+      "v1BaselineLuminance": {
+        "mean": 35.4,
+        "darkPct": 80.2,
+        "p50": 25.3,
+        "p95": 91.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/three_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 194902,
+        "quality": 76,
+        "sha256": "87d884681b30914a11361e6663d2a92027cda97a4a016d89ceca3a5a0c13f5cf"
+      },
+      "variants": {
+        "w320": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w320/three_of_pentacles.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 65380,
+          "quality": 82
+        },
+        "w640Avif": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w640/three_of_pentacles.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 141656,
+          "quality": 60
+        },
+        "w1024": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/three_of_pentacles.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 423536,
+          "quality": 76
+        }
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/three_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 18000,
+        "quality": 60,
+        "sha256": "7224d63aeca33493b2fb9206152310b9678eabe9ceed29c60f0f4b066358f976"
+      }
+    },
+    {
+      "id": "queen_of_swords",
+      "name": "Queen of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "rank": 13,
+      "sourceMasterSha256": "27db26801a7146ce024b597573d82b8ec6cd33a5ab42caa17fb4234d47da465f",
+      "luminance": {
+        "mean": 114.5,
+        "darkPct": 25.7,
+        "p50": 114.5,
+        "p95": 233.5
+      },
+      "v1BaselineLuminance": {
+        "mean": 30.5,
+        "darkPct": 87.4,
+        "p50": 20.2,
+        "p95": 93.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/queen_of_swords.webp",
+        "physicalPath": "assets/cards/v2/queen_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 214852,
+        "quality": 84,
+        "sha256": "e83bbd74c50499eba6f357ef40ac6b575af3e32e37960d13334bc9378c04ac5b"
+      },
+      "variants": {
+        "w320": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w320/queen_of_swords.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 58038,
+          "quality": 82
+        },
+        "w640Avif": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w640/queen_of_swords.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 127723,
+          "quality": 60
+        },
+        "w1024": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/queen_of_swords.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 408328,
+          "quality": 80
+        }
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/queen_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/queen_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 17354,
+        "quality": 68,
+        "sha256": "fd13090b7030f28c0bcfcac6e7845c275e19313dbdf2182f9824c5c136f78e5b"
+      }
+    },
+    {
+      "id": "ten_of_wands",
+      "name": "Ten of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "rank": 10,
+      "sourceMasterSha256": "4db51ceca51cae71a3b256978a88b9eeddd83ad0fc3ead19765207855116da87",
+      "luminance": {
+        "mean": 75.3,
+        "darkPct": 43,
+        "p50": 59.8,
+        "p95": 185.6
+      },
+      "v1BaselineLuminance": {
+        "mean": 35.5,
+        "darkPct": 84.3,
+        "p50": 26.5,
+        "p95": 84.7
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ten_of_wands.webp",
+        "physicalPath": "assets/cards/v2/ten_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 217438,
+        "quality": 84,
+        "sha256": "26ae88bf1e16186f534755e9f58aa02add22d8f52aa5ee8a5e2138ab07b30836"
+      },
+      "variants": {
+        "w320": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w320/ten_of_wands.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 58770,
+          "quality": 82
+        },
+        "w640Avif": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w640/ten_of_wands.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 130847,
+          "quality": 60
+        },
+        "w1024": {
+          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/ten_of_wands.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 397696,
+          "quality": 80
+        }
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ten_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/ten_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 17158,
+        "quality": 64,
+        "sha256": "bf08be31c714e7c941f278edacf3de7e9424b783aa677d27ff6c5c65c8255d80"
+      }
+    }
+  ]
+}

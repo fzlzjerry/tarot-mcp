@@ -10,6 +10,10 @@ const assets = [
     to: join(rootDir, "dist", "tarot", "cards", "card-data.json"),
   },
   {
+    from: join(rootDir, "src", "tarot", "canon", "gate-cards.json"),
+    to: join(rootDir, "dist", "tarot", "canon", "gate-cards.json"),
+  },
+  {
     from: join(rootDir, "assets", "ASSET_LICENSE.md"),
     to: join(rootDir, "dist", "assets", "ASSET_LICENSE.md"),
   },

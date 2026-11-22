@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import { TarotCard } from "../shared/types.js";
 import { fisherYatesShuffle } from "../shared/utils.js";
 import { logger } from "../shared/logger.js";
+import { getCanonCard } from "../canon/index.js";
 import { parseCardData } from "./card-schema.js";
 
 const CARD_DATA_PATH = path.join(
@@ -52,7 +53,7 @@ export class TarotCardManager {
     TarotCardManager.initPromise = (async () => {
       try {
         const data = await fs.readFile(CARD_DATA_PATH, "utf-8");
-        const cards = parseCardData(JSON.parse(data));
+        const cards = parseCardData(JSON.parse(data)).map(applyCanonOverlay);
         TarotCardManager.instance = new TarotCardManager(cards);
         return TarotCardManager.instance;
       } catch (error) {
@@ -87,28 +88,49 @@ export class TarotCardManager {
   }
 
   /**
-   * Find a card by name or ID (case-insensitive).
+   * Resolve a card query with explicit disambiguation.
+   * Returns `exact` when the identifier uniquely names one card (exact ID,
+   * exact English/Chinese name, or a single unambiguous partial match), and
+   * returns `candidates` when multiple cards match (e.g. "Queen" or "王后").
    */
-  public findCard(identifier: string): TarotCard | undefined {
+  public findCardMatches(identifier: string): {
+    exact?: TarotCard;
+    candidates: TarotCard[];
+  } {
     const normalizedIdentifier = identifier.toLowerCase().trim();
-    // Try exact ID match first, then exact name match
-    const card =
+    if (!normalizedIdentifier) {
+      return { candidates: [] };
+    }
+
+    const direct =
       this.cards.get(normalizedIdentifier) ??
       this.cardsByName.get(normalizedIdentifier) ??
       this.cardsByLocalizedName.get(normalizedIdentifier);
-    if (card) return card;
-
-    // Try partial name match as a fallback
-    for (const c of this.allCards) {
-      if (
-        c.name.toLowerCase().includes(normalizedIdentifier) ||
-        c.zh?.name?.toLowerCase().includes(normalizedIdentifier)
-      ) {
-        return c;
-      }
+    if (direct) {
+      return { exact: direct, candidates: [direct] };
     }
 
-    return undefined;
+    const partial = this.allCards.filter(
+      (c) =>
+        c.name.toLowerCase().includes(normalizedIdentifier) ||
+        c.id.toLowerCase().includes(normalizedIdentifier) ||
+        Boolean(c.zh?.name?.toLowerCase().includes(normalizedIdentifier)),
+    );
+
+    if (partial.length === 1) {
+      return { exact: partial[0], candidates: partial };
+    }
+    return { candidates: partial };
+  }
+
+  /**
+   * Find a card by name or ID (case-insensitive).
+   * Returns exact matches or an unambiguous single partial match; falls back
+   * to the first partial match for internal callers that expect legacy lookup.
+   */
+  public findCard(identifier: string): TarotCard | undefined {
+    const { exact, candidates } = this.findCardMatches(identifier);
+    return exact ?? candidates[0];
   }
 
   /**
@@ -130,3 +152,39 @@ export class TarotCardManager {
     return this.allCards;
   }
 }
+
+function applyCanonOverlay(card: TarotCard): TarotCard {
+  const canon = getCanonCard(card.id);
+  if (!canon) return card;
+
+  const toDomainMeanings = (
+    domains: typeof canon.meaningBranches.upright.domains,
+    lang: "en" | "zh",
+  ) => ({
+    general: domains.general[lang],
+    love: domains.love[lang],
+    career: domains.career[lang],
+    health: domains.health[lang],
+    spirituality: domains.spirituality[lang],
+  });
+
+  return {
+    ...card,
+    meanings: {
+      upright: toDomainMeanings(canon.meaningBranches.upright.domains, "en"),
+      reversed: toDomainMeanings(canon.meaningBranches.reversed.domains, "en"),
+    },
+    ...(card.zh
+      ? {
+          zh: {
+            ...card.zh,
+            meanings: {
+              upright: toDomainMeanings(canon.meaningBranches.upright.domains, "zh"),
+              reversed: toDomainMeanings(canon.meaningBranches.reversed.domains, "zh"),
+            },
+          },
+        }
+      : {}),
+  };
+}
+

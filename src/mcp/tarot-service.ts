@@ -73,6 +73,10 @@ export class TarotServer {
     return this.sessionManager.getSessionCount();
   }
 
+  public getReadingReceipt(readingId: string) {
+    return this.sessionManager.getReadingReceipt(readingId);
+  }
+
   public getAvailableTools(): Tool[] {
     return getToolDefinitions();
   }

@@ -74,23 +74,23 @@ export class TarotSessionManager {
   }
 
   /**
-   * Get an existing session. Any successful lookup counts as activity:
-   * a session being actively read (e.g. history polling) must neither hit
-   * the 24h idle expiry nor rank as the oldest eviction victim.
+   * Get an existing session. Updates in-memory lastActivity without rewriting
+   * the whole persistence store on every read (writes persist on session/reading
+   * mutations and hourly cleanup).
    */
   public getSession(sessionId: string): TarotSession | undefined {
     const session = this.sessions.get(sessionId);
     if (session) {
       session.lastActivity = new Date();
-      this.saveToStore();
     }
     return session;
   }
 
   /**
-   * Add a reading to a session, evicting the oldest reading once the
-   * per-session cap is reached. Only a summary is retained — the full
-   * interpretation prose is not kept in memory.
+   * Add a reading receipt to a session, evicting the oldest receipt once the
+   * per-session cap is reached. Retains stable card IDs, position roles, and
+   * deck/knowledge versions so follow-up questions can read back the exact
+   * confirmed hand without redrawing.
    */
   public addReadingToSession(sessionId: string, reading: TarotReading): void {
     const session = this.sessions.get(sessionId);
@@ -100,10 +100,20 @@ export class TarotSessionManager {
         spreadType: reading.spreadType,
         question: reading.question,
         timestamp: reading.timestamp,
-        cards: reading.cards.map((drawnCard) => ({
+        ...(reading.language ? { language: reading.language } : {}),
+        ...(reading.deckVersion ? { deckVersion: reading.deckVersion } : {}),
+        ...(reading.knowledgeVersion
+          ? { knowledgeVersion: reading.knowledgeVersion }
+          : {}),
+        cards: reading.cards.map((drawnCard, index) => ({
+          cardId: drawnCard.card.id,
           name: drawnCard.card.name,
           orientation: drawnCard.orientation,
           position: drawnCard.position,
+          positionId: drawnCard.positionId ?? `pos_${index + 1}`,
+          ...(drawnCard.positionRole
+            ? { positionRole: drawnCard.positionRole }
+            : {}),
         })),
       });
       session.readingCount++;
@@ -113,6 +123,21 @@ export class TarotSessionManager {
       session.lastActivity = new Date();
       this.saveToStore();
     }
+  }
+
+  /**
+   * Look up a stored reading receipt by its readingId across active sessions.
+   */
+  public getReadingReceipt(
+    readingId: string,
+  ): { sessionId: string; receipt: TarotReadingSummary } | undefined {
+    for (const session of this.sessions.values()) {
+      const receipt = session.readings.find((entry) => entry.id === readingId);
+      if (receipt) {
+        return { sessionId: session.id, receipt };
+      }
+    }
+    return undefined;
   }
 
   /**

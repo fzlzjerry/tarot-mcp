@@ -5,6 +5,10 @@ import {
   normalizeBeginPayload,
   normalizeConfirmedReading,
 } from "./normalize.js";
+import {
+  readInitialDeckEdition,
+  resolveWebCardAssetUrl,
+} from "./deck-edition.js";
 import { t } from "./i18n.js";
 import type {
   BeginReadingInput,
@@ -218,6 +222,13 @@ export function createWebClient(): DrawClient {
       );
       const payload = normalizeBeginPayload(result, input);
       assertCompleteVisualDeck(payload);
+      if (readInitialDeckEdition() === "v2") {
+        payload.deckBackImageUri = resolveWebCardAssetUrl(
+          "back",
+          payload.deckBackImageUri,
+          "v2",
+        );
+      }
       starts.set(payload.drawId, payload);
       return payload;
     },
@@ -239,9 +250,21 @@ export function createWebClient(): DrawClient {
             { selectedSlotIds },
             options?.signal,
           );
-      return normalizeConfirmedReading(result, starts.get(drawId));
+      const confirmed = normalizeConfirmedReading(result, starts.get(drawId));
+      if (readInitialDeckEdition() === "v2") {
+        confirmed.deckBackImageUri = resolveWebCardAssetUrl(
+          "back",
+          confirmed.deckBackImageUri,
+          "v2",
+        );
+      }
+      return confirmed;
     },
     async resolveImage(card: ReadingCard): Promise<string | undefined> {
+      const edition = readInitialDeckEdition();
+      if (edition === "v2") {
+        return resolveWebCardAssetUrl(card.id, card.imageUri, "v2");
+      }
       return card.imageUri;
     },
   };

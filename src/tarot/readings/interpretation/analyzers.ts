@@ -111,20 +111,20 @@ function generateCelticCrossAnalysis(
 
   analysis += pick(
     language,
-    `**Near Future Impact:** ${withDefiniteArticle(nearFuture.card.name)} in your near future will `,
-    `**近期未来的影响：**出现在近期未来的${zhName(nearFuture)}将`,
+    `**Near Future Impact:** ${withDefiniteArticle(nearFuture.card.name)} in your near future `,
+    `**近期未来的影响：**出现在近期未来的${zhName(nearFuture)}`,
   );
   if (nearFuture.orientation === "upright") {
     analysis += pick(
       language,
-      "support your journey toward the final outcome. ",
-      "支持你迈向最终结果的旅程。",
+      "will express its theme directly in the upcoming phase—weigh its specific archetype against your desired outcome. ",
+      "将在接下来以直接外显的方式展开其主题——请结合这张牌本身的原型，判断它对最终结果的推动或警示。",
     );
   } else {
     analysis += pick(
       language,
-      "present challenges that need to be navigated carefully to reach your desired outcome. ",
-      "带来需要谨慎跨越的挑战，方能抵达你期望的结果。",
+      "operates through inward friction, delay, or release—check what needs recalibrating before the next turn. ",
+      "将以更偏内在、延宕或松动的方式运作——留意在下一个转折前需要先疏通或调整的环节。",
     );
   }
 
@@ -179,41 +179,41 @@ function generateThreeCardAnalysis(
   );
 
   const [past, present, future] = drawnCards;
+  const reversedCount = drawnCards.filter(
+    (c) => c.orientation === "reversed",
+  ).length;
 
   analysis += pick(
     language,
-    `**The Journey:** From ${past.card.name} in the past, through ${present.card.name} in the present, to ${future.card.name} in the future, `,
-    `**旅程：**从过去的${zhName(past)}，经过现在的${zhName(present)}，到未来的${zhName(future)}，`,
+    `**The Journey:** From ${past.card.name} (${past.orientation}) in the foundation, through ${present.card.name} (${present.orientation}) in the present, to ${future.card.name} (${future.orientation}) in the outcome, `,
+    `**旅程：**从起点位的${zhName(past)}${orientationLabel(past.orientation, "zh")}，经过当下位的${zhName(present)}${orientationLabel(present.orientation, "zh")}，再到走向位的${zhName(future)}${orientationLabel(future.orientation, "zh")}，`,
   );
 
-  // Analyze the progression
-  const pastEnergy = past.orientation === "upright" ? "positive" : "challenging";
-  const presentEnergy = present.orientation === "upright" ? "positive" : "challenging";
-  const futureEnergy = future.orientation === "upright" ? "positive" : "challenging";
-
-  if (pastEnergy === "challenging" && presentEnergy === "positive" && futureEnergy === "positive") {
+  if (reversedCount === 0) {
     analysis += pick(
       language,
-      "shows a clear progression from difficulty to resolution and success. ",
-      "呈现出一条从困境走向化解与成功的清晰轨迹。",
+      "all three cards express directly and outwardly—read the trajectory from how each card's own archetype evolves across the three positions rather than treating uprightness as guaranteed smoothness. ",
+      "三张牌均以直接外显的方式呈现——请顺着三张牌各自原型在牌位间的演变来判断走势，而非把正位默认成一味顺遂。",
     );
-  } else if (pastEnergy === "positive" && presentEnergy === "challenging" && futureEnergy === "positive") {
+  } else if (reversedCount === 3) {
     analysis += pick(
       language,
-      "indicates a temporary setback that will resolve positively. ",
-      "显示这只是暂时的挫折，最终会向好化解。",
-    );
-  } else if (pastEnergy === "positive" && presentEnergy === "positive" && futureEnergy === "positive") {
-    analysis += pick(
-      language,
-      "reveals a consistently positive trajectory with continued growth. ",
-      "展现出持续向好的走势，成长会不断延续。",
+      "all three cards appear reversed, indicating that the real movement is happening beneath the surface through inward reassessment, friction, or release. ",
+      "三张牌均为逆位，说明真正的变化主要发生在水面之下，体现在内在重估、阻力疏通或旧态松动之中。",
     );
   } else {
     analysis += pick(
       language,
-      "shows a complex journey requiring careful attention to the lessons each phase offers. ",
-      "显示这是一段复杂的旅程，需要留心每个阶段带来的功课。",
+      "the shift between upright and reversed cards marks where outward momentum meets an area needing pause, boundary work, or a different angle. ",
+      "正逆位的切换标出了外显推进与需要暂停、设界或换个角度处理的节点所在。",
+    );
+  }
+
+  if (cardsHaveSimilarEnergy(past, future)) {
+    analysis += pick(
+      language,
+      `Shared elemental or suit resonance between ${past.card.name} and ${future.card.name} keeps the core thread continuous across the arc. `,
+      `${zhName(past)}与${zhName(future)}共享同一花色或元素共鸣，说明贯穿首尾的核心脉络保持连贯。`,
     );
   }
 
@@ -257,21 +257,15 @@ function generateRelationshipAnalysis(
     );
   }
 
-  // Analyze relationship balance
-  const positiveCards = [you, partner, relationship, unites].filter(c => c.orientation === "upright").length;
-  if (positiveCards >= 3) {
-    analysis += pick(
-      language,
-      "The overall energy of the relationship is positive and supportive. ",
-      "这段关系的整体能量是积极且相互支持的。",
-    );
-  } else {
-    analysis += pick(
-      language,
-      "The relationship may need attention and conscious effort to improve dynamics. ",
-      "这段关系可能需要更多关注与有意识的经营来改善互动。",
-    );
-  }
+  // Analyze relationship dynamics factually without equating upright to harmony
+  const uprightRelational = [you, partner, relationship, unites].filter(
+    (c) => c.orientation === "upright",
+  ).length;
+  analysis += pick(
+    language,
+    `${uprightRelational} of the 4 core relational positions appear upright; weigh what unites you (${unites.card.name}) directly against what creates friction in the spread. `,
+    `4 个核心关系牌位中有 ${uprightRelational} 张呈正位；请将「连结彼此之处」（${zhName(unites)}）与牌阵中的分歧位直接对照着看。`,
+  );
 
   analysis += "\n";
   return analysis;
@@ -296,27 +290,13 @@ function generateCareerAnalysis(
   const challenges = drawnCards[2];
   const opportunities = drawnCards[3];
 
-  // Analyze career readiness
+  // Analyze career readiness from position roles rather than orientation valence
   analysis += pick(language, `**Career Readiness:** `, `**职业准备度：**`);
-  if (skills.orientation === "upright" && opportunities.orientation === "upright") {
-    analysis += pick(
-      language,
-      "You have strong skills and good opportunities ahead. This is a favorable time for career advancement. ",
-      "你拥有扎实的能力，前方也有良好的机会，现在是职业进阶的有利时机。",
-    );
-  } else if (challenges.orientation === "reversed") {
-    analysis += pick(
-      language,
-      "Previous obstacles are clearing, making way for new professional growth. ",
-      "先前的阻碍正在消散，为新的职业成长让出空间。",
-    );
-  } else {
-    analysis += pick(
-      language,
-      "Focus on developing your skills and overcoming current challenges before pursuing new opportunities. ",
-      "在追逐新机会之前，先专注于提升能力、跨越眼前的挑战。",
-    );
-  }
+  analysis += pick(
+    language,
+    `Pair your strengths (${skills.card.name}, ${skills.orientation}) with hidden openings (${opportunities.card.name}, ${opportunities.orientation}) to decide how to navigate the challenge posed by ${challenges.card.name} (${challenges.orientation}). `,
+    `请将「自身才能」（${zhName(skills)}${orientationLabel(skills.orientation, "zh")}）与「潜藏机会」（${zhName(opportunities)}${orientationLabel(opportunities.orientation, "zh")}）结合起来，具体回应「职业挑战」（${zhName(challenges)}${orientationLabel(challenges.orientation, "zh")}）指出的卡点。`,
+  );
 
   analysis += "\n";
   return analysis;
@@ -340,29 +320,13 @@ function generateSpiritualAnalysis(
   const spiritualState = drawnCards[0];
   const blocks = drawnCards[2];
 
-  // Analyze spiritual progress
+  // Analyze spiritual progress without equating orientation with good/bad
   analysis += pick(language, `**Spiritual Progress:** `, `**灵性进程：**`);
-  if (spiritualState.orientation === "upright") {
-    analysis += pick(
-      language,
-      "You are in a positive phase of spiritual growth and awareness. ",
-      "你正处于灵性成长与觉察的积极阶段。",
-    );
-  } else {
-    analysis += pick(
-      language,
-      "You may be experiencing spiritual challenges or confusion that require inner work. ",
-      "你可能正经历灵性上的挑战或困惑，需要向内做功课。",
-    );
-  }
-
-  if (blocks.orientation === "reversed") {
-    analysis += pick(
-      language,
-      "Previous spiritual blocks are dissolving, allowing for greater growth. ",
-      "先前的灵性阻碍正在消融，为更深的成长腾出空间。",
-    );
-  }
+  analysis += pick(
+    language,
+    `Your present state (${spiritualState.card.name}, ${spiritualState.orientation}) meets the main block (${blocks.card.name}, ${blocks.orientation}); inspect how each archetype operates rather than treating orientation alone as progress or setback. `,
+    `你当前的灵性状态（${zhName(spiritualState)}${orientationLabel(spiritualState.orientation, "zh")}）正面对主要阻滞（${zhName(blocks)}${orientationLabel(blocks.orientation, "zh")}）；请按牌面本义对照两者关系，而不单凭正逆位判定进退。`,
+  );
 
   analysis += "\n";
   return analysis;
@@ -447,57 +411,32 @@ function generateYearAheadAnalysis(
   const overallTheme = drawnCards[0];
   const monthlyCards = drawnCards.slice(1);
 
-  // Analyze overall year energy
+  // Analyze overall year theme factually
   analysis += pick(
     language,
-    `**Year Theme:** ${withDefiniteArticle(overallTheme.card.name)} sets the tone for your year, `,
-    `**年度主题：**${zhName(overallTheme)}为你的这一年定下基调，`,
+    `**Year Theme:** ${withDefiniteArticle(overallTheme.card.name)} (${overallTheme.orientation}) anchors the year's central motif; read the four quarters by how their card archetypes and elements shift across the seasons. `,
+    `**年度主题：**${zhName(overallTheme)}${orientationLabel(overallTheme.orientation, "zh")}定下全年的核心母题；四个季度请结合各月单牌原型与元素流转来解读。`,
   );
-  if (overallTheme.orientation === "upright") {
-    analysis += pick(
-      language,
-      "indicating a positive and growth-oriented period ahead. ",
-      "预示前方是一段积极且以成长为主旋律的时期。",
-    );
-  } else {
-    analysis += pick(
-      language,
-      "suggesting a year of inner work and overcoming challenges. ",
-      "提示这将是向内修行、跨越挑战的一年。",
-    );
-  }
 
-  // Analyze seasonal patterns
+  // Analyze seasonal patterns factually
   const quarters = [
     monthlyCards.slice(0, 3), // Q1: Jan-Mar
     monthlyCards.slice(3, 6), // Q2: Apr-Jun
     monthlyCards.slice(6, 9), // Q3: Jul-Sep
-    monthlyCards.slice(9, 12) // Q4: Oct-Dec
+    monthlyCards.slice(9, 12), // Q4: Oct-Dec
   ];
 
   quarters.forEach((quarter, index) => {
-    const uprightCount = quarter.filter(c => c.orientation === "upright").length;
+    const uprightCount = quarter.filter((c) => c.orientation === "upright").length;
+    const reversedCount = quarter.length - uprightCount;
     const quarterNames = ["First Quarter", "Second Quarter", "Third Quarter", "Fourth Quarter"];
     const quarterNamesZh = ["第一季度", "第二季度", "第三季度", "第四季度"];
 
     analysis += pick(
       language,
-      `**${quarterNames[index]}:** `,
-      `**${quarterNamesZh[index]}：**`,
+      `**${quarterNames[index]}:** ${uprightCount} upright, ${reversedCount} reversed (${quarter.map((c) => c.card.name).join(", ")}). `,
+      `**${quarterNamesZh[index]}：**${uprightCount} 正 ${reversedCount} 逆（${quarter.map((c) => zhName(c)).join("、")}）。`,
     );
-    if (uprightCount >= 2) {
-      analysis += pick(
-        language,
-        "A positive and productive period. ",
-        "一段积极而富有成效的时期。",
-      );
-    } else {
-      analysis += pick(
-        language,
-        "A time for patience and inner work. ",
-        "一段需要耐心与内在功课的时光。",
-      );
-    }
   });
 
   analysis += "\n";
@@ -521,72 +460,19 @@ function generateVenusLoveAnalysis(
 
   const [currentEnergy, selfLove, attraction, blocks, , , future] = drawnCards;
 
-  // Analyze love energy flow
+  // Analyze love energy flow without assuming upright=positive
   analysis += pick(
     language,
-    `**Love Energy Flow:** Your current relationship energy (${currentEnergy.card.name}) `,
-    `**爱的能量流动：**你当前的感情能量（${zhName(currentEnergy)}）`,
+    `**Love Energy Flow:** Your current relationship state (${currentEnergy.card.name}, ${currentEnergy.orientation}) meets your self-love foundation (${selfLove.card.name}, ${selfLove.orientation}). `,
+    `**爱的能量流动：**你当前的感情状态（${zhName(currentEnergy)}${orientationLabel(currentEnergy.orientation, "zh")}）与自我价值根基（${zhName(selfLove)}${orientationLabel(selfLove.orientation, "zh")}）相互映照。`,
   );
-  if (currentEnergy.orientation === "upright") {
-    analysis += pick(
-      language,
-      "shows positive romantic vibrations and openness to love. ",
-      "散发着积极的浪漫气息，对爱保持开放。",
-    );
-  } else {
-    analysis += pick(
-      language,
-      "suggests some healing or inner work is needed before fully opening to love. ",
-      "提示在完全向爱敞开之前，还需要一些疗愈或内在功课。",
-    );
-  }
-
-  // Self-love foundation
-  analysis += pick(
-    language,
-    `Your self-love foundation (${selfLove.card.name}) `,
-    `你自爱的根基（${zhName(selfLove)}）`,
-  );
-  if (selfLove.orientation === "upright") {
-    analysis += pick(
-      language,
-      "indicates healthy self-worth that attracts genuine love. ",
-      "显示出健康的自我价值感，能吸引真挚的爱。",
-    );
-  } else {
-    analysis += pick(
-      language,
-      "reveals areas where self-compassion and self-acceptance need attention. ",
-      "揭示出需要用自我慈悲与自我接纳去照料的部分。",
-    );
-  }
 
   // Attraction and blocks
   analysis += pick(
     language,
-    `What attracts love to you (${attraction.card.name}) works in harmony with overcoming blocks (${blocks.card.name}) to create a path forward. `,
-    `吸引爱靠近你的特质（${zhName(attraction)}）与跨越阻碍的力量（${zhName(blocks)}）相互配合，共同开辟前行的道路。`,
+    `Compare what draws connection (${attraction.card.name}) directly with what creates friction (${blocks.card.name}), and read the future card (${future.card.name}, ${future.orientation}) as a trajectory you actively shape. `,
+    `请把「吸引爱的特质」（${zhName(attraction)}）与「主要阻碍」（${zhName(blocks)}）对照来看，并将未来潜能位（${zhName(future)}${orientationLabel(future.orientation, "zh")}）视作可经由当下选择重塑的走向。`,
   );
-
-  // Future potential
-  analysis += pick(
-    language,
-    `The future potential (${future.card.name}) `,
-    `未来的潜能（${zhName(future)}）`,
-  );
-  if (future.orientation === "upright") {
-    analysis += pick(
-      language,
-      "promises beautiful developments in your love life. ",
-      "预示感情生活中将有美好的进展。",
-    );
-  } else {
-    analysis += pick(
-      language,
-      "suggests patience and continued inner work will lead to love. ",
-      "提示保持耐心、持续向内耕耘，爱终会到来。",
-    );
-  }
 
   analysis += "\n";
   return analysis;
@@ -621,8 +507,8 @@ function generateTreeOfLifeAnalysis(
   if (rightUprightCount > leftUprightCount) {
     analysis += pick(
       language,
-      "The Pillar of Mercy dominates, indicating expansion, growth, and positive energy. ",
-      "慈悲之柱占据主导，预示扩张、成长与积极的能量。",
+      "The Pillar of Mercy carries more upright cards, accentuating outward expansion and expression. ",
+      "慈悲之柱出现更多正位牌，突出了向外扩展与表达的倾向。",
     );
   } else if (leftUprightCount > rightUprightCount) {
     analysis += pick(
@@ -999,23 +885,9 @@ function generateMirrorOfTruthAnalysis(
   );
   analysis += pick(
     language,
-    `Their true intentions and inner state indicate: `,
-    `对方的真实意图与内在状态表明：`,
+    `Read this card as a reflection of the dynamic you are encountering rather than mind-reading someone's private motives; ${theirIntention.orientation === "upright" ? "the pattern shows openly in behavior." : "mixed signals or unspoken hesitation may be active beneath the surface."}`,
+    `将这张牌视为你所面对互动模式的映照，而非替对方下定论；${theirIntention.orientation === "upright" ? "相关态度较直接地体现在外在言行里。" : "表面言行之下可能存在纠结、犹豫或尚未摊开的信号。"}`,
   );
-  if (theirIntention.orientation === "upright") {
-    analysis += pick(
-      language,
-      "Their motivations are relatively positive and sincere, with good intentions or at least neutral intent behind their actions.",
-      "对方的动机相对积极且真诚，行为背后怀有善意，或至少并无恶意。",
-    );
-  }
-  else {
-    analysis += pick(
-      language,
-      "They may have complex inner states, their true intentions might not align with surface behavior, or they themselves are confused.",
-      "对方的内心可能较为复杂，真实意图未必与表面行为一致，甚至他们自己也感到迷茫。",
-    );
-  }
   analysis += "\n\n";
 
   // Third Light Analysis - Objective Truth
@@ -1172,15 +1044,20 @@ function zhName(drawn: DrawnCard): string {
 }
 
 /**
- * Check if two cards have similar energy
+ * Check if two cards share genuine elemental or suit resonance.
+ * Unlike the earlier heuristic, two unrelated Minor Arcana cards of different
+ * suits no longer falsely count as having "similar energy".
  */
 function cardsHaveSimilarEnergy(card1: DrawnCard, card2: DrawnCard): boolean {
-  // Simple heuristic: same orientation and similar themes
-  if (card1.orientation !== card2.orientation) return false;
-
-  // Check for similar suits or arcana
-  if (card1.card.suit && card2.card.suit && card1.card.suit === card2.card.suit) return true;
-  if (card1.card.arcana === card2.card.arcana) return true;
-
+  if (card1.card.suit && card2.card.suit && card1.card.suit === card2.card.suit) {
+    return true;
+  }
+  if (
+    card1.card.element &&
+    card2.card.element &&
+    card1.card.element === card2.card.element
+  ) {
+    return true;
+  }
   return false;
 }

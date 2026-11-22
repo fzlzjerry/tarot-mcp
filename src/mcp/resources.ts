@@ -63,6 +63,13 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
         description: "One spread definition with its positions",
         mimeType: "application/json",
       },
+      {
+        uriTemplate: "tarot://readings/{readingId}",
+        name: "Tarot reading receipt",
+        description:
+          "Immutable receipt for a previously completed reading (cardIds, position roles, orientation, deck/knowledge versions) for follow-up questions without redrawing",
+        mimeType: "application/json",
+      },
     ],
   }));
 
@@ -109,6 +116,26 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
         throw new Error(`Unknown spread type: ${type}`);
       }
       return jsonContents(uri, spread);
+    }
+
+    const readingMatch = /^tarot:\/\/readings\/(.+)$/.exec(uri);
+    if (readingMatch) {
+      const readingId = decodeURIComponent(readingMatch[1]);
+      const found = tarotServer.getReadingReceipt(readingId);
+      if (!found) {
+        throw new Error(`Unknown or expired reading receipt: ${readingId}`);
+      }
+      return jsonContents(uri, {
+        readingId: found.receipt.id,
+        sessionId: found.sessionId,
+        spreadType: found.receipt.spreadType,
+        question: found.receipt.question,
+        language: found.receipt.language,
+        deckVersion: found.receipt.deckVersion,
+        knowledgeVersion: found.receipt.knowledgeVersion,
+        timestamp: found.receipt.timestamp.toISOString(),
+        cards: found.receipt.cards,
+      });
     }
 
     throw new Error(`Unknown resource URI: ${uri}`);

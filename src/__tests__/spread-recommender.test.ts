@@ -17,13 +17,13 @@ async function recommend(args: Record<string, unknown>): Promise<string> {
 
 /** Extract recommended spread ids in display order from the Markdown. */
 function extractSpreads(markdown: string): string[] {
-  return [...markdown.matchAll(/## \d+\. ([^(]+) \(\d+% match\)/g)].map((m) =>
+  return [...markdown.matchAll(/## \d+\. ([^(]+) \(\d+ cards?\)/g)].map((m) =>
     m[1].trim().toLowerCase().replace(/ /g, "_"),
   );
 }
 
 describe("recommend_spread characterization", () => {
-  it("recommends love spreads for love questions, ordered by confidence", async () => {
+  it("recommends love spreads for love questions without fake percentage labels", async () => {
     const result = await recommend({
       question: "Will my relationship with my partner improve?",
     });
@@ -32,7 +32,8 @@ describe("recommend_spread characterization", () => {
       "relationship_cross",
       "compatibility",
     ]);
-    expect(result).toContain("(90% match)");
+    expect(result).not.toContain("% match");
+    expect(result).toContain("(7 cards)");
   });
 
   it("recommends the career path spread for job questions", async () => {
@@ -101,8 +102,8 @@ describe("recommend_spread characterization", () => {
   it("falls back to versatile defaults when nothing matches", async () => {
     const result = await recommend({ question: "Hmm." });
     expect(extractSpreads(result)).toEqual(["three_card", "celtic_cross"]);
-    expect(result).toContain("(60% match)");
-    expect(result).toContain("(50% match)");
+    expect(result).toContain("(3 cards)");
+    expect(result).toContain("(10 cards)");
   });
 
   it("caps recommendations at three and deduplicates", async () => {

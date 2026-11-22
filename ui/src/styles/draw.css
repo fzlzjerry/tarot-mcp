@@ -595,3 +595,93 @@
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+
+/* ------------------------------------------- active slot ribbon & arc rail */
+
+.active-slot-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 clamp(16px, 2.2vw, 26px) 10px;
+  padding: 9px 14px;
+  border: 1px solid color-mix(in srgb, var(--gold-line) 46%, var(--line));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--gold) 6%, var(--surface-raised));
+}
+
+.active-slot-ribbon__label {
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 550;
+}
+
+.active-slot-ribbon__pips {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.active-slot-ribbon__pips > span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  background: transparent;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.active-slot-ribbon__pips > span.is-filled {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.active-slot-ribbon__pips > span.is-next {
+  background: color-mix(in srgb, var(--gold) 35%, transparent);
+  border-color: var(--gold);
+  transform: scale(1.22);
+}
+
+.arc-fan-wrap {
+  display: grid;
+}
+
+.arc-rail {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px clamp(16px, 2.2vw, 26px) 14px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+
+.arc-rail__btn {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 150ms, color 150ms;
+}
+
+@media (hover: hover) {
+  .arc-rail__btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+}
+
+.arc-rail__scrubber {
+  width: 100%;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  accent-color: var(--gold);
+}

@@ -206,6 +206,16 @@ function normalizeCard(
         (entry): entry is string => typeof entry === "string",
       )
     : undefined;
+  const traditionMotifs = Array.isArray(value.traditionMotifs)
+    ? value.traditionMotifs.filter(
+        (entry): entry is string => typeof entry === "string",
+      )
+    : undefined;
+  const editionMotifs = Array.isArray(value.editionMotifs)
+    ? value.editionMotifs.filter(
+        (entry): entry is string => typeof entry === "string",
+      )
+    : undefined;
   return {
     id,
     name,
@@ -218,12 +228,15 @@ function normalizeCard(
       value.positionMeaning,
       value.position_description,
     ),
+    positionRole: stringValue(value.positionRole),
     meaning: stringValue(
       value.meaning,
       value.generalMeaning,
       value.description,
     ),
     keywords,
+    traditionMotifs,
+    editionMotifs,
     imageUri: stringValue(
       value.imageUri,
       value.imageUrl,

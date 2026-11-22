@@ -3,12 +3,51 @@ import { getSpreadPickerCatalog } from "@tarot/readings/spread-localizations.js"
 import { SetupShell } from "./SetupShell.js";
 import { ConnectionSettings } from "./ConnectionSettings.js";
 import { t } from "./i18n.js";
+import { layoutForSpread } from "./spreads.js";
 import type {
   BeginReadingInput,
   DrawClient,
   Language,
   ReadingKind,
 } from "./types.js";
+
+function SpreadMiniMap({
+  spreadId,
+  cardCount,
+  label,
+}: {
+  spreadId: string;
+  cardCount: number;
+  label: string;
+}) {
+  const points = layoutForSpread(spreadId, cardCount);
+  return (
+    <svg
+      className="spread-minimap"
+      viewBox="0 0 120 78"
+      role="img"
+      aria-label={label}
+    >
+      {points.map((pt, index) => {
+        const cx = 12 + (pt.x / 100) * 96;
+        const cy = 10 + (pt.y / 100) * 58;
+        const rot = pt.rotation ?? 0;
+        return (
+          <rect
+            key={index}
+            x={cx - 4.5}
+            y={cy - 6.8}
+            width="9"
+            height="13.6"
+            rx="1.6"
+            transform={rot ? `rotate(${rot} ${cx} ${cy})` : undefined}
+            className={index === 0 ? "is-anchor" : undefined}
+          />
+        );
+      })}
+    </svg>
+  );
+}
 
 function parseCustomPositions(value: string): string[] {
   return value
@@ -163,6 +202,30 @@ export function SetupForm({
           />
         </label>
         {readingKind === "spread" ? (
+          <div className="starter-intents field--wide" aria-label={t(language, "quickIntentions")}>
+            {(
+              [
+                { labelKey: "intentCareer", qKey: "intentCareerQ", spread: "career_path" },
+                { labelKey: "intentLove", qKey: "intentLoveQ", spread: "relationship_cross" },
+                { labelKey: "intentDecision", qKey: "intentDecisionQ", spread: "decision_making" },
+              ] as const
+            ).map((starter) => (
+              <button
+                key={starter.spread}
+                type="button"
+                className="starter-intent-chip"
+                onClick={() => {
+                  setQuestion(t(language, starter.qKey));
+                  setSpreadType(starter.spread);
+                  setInvalidField(undefined);
+                }}
+              >
+                {t(language, starter.labelKey)}
+              </button>
+            ))}
+          </div>
+        ) : null}
+        {readingKind === "spread" ? (
           <label className="field field--wide">
             <span>{t(language, "spread")}</span>
             <select
@@ -180,7 +243,14 @@ export function SetupForm({
         ) : null}
         {(readingKind === "spread" || readingKind === "daily") && preview ? (
           <div className="spread-preview">
-            <p id="spread-description">{preview.description}</p>
+            <div className="spread-preview__top">
+              <SpreadMiniMap
+                spreadId={preview.id}
+                cardCount={preview.cardCount}
+                label={`${preview.name} — ${t(language, "spreadMapLabel")}`}
+              />
+              <p id="spread-description">{preview.description}</p>
+            </div>
             <ol>
               {preview.positions.map((position, index) => (
                 <li key={index}>

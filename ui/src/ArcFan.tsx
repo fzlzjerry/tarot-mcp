@@ -3,6 +3,7 @@ import {
   type FocusEvent as ReactFocusEvent,
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
+  type WheelEvent as ReactWheelEvent,
   forwardRef,
   useCallback,
   useEffect,
@@ -326,6 +327,58 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
     wake();
   };
 
+  const scrubberRef = useRef<HTMLInputElement>(null);
+
+  const syncScrollProgress = useCallback(() => {
+    const view = scroller.current;
+    const input = scrubberRef.current;
+    if (!view || !input) return;
+    const maxScroll = Math.max(0, view.scrollWidth - view.clientWidth);
+    input.value =
+      maxScroll <= 0
+        ? "0"
+        : String(Math.round((view.scrollLeft / maxScroll) * 100));
+  }, []);
+
+  const handleScroll = (): void => {
+    syncScrollProgress();
+    wake();
+  };
+
+  const handleWheel = (event: ReactWheelEvent<HTMLDivElement>): void => {
+    const view = scroller.current;
+    if (!view) return;
+    const maxScroll = view.scrollWidth - view.clientWidth;
+    if (maxScroll <= 0) return;
+    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+      const next = Math.max(0, Math.min(maxScroll, view.scrollLeft + event.deltaY));
+      if (next !== view.scrollLeft) {
+        event.preventDefault();
+        view.scrollLeft = next;
+        syncScrollProgress();
+        wake();
+      }
+    }
+  };
+
+  const nudgeScroll = (direction: -1 | 1): void => {
+    const view = scroller.current;
+    if (!view) return;
+    const maxScroll = Math.max(0, view.scrollWidth - view.clientWidth);
+    const delta = Math.max(config.step * 6, view.clientWidth * 0.65) * direction;
+    view.scrollLeft = Math.max(0, Math.min(maxScroll, view.scrollLeft + delta));
+    syncScrollProgress();
+    wake();
+  };
+
+  const scrubTo = (percent: number): void => {
+    const view = scroller.current;
+    if (!view) return;
+    const maxScroll = Math.max(0, view.scrollWidth - view.clientWidth);
+    view.scrollLeft = (maxScroll * percent) / 100;
+    wake();
+  };
+
   const onBlur = (event: ReactFocusEvent<HTMLDivElement>): void => {
     const next = event.relatedTarget;
     if (next && event.currentTarget.contains(next as Node)) return;
@@ -333,72 +386,103 @@ export const ArcFan = forwardRef<ArcFanHandle, ArcFanProps>(function ArcFan(
   };
 
   return (
-    <div
-      className="arc-fan"
-      ref={scroller}
-      role="group"
-      aria-describedby="deck-help deck-status"
-      onKeyDown={onKeyDown}
-      onScroll={wake}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={endDrag}
-      onPointerCancel={endDrag}
-      onPointerLeave={onPointerLeave}
-      onBlur={onBlur}
-      style={
-        {
-          "--arc-card-width": `${config.cardWidth}px`,
-          "--arc-depth": `${config.depth}px`,
-        } as CSSProperties
-      }
-    >
-      <div className="arc-fan__strip" style={{ width: `${stripWidth}px` }}>
-        {slotIds.map((slotId, index) => {
-          const order = selected.indexOf(slotId);
-          const isDrawn = order >= 0;
-          return (
-            <button
-              key={slotId}
-              type="button"
-              className={`arc-card${isDrawn ? " is-drawn" : ""}`}
-              ref={(node) => {
-                nodes.current[index] = node;
-              }}
-              style={
-                {
-                  left: `${arcCardLeft(index, config)}px`,
-                  "--deck-back-image": deckBackImageUri
-                    ? `url("${deckBackImageUri.replaceAll('"', "%22")}")`
-                    : undefined,
-                } as CSSProperties
-              }
-              data-slot-index={index}
-              tabIndex={index === tabStopIndex ? 0 : -1}
-              aria-pressed={isDrawn}
-              aria-disabled={disabled || (atLimit && !isDrawn)}
-              aria-label={
-                isDrawn
-                  ? `${t(language, "deckCard", { number: index + 1 })}, ${t(language, "selectedOrder", { number: order + 1 })}`
-                  : t(language, "deckCard", { number: index + 1 })
-              }
-              onFocus={() => {
-                setTabStopIndex(index);
-                setFocusedIndex(index);
-                wake();
-              }}
-              onClick={(event) =>
-                pick(index, event.currentTarget, event.detail)
-              }
-            >
-              {isDrawn ? (
-                <span className="arc-card__order" aria-hidden="true">
-                  {order + 1}
-                </span>
-              ) : null}
-            </button>
-          );
-        })}
+    <div className="arc-fan-wrap">
+      <div
+        className="arc-fan"
+        ref={scroller}
+        role="group"
+        aria-describedby="deck-help deck-status"
+        onKeyDown={onKeyDown}
+        onScroll={handleScroll}
+        onWheel={handleWheel}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onPointerLeave={onPointerLeave}
+        onBlur={onBlur}
+        style={
+          {
+            "--arc-card-width": `${config.cardWidth}px`,
+            "--arc-depth": `${config.depth}px`,
+          } as CSSProperties
+        }
+      >
+        <div className="arc-fan__strip" style={{ width: `${stripWidth}px` }}>
+          {slotIds.map((slotId, index) => {
+            const order = selected.indexOf(slotId);
+            const isDrawn = order >= 0;
+            return (
+              <button
+                key={slotId}
+                type="button"
+                className={`arc-card${isDrawn ? " is-drawn" : ""}`}
+                ref={(node) => {
+                  nodes.current[index] = node;
+                }}
+                style={
+                  {
+                    left: `${arcCardLeft(index, config)}px`,
+                    "--deck-back-image": deckBackImageUri
+                      ? `url("${deckBackImageUri.replaceAll('"', "%22")}")`
+                      : undefined,
+                  } as CSSProperties
+                }
+                data-slot-index={index}
+                tabIndex={index === tabStopIndex ? 0 : -1}
+                aria-pressed={isDrawn}
+                aria-disabled={disabled || (atLimit && !isDrawn)}
+                aria-label={
+                  isDrawn
+                    ? `${t(language, "deckCard", { number: index + 1 })}, ${t(language, "selectedOrder", { number: order + 1 })}`
+                    : t(language, "deckCard", { number: index + 1 })
+                }
+                onFocus={() => {
+                  setTabStopIndex(index);
+                  setFocusedIndex(index);
+                  wake();
+                }}
+                onClick={(event) =>
+                  pick(index, event.currentTarget, event.detail)
+                }
+              >
+                {isDrawn ? (
+                  <span className="arc-card__order" aria-hidden="true">
+                    {order + 1}
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <div className="arc-rail">
+        <button
+          type="button"
+          className="arc-rail__btn"
+          aria-label={t(language, "scrollLeft")}
+          onClick={() => nudgeScroll(-1)}
+        >
+          ←
+        </button>
+        <input
+          ref={scrubberRef}
+          type="range"
+          className="arc-rail__scrubber"
+          min={0}
+          max={100}
+          defaultValue={0}
+          aria-label={t(language, "deckScrubber")}
+          onChange={(event) => scrubTo(Number(event.target.value))}
+        />
+        <button
+          type="button"
+          className="arc-rail__btn"
+          aria-label={t(language, "scrollRight")}
+          onClick={() => nudgeScroll(1)}
+        >
+          →
+        </button>
       </div>
     </div>
   );

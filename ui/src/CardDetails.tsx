@@ -1,4 +1,9 @@
 import { useEffect, useRef } from "react";
+import {
+  isV2GateCard,
+  readInitialDeckEdition,
+  resolveWebCardAssetUrl,
+} from "./deck-edition.js";
 import { t } from "./i18n.js";
 import type { DrawClient, Language, ReadingCard } from "./types.js";
 import { useCardImage } from "./useCardImage.js";
@@ -8,16 +13,32 @@ export function CardDetails({
   client,
   language,
   onClose,
+  onPrevious,
+  onNext,
+  counter,
 }: {
   card: ReadingCard;
   client: DrawClient;
   language: Language;
   onClose(): void;
+  onPrevious?(): void;
+  onNext?(): void;
+  counter?: { current: number; total: number };
 }) {
-  const [source] = useCardImage(client, card);
+  const [resolvedSource] = useCardImage(client, card);
+  const source =
+    client.target === "web" &&
+    readInitialDeckEdition() === "v2" &&
+    isV2GateCard(card.id)
+      ? resolveWebCardAssetUrl(card.id, resolvedSource, "v2", true)
+      : resolvedSource;
+
   const closeButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLElement>(null);
   const opener = useRef<HTMLElement | null>(null);
+  const navRef = useRef({ onPrevious, onNext });
+  navRef.current = { onPrevious, onNext };
+
   useEffect(() => {
     opener.current =
       document.activeElement instanceof HTMLElement
@@ -28,6 +49,16 @@ export function CardDetails({
       if (event.key === "Escape") {
         event.preventDefault();
         onClose();
+        return;
+      }
+      if (event.key === "ArrowLeft" && navRef.current.onPrevious) {
+        event.preventDefault();
+        navRef.current.onPrevious();
+        return;
+      }
+      if (event.key === "ArrowRight" && navRef.current.onNext) {
+        event.preventDefault();
+        navRef.current.onNext();
         return;
       }
       if (event.key !== "Tab") return;
@@ -64,6 +95,10 @@ export function CardDetails({
     };
   }, [onClose]);
 
+  const motifs = card.editionMotifs?.length
+    ? card.editionMotifs
+    : card.traditionMotifs;
+
   return (
     <div
       className="modal-backdrop"
@@ -98,7 +133,14 @@ export function CardDetails({
           )}
         </div>
         <div className="dialog-copy">
-          <p className="position-label">{card.position}</p>
+          <div className="dialog-meta-row">
+            <p className="position-label">{card.position}</p>
+            {counter && counter.total > 1 ? (
+              <span className="dialog-counter">
+                {t(language, "cardCounter", counter)}
+              </span>
+            ) : null}
+          </div>
           <h2 id="card-dialog-title">{card.displayName}</h2>
           <p className="orientation-label">
             {card.orientation === "reversed"
@@ -106,13 +148,45 @@ export function CardDetails({
               : t(language, "upright")}
           </p>
           {card.positionMeaning ? <p>{card.positionMeaning}</p> : null}
-          {card.meaning ? <p>{card.meaning}</p> : null}
+          {card.meaning ? <p className="dialog-meaning">{card.meaning}</p> : null}
           {card.keywords?.length ? (
             <ul className="keyword-list">
               {card.keywords.map((keyword) => (
                 <li key={keyword}>{keyword}</li>
               ))}
             </ul>
+          ) : null}
+          {motifs?.length ? (
+            <div className="dialog-motifs">
+              <h3>{t(language, "symbolismHeading")}</h3>
+              <ul>
+                {motifs.slice(0, 4).map((motif) => (
+                  <li key={motif}>{motif}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          {onPrevious || onNext ? (
+            <div className="dialog-nav">
+              <button
+                type="button"
+                className="text-action"
+                onClick={onPrevious}
+                disabled={!onPrevious}
+                aria-label={t(language, "previousCard")}
+              >
+                ← {t(language, "previousCard")}
+              </button>
+              <button
+                type="button"
+                className="text-action"
+                onClick={onNext}
+                disabled={!onNext}
+                aria-label={t(language, "nextCard")}
+              >
+                {t(language, "nextCard")} →
+              </button>
+            </div>
           ) : null}
         </div>
       </section>
