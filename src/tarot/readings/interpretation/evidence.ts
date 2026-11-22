@@ -15,7 +15,9 @@ import type {
   ReadingDomain,
   ReadingEvidence,
   ReadingSignal,
+  SpreadLink,
 } from "../../shared/types.js";
+import { buildReadingRelations } from "./relations.js";
 
 const MAJOR_ARCANA_RATIO = 22 / 78;
 
@@ -97,11 +99,16 @@ export function resolvePositionRole(drawn: DrawnCard): PositionRole {
   return drawn.positionRole ?? inferPositionRole(drawn.position, drawn.positionMeaning);
 }
 
+/**
+ * `links` are the spread's declared structural links; omit them for a custom
+ * spread and they are derived from the position roles.
+ */
 export function buildReadingEvidence(
   drawnCards: DrawnCard[],
   question: string,
   language: Language = "en",
   deckVersion: string = VISUAL_ARTWORK_VERSION,
+  links?: SpreadLink[],
 ): ReadingEvidence {
   const questionDomain = classifyQuestionDomain(question);
 
@@ -130,6 +137,15 @@ export function buildReadingEvidence(
   });
 
   const signals = computeReadingSignals(drawnCards, language);
+  const relations = buildReadingRelations(
+    drawnCards,
+    cards.map(({ positionId, positionRole }) => ({
+      id: positionId,
+      role: positionRole,
+    })),
+    links,
+    language,
+  );
 
   return {
     knowledgeVersion: CANON_KNOWLEDGE_VERSION,
@@ -137,6 +153,7 @@ export function buildReadingEvidence(
     questionDomain,
     cards,
     signals,
+    relations,
   };
 }
 

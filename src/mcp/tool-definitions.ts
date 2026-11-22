@@ -42,7 +42,12 @@ const READING_OUTPUT_SCHEMA: Record<string, unknown> = {
     evidence: {
       type: "object",
       description:
-        "Structured reading evidence (question domain, per-card canon motifs/roles, and baseline-aware spread signals).",
+        "Structured reading evidence: question domain, per-card canon motifs and roles, baseline-aware spread signals, and card-to-card relations (the spread's structural links with elemental dignity, archetype pairs, suit runs, and number echoes).",
+    },
+    guide: {
+      type: "object",
+      description:
+        "Rubric for presenting this reading: ordered steps, one role-conditioned question per position, and guardrails.",
     },
     cards: {
       type: "array",

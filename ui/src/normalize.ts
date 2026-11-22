@@ -7,6 +7,7 @@ import type {
   EmbeddedImage,
   Language,
   ReadingCard,
+  ReadingGuide,
   ReadingKind,
 } from "./types.js";
 
@@ -246,6 +247,30 @@ function normalizeCard(
   };
 }
 
+function strings(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter(
+        (entry): entry is string => typeof entry === "string" && entry !== "",
+      )
+    : [];
+}
+
+function normalizeGuide(value: unknown): ReadingGuide | undefined {
+  if (!isRecord(value)) return undefined;
+  const guide = {
+    steps: strings(value.steps),
+    prompts: Array.isArray(value.positionPrompts)
+      ? value.positionPrompts.map((entry) =>
+          isRecord(entry) && typeof entry.prompt === "string"
+            ? entry.prompt
+            : "",
+        )
+      : [],
+    guardrails: strings(value.guardrails),
+  };
+  return guide.steps.length > 0 ? guide : undefined;
+}
+
 export function normalizeConfirmedReading(
   value: unknown,
   begin?: BeginReadingPayload,
@@ -278,6 +303,7 @@ export function normalizeConfirmedReading(
     timestamp: stringValue(nested.timestamp, nested.confirmedAt),
     cards,
     interpretation: stringValue(nested.interpretation, root.interpretation),
+    guide: normalizeGuide(nested.guide),
     deckBackImageUri:
       embeddedImageUri(meta.backImage) ?? begin?.deckBackImageUri,
   };

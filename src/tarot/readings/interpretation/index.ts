@@ -1,15 +1,15 @@
-import { DrawnCard, Language } from "../../shared/types.js";
+import { DrawnCard, Language, ReadingRelation } from "../../shared/types.js";
 import { localizedCardName, localizedMeanings, pick } from "../../shared/i18n.js";
 import { orientationLabel } from "../reading-formatter.js";
-import { generateGenericSpreadAnalysis, selectSpreadAnalysis } from "./analyzers.js";
+import { renderSpreadAnalysis } from "./analyzers.js";
 import { resolvePositionRole } from "./evidence.js";
 import { generateOverallInterpretation, selectRelevantMeaning } from "./patterns.js";
 
 /**
  * Generate the full interpretation for a reading: per-card contextual
  * meanings (powered by Card Canon when available and domain-safe matching),
- * the spread-specific (or generic) cross-card analysis, and the overall
- * pattern interpretation. All sections are bilingual (en/zh).
+ * the cross-card analysis rendered from the reading's relations, and the
+ * overall pattern interpretation. All sections are bilingual (en/zh).
  */
 export function generateInterpretation(
   drawnCards: DrawnCard[],
@@ -17,6 +17,7 @@ export function generateInterpretation(
   spreadType: string,
   spreadName: string,
   language: Language = "en",
+  relations: ReadingRelation[] = [],
 ): string {
   let interpretation = pick(
     language,
@@ -54,15 +55,12 @@ export function generateInterpretation(
     interpretation += `${relevantMeaning}\n\n`;
   });
 
-  // Add spread-specific analysis. An analyzer returns "" when the card
-  // count doesn't match its layout; fall back to the generic analysis
-  // instead of silently dropping all cross-card analysis.
-  const spreadAnalysis = selectSpreadAnalysis(drawnCards, spreadType, language);
-  if (spreadAnalysis) {
-    interpretation += spreadAnalysis;
-  } else if (drawnCards.length > 1) {
-    interpretation += generateGenericSpreadAnalysis(drawnCards, language);
-  }
+  interpretation += renderSpreadAnalysis(
+    drawnCards,
+    spreadType,
+    relations,
+    language,
+  );
 
   // Overall interpretation
   interpretation += generateOverallInterpretation(drawnCards, language);

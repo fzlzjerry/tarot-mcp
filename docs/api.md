@@ -116,6 +116,26 @@ tool result. Opaque slots alone stay in begin-result `_meta`; the single-file MC
 App bundles its own lightweight artwork, while REST/Web responses retain their
 versioned static `imageUri` values.
 
+Every reading's `structuredContent` also carries `evidence` and `guide`:
+
+| Field | Contents |
+| --- | --- |
+| `evidence.cards[]` | Position id and role, orientation, tradition and edition motifs, and the reversal lenses of a reversed card |
+| `evidence.signals[]` | Spread-wide facts with their baseline: Major Arcana density, orientation mix, element and suit focus, repeated pip ranks, court cards |
+| `evidence.relations[]` | Card pairs to read together. `structural` relations come from the spread's own links (`crosses`, `answers`, `leads_to`, `underlies`, `mirrors`, `tension`) and carry both cards' elements and their dignity (`same`, `friendly`, `opposing`, `neutral`). `archetype_pair`, `suit_run`, and `number_echo` are found among the drawn cards |
+| `guide` | Rubric for the presenting assistant: ordered `steps`, one role-conditioned question per position in `positionPrompts`, and `guardrails` |
+
+Every position of a built-in spread has a stable `id` and one of 14 roles
+(`message`, `foundation`, `present`, `challenge`, `resource`, `action`,
+`outcome`, `advice`, `hidden`, `self`, `other`, `external`, `hopes_fears`, or
+`general` for thematic positions such as a month or a chakra).
+`tarot://spreads/{type}` lists them together with the spread's `links`. A custom
+spread gets its roles inferred from each position's name and meaning, and its
+links derived from those roles. Each card's `meaning` is selected by its role
+and the question's domain, and orientation is always reported as a mode of
+expression, never as a verdict. The tool text ends with the same guide, so hosts
+that pass only text to the model still receive it.
+
 All 16 tools provide titles, explicit read-only/destructive/open-world hints,
 and top-level `securitySchemes: [{type: "noauth"}]`. Here `noauth` means no
 additional end-user OAuth flow; the personal tunnel still authenticates upstream

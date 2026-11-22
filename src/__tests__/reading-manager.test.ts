@@ -484,7 +484,10 @@ describe('TarotReadingManager', () => {
 
       expect(result).toContain('### 6. Near Future');
       expect(result).toContain(
-        '**Near Future Impact:** The Hierophant in your near future will'
+        '**Recent Past → Near Future:** The Empress (upright) leads into The Hierophant (upright)'
+      );
+      expect(result).toContain(
+        '**Hopes and Fears ↔ Final Outcome:** Strength (upright) pulls against The Hermit (upright)'
       );
       expect(result).not.toContain('The The');
     });

@@ -365,7 +365,7 @@ describe("MCP accuracy counterfactuals and invariants", () => {
       });
       const res = rm.performReadingWithDetails("single_card", "How should I decide?");
       expect(res.reading.deckVersion).toBe("midnight-art-nouveau-v2");
-      expect(res.reading.knowledgeVersion).toBe("canon-v2.0");
+      expect(res.reading.knowledgeVersion).toBe("canon-v2.1");
       expect(res.reading.cards[0].traditionMotifs?.length).toBeGreaterThan(0);
       expect(res.reading.cards[0].editionMotifs?.length).toBeGreaterThan(0);
       expect(res.reading.evidence.cards[0].editionMotifs.length).toBeGreaterThan(0);

@@ -124,4 +124,33 @@ describe("visual draw payload normalization", () => {
     });
     expect(reading.deckBackImageUri).toBe("data:image/webp;base64,YmFjaw==");
   });
+
+  it("keeps the server's reading guide with one prompt per card, in card order", () => {
+    const card = { cardId: "fool", name: "The Fool" };
+    const reading = normalizeConfirmedReading({
+      structuredContent: {
+        spreadType: "three_card",
+        cards: [card, { ...card, cardId: "world" }],
+        guide: {
+          version: "guide-v1",
+          steps: ["Restate the question.", 2, ""],
+          positionPrompts: [
+            { positionIndex: 1, positionRole: "present", prompt: "What now?" },
+            "malformed",
+          ],
+          guardrails: ["Describe tendencies, never fixed fates."],
+        },
+      },
+    });
+    expect(reading.guide).toEqual({
+      steps: ["Restate the question."],
+      prompts: ["What now?", ""],
+      guardrails: ["Describe tendencies, never fixed fates."],
+    });
+    expect(
+      normalizeConfirmedReading({
+        structuredContent: { cards: [card], guide: { steps: [] } },
+      }).guide,
+    ).toBeUndefined();
+  });
 });

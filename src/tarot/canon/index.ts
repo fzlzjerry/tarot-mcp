@@ -63,7 +63,7 @@ const CANON_DATA_DIR = join(
   "data",
 );
 
-export const CANON_KNOWLEDGE_VERSION = "canon-v2.0";
+export const CANON_KNOWLEDGE_VERSION = "canon-v2.1";
 export const CANON_DECK_EDITION = "midnight-art-nouveau-v2";
 
 const CANON_ENTRIES: Array<[string, CanonCardEntry]> = [];
@@ -138,42 +138,38 @@ export function getCanonReversalLenses(
   return out;
 }
 
+/**
+ * Ordered role patterns for positions that carry no explicit role (custom
+ * spreads). English terms match at a word start so "represents" is not read
+ * as "present" and "across" is not read as "cross". Order resolves overlaps:
+ * a hopes-and-fears position mentions the outcome, and a hidden influence
+ * mentions the present, so the more specific role is tested first.
+ */
+const POSITION_ROLE_PATTERNS: Array<[PositionRole, RegExp]> = [
+  ["hopes_fears", /\b(hopes?|fears?|wish(es)?|worr(y|ies)|anxiet)|希望|期望|期待|恐惧|担忧|害怕|顾虑/],
+  ["challenge", /\b(challeng|obstacle|cross(es|ing)?\b|block|divid|friction|conflict|difficult|struggl)|阻碍|挑战|障碍|冲突|分歧|难题|卡点/],
+  ["hidden", /\b(hidden|subconscious|unconscious|shadow|unseen|secret|underlying|beneath)|隐藏|潜意识|阴影|未知|潜在|暗处/],
+  ["external", /\b(external|environment|surroundings|outside|other people|others)\b|外部|外界|环境|周遭|他人的影响/],
+  ["other", /\b(partner|the other (person|party|side)|other person|their (feelings?|perspective|intentions?|view|side|attitude|stance))\b|^(them|they|him|her)$|对方|伴侣|另一半|另一方|^[他她]$/],
+  ["self", /\b(yourself|myself|querent|your (own )?(self|role|attitude|stance|perspective|part|feelings?|state))\b|^(you|me|self|i)$|自己|自我|本人|你的(态度|立场|状态|角色|感受)|^[你我]$/],
+  ["resource", /\b(resource|strength|skill|talent|support|unit(e|es|ing)\b|asset|gift|ally|allies)|资源|优势|助力|支持|才能|天赋|长处/],
+  ["advice", /\b(advice|advis|guidance|recommend|counsel)|建议|指引|劝告|忠告/],
+  ["action", /\b(action|act\b|step|next\b|approach|what to do|do next)|行动|举措|做法|下一步|怎么做/],
+  ["outcome", /\b(outcome|future|potential|result|destin|answer|where (it|this) (leads|goes))|结果|未来|走向|结局|答案/],
+  ["foundation", /\b(past|foundation|root|origin|background|history|cause)|过去|根基|起点|渊源|根源|起因|背景/],
+  ["present", /\b(present|current|situation|now\b|today)|现状|当下|目前|现在|处境/],
+  ["message", /\b(message|insight|theme|lesson)|讯息|启示|主题|课题/],
+];
+
 function matchPositionRole(text: string): PositionRole | undefined {
-  if (/(challenge|obstacle|cross|block|divid|friction|阻碍|挑战|障碍|冲突|分歧)/.test(text)) {
-    return "challenge";
-  }
-  if (/(resource|strength|skill|talent|support|unite|asset|资源|优势|助力|支持|才能)/.test(text)) {
-    return "resource";
-  }
-  if (/(action|step|next|approach|take|行动|举措|做法|下一步)/.test(text)) {
-    return "action";
-  }
-  if (/(advice|guidance|recommend|建议|指引|劝告)/.test(text)) {
-    return "advice";
-  }
-  if (/(outcome|future|potential|result|destin|结果|未来|走向|结局)/.test(text)) {
-    return "outcome";
-  }
-  if (/(past|foundation|root|origin|过去|根基|起点|渊源)/.test(text)) {
-    return "foundation";
-  }
-  if (/(hidden|subconscious|shadow|unseen|隐藏|潜意识|阴影|未知)/.test(text)) {
-    return "hidden";
-  }
-  if (/(present|current|situation|现状|当下|目前|核心)/.test(text)) {
-    return "present";
-  }
-  if (/(message|insight|theme|讯息|核心启示|主题)/.test(text)) {
-    return "message";
-  }
-  return undefined;
+  return POSITION_ROLE_PATTERNS.find(([, pattern]) => pattern.test(text))?.[0];
 }
 
 /**
- * Fallback position role classifier for custom spreads or spreads whose
- * positions have not been explicitly tagged yet. Checks explicit position
- * names first so a description mentioning another role (e.g. "Likely Outcome"
- * described as "if you follow the advice given") never overrides the name.
+ * Fallback position role classifier for custom spreads, whose positions carry
+ * no explicit role. Checks the position name first so a description that
+ * mentions another role (e.g. "Likely Outcome" described as "if you follow the
+ * advice given") never overrides the name.
  */
 export function inferPositionRole(
   positionName = "",
