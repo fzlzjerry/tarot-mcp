@@ -36,6 +36,8 @@ const MASTER_DIR = resolve(
 const OUT_DIR = resolve(root, "assets/cards/v2");
 const PROV_PATH = resolve(root, "assets/artwork/v2/provenance.json");
 const DECK_ID = "midnight-art-nouveau-v2";
+const ASSET_REVISION = "r2";
+const ASSET_BASE = `/assets/cards/${DECK_ID}-${ASSET_REVISION}`;
 
 const cardData = JSON.parse(
   await readFile(resolve(root, "src/tarot/cards/card-data.json"), "utf8"),
@@ -318,7 +320,7 @@ async function worker() {
       sourceMasterSha256: sourceMasterSha,
       luminance: metrics,
       web: {
-        path: `/assets/cards/${DECK_ID}/${cardId}.webp`,
+        path: `${ASSET_BASE}/${cardId}.webp`,
         physicalPath: `assets/cards/v2/${cardId}.webp`,
         width: 640,
         height: 960,
@@ -327,7 +329,7 @@ async function worker() {
         sha256: webSha,
       },
       mcp: {
-        path: `/assets/cards/${DECK_ID}/mcp/${cardId}.webp`,
+        path: `${ASSET_BASE}/mcp/${cardId}.webp`,
         physicalPath: `assets/cards/v2/mcp/${cardId}.webp`,
         width: 192,
         height: 288,
@@ -358,19 +360,21 @@ if (totalMcpBytes > 600_000 || bundledMcpBase64Bytes > 800_000) {
 const manifest = {
   schemaVersion: 2,
   deckId: DECK_ID,
+  assetRevision: ASSET_REVISION,
+  assetBase: ASSET_BASE,
   status: "complete-78",
   title: "Luminous Midnight Art Nouveau Tarot (v2 Edition)",
   provider: "openai-official-images-api",
   model: provenance.model ?? "gpt-image-2.5-sunburst",
   provenancePath: "assets/artwork/v2/provenance.json",
-  foilMaskPath: `/assets/cards/${DECK_ID}/foil-mask.svg`,
+  foilMaskPath: `${ASSET_BASE}/foil-mask.svg`,
   styleReferenceSha256: provenance.styleBoard?.masterSha256 ?? null,
   cardBack: {
     rotationalSymmetry: "180deg-exact-decoded-pixels",
     decodedRotationalMismatch: 0,
     sourceMasterSha256: await sha256(backMaster),
     web: {
-      path: `/assets/cards/${DECK_ID}/back.webp`,
+      path: `${ASSET_BASE}/back.webp`,
       physicalPath: "assets/cards/v2/back.webp",
       width: 640,
       height: 960,
@@ -380,7 +384,7 @@ const manifest = {
       sha256: await sha256(backWebPath),
     },
     mcp: {
-      path: `/assets/cards/${DECK_ID}/mcp/back.webp`,
+      path: `${ASSET_BASE}/mcp/back.webp`,
       physicalPath: "assets/cards/v2/mcp/back.webp",
       width: 192,
       height: 288,

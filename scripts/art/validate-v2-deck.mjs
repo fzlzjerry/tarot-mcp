@@ -52,8 +52,16 @@ async function decodedRotationalMismatch(path) {
   return mismatch;
 }
 
+const EXPECTED_ASSET_REVISION = "r2";
+const EXPECTED_ASSET_BASE = `/assets/cards/midnight-art-nouveau-v2-${EXPECTED_ASSET_REVISION}`;
+
 check(manifest.schemaVersion === 2, "v2 manifest schemaVersion must be 2");
 check(manifest.deckId === "midnight-art-nouveau-v2", "v2 manifest deckId mismatch");
+check(manifest.assetRevision === EXPECTED_ASSET_REVISION, "v2 manifest assetRevision mismatch");
+check(manifest.assetBase === EXPECTED_ASSET_BASE, "v2 manifest assetBase mismatch");
+check(manifest.foilMaskPath === `${EXPECTED_ASSET_BASE}/foil-mask.svg`, "v2 manifest foilMaskPath mismatch");
+check(manifest.cardBack?.web?.path === `${EXPECTED_ASSET_BASE}/back.webp`, "v2 manifest Web back URL mismatch");
+check(manifest.cardBack?.mcp?.path === `${EXPECTED_ASSET_BASE}/mcp/back.webp`, "v2 manifest MCP back URL mismatch");
 check(manifest.status === "complete-78", "v2 manifest status must be complete-78");
 check(manifest.cards?.length === 78, "v2 manifest must contain exactly 78 cards");
 check(
@@ -79,11 +87,11 @@ for (const card of manifest.cards ?? []) {
     `${card.id}: manifest promptSha256 differs from provenance`,
   );
   check(
-    card.web.path === `/assets/cards/midnight-art-nouveau-v2/${card.id}.webp`,
+    card.web.path === `${EXPECTED_ASSET_BASE}/${card.id}.webp`,
     `${card.id}: incorrect v2 Web URL`,
   );
   check(
-    card.mcp.path === `/assets/cards/midnight-art-nouveau-v2/mcp/${card.id}.webp`,
+    card.mcp.path === `${EXPECTED_ASSET_BASE}/mcp/${card.id}.webp`,
     `${card.id}: incorrect v2 MCP URL`,
   );
 

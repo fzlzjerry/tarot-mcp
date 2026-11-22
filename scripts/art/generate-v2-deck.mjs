@@ -482,26 +482,27 @@ let prov = opts.resetProvenance
 prov.model = opts.model;
 if (!prov.cards) prov.cards = {};
 
+function sameStringArray(a, b) {
+  return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((v, i) => v === b[i]);
+}
+
 const styleBoardFile = resolve(masterRoot, "style-board.png");
 
 if (opts.stage === "style" || opts.stage === "all") {
   const prompt = buildStyleBoardPrompt();
   const promptHash = sha256(normalizePrompt(prompt));
-  if (!opts.force && (await fileExists(styleBoardFile))) {
-    const existingBytes = await readFile(styleBoardFile);
-    prov.styleBoard = {
-      ...(prov.styleBoard ?? {}),
-      masterFile: `${masterFolderLabel}/style-board.png`,
-      model: opts.model,
-      endpoint: "generations",
-      size: SIZE,
-      quality: prov.styleBoard?.quality ?? "xhigh",
-      prompt,
-      promptSha256: promptHash,
-      masterSha256: sha256(existingBytes),
-    };
-    await saveProvenance(prov);
-    console.log(`[style] adopting existing ${styleBoardFile} (${(existingBytes.length / 1024).toFixed(0)} KB)`);
+  const prevStyle = prov.styleBoard;
+  const canReuseStyle =
+    !opts.force &&
+    (await fileExists(styleBoardFile)) &&
+    Boolean(prevStyle) &&
+    prevStyle.model === opts.model &&
+    prevStyle.quality === opts.quality &&
+    prevStyle.promptSha256 === promptHash &&
+    prevStyle.masterSha256 === sha256(await readFile(styleBoardFile));
+
+  if (canReuseStyle) {
+    console.log(`[style] skip existing ${styleBoardFile} (inputs & master sha match)`);
   } else {
     console.log(`[style] generating ${opts.model} quality=${opts.quality}...`);
     const payload = {
@@ -543,22 +544,20 @@ if (opts.stage === "back" || opts.stage === "all") {
   const styleRef = await fileToDataUrl(styleBoardFile);
   const prompt = buildCardBackPrompt();
   const promptHash = sha256(normalizePrompt(prompt));
-  if (!opts.force && (await fileExists(backFile))) {
-    const existingBytes = await readFile(backFile);
-    prov.cardBack = {
-      ...(prov.cardBack ?? {}),
-      masterFile: `${masterFolderLabel}/back.png`,
-      model: opts.model,
-      endpoint: "edits",
-      size: SIZE,
-      quality: prov.cardBack?.quality ?? "xhigh",
-      refSha256s: [styleRef.sha256],
-      prompt,
-      promptSha256: promptHash,
-      masterSha256: sha256(existingBytes),
-    };
-    await saveProvenance(prov);
-    console.log(`[back] adopting existing ${backFile} (${(existingBytes.length / 1024).toFixed(0)} KB)`);
+  const expectedBackRefs = [styleRef.sha256];
+  const prevBack = prov.cardBack;
+  const canReuseBack =
+    !opts.force &&
+    (await fileExists(backFile)) &&
+    Boolean(prevBack) &&
+    prevBack.model === opts.model &&
+    prevBack.quality === "xhigh" &&
+    prevBack.promptSha256 === promptHash &&
+    sameStringArray(prevBack.refSha256s, expectedBackRefs) &&
+    prevBack.masterSha256 === sha256(await readFile(backFile));
+
+  if (canReuseBack) {
+    console.log(`[back] skip existing ${backFile} (inputs, style ref & master sha match)`);
   } else {
     console.log(`[back] generating ${opts.model} quality=xhigh...`);
     const payload = {
@@ -587,7 +586,7 @@ if (opts.stage === "back" || opts.stage === "all") {
       quality: res.quality ?? "xhigh",
       elapsedMs: res.elapsedMs,
       usage: res.usage,
-      refSha256s: [styleRef.sha256],
+      refSha256s: expectedBackRefs,
       prompt,
       promptSha256: promptHash,
       masterSha256: sha256(tagged),
@@ -629,7 +628,9 @@ if (opts.stage === "cards" || opts.stage === "all") {
       prev &&
       prev.model === opts.model &&
       prev.quality === opts.quality &&
-      prev.promptSha256 === promptHash
+      prev.promptSha256 === promptHash &&
+      sameStringArray(prev.refSha256s, refSha256s) &&
+      prev.masterSha256 === sha256(await readFile(outPath))
     ) {
       completedCount += 1;
       console.log(`[cards ${completedCount}/${totalCount}] skip existing ${targetId}`);

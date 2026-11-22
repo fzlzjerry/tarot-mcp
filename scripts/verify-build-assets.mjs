@@ -111,10 +111,11 @@ const v2Manifest = JSON.parse(
 );
 if (
   v2Manifest.deckId !== "midnight-art-nouveau-v2" ||
+  v2Manifest.assetBase !== "/assets/cards/midnight-art-nouveau-v2-r2" ||
   !Array.isArray(v2Manifest.cards) ||
   v2Manifest.cards.length !== 78
 ) {
-  throw new Error("dist v2 artwork manifest is incomplete or has the wrong deck id.");
+  throw new Error("dist v2 artwork manifest is incomplete or has the wrong deck id/asset base.");
 }
 const v2ManifestIds = v2Manifest.cards.map((card) => card.id);
 if (JSON.stringify(expectedIds) !== JSON.stringify(v2ManifestIds)) {
