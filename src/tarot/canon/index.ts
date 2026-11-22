@@ -50,28 +50,33 @@ export interface CanonCardEntry {
   promptSpec?: CanonPromptSpec;
 }
 
-interface GateCanonFile {
-  knowledgeVersion: string;
-  deckEdition: string;
-  cards: Record<string, CanonCardEntry>;
+const CANON_DATA_FILES = [
+  "major.json",
+  "wands.json",
+  "cups.json",
+  "swords.json",
+  "pentacles.json",
+] as const;
+
+const CANON_DATA_DIR = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "data",
+);
+
+export const CANON_KNOWLEDGE_VERSION = "canon-v2.0";
+export const CANON_DECK_EDITION = "midnight-art-nouveau-v2";
+
+const CANON_ENTRIES: Array<[string, CanonCardEntry]> = [];
+for (const file of CANON_DATA_FILES) {
+  const parsed = JSON.parse(
+    readFileSync(join(CANON_DATA_DIR, file), "utf8"),
+  ) as Record<string, CanonCardEntry>;
+  for (const [id, entry] of Object.entries(parsed)) {
+    CANON_ENTRIES.push([id.toLowerCase(), entry]);
+  }
 }
 
-const CANON_PATH = join(
-  dirname(fileURLToPath(import.meta.url)),
-  "gate-cards.json",
-);
-
-const parsedCanon = JSON.parse(readFileSync(CANON_PATH, "utf8")) as GateCanonFile;
-
-export const CANON_KNOWLEDGE_VERSION = parsedCanon.knowledgeVersion;
-export const CANON_DECK_EDITION = parsedCanon.deckEdition;
-
-const CANON_BY_ID: ReadonlyMap<string, CanonCardEntry> = new Map(
-  Object.entries(parsedCanon.cards).map(([id, entry]) => [
-    id.toLowerCase(),
-    entry,
-  ]),
-);
+const CANON_BY_ID: ReadonlyMap<string, CanonCardEntry> = new Map(CANON_ENTRIES);
 
 export function getCanonCard(cardId: string): CanonCardEntry | undefined {
   return CANON_BY_ID.get(cardId.toLowerCase());

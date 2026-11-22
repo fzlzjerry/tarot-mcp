@@ -1,31 +1,36 @@
 {
   "schemaVersion": 2,
   "deckId": "midnight-art-nouveau-v2",
-  "status": "milestone-1-gate-6",
-  "title": "Luminous Midnight Art Nouveau Tarot (v2 Gate Edition)",
+  "status": "complete-78",
+  "title": "Luminous Midnight Art Nouveau Tarot (v2 Edition)",
   "provider": "openai-official-images-api",
-  "model": "gpt-image-2.6-sunburst",
+  "model": "gpt-image-2.5-sunburst",
   "provenancePath": "assets/artwork/v2/provenance.json",
   "foilMaskPath": "/assets/cards/midnight-art-nouveau-v2/foil-mask.svg",
+  "styleReferenceSha256": "36fb13f6d0d9acf7b1a03f4f0274c4da6a13ad8f386b9b71e502a50b565fccb0",
   "cardBack": {
     "rotationalSymmetry": "180deg-exact-decoded-pixels",
     "decodedRotationalMismatch": 0,
-    "sourceMasterSha256": "5c5efba847800d616375e5917f7a8b8dfa2b3e112ad94ac37b38f2ad12a28ef2",
+    "sourceMasterSha256": "3b153a3afdaee9b01a95b75449b4d30e3e3f6329257696a8cf7261e903d96a9d",
     "web": {
       "path": "/assets/cards/midnight-art-nouveau-v2/back.webp",
+      "physicalPath": "assets/cards/v2/back.webp",
       "width": 640,
       "height": 960,
-      "bytes": 207864,
+      "bytes": 215410,
+      "lossless": true,
       "paletteColours": 128,
-      "sha256": "55b97272c59a04f6a8c354b1110010edd47227fc49c033791e128b18840f53dd"
+      "sha256": "862bb104e3ce14c6cd3ca4a3617d20ce8e1c1a8c991a589d3464fffeee832af2"
     },
     "mcp": {
       "path": "/assets/cards/midnight-art-nouveau-v2/mcp/back.webp",
+      "physicalPath": "assets/cards/v2/mcp/back.webp",
       "width": 192,
       "height": 288,
-      "bytes": 23000,
-      "paletteColours": 128,
-      "sha256": "8f1770257e6bf3f10b60329e21d48dd07aa62a5034e1401fc8d61e6d48250986"
+      "bytes": 21284,
+      "lossless": true,
+      "paletteColours": 96,
+      "sha256": "1a8633271ed4f4751690c1e1cb1bf27896f37bf0a5765de3e237868c08f0ce66"
     }
   },
   "cards": [
@@ -34,243 +39,1146 @@
       "name": "The Fool",
       "arcana": "major",
       "suit": null,
-      "rank": 0,
-      "sourceMasterSha256": "18ebc70070f57bd76eae784672d8c880a20a64e66f17012b7c08246041a6a33f",
+      "number": 0,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c8213e27b4ae79287f37ab89c7626a82c6d9ba18118cb375b68b7976bb1bf946",
+      "sourceMasterSha256": "22b047820597144c5b09d5a7ee2411300e855d4f3b7c9dbab02fa06747a4c762",
       "luminance": {
-        "mean": 104.9,
-        "darkPct": 33.7,
-        "p50": 95.4,
-        "p95": 228.6
-      },
-      "v1BaselineLuminance": {
-        "mean": 33,
-        "darkPct": 84.1,
-        "p50": 21.3,
-        "p95": 103.2
+        "meanLuma": 100.1,
+        "p10Luma": 16.5,
+        "p50Luma": 85.3,
+        "p90Luma": 201.7,
+        "p98Luma": 231.7,
+        "darkPixelPct": 32.4
       },
       "web": {
         "path": "/assets/cards/midnight-art-nouveau-v2/fool.webp",
         "physicalPath": "assets/cards/v2/fool.webp",
         "width": 640,
         "height": 960,
-        "bytes": 213796,
-        "quality": 84,
-        "sha256": "947a8a52df6e38626b25c37aecbc47896159c78c08fb5132898a8c6bb2eb40d7"
-      },
-      "variants": {
-        "w320": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w320/fool.webp",
-          "width": 320,
-          "height": 480,
-          "bytes": 58558,
-          "quality": 82
-        },
-        "w640Avif": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w640/fool.avif",
-          "width": 640,
-          "height": 960,
-          "bytes": 133087,
-          "quality": 60
-        },
-        "w1024": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/fool.webp",
-          "width": 1024,
-          "height": 1536,
-          "bytes": 456234,
-          "quality": 84
-        }
+        "bytes": 143498,
+        "quality": 56,
+        "sha256": "f7b56f188b9d0d371446349463f3c767e1a6718abe789bd8825bea11b7c3e031"
       },
       "mcp": {
         "path": "/assets/cards/midnight-art-nouveau-v2/mcp/fool.webp",
         "physicalPath": "assets/cards/v2/mcp/fool.webp",
         "width": 192,
         "height": 288,
-        "bytes": 17914,
-        "quality": 68,
-        "sha256": "798dee3de1b1605c596145941daaaa4691f476f5ff0e43d4a5c31c82e0e1f277"
+        "bytes": 7030,
+        "quality": 30,
+        "sha256": "e64d6ebd8e83dd20f53853647a791b5548b85ba8db4e3864e283b46bc56f6845"
       }
     },
     {
-      "id": "three_of_cups",
-      "name": "Three of Cups",
-      "arcana": "minor",
-      "suit": "cups",
-      "rank": 3,
-      "sourceMasterSha256": "4944d88ae4bc3888d68737e3f0d03a56a77b7471d26d63afe40305694e56452b",
+      "id": "magician",
+      "name": "The Magician",
+      "arcana": "major",
+      "suit": null,
+      "number": 1,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "ec59359aa6b6391907a0c5d48877dfdc15d875951b0012273a0de54afd9ef136",
+      "sourceMasterSha256": "88290cffb6f7fd5ea63fd42cbe4e55efb1b87626736edc77a7861ff89632a7cd",
       "luminance": {
-        "mean": 106.9,
-        "darkPct": 32.8,
-        "p50": 97.6,
-        "p95": 230.4
-      },
-      "v1BaselineLuminance": {
-        "mean": 30.1,
-        "darkPct": 85.6,
-        "p50": 19.7,
-        "p95": 91.2
+        "meanLuma": 88,
+        "p10Luma": 16.1,
+        "p50Luma": 66.4,
+        "p90Luma": 189.6,
+        "p98Luma": 221.4,
+        "darkPixelPct": 40.8
       },
       "web": {
-        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_cups.webp",
-        "physicalPath": "assets/cards/v2/three_of_cups.webp",
+        "path": "/assets/cards/midnight-art-nouveau-v2/magician.webp",
+        "physicalPath": "assets/cards/v2/magician.webp",
         "width": 640,
         "height": 960,
-        "bytes": 218126,
-        "quality": 80,
-        "sha256": "f9daa110e107b4da67f619629a3a022cd156c18f4fb67d502661eb22e0668c55"
-      },
-      "variants": {
-        "w320": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w320/three_of_cups.webp",
-          "width": 320,
-          "height": 480,
-          "bytes": 67576,
-          "quality": 82
-        },
-        "w640Avif": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w640/three_of_cups.avif",
-          "width": 640,
-          "height": 960,
-          "bytes": 151189,
-          "quality": 60
-        },
-        "w1024": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/three_of_cups.webp",
-          "width": 1024,
-          "height": 1536,
-          "bytes": 405534,
-          "quality": 76
-        }
+        "bytes": 143060,
+        "quality": 72,
+        "sha256": "c8e3bf014931a3c461c481e4bd22d1f9c0085300e352b9a00d0b12bba0410561"
       },
       "mcp": {
-        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_cups.webp",
-        "physicalPath": "assets/cards/v2/mcp/three_of_cups.webp",
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/magician.webp",
+        "physicalPath": "assets/cards/v2/mcp/magician.webp",
         "width": 192,
         "height": 288,
-        "bytes": 17944,
-        "quality": 52,
-        "sha256": "8b412f9b5a43f5f31e766a061c9a19fbc6617dd372f40a0b493ead2bf4dd3724"
+        "bytes": 7098,
+        "quality": 38,
+        "sha256": "0c2a4021c68c8cc6ec6eaf1d887bed0e7fea021144326ab8bb6daf89d73e1d57"
       }
     },
     {
-      "id": "three_of_pentacles",
-      "name": "Three of Pentacles",
-      "arcana": "minor",
-      "suit": "pentacles",
-      "rank": 3,
-      "sourceMasterSha256": "212828267976cf9310abcd5219d3657fdb61e8711e17d350705d2a14861d7f78",
+      "id": "high_priestess",
+      "name": "The High Priestess",
+      "arcana": "major",
+      "suit": null,
+      "number": 2,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "8be29d6818ab2cbcff62cc42c663000ab90a61f0add15ff7b9f72fb59554e55d",
+      "sourceMasterSha256": "5eadc7a06b4c7e51af4412ba84b84f299e739883cb49cca2db4f1be17dd44822",
       "luminance": {
-        "mean": 103.3,
-        "darkPct": 32.9,
-        "p50": 94.6,
-        "p95": 219.7
-      },
-      "v1BaselineLuminance": {
-        "mean": 35.4,
-        "darkPct": 80.2,
-        "p50": 25.3,
-        "p95": 91.2
+        "meanLuma": 91.4,
+        "p10Luma": 15.2,
+        "p50Luma": 78.8,
+        "p90Luma": 187.7,
+        "p98Luma": 220,
+        "darkPixelPct": 39.5
       },
       "web": {
-        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_pentacles.webp",
-        "physicalPath": "assets/cards/v2/three_of_pentacles.webp",
+        "path": "/assets/cards/midnight-art-nouveau-v2/high_priestess.webp",
+        "physicalPath": "assets/cards/v2/high_priestess.webp",
         "width": 640,
         "height": 960,
-        "bytes": 194902,
-        "quality": 76,
-        "sha256": "87d884681b30914a11361e6663d2a92027cda97a4a016d89ceca3a5a0c13f5cf"
-      },
-      "variants": {
-        "w320": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w320/three_of_pentacles.webp",
-          "width": 320,
-          "height": 480,
-          "bytes": 65380,
-          "quality": 82
-        },
-        "w640Avif": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w640/three_of_pentacles.avif",
-          "width": 640,
-          "height": 960,
-          "bytes": 141656,
-          "quality": 60
-        },
-        "w1024": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/three_of_pentacles.webp",
-          "width": 1024,
-          "height": 1536,
-          "bytes": 423536,
-          "quality": 76
-        }
+        "bytes": 138008,
+        "quality": 64,
+        "sha256": "f6bb0ec4ee8380eb098757840e92d69f136c75d27617b710cbfe9ec219250490"
       },
       "mcp": {
-        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_pentacles.webp",
-        "physicalPath": "assets/cards/v2/mcp/three_of_pentacles.webp",
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/high_priestess.webp",
+        "physicalPath": "assets/cards/v2/mcp/high_priestess.webp",
         "width": 192,
         "height": 288,
-        "bytes": 18000,
+        "bytes": 7048,
+        "quality": 36,
+        "sha256": "2a2aa13c30df3a4faf7746edc57c8466027a9bf6681d21ef306a2895e904b44e"
+      }
+    },
+    {
+      "id": "empress",
+      "name": "The Empress",
+      "arcana": "major",
+      "suit": null,
+      "number": 3,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "459b12e2543d44fe6cd50249143ff9126db24d927bd313a7f01f0d561baeb879",
+      "sourceMasterSha256": "5b11ed125b5a0882a9fa51b1385123a31063a25393d07a92f51b6f0d689374ec",
+      "luminance": {
+        "meanLuma": 98.4,
+        "p10Luma": 16.5,
+        "p50Luma": 87.8,
+        "p90Luma": 194.8,
+        "p98Luma": 224.3,
+        "darkPixelPct": 32.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/empress.webp",
+        "physicalPath": "assets/cards/v2/empress.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 149404,
+        "quality": 56,
+        "sha256": "50e9cec60ecc30a31c6e1d5e8a4413291f7233572c7a71a3245498a3db23679a"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/empress.webp",
+        "physicalPath": "assets/cards/v2/mcp/empress.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7066,
+        "quality": 30,
+        "sha256": "9f74c0b5e308e6ce87a7171b83948e18662d92264b824508f1b78d1752fe5163"
+      }
+    },
+    {
+      "id": "emperor",
+      "name": "The Emperor",
+      "arcana": "major",
+      "suit": null,
+      "number": 4,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c2269439049419fca68b355a6f38118d4810ee0df498d50544ea36951d097060",
+      "sourceMasterSha256": "7a2b855ab65bf501b68637736102db8eabde9f07deb6e1d3b8aa8d9b90d58901",
+      "luminance": {
+        "meanLuma": 70.6,
+        "p10Luma": 14.1,
+        "p50Luma": 54.4,
+        "p90Luma": 154.8,
+        "p98Luma": 208,
+        "darkPixelPct": 48.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/emperor.webp",
+        "physicalPath": "assets/cards/v2/emperor.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139312,
+        "quality": 64,
+        "sha256": "fc7aba7dff23445eef2255dd7b02639c368396d4def58594cd8b7bcd8a81942b"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/emperor.webp",
+        "physicalPath": "assets/cards/v2/mcp/emperor.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7160,
+        "quality": 38,
+        "sha256": "e5d02c2c1ac1b700f579dae993eae7b4800e574bf19b73758dada9618e3ff0c2"
+      }
+    },
+    {
+      "id": "hierophant",
+      "name": "The Hierophant",
+      "arcana": "major",
+      "suit": null,
+      "number": 5,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "672adeb64900b44b95b2a6efa4bdf998dc0be275e5ee575c250a49951a68f7f4",
+      "sourceMasterSha256": "ffed840d009a164fca065635e9924fc97d234af1cb7381c06d62fb76d72652ee",
+      "luminance": {
+        "meanLuma": 96.8,
+        "p10Luma": 15.2,
+        "p50Luma": 92.5,
+        "p90Luma": 194.9,
+        "p98Luma": 231.2,
+        "darkPixelPct": 37.3
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/hierophant.webp",
+        "physicalPath": "assets/cards/v2/hierophant.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139280,
+        "quality": 72,
+        "sha256": "f607cf8deba992d380583d31dfc8e688320f7d48c9f74542761fceee2f6122c2"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/hierophant.webp",
+        "physicalPath": "assets/cards/v2/mcp/hierophant.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6962,
+        "quality": 40,
+        "sha256": "abbcf1b856005dd220d419ff8c85e5b37d07511762aa985471aed754a8a7de6f"
+      }
+    },
+    {
+      "id": "lovers",
+      "name": "The Lovers",
+      "arcana": "major",
+      "suit": null,
+      "number": 6,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "407f9b3ff24ebd27d1aa18e6945a757d845e2e226852d740a718314f04b83c68",
+      "sourceMasterSha256": "dd10ac6e447cdc952021226178ed0c9487e5c7b4b28c06554f69dac6fcc2d2d7",
+      "luminance": {
+        "meanLuma": 105.8,
+        "p10Luma": 17.3,
+        "p50Luma": 104.5,
+        "p90Luma": 191.9,
+        "p98Luma": 219.9,
+        "darkPixelPct": 26.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/lovers.webp",
+        "physicalPath": "assets/cards/v2/lovers.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143308,
         "quality": 60,
-        "sha256": "7224d63aeca33493b2fb9206152310b9678eabe9ceed29c60f0f4b066358f976"
+        "sha256": "5345ee468e46a340cb730909f2e9c66e87b05e7ca183c7fc08bbc6c6207c667f"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/lovers.webp",
+        "physicalPath": "assets/cards/v2/mcp/lovers.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7052,
+        "quality": 34,
+        "sha256": "6e936dafac5d25a4660d6bbc715c8092994acb956fb56fddf4163b35367e5b3a"
       }
     },
     {
-      "id": "queen_of_swords",
-      "name": "Queen of Swords",
-      "arcana": "minor",
-      "suit": "swords",
-      "rank": 13,
-      "sourceMasterSha256": "27db26801a7146ce024b597573d82b8ec6cd33a5ab42caa17fb4234d47da465f",
+      "id": "chariot",
+      "name": "The Chariot",
+      "arcana": "major",
+      "suit": null,
+      "number": 7,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c757704ffd2c82a44ffbda293b2c0778ae133f37c7302916b425ac400083b68c",
+      "sourceMasterSha256": "c018500c56d1c1b9c7ebfbcc545fd576da686e7e228fd25357fc88be341f8cec",
       "luminance": {
-        "mean": 114.5,
-        "darkPct": 25.7,
-        "p50": 114.5,
-        "p95": 233.5
-      },
-      "v1BaselineLuminance": {
-        "mean": 30.5,
-        "darkPct": 87.4,
-        "p50": 20.2,
-        "p95": 93.6
+        "meanLuma": 92.1,
+        "p10Luma": 15.2,
+        "p50Luma": 80.7,
+        "p90Luma": 191.7,
+        "p98Luma": 220,
+        "darkPixelPct": 37.8
       },
       "web": {
-        "path": "/assets/cards/midnight-art-nouveau-v2/queen_of_swords.webp",
-        "physicalPath": "assets/cards/v2/queen_of_swords.webp",
+        "path": "/assets/cards/midnight-art-nouveau-v2/chariot.webp",
+        "physicalPath": "assets/cards/v2/chariot.webp",
         "width": 640,
         "height": 960,
-        "bytes": 214852,
-        "quality": 84,
-        "sha256": "e83bbd74c50499eba6f357ef40ac6b575af3e32e37960d13334bc9378c04ac5b"
-      },
-      "variants": {
-        "w320": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w320/queen_of_swords.webp",
-          "width": 320,
-          "height": 480,
-          "bytes": 58038,
-          "quality": 82
-        },
-        "w640Avif": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w640/queen_of_swords.avif",
-          "width": 640,
-          "height": 960,
-          "bytes": 127723,
-          "quality": 60
-        },
-        "w1024": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/queen_of_swords.webp",
-          "width": 1024,
-          "height": 1536,
-          "bytes": 408328,
-          "quality": 80
-        }
+        "bytes": 141942,
+        "quality": 64,
+        "sha256": "854eaf37e429a08948f0597887bd03a627be2e85e32b3e834e199cbaba96844a"
       },
       "mcp": {
-        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/queen_of_swords.webp",
-        "physicalPath": "assets/cards/v2/mcp/queen_of_swords.webp",
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/chariot.webp",
+        "physicalPath": "assets/cards/v2/mcp/chariot.webp",
         "width": 192,
         "height": 288,
-        "bytes": 17354,
+        "bytes": 7032,
+        "quality": 36,
+        "sha256": "4d820c6285d02aaaa748217a5e8ca04c5be75ef5505d63d396674df8d65ebff5"
+      }
+    },
+    {
+      "id": "strength",
+      "name": "Strength",
+      "arcana": "major",
+      "suit": null,
+      "number": 8,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "df0256b224b8cdf41382402a3cd6f199877c6dd627f1a00b190f979c609e21b7",
+      "sourceMasterSha256": "209811d8e8cbad247f7f64fff20eac9c78168772abd747d8640c3140eb9342d0",
+      "luminance": {
+        "meanLuma": 103.1,
+        "p10Luma": 17.2,
+        "p50Luma": 93,
+        "p90Luma": 199.6,
+        "p98Luma": 223.2,
+        "darkPixelPct": 29.9
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/strength.webp",
+        "physicalPath": "assets/cards/v2/strength.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 137106,
+        "quality": 60,
+        "sha256": "eb8405f6e7496a7cd5bd5891669e54d55ec240d40f1fd50db9d6311d456b88db"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/strength.webp",
+        "physicalPath": "assets/cards/v2/mcp/strength.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6938,
+        "quality": 34,
+        "sha256": "d731d0d72e391db0fadaa6859a4797e6dfe08d33d002a7bcdc47d9b0231fb9af"
+      }
+    },
+    {
+      "id": "hermit",
+      "name": "The Hermit",
+      "arcana": "major",
+      "suit": null,
+      "number": 9,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "39edb137e9c1bb5f2c84b36ce59d71715b8af7e2f8f92faf9eec31ffbec5ac13",
+      "sourceMasterSha256": "fe0872343cc53df7bfa74a8540a2f1cca1dab40017fe6227392c993c6ea0ad8e",
+      "luminance": {
+        "meanLuma": 63.8,
+        "p10Luma": 12.9,
+        "p50Luma": 44.1,
+        "p90Luma": 148.4,
+        "p98Luma": 218.5,
+        "darkPixelPct": 56.7
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/hermit.webp",
+        "physicalPath": "assets/cards/v2/hermit.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139660,
+        "quality": 76,
+        "sha256": "66fd7f0b0737b5ac5ce44098bff1e78b542265faf93c393624a98412b9ba6270"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/hermit.webp",
+        "physicalPath": "assets/cards/v2/mcp/hermit.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7188,
+        "quality": 46,
+        "sha256": "393308310e109ac16fe7a0d1b372bbeda472dd398b25971f2ec401e85c5da9ae"
+      }
+    },
+    {
+      "id": "wheel_of_fortune",
+      "name": "Wheel of Fortune",
+      "arcana": "major",
+      "suit": null,
+      "number": 10,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c4f29496a106809fc1586f4a7b1a8fca2368b7db7f2429ee8375f83ed5e3f20d",
+      "sourceMasterSha256": "9a6be524f0326a4377906e56ac5e68d511c026d0ed0af941c86455e89c2e11ad",
+      "luminance": {
+        "meanLuma": 106.2,
+        "p10Luma": 18.4,
+        "p50Luma": 96.1,
+        "p90Luma": 206.2,
+        "p98Luma": 226,
+        "darkPixelPct": 31.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/wheel_of_fortune.webp",
+        "physicalPath": "assets/cards/v2/wheel_of_fortune.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 146934,
+        "quality": 56,
+        "sha256": "6409fbfddf35a3626f16b003d90183627351e6dc7840e9333e78ccff8e777691"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/wheel_of_fortune.webp",
+        "physicalPath": "assets/cards/v2/mcp/wheel_of_fortune.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7112,
+        "quality": 26,
+        "sha256": "d237b99b495a6e98e97a823992390ed14d61770a3f28499353349af6ad2ab463"
+      }
+    },
+    {
+      "id": "justice",
+      "name": "Justice",
+      "arcana": "major",
+      "suit": null,
+      "number": 11,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "95d26844054f9208dd7523cd8ce94cd82e1c64b4da4eecb9e119aa39a5e21fd4",
+      "sourceMasterSha256": "3c87e0e20be15e3b10088242f1ab4ae49d40d14d136de0642c4751b5f2b609b5",
+      "luminance": {
+        "meanLuma": 91.7,
+        "p10Luma": 17.3,
+        "p50Luma": 71.9,
+        "p90Luma": 189.3,
+        "p98Luma": 220,
+        "darkPixelPct": 38.9
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/justice.webp",
+        "physicalPath": "assets/cards/v2/justice.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 136596,
+        "quality": 72,
+        "sha256": "2a40cff5b5ba2d7a26a1934371f887a7397b387fc7f38992db4aca465268d3b4"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/justice.webp",
+        "physicalPath": "assets/cards/v2/mcp/justice.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6954,
+        "quality": 44,
+        "sha256": "28aece44f1953b89808e9aec7b694ed5d871a46725d22964d0f3ba3cbd288b50"
+      }
+    },
+    {
+      "id": "hanged_man",
+      "name": "The Hanged Man",
+      "arcana": "major",
+      "suit": null,
+      "number": 12,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "73e2c3ccded4336a67caf2b5a8df26eaa60898132e97844f8e9c24ebe2163cd8",
+      "sourceMasterSha256": "14f68036e0442a9530e56ad169b200e6bde097630e78d46aa31419d9a197c4a7",
+      "luminance": {
+        "meanLuma": 70.5,
+        "p10Luma": 13.9,
+        "p50Luma": 48.5,
+        "p90Luma": 172.8,
+        "p98Luma": 215,
+        "darkPixelPct": 52.5
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/hanged_man.webp",
+        "physicalPath": "assets/cards/v2/hanged_man.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140544,
+        "quality": 72,
+        "sha256": "dda18ef86e74f231c32236488205ed2a8445940dad11abb78e63a549186c0ab1"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/hanged_man.webp",
+        "physicalPath": "assets/cards/v2/mcp/hanged_man.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7078,
+        "quality": 34,
+        "sha256": "1336f57478fe595ef3acd59125758edb670dfce4794ae60f6a7ab0740856790e"
+      }
+    },
+    {
+      "id": "death",
+      "name": "Death",
+      "arcana": "major",
+      "suit": null,
+      "number": 13,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "3f7fc3b09af4068f2d62b79f919748d2014810de63bffd5625fdbec201c69b36",
+      "sourceMasterSha256": "d49b6a7d50ec80e9e134684acd9918ab72e82e15b520d730c0d1a6c503b52592",
+      "luminance": {
+        "meanLuma": 86.2,
+        "p10Luma": 13.4,
+        "p50Luma": 66.9,
+        "p90Luma": 184.2,
+        "p98Luma": 219.4,
+        "darkPixelPct": 42.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/death.webp",
+        "physicalPath": "assets/cards/v2/death.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 138472,
+        "quality": 64,
+        "sha256": "4a74dd40eb9b75206d06f23b48efed1d208a76d43eef3d20d5bb5676f8f09afd"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/death.webp",
+        "physicalPath": "assets/cards/v2/mcp/death.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6996,
+        "quality": 36,
+        "sha256": "dc8241dfea911d688f04139a7d7d6e0c87c87d7fa6e9474b0f7cf56738382c07"
+      }
+    },
+    {
+      "id": "temperance",
+      "name": "Temperance",
+      "arcana": "major",
+      "suit": null,
+      "number": 14,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "62936a69ea35a6852125f6390ed7c9d45f91a80f125df166e3342fbee48b9536",
+      "sourceMasterSha256": "d7a6e4d4f8bd83b672ad449775da78412a0e8bb8347d742f5a139d3a4e7cd774",
+      "luminance": {
+        "meanLuma": 105,
+        "p10Luma": 16.2,
+        "p50Luma": 98.6,
+        "p90Luma": 198.5,
+        "p98Luma": 228.1,
+        "darkPixelPct": 28.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/temperance.webp",
+        "physicalPath": "assets/cards/v2/temperance.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140640,
+        "quality": 56,
+        "sha256": "77016a401214625336a8e5a21b63bd219deaba92c5a46a63f2803ad65679c87f"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/temperance.webp",
+        "physicalPath": "assets/cards/v2/mcp/temperance.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7042,
+        "quality": 36,
+        "sha256": "cec840e39d54feaa0029049666b5022ee1612b5bfbdc2b19f24b81f010cf9c45"
+      }
+    },
+    {
+      "id": "devil",
+      "name": "The Devil",
+      "arcana": "major",
+      "suit": null,
+      "number": 15,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "7936c559843ac76afcaaddf467dc5c878da674e86e210db63961c2d1b2e14bf2",
+      "sourceMasterSha256": "1591193991e293219db73f80f69eb0ba6960672711282af739ed71c912078be3",
+      "luminance": {
+        "meanLuma": 57.1,
+        "p10Luma": 12,
+        "p50Luma": 39.4,
+        "p90Luma": 136.7,
+        "p98Luma": 190.3,
+        "darkPixelPct": 61.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/devil.webp",
+        "physicalPath": "assets/cards/v2/devil.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 138296,
+        "quality": 76,
+        "sha256": "9232891faccab210ba6ff9de4733f1dfb81cf29271b23cbad45b40e3eefa77a3"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/devil.webp",
+        "physicalPath": "assets/cards/v2/mcp/devil.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7146,
+        "quality": 48,
+        "sha256": "53ca7757125242362efd6e0e35b8c6be77a25c7603af7f8ce4a81b582237642e"
+      }
+    },
+    {
+      "id": "tower",
+      "name": "The Tower",
+      "arcana": "major",
+      "suit": null,
+      "number": 16,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "2692f030cf3a7824ba5708dbf712d3f1fb0faaec13a2d7b47e79b82bf012756c",
+      "sourceMasterSha256": "ea3e166d7d0944c307e0f4204a84b19548c5a6c279eaf9eb98888352f1a6fcec",
+      "luminance": {
+        "meanLuma": 67.5,
+        "p10Luma": 14.5,
+        "p50Luma": 50.1,
+        "p90Luma": 149.9,
+        "p98Luma": 213.4,
+        "darkPixelPct": 51.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/tower.webp",
+        "physicalPath": "assets/cards/v2/tower.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143518,
+        "quality": 72,
+        "sha256": "40a2366d189d139f3a68dc8e330380de93061e8d05ba134afb9260c9ded45bf9"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/tower.webp",
+        "physicalPath": "assets/cards/v2/mcp/tower.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7142,
+        "quality": 44,
+        "sha256": "14ff163158cfa2a869501e3d233d1b8be0280db5daf9a54e9986256eb34564a6"
+      }
+    },
+    {
+      "id": "star",
+      "name": "The Star",
+      "arcana": "major",
+      "suit": null,
+      "number": 17,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "3c97d8c775bf45655a1219b4edd0a908f534bd095f2d999ddec6d7ed3c16bd57",
+      "sourceMasterSha256": "4ceff55430db5feaf9639eeb2e16d79cf4f29905a86d2c346ea1d5d3e320b8e1",
+      "luminance": {
+        "meanLuma": 78.1,
+        "p10Luma": 13.9,
+        "p50Luma": 52.8,
+        "p90Luma": 190.1,
+        "p98Luma": 227.6,
+        "darkPixelPct": 49.5
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/star.webp",
+        "physicalPath": "assets/cards/v2/star.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143858,
+        "quality": 72,
+        "sha256": "5acf5e42dc2641221b0dfc968f3eacc321ecae3095728ee9beda71e536456a6c"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/star.webp",
+        "physicalPath": "assets/cards/v2/mcp/star.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7180,
+        "quality": 38,
+        "sha256": "d5c08834df618cfaddd656e838da9e9ab02d544658cf66cbe5b8354fd8b46fe8"
+      }
+    },
+    {
+      "id": "moon",
+      "name": "The Moon",
+      "arcana": "major",
+      "suit": null,
+      "number": 18,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "5da54893a00b4b8b51bec31a4837ff31b1bb38492f672e6214537d368df43284",
+      "sourceMasterSha256": "48806cc024d5e7942a3b07a9e7fabcecebce33c114c3897315abc92a2074da45",
+      "luminance": {
+        "meanLuma": 83.2,
+        "p10Luma": 13.9,
+        "p50Luma": 65.8,
+        "p90Luma": 185.1,
+        "p98Luma": 229,
+        "darkPixelPct": 41
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/moon.webp",
+        "physicalPath": "assets/cards/v2/moon.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 144240,
+        "quality": 64,
+        "sha256": "f33d30d35d4626b9551e237f21323a1f89d3760e4b6f01cff5c27fac47c4c477"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/moon.webp",
+        "physicalPath": "assets/cards/v2/mcp/moon.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7030,
+        "quality": 36,
+        "sha256": "dd1707eb7a1e01bef9b379d243cecd7bece3d37b9a9e99a98a5141fc5337fd8c"
+      }
+    },
+    {
+      "id": "sun",
+      "name": "The Sun",
+      "arcana": "major",
+      "suit": null,
+      "number": 19,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "f2fa0965120683f5e8f1ee61501ab62610b936af83160f420d15107668be63b6",
+      "sourceMasterSha256": "09e7dd6fffa08afb27053b21ef99743dfcb069894efbefc6fe3558e370fceda2",
+      "luminance": {
+        "meanLuma": 136.8,
+        "p10Luma": 19.9,
+        "p50Luma": 153.5,
+        "p90Luma": 220.9,
+        "p98Luma": 241.6,
+        "darkPixelPct": 17
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/sun.webp",
+        "physicalPath": "assets/cards/v2/sun.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 136482,
+        "quality": 72,
+        "sha256": "c7ad5f02c1b789bc0a4d6aa26783d5132f6f33d7ef8390ed821fa07c9e4478a6"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/sun.webp",
+        "physicalPath": "assets/cards/v2/mcp/sun.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7092,
+        "quality": 44,
+        "sha256": "700f60b1a0162e19a5d22416c2bbdaeda199b4c8a545decc5b59ad2b60364c00"
+      }
+    },
+    {
+      "id": "judgement",
+      "name": "Judgement",
+      "arcana": "major",
+      "suit": null,
+      "number": 20,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c6198e192fba1bf628d061ba5a9e23d880c5c13221f07a9618aa9f59bf722b18",
+      "sourceMasterSha256": "0221def71cc54368a61f690f4efa89e0a555ee227d4b5f224345f20e35f14ecf",
+      "luminance": {
+        "meanLuma": 114.9,
+        "p10Luma": 16.8,
+        "p50Luma": 113.8,
+        "p90Luma": 210.8,
+        "p98Luma": 237.3,
+        "darkPixelPct": 24.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/judgement.webp",
+        "physicalPath": "assets/cards/v2/judgement.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143652,
+        "quality": 60,
+        "sha256": "f1c8ceec542236786b0116414cc08f3dda75e2d9e85705fa88e2ae49aa4c19fa"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/judgement.webp",
+        "physicalPath": "assets/cards/v2/mcp/judgement.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7050,
+        "quality": 32,
+        "sha256": "bd343bfe577fcead2d40a4708e886de6c6bbcdeedf23b8050fab36460c6c8396"
+      }
+    },
+    {
+      "id": "world",
+      "name": "The World",
+      "arcana": "major",
+      "suit": null,
+      "number": 21,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c4824a507f41195685d8ecc86ed06a4351b7d6d7b37a9527654708a3c4920f83",
+      "sourceMasterSha256": "4381c04454cd1b9a70b8b3a0bfb582c730f59f0ac11bcb25b2e23144aa8cfa89",
+      "luminance": {
+        "meanLuma": 90.2,
+        "p10Luma": 16.4,
+        "p50Luma": 72.5,
+        "p90Luma": 190.5,
+        "p98Luma": 220.7,
+        "darkPixelPct": 38.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/world.webp",
+        "physicalPath": "assets/cards/v2/world.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 148456,
+        "quality": 56,
+        "sha256": "7de45b9dbfce47b98e96bb296b7549eedd001fcfa5e90ad40280abc4d32e1bab"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/world.webp",
+        "physicalPath": "assets/cards/v2/mcp/world.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7148,
+        "quality": 28,
+        "sha256": "691a70bdc637943a471bb1713aff68c5deb06f53c131d14a888da4fc99796fef"
+      }
+    },
+    {
+      "id": "ace_of_wands",
+      "name": "Ace of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 1,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "4ab833962f3e036fc5fca11c6f7ae25553cfe7da36bcae4aebe3cf7491e6e35e",
+      "sourceMasterSha256": "687f085664140cabf375963caf3b6287c8d1517ec01a75d940d436705041aa34",
+      "luminance": {
+        "meanLuma": 87.4,
+        "p10Luma": 12.6,
+        "p50Luma": 68.6,
+        "p90Luma": 196.1,
+        "p98Luma": 229.5,
+        "darkPixelPct": 40.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ace_of_wands.webp",
+        "physicalPath": "assets/cards/v2/ace_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 144412,
+        "quality": 72,
+        "sha256": "573ed1fa8f6567ea90e2a65160062ac35afd3a2ff1703be0d863bbcda477770c"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ace_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/ace_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7076,
+        "quality": 32,
+        "sha256": "0da34dab77dbec704358a380fb7ab1e030b3922ddf917ce863751ff76b71cce2"
+      }
+    },
+    {
+      "id": "two_of_wands",
+      "name": "Two of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 2,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "072e35ecd4aa4481e4378d114dc565abdbb0d60b0d67be8adf5d4f7fe8ec7a11",
+      "sourceMasterSha256": "56c44f6943ca083f9d0e67f5eb87f35d017a4e6e9e44234e8a7f0588a0af0f7b",
+      "luminance": {
+        "meanLuma": 79.9,
+        "p10Luma": 15.1,
+        "p50Luma": 64.1,
+        "p90Luma": 175.5,
+        "p98Luma": 219.6,
+        "darkPixelPct": 43.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/two_of_wands.webp",
+        "physicalPath": "assets/cards/v2/two_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 144570,
         "quality": 68,
-        "sha256": "fd13090b7030f28c0bcfcac6e7845c275e19313dbdf2182f9824c5c136f78e5b"
+        "sha256": "7fbefd4af030354fa93e4822b716f0097a562b3176b60420e7ebf71c3d56e7e0"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/two_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/two_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7148,
+        "quality": 40,
+        "sha256": "be860504b5ac5bfa9f70aad0977cd377099aa8239421092746ed046ea874d0b1"
+      }
+    },
+    {
+      "id": "three_of_wands",
+      "name": "Three of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 3,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "ec1cffcaa941489bdaada579e32b7d87ebdbf0c2d93ddf64412d2fda09e3b409",
+      "sourceMasterSha256": "5aad35286d5efb978b2b054f65af52f4f71f8278a61b02e1d2dd2cf76bab3a72",
+      "luminance": {
+        "meanLuma": 97.5,
+        "p10Luma": 16.8,
+        "p50Luma": 84.1,
+        "p90Luma": 198.3,
+        "p98Luma": 233.9,
+        "darkPixelPct": 31.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_wands.webp",
+        "physicalPath": "assets/cards/v2/three_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 141340,
+        "quality": 64,
+        "sha256": "b34a927e100a414617b8f9d6a0121c4956e06f4944287a85c7c2f91639839650"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/three_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7160,
+        "quality": 42,
+        "sha256": "d50558f4cab70c9d50ddd19dcdd7bf6d77149877c7da15d9a8f0a63879b60d2b"
+      }
+    },
+    {
+      "id": "four_of_wands",
+      "name": "Four of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 4,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "e008d5fe61eb7db91230632c3acf6ef7053ac3f913de22ae4035921d34ccae58",
+      "sourceMasterSha256": "f44e76d6cae0aa35b6c5547de3ffef33b762b6ebd8a354d2709248b84383a77b",
+      "luminance": {
+        "meanLuma": 101.6,
+        "p10Luma": 16,
+        "p50Luma": 92.8,
+        "p90Luma": 197.4,
+        "p98Luma": 225.9,
+        "darkPixelPct": 29.3
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/four_of_wands.webp",
+        "physicalPath": "assets/cards/v2/four_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 157382,
+        "quality": 56,
+        "sha256": "5a96e04905e62c52321d436682d3480ca8cec9d86652679bcc15b2ae6821d1b9"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/four_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/four_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6966,
+        "quality": 28,
+        "sha256": "b4bfc65557380f80532fe572dad8ca8bda5fce02ae6cef40e151e62e3f1e147e"
+      }
+    },
+    {
+      "id": "five_of_wands",
+      "name": "Five of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 5,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "0e2f8d8c1c29d0f43e458eb6a67635a5c85e1b2a0c02571fb3942386c7b1775d",
+      "sourceMasterSha256": "625930c757c46d0e4a36248aab6312edbbdce99c669a229a31bd2c5b265d9afa",
+      "luminance": {
+        "meanLuma": 86,
+        "p10Luma": 16,
+        "p50Luma": 70,
+        "p90Luma": 177.1,
+        "p98Luma": 219.3,
+        "darkPixelPct": 38
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/five_of_wands.webp",
+        "physicalPath": "assets/cards/v2/five_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143272,
+        "quality": 60,
+        "sha256": "edf05b39d1855831db71d75305ef579d0ba50b6edcdc6295f26868b5936ea401"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/five_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/five_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7124,
+        "quality": 34,
+        "sha256": "a6f5f3712b36eb7a2c555dffc33c0d82b451f8bda34eb7b24ef32a9cc730bd87"
+      }
+    },
+    {
+      "id": "six_of_wands",
+      "name": "Six of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 6,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "006d947917f6aa91fdfb5f2d5f27fa856ecc9bd6f69363f12b9b2307ab4abd75",
+      "sourceMasterSha256": "3b5fea74d88397398873f17a4f1278717e169481c3dbbc9c3d50cc73d433cf4a",
+      "luminance": {
+        "meanLuma": 99.3,
+        "p10Luma": 16.8,
+        "p50Luma": 87.1,
+        "p90Luma": 201.1,
+        "p98Luma": 222.8,
+        "darkPixelPct": 32
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/six_of_wands.webp",
+        "physicalPath": "assets/cards/v2/six_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139298,
+        "quality": 60,
+        "sha256": "044022edd71dc3b9afd091bf4352e64f800e620d05c94fed32aa45187ee179c0"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/six_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/six_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7070,
+        "quality": 34,
+        "sha256": "3e2036a1d84a170d006af5a8633750acb3669dcd843df6eb2e1bbf09b587fe1a"
+      }
+    },
+    {
+      "id": "seven_of_wands",
+      "name": "Seven of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 7,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "6c14931a71f936dfd6559ac127b1b34923b61731f69f5ff7ecdee2c1d42c2e3e",
+      "sourceMasterSha256": "e723162167c899d85324429ae6bb4c66fff824736d5977175d245f259af9c5dd",
+      "luminance": {
+        "meanLuma": 71.2,
+        "p10Luma": 12.7,
+        "p50Luma": 53.5,
+        "p90Luma": 162,
+        "p98Luma": 206,
+        "darkPixelPct": 49
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/seven_of_wands.webp",
+        "physicalPath": "assets/cards/v2/seven_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 137862,
+        "quality": 72,
+        "sha256": "2a6d4e2f8da737880b27a10c4e4d6aeb094a0d4e9bae378e1b4401d9be97e2f3"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/seven_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/seven_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7148,
+        "quality": 42,
+        "sha256": "9ba9ff104362bcaf517a1489eb0a556843ccfb392e091f400303404a793504a0"
+      }
+    },
+    {
+      "id": "eight_of_wands",
+      "name": "Eight of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 8,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "fc2da4d9f6af80aec04d787cda22305caa57f33cec23ce44747d82ab73d94308",
+      "sourceMasterSha256": "c115524f7e2c15fea526e6ca628f4f77e582031400df1afba1ff47dc21bb959c",
+      "luminance": {
+        "meanLuma": 71.5,
+        "p10Luma": 13.1,
+        "p50Luma": 54.4,
+        "p90Luma": 154.4,
+        "p98Luma": 201.3,
+        "darkPixelPct": 48.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/eight_of_wands.webp",
+        "physicalPath": "assets/cards/v2/eight_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 141204,
+        "quality": 76,
+        "sha256": "08a853a7477eab5d100484a190ebd1544038c8b8d08d292a2380a471919c51b1"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/eight_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/eight_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7168,
+        "quality": 32,
+        "sha256": "618d8bb23cbb40d2be9f69c9ff4fb043ce25490b3c0d535481b0df96feb6c62e"
+      }
+    },
+    {
+      "id": "nine_of_wands",
+      "name": "Nine of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 9,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "a980f44260dc0434693790c8f2ebeff7c5a05f86503a0515daf740c5d6853752",
+      "sourceMasterSha256": "e396c124e15facfecbec53aae199d1d97e1c2aa22a7cc64f54da8611e619911f",
+      "luminance": {
+        "meanLuma": 65,
+        "p10Luma": 13.3,
+        "p50Luma": 51,
+        "p90Luma": 139.2,
+        "p98Luma": 194.1,
+        "darkPixelPct": 51
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/nine_of_wands.webp",
+        "physicalPath": "assets/cards/v2/nine_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 141658,
+        "quality": 72,
+        "sha256": "9c0824f4071b396a7606e6f6a4d8e9bb7f0df00b6a03b55c598f81cb40888caa"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/nine_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/nine_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7042,
+        "quality": 40,
+        "sha256": "4c7a6aed0ccd319570d248ca1396828c894a54ae94889b91f5483bc10c478d37"
       }
     },
     {
@@ -278,60 +1186,1738 @@
       "name": "Ten of Wands",
       "arcana": "minor",
       "suit": "wands",
-      "rank": 10,
-      "sourceMasterSha256": "4db51ceca51cae71a3b256978a88b9eeddd83ad0fc3ead19765207855116da87",
+      "number": 10,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "a132722a8059f4b2b6d3fa6944e5600f44ca2cef13fc8da6370c761cfe827afb",
+      "sourceMasterSha256": "294ae74c6848fff4bb234cdee4ef600ad25bcbfc9eb5b7b251fab70c0f7a5859",
       "luminance": {
-        "mean": 75.3,
-        "darkPct": 43,
-        "p50": 59.8,
-        "p95": 185.6
-      },
-      "v1BaselineLuminance": {
-        "mean": 35.5,
-        "darkPct": 84.3,
-        "p50": 26.5,
-        "p95": 84.7
+        "meanLuma": 63.2,
+        "p10Luma": 12.6,
+        "p50Luma": 41.9,
+        "p90Luma": 164.1,
+        "p98Luma": 209.6,
+        "darkPixelPct": 58.6
       },
       "web": {
         "path": "/assets/cards/midnight-art-nouveau-v2/ten_of_wands.webp",
         "physicalPath": "assets/cards/v2/ten_of_wands.webp",
         "width": 640,
         "height": 960,
-        "bytes": 217438,
-        "quality": 84,
-        "sha256": "26ae88bf1e16186f534755e9f58aa02add22d8f52aa5ee8a5e2138ab07b30836"
-      },
-      "variants": {
-        "w320": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w320/ten_of_wands.webp",
-          "width": 320,
-          "height": 480,
-          "bytes": 58770,
-          "quality": 82
-        },
-        "w640Avif": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w640/ten_of_wands.avif",
-          "width": 640,
-          "height": 960,
-          "bytes": 130847,
-          "quality": 60
-        },
-        "w1024": {
-          "path": "/assets/cards/midnight-art-nouveau-v2/w1024/ten_of_wands.webp",
-          "width": 1024,
-          "height": 1536,
-          "bytes": 397696,
-          "quality": 80
-        }
+        "bytes": 140868,
+        "quality": 64,
+        "sha256": "b55dcf726fb46391222e2bb02e162c55085f5d8741422cc97003acaff04465fd"
       },
       "mcp": {
         "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ten_of_wands.webp",
         "physicalPath": "assets/cards/v2/mcp/ten_of_wands.webp",
         "width": 192,
         "height": 288,
-        "bytes": 17158,
+        "bytes": 7088,
+        "quality": 38,
+        "sha256": "18a7ca32cbaec09505f19af104b8c3296e8a01213771e2f2f3e6afbe18025c9d"
+      }
+    },
+    {
+      "id": "page_of_wands",
+      "name": "Page of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 11,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "ac01bff27a27e9af09130780c08925da24559e3a3c9a57f104413cfcbacb6c57",
+      "sourceMasterSha256": "9b1c017ef9141893c16895f680a5d0f25dd9e529e83af0267ea881d170f0e0f7",
+      "luminance": {
+        "meanLuma": 97.2,
+        "p10Luma": 17.2,
+        "p50Luma": 89.8,
+        "p90Luma": 189.6,
+        "p98Luma": 219.3,
+        "darkPixelPct": 32.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/page_of_wands.webp",
+        "physicalPath": "assets/cards/v2/page_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143488,
+        "quality": 72,
+        "sha256": "e3bffcbe6a193be30d151fe83cfc301dabae937b20c7dab6ff2991b774f79c67"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/page_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/page_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7180,
+        "quality": 40,
+        "sha256": "f3264509ff89265999f25ff84ced86bfa69ccb61cf2687d751af2ef24324fce7"
+      }
+    },
+    {
+      "id": "knight_of_wands",
+      "name": "Knight of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 12,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "ac38f6d645a914b5b7df6258c5c2857c4487ce2136274c422839d5c8564baeab",
+      "sourceMasterSha256": "a9ef5776c33d5b4f75b6cb4542e415b45eb658686aea0012902cfee080e36ff4",
+      "luminance": {
+        "meanLuma": 76.7,
+        "p10Luma": 15.7,
+        "p50Luma": 65.5,
+        "p90Luma": 158.9,
+        "p98Luma": 202.1,
+        "darkPixelPct": 38.7
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/knight_of_wands.webp",
+        "physicalPath": "assets/cards/v2/knight_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143568,
+        "quality": 72,
+        "sha256": "88b4ff782fef29c42be0f418a2ffaa58afb745506594687afe90078a191f1126"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/knight_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/knight_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7112,
+        "quality": 36,
+        "sha256": "8c14f911be89a8d88d467bb4fc7f34432251e232272847564d3806d51b9c4f6b"
+      }
+    },
+    {
+      "id": "queen_of_wands",
+      "name": "Queen of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 13,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "217464c95790877962e2cd1142bf7a72d3c30e3de9d0a79e5deab310e8e645d4",
+      "sourceMasterSha256": "b01d96915800ab096dc089b47aad4bb9dee6cda159ac4b7a171f08abeb2251a7",
+      "luminance": {
+        "meanLuma": 102.2,
+        "p10Luma": 15.3,
+        "p50Luma": 100,
+        "p90Luma": 195.2,
+        "p98Luma": 226.2,
+        "darkPixelPct": 31.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/queen_of_wands.webp",
+        "physicalPath": "assets/cards/v2/queen_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140290,
+        "quality": 56,
+        "sha256": "d5b3b19651943a1a029a5c51f803556f47b65efa55cad33adf1026c42af25ee4"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/queen_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/queen_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7034,
+        "quality": 32,
+        "sha256": "92eb83e8d9af7391224ea6c4540a7a3f43d2eba03e0f644202766b21761be6f6"
+      }
+    },
+    {
+      "id": "king_of_wands",
+      "name": "King of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 14,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "b7413a2358b5ef856fe31255604df18f5edd29d9141e6becfc9df255ae58e8f0",
+      "sourceMasterSha256": "b3097dc088c53433b9756ef8481cc739b9e2db0c4d4dcfa38b293cec2c1d2cf8",
+      "luminance": {
+        "meanLuma": 91,
+        "p10Luma": 16.4,
+        "p50Luma": 78.6,
+        "p90Luma": 181,
+        "p98Luma": 213,
+        "darkPixelPct": 35
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/king_of_wands.webp",
+        "physicalPath": "assets/cards/v2/king_of_wands.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143420,
+        "quality": 68,
+        "sha256": "ff165f35165bd848fdb68549541329d898cfcb669efb36ac6fb7f3c926668d85"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/king_of_wands.webp",
+        "physicalPath": "assets/cards/v2/mcp/king_of_wands.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7038,
+        "quality": 36,
+        "sha256": "db75a25254b0264b760c0b4a3fe5c0bedc442dd4d496e1f671aaf7641ab2a033"
+      }
+    },
+    {
+      "id": "ace_of_cups",
+      "name": "Ace of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 1,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c4ea6daf986566ea443d2d0bc647b808104e5840a71fce8ca6222dca3c21198f",
+      "sourceMasterSha256": "64c292e671af5c178fc3730c712f07643a423a7a96c53d6f730b9e7a626c9cdc",
+      "luminance": {
+        "meanLuma": 114.8,
+        "p10Luma": 19.1,
+        "p50Luma": 109.8,
+        "p90Luma": 215.9,
+        "p98Luma": 241.4,
+        "darkPixelPct": 29
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ace_of_cups.webp",
+        "physicalPath": "assets/cards/v2/ace_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140126,
+        "quality": 68,
+        "sha256": "bbaff59775e1d6f4e73ce12ae62de411c4fa1566ac2465c40a56fad617620b09"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ace_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/ace_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7068,
+        "quality": 36,
+        "sha256": "d467e3f67093ad3b753db5b0b44a3784a46f1da4be62bea4b1479eefbd8eb31a"
+      }
+    },
+    {
+      "id": "two_of_cups",
+      "name": "Two of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 2,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "13efc485360a8a92643bd1da867bad98d2da75a16aff5c3f262cedd7ad72eb36",
+      "sourceMasterSha256": "70fc4cc896f0c854cf9ee4f87453a9f81aa2ba4615391519295735b01761621e",
+      "luminance": {
+        "meanLuma": 87.8,
+        "p10Luma": 16.3,
+        "p50Luma": 70.4,
+        "p90Luma": 183.7,
+        "p98Luma": 217.1,
+        "darkPixelPct": 38.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/two_of_cups.webp",
+        "physicalPath": "assets/cards/v2/two_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 142170,
+        "quality": 68,
+        "sha256": "891d5f4b65398c3b7192556a0cfbfe7c0f99169cf9aeece9c7147ec12ee7a3d2"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/two_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/two_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7170,
+        "quality": 36,
+        "sha256": "daa703719d7aab0390b93854fd4f74fb8a46974c093ad895402c651fda6e21c9"
+      }
+    },
+    {
+      "id": "three_of_cups",
+      "name": "Three of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 3,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c239fe6118b2216846c63a72345df229a3767dee5e108f40713e4a6c7c4f5013",
+      "sourceMasterSha256": "c1fa2fb02becca25aa5592e22b95ec53b8baa392c86dfe72e0d5375e7951f9c1",
+      "luminance": {
+        "meanLuma": 86.8,
+        "p10Luma": 16.2,
+        "p50Luma": 67.9,
+        "p90Luma": 185.7,
+        "p98Luma": 216.7,
+        "darkPixelPct": 40.3
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_cups.webp",
+        "physicalPath": "assets/cards/v2/three_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143010,
         "quality": 64,
-        "sha256": "bf08be31c714e7c941f278edacf3de7e9424b783aa677d27ff6c5c65c8255d80"
+        "sha256": "b594d70f67ccbec5c5673ad2fd80cb2148f82a1ffe54e4aedde788d7f091626d"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/three_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7148,
+        "quality": 34,
+        "sha256": "5426764e4091fb5a513cdab9ba3921cf040bffa18a4b9f054a7585a0b634635d"
+      }
+    },
+    {
+      "id": "four_of_cups",
+      "name": "Four of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 4,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "61aa91356c4b33f3fde303bac6328c74971a38eff1fc6dcd07986c27b6531863",
+      "sourceMasterSha256": "eaf32d916743e677d9153e5e3ed8136b14448dae03af2aa86050a8a263c3f948",
+      "luminance": {
+        "meanLuma": 79.7,
+        "p10Luma": 16,
+        "p50Luma": 62.3,
+        "p90Luma": 171.6,
+        "p98Luma": 215.1,
+        "darkPixelPct": 41.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/four_of_cups.webp",
+        "physicalPath": "assets/cards/v2/four_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 142958,
+        "quality": 64,
+        "sha256": "b56c2628e05f90017ca2ebfac54c79a8528131b671f277a73b37b469d5ab43b1"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/four_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/four_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6992,
+        "quality": 36,
+        "sha256": "9a4ea5c84457a245bba15c756b6f62e3815fdb6eb7cd0394a9146606a52a9799"
+      }
+    },
+    {
+      "id": "five_of_cups",
+      "name": "Five of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 5,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "092c924db27345abc4b41e546b12c16ff8502d8c4029ec27f733d0859725e7a7",
+      "sourceMasterSha256": "fa110f60d95a6a3d55783b92c5e8c5e1b715c8c3952eb5258b3f9cb3970bd0b2",
+      "luminance": {
+        "meanLuma": 70.4,
+        "p10Luma": 14.2,
+        "p50Luma": 54.6,
+        "p90Luma": 154.9,
+        "p98Luma": 218.8,
+        "darkPixelPct": 47.9
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/five_of_cups.webp",
+        "physicalPath": "assets/cards/v2/five_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139006,
+        "quality": 60,
+        "sha256": "5b4ecdee22c5fb2833cd6f847266b82ca45aa0c4a0c3d615c715befabd03bbc0"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/five_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/five_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7050,
+        "quality": 40,
+        "sha256": "dfcfc3618fff6d7e93d53ba12541df35ebc0c722599ce8ac301771a02bb6dae8"
+      }
+    },
+    {
+      "id": "six_of_cups",
+      "name": "Six of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 6,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "cd6b47a0608f6ca14fa6505cc53d06089f8ad58e4f50b15f383f4250d05f3357",
+      "sourceMasterSha256": "6c5745826a317f0f13ddd8c3b80b19cc04a0e753353ebae48af5760de1ce8573",
+      "luminance": {
+        "meanLuma": 101.4,
+        "p10Luma": 17.7,
+        "p50Luma": 97.4,
+        "p90Luma": 190.1,
+        "p98Luma": 224.3,
+        "darkPixelPct": 28
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/six_of_cups.webp",
+        "physicalPath": "assets/cards/v2/six_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140034,
+        "quality": 60,
+        "sha256": "14686b2ad3bebfd3ddf65f1aeaad19e4e8224cf92ba36bdcbec0cf07e431489f"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/six_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/six_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7106,
+        "quality": 34,
+        "sha256": "c7fb8284f92cf37abdf20a2635c28fc3c0058207ed4f7b339bb48c315bac159e"
+      }
+    },
+    {
+      "id": "seven_of_cups",
+      "name": "Seven of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 7,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "a4be58176e4aa8676957b598ff365e1848b7fce0977398e082376d749eb21c99",
+      "sourceMasterSha256": "fe144392fcdb1bc39cfdc17fab3a0f8d18ee9bc7db8c01e2c3ffc7cc36063698",
+      "luminance": {
+        "meanLuma": 99.2,
+        "p10Luma": 12.9,
+        "p50Luma": 92.3,
+        "p90Luma": 201.6,
+        "p98Luma": 231.9,
+        "darkPixelPct": 35.9
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/seven_of_cups.webp",
+        "physicalPath": "assets/cards/v2/seven_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 144870,
+        "quality": 72,
+        "sha256": "1a5ba622733a7c45f087af089799bab98c26559b857277cbf016f59e5ea63a3c"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/seven_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/seven_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7114,
+        "quality": 34,
+        "sha256": "641ae136beeac70559a941e67bb0308987ae7bda48d0a868934eb1020359149c"
+      }
+    },
+    {
+      "id": "eight_of_cups",
+      "name": "Eight of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 8,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "63bc41393cc55a09506fd418cc6e1740af41cfa7083ce3c310f126e1031a351c",
+      "sourceMasterSha256": "5207eb3d88c8acede1992dfcc3cd8242d72fc63db48895a1dcf64bb0507fd840",
+      "luminance": {
+        "meanLuma": 64.8,
+        "p10Luma": 13.8,
+        "p50Luma": 48.2,
+        "p90Luma": 146.5,
+        "p98Luma": 216.5,
+        "darkPixelPct": 53.5
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/eight_of_cups.webp",
+        "physicalPath": "assets/cards/v2/eight_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 138376,
+        "quality": 60,
+        "sha256": "6fb1ebc0f7945ba8fabafe162998d0eb70cafb35b7914e951d632fd8f0d6ba34"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/eight_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/eight_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6998,
+        "quality": 36,
+        "sha256": "cefd8d0103277dde767068a96203efbf6f4510f96ecc1c78ed1c1fc8b24cc25b"
+      }
+    },
+    {
+      "id": "nine_of_cups",
+      "name": "Nine of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 9,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "8d977a6fe6432e65a5aaddedaf8448f688b78f3cbe43fd125161bbb521050d21",
+      "sourceMasterSha256": "b7968395c1c367a086502617a0d4351c4a580ee6727266ada00ebc5bfd36155d",
+      "luminance": {
+        "meanLuma": 71.9,
+        "p10Luma": 13.8,
+        "p50Luma": 48.6,
+        "p90Luma": 174.2,
+        "p98Luma": 216.6,
+        "darkPixelPct": 52.5
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/nine_of_cups.webp",
+        "physicalPath": "assets/cards/v2/nine_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140200,
+        "quality": 76,
+        "sha256": "1cca0d5facc31e061da9c891da32540745bd90199f82527677519383a1f1786d"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/nine_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/nine_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7126,
+        "quality": 44,
+        "sha256": "1d899640f931e34ed902e91d66358a94839386fdbdfbd20245b609699e4c8648"
+      }
+    },
+    {
+      "id": "ten_of_cups",
+      "name": "Ten of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 10,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "2620086ee6fb29dde63fbd64052009e5674e0f9089df951db72c7ad7af4acede",
+      "sourceMasterSha256": "736f746e2ce50c98d9415d1e16e4576bf3bb0042ef32b0712c17b261315bf03e",
+      "luminance": {
+        "meanLuma": 103.3,
+        "p10Luma": 17.8,
+        "p50Luma": 94.3,
+        "p90Luma": 196.8,
+        "p98Luma": 225.1,
+        "darkPixelPct": 28.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ten_of_cups.webp",
+        "physicalPath": "assets/cards/v2/ten_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143224,
+        "quality": 56,
+        "sha256": "f66f2cae7469ae147d5879492807f9ad474d0b57d140df07d7e006b47cb2bd23"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ten_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/ten_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7084,
+        "quality": 32,
+        "sha256": "aa7dee3fa9e8a7dd7a4883fc9f137d50b0ca465f9c693c2ad2ab4bb0218dd3b4"
+      }
+    },
+    {
+      "id": "page_of_cups",
+      "name": "Page of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 11,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "9f5803e956d8dc2c3a7aa36151a20201488475d7df0feb1e7d93038e17ef2153",
+      "sourceMasterSha256": "a0f7e2ed9cdd13e7b44e09fcb33dd9bad3597e62747862e8bdbebb1c9e7fa3ee",
+      "luminance": {
+        "meanLuma": 96.3,
+        "p10Luma": 17.4,
+        "p50Luma": 85.7,
+        "p90Luma": 188.2,
+        "p98Luma": 222.5,
+        "darkPixelPct": 31
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/page_of_cups.webp",
+        "physicalPath": "assets/cards/v2/page_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 144438,
+        "quality": 68,
+        "sha256": "bf3b02ce45dbebd69747398b29297518b229a597018689b5c8675e7ae5484607"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/page_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/page_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7120,
+        "quality": 34,
+        "sha256": "0f893d3f9cfe94943796c80331e7330a63ba7510ff2d6736c58023de47797267"
+      }
+    },
+    {
+      "id": "knight_of_cups",
+      "name": "Knight of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 12,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "d8e99f2e3a6ce04191dee8becf13e2d9710848e90c2861599be90e0521c88527",
+      "sourceMasterSha256": "e22aa4fca80153b7e3d29d8f350c16763180ca32d9cb0ed08bc5deb8330c9c28",
+      "luminance": {
+        "meanLuma": 88.6,
+        "p10Luma": 15.8,
+        "p50Luma": 67.8,
+        "p90Luma": 195.9,
+        "p98Luma": 227.4,
+        "darkPixelPct": 39.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/knight_of_cups.webp",
+        "physicalPath": "assets/cards/v2/knight_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 142088,
+        "quality": 60,
+        "sha256": "83f2288643da6ae4ec1295697221c9a73470d92e9aab95db73a400a6d90bf8dd"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/knight_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/knight_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6920,
+        "quality": 32,
+        "sha256": "82bd16e4231d7d047bbea106d292d499b47a242dbed6c699ac53e221ff25cc31"
+      }
+    },
+    {
+      "id": "queen_of_cups",
+      "name": "Queen of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 13,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "357135c2b0b766a557be959d53c3c0ab17373532a5f402b5083d46ab76ebd6c7",
+      "sourceMasterSha256": "daee61069d9555476e4938c79ce2d2185401e891c210c41bbc7a2ecaddb53201",
+      "luminance": {
+        "meanLuma": 109,
+        "p10Luma": 18.8,
+        "p50Luma": 105.2,
+        "p90Luma": 199.8,
+        "p98Luma": 231.1,
+        "darkPixelPct": 25.8
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/queen_of_cups.webp",
+        "physicalPath": "assets/cards/v2/queen_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 141626,
+        "quality": 64,
+        "sha256": "39c343007f9ae983e617899ad480736409ee23cde9cb83c05a684bcb5e084fc6"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/queen_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/queen_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7078,
+        "quality": 40,
+        "sha256": "16b0f0abd672e746827e4c1280e79317a9d20a59ac247bb0b8dbb8a6677d31c6"
+      }
+    },
+    {
+      "id": "king_of_cups",
+      "name": "King of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 14,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "4dd640cf8bec04a03bf51b05019dae91d3dc5a150d4064d92ca68f0ab21f179f",
+      "sourceMasterSha256": "376559c9a0c3dc32a12b7db4932fb563c7eb620230bfc6b18746646050f1c6c3",
+      "luminance": {
+        "meanLuma": 86.6,
+        "p10Luma": 16.5,
+        "p50Luma": 70.4,
+        "p90Luma": 185.7,
+        "p98Luma": 231.4,
+        "darkPixelPct": 38.3
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/king_of_cups.webp",
+        "physicalPath": "assets/cards/v2/king_of_cups.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 138372,
+        "quality": 60,
+        "sha256": "781ca7907f023a460858369256c1a1c6f7d67c659bde4836af3a6d57e31b6153"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/king_of_cups.webp",
+        "physicalPath": "assets/cards/v2/mcp/king_of_cups.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6990,
+        "quality": 30,
+        "sha256": "2eb49011bee0e2771d5819f8f7767bbd2b78cba61a173ad2e54619c3ccfa7733"
+      }
+    },
+    {
+      "id": "ace_of_swords",
+      "name": "Ace of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 1,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "de712fec02a0433b3dd5ba9b24d168bb244d1bcf6b4f3a3e6e8e779edcb8670c",
+      "sourceMasterSha256": "984463eff65af62f5aacbea5f69535c69c8bad5d7bb4faa050e4a9e4d10f2a8e",
+      "luminance": {
+        "meanLuma": 85.9,
+        "p10Luma": 15.5,
+        "p50Luma": 65.5,
+        "p90Luma": 188.8,
+        "p98Luma": 230.9,
+        "darkPixelPct": 42.8
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ace_of_swords.webp",
+        "physicalPath": "assets/cards/v2/ace_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140150,
+        "quality": 76,
+        "sha256": "e8bb706952eaea286c17940ea2a8d349a291b7563fe02298d71435a2c6d22d42"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ace_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/ace_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7044,
+        "quality": 40,
+        "sha256": "cc9ca2b67a034465a36e13c79f50f5930bff0b90f93f8350b46b1016ab6cdd6e"
+      }
+    },
+    {
+      "id": "two_of_swords",
+      "name": "Two of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 2,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "9dfa96d1f0e20c48a3ea26b6eb6c97df259714aa4546d7af400276847b7d2094",
+      "sourceMasterSha256": "636ad583356eb6ca4e65d3ae106cf832552365d23580f06b9d487bc3947882f0",
+      "luminance": {
+        "meanLuma": 98,
+        "p10Luma": 16.1,
+        "p50Luma": 82.2,
+        "p90Luma": 197.9,
+        "p98Luma": 227.9,
+        "darkPixelPct": 34.8
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/two_of_swords.webp",
+        "physicalPath": "assets/cards/v2/two_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140748,
+        "quality": 72,
+        "sha256": "b78b3615e4bcd9845bcb8de0169a01ad83874cc05d98f4f68e8b6f2a1f49f119"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/two_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/two_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7114,
+        "quality": 42,
+        "sha256": "78b0bc20c4ca15c5c8dd7f0f3b4e9086f630d3088b34c50d1e57d605c3ba8649"
+      }
+    },
+    {
+      "id": "three_of_swords",
+      "name": "Three of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 3,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "edd3b3ead9606c548419c9b15e197f2617958fbf41a1dbb1d643e5e6b39c9aa3",
+      "sourceMasterSha256": "54ec6f55b3cf4480524909611e20ec759dbe654a05401eddb88eafecf64a452d",
+      "luminance": {
+        "meanLuma": 77.3,
+        "p10Luma": 13.7,
+        "p50Luma": 56.6,
+        "p90Luma": 178.5,
+        "p98Luma": 229.3,
+        "darkPixelPct": 46.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_swords.webp",
+        "physicalPath": "assets/cards/v2/three_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 138654,
+        "quality": 72,
+        "sha256": "a06ebac07320f54a78561433f9aecd59b1b90f75eccc2fa0b2a8dc01e87f4ad2"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/three_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7146,
+        "quality": 38,
+        "sha256": "6b0db70de77dbd0fa5fac77a75a99cf94eec4904c37768a125cd112eb08d4655"
+      }
+    },
+    {
+      "id": "four_of_swords",
+      "name": "Four of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 4,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "920ca79ad62bb4727bee632638e4c4c7dd035ddf5519e6ba9e3df72a81083f0d",
+      "sourceMasterSha256": "e3e0967f48916d6b19ee0fa7ab7eb354b3175ba538eb8a2251245707ccb2c18b",
+      "luminance": {
+        "meanLuma": 89.5,
+        "p10Luma": 15.8,
+        "p50Luma": 80.9,
+        "p90Luma": 177.7,
+        "p98Luma": 222.7,
+        "darkPixelPct": 37.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/four_of_swords.webp",
+        "physicalPath": "assets/cards/v2/four_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 142228,
+        "quality": 76,
+        "sha256": "42e36e14211fb9f8ee2f5e583e69200c7938c8ac569dbcb6a12c0ddd13510a2a"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/four_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/four_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7070,
+        "quality": 48,
+        "sha256": "67f4494d169856cca6d938860809d8f83f96264ab170e9e458f1682e4386761c"
+      }
+    },
+    {
+      "id": "five_of_swords",
+      "name": "Five of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 5,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "d01f2d36c9c69d2876aacbe98cfa6c8eb714680091513014759242d1f0787cab",
+      "sourceMasterSha256": "c941532ecc318c2dd528530992a733d04d36334768e38e3b12e20c1162e8d903",
+      "luminance": {
+        "meanLuma": 85.6,
+        "p10Luma": 13.9,
+        "p50Luma": 67.2,
+        "p90Luma": 190.4,
+        "p98Luma": 232,
+        "darkPixelPct": 40.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/five_of_swords.webp",
+        "physicalPath": "assets/cards/v2/five_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143202,
+        "quality": 72,
+        "sha256": "8aba9296bc313522286ad8e95d339c6ac1537ed60df76f3b52a0c05f2d8cd664"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/five_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/five_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6974,
+        "quality": 42,
+        "sha256": "e6dfb632b59e785348f20c06d2e522a230ff0ffe3ecc1e03964165080db1e198"
+      }
+    },
+    {
+      "id": "six_of_swords",
+      "name": "Six of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 6,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "a5fe2cd6edd5ae8d12c44ab3fd1ff4017c13c34275c11d3894e233a1447954b2",
+      "sourceMasterSha256": "fd2cb44c63093bac9fbbd14512a7301e9abc7285b14148eec8939f25c7efba6a",
+      "luminance": {
+        "meanLuma": 91.8,
+        "p10Luma": 14.3,
+        "p50Luma": 72.3,
+        "p90Luma": 198.9,
+        "p98Luma": 241.1,
+        "darkPixelPct": 40
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/six_of_swords.webp",
+        "physicalPath": "assets/cards/v2/six_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 138698,
+        "quality": 72,
+        "sha256": "9c44d75cfda2912b3c30b0e0ee9cd61e13b448e387d5cd39ec6f7c6a69e71077"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/six_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/six_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6986,
+        "quality": 46,
+        "sha256": "44e82c3280ab02587c7dc7bc4ae3897999ec31a802a54244dbb57740ec10f1d3"
+      }
+    },
+    {
+      "id": "seven_of_swords",
+      "name": "Seven of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 7,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "8729ec901e5071e969961e3d3fca368a09cc22ab65d86667ffdc0b9c9cf17e31",
+      "sourceMasterSha256": "fca5be3515eb8976a09956205e32e15deb353d0e0d97005fca12f82ee862191b",
+      "luminance": {
+        "meanLuma": 80.6,
+        "p10Luma": 15,
+        "p50Luma": 64.4,
+        "p90Luma": 172.4,
+        "p98Luma": 223.7,
+        "darkPixelPct": 40.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/seven_of_swords.webp",
+        "physicalPath": "assets/cards/v2/seven_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 142096,
+        "quality": 64,
+        "sha256": "4625d0ccf8c29a855e3a3c5635b704df4d9d751d2b5d49a5694d3c236ee9288c"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/seven_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/seven_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7132,
+        "quality": 36,
+        "sha256": "717c27eb4e5936bc86385afcf1c67e248c54f5e4b0f07d534f5ba15ce7fdb2ad"
+      }
+    },
+    {
+      "id": "eight_of_swords",
+      "name": "Eight of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 8,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "73a795bf2ed966d595061387874650de42fe88dcbed91ec2478dee90f576d1a2",
+      "sourceMasterSha256": "9e29ce58622248e19d5a8f826c509997774ad19fdca6e8f80009b7e663ab91a4",
+      "luminance": {
+        "meanLuma": 93.2,
+        "p10Luma": 17.1,
+        "p50Luma": 82.2,
+        "p90Luma": 188.3,
+        "p98Luma": 235.5,
+        "darkPixelPct": 31.2
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/eight_of_swords.webp",
+        "physicalPath": "assets/cards/v2/eight_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 144144,
+        "quality": 68,
+        "sha256": "61cbff490c6f768b82d04ef187d9572b35ffed2631cf0ee68d92deb027e6ce17"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/eight_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/eight_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7086,
+        "quality": 40,
+        "sha256": "1d70b2d6b68fa36e7f75b56d83160fb66bed31e9a26a82301692c620e84384d1"
+      }
+    },
+    {
+      "id": "nine_of_swords",
+      "name": "Nine of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 9,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "d1a2e64dc50ad22a51e2d5c5bae410cd438cdcc535c6c13e6bde44d2b5e5a880",
+      "sourceMasterSha256": "c08987f291e1b4a63f109e3cb8fd3301df578bdb7a69b90c6a267580bf5ca8c6",
+      "luminance": {
+        "meanLuma": 79,
+        "p10Luma": 15.2,
+        "p50Luma": 58.8,
+        "p90Luma": 170.7,
+        "p98Luma": 221.2,
+        "darkPixelPct": 47.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/nine_of_swords.webp",
+        "physicalPath": "assets/cards/v2/nine_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 127894,
+        "quality": 76,
+        "sha256": "7f03e13ae6c8c5c78ef047a4dffc4a3cdbee3f62672803ee7909d06a357ef366"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/nine_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/nine_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6546,
+        "quality": 48,
+        "sha256": "b912797b9888d5b1ca21fd3b02c0ad162ebf832ad5916c80f0324094e9153fff"
+      }
+    },
+    {
+      "id": "ten_of_swords",
+      "name": "Ten of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 10,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "39d955664338d2a5cc92c5a45a50e442e2b8d3d91c6af664844eb5d15035d250",
+      "sourceMasterSha256": "409233587e38552c78a9cdb246ab56936a2cb97993807d49c199960f6adbd7b4",
+      "luminance": {
+        "meanLuma": 72.2,
+        "p10Luma": 13.9,
+        "p50Luma": 49.1,
+        "p90Luma": 176.3,
+        "p98Luma": 227.1,
+        "darkPixelPct": 52.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ten_of_swords.webp",
+        "physicalPath": "assets/cards/v2/ten_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139928,
+        "quality": 76,
+        "sha256": "b2e968fbd794b9c3b409790627616c20074604f95ce57092686d51b0a10eef51"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ten_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/ten_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7056,
+        "quality": 42,
+        "sha256": "2bbc2a90cb9a7d0620bf8b921e413c67dfc027b0448cd5458631dce8b83ac152"
+      }
+    },
+    {
+      "id": "page_of_swords",
+      "name": "Page of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 11,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "ad87231f32ff53db517e2630e929428f15414750d5952c3f8894f2b4a87f4563",
+      "sourceMasterSha256": "3a9931d1fb8574dfce8cb51ce781cdefcf315525b33a7a3557c0389eb6fa0ae1",
+      "luminance": {
+        "meanLuma": 86.1,
+        "p10Luma": 16.3,
+        "p50Luma": 74.7,
+        "p90Luma": 173.4,
+        "p98Luma": 218.8,
+        "darkPixelPct": 33
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/page_of_swords.webp",
+        "physicalPath": "assets/cards/v2/page_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 141952,
+        "quality": 72,
+        "sha256": "94cd03da837a9ba36d6f3fdaee99fe95a7dcf2d0ae9bf1cc1dd34faa391f3bb0"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/page_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/page_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6974,
+        "quality": 40,
+        "sha256": "3a3eb1205bc7f382eb6a02dbcb55f1e992b25dd9d5828f7ea8a4885e84868e97"
+      }
+    },
+    {
+      "id": "knight_of_swords",
+      "name": "Knight of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 12,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "c0185a7da262ae0a06c05736d95ecad3a802dcf9770252d28bcd80320439f64d",
+      "sourceMasterSha256": "1130c5dae26dec19eaf5f8fe0f5dafe765373e35d621c2a5cbe58afb3208a491",
+      "luminance": {
+        "meanLuma": 84.4,
+        "p10Luma": 15.1,
+        "p50Luma": 69.6,
+        "p90Luma": 182.3,
+        "p98Luma": 224.6,
+        "darkPixelPct": 38.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/knight_of_swords.webp",
+        "physicalPath": "assets/cards/v2/knight_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 141602,
+        "quality": 68,
+        "sha256": "39c0be0415cf4be57765107eabdc969d3f0a789211ad24ba78dee640a69f74c4"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/knight_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/knight_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7008,
+        "quality": 38,
+        "sha256": "7bc15757b4df7de39e52c4113231731259f81840336ddd456444a70ba2fc46b4"
+      }
+    },
+    {
+      "id": "queen_of_swords",
+      "name": "Queen of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 13,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "51bd0ae50f70673eb00998524545dda254d5e71ece6b45d94c7fcc50f645919a",
+      "sourceMasterSha256": "c721b3118079614f85b512d7f63e1678212bd231b58f644c635772695b0484a4",
+      "luminance": {
+        "meanLuma": 107.5,
+        "p10Luma": 17.6,
+        "p50Luma": 106.1,
+        "p90Luma": 197.5,
+        "p98Luma": 230.1,
+        "darkPixelPct": 25.7
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/queen_of_swords.webp",
+        "physicalPath": "assets/cards/v2/queen_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 140068,
+        "quality": 64,
+        "sha256": "8110948b6ead14eea0d3dd0f5752fd0d45da69e3de2d74305cc33ca120cf5662"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/queen_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/queen_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7012,
+        "quality": 38,
+        "sha256": "d1461b0f97dbb789359d232ab8f454c977e09787f1e9489ed62d319a6beeceb8"
+      }
+    },
+    {
+      "id": "king_of_swords",
+      "name": "King of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 14,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "5f206eb7f611e892800592e92ace3449570831f956b6d2f4a804f6c15597e3ce",
+      "sourceMasterSha256": "7d3ebe1613aa5a8e57f9788c4c656859a74af0e3643941b8766c43a34fe215b8",
+      "luminance": {
+        "meanLuma": 88.1,
+        "p10Luma": 14.9,
+        "p50Luma": 71,
+        "p90Luma": 183.6,
+        "p98Luma": 222.8,
+        "darkPixelPct": 40.8
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/king_of_swords.webp",
+        "physicalPath": "assets/cards/v2/king_of_swords.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 138622,
+        "quality": 72,
+        "sha256": "02905f016ec4890f1f326f8060988a0010ec7878ff45e94e6c9d616325438b38"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/king_of_swords.webp",
+        "physicalPath": "assets/cards/v2/mcp/king_of_swords.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7084,
+        "quality": 42,
+        "sha256": "94880094c91f535ea167b424c0cbb66f22001fa2ab84291c7cf55bfea49f714e"
+      }
+    },
+    {
+      "id": "ace_of_pentacles",
+      "name": "Ace of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 1,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "961389fa0612eb83c2459fdc6bdd21ffa4035bfebb695f0f6ee472b6c783c39c",
+      "sourceMasterSha256": "fe84adf473136d9c899dba8b4a11f1078755cd4da14b4ee71fe10c4e525b8388",
+      "luminance": {
+        "meanLuma": 116.6,
+        "p10Luma": 18.4,
+        "p50Luma": 112.5,
+        "p90Luma": 217.1,
+        "p98Luma": 239.4,
+        "darkPixelPct": 28.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ace_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/ace_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 147410,
+        "quality": 56,
+        "sha256": "3017c27b3bd7c2b069aa35f3d434c6ad20a19898fd536e7344657e7937e6cb82"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ace_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/ace_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7050,
+        "quality": 28,
+        "sha256": "bb847e43e678a860ec6d3824605f5822693049bdd5ccf1ea385a9ab7a55c54f4"
+      }
+    },
+    {
+      "id": "two_of_pentacles",
+      "name": "Two of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 2,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "77c216c07c29bd270ad5f00d9b8b579e6db5a0550cadb339ac6c140936997e51",
+      "sourceMasterSha256": "0f44bb5b427a01c6f70acc196e2039b1b537328e578c85ab5afca7e370aad4fb",
+      "luminance": {
+        "meanLuma": 89.5,
+        "p10Luma": 16.2,
+        "p50Luma": 70.8,
+        "p90Luma": 190.4,
+        "p98Luma": 224.6,
+        "darkPixelPct": 38.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/two_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/two_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139000,
+        "quality": 60,
+        "sha256": "8a9530e7bf2a830189bca61e8565bbaa6fd7a1d80020d6422d428bbc42e43073"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/two_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/two_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6964,
+        "quality": 32,
+        "sha256": "0c7a8e38a0ea497f395838d73bebf374b36c93377f89a41d56e2e59a3a52e61b"
+      }
+    },
+    {
+      "id": "three_of_pentacles",
+      "name": "Three of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 3,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "19eb5ed5b7f50249b6f41c3de1187422c8cf61a8ab22ef2be591eb539e8c23d7",
+      "sourceMasterSha256": "025b8288b36568b582d61ad4b8dcfc1e1ebc9d8cd1845dbf1827a65038f45b90",
+      "luminance": {
+        "meanLuma": 89.9,
+        "p10Luma": 17.1,
+        "p50Luma": 73.2,
+        "p90Luma": 185.6,
+        "p98Luma": 216.4,
+        "darkPixelPct": 37.3
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/three_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/three_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 137690,
+        "quality": 76,
+        "sha256": "192e09dc408becedbf70372294755592620b9c39bffd91888a1e80717980f850"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/three_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/three_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7016,
+        "quality": 46,
+        "sha256": "ab9a7aaf74538bb5907d6d8c65140e0c59139372c9a5c28af4a4ab3ef10812d6"
+      }
+    },
+    {
+      "id": "four_of_pentacles",
+      "name": "Four of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 4,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "3730efc09c7f8922d9af3e819dd732778f50cd1d41798c97d11b1a079a8e7c78",
+      "sourceMasterSha256": "c2de3ea35787542a35d96b117ad532f4a109aeab6bfe2d58c18b479530024436",
+      "luminance": {
+        "meanLuma": 65.8,
+        "p10Luma": 12.4,
+        "p50Luma": 51.2,
+        "p90Luma": 146.9,
+        "p98Luma": 201.7,
+        "darkPixelPct": 50.5
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/four_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/four_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143720,
+        "quality": 68,
+        "sha256": "4cfe784e3c39cde197f6838e8a41089074c5b74d0472916c9c9bedea1ae86f73"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/four_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/four_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7034,
+        "quality": 34,
+        "sha256": "6e61478f937914c1e39fd3491ae1ee1a04744c607f8e1e095b8fb91f4e9b3f76"
+      }
+    },
+    {
+      "id": "five_of_pentacles",
+      "name": "Five of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 5,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "1820ef95673ec82349c331fa162cbac513434712ee4879c14bb63b49a64496d2",
+      "sourceMasterSha256": "ce1aeb15b61f45dc27eda8469038e4ef1a8e5b7f54b18b993a69e891194f90c7",
+      "luminance": {
+        "meanLuma": 75.8,
+        "p10Luma": 15.2,
+        "p50Luma": 56.6,
+        "p90Luma": 174.5,
+        "p98Luma": 224.5,
+        "darkPixelPct": 46.7
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/five_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/five_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143788,
+        "quality": 68,
+        "sha256": "09441ede430df432d6a4c1f70baba4811d77b60ff0f2eb323bc10e02cbb0f7e1"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/five_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/five_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6962,
+        "quality": 40,
+        "sha256": "47e6d50479845ceaf52495bdfefe176d0a96cdd56458a39dc4bfbd815761e89c"
+      }
+    },
+    {
+      "id": "six_of_pentacles",
+      "name": "Six of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 6,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "84b258fea636b7643f85c94ce79385db20b5f8ffb42a01c70947ac44fe2d1f91",
+      "sourceMasterSha256": "152a0b78cf6fbabba412171b459c2bd016f0438514ca6fc76265629476038004",
+      "luminance": {
+        "meanLuma": 76.4,
+        "p10Luma": 16.3,
+        "p50Luma": 62,
+        "p90Luma": 162.9,
+        "p98Luma": 208.8,
+        "darkPixelPct": 42.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/six_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/six_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 142988,
+        "quality": 72,
+        "sha256": "ce998c4a4c57fa55258fd1190562cb2bc9272128bd5d20a4d833654d3bfe0a4a"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/six_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/six_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6992,
+        "quality": 40,
+        "sha256": "3d88f2302460349f84229bd5b333c05b46a2d917d1e7721c0064edafa9a0ebcd"
+      }
+    },
+    {
+      "id": "seven_of_pentacles",
+      "name": "Seven of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 7,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "f20095e476bcf10f1392758490b0e3d479153b6112dfe08ee0f048ce92effd1b",
+      "sourceMasterSha256": "d6367a87acccdc579b7be6648e67a00debb6534926abf429f4632b3a256f20ff",
+      "luminance": {
+        "meanLuma": 87.6,
+        "p10Luma": 17,
+        "p50Luma": 76.8,
+        "p90Luma": 175.5,
+        "p98Luma": 210.9,
+        "darkPixelPct": 33
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/seven_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/seven_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 144590,
+        "quality": 60,
+        "sha256": "fb2d6880e4360a80b8ad2a1b64e89be4bce4d8e5eab1b02e264d3766b4d26af0"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/seven_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/seven_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 6996,
+        "quality": 32,
+        "sha256": "cd734eb964367ae2afa967c45f611c8fba7d7d69334d5ef93b23e3c17650c2e8"
+      }
+    },
+    {
+      "id": "eight_of_pentacles",
+      "name": "Eight of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 8,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "7c9e5b567d41a9feadc82f9ff85cbc52e88ae1d656c1db8f92b60b95a3e86f09",
+      "sourceMasterSha256": "3d29b3c240ad0925fa70f194927cce4b90574bde1387a398196084905cd565bf",
+      "luminance": {
+        "meanLuma": 72.9,
+        "p10Luma": 15.6,
+        "p50Luma": 55.3,
+        "p90Luma": 163.3,
+        "p98Luma": 211.5,
+        "darkPixelPct": 46.7
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/eight_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/eight_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 136208,
+        "quality": 72,
+        "sha256": "e2686e46b21d3deaa71297cef4c6446424088c42421fa04586eef5309dbd85b6"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/eight_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/eight_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7034,
+        "quality": 46,
+        "sha256": "4f229a7b95453c630689580d6bdb4ba7a8cfd8d5bb07bdd781ea8ac132560391"
+      }
+    },
+    {
+      "id": "nine_of_pentacles",
+      "name": "Nine of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 9,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "213e11056a0518a17812d609862d06f9f72f09f222fe1973eccddd2edf87b682",
+      "sourceMasterSha256": "c0e4cb9b3aeaed21cd22818b2546e619c2e3eed63a2fe10552b44a210bad4ad8",
+      "luminance": {
+        "meanLuma": 105.7,
+        "p10Luma": 18.4,
+        "p50Luma": 97.7,
+        "p90Luma": 198.7,
+        "p98Luma": 230.5,
+        "darkPixelPct": 25.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/nine_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/nine_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 156710,
+        "quality": 56,
+        "sha256": "43f9a9167642c87933d4fd56c96e79c00c6c9476fb885c0f57ed9df863b40f59"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/nine_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/nine_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7148,
+        "quality": 32,
+        "sha256": "b31208da09f7fecc259171920aec963e6ce557d7481879ed3c8efd5352bcbc3f"
+      }
+    },
+    {
+      "id": "ten_of_pentacles",
+      "name": "Ten of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 10,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "de00b03a4546601969d60ed5f10a1bb428b154b1210d000d9726015349f0139a",
+      "sourceMasterSha256": "d17a65478e10c447925878e8cc7461536d61a2e51b458cf8147d3e5c5d4788c1",
+      "luminance": {
+        "meanLuma": 87.3,
+        "p10Luma": 16.4,
+        "p50Luma": 78.3,
+        "p90Luma": 170,
+        "p98Luma": 208.2,
+        "darkPixelPct": 35.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/ten_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/ten_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 142824,
+        "quality": 60,
+        "sha256": "902e9f69cb4ec4b5392c7376c8b3954600f9551724c541ed86c8bb1887b10f87"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/ten_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/ten_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7012,
+        "quality": 38,
+        "sha256": "1e720e91df18d5b4ad3d929a5097f054cb9a610a247e9cf964b5619187bfb62d"
+      }
+    },
+    {
+      "id": "page_of_pentacles",
+      "name": "Page of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 11,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "25bcb07076b55d09d9d363c9feb65f5549ee093651c668f1ce2efd1a0694b239",
+      "sourceMasterSha256": "8164c08aae7f1c11b1fcb5143275c26131b6aba9e1e7a08e0b9088938657c3b4",
+      "luminance": {
+        "meanLuma": 102.8,
+        "p10Luma": 19.4,
+        "p50Luma": 94.7,
+        "p90Luma": 195.4,
+        "p98Luma": 227.8,
+        "darkPixelPct": 25.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/page_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/page_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 146712,
+        "quality": 56,
+        "sha256": "cf7dcd61beffcebfa0098582141fac38ebf55395a6669fdbb674f67f219011dc"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/page_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/page_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7088,
+        "quality": 32,
+        "sha256": "c06a1f8f022ce49c465c032751a9d9b7371b0ef6a4b3957083712a89954e94e5"
+      }
+    },
+    {
+      "id": "knight_of_pentacles",
+      "name": "Knight of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 12,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "6aebac122600fe59d19a8fe07f44a6d8142708e5e8e9e8163e77a4778900e707",
+      "sourceMasterSha256": "5bb1b57dc20e9fe5183a28a676562bdda305f13568de28d52e5cbd99a64a2a53",
+      "luminance": {
+        "meanLuma": 69.9,
+        "p10Luma": 15.2,
+        "p50Luma": 53.6,
+        "p90Luma": 153.3,
+        "p98Luma": 205.8,
+        "darkPixelPct": 48.6
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/knight_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/knight_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139620,
+        "quality": 64,
+        "sha256": "a673afd7c5049a74eb667b010f7ad2c255fcd524ae9050223fc342c18f1ce462"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/knight_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/knight_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7046,
+        "quality": 42,
+        "sha256": "9a5d3820db265f510d1e4e2484e3aca72603df39f7f70a7e5cc447e8841d0203"
+      }
+    },
+    {
+      "id": "queen_of_pentacles",
+      "name": "Queen of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 13,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "913cc18f16467dcbf8cdbc5394113a748ad07667bfcc40ba501be78f0a3ccf40",
+      "sourceMasterSha256": "4f71fb3d8b90f4c6d812897814df9e823c489f6591d2e438157803e96179ed6a",
+      "luminance": {
+        "meanLuma": 87.4,
+        "p10Luma": 15.4,
+        "p50Luma": 69.4,
+        "p90Luma": 181.7,
+        "p98Luma": 213.1,
+        "darkPixelPct": 39.4
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/queen_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/queen_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 139040,
+        "quality": 64,
+        "sha256": "ab27f43b366d0c364c3ff1e12ea07deccba3bc5d51c5d27b9aaff133e08cb49f"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/queen_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/queen_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7050,
+        "quality": 36,
+        "sha256": "7f772bc4c3ce1f4e673e4b56c1a8e1510b891f0dfff3552081201efab7548b55"
+      }
+    },
+    {
+      "id": "king_of_pentacles",
+      "name": "King of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 14,
+      "model": "gpt-image-2.5-sunburst",
+      "quality": "xhigh",
+      "promptSha256": "f8f9df580fc2f9cd894f9380bb2e7f6d83662fdb4347a7346c64e451f7c85269",
+      "sourceMasterSha256": "e148376148201f95daadefb2b573be18ee16d460f5e3accca2d415a3bb79732a",
+      "luminance": {
+        "meanLuma": 88.2,
+        "p10Luma": 16.8,
+        "p50Luma": 77.8,
+        "p90Luma": 175.3,
+        "p98Luma": 220.8,
+        "darkPixelPct": 37.1
+      },
+      "web": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/king_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/king_of_pentacles.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 146768,
+        "quality": 56,
+        "sha256": "0ac0690a226d5656373de2fe38b61630ca10e3ebb13a39eba62f3fd97be0e7bb"
+      },
+      "mcp": {
+        "path": "/assets/cards/midnight-art-nouveau-v2/mcp/king_of_pentacles.webp",
+        "physicalPath": "assets/cards/v2/mcp/king_of_pentacles.webp",
+        "width": 192,
+        "height": 288,
+        "bytes": 7172,
+        "quality": 32,
+        "sha256": "86eb25fac33117b48d7b21d41c730bc37006f95986b28f28b75439f23cc22774"
       }
     }
   ]

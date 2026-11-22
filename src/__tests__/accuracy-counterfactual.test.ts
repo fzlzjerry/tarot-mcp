@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
-import { inferPositionRole } from "../tarot/canon/index.js";
+import { getCanonCard, getCanonMotifs, inferPositionRole } from "../tarot/canon/index.js";
 import { TarotCardManager } from "../tarot/cards/card-manager.js";
 import { TarotReadingManager } from "../tarot/readings/reading-manager.js";
 import { TarotSessionManager } from "../tarot/readings/session-manager.js";
@@ -357,17 +357,44 @@ describe("MCP accuracy counterfactuals and invariants", () => {
       expect(threeZh.reading.cards[1].positionRole).toBe("present");
     });
 
-    it("never attaches v2 editionMotifs to default v1 deck receipts", () => {
+    it("attaches v2 editionMotifs on default v2 receipts while omitting them when explicitly queried for v1", () => {
       const queenSwords = cardManager.findCard("queen_of_swords")!;
       const rm = new TarotReadingManager(cardManager, new TarotSessionManager(), {
         drawCards: () => [queenSwords],
         drawOrientation: () => "upright",
       });
       const res = rm.performReadingWithDetails("single_card", "How should I decide?");
-      expect(res.reading.deckVersion).toBe("midnight-art-nouveau-v1");
+      expect(res.reading.deckVersion).toBe("midnight-art-nouveau-v2");
+      expect(res.reading.knowledgeVersion).toBe("canon-v2.0");
       expect(res.reading.cards[0].traditionMotifs?.length).toBeGreaterThan(0);
-      expect(res.reading.cards[0].editionMotifs).toBeUndefined();
-      expect(res.reading.evidence.cards[0].editionMotifs).toEqual([]);
+      expect(res.reading.cards[0].editionMotifs?.length).toBeGreaterThan(0);
+      expect(res.reading.evidence.cards[0].editionMotifs.length).toBeGreaterThan(0);
+
+      // Explicitly requesting v1 deck edition still isolates v2 editionMotifs
+      const v1Motifs = getCanonMotifs("queen_of_swords", "en", "midnight-art-nouveau-v1");
+      expect(v1Motifs?.tradition.length).toBeGreaterThan(0);
+      expect(v1Motifs?.edition).toEqual([]);
+    });
+
+    it("covers all 78 canonical cards in Card Canon with bilingual motifs, role branches, reversal lenses, and zero legacy boilerplate", () => {
+      const allCards = cardManager.getAllCards();
+      expect(allCards).toHaveLength(78);
+      for (const card of allCards) {
+        const canon = getCanonCard(card.id);
+        expect(canon, `Missing canon for ${card.id}`).toBeDefined();
+        expect(canon!.archetypeEssence.en.trim().length).toBeGreaterThan(10);
+        expect(canon!.archetypeEssence.zh.trim().length).toBeGreaterThan(4);
+        expect(canon!.traditionMotifs.en.length).toBeGreaterThanOrEqual(3);
+        expect(canon!.traditionMotifs.zh.length).toBeGreaterThanOrEqual(3);
+        expect(canon!.editionMotifs.en.length).toBeGreaterThanOrEqual(3);
+        expect(canon!.editionMotifs.zh.length).toBeGreaterThanOrEqual(3);
+        expect(canon!.promptSpec?.scene.trim().length).toBeGreaterThan(40);
+        expect(canon!.promptSpec?.requiredObjects.length).toBeGreaterThanOrEqual(1);
+        expect(card.meanings.upright.general).not.toContain(
+          "constructive expression of the archetype's growth lesson",
+        );
+        expect(card.zh?.meanings.upright.general).not.toContain("建设性表达");
+      }
     });
 
     it("flushes read-renewed session activity during periodic cleanup without writing on every read", async () => {

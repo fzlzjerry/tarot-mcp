@@ -94,9 +94,8 @@ describe("Milestone 1 UI upgrades", () => {
       name: t("en", "spotlightEyebrow"),
     });
     expect(within(spotlight).getByText("The Fool")).not.toBeNull();
-    // On default v1 deck, Spotlight displays traditional RWS motifs, never v2 edition claims
-    expect(within(spotlight).getByText(/Sunlit cliff edge/)).not.toBeNull();
-    expect(within(spotlight).queryByText(/V2 luminous coastal cliff/)).toBeNull();
+    // On default v2 deck, Spotlight displays v2 edition motifs cleanly
+    expect(within(spotlight).getByText(/V2 luminous coastal cliff/)).not.toBeNull();
 
     // Reveal second card -> Spotlight auto-focuses Queen of Swords, prev/next active
     await user.click(
@@ -247,10 +246,15 @@ describe("Milestone 1 UI upgrades", () => {
     ) as HTMLTextAreaElement;
     expect(textarea.value).toBe(t("en", "intentCareerQ"));
 
-    // Toggle to v2 Gate Preview updates caption cleanly
+    // Default is now full 78-card v2 Luminous deck; toggling to v1 switches caption cleanly
+    expect(screen.getByText(t("en", "v2DeckCaption"))).not.toBeNull();
+    await user.click(
+      screen.getByRole("button", { name: t("en", "deckEditionV1") }),
+    );
+    expect(screen.getByText(t("en", "deckPreview"))).not.toBeNull();
     await user.click(
       screen.getByRole("button", { name: t("en", "deckEditionV2") }),
     );
-    expect(screen.getByText(t("en", "v2GateCaption"))).not.toBeNull();
+    expect(screen.getByText(t("en", "v2DeckCaption"))).not.toBeNull();
   });
 });

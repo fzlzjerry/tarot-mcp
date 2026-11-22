@@ -222,11 +222,11 @@ export function createWebClient(): DrawClient {
       );
       const payload = normalizeBeginPayload(result, input);
       assertCompleteVisualDeck(payload);
-      if (readInitialDeckEdition() === "v2") {
+      if (readInitialDeckEdition() === "v1") {
         payload.deckBackImageUri = resolveWebCardAssetUrl(
           "back",
           payload.deckBackImageUri,
-          "v2",
+          "v1",
         );
       }
       starts.set(payload.drawId, payload);
@@ -251,21 +251,21 @@ export function createWebClient(): DrawClient {
             options?.signal,
           );
       const confirmed = normalizeConfirmedReading(result, starts.get(drawId));
-      if (readInitialDeckEdition() === "v2") {
+      if (readInitialDeckEdition() === "v1") {
         confirmed.deckBackImageUri = resolveWebCardAssetUrl(
           "back",
           confirmed.deckBackImageUri,
-          "v2",
+          "v1",
         );
       }
       return confirmed;
     },
     async resolveImage(card: ReadingCard): Promise<string | undefined> {
       const edition = readInitialDeckEdition();
-      if (edition === "v2") {
-        return resolveWebCardAssetUrl(card.id, card.imageUri, "v2");
+      if (edition === "v1") {
+        return resolveWebCardAssetUrl(card.id, card.imageUri, "v1");
       }
-      return card.imageUri;
+      return card.imageUri ?? resolveWebCardAssetUrl(card.id, undefined, "v2");
     },
   };
 }

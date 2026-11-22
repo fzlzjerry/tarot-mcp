@@ -1,27 +1,26 @@
 import {
-  VISUAL_CARD_ASSET_BASE,
+  VISUAL_CARD_V1_ASSET_BASE,
   VISUAL_CARD_V2_ASSET_BASE,
 } from "@tarot/shared/artwork.js";
 
 export type DeckEdition = "v1" | "v2";
 
-export const V2_GATE_CARD_IDS = [
+export const V2_SHOWCASE_CARD_IDS = [
   "fool",
+  "high_priestess",
   "three_of_cups",
-  "three_of_pentacles",
   "queen_of_swords",
   "ten_of_wands",
+  "three_of_pentacles",
 ] as const;
 
-export const V2_GATE_CARD_SET: ReadonlySet<string> = new Set(V2_GATE_CARD_IDS);
-
 export function readInitialDeckEdition(): DeckEdition {
-  if (typeof window === "undefined") return "v1";
+  if (typeof window === "undefined") return "v2";
   try {
     const params = new URLSearchParams(window.location.search);
-    return params.get("deck") === "v2" ? "v2" : "v1";
+    return params.get("deck") === "v1" ? "v1" : "v2";
   } catch {
-    return "v1";
+    return "v2";
   }
 }
 
@@ -29,7 +28,7 @@ export function setUrlDeckEdition(edition: DeckEdition): void {
   if (typeof window === "undefined") return;
   try {
     const url = new URL(window.location.href);
-    if (edition === "v2") url.searchParams.set("deck", "v2");
+    if (edition === "v1") url.searchParams.set("deck", "v1");
     else url.searchParams.delete("deck");
     window.history.replaceState(
       window.history.state,
@@ -43,25 +42,11 @@ export function setUrlDeckEdition(edition: DeckEdition): void {
 
 export function resolveWebCardAssetUrl(
   cardId: string,
-  fallbackUri: string | undefined,
+  _fallbackUri?: string,
   edition: DeckEdition = readInitialDeckEdition(),
-  hiRes = false,
-): string | undefined {
-  if (edition === "v2") {
-    if (cardId === "back") {
-      return hiRes
-        ? `${VISUAL_CARD_V2_ASSET_BASE}/w1024/back.webp`
-        : `${VISUAL_CARD_V2_ASSET_BASE}/back.webp`;
-    }
-    if (V2_GATE_CARD_SET.has(cardId)) {
-      return hiRes
-        ? `${VISUAL_CARD_V2_ASSET_BASE}/w1024/${cardId}.webp`
-        : `${VISUAL_CARD_V2_ASSET_BASE}/${cardId}.webp`;
-    }
+): string {
+  if (edition === "v1") {
+    return `${VISUAL_CARD_V1_ASSET_BASE}/${cardId}.webp`;
   }
-  return fallbackUri ?? `${VISUAL_CARD_ASSET_BASE}/${cardId}.webp`;
-}
-
-export function isV2GateCard(cardId: string): boolean {
-  return V2_GATE_CARD_SET.has(cardId);
+  return `${VISUAL_CARD_V2_ASSET_BASE}/${cardId}.webp`;
 }

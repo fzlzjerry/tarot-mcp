@@ -137,10 +137,10 @@ const messages = {
     intentDecision: "Crossroads decision",
     intentDecisionQ: "What should I weigh before making this decision?",
     spreadMapLabel: "Spread layout map",
-    deckEditionV1: "v1 Full Deck (78)",
-    deckEditionV2: "v2 Gate Preview (6)",
-    v2GateCaption:
-      "Luminous Midnight Art Nouveau v2 preview · 5 gate faces + symmetric back",
+    deckEditionV1: "v1 Classic (78)",
+    deckEditionV2: "v2 Luminous (78)",
+    v2DeckCaption:
+      "Luminous Midnight Art Nouveau v2 · 78 illuminated plates + 180° symmetric back",
   },
   zh: {
     noWebInterpretation: "点击已翻开的牌，查看它的牌义与牌位。",
@@ -267,9 +267,9 @@ const messages = {
     intentDecision: "抉择权衡",
     intentDecisionQ: "在做眼前这个决定之前，我最需要看清什么？",
     spreadMapLabel: "牌阵几何示意图",
-    deckEditionV1: "v1 完整牌组（78张）",
-    deckEditionV2: "v2 新画风样牌（6张）",
-    v2GateCaption: "流光午夜新艺术 v2 样牌预览 · 5 张高光牌面 + 180° 对称牌背",
+    deckEditionV1: "v1 经典牌组（78张）",
+    deckEditionV2: "v2 新绘全集（78张）",
+    v2DeckCaption: "流光午夜新艺术 v2 · 全套 78 张精绘牌面 + 180° 对称牌背",
   },
 } as const;
 

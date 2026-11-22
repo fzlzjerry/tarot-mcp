@@ -1,0 +1,2715 @@
+{
+  "ace_of_wands": {
+    "id": "ace_of_wands",
+    "archetypeEssence": {
+      "en": "The raw flash of creative fire—an unmistakable impulse asking to be seized before it cools.",
+      "zh": "破云而出的第一簇创造之火——趁热抓住那道清晰冲动，而非等它冷却。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Luminous hand emerging from a bright cloud grasping a single upright wand",
+        "Fresh green leaves sprouting from the wooden staff and drifting through the air",
+        "Distant stone castle perched on sunlit hills beyond a winding river",
+        "Open valley landscape signaling fertile ground for a new venture"
+      ],
+      "zh": [
+        "自云端伸出、稳稳握住一根竖直权杖的明亮之手",
+        "自木杖抽芽并随风飘落的翠绿嫩叶",
+        "蜿蜒河流远方山丘上的石造城堡",
+        "开阔肥沃的山谷风景，象征新计划的生长沃土"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Luminous ivory hand emerging from a backlit midnight-and-amber cloud holding one upright flowering bronze-and-wood wand",
+        "Exactly one sculpted sprouting wand crowned with emerald leaves and floating golden sparks",
+        "Warm vermilion-gold sunburst radiating behind the wand against velvety midnight-indigo sky",
+        "Distant lantern-lit hilltop castle above a silver-gilded winding river valley"
+      ],
+      "zh": [
+        "自琥珀背光夜云中伸出、高举一根发芽权杖的月白之手",
+        "清晰唯一的一根古铜鎏金木杖，枝头抽芽并伴随飘散金星",
+        "在深邃午夜靛蓝天幕中绽开的暖朱砂与琥珀日芒",
+        "远方银金河流与山谷尽头亮着暖灯的高丘城堡"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ace of Wands marks a genuine surge of inspiration, appetite, and creative will. A seed of fire has landed in your hand—act on the spark while it is alive rather than waiting for a complete blueprint.",
+          "zh": "权杖王牌代表真切涌现的灵感、热情与行动力。一粒火种已经落进你掌心——趁它炽热时立刻动手点燃，不必等到蓝图分毫不差。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Say yes to the idea that makes your pulse quicken; momentum begins the moment you give this spark a real first shape.",
+            "zh": "回应那个让你心跳加速的念头；只要你给这簇火花一个真实雏形，势头就会立刻启动。"
+          },
+          "foundation": {
+            "en": "This chapter began with a sudden burst of enthusiasm, a bold pitch, or a creative urge that refused to stay quiet.",
+            "zh": "整件事的起点源于一次突发的热情、大胆提议，或按捺不住的创作与行动冲动。"
+          },
+          "present": {
+            "en": "Fresh energy is available right now—clear the desk and channel it into one tangible beginning before distractions scatter it.",
+            "zh": "眼下正有一股饱满的新鲜动能——清出桌面，趁杂事分心前把它灌进一个具体的开端里。"
+          },
+          "resource": {
+            "en": "Your strongest asset is raw drive and originality; people respond to visible conviction far more than polished caution.",
+            "zh": "你手头最强的筹码是纯粹干劲与原创锐气；看得见的笃定感，往往比滴水不漏的谨慎更能打动人。"
+          },
+          "challenge": {
+            "en": "Even upright, Ace of Wands in a challenge slot warns that excitement alone can outrun follow-through—pair the ignition with one concrete anchor.",
+            "zh": "落在阻碍位时，正位权杖王牌提醒光有兴头容易虎头蛇尾——给这股冲劲配上一个落地锚点。"
+          },
+          "action": {
+            "en": "Build the rough draft, book the first session, or launch the pilot today while the creative heat is high.",
+            "zh": "趁热打铁：今天就把粗样做出来、约下第一场会或启动试点，别让热情在观望中熄火。"
+          },
+          "outcome": {
+            "en": "A lively new venture, creative breakthrough, or revitalized sense of purpose takes root with room to grow.",
+            "zh": "一个充满生命力的新项目、创作突破或重新点燃的目标感将顺利生根，并拥有宽广的成长空间。"
+          },
+          "advice": {
+            "en": "Protect the new flame from premature cynicism; let it become real before you judge its final size.",
+            "zh": "先护住这簇刚燃起的火苗，别用过早的挑剔泼冷水；先让它成形，再谈规模。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "A bold creative spark and fresh wave of inspiration are ready to be acted upon. Seize the opening with decisive energy and give your impulse a real starting point.",
+            "zh": "一股鲜活的灵感与创造火种正递到你手边。趁热情饱满时果断迈出第一步，把脑中的念头尽快变成看得见的现实起点。"
+          },
+          "love": {
+            "en": "In love, Ace of Wands brings magnetic attraction, renewed passion, or an exciting fresh chapter. Initiate warmly and let genuine desire show without over-rehearsing.",
+            "zh": "在感情中，权杖王牌带来强烈吸引、重新升温的火花或令人振奋的新阶段。大方主动表达热情，不必把真挚心意藏在反复试探后。"
+          },
+          "career": {
+            "en": "At work, this is green-light energy for a new role, side venture, or bold initiative. Pitch the idea, ship a quick prototype, and claim early ownership.",
+            "zh": "在工作与事业上，这是开启新岗位、新业务或大胆提案的绿灯信号。尽快拿出原型或提案，趁势抢占先发主动权。"
+          },
+          "health": {
+            "en": "Vitality is rising—channel this burst of energy into invigorating movement, a fresh routine, or an active goal that makes you feel genuinely alive.",
+            "zh": "在身心状态上，生命力与精力正在回升——把这股充沛劲头投入到让你感到畅快的运动、新习惯或充满活力的日常节奏中。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Ace of Wands is the creative life-force waking up: honor curiosity and passion as sacred fuel rather than distractions from discipline.",
+            "zh": "在灵性层面，权杖王牌象征内在生命之火的苏醒：把热忱与好奇当作滋养成长的纯净燃料，而不是需要压抑的浮躁杂念。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ace of Wands reversed points to a stalled ignition—delays, low creative fuel, or an idea still looking for the right timing and focus before it can catch fire.",
+          "zh": "权杖王牌逆位指向尚未点着的火种——推进延迟、热情受阻，或一个好念头还在等待更合适的时机与聚焦点。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Creative frustration or external delays are keeping a promising start stuck on the runway.",
+            "zh": "创作卡壳或外部延误，让原本有潜力的开端暂时停在起跑线上。"
+          },
+          "excess": {
+            "en": "Chasing five impulsive sparks at once and burning out before any single one catches.",
+            "zh": "同时追逐好几个冲动念头，结果精力散尽却没点着其中任何一个。"
+          },
+          "internalized": {
+            "en": "A quiet desire is gestating beneath the surface; it needs private incubation before public launch.",
+            "zh": "一份真实的渴望正在水下酝酿，公开亮相前还需要一段安静的孵化期。"
+          },
+          "release": {
+            "en": "Letting go of a forced passion project that no longer excites you so real energy can return.",
+            "zh": "放下那个已经不再让你兴奋的勉强念头，把心力腾给真正能点燃你的方向。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "False starts, hesitation, or scattered enthusiasm are draining the spark before it can build momentum.",
+            "zh": "反复试探、拖延观望或过于分散的热情，正在把火苗在成势之前耗散掉。"
+          },
+          "action": {
+            "en": "Clear one bottleneck, pick a single small experiment, and restart without demanding instant fireworks.",
+            "zh": "先疏通眼下最卡的一个堵点，只挑一件小事重新动手，不必强求一上来就轰轰烈烈。"
+          },
+          "outcome": {
+            "en": "Launch timing slows down briefly, giving you a chance to refine direction so the eventual start actually holds.",
+            "zh": "启动节奏会暂时放缓，但这反而给了你校准方向的窗口，让后续真正起步时更稳。"
+          },
+          "advice": {
+            "en": "Don't force enthusiasm by willpower alone—rest, narrow your focus, and wait for the click of genuine interest.",
+            "zh": "别靠硬逼自己来制造热情——先歇口气、收窄焦点，等真正契合的兴趣重新亮起来。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Delays or blocked passion ask you to pause and check whether the timing, energy, or scope needs recalibration before pushing forward.",
+            "zh": "权杖王牌逆位提示推进延迟或热情受阻，适合先停下来检查时机、精力储备或切入范围，等重新对齐后再发力。"
+          },
+          "love": {
+            "en": "In relationships, reversed Ace of Wands reflects lukewarm timing, hesitant chemistry, or routine dulling the spark. Bring small honest novelty instead of forcing drama.",
+            "zh": "在感情中，权杖王牌逆位反映互动略显温吞、犹豫观望或日常磨淡了火花。用真诚的小新鲜感慢慢回温，别靠制造波折找刺激。"
+          },
+          "career": {
+            "en": "At work, a launch may stall or motivation may dip around an uninspiring brief. Clarify the core problem before pouring fresh hours into a false start.",
+            "zh": "在工作上，项目可能遭遇延期，或对缺乏共鸣的任务提不起劲。先厘清真正值得投入的核心目标，避免在错误方向上空转。"
+          },
+          "health": {
+            "en": "Low stamina or restless fatigue signals depleted reserves; replenish sleep and baseline energy before taking on ambitious new physical goals.",
+            "zh": "在身心状态上，精力不足或焦躁乏力说明底层储备偏低；先补足睡眠与基础恢复，再谈开启高强度的新计划。"
+          },
+          "spirituality": {
+            "en": "A dry spell in inspiration is not failure; quiet fallow seasons gather the quiet tinder for your next authentic calling.",
+            "zh": "在灵性层面，灵感暂歇并非退步；安静的休耕期正是在暗中积蓄火绒，为下一轮真正由衷的召唤做好准备。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A luminous ivory-skinned hand emerging gracefully from a glowing golden-rimmed midnight cloud on the right, firmly gripping EXACTLY ONE tall, straight, carved bronze-and-wood wand held upright in the center of the composition. Fresh emerald-green leaves sprout vigorously along the wand's shaft while several detached golden-edged emerald leaves drift gently through the sunlit air. Behind the wand, a radiant Art Nouveau sunburst of warm amber-vermilion and molten antique gold glows against a deep velvety midnight-indigo sky. Far below, a winding gilded river crosses a verdant twilight valley toward a small distant stone castle perched on a bright sunlit hill. Crisp luminous highlights sculpt the hand, the single flowering wand, and the drifting leaves for unmistakable clarity.",
+      "requiredObjects": [
+        {
+          "object": "luminous hand emerging from cloud",
+          "count": 1
+        },
+        {
+          "object": "upright sprouting wooden-and-bronze wand",
+          "count": 1
+        },
+        {
+          "object": "distant hilltop stone castle",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Single bold vertical golden-bronze wand held dead-center against a radiant amber-ivory sunburst halo; reads unmistakably as Ace of Wands at 64x96 thumbnail size.",
+      "avoid": [
+        "two or more wands",
+        "cups",
+        "chalices",
+        "swords",
+        "pentacles",
+        "coins",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "two_of_wands": {
+    "id": "two_of_wands",
+    "archetypeEssence": {
+      "en": "Standing on the parapet with the world in hand—turning raw potential into a deliberate long-range plan.",
+      "zh": "立于城垛之上掌托寰宇——把手中潜力沉淀为清晰的长远规划与出走抉择。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Cloaked figure standing on a castle battlement gazing across sea and mountains",
+        "Miniature terrestrial globe held thoughtfully in the right hand",
+        "Two sprouting wands—one bolted to the stone parapet, one gripped in the left hand",
+        "Carved rose, lily, and cross emblem on the stone wall marking balanced intent"
+      ],
+      "zh": [
+        "身披斗篷立于城堡垛口、远眺山海的眺望者",
+        "右手稳稳托在掌心的微缩地球仪",
+        "两根发芽权杖——一根固定于石墙，一根握于左手",
+        "石墙上雕刻的玫瑰与百合徽记，象征理性与热情的平衡"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Belle Epoque visionary in crimson-and-indigo cloak standing atop a warm stone battlement overlooking a moonlit-and-amber sea",
+        "Miniature gilded astrolabe globe glowing in their outstretched right palm",
+        "Exactly two tall sprouting bronze-and-wood wands—one clasped vertically in their left hand, one mounted upright in an iron bracket on the stone parapet behind them",
+        "Warm golden horizon glow separating the figure, globe, and two upright wands from deep midnight-indigo waters"
+      ],
+      "zh": [
+        "身披绯红与靛蓝斗篷、立于暖色石垛远眺海天之际的美好年代远望者",
+        "右手掌心泛起暖光的鎏金微缩地球仪",
+        "清晰可数的两根发芽古铜木杖——一根握于左手，一根以铁环固定在身后石墙上",
+        "远方暖金地平线将人物、地球仪与两根竖立权杖从深邃午夜海色中利落衬出"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Two of Wands is the moment between comfort and expansion: you have already secured your castle wall, and now you hold the globe, weighing which wider horizon deserves your next commitment.",
+          "zh": "权杖二处于安稳与远行之间的关键节点：你已经守住了脚下的城墙，此刻手托地球仪，正在权衡哪片更开阔的疆域值得你下一步投入。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Think bigger than maintenance—step back, map the wider terrain, and choose the direction you actually want to build toward.",
+            "zh": "别只满足于维持现状——站高一步看清全局地形，选定你真正想前往的方向。"
+          },
+          "foundation": {
+            "en": "Early success or steady groundwork gave you a safe base, which is why you now have the leverage to plan ambitiously.",
+            "zh": "前期的稳固积累为你搭好了安全底座，正因如此你现在才拥有从容筹划远景的筹码。"
+          },
+          "present": {
+            "en": "You are at a strategic overlook comparing two paths: staying inside known territory or committing to a larger venture.",
+            "zh": "你正站在战略观景台上面临抉择：留在熟悉领地，还是迈向更大格局的新局。"
+          },
+          "resource": {
+            "en": "Your greatest advantage is foresight—you can see how the pieces connect before spending energy on the march.",
+            "zh": "你最大的优势是前瞻视野——在真正动身耗费力气前，就能把全局脉络看得明明白白。"
+          },
+          "challenge": {
+            "en": "Even upright, Two of Wands in a challenge position flags staying on the balcony too long: planning feels safe, but eventually you must leave the parapet.",
+            "zh": "落在阻碍位时，正位权杖二提醒别在观景台站太久：做规划很安全，但终究要迈出城门。"
+          },
+          "action": {
+            "en": "Pick one concrete destination, set a realistic timeline and first milestone, and commit resources to leaving port.",
+            "zh": "明确选定一个目标方向，排好务实时间线与首个里程碑，正式把资源投入出航准备。"
+          },
+          "outcome": {
+            "en": "A clear long-term plan and confident personal authority set the stage for genuine outward expansion.",
+            "zh": "清晰的长远规划与笃定的掌控感将为你铺平道路，迎来切实向外的拓展。"
+          },
+          "advice": {
+            "en": "Keep one hand on what is proven while your eyes measure the horizon; bold vision works best with a calm map.",
+            "zh": "一手稳住已有根基，双眼丈量远方地平线；宏大愿景配上冷静地图才最走得远。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Strategic planning and future vision take center stage. Step above daily details, weigh your options honestly, and prepare to move beyond familiar walls.",
+            "zh": "战略规划与长远视野是此刻核心。跳出琐碎日常站高一步，冷静权衡选项，为走出熟悉舒适区做好准备。"
+          },
+          "love": {
+            "en": "In love, Two of Wands asks what shared future you are actually building—long-distance plans, moving in, or deciding whether both partners want the same horizon.",
+            "zh": "在感情中，权杖二邀请你们对齐共同的未来蓝图——无论是异地规划、共同生活，还是确认彼此是否望向同一片远方。"
+          },
+          "career": {
+            "en": "At work, this is classic roadmap and expansion energy: scaling a product, exploring international or cross-functional roles, and choosing long-term leverage over busywork.",
+            "zh": "在工作与事业上，这是典型的路线图与版图拓展期：扩大业务边界、评估跨领域或远方机会，用长远杠杆取代低效忙碌。"
+          },
+          "health": {
+            "en": "Look beyond short-term fixes and design a sustainable seasonal routine—checkups, training milestones, and rest rhythms that support where you want to be months from now.",
+            "zh": "在身心管理上，跳出临时抱佛脚的念头，为未来几个月的精力状态规划可持续的作息、锻炼节点与体检安排。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Two of Wands invites you to widen your personal worldview—explore a new teacher, tradition, or contemplative horizon with steady discernment.",
+            "zh": "在灵性层面，权杖二鼓励你拓宽内在世界观——带着清醒与好奇去接触更开阔的智慧传统或修行视野。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Two of Wands reversed highlights fear of change, small thinking, or clinging to familiar walls even when you have clearly outgrown them.",
+          "zh": "权杖二逆位指向对改变的顾虑、视野收缩，或明知已经长出旧框却仍紧紧抓住熟悉城墙不放。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Indecision and fear of losing comfort are keeping a viable expansion permanently on paper.",
+            "zh": "犹豫不决与害怕失去安稳，让原本可行的拓展计划永远停在纸面上。"
+          },
+          "excess": {
+            "en": "Over-planning every contingency until analysis becomes a polite excuse not to leave port.",
+            "zh": "把每个细节都过度推演，让精细规划变成了迟迟不出航的体面借口。"
+          },
+          "internalized": {
+            "en": "Quietly downsizing your own ambitions to avoid risk or other people's scrutiny.",
+            "zh": "为了避开风险或外界审视，在心里悄悄调低了原本属于你的野心。"
+          },
+          "release": {
+            "en": "Letting go of an outdated plan that no longer fits reality so you can redraw a truer map.",
+            "zh": "放下那份早已不合时宜的旧计划，重新画一张贴合当下真实处境的地图。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Playing it too small—or jumping into a move without checking the terrain—is undercutting your leverage.",
+            "zh": "格局放得太小，或者没看清地形就仓促动身，正在削弱你原本握有的主动权。"
+          },
+          "action": {
+            "en": "Name the exact fear keeping you on the wall, cap the downside with a small test, and make one real decision.",
+            "zh": "直白说出让你迟疑的那个具体担忧，用低成本小测试兜底，然后做出一个真正的决定。"
+          },
+          "outcome": {
+            "en": "Progress stalls in familiar territory until you either commit to a revised plan or accept staying put consciously.",
+            "zh": "局面会暂时停留在熟悉圈层里，直到你真正选定修正后的路线，或清醒接受暂缓出航。"
+          },
+          "advice": {
+            "en": "Stop waiting for risk to vanish; a modest imperfect map beats endless pacing behind the battlement.",
+            "zh": "别等风险完全归零；一张朴素却能上路的地图，胜过在城垛后无休止地来回踱步。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Fear of change or small thinking may be boxing you in. Re-examine your assumptions, trim over-complicated plans, and take one honest step toward wider ground.",
+            "zh": "权杖二逆位提醒你留意是否因害怕变动或格局受限而画地为牢。重新核对前提假设，精简过度复杂的方案，迈出诚实的一步。"
+          },
+          "love": {
+            "en": "In relationships, reversed Two of Wands signals hesitation about next steps or mismatched long-term visions. Talk openly about what feels uncertain instead of stalling.",
+            "zh": "在感情中，权杖二逆位反映对下一阶段犹豫不决或长远期待错位。把心里真正没底的地方摊开聊清，比原地拖延更负责。"
+          },
+          "career": {
+            "en": "At work, beware clinging to a safe but stagnant role, or expanding without a real plan. Clarify your non-negotiables and test one concrete next move.",
+            "zh": "在职场上，警惕困在安稳却停滞的舒适区里，也要避免毫无章法的盲目扩张。先理清底线诉求，再测试一个具体动作。"
+          },
+          "health": {
+            "en": "Perfectionist planning can keep you from actually starting; drop the elaborate regimen and commit to one simple daily habit you will keep.",
+            "zh": "在身心调节上，过于繁琐的完美计划反而让人迟迟无法开始；放下花哨方案，先落实一个每天都能坚持的简单习惯。"
+          },
+          "spirituality": {
+            "en": "Notice where familiar certainty is crowding out growth; curiosity returns the moment you admit you don't have the whole map yet.",
+            "zh": "在灵性层面，觉察对确定感的依赖是否挤占了成长空间；当你坦然承认自己尚未看全地图，好奇与敞开就会重新回来。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A poised Belle Epoque visionary in a rich vermilion-crimson cloak and embroidered indigo tunic standing atop a carved pale-stone castle battlement overlooking a vast twilight sea and distant mountains. Seen in graceful three-quarter view, they gaze thoughtfully out toward the warm golden horizon, cradling ONE gleaming miniature gilded terrestrial globe in their raised right hand. Their left hand grips EXACTLY ONE tall upright sprouting bronze-and-wood wand resting on the parapet, while a SECOND identical sprouting bronze-and-wood wand stands bolted upright in an ornate iron ring against the stone battlement behind them—EXACTLY TWO tall wands total, clearly separated on either side of the figure. Warm amber-ivory sunset light illuminates the visionary's profile, the glowing globe, and both emerald-leaved wands against deep midnight-indigo waters.",
+      "requiredObjects": [
+        {
+          "object": "cloaked visionary on stone battlement",
+          "count": 1
+        },
+        {
+          "object": "gilded miniature terrestrial globe in hand",
+          "count": 1
+        },
+        {
+          "object": "tall upright sprouting bronze-and-wood wands",
+          "count": 2
+        }
+      ],
+      "compositionNote": "Clear vertical framing of the figure flanked by TWO distinct upright wands and a bright glowing golden globe held against open twilight sea; reads effortlessly at 64x96 thumbnail.",
+      "avoid": [
+        "three or more wands",
+        "single wand only",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "three_of_wands": {
+    "id": "three_of_wands",
+    "archetypeEssence": {
+      "en": "The first ships are already at sea—foresight, expansion, and watching early enterprise return across open water.",
+      "zh": "首批船队已扬帆出海——凭借远见与布局，站在高处静候早期投入跨越山海回流。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Cloaked figure standing on a high cliff looking out over golden sea waters",
+        "Three tall sprouting wands planted firmly into the rocky headland around the figure",
+        "Sailing ships crossing the bright harbor toward distant mountains",
+        "Steady forward-looking stance signaling enterprise already set in motion"
+      ],
+      "zh": [
+        "立于高崖之上极目远眺金色海面的旅人",
+        "稳稳插在崖顶岩石间的三根发芽权杖",
+        "驶向远方群山与彼岸的扬帆商船",
+        "沉稳前瞻的背影，象征事业已正式启航"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Belle Epoque navigator in amber-vermilion and deep indigo cloak standing on a high luminous cliff overlooking a shimmering golden-indigo bay",
+        "Exactly three tall sprouting bronze-and-wood wands planted upright in the rocky headland—one held lightly in the right hand and two planted clearly to the left and right",
+        "Three graceful distant sailing ships gliding across warm gilded water toward misty twilight mountains",
+        "Expansive sunlit-amber sky opening wide above deep midnight-indigo coastal cliffs"
+      ],
+      "zh": [
+        "身披琥珀绯红与深靛斗篷、立于高崖远望金蓝海湾的美好年代领航者",
+        "清晰可数的三根发芽古铜木杖——右手轻扶一根，左右崖石各稳立一根",
+        "驶过鎏金波光、奔向暮色远山的优雅帆船",
+        "高阔暖金天光在深邃午夜海崖之上豁然铺开"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Three of Wands confirms that your early moves have left the harbor. Expansion, trade, and longer-range momentum are now underway—keep your eyes on the horizon and prepare to receive what returns.",
+          "zh": "权杖三确认你的前期布局已经顺利离港。拓展、合作与更长远的势头正在海上推进——保持前瞻视野，做好承接回报的准备。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Your groundwork is already working at a distance; widen your lens and prepare for the next stage of scale.",
+            "zh": "你此前播下的布局已经在远方发力；把格局再放大一圈，准备承接下一阶段的拓展。"
+          },
+          "foundation": {
+            "en": "A decisive choice to step beyond your comfort zone set these ventures in motion.",
+            "zh": "此前果断走出舒适区的那一次落子，让如今的远航与拓展真正启动起来。"
+          },
+          "present": {
+            "en": "Momentum is actively building beyond your immediate view; stay patient, track incoming signals, and ready your capacity.",
+            "zh": "势头正在你眼前的海岸线之外持续累积；保持耐心、留意远方信号，并提前备好承接能力。"
+          },
+          "resource": {
+            "en": "Your strongest asset is strategic foresight combined with alliances or distribution channels that extend your reach.",
+            "zh": "你最强的优势是前瞻格局，以及能把你的影响力送到更远处的伙伴与渠道。"
+          },
+          "challenge": {
+            "en": "Even upright, Three of Wands in a challenge slot warns against growing impatient while ships are mid-voyage or neglecting the logistics needed when they dock.",
+            "zh": "落在阻碍位时，正位权杖三提醒别在船队尚在途中时心浮气躁，也别忽略靠岸所需的承接准备。"
+          },
+          "action": {
+            "en": "Expand your reach deliberately—follow up with distant partners, publish to a wider audience, or prepare systems for incoming demand.",
+            "zh": "有意识地把触角伸远一步——跟进跨界或远方伙伴、面向更广受众发布，或提前备好承接流量的体系。"
+          },
+          "outcome": {
+            "en": "Tangible growth, wider recognition, or rewarding returns arrive from efforts you launched earlier.",
+            "zh": "前期投入将带来看得见的增长、更宽广的舞台，或跨区域与跨阶段的可观回报。"
+          },
+          "advice": {
+            "en": "Trust the work already in motion and use this vantage point to plan the second voyage, not micromanage the first.",
+            "zh": "信任已经上路的布局，借此刻的高处视野去筹划第二程，而不必反复拉扯第一程。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Expansion and foresight are paying off as early initiatives gain traction. Keep your gaze broad and get ready to welcome growing opportunities.",
+            "zh": "前期行动正逐步转化为拓展与势头，远见开始显现回报。保持开阔视野，为陆续靠岸的新机会做好准备。"
+          },
+          "love": {
+            "en": "In love, Three of Wands points to looking ahead together—travel, shared goals, or giving a promising connection room to grow beyond initial sparks.",
+            "zh": "在感情中，权杖三代表共同望向更远的未来——一起旅行、筹划共同目标，或给一段有潜力的关系足够空间去延展。"
+          },
+          "career": {
+            "en": "At work, this is strong growth and international/cross-team reach: proposals are out, partnerships are forming, and scaling up is the natural next step.",
+            "zh": "在工作与事业上，这是稳步扩张与跨界合作的良机：提案已发出、合作在成形，顺势放大规模正是自然下一步。"
+          },
+          "health": {
+            "en": "Consistent habits are beginning to show real progress—stay steady with your routine and set a slightly more ambitious, realistic next milestone.",
+            "zh": "在身心状态上，此前坚持的调理与锻炼正开始显现成效——稳住节奏，可以顺势定一个更进一步的务实小目标。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Three of Wands rewards patient vision: your practice is widening your horizon and connecting you to a larger sense of purpose.",
+            "zh": "在灵性层面，权杖三回馈你沉稳的远见：持续修习正拓宽你的心量，让你与更宏阔的人生意义产生共振。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Three of Wands reversed signals delays in transit, limited growth, or frustration when early ventures take longer—or return smaller—than you hoped.",
+          "zh": "权杖三逆位提示远方消息延迟、拓展受限，或早期投入的回报比预期更慢、更小所带来的焦躁。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Logistical snags, slow replies, or missing groundwork are delaying expected returns.",
+            "zh": "流程卡点、对方回复缓慢或前期细节未补齐，正在拖慢预期回报的到来。"
+          },
+          "excess": {
+            "en": "Overextending into too many distant markets or promises before home operations are solid.",
+            "zh": "后方根基尚未扎稳就急于铺开过多远方战线，导致精力与资源被稀释。"
+          },
+          "internalized": {
+            "en": "Quietly doubting your own vision because results haven't docked on your preferred schedule.",
+            "zh": "因为成果还没按你期望的时间表靠岸，开始在心里悄悄怀疑自己当初的判断。"
+          },
+          "release": {
+            "en": "Recalling an unprofitable venture early so you can redirect your fleet to better waters.",
+            "zh": "果断召回回报不佳的远航项目，把船队与资源重新调往更有前景的海域。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Unrealistic timelines or unverified assumptions about distant partners are creating avoidable disappointment.",
+            "zh": "过于乐观的时间预期，或对外部合作方未经核实的假设，正在带来本可避免的落空感。"
+          },
+          "action": {
+            "en": "Audit the supply line: check where the delay actually sits, tighten your scope, and fix one local bottleneck before expanding again.",
+            "zh": "逐一排查链路堵点：看清延误究竟卡在何处，先收紧范围、修好本地环节，再谈继续扩张。"
+          },
+          "outcome": {
+            "en": "Growth arrives more slowly or on a smaller scale than first projected, offering valuable feedback to refine the route.",
+            "zh": "增长会比最初预想更慢或规模更收拢，但恰好提供了修正航线的宝贵反馈。"
+          },
+          "advice": {
+            "en": "Treat a delayed ship as a logistics check, not a verdict on your worth; adjust the sails and keep your base strong.",
+            "zh": "把船期延误当作一次航线核查，而非对你价值的否定；调整风帆，先守稳大本营。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Delays or limited growth ask you to review the practical details behind your big vision. Shore up your base before pushing further out.",
+            "zh": "权杖三逆位提示推进延迟或拓展受限，需要回过头核查宏大愿景背后的落地细节。先稳固后方，再继续向外延伸。"
+          },
+          "love": {
+            "en": "In relationships, reversed Three of Wands can reflect distance, postponed plans, or feeling out of sync on future pacing. Reconnect in the present before forcing big milestones.",
+            "zh": "在感情中，权杖三逆位常对应距离感、计划推迟或对未来节奏步调不一。先在当下重新对齐温度，不必急着硬推大节点。"
+          },
+          "career": {
+            "en": "At work, expect slower approvals, supply/partner bottlenecks, or smaller initial traction. Diagnose what isn't converting instead of doubling down blindly.",
+            "zh": "在职场上，可能遇到审批偏慢、合作方卡壳或初期增长不及预期。先诊断转化堵点，切忌在没查清原因前盲目加码。"
+          },
+          "health": {
+            "en": "Results may feel slower than hoped; resist abandoning solid habits too early, and check whether sleep or stress is quietly slowing recovery.",
+            "zh": "在身心调理上，成效可能来得比预期慢；别因一时心急放弃好习惯，先排查睡眠或隐性压力是否在拖慢恢复。"
+          },
+          "spirituality": {
+            "en": "Patience is the practice here—let go of demanding visible signs on a deadline and stay grounded in daily presence.",
+            "zh": "在灵性层面，此刻的功课正是耐心——放下按截止日期索要外在印证的执念，安稳回到每一天的踏实当下。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A poised Belle Epoque navigator seen from three-quarter back view standing on a high luminous coastal cliff overlooking a wide, shimmering golden-and-indigo bay. Dressed in a flowing amber-vermilion and deep indigo cloak with gold Art Nouveau trim, they gaze out toward distant misty mountains where three graceful antique sailing ships glide across sunlit waters. Planted firmly and upright in the rocky cliff around the figure are EXACTLY THREE tall sprouting bronze-and-wood wands with tiny emerald leaves—one held steadily by the navigator's right hand, a second planted clearly to their left, and a third planted clearly to their right, all three cleanly separated against the bright amber-ivory sky and gleaming sea.",
+      "requiredObjects": [
+        {
+          "object": "cliffside navigator gazing at sea",
+          "count": 1
+        },
+        {
+          "object": "tall upright sprouting bronze-and-wood wands planted on cliff",
+          "count": 3
+        },
+        {
+          "object": "distant sailing ships on bay",
+          "count": 3
+        }
+      ],
+      "compositionNote": "Strong triadic vertical rhythm of THREE clearly separated wands framing the cliffside figure against a luminous golden-amber bay; unmistakable silhouette at 64x96 thumbnail.",
+      "avoid": [
+        "two or four wands",
+        "globe in hand",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "four_of_wands": {
+    "id": "four_of_wands",
+    "archetypeEssence": {
+      "en": "A joyful threshold earned through real effort—homecoming, celebration, and stable shelter worth savoring.",
+      "zh": "用扎实努力换来的欢庆之门——归属、庆典与值得细细品味的安稳港湾。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Four upright wands forming a festive floral canopy garlanded with blossoms and fruit",
+        "Two joyful figures raising bouquets in welcome beneath the garlanded arch",
+        "Warm stone villa or castle with a welcoming bridge in the background",
+        "Gathered guests celebrating a milestone of harmony and homecoming"
+      ],
+      "zh": [
+        "四根竖立权杖搭起、缀满花果彩带的欢庆花门",
+        "在花门下高举花束欢呼相迎的两位喜悦身影",
+        "后方温暖安稳的石造庄园与石桥",
+        "共庆阶段圆满与归家的亲友人群"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Four tall sprouting bronze-and-wood wands standing upright in two symmetrical pairs supporting a lush Art Nouveau garland of ivory roses, amber blossoms, and emerald vines",
+        "Two radiant Belle Epoque celebrants in luminous ivory and warm vermilion-gold silk raising floral bouquets beneath the canopy",
+        "Warm lantern-lit stone villa and arched bridge glowing in the twilight garden behind them",
+        "Festive warm amber-gold lantern light contrasting joyfully against starry midnight-indigo sky"
+      ],
+      "zh": [
+        "左右对称成对竖立、托起玫瑰与翠藤华盖的四根发芽古铜木杖",
+        "在花门下身穿月白与暖金丝裙、高举花束欢庆的两位美好年代庆贺者",
+        "后方亮着暖灯的石造庄园与花园拱桥",
+        "星夜靛蓝天幕下熠熠生辉的暖琥珀灯火与节庆光晕"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Four of Wands marks a genuine milestone of stability, homecoming, and shared celebration. Pause long enough to enjoy the shelter you have built before rushing toward the next climb.",
+          "zh": "权杖四标志着真实可感的稳固、归属与共庆时刻。在急着奔赴下一座山之前，先停下来好好享受你亲手搭起的安稳屋檐。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Mark this milestone out loud—you have reached solid ground, and celebrating it anchors the stability you worked for.",
+            "zh": "大大方方庆祝这个里程碑——你已经站上坚实地面，认真庆贺会让这份安稳真正落袋。"
+          },
+          "foundation": {
+            "en": "A supportive home base, warm community, or completed foundational milestone gave you the stability you stand on now.",
+            "zh": "安稳的后方、温暖的圈子或此前顺利落地的阶段成果，为你托住了今天的底气。"
+          },
+          "present": {
+            "en": "Harmony and welcome surround you right now—a great window for gatherings, moving in, hosting, or enjoying earned peace.",
+            "zh": "此刻正处于融洽与被接纳的窗口期——适合相聚、乔迁、举办庆典，或安心享受应得的松弛。"
+          },
+          "resource": {
+            "en": "Your strongest asset is a dependable sanctuary—people, routines, or a physical space that genuinely restores you.",
+            "zh": "你最宝贵的资源是一个可靠的栖息地——那些真正能让你卸下防备、恢复元气的人与空间。"
+          },
+          "challenge": {
+            "en": "Even upright, Four of Wands in a challenge slot asks whether you are skipping celebration out of habit—or mistaking a happy milestone for the final finish line.",
+            "zh": "落在阻碍位时，正位权杖四提醒：别因惯性跳过庆祝，也别把阶段庆功误当成可以松懈的终局。"
+          },
+          "action": {
+            "en": "Gather the people who helped you get here, host a simple toast, or invest care into making your home or team space feel welcoming.",
+            "zh": "把一路支持你的人聚在一起简单举杯，或用心打理你的居住与协作空间，让归属感落到实处。"
+          },
+          "outcome": {
+            "en": "A warm homecoming, joyful ceremony, or stable foundational win brings lasting relief and belonging.",
+            "zh": "一次温暖的归家、欢庆仪式或稳固的阶段收官，将为你带来踏实而绵长的归属感。"
+          },
+          "advice": {
+            "en": "Let yourself cross the threshold with gratitude; joy shared in a steady structure fuels everything that comes next.",
+            "zh": "带着感激跨过这道花门；在安稳结构里共享的喜悦，会为下一程注入源源不断的能量。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Celebration, homecoming, and steady structure align here. Honor what you have built and enjoy the warmth of belonging with people who truly welcome you.",
+            "zh": "欢庆、归属与稳固结构在此汇聚。好好肯定已经建成的成果，与真正欢迎你的人共享这份踏实暖意。"
+          },
+          "love": {
+            "en": "In love, Four of Wands is classic joyful commitment—moving in together, engagements, anniversaries, or simply feeling deeply at home with each other.",
+            "zh": "在感情中，权杖四代表温暖笃定的承诺与归属——同居、订婚、纪念日，或在彼此身边感受到彻底安心的“回家感”。"
+          },
+          "career": {
+            "en": "At work, celebrate a successful launch, graduation, or team milestone. Strong culture and clear structure make this a rewarding moment to consolidate gains.",
+            "zh": "在工作与学业上，适合庆祝项目上线、毕业或团队阶段胜利。良好的氛围与稳固框架正是巩固成果的好时机。"
+          },
+          "health": {
+            "en": "Wellbeing thrives on a calm, supportive environment—tidy your space, share a nourishing meal, and let joyful relaxation lower baseline stress.",
+            "zh": "在身心状态上，安稳舒心的环境最养人——整理居住空间、与亲友共享一顿好饭，让发自内心的放松卸下紧绷。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Four of Wands honors ritual and gratitude: sacredness lives in welcoming thresholds, shared tables, and grounded joy.",
+            "zh": "在灵性层面，权杖四礼赞仪式感与感恩：神圣不必远求，它就藏在温暖的门槛、共享的餐桌与踏实的喜悦里。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Four of Wands reversed points to either a quiet, private celebration kept out of the spotlight, or temporary instability around home, belonging, or an unfinished foundation.",
+          "zh": "权杖四逆位指向两种常见状态：要么是一场低调私密的内部庆祝，要么是居家、归属或根基尚未完全落稳带来的轻微晃动。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Delays in a move, event, or milestone are postponing the sense of settled relief.",
+            "zh": "搬迁、聚会或关键节点的推迟，让原本期待的尘埃落定暂时延后。"
+          },
+          "excess": {
+            "en": "Pouring energy into staging a picture-perfect celebration while ignoring real friction underneath.",
+            "zh": "把心力都花在摆出光鲜体面的庆祝场面上，却忽略了底下真实的摩擦。"
+          },
+          "internalized": {
+            "en": "A meaningful private victory you prefer to savor quietly rather than announce to a crowd.",
+            "zh": "一份对你很重要的私密胜利，你更愿意安静独享而非大张旗鼓宣布。"
+          },
+          "release": {
+            "en": "Outgrowing an old definition of home or community so you can build one that genuinely fits.",
+            "zh": "告别不再合身的旧归属感，为自己腾出空间去搭建真正契合的新港湾。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Unsettled home dynamics, skipped foundations, or feeling out of place in a group are quietly draining peace.",
+            "zh": "尚未安顿的居家事务、略过基础的赶工，或在群体中的格格不入，正在悄悄消耗安宁。"
+          },
+          "action": {
+            "en": "Fix one practical instability at home or in your base routine first, and keep any celebration small, warm, and honest.",
+            "zh": "先修补居家或基础日程里最晃动的一环，把庆祝缩回小而真诚、不必撑场面的尺度。"
+          },
+          "outcome": {
+            "en": "Stability returns once loose ends are tied down, even if the milestone feels quieter and more personal than expected.",
+            "zh": "只要把松动的细节一一扎牢，安稳感就会回来，只是这份收官可能比预想更安静私密。"
+          },
+          "advice": {
+            "en": "Build real comfort over appearances; a modest, honest sanctuary beats a grand canopy over shaky posts.",
+            "zh": "重实质安稳轻表面排场；朴素真诚的港湾，远胜过立在松动柱子上的华丽花门。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Instability or a private celebration asks you to tend to your actual foundation. You don't need an audience to honor real progress, nor should you rush past loose ends.",
+            "zh": "权杖四逆位提示根基尚有晃动或更适合私下庆祝。不必为了体面硬撑场面，先把松动的日常基础稳住更重要。"
+          },
+          "love": {
+            "en": "In love, reversed Four of Wands can mean navigating household friction, family expectations, or keeping a budding milestone private until both of you feel settled.",
+            "zh": "在感情中，权杖四逆位可能涉及居家磨合、双方家庭期待，或更想把这段进展低调保护起来，等彼此更笃定再公开。"
+          },
+          "career": {
+            "en": "At work, team morale or workplace stability may feel transitional, or a win goes under-recognized. Anchor your own standards and shore up shaky processes.",
+            "zh": "在职场上，团队氛围或办公环境可能正值过渡期，或成果未获高调表彰。先稳住自身节奏与底层流程。"
+          },
+          "health": {
+            "en": "Disrupted routines or a chaotic living space may be quietly fraying your nerves; restore simple order and quiet rest at home.",
+            "zh": "在身心状态上，被打乱的作息或杂乱的居家环境可能在暗中消耗心神；先在家中恢复简单秩序与安静休养。"
+          },
+          "spirituality": {
+            "en": "True sanctuary starts inside—when outer settings feel unsettled, return to a small daily ritual that centers you anywhere.",
+            "zh": "在灵性层面，真正的庇护所生于内心——当外界环境尚在变动时，回到一个随时随地都能安顿自己的微小日常仪式。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A joyous Belle Epoque celebration beneath a grand floral canopy formed by EXACTLY FOUR tall, straight sprouting bronze-and-wood wands planted upright in two symmetrical pairs—two on the left and two on the right—linked overhead by a lush Art Nouveau garland of ivory roses, warm amber blossoms, fruit, and emerald vines. Standing joyfully beneath the center of the four-wand arch, two radiant celebrants in flowing luminous ivory and warm vermilion-gold silk gowns lift fresh floral bouquets in welcome. Behind them, a warm lantern-lit stone villa and arched garden bridge glow invitingly beneath a starry midnight-indigo sky streaked with warm dusk gold. Every one of the FOUR upright wands is unmistakably distinct, vertical, and brightly rim-lit.",
+      "requiredObjects": [
+        {
+          "object": "tall upright sprouting bronze-and-wood wands forming canopy",
+          "count": 4
+        },
+        {
+          "object": "floral garland archway",
+          "count": 1
+        },
+        {
+          "object": "celebrating figures holding bouquets",
+          "count": 2
+        }
+      ],
+      "compositionNote": "Symmetrical architectural gateway of FOUR bright vertical wands framing two luminous celebrants in the center; immediately iconic and joyful at 64x96 thumbnail.",
+      "avoid": [
+        "three or five wands",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "five_of_wands": {
+    "id": "five_of_wands",
+    "archetypeEssence": {
+      "en": "Lively friction and competing wills—noisy sparring that sharpens skill when channeled, or wastes heat when left unmoderated.",
+      "zh": "跃跃欲试的较量与观念碰撞——引导得当能磨出真本事，放任失控则只剩喧闹内耗。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Five youths clashing five wooden wands in energetic, disordered sparring",
+        "Varied colorful tunics showing distinct viewpoints and competing egos",
+        "Uneven grassy hillside beneath an open bright sky",
+        "Raised staves crossing at sharp angles without lethal intent"
+      ],
+      "zh": [
+        "挥舞五根木杖激烈交锋、互不相让的五位青年",
+        "各色衣衫彰显迥异立场与鲜明自我",
+        "开阔天空下高低起伏的草坡赛场",
+        "交错碰撞却并非生死相搏的木杖"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Five dynamic Belle Epoque rivals in distinct jewel-amber, crimson, teal, ochre, and indigo tunics sparring energetically on a twilight hillside",
+        "Exactly five clearly separated sprouting bronze-and-wood wands clashing at crisp diagonal angles against a glowing amber-ivory sky",
+        "Expressive faces and agile stances showing fierce competition rather than malice",
+        "Warm amber-vermilion rim-lighting carving crisp silhouettes out of deep midnight-indigo shadows"
+      ],
+      "zh": [
+        "身着各色衣衫、在暮色山坡上激烈切磋的五位美好年代竞争者",
+        "在暖金天幕前以利落斜角交锋、清晰可数的五根发芽古铜木杖",
+        "专注亢奋的神情与灵动架势，呈现的是较量而非恶意",
+        "暖朱砂与琥珀轮廓光在深邃午夜阴影中勾勒出分明动势"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Five of Wands brings competition, noisy debate, and overlapping agendas. Everyone wants to be heard at once—set clear rules of engagement so the friction sharpens the work instead of exhausting the room.",
+          "zh": "权杖五带来竞争、喧闹的争辩与彼此交叉的诉求。每个人都急着发声——立好规则与焦点，让碰撞磨出火花而非耗干全场的力气。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Step into the arena with clarity rather than shouting louder; healthy competition reveals what actually holds up.",
+            "zh": "带着清晰立场走进赛场，而不是靠提高嗓门取胜；良性竞争最能试出什么方案真正站得住。"
+          },
+          "foundation": {
+            "en": "Competing priorities, crowded stakeholders, or an untested rivalry created the current friction.",
+            "zh": "多重诉求撞车、意见方过多或一场尚未分晓的竞争，造就了眼下的嘈杂局面。"
+          },
+          "present": {
+            "en": "Energy is high but uncoordinated—people are talking past each other rather than pulling in one direction.",
+            "zh": "眼下干劲很足但步调零散——大家各说各话，还没把力气拧到同一方向。"
+          },
+          "resource": {
+            "en": "Your edge is agility and creative grit; pressure-testing your idea against tough peers makes it stronger.",
+            "zh": "你的优势在于临场应变与抗压韧劲；在强劲对手的碰撞下反复打磨，反而能让方案更硬核。"
+          },
+          "challenge": {
+            "en": "Ego clashes, petty turf wars, and cross-talk are burning time without moving the actual goal forward.",
+            "zh": "面子之争、地盘意识与各执一词的拉锯，正在空耗时间却推不动真正目标。"
+          },
+          "action": {
+            "en": "Call a brief time-out, name the shared objective, and turn the free-for-all into a structured debate or clear contest.",
+            "zh": "先叫一次简短暂停，把共同目标写到明面上，把混战变成有规则的讨论或清晰竞逐。"
+          },
+          "outcome": {
+            "en": "Through active testing and candid friction, the strongest approach emerges and weak assumptions get knocked out.",
+            "zh": "经过真实交锋与坦诚碰撞，最站得住的方案会脱颖而出，经不起推敲的假设则被淘汰。"
+          },
+          "advice": {
+            "en": "Treat friction as sparring, not a personal ambush—keep your temper cool and your aim sharp.",
+            "zh": "把摩擦当作切磋而非针对个人的伏击——稳住火气，把准星对准问题本身。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Competition and lively conflict are in the air. Channel the heat into constructive problem-solving by clarifying rules and listening past the noise.",
+            "zh": "竞争与活跃的意见冲突正在升温。先立清规则、听懂喧闹背后的真实诉求，把火气转化为有建设性的破局动力。"
+          },
+          "love": {
+            "en": "In love, Five of Wands shows spirited bickering, competing schedules, or two strong personalities vying for the steering wheel. Fight fair and remember you are on the same team.",
+            "zh": "在感情中，权杖五常对应拌嘴较劲、日程撞车或两个强势个性争夺主导权。就事论事地公平争论，别忘了你们原本是同一阵营。"
+          },
+          "career": {
+            "en": "At work, expect competitive bids, brainstorming chaos, or departmental turf friction. Stand your ground with concrete evidence and facilitate clear decision criteria.",
+            "zh": "在职场上，可能遇到竞标角逐、头脑风暴失序或跨部门拉扯。用扎实依据守住立场，并推动明确拍板标准。"
+          },
+          "health": {
+            "en": "Restless adrenaline and tension need a clean physical outlet—competitive sport, brisk training, or structured breathwork beats simmering irritation.",
+            "zh": "在身心状态上，躁动的肾上腺素与紧绷感需要畅快的释放出口——痛快运动或规律呼吸练习，远胜闷在心里生闷气。"
+          },
+          "spirituality": {
+            "en": "Notice where inner voices are arguing for control; you don't have to win every mental debate to find calm direction.",
+            "zh": "在灵性层面，留意内在是否同时有好几个声音在互相拉扯；不必赢下脑中的每一场辩论，才能找回清明的方向。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Five of Wands reversed marks either the welcome easing of conflict into compromise, or unhelpful conflict avoidance that drives real disagreement underground.",
+          "zh": "权杖五逆位指向冲突的转向——要么是风波平息、走向协商和解，要么是刻意回避矛盾，把真实分歧压进了水下。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Swallowing valid disagreement to keep surface peace, which only breeds passive resentment.",
+            "zh": "为了维持表面和气而吞下合理异议，反而让不满在暗中发酵。"
+          },
+          "excess": {
+            "en": "Dragging out a petty grudge or fighting dirty after the real contest has already ended.",
+            "zh": "在真正较量早已结束后仍揪着旧怨不放，或陷入意气用事的消耗。"
+          },
+          "internalized": {
+            "en": "Turning conflict inward as self-doubt or restless inner tug-of-war instead of speaking up.",
+            "zh": "不愿对外起冲突，结果把拉扯全都转成内耗与自我怀疑。"
+          },
+          "release": {
+            "en": "Stepping out of pointless drama and finding practical common ground.",
+            "zh": "主动退出毫无意义的口水战，找到务实可行的共识与台阶。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Unspoken tension or dodging a necessary candid conversation is quietly slowing everything down.",
+            "zh": "未说破的暗流，或刻意绕开那场必须进行的坦诚对话，正在悄悄拖慢全局。"
+          },
+          "action": {
+            "en": "Walk away from noisy ego battles that don't matter, and address the one real disagreement calmly one-on-one.",
+            "zh": "退出不值得耗神的意气之争，把唯一真正重要的分歧拉到一对一的平静对话里解决。"
+          },
+          "outcome": {
+            "en": "The dust settles into clearer cooperation once competing parties drop performative posturing.",
+            "zh": "当各方放下虚张声势的较劲，尘埃落定后会迎来更清爽的协作空间。"
+          },
+          "advice": {
+            "en": "Choose peace over drama, not silence over truth—resolve what needs resolving and decline the rest.",
+            "zh": "选择和平而非戏码，但也别用沉默掩盖真问题——该谈清的谈清，其余杂音一律不接。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Conflict is either winding down toward resolution or hiding behind polite avoidance. Step out of noisy drama while staying honest about what still needs settling.",
+            "zh": "权杖五逆位说明冲突正在走向平息，或被客套回避掩盖。果断退出无谓拉扯，同时对真正需要解决的分歧保持诚实。"
+          },
+          "love": {
+            "en": "In relationships, reversed Five of Wands signals cooling tempers and making up—or sweeping recurring irritation under the rug. Clear the air gently so peace is real.",
+            "zh": "在感情中，权杖五逆位既可能意味着火气消退、重归于好，也可能提示把反复出现的不满扫进地毯下。温和把话说透，和解才踏实。"
+          },
+          "career": {
+            "en": "At work, office politics ease or you decide to opt out of a toxic rivalry. Align on shared deliverables instead of competing for airtime.",
+            "zh": "在职场上，内耗与办公室拉锯开始缓和，或你决定退出无意义的恶性竞争。把注意力收回到共同交付上。"
+          },
+          "health": {
+            "en": "Stress and nervous tension are ready to decompress; release clenched shoulders and stop fighting your own need for rest.",
+            "zh": "在身心状态上，紧绷的压力正等待松绑；松开架起的防备与对抗感，别再和自己对休息的合理需求较劲。"
+          },
+          "spirituality": {
+            "en": "Inner harmony returns when you stop demanding that every part of yourself agree overnight; practice patient self-acceptance.",
+            "zh": "在灵性层面，当你不再强求内在所有声音一夜之间达成一致，真正的平和与自我接纳反而会自然浮现。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "Five agile Belle Epoque youths in distinct richly colored tunics—vermilion, ochre-gold, deep teal, plum, and indigo with ivory sleeves—engaged in an energetic, spirited sparring contest on an uneven twilight hillside. Each of the FIVE figures grips ONE sprouting bronze-and-wood wand, raising and crossing EXACTLY FIVE distinct wands cleanly at dynamic diagonal angles against a luminous amber-ivory dusk sky so every single wand shaft and emerald-leaved tip is clearly countable and never blurred together. Their faces are vivid, determined, and lively rather than cruel, lit by crisp warm sunset rim-light against deep midnight-indigo hills.",
+      "requiredObjects": [
+        {
+          "object": "sparring figures in distinct tunics",
+          "count": 5
+        },
+        {
+          "object": "crossed sprouting bronze-and-wood wands held one per figure",
+          "count": 5
+        }
+      ],
+      "compositionNote": "Dynamic starburst of FIVE distinct diagonal wands high against bright amber sky above five energetic silhouettes; unmistakable kinetic clash at 64x96 thumbnail.",
+      "avoid": [
+        "four or six wands",
+        "blood or lethal weapons",
+        "swords",
+        "cups",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "six_of_wands": {
+    "id": "six_of_wands",
+    "archetypeEssence": {
+      "en": "Public recognition earned through steady courage—riding into the open with laurel in hand and grace under applause.",
+      "zh": "凭实力与勇气赢得的公开认可——戴冠入场，在掌声中保持清醒与从容。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Victorious rider crowned with a green laurel wreath seated atop a white horse",
+        "One upright wand held high bearing a second laurel wreath tied near its tip",
+        "Five cheering supporters on foot lifting five wands in salute beside the rider",
+        "Flowing bright cloak and proud posture celebrating visible triumph"
+      ],
+      "zh": [
+        "头戴月桂冠、骑乘白马从容前行的凯旋骑士",
+        "高举在手、梢头系着月桂花环的一根权杖",
+        "步随左右、高举五根权杖欢呼致意的支持人群",
+        "随风扬起的明艳披风与昂扬身姿，象征公开嘉奖"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Triumphant Belle Epoque rider wearing an emerald-and-gold laurel crown atop a luminous white steed draped in emerald-and-gold caparison",
+        "One prominent sprouting bronze-and-wood wand raised high by the rider with a gleaming golden laurel wreath tied to its upper shaft",
+        "Five cheering townsfolk below lifting exactly five upright sprouting wands in salute—six wands total, cleanly countable against the glowing sky",
+        "Radiant warm amber-gold victory glow illuminating rider, white horse, and laurel against starry midnight-indigo twilight"
+      ],
+      "zh": [
+        "头戴翠叶金桂冠、骑乘披挂金绿鞍饰白马的凯旋美好年代骑士",
+        "骑士高举于正中、梢头悬着古金月桂环的一根发芽古铜木杖",
+        "身旁欢呼人群举起的五根竖直权杖——共六根权杖，在暖天幕前清晰可数",
+        "温暖琥珀金光照亮骑士、白马与桂冠，与深邃午夜蓝天形成耀眼对比"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Six of Wands brings earned victory, visible recognition, and well-deserved confidence. Step forward to accept credit cleanly, share thanks with those who backed you, and let this win fuel your next chapter.",
+          "zh": "权杖六带来实至名归的胜利、公开认可与舒展自信。大方接住应得的掌声，向同行者致谢，让这次胜利成为下一程的底气。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Own your win without shrinking—visibility and confidence are part of the work right now.",
+            "zh": "坦然认领你的成绩，不必刻意缩小自己——被看见与展现笃定，此刻本身就是工作的一部分。"
+          },
+          "foundation": {
+            "en": "A visible achievement, strong reputation, or past proof of competence opened the door you are walking through.",
+            "zh": "过往一次亮眼战绩、好口碑或经得起检验的实力，为你推开了眼下这扇门。"
+          },
+          "present": {
+            "en": "Momentum and goodwill are firmly on your side—present your work, lead visibly, and rally support.",
+            "zh": "势头与人心此刻都站在你这边——大方展示成果、清晰带队，顺势凝聚更多支持。"
+          },
+          "resource": {
+            "en": "Your strongest asset is earned credibility and public trust; people are ready to follow a clear, confident lead.",
+            "zh": "你最强的筹码是攒出来的信誉与众人信任；大家已经准备好跟随一个清晰自信的领头人。"
+          },
+          "challenge": {
+            "en": "Even upright, Six of Wands in a challenge slot warns against letting applause turn into complacency or needing constant validation to stay motivated.",
+            "zh": "落在阻碍位时，正位权杖六提醒别让掌声变成松懈，也别陷入必须靠外界喝彩才能继续前进的依赖。"
+          },
+          "action": {
+            "en": "Publish the result, step up to the podium, or claim leadership on the initiative while goodwill is high.",
+            "zh": "趁口碑与势头正盛，大方公开发布成果、站上台前展示，或正式接过主导权。"
+          },
+          "outcome": {
+            "en": "Clear recognition, a promotion, award, or public endorsement validates your effort and elevates your standing.",
+            "zh": "明确的认可、晋升、嘉奖或公开背书将印证你的付出，把你的位置稳稳抬高一阶。"
+          },
+          "advice": {
+            "en": "Wear the laurel with generosity—thank the crowd walking beside you and keep your feet grounded.",
+            "zh": "带着大度戴上桂冠——记住身旁一路相伴的人，在风光时刻依然脚踏实地。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Victory and recognition arrive after real effort. Stand tall, accept well-earned praise gracefully, and share the warmth with those who supported you.",
+            "zh": "实打实的努力迎来胜利与公开认可。挺直腰杆大方接住掌声，同时把这份喜悦分享给一路托举你的人。"
+          },
+          "love": {
+            "en": "In love, Six of Wands brings mutual pride, being openly cherished, and overcoming an awkward hurdle together. Celebrate each other out loud.",
+            "zh": "在感情中，权杖六代表彼此以对方为傲、大大方方被偏爱与肯定，以及携手跨过磨合后的明朗升温。"
+          },
+          "career": {
+            "en": "At work, this is classic promotion, launch success, and peer acclaim. Showcase your results clearly and use the credibility to negotiate your next scope.",
+            "zh": "在工作与学业上，这是典型的晋升、项目大捷与同行赞誉。清晰展示成果，并借这份信誉为下一步争取更好空间。"
+          },
+          "health": {
+            "en": "Notice and celebrate concrete progress in stamina, recovery, or discipline—positive reinforcement keeps healthy momentum sustainable.",
+            "zh": "在身心状态上，认真肯定自己在体能、恢复或自律上取得的切实进步——正向反馈会让好状态更长久。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Six of Wands reminds you that healthy pride and humility can coexist: honor your growth without mistaking applause for your whole identity.",
+            "zh": "在灵性层面，权杖六提醒健康的自豪与谦逊并不冲突：肯定自己的成长，同时不把外界掌声等同于全部自我。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Six of Wands reversed highlights self-doubt, delayed recognition, or the fragile ego trap of chasing applause instead of substance.",
+          "zh": "权杖六逆位指向自我怀疑、认可迟到，或过度执着于外界掌声反而动摇了内在笃定。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Good work is going unnoticed—or imposter syndrome is keeping you from putting it in front of the right eyes.",
+            "zh": "扎实成果暂时没被看见，或冒名顶替感让你迟迟不敢把它推到台前。"
+          },
+          "excess": {
+            "en": "Performing for status, bragging to mask insecurity, or letting a bruised ego drive poor decisions.",
+            "zh": "为了面子强撑排场，或因虚荣与自尊受挫而做出失衡决定。"
+          },
+          "internalized": {
+            "en": "A quiet private victory that matters deeply to you even without a cheering crowd.",
+            "zh": "一场没有观众喝彩、却对你自己分量十足的内在胜利。"
+          },
+          "release": {
+            "en": "Unhooking your self-worth from external scoreboards so you can work cleanly again.",
+            "zh": "把自我价值从外界的打分板上松绑，重新回到纯粹专注做事的状态。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Seeking validation from the wrong audience—or doubting your own track record—is draining confidence.",
+            "zh": "向不对口的观众索要掌声，或轻易否定自己过往的实绩，正在消耗底气。"
+          },
+          "action": {
+            "en": "Document your actual results calmly, ask directly for the credit or feedback you earned, and drop performative busywork.",
+            "zh": "冷静整理你的真实成果，坦荡争取应得的署名或反馈，同时停掉只为讨好眼球的表面功夫。"
+          },
+          "outcome": {
+            "en": "External applause may arrive later or quieter than hoped, pushing you to build sturdier self-trust.",
+            "zh": "外界的掌声可能比预期晚来或更低调，但这正促使你建立更牢靠的内在笃定。"
+          },
+          "advice": {
+            "en": "Measure yourself by the quality of the craft, not the volume of the crowd; real respect follows substance.",
+            "zh": "用作品本身的成色而不是围观者的声量来衡量自己；真正的尊重终究追随实力。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Self-doubt or lack of immediate recognition tests your inner footing. Reconnect with why the work matters to you and let substance outlast hype.",
+            "zh": "权杖六逆位提示自我怀疑或认可暂未到位，正在考验你的内在定力。回到做事的初衷，让真本事跑赢一时喧嚣。"
+          },
+          "love": {
+            "en": "In relationships, reversed Six of Wands flags feeling taken for granted, comparing your bond to outsiders, or letting pride block an apology. Speak warmly from honesty, not status.",
+            "zh": "在感情中，权杖六逆位常对应感到付出被忽略、拿关系与旁人攀比，或放不下架子。放下输赢感，真诚说出需求。"
+          },
+          "career": {
+            "en": "At work, credit may be delayed or a pitch may fall short of expectations. Review what can be sharpened and make your contributions visible without boasting.",
+            "zh": "在职场上，功劳可能暂时被埋没或提案未达预期。复盘可打磨之处，用清晰客观的方式让关键人看见你的产出。"
+          },
+          "health": {
+            "en": "Avoid chasing vanity metrics or pushing past safe limits to prove a point; honor quiet, unglamorous consistency.",
+            "zh": "在身心管理上，避免为了证明自己而追求浮夸指标或过度透支；踏实、低调的日常坚持才最有效。"
+          },
+          "spirituality": {
+            "en": "Release the hunger to be admired for your progress; genuine maturity grows fastest when nobody is watching.",
+            "zh": "在灵性层面，放下渴望被夸赞“修得好”的虚荣；真正扎实的成长，往往发生在无人喝彩的安静处。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A triumphant Belle Epoque victor wearing a gleaming emerald-and-gold laurel crown and a flowing vermilion-gold cloak, riding proudly atop a luminous white horse draped in an embroidered emerald-and-gold cloth. In their right hand, the rider raises ONE prominent sprouting bronze-and-wood wand high into the air with a bright golden laurel wreath tied cleanly near its tip. Walking beside and behind the horse, five joyful admirers lift EXACTLY FIVE upright sprouting bronze-and-wood wands in celebration—EXACTLY SIX wands total, all held vertically with generous spacing against a radiant amber-ivory twilight sky so every wand is individually countable. Warm golden celebratory light illuminates the rider, white steed, laurel wreaths, and six wands against deep midnight-indigo architecture.",
+      "requiredObjects": [
+        {
+          "object": "laurel-crowned rider on luminous white horse",
+          "count": 1
+        },
+        {
+          "object": "laurel wreath tied to rider's raised wand",
+          "count": 1
+        },
+        {
+          "object": "upright sprouting bronze-and-wood wands total (1 held by rider + 5 raised by crowd)",
+          "count": 6
+        }
+      ],
+      "compositionNote": "Heroic central white horse and laurel-crowned rider lifting a wreathed wand above FIVE clearly spaced vertical wands; triumphant silhouette pops instantly at 64x96 thumbnail.",
+      "avoid": [
+        "five or seven wands",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "seven_of_wands": {
+    "id": "seven_of_wands",
+    "archetypeEssence": {
+      "en": "Holding the high ground under pressure—courageous defense of your convictions when challengers press from below.",
+      "zh": "压力环伺下稳守高地——面对四面涌来的质疑与挑战，依然寸步不让地捍卫核心立场。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Resolute figure planted on a steep rocky ridge defending the high ground",
+        "One sprouting wand gripped firmly with both hands in active defense",
+        "Six wands thrusting upward from below the ridge representing rival pressures",
+        "Mismatched boots or hurried footing showing readiness despite being caught mid-stride"
+      ],
+      "zh": [
+        "稳立于陡峭岩脊高地、迎击来势的坚定守卫者",
+        "双手紧握横挡的一根发芽权杖",
+        "自坡下齐齐刺上的六根权杖，象征多方压力与挑战",
+        "匆忙却依然稳健的步态，体现仓促应战而不乱阵脚"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Determined Belle Epoque defender in emerald-and-bronze tunic braced atop a dramatic sunlit rocky ridge",
+        "One sprouting bronze-and-wood wand held diagonally across the body with both hands in crisp defensive stance",
+        "Exactly six rival sprouting wands rising sharply from the midnight shadows below the cliff edge—seven wands total, clearly separated against the glowing dusk sky",
+        "Dramatic warm amber-vermilion key light on the defender's high ground contrasting with deep indigo twilight below"
+      ],
+      "zh": [
+        "身穿祖母绿与古铜色短袍、稳踞陡峭暖光岩脊的美好年代守卫者",
+        "双手斜握护身、姿态利落的一根发芽古铜木杖",
+        "自崖下午夜阴影中刺出的六根对手权杖——共七根权杖，在暖暮天幕前根根分明",
+        "高地暖琥珀主光与崖下深靛蓝暗影形成强烈压迫与守势对比"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Seven of Wands shows you holding the high ground while multiple pressures test your resolve. You have earned your position—stand firm, prioritize what truly matters, and don't yield to noise.",
+          "zh": "权杖七显示你正守在高地上，同时承受多方压力与试探。你站的位置是凭实力挣来的——稳住底线、分清主次，不必在嘈杂中轻易退让。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Hold your line with calm grit; you actually hold the stronger vantage point than the pressure makes it feel.",
+            "zh": "带着沉着韧劲守住你的底线；你实际占据的高地优势，比当下压力让你感受到的更牢靠。"
+          },
+          "foundation": {
+            "en": "A recent win or clear stance attracted scrutiny, competition, or people testing whether you meant what you said.",
+            "zh": "此前的亮眼表现或明确表态引来了审视、竞争，或有人想试试你的底线究竟有多硬。"
+          },
+          "present": {
+            "en": "Demands are coming from several angles at once; stay planted on your core principle instead of scattering.",
+            "zh": "多个方向的要求与质疑正同时压来；死死锚定最核心的原则，别被拖散阵脚。"
+          },
+          "resource": {
+            "en": "Your strongest asset is moral and strategic high ground—conviction backed by preparation outlasts noisy challengers.",
+            "zh": "你最强的优势是道义与战略高地——有准备支撑的笃定感，终究能熬过喧闹的挑衅。"
+          },
+          "challenge": {
+            "en": "Even upright, Seven of Wands in a challenge slot warns against treating every question as an attack—defend what matters, not every trivial point.",
+            "zh": "落在阻碍位时，正位权杖七提醒别把每句提问都当成攻击——只守关键阵地，不必处处竖起刺。"
+          },
+          "action": {
+            "en": "State your boundary clearly once, back it with facts, and hold steady through the pushback.",
+            "zh": "把你的边界干脆利落地说清一次，用事实托底，然后在反弹来临时稳稳站住。"
+          },
+          "outcome": {
+            "en": "Perseverance pays off: you keep your ground, earn grudging respect, and emerge with firmer authority.",
+            "zh": "坚持终有回报：你不仅守住了阵地，还会赢得对手的敬畏，并立起更稳固的话语权。"
+          },
+          "advice": {
+            "en": "Keep your footing high and your breath steady—defensive courage works best when it is calm, not frantic.",
+            "zh": "守稳高处立足点、放平呼吸——冷静沉着的防守，远比慌乱挥棒更有力量。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Defense and perseverance are called for as competing pressures rise. Trust your vantage point, hold your boundaries firmly, and keep your energy focused.",
+            "zh": "多方压力涌来时，需要果断防守与持久韧劲。相信你脚下的高地优势，稳守清晰边界，把精力集中在关键处。"
+          },
+          "love": {
+            "en": "In love, Seven of Wands can mean protecting a relationship from outside interference, or holding an honest personal boundary even when it feels uncomfortable.",
+            "zh": "在感情中，权杖七既可能意味着守护关系免受外界干扰，也代表在不舒服时依然稳稳守住自己的真实底线。"
+          },
+          "career": {
+            "en": "At work, defend your strategy, pricing, or team bandwidth against scope creep and rival pitches. Preparation and clear criteria win the room.",
+            "zh": "在职场上，坚定守住你的方案、报价或团队带宽，抵御需求蔓延与对手抢位。充分准备与清晰标准会帮你赢下全场。"
+          },
+          "health": {
+            "en": "Protect your recovery time and healthy habits from competing demands—saying no to extra strain is active self-defense.",
+            "zh": "在身心管理上，把你的休息时间与好习惯从各种挤占中护出来——对多余负荷说不，就是最实在的自我保护。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Seven of Wands strengthens inner integrity: staying true to your values when convenience pulls the other way builds real backbone.",
+            "zh": "在灵性层面，权杖七锤炼的是内在骨气：在外界拉扯与权宜诱惑面前依然忠于核心价值，会让你真正长出定力。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Seven of Wands reversed points to feeling overwhelmed by constant defense, yielding too quickly, or realizing a battle is no longer worth the cost of fighting.",
+          "zh": "权杖七逆位指向持续迎战带来的精疲力竭、过早退让，或终于意识到某场拉锯战已经不值得继续赔上心力。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Self-doubt or exhaustion makes you drop a healthy boundary right when you need it most.",
+            "zh": "自我怀疑或疲惫让你在最需要守住的关头，过早松开了合理边界。"
+          },
+          "excess": {
+            "en": "Hyper-defensiveness—fighting phantom enemies or refusing helpful compromise out of sheer stubbornness.",
+            "zh": "过度戒备与好斗——把善意建议也当成进攻，仅凭执拗拒绝原本有益的妥协。"
+          },
+          "internalized": {
+            "en": "Feeling cornered inside your own head, bracing for criticism before anyone has spoken.",
+            "zh": "别人还没开口，心里已经把自己逼到墙角，提前摆出了全面防御姿势。"
+          },
+          "release": {
+            "en": "Choosing to lay down a draining battle so you can redirect energy to fertile ground.",
+            "zh": "清醒选择放下这场消耗极大的硬仗，把力气转回真正值得耕耘的地方。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Battle fatigue or fighting on too many fronts at once is eroding your clarity and stamina.",
+            "zh": "久战疲惫或同时在太多战线上应战，正在快速消耗你的清醒与体力。"
+          },
+          "action": {
+            "en": "Step back from unwinnable arguments, accept one fair compromise, or ask an ally to share the watch.",
+            "zh": "主动撤出毫无胜算的消耗战，接纳一项公平妥协，或请可靠盟友替你分担守卫。"
+          },
+          "outcome": {
+            "en": "Tension drops once you stop defending every inch—either through smart strategic retreat or cleaner terms.",
+            "zh": "当你不再执着于寸土必争，紧绷感会迅速回落——无论是战略撤退还是重新谈妥条件，都会迎来喘息。"
+          },
+          "advice": {
+            "en": "Pick your battles with ruthless honesty; surrendering an unimportant hill is not defeat.",
+            "zh": "诚实筛选值得打的仗；主动让出一座无关紧要的小山头，绝不等于失败。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Overwhelm or battle fatigue asks you to reassess which hills actually matter. Drop defensive reflexes where compromise serves you better.",
+            "zh": "权杖七逆位提示过度防御或疲惫感正在累积，需要重新评估哪些阵地真正值得守。在适合协商之处松开硬扛。"
+          },
+          "love": {
+            "en": "In relationships, reversed Seven of Wands flags either exhausting bickering or giving in to keep peace while resentment builds. Lower the armor and talk plainly.",
+            "zh": "在感情中，权杖七逆位常对应疲于争辩，或为了息事宁人一味退让却暗生委屈。先卸下铠甲，平心静气把话说开。"
+          },
+          "career": {
+            "en": "At work, you may feel outgunned or worn down by constant pushback. Narrow your focus to one non-negotiable priority and let minor turf wars go.",
+            "zh": "在职场上，你可能感到四面受压或被反复拉扯耗尽耐心。只守住最关键的一项核心目标，其余枝节果断放手。"
+          },
+          "health": {
+            "en": "Chronic stress from staying constantly on guard wears down immunity and sleep; step off the ridge and give your nervous system real off-duty time.",
+            "zh": "在身心状态上，长期处于戒备与应激状态会暗中透支精力与睡眠；暂时走下高地，给神经系统真正的下班时间。"
+          },
+          "spirituality": {
+            "en": "Notice where you are defending an outdated self-image; letting your guard down opens space for unexpected grace and support.",
+            "zh": "在灵性层面，觉察自己是否在死守一个早已过时的自我形象；适当放下戒备，反而会迎来意想不到的滋养与支持。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A resolute Belle Epoque defender in a richly textured emerald-and-bronze tunic with warm ivory sleeves braced firmly atop a jagged rocky ridge. Leaning into a crisp defensive stance, they grip ONE sprouting bronze-and-wood wand diagonally with both hands across their body. Thrusting upward from the deep midnight-indigo shadows below the cliff edge are EXACTLY SIX rival sprouting bronze-and-wood wands angled sharply toward the ridge—EXACTLY SEVEN wands total, every single shaft and emerald-leaved tip cleanly separated and countable against the glowing amber-vermilion twilight sky. Warm dramatic rim-light illuminates the defender's face, braced stance, and high rocky perch.",
+      "requiredObjects": [
+        {
+          "object": "defender braced on high rocky ridge",
+          "count": 1
+        },
+        {
+          "object": "sprouting bronze-and-wood wands total (1 held by defender + 6 thrusting from below)",
+          "count": 7
+        }
+      ],
+      "compositionNote": "High-contrast elevated defender holding ONE diagonal wand against SIX clearly spaced rival wands rising from the lower border; reads cleanly at 64x96 thumbnail.",
+      "avoid": [
+        "six or eight wands",
+        "extra visible attackers",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "eight_of_wands": {
+    "id": "eight_of_wands",
+    "archetypeEssence": {
+      "en": "Unobstructed velocity—messages, decisions, and aligned events racing cleanly toward landing.",
+      "zh": "毫无阻滞的疾驰势头——消息、决策与契机齐头并进，正笔直飞向落点。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Eight sprouting wooden wands flying in parallel diagonal formation across an open sky",
+        "No human figures blocking the frame, emphasizing pure swift motion",
+        "Winding river and lush sunlit valley stretching far below",
+        "All eight staves angled downward together toward an imminent landing"
+      ],
+      "zh": [
+        "以整齐平行斜阵划过澄澈长空的八根发芽木杖",
+        "画面中无人物阻挡，纯粹呈现疾速流动的势能",
+        "下方蜿蜒流淌的河流与开阔河谷",
+        "齐齐指向下方落点、即将着陆的八根权杖"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Exactly eight slender sprouting bronze-and-wood wands flying cleanly in parallel diagonal formation from upper-left to lower-right",
+        "Trailing streaks of warm molten-gold light and drifting emerald leaves behind each airborne wand",
+        "Expansive sunlit amber-vermilion horizon opening above a moonlit winding river valley and distant hills",
+        "Generous midnight-indigo sky spacing so every single one of the eight parallel wands reads unmistakably"
+      ],
+      "zh": [
+        "自左上向右下方整齐平行飞驰、清晰可数的八根发芽古铜木杖",
+        "每根权杖尾端拖曳的暖金流光与飘散翠叶",
+        "下方蜿蜒的月光河谷与远方暖金地平线",
+        "深邃午夜蓝天留白充裕，令八根平行权杖根根分明"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Eight of Wands signals rapid movement, crisp communication, and cleared skies. The slow waiting phase is over—respond promptly while the tailwind is directly behind you.",
+          "zh": "权杖八标志着疾速推进、清晰传讯与豁然开朗的顺风局。漫长等待已经结束——趁顺风正盛，干脆利落地接招响应。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Move now while the air is clear—a timely reply, launch, or decision will carry twice the usual distance.",
+            "zh": "趁眼下空气澄明立刻出手——一次及时的回复、发布或拍板，能跑出平时两倍的推进效率。"
+          },
+          "foundation": {
+            "en": "Earlier preparation cleared away the obstacles, which is why everything suddenly accelerated at once.",
+            "zh": "前期的铺垫已经把障碍清干净了，所以此刻诸多环节才一下子同时提速。"
+          },
+          "present": {
+            "en": "Events, messages, and travel or logistics are converging quickly; stay alert and keep your channels open.",
+            "zh": "消息、日程与关键节点正在快速汇拢；保持敏锐，让沟通与执行通道随时畅通。"
+          },
+          "resource": {
+            "en": "Your strongest asset is speed and alignment—when all eight wands fly the same angle, nothing is wasted.",
+            "zh": "你最强的优势是速度与同向合力——当八根权杖朝同一角度齐飞，几乎没有任何内耗。"
+          },
+          "challenge": {
+            "en": "Even upright, Eight of Wands in a challenge slot warns that fast pace can leave out a quick sanity check—stay swift, not sloppy.",
+            "zh": "落在阻碍位时，正位权杖八提醒节奏太快容易漏掉关键复核——要利落，但别草率。"
+          },
+          "action": {
+            "en": "Send the message, book the trip, ship the release, or lock the date today before the window shifts.",
+            "zh": "今天就把消息发出去、把行程定下来或把版本推上线，别等顺风窗口滑过去。"
+          },
+          "outcome": {
+            "en": "Swift resolution, welcome news, or rapid progress lands cleanly without drawn-out friction.",
+            "zh": "利落的进展、好消息或快速落地即将抵达，省去了漫长拉锯。"
+          },
+          "advice": {
+            "en": "Match the tempo of the moment—keep your aim straight and let momentum do the heavy lifting.",
+            "zh": "顺着当下的快节奏走——稳住准星，让势头替你完成最吃力的那段推进。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Speed, movement, and clear momentum sweep away recent stagnation. Expect swift news, travel, or rapid alignment—stay ready to catch what lands.",
+            "zh": "高速推进与清晰势头一扫此前的停滞感。近期容易迎来快讯、出行或迅速对齐的进展，随时准备好稳稳接住。"
+          },
+          "love": {
+            "en": "In love, Eight of Wands brings rapid chemistry, eager messages, spontaneous getaways, or a relationship suddenly clicking into lively motion.",
+            "zh": "在感情中，权杖八带来迅速升温的默契、热烈频繁的联系、说走就走的约会，或关系突然进入明快推进期。"
+          },
+          "career": {
+            "en": "At work, approvals clear fast, projects hit stride, and concise communication unlocks quick wins. Keep your inbox and deliverables crisp.",
+            "zh": "在工作上，审批与协作明显提速，项目进入顺滑快车道。保持沟通简明扼要、交付利落，能顺势拿下漂亮成果。"
+          },
+          "health": {
+            "en": "Energy rebounds briskly and recovery accelerates; enjoy the surge while remembering to pace your nervous system between sprints.",
+            "zh": "在身心状态上，精力回升明快、恢复提速；享受这股轻盈劲头的同时，别忘了在冲刺间隙给神经留出缓冲。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Eight of Wands brings sudden insight and synchronicity—trust clear intuition when it arrives without over-complicating it.",
+            "zh": "在灵性层面，权杖八带来通透的顿悟与巧合呼应——当清晰的直觉降临时，直接信任并顺势接纳即可。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Eight of Wands reversed signals delays, crossed wires, or rushing so hard that messages and plans miss their landing.",
+          "zh": "权杖八逆位提示节奏受阻、沟通错位，或因为太急着赶路而让消息与计划偏离落点。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Travel snags, slow replies, or bottlenecks are temporarily stalling momentum.",
+            "zh": "行程延误、回复迟滞或流程卡点，暂时拖住了原本顺畅的势头。"
+          },
+          "excess": {
+            "en": "Frenetic haste—sending half-baked messages or firing off too many priorities at once.",
+            "zh": "焦躁冒进——仓促发出没想清楚的消息，或同时抛出太多杂乱动作。"
+          },
+          "internalized": {
+            "en": "Restless impatience inside even when external timing simply needs another beat.",
+            "zh": "明明外界时机只差半拍，内心却已经焦躁得坐立难安。"
+          },
+          "release": {
+            "en": "Slowing down on purpose to untangle miscommunication so the next launch flies straight.",
+            "zh": "主动降速理清误会与杂线，让下一次出发真正飞得又直又稳。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Miscommunication, mixed signals, or impatient shortcuts are causing avoidable rework.",
+            "zh": "传话失真、信号混乱或心急抄近道，正在造成本可避免的返工。"
+          },
+          "action": {
+            "en": "Double-check dates, recipients, and details before hitting send, and pause one rushed move to confirm alignment.",
+            "zh": "点发送前再次核对时间、对象与关键细节，先叫停一个过于仓促的动作以确认对齐。"
+          },
+          "outcome": {
+            "en": "Progress still arrives, just on a slower or staggered schedule that rewards careful follow-through.",
+            "zh": "进展依然会来，只是节奏放慢或分批落地，更看重你稳健的收尾确认。"
+          },
+          "advice": {
+            "en": "Slow is smooth and smooth is fast—untangle the wires before pressing the accelerator again.",
+            "zh": "慢即是稳、稳即是快——先把缠住的线理顺，再重新踩下油门。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Delays and miscommunication ask you to slow down and verify details. Catching a crossed wire now saves far more time than rushing blindly.",
+            "zh": "权杖八逆位提示延迟与沟通错位，适合主动放慢半拍核对细节。现在理清一条错线，比盲目狂奔省力得多。"
+          },
+          "love": {
+            "en": "In relationships, reversed Eight of Wands flags text misunderstandings, mismatched timing, or moving too fast before trust catches up. Clarify tone directly.",
+            "zh": "在感情中，权杖八逆位常见于文字误会、行程错开或推进太快导致情绪没跟上。直接把语气与心意说清最管用。"
+          },
+          "career": {
+            "en": "At work, expect scheduling hiccups, delayed feedback, or chaotic email threads. Summarize decisions in writing and confirm who owns the next step.",
+            "zh": "在职场上，可能出现排期变动、反馈延迟或冗长混乱的邮件往来。把结论简明落到文字里，确认下一步负责人。"
+          },
+          "health": {
+            "en": "Wired-but-tired restlessness signals overstimulation; step away from rapid notifications and let your tempo settle.",
+            "zh": "在身心状态上，焦躁却疲惫的感觉说明信息与节奏过载；暂时远离高频消息刺激，让呼吸与心率慢下来。"
+          },
+          "spirituality": {
+            "en": "A pause in outer momentum is an invitation to listen inward rather than forcing signs on your own timetable.",
+            "zh": "在灵性层面，外在节奏暂缓恰好邀请你向内倾听，不必按自己的焦急时间表硬催宇宙给答案。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "An exhilarating, figure-free Belle Epoque skyscape showing EXACTLY EIGHT identical slender carved wooden-and-bronze wands flying cleanly in parallel diagonal formation from upper-left toward lower-right, descending toward a sunlit twilight valley below. All EIGHT wands are solid, sharply outlined wooden staves sprouting tiny emerald leaves, stacked evenly from top to bottom with generous open sky separating every single shaft so all eight staves are effortlessly countable at a glance. Below the eight soaring wands stretches a serene winding gilded river, lush dark emerald cypress hills, and a warm glowing sunrise horizon.",
+      "requiredObjects": [
+        {
+          "object": "solid carved wooden-and-bronze sprouting wands flying diagonally in parallel",
+          "count": 8
+        }
+      ],
+      "compositionNote": "Clean, evenly stacked diagonal array of EXACTLY EIGHT solid wooden wands (arranged in two neat flights of four or one crisp even ladder of eight) slicing across clear midnight-and-amber sky well inside the upper and lower safe margins, with zero decorative ribbons or extra floating streaks.",
+      "avoid": [
+        "six, seven, or nine wands",
+        "wind ribbons",
+        "floating light ribbons",
+        "people or figures",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "nine_of_wands": {
+    "id": "nine_of_wands",
+    "archetypeEssence": {
+      "en": "Battle-tested resilience on the final watch—wary and bruised, yet still standing with boundaries intact.",
+      "zh": "历经风霜后的最后坚守——虽带疲惫与旧伤，却依然稳稳立住防线与底气。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Weary, bandaged figure leaning upright on one sprouting wooden wand",
+        "Eight tall sprouting wands planted upright in a tight defensive palisade behind the figure",
+        "Watchful sidelong glance scanning the horizon for one more test",
+        "Worn posture showing hard-won endurance near the end of a long campaign"
+      ],
+      "zh": [
+        "额缠绷带、手扶一根发芽木杖稳稳站立的疲惫守望者",
+        "身后整齐排成一道坚固木栅栏的八根竖直权杖",
+        "警觉斜望远方的眼神，防备最后一轮考验",
+        "饱经风霜却依然不倒的身姿，象征长途跋涉后的顽强韧性"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Weathered Belle Epoque sentinel with a neat pale ivory bandage wrapped around their brow, leaning steadily on one upright sprouting bronze-and-wood wand",
+        "Exactly eight upright sprouting bronze-and-wood wands standing in a clean, evenly spaced defensive palisade directly behind them—nine wands total",
+        "Alert, resilient gaze turned watchfully toward the glowing amber twilight horizon",
+        "Warm amber-vermilion rim-light carving the sentinel's brow bandage, hands, and all nine vertical wands out of deep midnight-indigo shadows"
+      ],
+      "zh": [
+        "额前缠着素白绷带、双手稳扶一根发芽古铜木杖的美好年代守夜人",
+        "身后整齐列阵如防线的八根竖立发芽权杖——共九根权杖，间距清晰可数",
+        "望向暮色远方的警觉而坚韧的目光",
+        "暖琥珀轮廓光在深邃午夜暗影中勾勒出绷带、双手与九根权杖的挺拔线条"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Nine of Wands honors hard-won grit: you have survived previous rounds, learned where the cracks are, and still have enough left in the tank to finish strong—just remember to protect your energy while holding the line.",
+          "zh": "权杖九致敬历经考验的硬核韧性：你已经扛过了前几轮风浪，摸清了防线薄弱处，手里依然留有走完最后一段的余力——守好边界，同时别忘了保存体力。"
+        },
+        "byRole": {
+          "message": {
+            "en": "You are closer to the finish than fatigue makes it feel—hold your boundaries, pace yourself, and see this last stretch through.",
+            "zh": "你离终点比疲惫让你感受到的更近——稳住防线、调好呼吸，把这最后一段稳稳走完。"
+          },
+          "foundation": {
+            "en": "Earlier setbacks or demanding battles left you wiser, tougher, and rightly careful about who gets past your fence.",
+            "zh": "过往的磕碰与硬仗让你更清醒、更抗打，也让你对谁能越过防线格外谨慎。"
+          },
+          "present": {
+            "en": "Energy is running lean and your guard is up, yet your structure is solid and you still hold the field.",
+            "zh": "体力虽已见底、戒心偏高，但你的防线依然稳固，局面仍牢牢握在你手里。"
+          },
+          "resource": {
+            "en": "Your strongest asset is lived experience and endurance—nothing about this terrain can surprise you anymore.",
+            "zh": "你最宝贵的资源是实战沉淀下来的经验与耐力——这片地形里已经没什么能让你措手不及。"
+          },
+          "challenge": {
+            "en": "Even upright, Nine of Wands in a challenge slot warns that old bruises can make you brace against allies as if they were enemies.",
+            "zh": "落在阻碍位时，正位权杖九提醒旧伤可能让你过度戒备，连真正来帮忙的同路人也被挡在栅栏外。"
+          },
+          "action": {
+            "en": "Keep your essential boundary firm, conserve stamina for the final milestone, and let one trusted check-in reassure you.",
+            "zh": "守住最关键的那道边界，把余力留给最后一个节点，同时允许一位信得过的人给你搭把手。"
+          },
+          "outcome": {
+            "en": "Quiet, earned endurance carries you across the finish line with your integrity and hard-won gains intact.",
+            "zh": "沉稳而顽强的坚持会带你平安冲线，把辛苦攒下的成果与尊严完整守住。"
+          },
+          "advice": {
+            "en": "Respect your scars without living inside them—stay alert, not permanently braced for war.",
+            "zh": "尊重过往的伤疤，但不必一直活在战备状态里——保持清醒警觉，而非时刻紧绷。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Resilience and firm boundaries carry you through the final stretch. You have already weathered the hardest parts—pace your remaining strength wisely.",
+            "zh": "韧性与清晰边界正托着你走完最后一段。最难的关口其实已经挺过来了——聪明地分配余力，稳稳收尾。"
+          },
+          "love": {
+            "en": "In love, Nine of Wands reflects cautious trust after past hurt, or standing steady through a rough patch together. Keep healthy boundaries without locking out genuine warmth.",
+            "zh": "在感情中，权杖九常反映旧伤之后的谨慎试探，或携手熬过磨合低谷的坚持。守住边界，但别把真诚的暖意也关在门外。"
+          },
+          "career": {
+            "en": "At work, you are in the late innings of a demanding project. Protect your team's bandwidth, rely on proven checklists, and push cleanly over the finish line.",
+            "zh": "在职场上，你正处于高强度项目的收官阶段。护住精力带宽，靠验证过的流程稳步推进，把最后一步扎扎实实做完。"
+          },
+          "health": {
+            "en": "Fatigue is real even when willpower is strong; honor recovery, tend to lingering strain, and avoid pushing past your body's warning signals.",
+            "zh": "在身心状态上，意志再强也掩盖不了真实的疲惫；认真照料旧劳损，别再无视身体发出的休息信号。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Nine of Wands is steadfastness: wisdom grows not from never being bruised, but from staying present and kind even when tired.",
+            "zh": "在灵性层面，权杖九代表历劫不磨的定力：真正的智慧不是从未受伤，而是疲惫时依然守得住清明与善意。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Nine of Wands reversed points to bone-deep exhaustion, paranoid hyper-vigilance, or finally deciding to put down an unsustainable guard and ask for backup.",
+          "zh": "权杖九逆位指向透支已久的疲惫、草木皆兵的过度防备，或终于决定卸下撑不住的孤军坚守、主动求助。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Stubbornly refusing help because you assume nobody else will hold the line properly.",
+            "zh": "固执地拒绝援手，总觉得别人接手就守不住，结果把自己困死在岗哨上。"
+          },
+          "excess": {
+            "en": "Paranoia and mistrust—seeing threats behind every neutral remark or minor delay.",
+            "zh": "草木皆兵与过度猜疑——把寻常客套或小延误都解读成恶意针对。"
+          },
+          "internalized": {
+            "en": "Quiet burnout hiding behind a tough exterior that says 'I'm fine.'",
+            "zh": "嘴上硬撑着说“没事”，内在其实已经快被长期紧绷掏空。"
+          },
+          "release": {
+            "en": "Lowering defensive walls where the danger has already passed so real rest can begin.",
+            "zh": "在危险早已过去的地方主动撤下高墙，让真正的休养与松弛开始。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Exhaustion and defensive suspicion are distorting your judgment and draining the last of your reserves.",
+            "zh": "过度透支与习惯性防备正在扭曲判断，把你最后一点精力储备也消耗殆尽。"
+          },
+          "action": {
+            "en": "Step off watch for a real break, delegate one recurring worry, and test whether a perceived threat is actually real.",
+            "zh": "立刻安排一次真正的休整，把一件反复消耗你的担子分出去，并核实眼前的危机究竟是真实还是惯性焦虑。"
+          },
+          "outcome": {
+            "en": "Relief arrives once you stop fighting solo; dropping unnecessary armor restores both clarity and stamina.",
+            "zh": "当你不再孤军硬扛，松弛感会迅速回来；卸下多余铠甲反而能更快找回清醒与体力。"
+          },
+          "advice": {
+            "en": "Rest is not surrender—let someone else take a shift before fatigue makes your decisions for you.",
+            "zh": "休息绝不是认输——在疲惫替你做决定之前，先让信得过的人替你值一班。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Exhaustion or lingering paranoia signals that staying on permanent high alert has outlived its usefulness. Lower the unnecessary walls and recover.",
+            "zh": "权杖九逆位提示透支或草木皆兵的状态已经超出合理限度。撤下不再必要的重重防备，把恢复精力放到第一位。"
+          },
+          "love": {
+            "en": "In relationships, reversed Nine of Wands warns that bringing old scars into every new conversation blocks intimacy. Share your fear honestly instead of testing your partner.",
+            "zh": "在感情中，权杖九逆位提醒别把旧伤带进每一次新对话里筑墙自保。坦诚说出不安，比反复试探更能换来安心。"
+          },
+          "career": {
+            "en": "At work, burnout is knocking or defensive turf-guarding is isolating you from teammates. Ask for reinforcement and drop low-value fights.",
+            "zh": "在职场上，倦怠已逼近临界点，或过度护短戒备让你与团队脱节。主动开口要支援，放掉不值当的拉锯。"
+          },
+          "health": {
+            "en": "Depletion requires genuine recovery, not another round of grit; prioritize sleep, gentle care, and stepping away from chronic stressors.",
+            "zh": "在身心状态上，深度疲惫需要的是实打实的休养，而不是再咬牙硬撑；把睡眠与彻底减压设为头等大事。"
+          },
+          "spirituality": {
+            "en": "Letting go of the armor you needed to survive an older chapter frees you to experience safety in the present.",
+            "zh": "在灵性层面，慢慢卸下过往为了自保而穿上的厚重盔甲，你才能真切体会到当下的安稳与善意。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A battle-tested Belle Epoque sentinel in a worn ochre-and-indigo coat with a crisp pale ivory cloth bandage wrapped around their forehead, standing resolutely on a twilight ridge and leaning steadily on ONE tall upright sprouting bronze-and-wood wand gripped with both hands. Directly behind the sentinel stands a neat, evenly spaced defensive palisade of EXACTLY EIGHT upright sprouting bronze-and-wood wands planted vertically in the earth—EXACTLY NINE tall wands total, every shaft and emerald-leaved tip cleanly separated and countable against the glowing amber-vermilion dusk sky. The sentinel glances watchfully over their shoulder with tired yet unbroken resolve, sculpted by warm golden rim-light against deep midnight-indigo hills.",
+      "requiredObjects": [
+        {
+          "object": "bandaged watchful sentinel leaning on one wand",
+          "count": 1
+        },
+        {
+          "object": "upright sprouting bronze-and-wood wands total (1 held + 8 in palisade fence behind)",
+          "count": 9
+        }
+      ],
+      "compositionNote": "Clear vertical palisade of EIGHT evenly spaced wands framing the bandaged sentinel leaning on the NINTH wand in the foreground; strong high-contrast silhouette at 64x96 thumbnail.",
+      "avoid": [
+        "eight or ten wands",
+        "extra people",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "ten_of_wands": {
+    "id": "ten_of_wands",
+    "archetypeEssence": {
+      "en": "The weight of carrying everything alone on the final stretch—time to edit, delegate, or set down what isn't yours.",
+      "zh": "在最后一段上坡路把所有担子一人扛在肩头的沉重感——是时候做减法、托付或放下本不属于你的负担。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Traveler leaning forward under a heavy bundle of ten wooden wands",
+        "Ten sprouting staves carried together blocking the carrier's forward sightline",
+        "Distant settled town visible at the top of the slope showing the goal is close",
+        "Strained posture demonstrating commitment pushed past sustainable capacity"
+      ],
+      "zh": [
+        "俯身前倾、怀抱十根沉重权杖艰难前行的旅人",
+        "成束遮挡前方视线的十根带叶木杖",
+        "坡顶不远处灯火可亲的城镇，说明终点已在视野之内",
+        "绷紧吃力的身姿，体现责任感超出合理负荷"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Resolute traveler striding uphill at glowing amber-vermilion dusk carrying a tightly fanned bundle of ten slender sprouting wooden wands",
+        "Exactly ten distinct flowering staves with warm bronze-gold tips and tiny emerald leaves arranged cleanly in a countable fan",
+        "Warm lantern-lit hilltop town glowing ahead against deep twilight indigo",
+        "Dramatic warm dusk rim-light separating traveler, ten wands, and destination silhouette"
+      ],
+      "zh": [
+        "在琥珀暮色中沿坡前行、怀抱一束整齐展开的十根发芽权杖的旅人",
+        "清晰可数的十根古铜鎏金木杖，梢头点缀细小翠叶",
+        "前方山坡顶端亮起暖黄灯火的城镇剪影",
+        "浓烈暮光勾勒出旅人、十根权杖与远方终点的明暗层次"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Ten of Wands reflects genuine effort nearing completion, yet weighed down by carrying too many obligations at once. The town is already in sight—how you finish matters as much as finishing.",
+          "zh": "权杖十反映你离终点已经不远，但把太多责任一股脑揽在自己怀里导致视野受阻。城镇就在眼前——以怎样的方式走完最后一段，和走到终点同样重要。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Audit what you are carrying right now: the load is real, not imagined, and at least two of those wands can be delegated, deferred, or dropped.",
+            "zh": "立刻盘点你怀里正抱着的所有担子：沉重是真实的，其中至少有两三件事可以转交、延后或干脆放下。"
+          },
+          "foundation": {
+            "en": "Saying yes to every opportunity or stepping in to rescue things piled up into today's heavy workload.",
+            "zh": "过去对每次机会都点头，或习惯性替别人兜底，层层叠成了今天的超负荷局面。"
+          },
+          "present": {
+            "en": "You are near the finish line, but tunnel vision from sheer workload risks burning out right before arrival.",
+            "zh": "你已接近冲线阶段，但过重的事务正遮住前路视野，稍不注意就会在到达前耗竭。"
+          },
+          "resource": {
+            "en": "Your endurance and follow-through are formidable—pair that grit with ruthless prioritization instead of brute force alone.",
+            "zh": "你的耐力与扛事能力非常扎实——把这份韧劲配上一刀切的主次排序，而别只靠蛮力硬顶。"
+          },
+          "challenge": {
+            "en": "Holding every wand yourself blocks your view of the path ahead and turns a meaningful goal into a joyless chore.",
+            "zh": "把每根权杖都死死抱在自己怀里，既挡住了看路的视线，也让原本有意义的目标变成了毫无生气的苦差。"
+          },
+          "action": {
+            "en": "Put the bundle down for ten minutes, list everything on your plate, keep only the essentials needed to reach the gate, and hand off or drop the rest.",
+            "zh": "先把手里的担子放地上十分钟，把所有事项列出来：只保留抵达城门必需的核心几项，其余果断分担或砍掉。"
+          },
+          "outcome": {
+            "en": "Completion is within reach; once you trim excess obligations, the burden lifts cleanly into a lighter next cycle.",
+            "zh": "阶段收官近在眼前；只要肯精简多余包袱，重压很快会转化为轻装进入下一轮的踏实感。"
+          },
+          "advice": {
+            "en": "Asking for help or cutting scope on the final stretch is smart stewardship, not weakness.",
+            "zh": "在最后冲刺段主动求助或收窄范围，是成熟的统筹能力，绝不是软弱。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "You are close to completion, yet overloaded by carrying more than one person should. Sort essentials from inherited extras so you reach the finish intact.",
+            "zh": "离完成只差最后一段，但你背了远超单人合理上限的重量。分清核心任务与顺手揽下的包袱，完好抵达终点。"
+          },
+          "love": {
+            "en": "In love, Ten of Wands shows emotional labor leaning too heavily on one side, or external stress crowding out tenderness. Name what feels heavy instead of silently enduring.",
+            "zh": "在感情中，权杖十显示关系里的情绪或生活照料过度压在单方肩上，或外界压力挤干了温情。直接说出哪里太沉，别默默硬撑。"
+          },
+          "career": {
+            "en": "At work, this is classic crunch time and scope overload. Ship the core deliverable, push back on non-critical add-ons, and delegate clearly.",
+            "zh": "在职场上，这是典型的冲刺期与职责过载。先保核心交付物上线，对非关键加塞说不，并明确拆解分工。"
+          },
+          "health": {
+            "en": "Physical tension, neck/shoulder strain, or sheer fatigue is your body flagging unsustainable output. Schedule real rest before exhaustion schedules it for you.",
+            "zh": "身体发紧、肩颈疲惫或持续倦怠正在提示输出超载。主动安排真正恢复，别等精力透支替你按暂停。"
+          },
+          "spirituality": {
+            "en": "Examine which 'duties' are actually old guilt in disguise; devotion is not measured by how much you suffer.",
+            "zh": "在灵性层面，权杖十邀请你审视哪些所谓责任其实是伪装的愧疚感或讨好；真正的担当从来不以自我折磨和耗竭的程度来衡量。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Ten of Wands reversed marks the turning point of putting burdens down—either relief through delegation and boundary-setting, or the crack that happens when overload is ignored too long.",
+          "zh": "权杖十逆位指向卸下重担的转折点——要么通过放手与交接迎来松弛，要么因长期硬撑不肯松手而出现失衡预警。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Refusing to delegate because 'it's faster if I just do it myself' keeps you trapped.",
+            "zh": "因为“自己顺手做更快”而拒绝托付，结果把自己锁死在重压里。"
+          },
+          "excess": {
+            "en": "Collapse or snapping under obligations that never should have been stacked together.",
+            "zh": "在原本就不该叠在一起的任务下濒临崩溃或情绪爆发。"
+          },
+          "internalized": {
+            "en": "Quietly admitting to yourself that you don't want to keep carrying a borrowed dream.",
+            "zh": "内心已经承认，你其实不想再继续替别人扛这份期待。"
+          },
+          "release": {
+            "en": "Choosing relief: setting down unnecessary wands and walking lighter toward what truly counts.",
+            "zh": "主动选择松绑：把多余的权杖放到路边，轻装走向真正重要的事。"
+          }
+        },
+        "byRole": {
+          "resource": {
+            "en": "Relief is already available—someone or a simpler process can take part of this weight if you release control.",
+            "zh": "减负的出口其实就在手边——只要你肯交出部分控制权，有人或更简化的流程能接走一半重量。"
+          },
+          "action": {
+            "en": "Cancel, renegotiate, or hand off at least one heavy commitment today before fatigue forces a messy drop.",
+            "zh": "今天就把至少一项沉重承诺取消、重谈或交接出去，别等彻底累垮才被动失手。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "It is time to stop equating heaviness with worth. Release what is no longer yours to carry so momentum can breathe again.",
+            "zh": "权杖十逆位提醒你停止把扛得越重等同于越有价值。果断把不再属于你的担子放下来，生活与工作的节奏才能重新自由呼吸。"
+          },
+          "love": {
+            "en": "In relationships, reversed Ten of Wands invites dropping unspoken obligations and rebalancing who holds what, bringing genuine relief.",
+            "zh": "在感情中，权杖十逆位鼓励放下未言明的单方妥协，重新分配彼此承担的分量，关系反而会轻松回温。"
+          },
+          "career": {
+            "en": "At work, drop low-leverage busywork, renegotiate unrealistic deadlines, and hand off tasks that keep you from high-impact focus.",
+            "zh": "在工作与事业上，果断砍掉低杠杆杂务、重谈不切实际的截止日期，把持续拖累核心产出的事务移交、自动化或明确婉拒。"
+          },
+          "health": {
+            "en": "Decompression is overdue—lighten the schedule and treat recovery as non-negotiable maintenance.",
+            "zh": "在身心状态上，减压与松绑早已到期——先给日程和待办清单做切实减法，把睡眠与休养当作不可妥协的基础维护来执行。"
+          },
+          "spirituality": {
+            "en": "Letting go of martyr habits opens space for genuine vitality and willing generosity.",
+            "zh": "在灵性层面，放下自我牺牲式的苦行惯性，允许自己轻装前行，真正的生命热情与心甘情愿的慷慨才会在内在重新流淌回来。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "warm amber-vermilion dusk, burnished bronze-gold, sprouting emerald leaf highlights, deep indigo twilight",
+      "scene": "A resolute Belle Epoque traveler in a richly textured bronze-crimson coat and indigo sash striding uphill along a winding twilight path toward a small warmly lantern-lit stone town glowing on the hilltop in the upper-right distance. Leaning slightly forward under the weight, the traveler embraces a clearly fanned, cleanly separated bundle of EXACTLY TEN slender, straight wooden wands with gleaming antique-gold finials and tiny sprouting emerald leaves along their upper ends—every single one of the TEN wands is clearly visible, distinct, and countable against the glowing amber-and-ivory dusk sky behind them. Dramatic warm sunset rim-light catches the traveler's back, coat folds, and the ten wooden wands against rich midnight-indigo foreground hills.",
+      "requiredObjects": [
+        {
+          "object": "uphill traveler",
+          "count": 1
+        },
+        {
+          "object": "distinct sprouting wooden wands in fanned bundle",
+          "count": 10
+        },
+        {
+          "object": "distant warm-lit hilltop town",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Strong diagonal uphill silhouette with the TEN wands fanned cleanly against bright amber-ivory dusk sky so every wand shaft and tip separates crisply; warm sunset glow on upper right contrasts deeply with indigo foreground.",
+      "avoid": [
+        "9 or 11 or 12 wands",
+        "blurry uncountable sticks",
+        "extra people",
+        "text",
+        "numerals",
+        "border",
+        "frame"
+      ]
+    }
+  },
+  "page_of_wands": {
+    "id": "page_of_wands",
+    "archetypeEssence": {
+      "en": "Eager creative curiosity—a lively messenger ready to explore, experiment, and learn by doing.",
+      "zh": "兴致勃勃的探索信使——怀揣好奇与热忱，随时准备通过亲身试水去发现新世界。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Youthful figure standing in a sun-warmed desert landscape with distant pyramids",
+        "One tall sprouting wooden wand held upright and examined with bright curiosity",
+        "Tunic patterned with fire salamanders symbolizing elemental passion",
+        "Feathered traveler's cap signaling free spirit and swift news"
+      ],
+      "zh": [
+        "立于暖阳沙丘与远方金字塔前的朝气青年",
+        "双手扶立、正满怀好奇细细端详的一根发芽木杖",
+        "绣有火蜥蜴纹样的短袍，象征火元素热情",
+        "插着明艳羽毛的旅人帽，寓意自由灵动与好消息"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Lively Belle Epoque youth in a golden-ochre tunic embroidered with vermilion-gold salamanders and a jaunty feathered cap",
+        "Exactly one tall sprouting bronze-and-wood wand planted upright in the warm desert sand as the Page inspects its emerald leaves with eager wonder",
+        "Golden twilight desert dunes and three small distant pyramids glowing beneath a deep starry midnight-indigo sky",
+        "Warm sunlit amber-ivory highlights illuminating the Page's bright face, feathered hat, and single flowering wand"
+      ],
+      "zh": [
+        "身穿绣有朱金火蜥蜴纹样赭黄短袍、头戴羽帽的灵动美好年代少年",
+        "稳立沙地、正被侍从满眼好奇端详枝头嫩叶的唯一一根发芽古铜木杖",
+        "星夜靛蓝天幕下泛起暖金光泽的沙漠沙丘与远方金字塔",
+        "暖象牙金光勾勒出少年明朗面庞、帽羽与唯一发芽权杖的鲜活轮廓"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Page of Wands brings fresh enthusiasm, encouraging news, and the itch to try something new. You don't need mastery yet—bring playful curiosity, ask bold questions, and run a small real-world experiment.",
+          "zh": "权杖侍从带来鲜活热情、令人振奋的新消息与跃跃欲试的探索欲。眼下不必先成为大师——带着轻松好奇大胆发问，用一次小步实战边做边学。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Follow the thread that genuinely excites you; a playful prototype or candid pitch opens a surprisingly bright door.",
+            "zh": "顺着那个真正让你眼前一亮的线索走下去；一次轻松试水或坦诚提议，会推开意想不到的好门。"
+          },
+          "foundation": {
+            "en": "A spark of curiosity, an inspiring message, or a willingness to learn from scratch set this journey in motion.",
+            "zh": "最初的一点好奇心、一条启发性的消息，或愿意从零学起的敞开态度，开启了这段旅程。"
+          },
+          "present": {
+            "en": "You are in discovery mode—ideas are bubbling up and fresh invitations or creative leads are ready to explore.",
+            "zh": "你正处在探索发现期——点子不断冒头，新的邀约与创意线索正等着你去试探。"
+          },
+          "resource": {
+            "en": "Your strongest asset is infectious enthusiasm and beginner's agility; you can pivot and learn faster than rigid experts.",
+            "zh": "你最强的优势是具感染力的热忱与轻盈学习力；相比固守套路的老手，你能更快试错和转身。"
+          },
+          "challenge": {
+            "en": "Even upright, Page of Wands in a challenge slot warns against getting distracted by shiny new ideas before finishing the first experiment.",
+            "zh": "落在阻碍位时，正位权杖侍从提醒别刚起头就被下一个新鲜念头拐跑，先把眼前的小实验跑完。"
+          },
+          "action": {
+            "en": "Sign up for the workshop, send the exploratory pitch, or spend an hour tinkering with the idea hands-on.",
+            "zh": "报下那门课、发出试探性合作信，或今天就花一小时亲手把点子折腾出个小样。"
+          },
+          "outcome": {
+            "en": "Encouraging news, a stimulating new skill, or a lively creative opening sets you onto a fresh path.",
+            "zh": "一条鼓舞人心的消息、一项令人兴奋的新技能或鲜活的创意契机，将把你带入新轨道。"
+          },
+          "advice": {
+            "en": "Stay curious and travel light—treat mistakes as field notes rather than verdicts.",
+            "zh": "保持好奇、轻装上阵——把试错当成田野笔记，而不是对自己的最终判决。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Enthusiasm, exploration, and welcome creative news light up the scene. Say yes to learning through direct experience rather than over-theorizing.",
+            "zh": "热情、探索欲与令人欣喜的新消息点亮当下。比起纸上谈兵，更适合通过亲身体验与小步尝试打开局面。"
+          },
+          "love": {
+            "en": "In love, Page of Wands brings playful flirting, lively curiosity, and refreshing spontaneity. Plan something adventurous together or enjoy getting to know someone without heavy scripts.",
+            "zh": "在感情中，权杖侍从带来轻快俏皮的吸引、鲜活好奇与不按套路的惊喜。一起尝试新鲜体验，享受轻松自在的靠近。"
+          },
+          "career": {
+            "en": "At work, this is prime energy for a new skill, creative pitch, side project, or early-stage opportunity. Volunteer to test the unfamiliar tool or idea.",
+            "zh": "在工作与学业上，非常适合学一项新技能、提出创意提案或试水早期机会。主动认领那个充满新鲜感的探索任务。"
+          },
+          "health": {
+            "en": "Try a playful new form of movement or a fresh routine that genuinely sparks your interest—enjoyment beats grim discipline right now.",
+            "zh": "在身心状态上，不妨尝试一种让你觉得好玩的运动或新节奏——此刻“有意思”比苦大仇深的自律更容易坚持。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Page of Wands invites wonder and experimentation—explore a new practice with an open, unpretentious heart.",
+            "zh": "在灵性层面，权杖侍从邀请你带着赤子般的好奇去探索——不端架子，用敞开的心态体验新的内在功课。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Page of Wands reversed points to hesitation, unfocused energy, or a promising idea stalling because self-doubt or restlessness keeps pulling you off track.",
+          "zh": "权杖侍从逆位指向犹豫退缩、精力分散，或一个原本不错的点子因自我怀疑与三分钟热度而迟迟落不了地。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Fear of looking inexperienced is stopping you from trying the very thing you want to learn.",
+            "zh": "怕显得不专业、怕出糗，反而拦住了你去尝试自己最想学的东西。"
+          },
+          "excess": {
+            "en": "Restless impatience—jumping between half-started hobbies or speaking before thinking.",
+            "zh": "心浮气躁——在好几个半途而废的兴趣间来回横跳，或没想清就急着表态。"
+          },
+          "internalized": {
+            "en": "Quietly longing for adventure while talking yourself out of every small first step.",
+            "zh": "内心明明渴望冒险与突破，嘴上却总替自己找出各种不敢迈步的理由。"
+          },
+          "release": {
+            "en": "Dropping three noisy distractions so one genuine curiosity can finally get your real attention.",
+            "zh": "果断放掉几个凑热闹的分心念头，把专注力还给那件真正吸引你的事。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Scattered focus, delayed news, or lack of follow-through is turning lively potential into frustration.",
+            "zh": "注意力分散、消息迟迟未落或缺乏持续跟进，正在把原本鲜活的潜力消耗成挫败感。"
+          },
+          "action": {
+            "en": "Pick just one small curiosity, give it a seven-day test, and ignore every other shiny tangent until then.",
+            "zh": "只挑一个最让你动心的小方向，给它七天专注试水期，在此之前屏蔽所有其他诱惑。"
+          },
+          "outcome": {
+            "en": "Direction clarifies once you stop chasing novelty for its own sake and commit to one real try.",
+            "zh": "当你不再为了图新鲜而四处打转，转而认真试透一件事，清晰方向很快就会浮现。"
+          },
+          "advice": {
+            "en": "You don't have to be brilliant on day one—just stay with one spark long enough to see what it becomes.",
+            "zh": "第一天不必完美无缺——只要肯守着一簇火苗多待一会儿，就能看见它真正长成什么样。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Hesitation or unfocused energy is scattering your spark. Narrow down to one doable experiment and let curiosity outrun self-consciousness.",
+            "zh": "权杖侍从逆位提示犹豫观望或精力发散。把注意力收回到一个切实可行的小尝试上，别让顾虑磨光了热情。"
+          },
+          "love": {
+            "en": "In relationships, reversed Page of Wands can mean mixed signals, flaky enthusiasm, or boredom creeping in. Bring honest presence instead of chasing novelty.",
+            "zh": "在感情中，权杖侍从逆位常对应态度忽冷忽热、承诺偏轻飘或新鲜感褪去后的乏味。用真诚投入取代一味图新鲜。"
+          },
+          "career": {
+            "en": "At work, beware half-finished drafts, delayed replies, or shiny-object syndrome. Finish one small deliverable before pitching the next.",
+            "zh": "在职场上，警惕虎头蛇尾、消息延误或见异思迁。先把眼下一个小交付做完，再提下一个新创意。"
+          },
+          "health": {
+            "en": "Restlessness or starting intense routines only to drop them days later drains morale; pick something light and repeatable.",
+            "zh": "在身心调理上，三分钟热度的激进打卡只会挫伤信心；选一个轻松、无负担、明天也愿意继续的小习惯。"
+          },
+          "spirituality": {
+            "en": "Collecting ideas without practicing them keeps growth theoretical; choose one simple daily anchor and actually live it.",
+            "zh": "在灵性层面，光收集概念却不践行会让成长停在纸面；挑一个最朴素的日常功课真正活出来。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "An eager, bright-eyed Belle Epoque youth standing in a sunlit twilight desert of rolling golden dunes with three small distant pyramids along the warm horizon. Wearing a tailored ochre-gold tunic embroidered with sinuous vermilion-and-gold salamanders, billowy ivory sleeves, and a jaunty cap adorned with a sweeping amber-vermilion plume, the Page stands upright holding EXACTLY ONE tall, straight sprouting bronze-and-wood wand planted in the sand before them, gazing up at its fresh emerald leaves with vivid curiosity and wonder. Crisp warm amber-ivory light illuminates the Page's face, feathered cap, and the single flowering wand against a deep starry midnight-indigo sky.",
+      "requiredObjects": [
+        {
+          "object": "youthful Page in salamander-embroidered tunic and feathered cap",
+          "count": 1
+        },
+        {
+          "object": "tall upright sprouting bronze-and-wood wand",
+          "count": 1
+        },
+        {
+          "object": "distant desert pyramids on horizon",
+          "count": 3
+        }
+      ],
+      "compositionNote": "Clean vertical silhouette of the youthful Page inspecting ONE tall golden-bronze wand against open starry desert sky; reads effortlessly at 64x96 thumbnail.",
+      "avoid": [
+        "two or more wands",
+        "horse",
+        "throne",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "knight_of_wands": {
+    "id": "knight_of_wands",
+    "archetypeEssence": {
+      "en": "Bold, high-heat momentum—charging into adventure with fearless conviction and sparks flying at your heels.",
+      "zh": "炽烈果敢的冲锋之势——带着无畏信念跃马入局，所过之处火星四溅。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Armored Knight charging across desert dunes astride a rearing chestnut steed",
+        "One sprouting wooden wand gripped high in the right hand",
+        "Fiery red-orange plumes streaming from helmet and armor",
+        "Yellow surcoat patterned with salamanders echoing untamed fire"
+      ],
+      "zh": [
+        "策动腾跃烈马驰骋沙丘的披甲骑士",
+        "右手高高擎起的一根发芽木杖",
+        "自头盔与臂甲向后烈烈飞扬的赤红羽饰",
+        "绣满火蜥蜴纹样的明黄战袍，呼应炽烈火性"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Dashing Belle Epoque Knight in burnished bronze-gold armor and a flowing amber-vermilion salamander surcoat astride a powerful rearing chestnut steed",
+        "Exactly one sprouting bronze-and-wood wand raised high and forward in the Knight's right hand",
+        "Flame-like vermilion plumes streaming from the Knight's helm against a dramatic dusk desert of distant pyramids",
+        "Electric warm amber-vermilion key light sculpting horse, armor, and single raised wand against deep midnight-indigo sky"
+      ],
+      "zh": [
+        "身披古铜鎏金铠甲与火蜥蜴纹战袍、策动昂首腾跃骏马的美好年代骑士",
+        "骑士右手向前高擎、清晰唯一的一根发芽古铜木杖",
+        "头盔上如火焰般烈烈飘扬的朱红羽饰，背景是暮色沙丘与远方金字塔",
+        "炽热琥珀主光在深邃午夜蓝天中勾勒出人马腾跃与单杖冲锋的凌厉剪影"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Knight of Wands is pure kinetic courage: bold action, daring pursuit, and refusing to let hesitation cool your fire. Ride hard toward what excites you, while keeping one hand steady on the reins.",
+          "zh": "权杖骑士代表纯粹而炽烈的行动力：大胆出击、无畏追逐，不让犹豫把满腔热血放凉。放手奔向让你沸腾的目标，同时记得一手稳住缰绳。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Stop circling and make the bold move—decisive energy and visible daring open doors polite waiting never will.",
+            "zh": "别再原地打转，直接做出那个大胆动作——果断的锋芒与行动力，能撞开客气等待永远敲不开的门。"
+          },
+          "foundation": {
+            "en": "A fearless leap, sudden relocation, or high-energy pursuit launched this chapter at full gallop.",
+            "zh": "一次毫不迟疑的跃马出击、迅速转向或高能投入，让整件事一开始就跑出了全速。"
+          },
+          "present": {
+            "en": "Adrenaline, ambition, and appetite for adventure are peaking—channel this charge into one clear target.",
+            "zh": "眼下干劲、野心与冒险欲正处高峰——把这股冲锋势头精准对准一个明确目标。"
+          },
+          "resource": {
+            "en": "Your strongest asset is unstoppable initiative and magnetic charisma; you rally momentum simply by moving first.",
+            "zh": "你最强的优势是势不可挡的主动性与感染力；只要你率先迈步，就能把整个局面的势头带起来。"
+          },
+          "challenge": {
+            "en": "Even upright, Knight of Wands in a challenge slot warns that charging before checking the terrain can create avoidable sparks.",
+            "zh": "落在阻碍位时，正位权杖骑士提醒不看路况就全速冲锋，容易撞出本可避免的火星与返工。"
+          },
+          "action": {
+            "en": "Commit boldly to the adventure—pitch the ambitious target, take the trip, or ship the daring version today.",
+            "zh": "果断投身这场冒险——今天就把野心勃勃的提案递出去、定下远行，或把大胆版本推上台前。"
+          },
+          "outcome": {
+            "en": "Rapid breakthroughs, exciting change of scenery, and invigorating momentum reward your nerve.",
+            "zh": "利落的突破、令人振奋的新局变化与强劲推进力，将回馈你的胆识。"
+          },
+          "advice": {
+            "en": "Keep your courage high and your aim locked—passion moves mountains when it doesn't gallop off the trail.",
+            "zh": "保持高昂胆气，同时死死锁住方向——热情只要不跑偏，就足以移山填海。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Bold action, adventure, and fearless pursuit define this moment. Trust your drive, move decisively, and steer your heat toward a target worth winning.",
+            "zh": "大胆行动、冒险精神与无畏追逐是此刻的主旋律。相信你的冲劲，果断出击，把热度稳稳引向值得拿下的目标。"
+          },
+          "love": {
+            "en": "In love, Knight of Wands brings thrilling chemistry, passionate pursuit, and spontaneous romance. Enjoy the heat while checking that excitement also has room for real follow-through.",
+            "zh": "在感情中，权杖骑士带来令人心跳加速的吸引、热烈追求与说走就走的浪漫。尽情享受火花，同时也留意热情之后能否稳步同行。"
+          },
+          "career": {
+            "en": "At work, this is high-velocity execution: pitching boldly, launching into new markets, or taking on a daring stretch assignment. Pair speed with one clear checkpoint.",
+            "zh": "在职场上，这是高速攻坚的能量：大胆提案、开拓新市场或主动接下高难度挑战。给高速冲刺配上一个关键校准点。"
+          },
+          "health": {
+            "en": "High physical drive suits vigorous training and active outdoor challenge—just warm up properly and don't skip cooldowns in your rush.",
+            "zh": "在身心状态上，充沛体能非常适合高活力运动与户外挑战——只是冲劲再足也别省掉热身与拉伸恢复。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Knight of Wands is fierce devotion in motion: live your convictions out loud instead of keeping them safely abstract.",
+            "zh": "在灵性层面，权杖骑士是行动力中的热忱：把你的信念真正活在行动与担当里，而不只是停在书本与空谈中。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Knight of Wands reversed flags impulsiveness, scattered energy, or hotheaded haste that burns bright for a day and leaves loose ends behind.",
+          "zh": "权杖骑士逆位指向冲动冒进、精力发散，或一时上头的急躁冲刺，热得快却在身后留下一地未收的尾。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Frustrated restlessness—revving the engine with nowhere clear to ride.",
+            "zh": "憋闷焦躁——引擎轰鸣不断，却还没看清究竟该往哪条路冲。"
+          },
+          "excess": {
+            "en": "Reckless speed, short temper, or chasing adrenaline while trampling details and people's boundaries.",
+            "zh": "鲁莽疾驰、脾气一点就着，或一味追逐刺激却踩碎了细节与旁人边界。"
+          },
+          "internalized": {
+            "en": "Simmering impatience directed inward as self-criticism for not moving even faster.",
+            "zh": "把满腹急躁转回内部，反复苛责自己为什么还不够快。"
+          },
+          "release": {
+            "en": "Pulling back on the reins deliberately so wild momentum becomes steady, sustainable power.",
+            "zh": "有意识地轻勒缰绳，把脱缰般的冲劲收回成稳健持久的力量。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Impatience, impulsive pivots, or half-finished sprints are undercutting your credibility.",
+            "zh": "急于求成、冲动转向或屡屡半途而废的冲刺，正在悄悄损耗你的公信力。"
+          },
+          "action": {
+            "en": "Pause twenty-four hours before major commitments, finish one open sprint, and steer with a simple checklist.",
+            "zh": "做重大承诺前先冷静二十四小时，把手头一项未竟的冲刺收尾，用简明清单稳住节奏。"
+          },
+          "outcome": {
+            "en": "Friction and delays ease as soon as you trade reckless speed for disciplined direction.",
+            "zh": "只要你把鲁莽求快换成有章法的推进，沿途的磕碰与返工很快就会减少。"
+          },
+          "advice": {
+            "en": "Heat without steering scorches the rider—cool the rush by ten percent and you will arrive twice as fast.",
+            "zh": "没有方向的烈火只会烫伤骑手——把急躁降下十分之一，你反而能快一倍抵达终点。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Impulsiveness and scattered energy ask you to pull lightly on the reins. Focus your fire on one finishable priority instead of charging in three directions.",
+            "zh": "权杖骑士逆位提示冲动与精力发散，此刻需要轻勒缰绳。把火力集中在眼下一项能真正收官的要事上，别同时朝三个方向乱冲。"
+          },
+          "love": {
+            "en": "In relationships, reversed Knight of Wands warns against hot-and-cold passion, impatient arguments, or chasing the thrill of the chase over real reliability.",
+            "zh": "在感情中，权杖骑士逆位提醒警惕忽冷忽热、急躁争吵，或只贪恋追逐时的刺激却缺乏长久兑现的耐心。"
+          },
+          "career": {
+            "en": "At work, watch for rushed launches, reactive emails, or abandoning solid projects the moment they get routine. Follow through on what you already started.",
+            "zh": "在职场上，警惕仓促上线、情绪化回复，或项目一进入枯燥期就想撂挑子。把已经起跑的事稳稳跑完。"
+          },
+          "health": {
+            "en": "Overtraining, burnout spikes, or restless adrenaline need deliberate pacing—swap frantic bursts for steady, grounded movement.",
+            "zh": "在身心状态上，过度猛练或肾上腺素透支需要主动降速——把一阵风式的硬冲换成规律稳健的节奏。"
+          },
+          "spirituality": {
+            "en": "Patience is not the enemy of passion; learning to sit calmly with intense energy turns raw heat into lasting wisdom.",
+            "zh": "在灵性层面，耐心并非热情的反面；学会安稳地与强烈冲动共处，才能把原始火气炼成持久的智慧。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "dramatic-chiaroscuro",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A bold, dynamic Belle Epoque Knight in burnished bronze-and-gold armor draped with a billowing golden-amber surcoat embroidered with vermilion salamanders, riding a powerful rearing chestnut steed mid-charge across twilight desert dunes toward three distant pyramids. Bright flame-like vermilion plumes stream dramatically from the Knight's helm. In their raised right hand, the Knight brandishes EXACTLY ONE straight sprouting bronze-and-wood wand tipped with tiny emerald leaves, angled forward in fearless pursuit. Warm amber-vermilion rim-light illuminates the rearing horse, gleaming armor, flowing plumes, and single raised wand against a deep midnight-indigo starry sky.",
+      "requiredObjects": [
+        {
+          "object": "armored Knight on rearing chestnut horse",
+          "count": 1
+        },
+        {
+          "object": "raised sprouting bronze-and-wood wand",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Explosive diagonal silhouette of rearing horse, streaming red-gold plumes, and ONE raised wand cutting across dark indigo sky; unmistakable kinetic drama at 64x96 thumbnail.",
+      "avoid": [
+        "two or more wands",
+        "sword",
+        "cup",
+        "pentacle",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "queen_of_wands": {
+    "id": "queen_of_wands",
+    "archetypeEssence": {
+      "en": "Radiant, self-possessed warmth—magnetic confidence that lights up a room without ever begging for approval.",
+      "zh": "从容耀眼的笃定暖意——无需讨好就能自然照亮全场的内在魅力与掌控力。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Confident Queen seated squarely on a stone throne carved with twin lions",
+        "One bright golden sunflower held openly in her left hand",
+        "One sprouting wooden wand resting upright in her right hand",
+        "Alert black cat seated calmly at her feet symbolizing intuitive independence"
+      ],
+      "zh": [
+        "端坐于雕有双狮纹样石座之上的自信王后",
+        "左手舒展托起的一朵盛放金色向日葵",
+        "右手稳稳竖握的一根发芽木杖",
+        "静坐脚畔、灵动警觉的黑猫，象征直觉与独立"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Radiant Belle Epoque Queen in a flowing golden-amber silk gown and ivory mantle seated on a sculpted stone throne carved with Art Nouveau lions and sunflowers",
+        "Exactly one upright sprouting bronze-and-wood wand held in her right hand and one luminous golden sunflower held in her left hand",
+        "One sleek, alert black cat with bright golden eyes seated calmly at her feet",
+        "Warm sunlit amber-gold aura and crown of gilded leaves glowing vividly against deep midnight-indigo twilight"
+      ],
+      "zh": [
+        "身穿流光琥珀金丝绸长裙、端坐于雕有狮子与向日葵纹石座的美好年代王后",
+        "右手稳握唯一一根发芽古铜木杖，左手轻托一朵明艳金色向日葵",
+        "端坐于她脚畔、双眸泛起金光的优雅黑猫",
+        "暖金光晕与鎏金叶冠在深邃午夜蓝天中散发温暖耀眼的气场"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "Queen of Wands embodies vibrant self-assurance, creative magnetism, and warm courage. Own your presence completely—when you stop shrinking to make others comfortable, the right people and opportunities gravitate straight to you.",
+          "zh": "权杖王后象征饱满的自信、创造魅力与温暖胆识。大方舒展你的存在感——当你不再为了照顾旁人情绪而刻意收敛光芒，同频的人与机会自然会向你聚拢。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Lead with warmth and unmistakable self-belief; your authentic presence is far more persuasive than perfection.",
+            "zh": "带着暖意与毫不含糊的笃定走上前台；你真实鲜活的气场，比滴水不漏的完美更有说服力。"
+          },
+          "foundation": {
+            "en": "Hard-won self-trust and creative independence built the magnetic footing you stand on today.",
+            "zh": "一路练就的自我信任与独立底气，为你打下了如今耀眼而稳固的立足点。"
+          },
+          "present": {
+            "en": "You are in your element—energetic, expressive, and able to inspire others simply by being unapologetically yourself.",
+            "zh": "你正处在最舒展的主场状态——活力充沛、表达鲜活，只需坦荡做自己就能点燃周围人的热情。"
+          },
+          "resource": {
+            "en": "Your strongest asset is radiant charisma paired with sharp intuition; you read the room warmly and act decisively.",
+            "zh": "你最强的优势是温暖的个人魅力与敏锐直觉；你既能暖场聚人，又能在关键处果断拍板。"
+          },
+          "challenge": {
+            "en": "Even upright, Queen of Wands in a challenge slot asks whether taking center stage is leaving enough room for quieter voices to contribute.",
+            "zh": "落在阻碍位时，正位权杖王后提醒：在光芒四射的同时，别忘了给性格更含蓄的伙伴留出表达空间。"
+          },
+          "action": {
+            "en": "Step into the spotlight—host the conversation, champion your creative vision, and back yourself visibly.",
+            "zh": "大方走入聚光灯下——主动牵头对话、旗帜鲜明地力挺你的创意愿景，为自己站台。"
+          },
+          "outcome": {
+            "en": "Warm influence, thriving creative momentum, and genuine admiration follow your confident lead.",
+            "zh": "温暖的影响力、蓬勃的创作势头与发自内心的欣赏，将追随你自信的步伐而来。"
+          },
+          "advice": {
+            "en": "Hold the sunflower and the wand together—stay generous and sunny while keeping your independence intact.",
+            "zh": "把向日葵与权杖一同握稳——既保持阳光大度，也牢牢守住你不可替代的独立主见。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Confidence, vibrancy, and inner mastery shine through here. Trust your instincts, claim your space warmly, and let bold creativity lead.",
+            "zh": "自信、生命力与内在掌控感在此绽放。相信你的直觉，大方占据属于你的位置，让热忱与创意自然领航。"
+          },
+          "love": {
+            "en": "In love, Queen of Wands brings passionate warmth, playful loyalty, and attractive self-respect. Love generously without ever shrinking your own light to keep someone close.",
+            "zh": "在感情中，权杖王后带来热烈温暖、坦荡忠诚与极具吸引力的自尊。大方去爱，但绝不为了留住谁而调暗自己的光。"
+          },
+          "career": {
+            "en": "At work, this is standout leadership, entrepreneurial flair, and personal brand magnetism. Pitch with conviction, mentor generously, and own your creative direction.",
+            "zh": "在职场上，她代表亮眼的领导力、创业魄力与个人影响力。带着笃定去提案，慷慨提携伙伴，稳稳主导创意方向。"
+          },
+          "health": {
+            "en": "Vitality thrives on joy, sunlight, and expressive movement—choose routines that make you feel strong, radiant, and thoroughly alive.",
+            "zh": "在身心状态上，生命力偏爱阳光、愉悦与舒展的律动——选择那些让你感到强健、明朗且神采奕奕的习惯。"
+          },
+          "spirituality": {
+            "en": "Spiritually, Queen of Wands unites fire with intuition: honor your gut knowing and treat creative joy as a direct expression of spirit.",
+            "zh": "在灵性层面，权杖王后将火焰与直觉合二为一：信任你敏锐的第六感，把鲜活的创造喜悦当作最真实的内在流露。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "Queen of Wands reversed points to dimmed confidence, quiet jealousy, or overcompensating with bossiness when inner security feels rattled.",
+          "zh": "权杖王后逆位指向自信暂时暗淡、暗自比较生妒，或在安全感晃动时下意识用强势来遮掩不安。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Self-doubt or fear of outshining others is making you dim your own voice and vitality.",
+            "zh": "自我怀疑或害怕锋芒太露，让你主动压低了自己的声音与光彩。"
+          },
+          "excess": {
+            "en": "Demanding the spotlight, reacting sharply to rivals, or controlling the room to mask insecurity.",
+            "zh": "急着抢占焦点、对竞争者反应过激，或用强势控场来遮掩内心的没底。"
+          },
+          "internalized": {
+            "en": "Comparing yourself silently against someone else's highlight reel until your own spark feels small.",
+            "zh": "默默拿自己的日常去对比别人的高光时刻，把原本饱满的自信比得越来越小。"
+          },
+          "release": {
+            "en": "Stepping out of comparison traps and reclaiming quiet, unbothered self-trust.",
+            "zh": "跳出横向比较的陷阱，重新找回不靠攀比也自足的沉稳自信。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Insecurity, jealousy, or burnout from always being 'on' is distorting your warmth.",
+            "zh": "内在不安、暗自较劲或长期维持高能人设带来的疲惫，正在耗损你原本的明朗暖意。"
+          },
+          "action": {
+            "en": "Mute comparison triggers for a week, recharge privately, and reconnect with one creative thing you love purely for yourself.",
+            "zh": "把引发攀比的噪音屏蔽一周，安静回血，重新做一件纯粹取悦自己的小事。"
+          },
+          "outcome": {
+            "en": "Authentic warmth returns quickly once you stop performing confidence and tend to your actual energy.",
+            "zh": "当你不再硬撑“永远闪耀”的外壳，转而认真照顾真实精力，由内而外的明朗很快就会回来。"
+          },
+          "advice": {
+            "en": "Someone else's brightness never dims yours—restore your own fire before trying to warm the whole room.",
+            "zh": "别人的光亮从来不会夺走你的光芒——先把自己心里的火养暖，再去照亮全场。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Insecurity or comparison is temporarily clouding your natural radiance. Step back from proving yourself, replenish your energy, and let genuine confidence rebuild.",
+            "zh": "权杖王后逆位提示不安或攀比正暂时遮住你原本的光彩。先停下向外界证明自己的冲动，安静回血，让真自信重新长出来。"
+          },
+          "love": {
+            "en": "In love, reversed Queen of Wands flags jealousy, possessiveness, or shrinking yourself to avoid rocking the boat. Name your insecurity kindly instead of acting it out.",
+            "zh": "在感情中，权杖王后逆位常对应醋意、控制欲，或为了讨好而委屈自己。温和坦白你的不安，比暗自较劲更有力量。"
+          },
+          "career": {
+            "en": "At work, beware imposter syndrome, turf jealousy, or micromanaging out of stress. Re-anchor in your real strengths and collaborate without keeping score.",
+            "zh": "在职场上，留意冒名顶替感、同行嫉妒或压力下的过度管控。回到你真正擅长的核心优势，大方协作而不必暗自较劲。"
+          },
+          "health": {
+            "en": "Running on charisma while ignoring fatigue drains your spark; give yourself permission to be low-key and rest without guilt.",
+            "zh": "在身心状态上，靠硬撑热情掩盖疲惫只会加速透支；允许自己低调歇一歇，不必为暂时不闪耀而愧疚。"
+          },
+          "spirituality": {
+            "en": "True sovereignty doesn't need an audience; return to quiet self-respect where your worth is already settled.",
+            "zh": "在灵性层面，真正的内在主权不需要观众喝彩；回到安静的自尊里，你的价值本就无需外求。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A radiant, self-possessed Belle Epoque Queen seated squarely on a grand pale-stone throne carved with Art Nouveau lions and stylized sunflowers. She wears a luminous golden-amber silk gown with a flowing ivory mantle and a delicate crown of burnished gold leaves, facing forward with warm, unmistakable confidence. In her right hand she holds EXACTLY ONE upright sprouting bronze-and-wood wand tipped with emerald leaves; in her left hand she holds ONE bright, fully bloomed golden sunflower. Seated calmly at her feet in the foreground is ONE sleek, alert black cat with gleaming golden eyes. Rich warm sunlit amber-gold highlights illuminate the Queen, sunflower, wand, and black cat against a deep midnight-indigo starry twilight sky.",
+      "requiredObjects": [
+        {
+          "object": "seated Queen on lion-carved throne",
+          "count": 1
+        },
+        {
+          "object": "upright sprouting bronze-and-wood wand in right hand",
+          "count": 1
+        },
+        {
+          "object": "golden sunflower in left hand",
+          "count": 1
+        },
+        {
+          "object": "alert black cat at her feet",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Regal symmetrical throne silhouette with bright golden gown, ONE upright wand, ONE golden sunflower, and ONE crisp black cat at her feet; instantly iconic at 64x96 thumbnail.",
+      "avoid": [
+        "two or more wands",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  },
+  "king_of_wands": {
+    "id": "king_of_wands",
+    "archetypeEssence": {
+      "en": "Visionary executive fire—commanding leadership that turns bold ideas into lasting enterprises through courage and clarity.",
+      "zh": "格局宏阔的统帅之火——以远见、胆魄与号召力，把大胆构想真正锻造成经久不衰的事业。"
+    },
+    "traditionMotifs": {
+      "en": [
+        "Commanding King seated forward-leaning on a high stone throne carved with lions and salamanders",
+        "One living, sprouting wooden wand gripped firmly beside his knee",
+        "Flame-pointed golden crown and rich crimson-amber cloak lined with salamander motifs",
+        "Small live fire salamander resting beside the base of his throne"
+      ],
+      "zh": [
+        "微倾前望、气度威严地端坐于狮纹与火蜥蜴石座上的国王",
+        "稳稳握于膝畔、生机勃勃的一根发芽木杖",
+        "火焰状金冠与饰有火蜥蜴纹样的绯红琥珀披风",
+        "静卧于王座脚畔、象征纯熟火元素的灵动火蜥蜴"
+      ]
+    },
+    "editionMotifs": {
+      "en": [
+        "Sovereign Belle Epoque King in a rich vermilion-crimson robe and golden-amber salamander-embroidered cloak wearing a sculpted flame-pointed antique-gold crown",
+        "Exactly one tall sprouting bronze-and-wood wand gripped firmly upright in his right hand",
+        "Carved pale-stone throne emblazoned with Art Nouveau lions and gilded salamanders, with one small gleaming emerald-and-gold salamander perched beside his boot",
+        "Commanding warm amber-vermilion rim-light carving the King's decisive profile and single living wand out of deep midnight-indigo architecture"
+      ],
+      "zh": [
+        "身披绯红长袍与绣金火蜥蜴斗篷、头戴火焰古金王冠的威严美好年代国王",
+        "右手稳稳竖握于身侧、清晰唯一的一根发芽古铜木杖",
+        "雕有双狮与火蜥蜴浮雕的浅色石座，座畔伏着一只泛起金绿微光的灵动小火蜥蜴",
+        "暖朱砂与琥珀轮廓光在深邃午夜殿堂暗影中勾勒出国王果敢神态与生机权杖"
+      ]
+    },
+    "meaningBranches": {
+      "upright": {
+        "core": {
+          "en": "King of Wands is mature creative leadership: seeing the whole horizon, rallying people around a bold mission, and taking full responsibility for turning vision into reality.",
+          "zh": "权杖国王代表成熟的创造型领导力：看得清全局远景，能围绕大胆使命凝聚人心，并坦然扛起把愿景落地的全部责任。"
+        },
+        "byRole": {
+          "message": {
+            "en": "Step into full executive ownership—set the bold direction clearly and trust others to execute beside you.",
+            "zh": "站出来扛起全局主导权——把清晰宏大的方向立住，同时信任伙伴与你并肩落地。"
+          },
+          "foundation": {
+            "en": "Years of hands-on initiative, bold bets, and earned authority built the leadership stance you now hold.",
+            "zh": "过往一路亲自冲锋、敢于押注并兑现承诺的历练，铸就了你如今的统帅底气。"
+          },
+          "present": {
+            "en": "You are called to lead from the front—delegate the weeds, protect the big vision, and make the decisive call.",
+            "zh": "当下需要你站在前排掌舵——把琐碎细节放手分担，死死盯住大方向并做出关键拍板。"
+          },
+          "resource": {
+            "en": "Your strongest asset is entrepreneurial vision paired with genuine nerve; people rally when you name a worthy target.",
+            "zh": "你最强的资本是创业者般的格局与胆魄；只要你立出一个值得奔赴的目标，人心自然会聚拢。"
+          },
+          "challenge": {
+            "en": "Even upright, King of Wands in a challenge slot warns against outrunning your team's pace or assuming everyone sees the big picture as fast as you do.",
+            "zh": "落在阻碍位时，正位权杖国王提醒别跑得比团队快太多，也别默认每个人都像你一样瞬间看懂全局。"
+          },
+          "action": {
+            "en": "Articulate the overarching vision in one crisp page, empower key lieutenants, and commit decisively to the flagship move.",
+            "zh": "用简明有力的方式把核心愿景讲透，放权给靠谱骨干，果断拍板推进最关键的旗舰动作。"
+          },
+          "outcome": {
+            "en": "Lasting influence, successful enterprise, and respected authority grow from your bold, steady stewardship.",
+            "zh": "长久的影响力、扎实的事业版图与备受敬重的领导地位，将在你大胆而稳健的掌舵下成形。"
+          },
+          "advice": {
+            "en": "Lead with heat and generosity—great rulers inspire ownership rather than micromanaging every flame.",
+            "zh": "带着热度与胸怀去带队——真正高明的掌舵者点燃他人的主动性，而不是事事亲自盯火。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Leadership, vision, and outer mastery come to the forefront. Think like a founder, make decisive calls, and turn ambitious inspiration into durable structure.",
+            "zh": "领导力、远见与外在掌控力站上核心。像创始人一样思考，果断拍板，把宏大灵感锻造成稳固长久的现实成果。"
+          },
+          "love": {
+            "en": "In love, King of Wands brings passionate loyalty, protective warmth, and bold honesty. Show up wholeheartedly and build an exciting shared life without trying to steer every detail.",
+            "zh": "在感情中，权杖国王带来炽热忠诚、可靠担当与坦荡直率。全心投入、共同经营充满活力的生活，同时尊重彼此的独立空间。"
+          },
+          "career": {
+            "en": "At work, this is prime founder, director, and visionary strategist energy. Take ownership of the roadmap, pitch big stakeholders, and lead by decisive example.",
+            "zh": "在工作与事业上，这是典型的创始人、掌舵者与战略家能量。稳稳接过路线图主导权，向关键方大胆提案，以身作则带出气势。"
+          },
+          "health": {
+            "en": "Strong constitution and drive support ambitious physical goals—pair that vigor with disciplined recovery so leadership stamina stays sustainable.",
+            "zh": "在身心状态上，充沛底气足以支撑高目标的体能与状态提升——把这股劲头配上有纪律的休养，精力才能长期在线。"
+          },
+          "spirituality": {
+            "en": "Spiritually, King of Wands is sovereign purpose: align your willpower with service to something larger than ego.",
+            "zh": "在灵性层面，权杖国王代表清明的使命感：把强大的个人意志与超越小我的长远价值对齐，力量才会既猛烈又温润。"
+          }
+        }
+      },
+      "reversed": {
+        "core": {
+          "en": "King of Wands reversed flags domineering impatience, impulsive grandstanding, or holding back from leadership when decisive stewardship is actually needed.",
+          "zh": "权杖国王逆位指向专断急躁、好大喜功的冲动拍板，或在需要挺身掌舵时反而缩手退让。"
+        },
+        "lenses": {
+          "blocked": {
+            "en": "Hesitating to take command—or letting fear of failure shrink a genuinely worthy vision.",
+            "zh": "迟迟不敢接过指挥棒，或因为怕担责而把原本很有价值的愿景越缩越小。"
+          },
+          "excess": {
+            "en": "Bulldozing collaborators, losing patience with valid feedback, or mistaking volume for authority.",
+            "zh": "强势碾压协作者、听不进合理提醒，或误把嗓门大与强硬当成真正的威信。"
+          },
+          "internalized": {
+            "en": "Holding yourself to impossible heroic standards until every setback feels like personal failure.",
+            "zh": "用近乎严苛的英雄标准要求自己，任何一点小挫折都让你陷入沉重的自我苛责。"
+          },
+          "release": {
+            "en": "Letting go of rigid ego-control so leadership becomes collaborative, calm, and sustainable.",
+            "zh": "松开紧绷的独断控制欲，让领导方式回归协作、沉稳与可持续。"
+          }
+        },
+        "byRole": {
+          "challenge": {
+            "en": "Impatience, top-down stubbornness, or overpromising before checking capacity is creating real friction.",
+            "zh": "急躁武断、听不进劝，或在没核对承载力前就大包大揽，正在制造实实在在的阻力。"
+          },
+          "action": {
+            "en": "Ask two trusted people for blunt feedback before locking the plan, and dial back urgency where patience wins better quality.",
+            "zh": "拍板前先听两句信得过之人的逆耳忠言，在需要打磨品质的环节主动把催促降下来。"
+          },
+          "outcome": {
+            "en": "Authority strengthens once you replace force with listening and align ambition with realistic execution.",
+            "zh": "当你用倾听取代强压、让野心与务实执行对齐，你的号召力反而会更稳固。"
+          },
+          "advice": {
+            "en": "Real power never needs to shout—listen first, decide cleanly, and let steady follow-through command respect.",
+            "zh": "真正的威信从来不需要大声施压——先听清、再果断拍板，用稳健兑现赢得发自内心的信服。"
+          }
+        },
+        "domains": {
+          "general": {
+            "en": "Impulsiveness or a domineering streak warns against forcing outcomes by sheer willpower. Temper your fire with patience and genuine listening.",
+            "zh": "权杖国王逆位提醒警惕冲动或过于强势的倾向，别试图仅靠硬推去强求结果。给满腔火气配上一份耐心与倾听。"
+          },
+          "love": {
+            "en": "In relationships, reversed King of Wands cautions against my-way-or-the-highway stubbornness or impatient temper. Share the steering wheel and listen with warmth.",
+            "zh": "在感情中，权杖国王逆位提醒避免“必须听我的”式固执或急躁脾气。把方向盘分一半给对方，带着暖意真正听进去。"
+          },
+          "career": {
+            "en": "At work, watch for dictatorial management, unrealistic timelines, or ego-driven bets. Ground ambitious targets in team reality and candid feedback.",
+            "zh": "在职场上，警惕一言堂、拍脑袋定死线或意气用事的豪赌。把宏大目标放回团队真实承载力与坦诚反馈里校准。"
+          },
+          "health": {
+            "en": "High blood pressure from chronic urgency or refusing to slow down takes a real toll; schedule deliberate decompression before stress boils over.",
+            "zh": "在身心状态上，长期紧绷催促与不肯慢下来会切实透支精力；在火气与压力溢出前，主动安排彻底的降压休整。"
+          },
+          "spirituality": {
+            "en": "True mastery includes humility—notice where the urge to direct everything is masking discomfort with uncertainty.",
+            "zh": "在灵性层面，真正的成熟离不开谦逊——觉察自己急着掌控一切的冲动，是否在遮掩对不确定性的不安。"
+          }
+        }
+      }
+    },
+    "promptSpec": {
+      "lightingKey": "mid-high",
+      "suitAccent": "warm sunlit amber-vermilion, copper-bronze, sprouting emerald leaves, molten antique gold, luminous warm ivory",
+      "scene": "A commanding, visionary Belle Epoque King seated slightly forward on a monumental carved pale-stone throne adorned with Art Nouveau lions and gilded salamanders. He wears a sumptuous vermilion-crimson velvet robe, a flowing golden-amber cloak embroidered with sinuous salamanders, and a sculpted flame-pointed antique-gold crown, gazing decisively off to the right with executive clarity. In his right hand, he grips EXACTLY ONE tall, living, sprouting bronze-and-wood wand tipped with fresh emerald leaves, planted firmly beside his knee. Beside the base of his throne rests ONE small gleaming emerald-and-gold fire salamander. Warm amber-vermilion key light sculpts the King's face, crown, salamander cloak, and single living wand against deep velvety midnight-indigo twilight architecture.",
+      "requiredObjects": [
+        {
+          "object": "crowned King on lion-and-salamander throne",
+          "count": 1
+        },
+        {
+          "object": "upright sprouting bronze-and-wood wand in right hand",
+          "count": 1
+        },
+        {
+          "object": "small fire salamander beside throne",
+          "count": 1
+        }
+      ],
+      "compositionNote": "Monumental sovereign silhouette in crimson-and-gold flame crown gripping ONE tall upright wand beside a carved lion throne; unmistakable authority at 64x96 thumbnail.",
+      "avoid": [
+        "two or more wands",
+        "sunflower",
+        "black cat",
+        "cups",
+        "swords",
+        "pentacles",
+        "text",
+        "numerals",
+        "letters",
+        "border",
+        "frame",
+        "watermark"
+      ]
+    }
+  }
+}

@@ -314,7 +314,7 @@ describe("HTTP MCP server", () => {
     expect(confirmedJson.reading.interpretation.length).toBeGreaterThan(100);
     expect(confirmedJson.result).toContain(confirmedJson.reading.interpretation);
     expect(confirmedJson.reading.cards[0].imageUri).toMatch(
-      /^\/assets\/cards\/midnight-art-nouveau-v1\/.+\.webp$/,
+      /^\/assets\/cards\/midnight-art-nouveau-v2\/.+\.webp$/,
     );
 
     const retry = await fetch(confirmUrl, {
