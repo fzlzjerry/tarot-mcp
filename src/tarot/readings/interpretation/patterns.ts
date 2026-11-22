@@ -1,218 +1,188 @@
-import { CardMeanings, DrawnCard, Language } from "../../shared/types.js";
+import { getCanonMeaning } from "../../canon/index.js";
+import {
+  CardMeanings,
+  CardOrientation,
+  DrawnCard,
+  Language,
+  PositionRole,
+} from "../../shared/types.js";
 import { localizedElement, pick } from "../../shared/i18n.js";
+import { classifyQuestionDomain, resolvePositionRole } from "./evidence.js";
+
+const MAJOR_ARCANA_RATIO = 22 / 78;
 
 /**
- * Themes evoked when a card number appears more than once in a reading.
- * Covers 1-10 (pips) and 11-14 (Page/Knight/Queen/King court cards).
+ * Themes evoked when a Minor Arcana pip rank (1-10) appears more than once in
+ * a reading. Strictly scoped to Minor Arcana numbered pips so Major Arcana
+ * (0-21) and Court cards (11-14) never collide with pip numerology.
  */
-const REPEATED_NUMBER_THEMES: Record<number, string> = {
-  1: "new beginnings and potential",
-  2: "balance and partnerships",
-  3: "creativity and growth",
-  4: "stability and foundation",
-  5: "change and challenge",
-  6: "harmony and responsibility",
-  7: "spiritual development and introspection",
-  8: "material mastery and achievement",
-  9: "completion and wisdom",
-  10: "fulfillment and new cycles",
-  11: "messages and fresh perspectives",
-  12: "action and determined pursuit",
-  13: "nurturing mastery and intuition",
-  14: "authority and leadership",
+const REPEATED_PIP_THEMES: Record<number, string> = {
+  1: "new beginnings and raw potential",
+  2: "balance, choice, and partnership",
+  3: "growth, synthesis, and collaboration",
+  4: "stability, structure, and consolidation",
+  5: "friction, change, and adaptation",
+  6: "reciprocity, harmony, and adjustment",
+  7: "assessment, perseverance, and inner testing",
+  8: "momentum, mastery, and focused effort",
+  9: "near-completion, resilience, and reflection",
+  10: "culmination, saturation, and cycle transitions",
 };
 
-const REPEATED_NUMBER_THEMES_ZH: Record<number, string> = {
-  1: "新的开始与潜能",
-  2: "平衡与伙伴关系",
-  3: "创造力与成长",
-  4: "稳定与根基",
-  5: "变化与挑战",
-  6: "和谐与责任",
-  7: "灵性发展与内省",
-  8: "物质掌控与成就",
-  9: "完成与智慧",
-  10: "圆满与新循环",
-  11: "讯息与新视角",
-  12: "行动与坚定追求",
-  13: "滋养的成熟与直觉",
-  14: "权威与领导力",
+const REPEATED_PIP_THEMES_ZH: Record<number, string> = {
+  1: "全新起点与原始潜能",
+  2: "平衡、抉择与合作关系",
+  3: "成长、整合与协作推进",
+  4: "稳固、结构与根基夯实",
+  5: "摩擦、变动与调适考验",
+  6: "互惠、调和与重新校准",
+  7: "审视、耐力与内在试炼",
+  8: "推进、精进与专注发力",
+  9: "临近收尾、韧性与沉淀",
+  10: "阶段顶点、饱和与周期转换",
 };
+
+const REPEATED_COURT_THEMES: Record<number, string> = {
+  11: "messages and fresh perspectives",
+  12: "movement and decisive action",
+  13: "emotional depth and mastery",
+  14: "leadership and command",
+};
+
+const REPEATED_COURT_THEMES_ZH: Record<number, string> = {
+  11: "新讯息与新鲜视角",
+  12: "推进节奏与果断行动",
+  13: "内在定力与成熟掌控",
+  14: "领导担当与全局统筹",
+};
+
+export interface MeaningSelectionOptions {
+  cardId?: string;
+  orientation?: CardOrientation;
+  positionRole?: PositionRole;
+  language?: Language;
+}
 
 /**
- * Select the most relevant meaning based on position and question
+ * Select the most relevant meaning from the user's question domain and
+ * language-independent position role. Falls back to explicit domain keywords
+ * in a position description only when the user's question itself is general,
+ * using classifyQuestionDomain so neutral words like "energy" never leak.
  */
 export function selectRelevantMeaning(
   meanings: CardMeanings,
   position: string,
   question: string,
-  positionMeaning: string = ""
+  positionMeaning: string = "",
+  options?: MeaningSelectionOptions,
 ): string {
-  const contextLower = `${question} ${position} ${positionMeaning}`.toLowerCase();
+  const questionDomain = classifyQuestionDomain(question);
+  const domain =
+    questionDomain !== "general"
+      ? questionDomain
+      : classifyQuestionDomain(`${position} ${positionMeaning}`);
 
-  // Determine the most relevant aspect based on question content
-  if (matchesContext(contextLower, [
-    "love",
-    "relationship",
-    "romance",
-    "partner",
-    "marriage",
-    "affection",
-    "爱情",
-    "感情",
-    "恋爱",
-    "关系",
-    "伴侣",
-    "婚姻",
-  ])) {
-    return meanings.love;
-  } else if (matchesContext(contextLower, [
-    "career",
-    "job",
-    "work",
-    "business",
-    "money",
-    "finance",
-    "study",
-    "事业",
-    "工作",
-    "职业",
-    "财务",
-    "金钱",
-    "学习",
-  ])) {
-    return meanings.career;
-  } else if (matchesContext(contextLower, [
-    "health",
-    "wellness",
-    "body",
-    "energy",
-    "rest",
-    "健康",
-    "身体",
-    "精力",
-    "休息",
-  ])) {
-    return meanings.health;
-  } else if (matchesContext(contextLower, [
-    "spiritual",
-    "purpose",
-    "meaning",
-    "soul",
-    "growth",
-    "灵性",
-    "精神",
-    "意义",
-    "使命",
-    "成长",
-  ])) {
-    return meanings.spirituality;
+  if (options?.cardId && options.orientation && options.language) {
+    const canonText = getCanonMeaning(
+      options.cardId,
+      options.orientation,
+      domain,
+      options.positionRole,
+      options.language,
+    );
+    if (canonText) return canonText;
   }
 
-  return meanings.general;
-}
-
-function matchesContext(context: string, terms: string[]): boolean {
-  return terms.some((term) => context.includes(term));
+  return meanings[domain];
 }
 
 /**
- * Generate overall interpretation considering card interactions
+ * Generate overall interpretation considering factual spread structure,
+ * baseline-aware Major Arcana density, elemental/suit distribution, Minor pip
+ * patterns, and Court card presence. Never treats upright as automatically
+ * favorable or reversed as automatically unfavorable.
  */
 export function generateOverallInterpretation(
   drawnCards: DrawnCard[],
   language: Language = "en",
 ): string {
-  let overall = pick(language, "**Overall Interpretation:**\n\n", "**整体解读：**\n\n");
-
-  // Analyze the energy of the reading
-  const uprightCount = drawnCards.filter(c => c.orientation === "upright").length;
-  const majorArcanaCount = drawnCards.filter(c => c.card.arcana === "major").length;
+  const majorArcanaCount = drawnCards.filter(
+    (c) => c.card.arcana === "major",
+  ).length;
+  const uprightCount = drawnCards.filter(
+    (c) => c.orientation === "upright",
+  ).length;
+  const reversedCount = drawnCards.length - uprightCount;
   const totalCards = drawnCards.length;
 
-  // Major Arcana influence analysis
-  if (majorArcanaCount > totalCards / 2) {
-    overall += pick(
-      language,
-      "This reading is heavily influenced by Major Arcana cards, indicating that significant spiritual forces, life lessons, and karmic influences are at work. The universe is guiding you through important transformations. ",
-      "这次解读深受大阿卡纳牌的影响，表明重要的灵性力量、人生课题与业力正在起作用。宇宙正引导你经历重要的转化。",
-    );
-  } else if (majorArcanaCount === 0) {
-    overall += pick(
-      language,
-      "This reading contains only Minor Arcana cards, suggesting that the situation is primarily within your control and relates to everyday matters and practical concerns. ",
-      "这次解读全部由小阿卡纳牌组成，说明局面主要在你的掌控之中，与日常事务和现实考量相关。",
-    );
-  } else {
-    overall += pick(
-      language,
-      "The balance of Major and Minor Arcana cards suggests a blend of spiritual guidance and practical action is needed. ",
-      "大小阿卡纳的均衡出现，说明你需要将灵性指引与实际行动结合起来。",
-    );
+  let interpretation = pick(
+    language,
+    "\n**Overall Reading Insights:**\n",
+    "\n**整体解读：**\n",
+  );
+
+  // Baseline-aware Major Arcana analysis (22/78 ≈ 28.2% deck baseline)
+  if (totalCards > 0) {
+    const expectedMajor = Number((totalCards * MAJOR_ARCANA_RATIO).toFixed(1));
+    const majorRatio = majorArcanaCount / totalCards;
+    if (majorArcanaCount === totalCards && totalCards >= 2) {
+      interpretation += pick(
+        language,
+        `All ${totalCards} cards are Major Arcana (deck baseline ~${expectedMajor}), pointing to pivotal archetypal themes rather than routine day-to-day detail. `,
+        `抽出的 ${totalCards} 张全部是大阿卡纳（按整副牌 28% 基准期望约 ${expectedMajor} 张），说明此事触及关键的人生阶段性课题，而非琐碎日常波动。`,
+      );
+    } else if (majorArcanaCount >= 2 && majorRatio >= 0.5) {
+      interpretation += pick(
+        language,
+        `${majorArcanaCount} of ${totalCards} cards are Major Arcana (above the ~${expectedMajor} deck baseline), signaling weighty turning-point themes alongside practical choices. `,
+        `${totalCards} 张牌中有 ${majorArcanaCount} 张大阿卡纳（高于约 ${expectedMajor} 张的基准期望），显示具体处境背后伴随较深层的转折课题。`,
+      );
+    } else if (majorArcanaCount === 0 && totalCards >= 3) {
+      interpretation += pick(
+        language,
+        "All drawn cards are Minor Arcana, keeping the center of gravity on everyday choices, habits, and practical adjustments within your reach. ",
+        "全部为小阿卡纳，说明重心落在日常选择、具体习惯与你当下即可着手调整的现实层面。",
+      );
+    }
   }
 
-  // Orientation analysis
-  const uprightPercentage = (uprightCount / totalCards) * 100;
-  if (uprightPercentage >= 80) {
-    overall += pick(
-      language,
-      "The predominance of upright cards indicates positive energy, clear direction, and favorable circumstances. You're aligned with the natural flow of events. ",
-      "正位牌占绝大多数，显示出积极的能量、清晰的方向和有利的形势。你正顺应着事件的自然流动。",
-    );
-  } else if (uprightPercentage >= 60) {
-    overall += pick(
-      language,
-      "Most cards are upright, suggesting generally positive energy with some areas requiring attention or inner work. ",
-      "大部分牌为正位，总体能量积极，但仍有一些方面需要关注或做内在功课。",
-    );
-  } else if (uprightPercentage >= 40) {
-    overall += pick(
-      language,
-      "The balance of upright and reversed cards indicates a mixed situation with both opportunities and challenges present. ",
-      "正逆位牌数量相当，局面喜忧参半，机会与挑战并存。",
-    );
-  } else if (uprightPercentage >= 20) {
-    overall += pick(
-      language,
-      "The majority of reversed cards suggests internal blocks, delays, or the need for significant introspection and inner work. ",
-      "逆位牌居多，提示存在内在阻碍、延迟，或需要深入的自省与内在功课。",
-    );
-  } else {
-    overall += pick(
-      language,
-      "The predominance of reversed cards indicates a time of deep inner transformation, spiritual crisis, or significant obstacles that require patience and self-reflection. ",
-      "逆位牌占绝大多数，预示着一段深层内在转化、灵性危机或重大阻碍的时期，需要耐心与自我反思。",
-    );
+  // Factual orientation balance (orientation expresses mode, not valence)
+  if (totalCards >= 2) {
+    if (reversedCount === 0) {
+      interpretation += pick(
+        language,
+        `All ${totalCards} cards are upright, indicating direct, outward expression of each card's own archetype—read the tone from the cards themselves and their positions rather than assuming smooth sailing. `,
+        `${totalCards} 张牌全部正位，代表每张牌的本义都以直接外显的方式呈现——局势顺逆仍需依单牌原型与所在牌位判断，而不等同于一味利好。`,
+      );
+    } else if (uprightCount === 0) {
+      interpretation += pick(
+        language,
+        `All ${totalCards} cards are reversed, drawing focus toward inward processing, friction, delay, or release of old pressure—each reversal invites nuanced inspection rather than an automatic warning. `,
+        `${totalCards} 张牌全部逆位，将焦点引向内在消化、受阻延宕或旧压松动——每张逆位都应结合牌位细读其具体分支，而非一概视作不利。`,
+      );
+    } else {
+      interpretation += pick(
+        language,
+        `The balance of ${uprightCount} upright and ${reversedCount} reversed cards contrasts direct outer dynamics with areas calling for inward reflection, boundary work, or recalibration. `,
+        `${uprightCount} 张正位与 ${reversedCount} 张逆位并存，形成了外显推进与需要内省、疏通或校准面向之间的对照。`,
+      );
+    }
   }
 
-  // Add specific guidance based on card combinations and spread type
-  overall += generateAdvancedCombinationInterpretation(drawnCards, language);
+  // Element balance analysis
+  const elements = analyzeElements(drawnCards);
+  const elementAnalysis = interpretElementalBalance(elements, language);
+  interpretation += elementAnalysis;
 
-  return overall;
-}
-
-/**
- * Generate advanced interpretation for card combinations
- */
-function generateAdvancedCombinationInterpretation(
-  drawnCards: DrawnCard[],
-  language: Language,
-): string {
-  let interpretation = "";
-
-  // Elemental analysis
-  const elementCounts = analyzeElements(drawnCards);
-  interpretation += interpretElementalBalance(elementCounts, language);
-
-  // Suit analysis for Minor Arcana
+  // Suit distribution analysis
   const suitAnalysis = analyzeSuits(drawnCards, language);
   interpretation += suitAnalysis;
 
-  // Numerical patterns
+  // Minor Arcana Pip numerical patterns (strictly 1-10)
   const numericalAnalysis = analyzeNumericalPatterns(drawnCards, language);
   interpretation += numericalAnalysis;
 
-  // Court card analysis
+  // Court card analysis (strictly Minor Arcana 11-14)
   const courtCardAnalysis = analyzeCourtCards(drawnCards, language);
   interpretation += courtCardAnalysis;
 
@@ -220,22 +190,29 @@ function generateAdvancedCombinationInterpretation(
   const archetypeAnalysis = analyzeMajorArcanaPatterns(drawnCards, language);
   interpretation += archetypeAnalysis;
 
+  // Position-role synthesis note when multiple roles are present
+  const roles = new Set(drawnCards.map((c) => resolvePositionRole(c)));
+  if (roles.has("challenge") && roles.has("resource")) {
+    interpretation += pick(
+      language,
+      "Read the resource position directly alongside the challenge position to see what leverage offsets the main friction. ",
+      "建议把「资源/助力」位与「阻碍/挑战」位并置对照，直接看清手中哪项杠杆能化解主要阻力。",
+    );
+  }
+
   interpretation += pick(
     language,
-    "\n\nTrust your intuition as you reflect on these insights and how they apply to your specific situation.",
-    "\n\n在回味这些洞见、思考它们如何对应你的具体处境时，请相信自己的直觉。",
+    "\n\nGround these patterns in your concrete facts and test one practical next step rather than treating any card as a fixed prediction.",
+    "\n\n请将这些脉络放回现实条件中核对，优先验证一个可落地的下一步，而不把牌面当作注定不变的预言。",
   );
 
   return interpretation;
 }
 
-/**
- * Analyze elemental balance in the reading
- */
 function analyzeElements(drawnCards: DrawnCard[]): Record<string, number> {
   const elementCounts = { fire: 0, water: 0, air: 0, earth: 0 };
 
-  drawnCards.forEach(drawnCard => {
+  drawnCards.forEach((drawnCard) => {
     if (drawnCard.card.element) {
       elementCounts[drawnCard.card.element]++;
     }
@@ -244,179 +221,177 @@ function analyzeElements(drawnCards: DrawnCard[]): Record<string, number> {
   return elementCounts;
 }
 
-/**
- * Interpret elemental balance
- */
 function interpretElementalBalance(
   elementCounts: Record<string, number>,
   language: Language,
 ): string {
   const total = Object.values(elementCounts).reduce((a, b) => a + b, 0);
-  if (total === 0) return "";
+  if (total < 2) return "";
 
   let interpretation = "";
-  const dominantElement = Object.entries(elementCounts)
-    .sort(([,a], [,b]) => b - a)[0];
+  const dominantElement = Object.entries(elementCounts).sort(
+    ([, a], [, b]) => b - a,
+  )[0];
 
   if (dominantElement[1] > total / 2) {
     switch (dominantElement[0]) {
       case "fire":
         interpretation += pick(
           language,
-          "The dominance of Fire energy suggests this is a time for action, creativity, and passionate pursuit of your goals. ",
-          "火元素能量占主导，说明此刻适合行动、发挥创造力并满怀热情地追求目标。",
+          "Fire leads the elemental mix, centering momentum on initiative, drive, and decisive execution. ",
+          "火元素占主导，整体重心偏向主动推进、创造意愿与果断执行。",
         );
         break;
       case "water":
         interpretation += pick(
           language,
-          "The prevalence of Water energy indicates this situation is deeply emotional and intuitive, requiring you to trust your feelings. ",
-          "水元素能量突出，表明这个局面情感深沉且依赖直觉，需要你信任自己的感受。",
+          "Water leads the elemental mix, placing emotional resonance, trust, and relational nuance at the forefront. ",
+          "水元素突出，情感流动、信任感与关系细腻度处于核心位置。",
         );
         break;
       case "air":
         interpretation += pick(
           language,
-          "The abundance of Air energy suggests this is primarily a mental matter requiring clear thinking, communication, and intellectual approach. ",
-          "风元素能量充沛，说明这主要是一件需要清晰思考、沟通与理性处理的事情。",
+          "Air leads the elemental mix, making clear analysis, candid speech, and crisp boundaries decisive. ",
+          "风元素充沛，理性拆解、坦诚沟通与明确边界将是破局关键。",
         );
         break;
       case "earth":
         interpretation += pick(
           language,
-          "The strong Earth energy indicates this situation requires practical action, patience, and attention to material concerns. ",
-          "土元素能量强劲，表明这个局面需要务实的行动、耐心以及对物质层面的关注。",
+          "Earth leads the elemental mix, anchoring the reading in tangible craft, resources, and steady follow-through. ",
+          "土元素强劲，重点落在务实落地、资源统筹与循序渐进的交付上。",
         );
         break;
     }
   }
 
-  // Check for missing elements
-  const missingElements = Object.entries(elementCounts)
-    .filter(([, count]) => count === 0)
-    .map(([element]) => element);
+  // Missing elements are meaningful mainly in larger spreads (4+ cards)
+  if (total >= 4) {
+    const missingElements = Object.entries(elementCounts)
+      .filter(([, count]) => count === 0)
+      .map(([element]) => element);
 
-  if (missingElements.length > 0) {
-    interpretation += pick(
-      language,
-      `The absence of ${missingElements.join(" and ")} energy suggests you may need to cultivate these qualities to achieve balance. `,
-      `${missingElements.map((element) => localizedElement(element, "zh")).join("与")}元素能量的缺席，提示你可能需要培养这些特质来达到平衡。`,
-    );
+    if (missingElements.length > 0 && missingElements.length < 4) {
+      interpretation += pick(
+        language,
+        `The absence of ${missingElements.join(" and ")} energy highlights qualities you may want to bring in deliberately for balance. `,
+        `${missingElements.map((element) => localizedElement(element, "zh")).join("与")}元素暂未出现，提示你可能需要在行动中有意识地补足这部分视角。`,
+      );
+    }
   }
 
   return interpretation;
 }
 
-/**
- * Analyze suit patterns
- */
 function analyzeSuits(drawnCards: DrawnCard[], language: Language): string {
   const suits = drawnCards
-    .filter(c => c.card.suit)
-    .map(c => c.card.suit!);
+    .filter((c) => c.card.suit)
+    .map((c) => c.card.suit!);
 
-  const suitCounts = suits.reduce((acc, suit) => {
-    acc[suit] = (acc[suit] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  const suitCounts = suits.reduce(
+    (acc, suit) => {
+      acc[suit] = (acc[suit] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
 
-  const dominantSuit = Object.entries(suitCounts)
-    .sort(([,a], [,b]) => b - a)[0];
+  const dominantSuit = Object.entries(suitCounts).sort(
+    ([, a], [, b]) => b - a,
+  )[0];
 
   if (!dominantSuit || dominantSuit[1] <= 1) return "";
 
-  let interpretation = "";
   switch (dominantSuit[0]) {
     case "wands":
-      interpretation += pick(
+      return pick(
         language,
-        "The multiple Wands indicate this situation involves creative projects, career ambitions, and the need for decisive action. ",
-        "多张权杖牌表明这个局面涉及创造性项目、事业抱负，并需要果断的行动。",
+        "Multiple Wands concentrate the spread around ambition, creative energy, and workload pacing. ",
+        "多张权杖牌把焦点收束在行动力、创造抱负与精力负荷的节奏上。",
       );
-      break;
     case "cups":
-      interpretation += pick(
+      return pick(
         language,
-        "The presence of multiple Cups shows this is fundamentally about emotions, relationships, and spiritual matters. ",
-        "多张圣杯牌显示，这件事本质上关乎情感、关系与心灵层面。",
+        "Multiple Cups place relationships, emotional honesty, and belonging at the center of this question. ",
+        "多张圣杯牌将人际连结、情绪坦诚与归属感推到了问题核心。",
       );
-      break;
     case "swords":
-      interpretation += pick(
+      return pick(
         language,
-        "The dominance of Swords reveals this situation involves mental challenges, conflicts, and the need for clear communication. ",
-        "宝剑牌占主导，揭示这个局面涉及思维上的挑战、冲突，以及清晰沟通的必要。",
+        "Multiple Swords emphasize mental clarity, difficult conversations, and sorting fact from assumption. ",
+        "多张宝剑牌强调思维清明、直面沟通，以及把事实从猜测中剥离出来。",
       );
-      break;
     case "pentacles":
-      interpretation += pick(
+      return pick(
         language,
-        "Multiple Pentacles emphasize material concerns, financial matters, and the need for practical, grounded action. ",
-        "多张星币牌强调物质层面的考量、财务事项，以及脚踏实地行动的必要。",
+        "Multiple Pentacles ground the reading in practical craft, material resources, and concrete habits. ",
+        "多张星币牌把焦点锚定在专业手艺、现实资源与具体可执行的习惯上。",
       );
-      break;
+    default:
+      return "";
   }
-
-  return interpretation;
 }
 
 /**
- * Analyze numerical patterns in the reading
+ * Analyze Minor Arcana pip numerology (1-10 ONLY).
+ * Major Arcana (0-21) and Court cards (11-14) are intentionally excluded so
+ * The World (21) never triggers "court cards" and Justice (11) never collides
+ * with Page (11).
  */
 function analyzeNumericalPatterns(
   drawnCards: DrawnCard[],
   language: Language,
 ): string {
-  const numbers = drawnCards
-    .filter(c => c.card.number !== undefined)
-    .map(c => c.card.number!);
+  const pipNumbers = drawnCards
+    .filter(
+      (c) =>
+        c.card.arcana === "minor" &&
+        c.card.number !== undefined &&
+        c.card.number >= 1 &&
+        c.card.number <= 10,
+    )
+    .map((c) => c.card.number!);
 
-  if (numbers.length < 2) return "";
+  if (pipNumbers.length < 2) return "";
 
   let interpretation = "";
-  const avgNumber = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+  const avgNumber = pipNumbers.reduce((a, b) => a + b, 0) / pipNumbers.length;
 
-  // Analyze the journey stage
   if (avgNumber <= 3) {
     interpretation += pick(
       language,
-      "The low-numbered cards indicate this situation is in its beginning stages, full of potential and new energy. ",
-      "偏小的数字表明事情尚处于起步阶段，充满潜能与新能量。",
+      "The low-numbered Minor Arcana pips indicate an early-stage dynamic still open to shaping. ",
+      "偏小的小阿卡纳点数表明事情尚在早期展开阶段，仍有很大的塑形空间。",
     );
   } else if (avgNumber <= 6) {
     interpretation += pick(
       language,
-      "The mid-range numbers suggest this situation is in its development phase, requiring steady progress and patience. ",
-      "中段的数字说明事情正处于发展期，需要稳步推进与耐心。",
-    );
-  } else if (avgNumber <= 9) {
-    interpretation += pick(
-      language,
-      "The higher numbers indicate this situation is approaching completion or mastery, requiring final efforts. ",
-      "偏大的数字表明事情已接近完成或成熟，需要最后的冲刺。",
+      "Mid-range Minor Arcana pips reflect an active development and adjustment phase. ",
+      "中段小阿卡纳点数说明事情正处在推进与磨合调整期。",
     );
   } else {
     interpretation += pick(
       language,
-      "The presence of high numbers and court cards suggests mastery, completion, or the involvement of significant people. ",
-      "高位数字与宫廷牌的出现，预示着成熟、圆满，或有重要人物参与其中。",
+      "Higher Minor Arcana pips (7–10) point toward late-stage effort, culmination, or wrapping up a cycle. ",
+      "偏高的小阿卡纳点数（7–10）指向冲刺收尾、阶段饱和或一轮周期的收束。",
     );
   }
 
-  // Look for repeated numbers
-  const numberCounts = numbers.reduce((acc, num) => {
-    acc[num] = (acc[num] || 0) + 1;
-    return acc;
-  }, {} as Record<number, number>);
+  const numberCounts = pipNumbers.reduce(
+    (acc, num) => {
+      acc[num] = (acc[num] || 0) + 1;
+      return acc;
+    },
+    {} as Record<number, number>,
+  );
 
   const repeatedNumbers = Object.entries(numberCounts)
     .filter(([, count]) => count > 1)
-    .map(([num]) => parseInt(num));
+    .map(([num]) => parseInt(num, 10));
 
-  // Only numbers with a known theme contribute; guard so an unthemed
-  // repeat can never trigger the sentence (and corrupt surrounding text).
   const themeTable =
-    language === "zh" ? REPEATED_NUMBER_THEMES_ZH : REPEATED_NUMBER_THEMES;
+    language === "zh" ? REPEATED_PIP_THEMES_ZH : REPEATED_PIP_THEMES;
   const repeatedThemes = repeatedNumbers
     .map((num) => themeTable[num])
     .filter((theme): theme is string => theme !== undefined);
@@ -424,8 +399,8 @@ function analyzeNumericalPatterns(
   if (repeatedThemes.length > 0) {
     interpretation += pick(
       language,
-      `The repetition of ${repeatedNumbers.join(" and ")} emphasizes the themes of ${repeatedThemes.join(", ")}. `,
-      `数字 ${repeatedNumbers.join(" 和 ")} 的重复出现，强调了${repeatedThemes.join("、")}这些主题。`,
+      `Repeated pip rank ${repeatedNumbers.join(" and ")} underscores themes of ${repeatedThemes.join(", ")}. `,
+      `小阿卡纳点数 ${repeatedNumbers.join(" 和 ")} 重复出现，强化了${repeatedThemes.join("、")}这一阶段主题。`,
     );
   }
 
@@ -433,14 +408,20 @@ function analyzeNumericalPatterns(
 }
 
 /**
- * Analyze court cards in the reading
+ * Analyze Court cards (strictly Minor Arcana ranks 11–14: Page/Knight/Queen/King).
+ * Repeated Minor court ranks (e.g. two Pages) are noted cleanly here without
+ * ever colliding with Major Arcana numbers (Justice=11, Death=13, World=21).
  */
-function analyzeCourtCards(drawnCards: DrawnCard[], language: Language): string {
-  const courtCards = drawnCards.filter(c =>
-    c.card.name.includes("Page") ||
-    c.card.name.includes("Knight") ||
-    c.card.name.includes("Queen") ||
-    c.card.name.includes("King")
+function analyzeCourtCards(
+  drawnCards: DrawnCard[],
+  language: Language,
+): string {
+  const courtCards = drawnCards.filter(
+    (c) =>
+      c.card.arcana === "minor" &&
+      c.card.number !== undefined &&
+      c.card.number >= 11 &&
+      c.card.number <= 14,
   );
 
   if (courtCards.length === 0) return "";
@@ -449,35 +430,59 @@ function analyzeCourtCards(drawnCards: DrawnCard[], language: Language): string 
   if (courtCards.length === 1) {
     interpretation += pick(
       language,
-      "The presence of a court card suggests that a specific person or personality aspect is significant to this situation. ",
-      "一张宫廷牌的出现，提示某个特定的人或人格面向对这个局面有重要影响。",
+      "A court card highlights a key person, interpersonal dynamic, or leadership stance you are invited to step into. ",
+      "出现的宫廷牌提示某位关键人物、人际角色，或当下需要你展现的处事姿态。",
     );
   } else {
     interpretation += pick(
       language,
-      `The ${courtCards.length} court cards indicate that multiple people or personality aspects are influencing this situation. `,
-      `${courtCards.length} 张宫廷牌表明有多个人或多种人格面向正在影响这个局面。`,
+      `${courtCards.length} court cards indicate that multiple personalities, stakeholders, or competing roles are shaping this situation. `,
+      `${courtCards.length} 张宫廷牌表明有多位相关方或不同处事角色正在共同影响这个局面。`,
     );
+
+    const rankCounts = courtCards.reduce(
+      (acc, c) => {
+        const rank = c.card.number!;
+        acc[rank] = (acc[rank] || 0) + 1;
+        return acc;
+      },
+      {} as Record<number, number>,
+    );
+    const repeatedRanks = Object.entries(rankCounts)
+      .filter(([, count]) => count > 1)
+      .map(([rank]) => parseInt(rank, 10));
+    const courtThemes =
+      language === "zh" ? REPEATED_COURT_THEMES_ZH : REPEATED_COURT_THEMES;
+    const repeatedCourtThemes = repeatedRanks
+      .map((rank) => courtThemes[rank])
+      .filter((theme): theme is string => theme !== undefined);
+
+    if (repeatedCourtThemes.length > 0) {
+      interpretation += pick(
+        language,
+        `The repetition of ${repeatedRanks.join(" and ")} emphasizes the themes of ${repeatedCourtThemes.join(", ")}. `,
+        `宫廷牌阶位 ${repeatedRanks.join(" 和 ")} 重复出现，突出了${repeatedCourtThemes.join("、")}的共通主题。`,
+      );
+    }
   }
 
   return interpretation;
 }
 
 /**
- * Analyze Major Arcana patterns and archetypal themes
+ * Analyze Major Arcana progression and classic archetypal pairings.
  */
 function analyzeMajorArcanaPatterns(
   drawnCards: DrawnCard[],
   language: Language,
 ): string {
-  const majorCards = drawnCards.filter(c => c.card.arcana === "major");
+  const majorCards = drawnCards.filter((c) => c.card.arcana === "major");
   if (majorCards.length === 0) return "";
 
   let interpretation = "";
 
-  // Analyze the Fool's Journey progression
   const majorNumbers = majorCards
-    .map(c => c.card.number)
+    .map((c) => c.card.number)
     .filter((n): n is number => n !== undefined)
     .sort((a, b) => a - b);
 
@@ -486,34 +491,36 @@ function analyzeMajorArcanaPatterns(
     if (span > 10) {
       interpretation += pick(
         language,
-        "The wide span of Major Arcana cards suggests you're experiencing a significant life transformation that touches many aspects of your spiritual journey. ",
-        "大阿卡纳牌的跨度很大，说明你正经历一场触及灵性旅程诸多层面的重大人生转化。",
+        "The wide Major Arcana span bridges early initiation and deep structural transformation across the spread. ",
+        "大阿卡纳跨度较大，连接起初期启程与深层转化的两端课题。",
       );
     } else if (span < 5) {
       interpretation += pick(
         language,
-        "The close grouping of Major Arcana cards indicates you're working through a specific phase of spiritual development. ",
-        "大阿卡纳牌集中在相近的阶段，表明你正在深入修习灵性发展的某个特定课题。",
+        "Closely grouped Major Arcana numbers focus attention on one concentrated stage of personal transition. ",
+        "大阿卡纳序号紧邻，说明你正集中穿越人生转折中的同一个核心阶段。",
       );
     }
   }
 
-  // Look for specific archetypal themes
-  const cardNames = majorCards.map(c => c.card.name.toLowerCase());
+  const cardNames = majorCards.map((c) => c.card.name.toLowerCase());
 
   if (cardNames.includes("the fool") && cardNames.includes("the magician")) {
     interpretation += pick(
       language,
-      "The presence of both The Fool and The Magician suggests a powerful combination of new beginnings and the ability to manifest your desires. ",
-      "愚者与魔术师同时出现，预示着新开始与心想事成的显化能力的强大组合。",
+      "The Fool alongside The Magician pairs fresh curiosity with the practical tools to act on it. ",
+      "愚者与魔术师同场出现，将敞开的好奇心与落地显化的行动力扣合在一起。",
     );
   }
 
-  if (cardNames.includes("the high priestess") && cardNames.includes("the hierophant")) {
+  if (
+    cardNames.includes("the high priestess") &&
+    cardNames.includes("the hierophant")
+  ) {
     interpretation += pick(
       language,
-      "The High Priestess and Hierophant together indicate a balance between inner wisdom and traditional teachings. ",
-      "女祭司与教皇同时出现，象征内在智慧与传统教诲之间的平衡。",
+      "The High Priestess and The Hierophant balance quiet personal intuition against established structure and mentorship. ",
+      "女祭司与教皇并现，映照出内在直觉与传统章法、师承体系之间的张力与平衡。",
     );
   }
 

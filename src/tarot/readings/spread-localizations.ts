@@ -345,6 +345,7 @@ export function localizedSpread(
     name: localization.name,
     description: localization.description,
     positions: spread.positions.map((position, index) => ({
+      ...position,
       name: localization.positions[index]?.name ?? position.name,
       meaning: localization.positions[index]?.meaning ?? position.meaning,
     })),

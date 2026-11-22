@@ -257,6 +257,32 @@ export function DrawStage({
           <h2 id="deck-title">{t(language, "deckTitle")}</h2>
           <p>{t(language, "arcHint")}</p>
         </div>
+        <div className="active-slot-ribbon" aria-live="polite">
+          <span className="active-slot-ribbon__label">
+            {complete
+              ? t(language, "allSlotsReady", { count: draw.requiredCount })
+              : t(language, "nextSlotLabel", {
+                  number: selected.length + 1,
+                  position:
+                    draw.positions?.[selected.length]?.name ??
+                    `#${selected.length + 1}`,
+                })}
+          </span>
+          <span className="active-slot-ribbon__pips" aria-hidden="true">
+            {Array.from({ length: draw.requiredCount }, (_, idx) => (
+              <span
+                key={idx}
+                className={
+                  idx < selected.length
+                    ? "is-filled"
+                    : idx === selected.length
+                      ? "is-next"
+                      : ""
+                }
+              />
+            ))}
+          </span>
+        </div>
         <p className="sr-only" id="deck-help">
           {t(language, "keyboardHint")}
         </p>

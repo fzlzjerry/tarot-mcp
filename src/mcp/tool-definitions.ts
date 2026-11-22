@@ -37,6 +37,13 @@ const READING_OUTPUT_SCHEMA: Record<string, unknown> = {
       description: "Localized reading interpretation in Markdown.",
     },
     timestamp: { type: "string", description: "ISO 8601" },
+    deckVersion: { type: "string" },
+    knowledgeVersion: { type: "string" },
+    evidence: {
+      type: "object",
+      description:
+        "Structured reading evidence (question domain, per-card canon motifs/roles, and baseline-aware spread signals).",
+    },
     cards: {
       type: "array",
       items: {
@@ -49,8 +56,12 @@ const READING_OUTPUT_SCHEMA: Record<string, unknown> = {
           orientation: { type: "string", enum: ["upright", "reversed"] },
           position: { type: "string" },
           positionMeaning: { type: "string" },
+          positionId: { type: "string" },
+          positionRole: { type: "string" },
           keywords: { type: "array", items: { type: "string" } },
           meaning: { type: "string" },
+          traditionMotifs: { type: "array", items: { type: "string" } },
+          editionMotifs: { type: "array", items: { type: "string" } },
         },
         required: [
           "id",
@@ -846,14 +857,19 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
               spreadType: { type: "string" },
               question: { type: "string" },
               timestamp: { type: "string", description: "ISO 8601" },
+              deckVersion: { type: "string" },
+              knowledgeVersion: { type: "string" },
               cards: {
                 type: "array",
                 items: {
                   type: "object",
                   properties: {
+                    cardId: { type: "string" },
                     name: { type: "string" },
                     orientation: { type: "string" },
                     position: { type: "string" },
+                    positionId: { type: "string" },
+                    positionRole: { type: "string" },
                   },
                   required: ["name", "orientation"],
                 },

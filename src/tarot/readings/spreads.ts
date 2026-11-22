@@ -12,8 +12,10 @@ export const TAROT_SPREADS = {
     cardCount: 1,
     positions: [
       {
+        id: "message",
         name: "The Message",
-        meaning: "The main insight, guidance, or energy for your question"
+        meaning: "The main insight, guidance, or energy for your question",
+        role: "message",
       }
     ]
   },
@@ -24,16 +26,22 @@ export const TAROT_SPREADS = {
     cardCount: 3,
     positions: [
       {
+        id: "past_situation",
         name: "Past/Situation",
-        meaning: "What has led to this situation or the foundation of the matter"
+        meaning: "What has led to this situation or the foundation of the matter",
+        role: "foundation",
       },
       {
+        id: "present_action",
         name: "Present/Action",
-        meaning: "The current state or what action should be taken"
+        meaning: "The current state or what action should be taken",
+        role: "present",
       },
       {
+        id: "future_outcome",
         name: "Future/Outcome",
-        meaning: "The likely outcome or future development"
+        meaning: "The likely outcome or future development",
+        role: "outcome",
       }
     ]
   },
@@ -44,44 +52,64 @@ export const TAROT_SPREADS = {
     cardCount: 10,
     positions: [
       {
+        id: "present",
         name: "Present Situation",
-        meaning: "The heart of the matter, your current situation or state of mind"
+        meaning: "The heart of the matter, your current situation or state of mind",
+        role: "present",
       },
       {
+        id: "challenge",
         name: "Challenge/Cross",
-        meaning: "The challenge you face or what crosses you in this situation"
+        meaning: "The challenge you face or what crosses you in this situation",
+        role: "challenge",
       },
       {
+        id: "foundation",
         name: "Distant Past/Foundation",
-        meaning: "The foundation of the situation, distant past influences"
+        meaning: "The foundation of the situation, distant past influences",
+        role: "foundation",
       },
       {
+        id: "recent_past",
         name: "Recent Past",
-        meaning: "Recent events or influences that are now passing away"
+        meaning: "Recent events or influences that are now passing away",
+        role: "foundation",
       },
       {
+        id: "possible_outcome",
         name: "Possible Outcome",
-        meaning: "One possible outcome if things continue as they are"
+        meaning: "One possible outcome if things continue as they are",
+        role: "outcome",
       },
       {
+        id: "near_future",
         name: "Near Future",
-        meaning: "What is approaching in the immediate future"
+        meaning: "What is approaching in the immediate future",
+        role: "outcome",
       },
       {
+        id: "approach",
         name: "Your Approach",
-        meaning: "Your approach to the situation, how you see yourself"
+        meaning: "Your approach to the situation, how you see yourself",
+        role: "self",
       },
       {
+        id: "external",
         name: "External Influences",
-        meaning: "How others see you or external influences affecting the situation"
+        meaning: "How others see you or external influences affecting the situation",
+        role: "external",
       },
       {
+        id: "hopes_fears",
         name: "Hopes and Fears",
-        meaning: "Your inner feelings, hopes, and fears about the situation"
+        meaning: "Your inner feelings, hopes, and fears about the situation",
+        role: "hopes_fears",
       },
       {
+        id: "final_outcome",
         name: "Final Outcome",
-        meaning: "The final outcome, the culmination of all influences"
+        meaning: "The final outcome, the culmination of all influences",
+        role: "outcome",
       }
     ]
   },

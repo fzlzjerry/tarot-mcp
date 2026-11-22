@@ -35,8 +35,31 @@ export const handleGetCardInfo: ToolHandler = (ctx, args) => {
   }
 
   const name = sanitizeString(cardName.data!);
-  const card = ctx.cardManager.findCard(name);
-  if (!card) {
+  const lang = language.data!;
+  const { exact, candidates } = ctx.cardManager.findCardMatches(name);
+  if (!exact) {
+    if (candidates.length > 1) {
+      const shown = candidates.slice(0, 8);
+      const list = shown
+        .map((c) => {
+          const zhName = c.zh?.name;
+          return lang === "zh" && zhName
+            ? `- ${zhName}（${c.name}，id: \`${c.id}\`）`
+            : `- ${c.name} (id: \`${c.id}\`)`;
+        })
+        .join("\n");
+      const more =
+        candidates.length > shown.length
+          ? lang === "zh"
+            ? `\n（共匹配 ${candidates.length} 张牌，仅列出前 ${shown.length} 张）`
+            : `\n(${candidates.length} total matches; showing first ${shown.length})`
+          : "";
+      const message =
+        lang === "zh"
+          ? `“${name}” 匹配到多张牌，请指定具体牌名或 ID：\n${list}${more}`
+          : `"${name}" matches multiple cards. Please specify an exact card name or ID:\n${list}${more}`;
+      return toolError(message, "AMBIGUOUS_CARD_NAME", 400);
+    }
     return toolError(
       `Error: Card "${name}" not found. Use the list_all_cards tool to see available cards.`,
     );
@@ -44,9 +67,9 @@ export const handleGetCardInfo: ToolHandler = (ctx, args) => {
 
   return toolOk(
     formatCardInfo(
-      card,
+      exact,
       typeof orientation === "string" ? orientation : orientation.data!,
-      language.data!,
+      lang,
     ),
   );
 };

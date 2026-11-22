@@ -229,11 +229,14 @@ for (const card of cardData) {
       WEB.hardMaxBytes,
     );
 
+    const mcpOverlay = Buffer.from(overlaySvg(card, MCP.width, MCP.height));
     const mcpPath = resolve(mcpDir, `${card.id}.webp`);
     const mcpQuality = await encodeWithinLimit(
       (quality) =>
-        sharp(webPath)
-          .resize(MCP.width, MCP.height, { fit: "fill" })
+        sharp(sourcePath)
+          .rotate()
+          .resize(MCP.width, MCP.height, { fit: "cover", position: "centre", kernel: "lanczos3" })
+          .composite([{ input: mcpOverlay }])
           .toColorspace("srgb")
           .webp({ quality, effort: 6, smartSubsample: true })
           .toBuffer(),

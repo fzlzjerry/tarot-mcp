@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "deckId": "midnight-art-nouveau-v2",
+  "provider": "openai-official-images-api",
+  "endpointBase": "https://api.openai.com/v1/images",
+  "createdDate": "2026-11-22",
+  "styleBoard": {
+    "masterFile": "tarot-v2-masters/style-board.png",
+    "model": "gpt-image-2.6-sunburst",
+    "endpoint": "generations",
+    "size": "1024x1536",
+    "quality": "high",
+    "complexity": "high",
+    "elapsedMs": 37677,
+    "usage": {
+      "input_tokens": 300,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 300
+      },
+      "output_tokens": 1372,
+      "output_tokens_details": {
+        "image_tokens": 1372,
+        "text_tokens": 0
+      },
+      "total_tokens": 1672
+    },
+    "prompt": "Create a luxury master visual style board for an original 'Luminous Midnight Art Nouveau' tarot deck (portrait 2:3), inspired by Alphonse Mucha's sinuous ink linework, Gustav Klimt's warm burnished gold-leaf highlights, and fine European illuminated bookplates.\nShow a clean editorial grid containing: (1) a rich color palette swatch strip featuring deep midnight-indigo shadows, warm moonlit ivory skin/highlight tones, molten antique-gold metal highlights, and four distinct high-saturation jewel suit accents (cerulean-sapphire & amethyst for Cups, warm amber-vermilion & bronze for Wands, crisp ice-silver & storm-slate for Swords, emerald-verdigris & warm parchment ochre for Pentacles); (2) four ornamental suit medallions clearly illustrating a gleaming ornate golden chalice, a straight engraved silver-gold sword, a flowering bronze wand, and an embossed golden pentacle coin; (3) four luminous vignette portraits demonstrating dramatic chiaroscuro lighting where faces, hands, silk drapery, and gilded metallic props glow with warm ivory and burnished gold against velvety deep indigo negative space—never muddy, never flat, never crushed into uniform darkness.\nZero readable words, letters, labels, or watermarks. Crisp editorial ink linework, refined painterly shading, opulent gold-leaf specular gleam, unmistakable figure-ground separation.",
+    "promptSha256": "bf26b1f14fb0262646dfcbaae84ad2e2007005611f9eb3badbddfa38f8697005",
+    "masterSha256": "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+  },
+  "blindTest": {
+    "high": {
+      "cardId": "queen_of_swords",
+      "masterFile": "tarot-v2-masters/blind-queen_of_swords-high.png",
+      "model": "gpt-image-2.6-sunburst",
+      "endpoint": "edits",
+      "size": "1024x1536",
+      "quality": "high",
+      "complexity": "high",
+      "elapsedMs": 45177,
+      "usage": {
+        "input_tokens": 2041,
+        "input_tokens_details": {
+          "image_tokens": 1536,
+          "text_tokens": 505
+        },
+        "output_tokens": 1372,
+        "output_tokens_details": {
+          "image_tokens": 1372,
+          "text_tokens": 0
+        },
+        "total_tokens": 3413
+      },
+      "refSha256s": [
+        "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+      ],
+      "promptSha256": "13ce2ccaeac7acb7d316811beb2015606c30dfc063a35a12a6a08264c08389f5",
+      "masterSha256": "7d9a3d4d33563d80222a8279df77f690e1f19b72d27b57f4357ab004feedcf3b"
+    },
+    "xhigh": {
+      "cardId": "queen_of_swords",
+      "masterFile": "tarot-v2-masters/blind-queen_of_swords-xhigh.png",
+      "model": "gpt-image-2.6-sunburst",
+      "endpoint": "edits",
+      "size": "1024x1536",
+      "quality": "xhigh",
+      "complexity": "high",
+      "elapsedMs": 53392,
+      "usage": {
+        "input_tokens": 2041,
+        "input_tokens_details": {
+          "image_tokens": 1536,
+          "text_tokens": 505
+        },
+        "output_tokens": 2459,
+        "output_tokens_details": {
+          "image_tokens": 2459,
+          "text_tokens": 0
+        },
+        "total_tokens": 4500
+      },
+      "refSha256s": [
+        "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+      ],
+      "promptSha256": "13ce2ccaeac7acb7d316811beb2015606c30dfc063a35a12a6a08264c08389f5",
+      "masterSha256": "27db26801a7146ce024b597573d82b8ec6cd33a5ab42caa17fb4234d47da465f"
+    }
+  },
+  "cardBack": {
+    "masterFile": "tarot-v2-masters/back.png",
+    "model": "gpt-image-2.6-sunburst",
+    "endpoint": "edits",
+    "size": "1024x1536",
+    "quality": "xhigh",
+    "complexity": "high",
+    "elapsedMs": 46318,
+    "usage": {
+      "input_tokens": 1760,
+      "input_tokens_details": {
+        "image_tokens": 1536,
+        "text_tokens": 224
+      },
+      "output_tokens": 2459,
+      "output_tokens_details": {
+        "image_tokens": 2459,
+        "text_tokens": 0
+      },
+      "total_tokens": 4219
+    },
+    "refSha256s": [
+      "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+    ],
+    "prompt": "Create a breathtaking, museum-grade luxury tarot card back design (portrait 2:3) matching the attached Luminous Midnight Art Nouveau style board.\nSTRICT 180-DEGREE ROTATIONAL SYMMETRY (identical upside-down and right-side-up) AND bilateral left-right symmetry: centered eight-pointed celestial compass star mandala blooming inside an ornate Klimt-and-Mucha gilded botanical rosette; mirrored twin luminous ivory-gold crescent moons and celestial astrolabe rings near top and bottom; intricate burnished antique-gold Art Nouveau acanthus vines, moonflowers, and delicate starlight filigree framing deep velvety midnight-indigo lacquer negative space; subtle sapphire and emerald jewel enamel accents inside the floral medallions.\nFull-bleed artwork with crisp, refined ornamental border structure and 4% outer safe margin. Luminous metallic gold highlights against deep obsidian-indigo velvet—rich contrast, never muddy. Strictly no text, letters, numbers, signatures, logos, mockups, or drop shadows.",
+    "promptSha256": "10d21eaaec4b8eb0841879de8c77497ede4c8f322258400be7b7c190813bdc9c",
+    "masterSha256": "5c5efba847800d616375e5917f7a8b8dfa2b3e112ad94ac37b38f2ad12a28ef2"
+  },
+  "cards": {
+    "three_of_cups": {
+      "id": "three_of_cups",
+      "masterFile": "tarot-v2-masters/three_of_cups.png",
+      "model": "gpt-image-2.6-sunburst",
+      "endpoint": "edits",
+      "size": "1024x1536",
+      "quality": "xhigh",
+      "complexity": "high",
+      "elapsedMs": 50177,
+      "usage": {
+        "input_tokens": 2019,
+        "input_tokens_details": {
+          "image_tokens": 1536,
+          "text_tokens": 483
+        },
+        "output_tokens": 2459,
+        "output_tokens_details": {
+          "image_tokens": 2459,
+          "text_tokens": 0
+        },
+        "total_tokens": 4478
+      },
+      "refSha256s": [
+        "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+      ],
+      "prompt": "Create a breathtaking, original central tarot illustration (portrait 2:3) for \"three of cups\" strictly matching the artistic style, ink linework, warm ivory-and-gold illumination, and rich figure-ground contrast of the attached Luminous Midnight Art Nouveau style board.\nLighting key: mid-high. Primary palette & accents: luminous cerulean sapphire, amethyst violet, warm candlelit antique gold, moonlit ivory, anchored against deep velvety midnight-indigo shadows with luminous warm highlights on faces, hands, fabrics, and focal props so the main silhouette reads effortlessly even at 64x96px thumbnail size.\nScene & narrative action: Three joyful Belle Epoque friends—two women and one man or three women in distinct flowing jewel-toned sapphire, amethyst-plum, and pearl-ivory embroidered gowns—gathered tightly in a dynamic celebratory circle on a moonlit stone garden terrace hung with warm golden lanterns. At the bright center of the composition, all three raise their arms in a jubilant toast, clinking EXACTLY THREE gleaming, ornate antique-gold chalices together so all three cups are unmistakably prominent, clearly separated, and illuminated by warm golden highlights. Lush ivory roses, trailing vines, and a softly gleaming stone water fountain frame the foreground and terrace edge under a starry midnight-indigo sky.\nMandatory countable elements (strict accuracy): EXACTLY 3 celebrating companions; EXACTLY 3 raised ornate golden chalices.\nComposition & silhouette: Closed joyful triangular circle of three figures converging on THREE brightly lit golden chalices held high in the upper-center focal zone; high warm-vs-cool contrast makes the three raised cups pop instantly at 64x96 thumbnail size.\nCENTER ARTWORK ONLY filling the full 2:3 canvas with a generous 7% safe margin around key faces and props so a separate gilded Art Nouveau arch frame can overlay the outer edges cleanly.\nSTRICTLY FORBIDDEN: tree planting, kneeling somber figures, fourth or fifth person, extra background cups, text, numerals, border, frame, tarot borders, outer frames, corner pips, banners, title plaques, readable text, letters, numbers, Roman numerals, watermarks, signatures, card mockups, or muddy flat low-contrast dark lighting.",
+      "promptSha256": "8c742aa71fb638445c71c10ece891e519d68d3344bf26c49bb9282c4fb18feba",
+      "masterSha256": "4944d88ae4bc3888d68737e3f0d03a56a77b7471d26d63afe40305694e56452b"
+    },
+    "fool": {
+      "id": "fool",
+      "masterFile": "tarot-v2-masters/fool.png",
+      "model": "gpt-image-2.6-sunburst",
+      "endpoint": "edits",
+      "size": "1024x1536",
+      "quality": "xhigh",
+      "complexity": "high",
+      "elapsedMs": 51494,
+      "usage": {
+        "input_tokens": 2011,
+        "input_tokens_details": {
+          "image_tokens": 1536,
+          "text_tokens": 475
+        },
+        "output_tokens": 2459,
+        "output_tokens_details": {
+          "image_tokens": 2459,
+          "text_tokens": 0
+        },
+        "total_tokens": 4470
+      },
+      "refSha256s": [
+        "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+      ],
+      "prompt": "Create a breathtaking, original central tarot illustration (portrait 2:3) for \"fool\" strictly matching the artistic style, ink linework, warm ivory-and-gold illumination, and rich figure-ground contrast of the attached Luminous Midnight Art Nouveau style board.\nLighting key: high-key. Primary palette & accents: molten antique gold, luminous warm ivory dawn light, deep twilight sapphire, anchored against deep velvety midnight-indigo shadows with luminous warm highlights on faces, hands, fabrics, and focal props so the main silhouette reads effortlessly even at 64x96px thumbnail size.\nScene & narrative action: A joyous, luminous Belle Epoque youth poised mid-stride at the bright rocky edge of a high coastal cliff overlooking a moonlit-and-dawn-lit sea. They gaze upward with bright curiosity, holding ONE crisp pale white rose lightly in their outstretched right hand, and slinging a slender gilded wooden staff over their left shoulder carrying a small star-embroidered midnight-blue cloth satchel. At their heels, ONE alert, joyful luminous white dog leaps upward toward them. Radiant golden-ivory celestial light illuminates the traveler's face, billowy ivory silk sleeves, embroidered indigo-and-gold doublet, white dog, and cliff blossoms against a dramatic deep midnight-indigo starry sky with warm golden horizon clouds.\nMandatory countable elements (strict accuracy): EXACTLY 1 traveler; EXACTLY 1 white rose; EXACTLY 1 staff with satchel; EXACTLY 1 white dog.\nComposition & silhouette: Dynamic diagonal silhouette from lower-left cliff to upper-right luminous sky; generous negative space around the traveler's head and lifted foot so the pose reads unmistakably even at 64x96 thumbnail size.\nCENTER ARTWORK ONLY filling the full 2:3 canvas with a generous 7% safe margin around key faces and props so a separate gilded Art Nouveau arch frame can overlay the outer edges cleanly.\nSTRICTLY FORBIDDEN: text, letters, numerals, border, frame, muddy dark face, extra people, tarot borders, outer frames, corner pips, banners, title plaques, readable text, letters, numbers, Roman numerals, watermarks, signatures, card mockups, or muddy flat low-contrast dark lighting.",
+      "promptSha256": "f1d8ef4034d8bc931cc9b07f86151e8c1c98dbde11a06ac47c05b0ef2c827cdb",
+      "masterSha256": "18ebc70070f57bd76eae784672d8c880a20a64e66f17012b7c08246041a6a33f"
+    },
+    "three_of_pentacles": {
+      "id": "three_of_pentacles",
+      "masterFile": "tarot-v2-masters/three_of_pentacles.png",
+      "model": "gpt-image-2.6-sunburst",
+      "endpoint": "edits",
+      "size": "1024x1536",
+      "quality": "xhigh",
+      "complexity": "high",
+      "elapsedMs": 52338,
+      "usage": {
+        "input_tokens": 2073,
+        "input_tokens_details": {
+          "image_tokens": 1536,
+          "text_tokens": 537
+        },
+        "output_tokens": 2459,
+        "output_tokens_details": {
+          "image_tokens": 2459,
+          "text_tokens": 0
+        },
+        "total_tokens": 4532
+      },
+      "refSha256s": [
+        "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+      ],
+      "prompt": "Create a breathtaking, original central tarot illustration (portrait 2:3) for \"three of pentacles\" strictly matching the artistic style, ink linework, warm ivory-and-gold illumination, and rich figure-ground contrast of the attached Luminous Midnight Art Nouveau style board.\nLighting key: mid-key. Primary palette & accents: emerald-verdigris, warm parchment ochre, glowing amber candlelight, burnished antique gold, anchored against deep velvety midnight-indigo shadows with luminous warm highlights on faces, hands, fabrics, and focal props so the main silhouette reads effortlessly even at 64x96px thumbnail size.\nScene & narrative action: An architectural interior beneath a soaring candlelit Gothic-Art Nouveau stone cathedral arch. On the left, a master sculptor in a richly detailed emerald-and-ochre artisan tunic stands on a low carved wooden bench holding a small mallet and chisel, carving the warm sunlit-ivory limestone archway. Inlaid cleanly inside the upper curve of the stone arch are EXACTLY THREE large, distinct, embossed antique-gold pentacle medallions arranged in a crisp, symmetrical triangle. Standing below on the right side of the nave, TWO collaborators—a scholarly figure in a dark emerald cloak and a noble patron in amber-trimmed velvet—hold open an illuminated cream parchment architectural blueprint, pointing upward toward the arch. Warm golden candlelight illuminates the stone arch, the three golden pentacles, the parchment scroll, and the artisan's hands against deep midnight-indigo vaulted shadows.\nMandatory countable elements (strict accuracy): EXACTLY 1 master sculptor on bench with chisel; EXACTLY 2 collaborators reading blueprint below; EXACTLY 3 embossed golden pentacles inlaid in arch.\nComposition & silhouette: Strong vertical architectural Gothic arch framing the upper third with THREE bright gold pentacle medallions clearly visible in a triangular triad; completely distinct geometric silhouette and warm amber-emerald palette from Three of Cups even at 64x96 thumbnail.\nCENTER ARTWORK ONLY filling the full 2:3 canvas with a generous 7% safe margin around key faces and props so a separate gilded Art Nouveau arch frame can overlay the outer edges cleanly.\nSTRICTLY FORBIDDEN: outdoor garden toast, cups, extra coins or stars mistaken for pentacles, text, numerals, border, frame, tarot borders, outer frames, corner pips, banners, title plaques, readable text, letters, numbers, Roman numerals, watermarks, signatures, card mockups, or muddy flat low-contrast dark lighting.",
+      "promptSha256": "8fdfba4539c28e2a9bf7be55211ec7b2f516fbd3c1ff4fecc74709b898164a47",
+      "masterSha256": "212828267976cf9310abcd5219d3657fdb61e8711e17d350705d2a14861d7f78"
+    },
+    "ten_of_wands": {
+      "id": "ten_of_wands",
+      "masterFile": "tarot-v2-masters/ten_of_wands.png",
+      "model": "gpt-image-2.6-sunburst",
+      "endpoint": "edits",
+      "size": "1024x1536",
+      "quality": "xhigh",
+      "complexity": "high",
+      "elapsedMs": 52138,
+      "usage": {
+        "input_tokens": 3656,
+        "input_tokens_details": {
+          "image_tokens": 3072,
+          "text_tokens": 584
+        },
+        "output_tokens": 2459,
+        "output_tokens_details": {
+          "image_tokens": 2459,
+          "text_tokens": 0
+        },
+        "total_tokens": 6115
+      },
+      "refSha256s": [
+        "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294",
+        "85277ba83998ccec9b095a6437ec2716aff19e2395da66bfce98063adb9a4abc"
+      ],
+      "prompt": "Create a breathtaking, original central tarot illustration (portrait 2:3) for \"ten of wands\" strictly matching the artistic style, ink linework, warm ivory-and-gold illumination, and rich figure-ground contrast of the attached Luminous Midnight Art Nouveau style board.\nLighting key: dramatic-chiaroscuro. Primary palette & accents: warm amber-vermilion dusk, burnished bronze-gold, sprouting emerald leaf highlights, deep indigo twilight, anchored against deep velvety midnight-indigo shadows with luminous warm highlights on faces, hands, fabrics, and focal props so the main silhouette reads effortlessly even at 64x96px thumbnail size.\nScene & narrative action: A resolute Belle Epoque traveler in a richly textured bronze-crimson coat and indigo sash striding uphill along a winding twilight path toward a small warmly lantern-lit stone town glowing on the hilltop in the upper-right distance. Leaning slightly forward under the weight, the traveler embraces a clearly fanned, cleanly separated bundle of EXACTLY TEN slender, straight wooden wands with gleaming antique-gold finials and tiny sprouting emerald leaves along their upper ends—every single one of the TEN wands is clearly visible, distinct, and countable against the glowing amber-and-ivory dusk sky behind them. Dramatic warm sunset rim-light catches the traveler's back, coat folds, and the ten wooden wands against rich midnight-indigo foreground hills.\nMandatory countable elements (strict accuracy): EXACTLY 1 uphill traveler; EXACTLY 10 distinct sprouting wooden wands in fanned bundle; EXACTLY 1 distant warm-lit hilltop town.\nComposition & silhouette: Strong diagonal uphill silhouette with the TEN wands fanned cleanly against bright amber-ivory dusk sky so every wand shaft and tip separates crisply; warm sunset glow on upper right contrasts deeply with indigo foreground.\nCENTER ARTWORK ONLY filling the full 2:3 canvas with a generous 7% safe margin around key faces and props so a separate gilded Art Nouveau arch frame can overlay the outer edges cleanly.\nSTRICTLY FORBIDDEN: 9 or 11 or 12 wands, blurry uncountable sticks, extra people, text, numerals, border, frame, tarot borders, outer frames, corner pips, banners, title plaques, readable text, letters, numbers, Roman numerals, watermarks, signatures, card mockups, or muddy flat low-contrast dark lighting.\nUse the second attached diagram ONLY as a spatial layout scaffold showing the exact spacing and fan angle of the 10 individual sprouting wooden wands, the traveler's silhouette, and the distant glowing hilltop town; paint everything organically in the Luminous Midnight Art Nouveau style of the first image.",
+      "promptSha256": "1b2f744d5bf14783099ffac94b720e27f101f4eaea9b02cde3a5f218bdb999f6",
+      "masterSha256": "4db51ceca51cae71a3b256978a88b9eeddd83ad0fc3ead19765207855116da87"
+    },
+    "queen_of_swords": {
+      "id": "queen_of_swords",
+      "cardId": "queen_of_swords",
+      "masterFile": "tarot-v2-masters/queen_of_swords.png",
+      "model": "gpt-image-2.6-sunburst",
+      "endpoint": "edits",
+      "size": "1024x1536",
+      "quality": "xhigh",
+      "complexity": "high",
+      "elapsedMs": 53392,
+      "usage": {
+        "input_tokens": 2041,
+        "input_tokens_details": {
+          "image_tokens": 1536,
+          "text_tokens": 505
+        },
+        "output_tokens": 2459,
+        "output_tokens_details": {
+          "image_tokens": 2459,
+          "text_tokens": 0
+        },
+        "total_tokens": 4500
+      },
+      "refSha256s": [
+        "8d1892eb076b0a6e113daecfcd97de40a7c5c34f3c3ce5861403d64115214294"
+      ],
+      "promptSha256": "13ce2ccaeac7acb7d316811beb2015606c30dfc063a35a12a6a08264c08389f5",
+      "masterSha256": "27db26801a7146ce024b597573d82b8ec6cd33a5ab42caa17fb4234d47da465f",
+      "selectedFromBlindTest": "xhigh"
+    }
+  }
+}

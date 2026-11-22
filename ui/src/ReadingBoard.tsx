@@ -5,6 +5,11 @@ import { PositionKey } from "./PositionKey.js";
 import { ReadingInterpretation } from "./ReadingInterpretation.js";
 import { RitualProgress } from "./RitualProgress.js";
 import { cardBackStyle } from "./card-style.js";
+import {
+  isV2GateCard,
+  readInitialDeckEdition,
+  resolveWebCardAssetUrl,
+} from "./deck-edition.js";
 import { prefersReducedMotion } from "./flip.js";
 import { t } from "./i18n.js";
 import { layoutForSpread } from "./spreads.js";
@@ -44,6 +49,7 @@ function ReadingCardView({
   cardIndex,
   backImageUri,
   revealed,
+  focused,
   onOpen,
   onTurn,
   language,
@@ -53,6 +59,7 @@ function ReadingCardView({
   cardIndex: number;
   backImageUri?: string;
   revealed: boolean;
+  focused: boolean;
   onOpen(): void;
   onTurn(): void;
   language: Language;
@@ -63,7 +70,7 @@ function ReadingCardView({
   return (
     <button
       type="button"
-      className={`reading-card${revealed ? " is-revealed" : ""}`}
+      className={`reading-card${revealed ? " is-revealed" : ""}${focused ? " is-focused" : ""}`}
       onClick={() => (revealed ? onOpen() : onTurn())}
       aria-label={
         revealed
@@ -71,9 +78,6 @@ function ReadingCardView({
           : t(language, "turnCard", { number: cardIndex + 1 })
       }
     >
-      <span className="reading-card__index" aria-hidden="true">
-        {cardIndex + 1}
-      </span>
       <span className="reading-card__inner">
         <span
           className="reading-card__back"
@@ -92,6 +96,7 @@ function ReadingCardView({
               onError={() => setImageFailed(true)}
             />
           )}
+          <span className="reading-card__foil" aria-hidden="true" />
           <span className="reading-card__caption">
             <strong>{card.displayName}</strong>
             <small>{orientationLabel(language, card)}</small>
@@ -99,6 +104,144 @@ function ReadingCardView({
         </span>
       </span>
     </button>
+  );
+}
+
+function CardSpotlight({
+  card,
+  client,
+  language,
+  revealedPosition,
+  revealedTotal,
+  onPrevious,
+  onNext,
+  onInspect,
+}: {
+  card: ReadingCard;
+  client: DrawClient;
+  language: Language;
+  revealedPosition: number;
+  revealedTotal: number;
+  onPrevious?: () => void;
+  onNext?: () => void;
+  onInspect: () => void;
+}) {
+  const [resolvedSource, failed] = useCardImage(client, card);
+  const [imageFailed, setImageFailed] = useState(false);
+  const isShowingV2 =
+    client.target === "web" &&
+    readInitialDeckEdition() === "v2" &&
+    isV2GateCard(card.id);
+  const source = isShowingV2
+    ? resolveWebCardAssetUrl(card.id, resolvedSource, "v2", true)
+    : resolvedSource;
+  const showFallback = failed || imageFailed || !source;
+  const motifs =
+    isShowingV2 && card.editionMotifs?.length
+      ? card.editionMotifs
+      : card.traditionMotifs;
+
+  useEffect(() => {
+    setImageFailed(false);
+  }, [card.id]);
+
+  return (
+    <section
+      className="card-spotlight"
+      aria-labelledby="spotlight-heading"
+    >
+      <div className="card-spotlight__plate">
+        <div className="card-spotlight__frame">
+          {showFallback ? (
+            <div className="card-art-fallback">{card.displayName}</div>
+          ) : (
+            <img
+              src={source}
+              alt={card.displayName}
+              className={card.orientation === "reversed" ? "is-reversed" : ""}
+              onError={() => setImageFailed(true)}
+            />
+          )}
+          <span className="card-spotlight__foil" aria-hidden="true" />
+        </div>
+      </div>
+      <div className="card-spotlight__copy">
+        <div className="card-spotlight__eyebrow-row">
+          <h2 id="spotlight-heading" className="card-spotlight__eyebrow">
+            {t(language, "spotlightEyebrow")}
+          </h2>
+          {revealedTotal > 1 ? (
+            <span className="card-spotlight__counter">
+              {t(language, "cardCounter", {
+                current: revealedPosition,
+                total: revealedTotal,
+              })}
+            </span>
+          ) : null}
+        </div>
+        <p className="card-spotlight__position">{card.position}</p>
+        <div className="card-spotlight__title-row">
+          <p className="card-spotlight__title">{card.displayName}</p>
+          <span
+            className={`orientation-pill${card.orientation === "reversed" ? " is-reversed" : ""}`}
+          >
+            {orientationLabel(language, card)}
+          </span>
+        </div>
+        {card.positionMeaning ? (
+          <p className="card-spotlight__position-meaning">
+            {card.positionMeaning}
+          </p>
+        ) : null}
+        {card.meaning ? (
+          <p className="card-spotlight__meaning">{card.meaning}</p>
+        ) : null}
+        {card.keywords?.length ? (
+          <ul className="keyword-list">
+            {card.keywords.map((keyword) => (
+              <li key={keyword}>{keyword}</li>
+            ))}
+          </ul>
+        ) : null}
+        {motifs?.length ? (
+          <p className="card-spotlight__motifs">
+            <strong>{t(language, "symbolismHeading")}: </strong>
+            {motifs.slice(0, 3).join(" · ")}
+          </p>
+        ) : null}
+        <div className="card-spotlight__actions">
+          <button
+            type="button"
+            className="text-action"
+            onClick={onInspect}
+          >
+            {t(language, "inspectFullCard")}
+          </button>
+          {revealedTotal > 1 ? (
+            <div className="card-spotlight__pager">
+              <button
+                type="button"
+                className="text-action"
+                onClick={onPrevious}
+                disabled={!onPrevious}
+                aria-label={t(language, "previousCard")}
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                className="text-action"
+                onClick={onNext}
+                disabled={!onNext}
+                aria-label={t(language, "nextCard")}
+              >
+                →
+              </button>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -124,6 +267,11 @@ export function ReadingBoard({
   const [{ revealed, announced }, setReveal] = useState<RevealState>(() => ({
     revealed: new Set(initialRevealedIndices),
   }));
+  const [focusedIndex, setFocusedIndex] = useState<number | undefined>(() =>
+    initialRevealedIndices && initialRevealedIndices.length > 0
+      ? initialRevealedIndices[initialRevealedIndices.length - 1]
+      : undefined,
+  );
   const [revealingAll, setRevealingAll] = useState(false);
   const [continuation, setContinuation] = useState<Continuation>(() => ({
     status: initialContinuationSent ? "sent" : "idle",
@@ -137,8 +285,15 @@ export function ReadingBoard({
   const sendInFlight = useRef(false);
   const mounted = useRef(true);
   const layout = layoutForSpread(reading.spreadType, reading.cards.length);
-  const revealedCount = revealed.size;
+  const revealedOrdered = reading.cards
+    .map((_, index) => index)
+    .filter((index) => revealed.has(index));
+  const revealedCount = revealedOrdered.length;
   const allRevealed = revealedCount === reading.cards.length;
+  const activeFocusIndex =
+    focusedIndex !== undefined && revealed.has(focusedIndex)
+      ? focusedIndex
+      : revealedOrdered[revealedOrdered.length - 1];
   const continueReading = client.continueReading;
   const checkpoint = useRef(onUiCheckpoint);
   checkpoint.current = onUiCheckpoint;
@@ -185,7 +340,13 @@ export function ReadingBoard({
 
   const closeDetails = useCallback(() => setDetailIndex(undefined), []);
 
+  const openCard = useCallback((index: number) => {
+    setFocusedIndex(index);
+    setDetailIndex(index);
+  }, []);
+
   const turn = useCallback((index: number) => {
+    setFocusedIndex(index);
     setReveal((current) =>
       current.revealed.has(index)
         ? current
@@ -206,6 +367,7 @@ export function ReadingBoard({
       .filter((index) => !revealed.has(index));
     if (pending.length === 0) return;
     if (prefersReducedMotion()) {
+      setFocusedIndex(pending[pending.length - 1]);
       setReveal({ revealed: new Set(reading.cards.map((_, index) => index)) });
       return;
     }
@@ -282,7 +444,7 @@ export function ReadingBoard({
         value: `${card.displayName} · ${orientationLabel(language, card)}`,
         action: {
           label: `${describeTurn(index)} ${t(language, "details")}`,
-          onActivate: () => setDetailIndex(index),
+          onActivate: () => openCard(index),
         },
       };
     }
@@ -359,7 +521,8 @@ export function ReadingBoard({
               cardIndex={index}
               backImageUri={backImageUri}
               revealed={revealed.has(index)}
-              onOpen={() => setDetailIndex(index)}
+              focused={activeFocusIndex === index}
+              onOpen={() => openCard(index)}
               onTurn={() => turn(index)}
               language={language}
             />
@@ -369,6 +532,28 @@ export function ReadingBoard({
           </ClothSlot>
         ))}
       </ReadingCloth>
+
+      {activeFocusIndex !== undefined ? (() => {
+        const focusPos = revealedOrdered.indexOf(activeFocusIndex);
+        const prevIdx = focusPos > 0 ? revealedOrdered[focusPos - 1] : undefined;
+        const nextIdx =
+          focusPos >= 0 && focusPos < revealedOrdered.length - 1
+            ? revealedOrdered[focusPos + 1]
+            : undefined;
+        return (
+          <CardSpotlight
+            card={reading.cards[activeFocusIndex]}
+            client={client}
+            language={language}
+            revealedPosition={focusPos + 1}
+            revealedTotal={revealedOrdered.length}
+            onPrevious={prevIdx !== undefined ? () => setFocusedIndex(prevIdx) : undefined}
+            onNext={nextIdx !== undefined ? () => setFocusedIndex(nextIdx) : undefined}
+            onInspect={() => openCard(activeFocusIndex)}
+          />
+        );
+      })() : null}
+
       <PositionKey
         language={language}
         names={positions.map(({ name }) => name)}
@@ -476,14 +661,34 @@ export function ReadingBoard({
         </section>
       ) : null}
 
-      {detailIndex !== undefined ? (
-        <CardDetails
-          card={reading.cards[detailIndex]}
-          client={client}
-          language={language}
-          onClose={closeDetails}
-        />
-      ) : null}
+      {detailIndex !== undefined ? (() => {
+        const detailPos = revealedOrdered.indexOf(detailIndex);
+        const prevDetail =
+          detailPos > 0 ? revealedOrdered[detailPos - 1] : undefined;
+        const nextDetail =
+          detailPos >= 0 && detailPos < revealedOrdered.length - 1
+            ? revealedOrdered[detailPos + 1]
+            : undefined;
+        return (
+          <CardDetails
+            card={reading.cards[detailIndex]}
+            client={client}
+            language={language}
+            onClose={closeDetails}
+            counter={
+              detailPos >= 0
+                ? { current: detailPos + 1, total: revealedOrdered.length }
+                : undefined
+            }
+            onPrevious={
+              prevDetail !== undefined ? () => openCard(prevDetail) : undefined
+            }
+            onNext={
+              nextDetail !== undefined ? () => openCard(nextDetail) : undefined
+            }
+          />
+        );
+      })() : null}
     </main>
   );
 }

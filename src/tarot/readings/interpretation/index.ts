@@ -2,12 +2,14 @@ import { DrawnCard, Language } from "../../shared/types.js";
 import { localizedCardName, localizedMeanings, pick } from "../../shared/i18n.js";
 import { orientationLabel } from "../reading-formatter.js";
 import { generateGenericSpreadAnalysis, selectSpreadAnalysis } from "./analyzers.js";
+import { resolvePositionRole } from "./evidence.js";
 import { generateOverallInterpretation, selectRelevantMeaning } from "./patterns.js";
 
 /**
  * Generate the full interpretation for a reading: per-card contextual
- * meanings, the spread-specific (or generic) cross-card analysis, and the
- * overall pattern interpretation. All sections are bilingual (en/zh).
+ * meanings (powered by Card Canon when available and domain-safe matching),
+ * the spread-specific (or generic) cross-card analysis, and the overall
+ * pattern interpretation. All sections are bilingual (en/zh).
  */
 export function generateInterpretation(
   drawnCards: DrawnCard[],
@@ -22,7 +24,7 @@ export function generateInterpretation(
     `这次「${spreadName}」解读回应你的问题：「${question}」\n\n`,
   );
 
-  // Individual card interpretations with context
+  // Individual card interpretations with position-role & question-domain context
   drawnCards.forEach((drawnCard) => {
     const meanings = localizedMeanings(
       drawnCard.card,
@@ -37,12 +39,17 @@ export function generateInterpretation(
     );
     interpretation += `${localizedCardName(drawnCard.card, language)}${orientationLabel(drawnCard.orientation, language)}\n`;
 
-    // Choose the most relevant meaning based on position
     const relevantMeaning = selectRelevantMeaning(
       meanings,
       drawnCard.position || "General",
       question,
-      drawnCard.positionMeaning
+      drawnCard.positionMeaning,
+      {
+        cardId: drawnCard.card.id,
+        orientation: drawnCard.orientation,
+        positionRole: resolvePositionRole(drawnCard),
+        language,
+      },
     );
     interpretation += `${relevantMeaning}\n\n`;
   });

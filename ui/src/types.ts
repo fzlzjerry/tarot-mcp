@@ -99,8 +99,11 @@ export interface ReadingCard {
   orientation: "upright" | "reversed";
   position?: string;
   positionMeaning?: string;
+  positionRole?: string;
   meaning?: string;
   keywords?: string[];
+  traditionMotifs?: string[];
+  editionMotifs?: string[];
   imageUri?: string;
   embeddedImage?: EmbeddedImage;
 }

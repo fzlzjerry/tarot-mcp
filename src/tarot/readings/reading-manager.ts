@@ -8,6 +8,8 @@ import {
   CardOrientation,
   Language,
   TarotCard,
+  PositionRole,
+  ReadingEvidence,
 } from "../shared/types.js";
 import {
   TAROT_SPREADS,
@@ -15,14 +17,25 @@ import {
   getSpread,
   isValidSpreadType,
 } from "./spreads.js";
+import {
+  CANON_KNOWLEDGE_VERSION,
+  getCanonMotifs,
+} from "../canon/index.js";
 import { generateId, randomOrientation } from "../shared/utils.js";
-import { VISUAL_CARD_ASSET_BASE } from "../shared/artwork.js";
+import {
+  VISUAL_ARTWORK_VERSION,
+  VISUAL_CARD_ASSET_BASE,
+} from "../shared/artwork.js";
 import { sanitizeString } from "../shared/validation.js";
 import {
   InvalidSpreadTypeError,
   SessionNotFoundError,
 } from "../shared/errors.js";
 import { generateInterpretation } from "./interpretation/index.js";
+import {
+  buildReadingEvidence,
+  resolvePositionRole,
+} from "./interpretation/evidence.js";
 import { formatReading, renderAvailableSpreads } from "./reading-formatter.js";
 import { localizedSpread } from "./spread-localizations.js";
 import {
@@ -51,6 +64,9 @@ export interface ReadingPayload {
   question: string;
   interpretation: string;
   timestamp: string;
+  deckVersion: string;
+  knowledgeVersion: string;
+  evidence: ReadingEvidence;
   cards: Array<{
     name: string;
     /** Stable snake_case identifier used by visual clients and card assets. */
@@ -60,8 +76,12 @@ export interface ReadingPayload {
     orientation: CardOrientation;
     position?: string;
     positionMeaning?: string;
+    positionId: string;
+    positionRole: PositionRole;
     keywords: string[];
     meaning: string;
+    traditionMotifs?: string[];
+    editionMotifs?: string[];
     imageUri: string;
   }>;
 }
@@ -233,12 +253,26 @@ export class TarotReadingManager {
         orientation: this.drawOrientation(),
       }));
 
-    const drawnCards: DrawnCard[] = selection.map(({ card, orientation }, index) => ({
-      card,
-      orientation,
-      position: spread.positions[index].name,
-      positionMeaning: spread.positions[index].meaning
-    }));
+    const drawnCards: DrawnCard[] = selection.map(({ card, orientation }, index) => {
+      const pos = spread.positions[index];
+      const drawn: DrawnCard = {
+        card,
+        orientation,
+        position: pos.name,
+        positionMeaning: pos.meaning,
+        positionId: pos.id ?? `pos_${index + 1}`,
+        positionRole: pos.role,
+      };
+      drawn.positionRole = resolvePositionRole(drawn);
+      return drawn;
+    });
+
+    const evidence = buildReadingEvidence(
+      drawnCards,
+      question,
+      language,
+      VISUAL_ARTWORK_VERSION,
+    );
 
     const reading: TarotReading = {
       id: generateId("reading"),
@@ -247,6 +281,10 @@ export class TarotReadingManager {
       cards: drawnCards,
       interpretation: generateInterpretation(drawnCards, question, spreadType, spread.name, language),
       timestamp: new Date(),
+      language,
+      deckVersion: VISUAL_ARTWORK_VERSION,
+      knowledgeVersion: CANON_KNOWLEDGE_VERSION,
+      evidence,
       ...(session ? { sessionId: session.id } : {}),
     };
 
@@ -267,13 +305,22 @@ export class TarotReadingManager {
         question,
         interpretation: reading.interpretation,
         timestamp: reading.timestamp.toISOString(),
-        cards: drawnCards.map((drawnCard) => {
+        deckVersion: VISUAL_ARTWORK_VERSION,
+        knowledgeVersion: CANON_KNOWLEDGE_VERSION,
+        evidence,
+        cards: drawnCards.map((drawnCard, index) => {
           const meanings = localizedMeanings(
             drawnCard.card,
             drawnCard.orientation,
             language,
           );
           const cardId = drawnCard.card.id;
+          const positionRole = resolvePositionRole(drawnCard);
+          const motifs = getCanonMotifs(
+            cardId,
+            language,
+            VISUAL_ARTWORK_VERSION,
+          );
           return {
             id: cardId,
             cardId,
@@ -282,6 +329,8 @@ export class TarotReadingManager {
             orientation: drawnCard.orientation,
             position: drawnCard.position,
             positionMeaning: drawnCard.positionMeaning,
+            positionId: drawnCard.positionId ?? `pos_${index + 1}`,
+            positionRole,
             keywords: localizedKeywords(
               drawnCard.card,
               drawnCard.orientation,
@@ -292,7 +341,21 @@ export class TarotReadingManager {
               drawnCard.position ?? "General",
               question,
               drawnCard.positionMeaning,
+              {
+                cardId,
+                orientation: drawnCard.orientation,
+                positionRole,
+                language,
+              },
             ),
+            ...(motifs
+              ? {
+                  traditionMotifs: motifs.tradition,
+                  ...(motifs.edition.length > 0
+                    ? { editionMotifs: motifs.edition }
+                    : {}),
+                }
+              : {}),
             imageUri: `${VISUAL_CARD_ASSET_BASE}/${cardId}.webp`,
           };
         }),
@@ -301,6 +364,8 @@ export class TarotReadingManager {
 
     if (session) {
       this.sessionManager.addReadingToSession(session.id, reading);
+    } else {
+      this.sessionManager.recordStandaloneReading(reading);
     }
 
     return performed;

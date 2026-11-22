@@ -29,6 +29,29 @@ const PROMPTS = [
     ],
   },
   {
+    name: "visual-reading",
+    description:
+      "Start an interactive visual tarot ritual where the user manually shuffles, cuts, and draws face-down cards before interpretation",
+    arguments: [
+      {
+        name: "question",
+        description: "The question or focus for the visual reading",
+        required: true,
+      },
+      {
+        name: "spreadType",
+        description:
+          "Spread type id (defaults to three_card if omitted)",
+        required: false,
+      },
+      {
+        name: "language",
+        description: 'Output language: "en" or "zh" (match the question language)',
+        required: false,
+      },
+    ],
+  },
+  {
     name: "daily-draw",
     description: "Draw and interpret a single daily guidance card",
     arguments: [
@@ -85,6 +108,39 @@ export function registerPrompts(server: Server): void {
                 `${spreadInstruction} ${languageInstruction} Call the perform_reading tool, then walk me ` +
                 `through each card's meaning in its position and finish with an ` +
                 `overall synthesis and practical guidance.`,
+            },
+          },
+        ],
+      };
+    }
+
+    if (name === "visual-reading") {
+      const question =
+        args?.question ?? "What should I focus on right now?";
+      const spreadType = args?.spreadType || "three_card";
+      const language =
+        args?.language === "zh" || args?.language === "en"
+          ? args.language
+          : /[\u4e00-\u9fff]/.test(question)
+            ? "zh"
+            : "en";
+      const languageInstruction =
+        language === "zh"
+          ? 'Pass language: "zh" and reply in Simplified Chinese.'
+          : 'Pass language: "en" and reply in English.';
+      return {
+        description: "Interactive visual tarot ritual",
+        messages: [
+          {
+            role: "user" as const,
+            content: {
+              type: "text" as const,
+              text:
+                `Start an interactive visual tarot ritual for my question: "${question}" using ` +
+                `begin_visual_reading with readingKind: "spread" and spreadType: "${spreadType}". ` +
+                `${languageInstruction} Let me shuffle, cut, and choose the face-down cards myself—` +
+                `do not pick slots for me. Once I reveal the cards and ask for interpretation, ground ` +
+                `every point in the exact cards, position roles, and evidence signals.`,
             },
           },
         ],

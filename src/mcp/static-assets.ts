@@ -86,21 +86,26 @@ export function mountVisualWebAssets(
   }
 
   if (cardDirectory) {
+    const staticAssetOptions = {
+      index: false,
+      fallthrough: true,
+      immutable: true,
+      maxAge: "1y",
+      setHeaders: (res: Response) => {
+        res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        res.setHeader("X-Content-Type-Options", "nosniff");
+      },
+    };
     app.use(
       HTTP_ENDPOINTS.visualCardAssets,
-      express.static(cardDirectory, {
-        index: false,
-        fallthrough: true,
-        immutable: true,
-        maxAge: "1y",
-        setHeaders: (res) => {
-          res.setHeader(
-            "Cache-Control",
-            "public, max-age=31536000, immutable",
-          );
-          res.setHeader("X-Content-Type-Options", "nosniff");
-        },
-      }),
+      express.static(cardDirectory, staticAssetOptions),
     );
+    const v2CardDirectory = join(cardDirectory, "v2");
+    if (existsSync(v2CardDirectory)) {
+      app.use(
+        HTTP_ENDPOINTS.visualCardAssetsV2,
+        express.static(v2CardDirectory, staticAssetOptions),
+      );
+    }
   }
 }
