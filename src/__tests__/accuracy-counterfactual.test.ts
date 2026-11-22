@@ -437,6 +437,26 @@ describe("MCP accuracy counterfactuals and invariants", () => {
       );
       expect(businessPartnerRecs[0]?.spread).toBe("career_path");
       expect(businessPartnerRecs.some((r) => r.spread === "venus_love")).toBe(false);
+
+      // Former workplace roles ("ex-manager", "ex coworker") stay in career,
+      // while genuine ex / ex-partner questions still route to love
+      expect(
+        classifyQuestionDomain("How can I improve my relationship with my ex-manager?"),
+      ).toBe("career");
+      const exManagerRecs = recommendSpreads(
+        "How can I improve my relationship with my ex-manager?",
+      );
+      expect(exManagerRecs[0]?.spread).toBe("career_path");
+      expect(exManagerRecs.some((r) => r.spread === "venus_love")).toBe(false);
+
+      expect(
+        classifyQuestionDomain("I'd love to get a promotion at work this year"),
+      ).toBe("career");
+      expect(classifyQuestionDomain("Will my ex-partner and I reconcile?")).toBe("love");
+      expect(recommendSpreads("Will my ex-partner and I reconcile?")[0]?.spread).toBe(
+        "venus_love",
+      );
+      expect(classifyQuestionDomain("Why did my ex reach out today?")).toBe("love");
     });
 
     it("tags Celtic Cross Near Future as outcome and prioritizes position names in inferPositionRole", () => {
