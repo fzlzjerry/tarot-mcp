@@ -456,6 +456,11 @@ describe("MCP accuracy counterfactuals and invariants", () => {
       expect(recommendSpreads("Will my ex-partner and I reconcile?")[0]?.spread).toBe(
         "venus_love",
       );
+      expect(classifyQuestionDomain("Will my ex-fiancé come back?")).toBe("love");
+      expect(classifyQuestionDomain("Will my ex-fiancee come back?")).toBe("love");
+      expect(recommendSpreads("Will my ex-fiancé come back?")[0]?.spread).toBe(
+        "venus_love",
+      );
       expect(classifyQuestionDomain("Why did my ex reach out today?")).toBe("love");
     });
 

@@ -25,9 +25,9 @@ const WORKPLACE_EN =
 
 const LOVE_ZH = /(爱情|恋爱|感情|伴侣|对象|婚姻|结婚|分手|复合|暧昧|暗恋|前任|桃花|亲密关系|恋人|另一半|婚恋)/;
 const LOVE_EN =
-  /\b(love|romance|romantic|partner|marriage|marry|dating|crush|breakup|ex-(?:partner|boyfriend|girlfriend|husband|wife|lover|spouse|fiance|fiancée)|boyfriend|girlfriend|husband|wife|spouse|affection|intimacy)\b|\bex\b(?!-)/;
+  /\b(love|romance|romantic|partner|marriage|marry|dating|crush|breakup|ex-(?:partner|boyfriend|girlfriend|husband|wife|lover|spouse|fiancee?)|fiancee?|boyfriend|girlfriend|husband|wife|spouse|affection|intimacy)\b|\bex\b(?!-)/;
 const BUSINESS_PARTNER_EN =
-  /\b(?:business|managing|equity|general|senior|junior|work|project|trading|lab|study)\s+partner\b/g;
+  /\b(?:business|managing|equity|general|senior|junior|work|project|trading|lab|study)[-\s]+partner\b/g;
 const NON_ROMANTIC_LOVE_EN =
   /\blove\s+(?:my|this|the|our)\s+(?:job|work|career|role|team|company|project|office)\b|(?:\bwould\b|['’]d)\s+love\b/g;
 const NON_ROMANTIC_EX_EN =
@@ -51,6 +51,8 @@ export function hasExplicitLoveCue(question: string): boolean {
   const q = question.trim().toLowerCase();
   if (!q) return false;
   const qForLove = q
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(BUSINESS_PARTNER_EN, " ")
     .replace(NON_ROMANTIC_LOVE_EN, " ")
     .replace(NON_ROMANTIC_EX_EN, " ");
