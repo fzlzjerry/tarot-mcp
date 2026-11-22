@@ -161,7 +161,7 @@ const SPREAD_ANALYSIS: Record<SpreadType, SpreadAnalysisSpec | null> = {
     zh: "真相之镜——四束光明分析",
   },
   daily_guidance: null,
-  yes_no: { en: "Yes/No Leaning Analysis", zh: "是否倾向分析" },
+  yes_no: { en: "Yes/No Spread Analysis", zh: "是否牌阵分析" },
   weekly_forecast: {
     en: "Weekly Flow Analysis",
     zh: "一周流动分析",
@@ -218,8 +218,8 @@ const STEP_LABELS: Record<ElementalDignity, { en: string; zh: string }> = {
 
 const SEAT_NOTES: Record<ElementalDignity, { en: string; zh: string }> = {
   same: {
-    en: "the card is in its own element here and expresses it directly",
-    zh: "这张牌落在自己的元素上，会直接表达这个元素",
+    en: "the card is in its own element here, so it speaks to exactly what this position asks about",
+    zh: "这张牌落在自己的元素上，说的正是这个牌位所问的那一面",
   },
   friendly: {
     en: "a friendly element, so the card supports what this position asks for",
@@ -446,7 +446,7 @@ export function renderSpreadAnalysis(
         `This spread moves from ${positionName(first, 0)} (${first.card.name}) to ${positionName(last, drawnCards.length - 1)} (${last.card.name}).`,
         `这个牌阵从「${positionName(first, 0)}」（${localizedCardName(first.card, "zh")}）延展到「${positionName(last, drawnCards.length - 1)}」（${localizedCardName(last.card, "zh")}）。`,
       ) +
-        (bullets.length === 0
+        (structural.length === 0
           ? pick(
               language,
               " Its positions imply no pairings, so each card is read by its own position meaning.",

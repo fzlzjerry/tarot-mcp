@@ -2374,20 +2374,20 @@
         },
         "byRole": {
           "message": {
-            "en": "This is over, and no further effort will change that. Accept the ending as a fact, and let it release you from a struggle you no longer have to continue.",
-            "zh": "这件事已经结束，再多努力也改变不了。把这个结局当作事实接受下来，让它把你从一场不必再打下去的仗里放出来。"
+            "en": "This card points to something that has run its course. Ask honestly whether more effort is still changing anything; if it is not, accepting the ending releases you from a struggle you no longer have to continue.",
+            "zh": "这张牌指向一件已经走到头的事。老实问问自己，再多的努力是否还在改变什么；如果没有，接受这个结局，会把你从一场不必再打下去的仗里放出来。"
           },
           "foundation": {
             "en": "Something ended completely before this began: a collapse, a betrayal, a failure that left nothing to salvage. You start from the aftermath of that loss, with no continuation of what came before.",
             "zh": "在这一切开始之前，有什么已经彻底结束了：一次垮塌，一场背叛，一回没有任何东西可抢救的失败。你是从那次失去的废墟上起步的，之前的那一段没有延续下来。"
           },
           "present": {
-            "en": "You are at the lowest point. The thing you feared has happened, there is nothing left to defend, and the pain is real; so is the fact that it cannot fall any further.",
-            "zh": "你正处在最低点。害怕的事已经发生，没有什么还需要守了，疼是真的；同样真的是，事情已经不可能再往下掉。"
+            "en": "This reads as the low point: what you feared has largely happened, and the pain is real. When little is left to defend, little is left to fall, and that is the ground recovery starts from.",
+            "zh": "这读起来像是最低点：你害怕的事大体已经发生，疼是真的。当没什么还需要守的时候，也就没多少可以再往下掉的，恢复正是从这里起步。"
           },
           "challenge": {
-            "en": "The difficulty is finality. There is nothing here to fix, negotiate, or win back, and the hard part is to stop trying while resisting the urge to tell the story as worse than it already is.",
-            "zh": "难处在于“无可挽回”这四个字。这里没有什么可修、可谈、可赢回来的；难的是停止再试，同时忍住不把事情讲得比实际更惨。"
+            "en": "The difficulty is finality. Where there is truly nothing left to fix, negotiate, or win back, the hard part is to stop trying, while resisting the urge to tell the story as worse than it already is.",
+            "zh": "难处在于“无可挽回”这四个字。若这里确实已没有什么可修、可谈、可赢回来的，难的是停止再试，同时忍住不把事情讲得比实际更惨。"
           },
           "resource": {
             "en": "With nothing left to lose in this matter, you are free of the dread that it might end. That certainty is usable: you know where you stand, and the energy you spent holding it together is yours again.",
@@ -2418,8 +2418,8 @@
             "zh": "对方看起来已经和这件事了断了，不是精疲力尽，就是关上了门。他们可能再也拿不出什么，这次抽身在目前看来多半是定了的。"
           },
           "external": {
-            "en": "Circumstances have closed this off. A decision was made elsewhere, support was withdrawn, or the situation collapsed under its own weight, and none of that was within your power to prevent.",
-            "zh": "外部形势已经把这条路封死。决定是在别处做出的，支持被撤走了，或局面自己撑不住垮了下来；这些都不是你当时拦得住的。"
+            "en": "Circumstances appear to have closed this off: a decision made elsewhere, support withdrawn, or a situation that gave way under its own weight. Much of that was likely outside your power to prevent.",
+            "zh": "外部形势看来已经把这条路封住：决定是在别处做出的，支持被撤走了，或局面自己撑不住垮了下来；其中多半不是你当时拦得住的。"
           },
           "hopes_fears": {
             "en": "Part of you hopes this really is the bottom and that it will soon be over, while another part fears there is one more blow to come. You may even want the ending, because the waiting has been worse.",

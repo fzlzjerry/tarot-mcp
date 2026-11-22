@@ -341,6 +341,26 @@ describe("spread structure, relations, and reading guide", () => {
       );
       expect(text).not.toContain("No dedicated spread template");
     });
+
+    it("still says the positions imply no pairing when the cards echo each other", () => {
+      const rm = manager(["fool", "magician"], () => "upright");
+      const { reading, text } = rm.performCustomReadingWithDetails(
+        "Two Notes",
+        "Two unrelated notes",
+        [
+          { name: "A", meaning: "First" },
+          { name: "B", meaning: "Second" },
+        ],
+        "Anything to note?",
+      );
+      expect(reading.evidence.relations!.map(({ kind }) => kind)).toEqual([
+        "archetype_pair",
+      ]);
+      expect(text).toContain(
+        "This spread moves from A (The Fool) to B (The Magician). Its positions imply no pairings",
+      );
+      expect(text).toContain("- **Archetype pair:** The Fool (position 1)");
+    });
   });
 
   describe("echo relations", () => {

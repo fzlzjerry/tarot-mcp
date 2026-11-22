@@ -153,4 +153,34 @@ describe("visual draw payload normalization", () => {
       }).guide,
     ).toBeUndefined();
   });
+
+  it("keeps each guide prompt with its own card when an earlier card is dropped", () => {
+    const reading = normalizeConfirmedReading({
+      structuredContent: {
+        spreadType: "three_card",
+        cards: [
+          { cardId: "fool", name: "The Fool", position: "Past" },
+          "malformed",
+          { cardId: "world", name: "The World", position: "Future" },
+        ],
+        guide: {
+          steps: ["Restate the question."],
+          positionPrompts: [
+            { positionIndex: 1, prompt: "Ask of the past." },
+            { positionIndex: 2, prompt: "Ask of the present." },
+            { positionIndex: 3, prompt: "Ask of the future." },
+          ],
+          guardrails: [],
+        },
+      },
+    });
+    expect(reading.cards.map(({ position }) => position)).toEqual([
+      "Past",
+      "Future",
+    ]);
+    expect(reading.guide?.prompts).toEqual([
+      "Ask of the past.",
+      "Ask of the future.",
+    ]);
+  });
 });
