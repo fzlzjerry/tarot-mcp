@@ -56,25 +56,45 @@
             "en": "You are standing on a threshold with room to improvise; treat this phase as an open prototype rather than a permanent verdict.",
             "zh": "你正站在门槛上，拥有即兴探索的空间；把当下当作开放试错期，而非一锤定音的终局。"
           },
-          "resource": {
-            "en": "Your strongest asset is fresh perspective—not being locked into old habits lets you try an angle seasoned insiders overlook.",
-            "zh": "你最大的优势是尚未固化的新视角——不被旧习惯束缚，反而能试出旁人忽略的路径。"
-          },
           "challenge": {
             "en": "The friction here is leaping without noticing the cliff edge: excitement or naive optimism may be glossing over a real practical detail.",
             "zh": "这里的阻力在于只顾抬头仰望而忽略了脚下崖边：兴奋或过度乐观可能让你漏看了某个现实细节。"
+          },
+          "resource": {
+            "en": "Your strongest asset is fresh perspective—not being locked into old habits lets you try an angle seasoned insiders overlook.",
+            "zh": "你最大的优势是尚未固化的新视角——不被旧习惯束缚，反而能试出旁人忽略的路径。"
           },
           "action": {
             "en": "Take one reversible first step today—send the message, draft the prototype, or visit the unfamiliar room—before overthinking closes the window.",
             "zh": "今天就迈出一个可逆的第一步——发那条消息、搭出原型、走进陌生场域——别让反复推演关上窗口。"
           },
           "outcome": {
-            "en": "An open chapter unfolds whose shape depends on what you notice once you move; expect surprise rather than a neat straight line.",
-            "zh": "一段尚未定型的新篇章即将展开，走向取决于你动身后的临场观察；前方更像惊喜转折，而非笔直轨道。"
+            "en": "An open chapter is likely to unfold, its shape depending on what you notice once you move; expect surprise rather than a neat straight line.",
+            "zh": "一段尚未定型的新篇章很可能就此展开，走向取决于你动身后的临场观察；前方更像惊喜转折，而非笔直轨道。"
           },
           "advice": {
             "en": "Keep your pack light and listen to the dog at your heels—stay bold in direction while staying alert to small early warnings.",
             "zh": "行囊要轻，同时留意脚畔小犬的提醒——方向上保持敢迈步的锐气，细节上不忽略早期信号。"
+          },
+          "hidden": {
+            "en": "Ask whether anyone here is really following a script. Out of view, this may be far more improvised than it looks, which leaves more room to try something new than you have assumed.",
+            "zh": "不妨查一查：这里真的有人照着剧本走吗？台面之下，事情也许比看上去随性得多，留给你尝试新做法的余地，可能比你以为的要大。"
+          },
+          "self": {
+            "en": "You come to this as a beginner and do not hide it: few fixed expectations, light baggage, and a readiness to learn by doing rather than by rehearsing.",
+            "zh": "你以新手的姿态走进这件事，也不打算遮掩：没什么预设，包袱很轻，愿意边做边学，而不是先排练到万无一失。"
+          },
+          "other": {
+            "en": "The other person appears to be meeting this with open hands and little planning: sincere, spontaneous, likely happy to see where it goes without promising where it ends.",
+            "zh": "对方看起来没设什么防、也没怎么盘算就来了：态度真诚，想到哪做到哪，多半乐意走一步看一步，却未必肯承诺终点在哪里。"
+          },
+          "external": {
+            "en": "Conditions around you are unusually open: few rules are settled, nobody is keeping close score, and the setting forgives a first attempt that is rough around the edges.",
+            "zh": "周围的环境眼下格外宽松：规矩还没定型，没人盯着给你打分，第一次尝试做得粗糙一点，这个场子也容得下。"
+          },
+          "hopes_fears": {
+            "en": "You hope this is the clean start where you can finally travel light, yet fear that stepping off without a plan will make you look naive, or land you somewhere you cannot easily climb back from.",
+            "zh": "你盼着这是一次能轻装出发的全新开始，又怕没有计划就迈步会显得太天真，或者落到一个不容易爬回来的地方。"
           }
         },
         "domains": {
@@ -124,6 +144,18 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Look at the ground before you decide, then actually decide. Endless waiting and a blind jump are both ways of avoiding one honest look at the facts in front of you.",
+            "zh": "先低头看清脚下，再真正做出决定。没完没了地等，和闭着眼往下跳，其实都是在回避认真看一眼摆在面前的事实。"
+          },
+          "foundation": {
+            "en": "Behind this sits an earlier false start: a jump made on impulse that cost you, or a chance you let pass while waiting to feel ready. Either one still shapes how you judge risk now.",
+            "zh": "这件事的背后有一次没走好的开头：要么是一时冲动跳出去吃了亏，要么是在等自己“准备好”的时候让机会溜走了。无论哪一种，都还在影响你今天对风险的判断。"
+          },
+          "present": {
+            "en": "The start keeps almost happening: plans get revised instead of tried, or attempts get launched before the basics are checked. The energy is there, but it is not yet landing on solid ground.",
+            "zh": "眼下这个开头总是差一口气：计划改了又改却没真去试，或者基本功课还没做就急着上路。劲头是有的，只是还没落到实处。"
+          },
           "challenge": {
             "en": "Fear of looking foolish—or rushing ahead without a safety check—is distorting your timing.",
             "zh": "怕出丑的顾虑，或者不看路况的贸然冲刺，正在打乱你的节奏。"
@@ -135,12 +167,40 @@
           "action": {
             "en": "Do a quick reality check—budget, deadline, or boundary—then take a smaller, bounded step instead of either jumping blind or stalling.",
             "zh": "先做一次简短的现实核查（预算、期限或边界），随后迈出有护栏的小步，既不盲跳也不僵守。"
+          },
+          "outcome": {
+            "en": "If the pattern holds, this tends toward either a long stall at the starting line or a stumble that a five-minute check would have caught. A smaller, tested first step is likely to change that course.",
+            "zh": "照现在的势头走下去，结果多半是在起跑线上久久不动，或者栽在一个花五分钟就能查出来的坑里。换成一小步、先试再走，走向很可能就不一样了。"
+          },
+          "advice": {
+            "en": "Drop the act, whether it is breezy confidence or endless carefulness, and be plain about what you do not know. Caution is useful as information, not as a reason to cancel the trip.",
+            "zh": "把架子放下来，不管那是装出来的满不在乎，还是没完没了的小心翼翼，老实承认自己还不清楚什么。谨慎可以拿来当参考，却不该成为取消行程的理由。"
+          },
+          "hidden": {
+            "en": "Check for a wish you have not said aloud: wanting to start over, or to walk away entirely. If it is there, it may explain both the stalling and the sudden urges to bolt.",
+            "zh": "看看心里是不是藏着一个没说出口的念头：想从头再来，或者干脆一走了之。如果真有，它也许正好解释了你为什么一边拖着不动，一边又时不时想甩手就跑。"
+          },
+          "self": {
+            "en": "You show up divided about risk: playing it carefree in front of others while privately demanding certainty, or lurching between the two. Either way, you are not yet trusting your own judgment of the ground.",
+            "zh": "你对风险的态度是拧着的：人前装得无所谓，私下却非要等到十拿九稳，或者在两头之间来回摆。说到底，你还不太信得过自己对脚下路况的判断。"
+          },
+          "other": {
+            "en": "The other party may be hard to pin down here: slow to commit, or quick to make breezy promises without much thought for the practical side. Go by what they actually do rather than how relaxed they seem.",
+            "zh": "对方在这件事上可能有点让人摸不准：要么迟迟不肯表态，要么话说得轻巧、却没怎么考虑实际问题。与其看他们显得多轻松，不如看他们实际做了什么。"
+          },
+          "external": {
+            "en": "Outside, things are less forgiving than they first appear: unclear footing, mixed signals about timing, or people around you who are either urging a rash move or warning against any move at all.",
+            "zh": "外部条件没有乍看上去那么宽容：落脚点不够明朗，时机上的信号前后不一，身边的人要么撺掇你赶紧跳，要么劝你什么都别动。"
+          },
+          "hopes_fears": {
+            "en": "You hope for a sign that it is finally safe to begin, yet fear that no such sign is coming and that you will either wait too long or jump badly and have to explain yourself.",
+            "zh": "你盼着有个信号告诉你“现在可以放心开始了”，又怕这个信号根本等不来，到头来不是等过了头，就是跳得难看、还得向人解释。"
           }
         },
         "domains": {
           "general": {
             "en": "Check which side of the ledge you're slipping toward: stalling out of fear of mistakes, or skipping a basic safety check out of impatience.",
-            "zh": "愚者逆位提醒你先分辨自己偏向哪一端：是因为怕犯错而迟迟不敢启程，还是嫌麻烦跳过了最基本的现实核查与底线确认。"
+            "zh": "先分辨自己正滑向崖边的哪一侧：是因为怕犯错而迟迟不敢启程，还是因为不耐烦而跳过了最基本的安全核查。"
           },
           "love": {
             "en": "In relationships, reversed Fool flags mixed readiness—either holding back from vulnerability out of fear of getting hurt, or rushing intimacy before trust has real footing.",
@@ -210,7 +270,7 @@
         "Serpent-eating-its-tail belt encircling the waist as unbroken creative focus"
       ],
       "zh": [
-        "右手高举双端魔杖指天、左手指向大地的长袍术士，象征上行下效的显化通道",
+        "右手高举双端魔杖指天、左手指向大地的长袍术士",
         "稳稳悬浮在眉心上方、散发微光的无限符号",
         "祭坛桌面上一字排开的权杖、圣杯、宝剑与星币四组法器",
         "庭院边缘盛放的红玫瑰与白百合，象征热忱与清明并存",
@@ -242,7 +302,7 @@
         "byRole": {
           "message": {
             "en": "Stop waiting to be picked or handed a fuller kit; put the four tools already on your table to work on one concrete deliverable.",
-            "zh": "别再等别人点名或凑齐更完美的装备；把桌面上早已摆好的几样工具真正用起来，先做出一件拿得出手的成品。"
+            "zh": "别再等别人点名或凑齐更完美的装备；把桌面上早已摆好的四样工具真正用起来，先做出一件拿得出手的成品。"
           },
           "foundation": {
             "en": "Your own initiative, persuasion, or deliberate skill-building set this entire situation in motion.",
@@ -252,25 +312,45 @@
             "en": "You hold active leverage right now: words land sharply, timing is responsive, and small deliberate moves create visible shifts.",
             "zh": "你此刻握有清晰的主动权：说出去的话有分量，外部环境给得出回响，一个精准动作就能撬动明显变化。"
           },
+          "challenge": {
+            "en": "Cleverness can dazzle its own owner: watch for juggling too many tricks at once instead of committing to one real build.",
+            "zh": "警惕被自己的机敏或花哨点子迷住：同时开太多头绪，却不肯沉下心做完一件。"
+          },
           "resource": {
             "en": "Your strongest advantage is versatility—combining clear thinking, practical craft, emotional fluency, and sheer will into one coherent pitch or build.",
             "zh": "你最大的优势是跨界整合力——能把清晰思路、落地手艺、共情表达与执行意志拧成一股绳。"
-          },
-          "challenge": {
-            "en": "Even upright, The Magician in a challenge slot warns against dazzling yourself with cleverness or juggling too many tricks instead of committing to one real build.",
-            "zh": "即便正位，落在阻碍位的魔术师也在提醒：警惕被自己的机敏或花哨点子迷住，同时开太多头绪却不肯沉下心做完一件。"
           },
           "action": {
             "en": "Name one single outcome you want this week, clear the rest off your desk, and ship a tangible first version today.",
             "zh": "为这周定下一个唯一的核心成果，把其余杂项清出桌面，今天就交付第一版看得见的实体进展。"
           },
           "outcome": {
-            "en": "A decisive breakthrough takes shape under your own hand—an idea crosses cleanly from talk into reality.",
-            "zh": "一次由你亲手促成的实质突破将水到渠成，原本停留在口头或蓝图里的构想会稳稳落地成形。"
+            "en": "If you keep your focus on one aim, a decisive breakthrough is likely to take shape under your own hand, as an idea crosses cleanly from talk into reality.",
+            "zh": "只要持续聚焦同一个目标，一次由你亲手促成的实质突破很可能成形，让停留在口头或蓝图里的构想走进现实。"
           },
           "advice": {
             "en": "Align intent with action: say what you mean, use every skill ethically, and let visible craft speak louder than hype.",
             "zh": "让动机与行动严格对齐：言出必行、坦荡运用你的影响力，用扎实的成品而非夸饰话术赢得局面。"
+          },
+          "hidden": {
+            "en": "A skill or contact you already have may be doing more work here than you credit. Check what is sitting unused on your own table before deciding something is missing.",
+            "zh": "你手里已有的某项本事或人脉，在这件事里起的作用也许比你以为的大。先别急着说缺了什么，看看自己桌上还有哪样东西一直没动用。"
+          },
+          "self": {
+            "en": "You arrive as the one who makes things happen: articulate, resourceful, sure you can pull the pieces together. You bring real skill, and also the expectation that the result rests on you.",
+            "zh": "你是以“能把事情办成的人”的面貌出场的：会说，会想办法，自信能把零散的条件凑成一盘棋。你带来的是真本事，也默认了成败系于你一身。"
+          },
+          "other": {
+            "en": "The other party appears capable and deliberate: well prepared, persuasive, and clear about what they want from this. They are likely to take the initiative, so look for whether their actions match the pitch.",
+            "zh": "对方看上去有备而来，做事有章法：口才好，对自己想从中得到什么也很清楚。他们多半会主动出手，你可以留意他们的行动是否跟说法对得上。"
+          },
+          "external": {
+            "en": "The setting rewards initiative right now: the means are available, people are receptive to a clear proposal, and a well-timed request is likely to get a real answer.",
+            "zh": "眼下的环境对主动的人很友好：该有的条件都在，清楚的提议容易被人听进去，时机得当的请求多半能换来一个实在的答复。"
+          },
+          "hopes_fears": {
+            "en": "Part of you hopes you really do have everything needed to pull this off; another part fears being found out as less skilled than you sound, with no excuse left if it does not work.",
+            "zh": "你希望自己真的万事俱备、能把这件事做成，又怕被人看出本事没有说的那么大，更怕万一没成，连个借口都找不到。"
           }
         },
         "domains": {
@@ -320,9 +400,25 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Close the gap between what is said and what is done. Either put a shelved skill to real use, or scale the promise back to what you can actually deliver.",
+            "zh": "把说的和做的之间那道缝补上：要么让搁着的本事真正派上用场，要么把话收回到自己确实兑现得了的范围之内。"
+          },
+          "foundation": {
+            "en": "This grew out of promise that never quite became product: plans kept in drafts, talent held back by doubt, or an earlier pitch that ran ahead of what was really there.",
+            "zh": "事情的根子在于“有潜力”一直没变成“有成果”：计划始终停在草稿里，才华被自我怀疑压着，或者早先有一次把话说在了实际能力的前头。"
+          },
+          "present": {
+            "en": "At the moment effort is spread across too many things and little is reaching a finished state. There is plenty of talk and preparation, but not much that someone else could pick up and use.",
+            "zh": "眼下的精力摊得太开，真正收尾的东西很少。说的不少，准备的也不少，可拿得出来、别人能直接接着用的却没几样。"
+          },
           "challenge": {
             "en": "Scattered priorities, imposter syndrome, or a slick presentation with weak substance is undermining real traction.",
             "zh": "精力分散、冒牌者心理，或华而不实的包装，正在暗中削弱你真正需要的推进力。"
+          },
+          "resource": {
+            "en": "The ability itself is intact; it has only been idle or dressed up. The drafts and half-built pieces you already have are real material, and plain work without the show is still open to you.",
+            "zh": "本事本身并没有丢，只是被闲置了，或者被包装得过了头。手头那些草稿和做到一半的东西都是实打实的材料；不靠噱头、老老实实把活做出来，这条路一直是通的。"
           },
           "action": {
             "en": "Audit one claim or plan for hidden gaps, cut the showmanship, and execute one verifiable step without fanfare.",
@@ -335,6 +431,26 @@
           "advice": {
             "en": "Check both your confidence and your motives—neither undersell real competence nor oversell what you cannot back up.",
             "zh": "同时校准自信与动机——既别妄自菲薄埋没真本事，也绝不透支信用去许诺兑现不了的事。"
+          },
+          "hidden": {
+            "en": "Look for a gap between the presentation and the substance, yours or someone else's. Something here may be more persuasive than proven, and it is worth asking to see the working.",
+            "zh": "留意包装和实质之间有没有落差，不管是你自己的还是别人的。这里面也许有什么东西说服力大过了实证，值得把过程摊开来核对一遍。"
+          },
+          "self": {
+            "en": "You come across as unsure of your own hand: underselling what you can do, or covering doubt with polish and big claims. The tools are yours, but you are not yet standing behind them.",
+            "zh": "你对自己的身手显得没底：要么把能做到的事往小了说，要么用漂亮话和大承诺来盖住心虚。工具是你的，只是你还没有真正站到它们背后去。"
+          },
+          "other": {
+            "en": "Whoever you are dealing with may be offering more polish than proof: fluent, confident, and vague on specifics. They could also be capable but scattered, so judge by what gets delivered rather than how it is framed.",
+            "zh": "对方给出的可能是包装多于实据：说得流利，显得自信，一到细节就含糊。也有可能他们确有能力，只是精力分散。看交出来的东西，别看说法有多漂亮。"
+          },
+          "external": {
+            "en": "The environment around you is noisy with claims that are hard to verify: inflated offers, shifting requirements, or too many channels competing for attention. Assume details need checking.",
+            "zh": "你所处的环境里充斥着难以核实的说法：被夸大的条件，变来变去的要求，或者太多渠道同时抢你的注意力。细节最好都当作需要核对的来对待。"
+          },
+          "hopes_fears": {
+            "en": "You hope the talent you have been sitting on is as good as you suspect, yet fear that showing real work would expose its limits, so the next draft keeps feeling safer than the launch.",
+            "zh": "你希望自己一直压着没用的才华真有想象中那么好，又怕把真东西拿出来会暴露它的短处，于是总觉得再改一稿比正式亮相更稳妥。"
           }
         },
         "domains": {
@@ -458,25 +574,45 @@
             "en": "Much of the real movement is happening behind the veil right now; patience and careful listening yield better intelligence than loud interrogation.",
             "zh": "真正决定走向的变化正在帷幕之后酝酿；此刻安静观察与倾听，比大声追问更能摸清实情。"
           },
+          "challenge": {
+            "en": "Reserve can go too far: staying behind the veil so long that collaborators cannot tell where you stand.",
+            "zh": "克制与藏锋一旦过度就成了阻力：一直留在帷幕之后，会让同路人摸不清你的真实立场。"
+          },
           "resource": {
             "en": "Your clearest advantage is quiet discernment—reading tone, timing, and what goes unsaid without tipping your own hand.",
             "zh": "你最强的筹码是沉静敏锐的洞察力——能听懂语气、时机与言外之意，同时不轻易亮出底牌。"
-          },
-          "challenge": {
-            "en": "Even upright, The High Priestess in a challenge slot flags excessive reserve: staying behind the veil so long that collaborators cannot tell where you stand.",
-            "zh": "即便正位，落在阻碍位的女祭司也提示过度克制与藏锋：一直留在帷幕之后，会让同路人摸不清你的真实立场。"
           },
           "action": {
             "en": "Sleep on the decision, journal the quiet gut check you keep brushing past, and wait for one missing piece of context before committing.",
             "zh": "先把决定放过一夜，写下你一直想略过的那点直觉违和感，等那块缺失的背景拼图露面后再拍板。"
           },
           "outcome": {
-            "en": "A hidden nuance surfaces clearly in its own time, rewarding restraint with deeper understanding rather than premature commitment.",
-            "zh": "原本遮蔽的关键脉络会顺时显现，你的沉着守候将换来更透彻的把握，而不是草率表态后的被动。"
+            "en": "If you hold your patience, a hidden nuance is likely to surface in its own time, and restraint tends to bring deeper understanding than a premature commitment would.",
+            "zh": "只要沉得住气，原本遮蔽的关键脉络很可能顺时显现；沉着守候换来的，往往是更透彻的把握，而不是草率表态后的被动。"
           },
           "advice": {
             "en": "Honor the pause between opposites—keep your plans private until they have matured enough to hold their own shape.",
             "zh": "尊重两极之间的留白——在念头与计划真正站稳脚跟前，先为其保有一份安静私密的酝酿空间。"
+          },
+          "hidden": {
+            "en": "Something relevant may not have been said yet: a piece of context held back, or an impression you registered and set aside. Before deciding, ask what you already sense but have not put into words.",
+            "zh": "也许有些相关的东西还没被说出来：一段被保留的背景，或者一个你当时留意到、却又搁下的印象。做决定之前，问问自己哪些事你已经隐约觉察，只是还没有用话说出来。"
+          },
+          "self": {
+            "en": "You are showing up as the quiet observer: listening more than you speak, keeping your reading of things to yourself, and trusting what you notice over what you are told.",
+            "zh": "你在这件事里是个安静的旁观者：听得多，说得少，对局面的判断先放在心里，比起别人告诉你的，更相信自己留意到的东西。"
+          },
+          "other": {
+            "en": "The other person appears reserved and hard to read, likely sharing less than they know. Their silence may be caution rather than coldness, so watch what they do over time instead of pressing for a statement.",
+            "zh": "对方显得含蓄、不容易看透，说出来的多半比知道的少。这份沉默可能是谨慎，而不是冷淡；与其逼他们表态，不如多看一段时间他们怎么做。"
+          },
+          "external": {
+            "en": "Not all the information is on the table yet, and no one outside is in a hurry to supply it. The timing favors waiting and watching; decisions made elsewhere have not been announced.",
+            "zh": "信息还没有全部摆上台面，外面也没有人急着补给你。眼下的时机更适合等一等、看一看；别处已经做出的一些决定，尚未对外公布。"
+          },
+          "hopes_fears": {
+            "en": "You hope your quiet read of this is right and that patience will be rewarded, yet fear what might be behind the curtain, or that by staying silent you will miss the moment to speak.",
+            "zh": "你希望自己心里那份判断是对的，耐心能换来回报；又怕帷幕后面藏着不想看到的东西，或者一直不出声，反而错过了该开口的时机。"
           }
         },
         "domains": {
@@ -526,21 +662,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "You already noticed something and talked yourself out of it. Go back to that first impression and take it seriously, and say plainly the thing that has stayed unsaid for too long.",
+            "zh": "有件事你其实早就察觉了，只是又把自己劝了回去。回到那个最初的印象，认真对待它；那句压了太久的话，也该直截了当地说出来了。"
+          },
+          "foundation": {
+            "en": "Earlier on, a warning sign was noticed and overruled, or something important was kept quiet to avoid friction. The present confusion traces back to that moment of not listening or not telling.",
+            "zh": "早些时候，有个警讯被察觉了却又被压了下去，或者为了避免摩擦，一件要紧的事被按着没说。眼下的混乱，可以追溯到当初那次没听、或没讲。"
+          },
+          "present": {
+            "en": "Right now there is more noise than signal: many opinions, little clarity, and important things going unsaid. You may be acting on other people's certainty while your own sense of it stays muffled.",
+            "zh": "眼下是杂音多、真信号少：意见一大堆，清楚的没几句，要紧的话却没人说。你也许正照着别人的笃定行事，自己的感觉反倒被捂住了。"
+          },
           "challenge": {
             "en": "Second-guessing your instincts or operating with incomplete, withheld information is fogging the choice.",
             "zh": "不信任自己的第一判断，或关键信息被遮蔽保留，正在让选择变得模糊难辨。"
+          },
+          "resource": {
+            "en": "Your instinct still works; it has only been overruled. The discomfort you keep feeling is usable information, and once the withheld thing is spoken, a good deal of pressure is likely to lift.",
+            "zh": "你的直觉并没有失灵，只是一再被否决。那份挥之不去的别扭本身就是可用的信息；压着的话一旦说出口，很大一部分压力多半会随之卸下。"
           },
           "action": {
             "en": "Turn down external opinions for one day and ask the straightforward question that brings hidden assumptions into the open.",
             "zh": "把外界建议先静音一天，同时直接抛出那个能把隐藏前提摊开在台面上的坦诚问题。"
           },
           "outcome": {
-            "en": "Secrets or overlooked gut signals surface unmistakably; honesty clears up confusion that silence only prolonged.",
-            "zh": "被掩藏的细节或被忽视的直觉终会浮出水面；坦白直面会终结沉默拉长的内耗。"
+            "en": "If this continues, secrets or overlooked gut signals tend to surface unmistakably; honesty is likely to clear up confusion that silence only prolonged.",
+            "zh": "照此下去，被掩藏的细节或被忽视的直觉往往会浮出水面；坦白直面，多半能化解被沉默拉长的困惑。"
           },
           "advice": {
             "en": "Trust what you already quietly know—and distinguish sacred privacy from evasive secrecy.",
             "zh": "相信你心里其实早已知道的答案，同时分清值得守护的边界隐私与逃避沟通的刻意隐瞒。"
+          },
+          "hidden": {
+            "en": "Check whether something is being deliberately kept from view, by you or by someone else: a fact left out, a feeling denied, a silence that serves one side. What is unspoken may be shaping this more than what is said.",
+            "zh": "查一查是否有什么被刻意挡在视线之外，无论是你还是别人所为：一个被略去的事实，一种不肯承认的感受，一段只对某一方有利的沉默。没说出口的，可能比说出来的更左右局面。"
+          },
+          "self": {
+            "en": "You come to this doubting your own read: asking around for answers you half know, or keeping your real view so guarded that others cannot respond to it.",
+            "zh": "你带着对自己判断的怀疑走进这件事：心里明明有了七八分答案，还四处去问；或者把真实想法守得太严，别人根本无从回应。"
+          },
+          "other": {
+            "en": "The other side may be sending mixed signals: withholding, answering around the question, or going quiet at key moments. You cannot know why from here, so ask directly and note what comes back.",
+            "zh": "对方可能有所保留，或者释放的信号前后不一：答非所问，或在关键时刻沉默下来。原因你此刻无从判断，所以不妨直接问，再看得到的是什么回应。"
+          },
+          "external": {
+            "en": "The surroundings are full of rumor, partial information, and confident voices that do not agree with each other. It is a poor climate for reading subtle signals, and a good one for stating things plainly.",
+            "zh": "周围满是传闻、不完整的信息，还有一个个说得笃定却彼此矛盾的声音。这样的气氛不利于揣摩细微信号，倒很适合把话摊开来说。"
+          },
+          "hopes_fears": {
+            "en": "The hope is that the truth comes out and clears the air. The fear is what it would change, or that your gut feeling was right all along and you ignored it.",
+            "zh": "你希望真相大白、把话说开，又怕它一旦揭晓会改变太多，更怕自己的直觉从一开始就是对的，而你偏偏没有理会。"
           }
         },
         "domains": {
@@ -670,25 +842,45 @@
             "en": "You are in a fertile, receptive season—ideas ripen easily, hospitality opens doors, and tangible comfort restores clarity.",
             "zh": "你正身处丰茂而具生长力的时节——灵感容易成形，温厚待人能打开局面，实在的生活质感也会带回清醒。"
           },
+          "challenge": {
+            "en": "Comfort and care can become the obstacle: ask whether lingering in ease, or over-tending everyone else's garden, is delaying a necessary boundary or hard cut.",
+            "zh": "安逸与照料也可能成为阻碍：沉溺于舒适，或忙着照料所有人的花园，是否让你推迟了一次必要的划界或剪枝？"
+          },
           "resource": {
             "en": "Your strongest asset is generative warmth: an eye for beauty, care that helps people thrive, and the patience to cultivate real quality.",
             "zh": "你最宝贵的资源是生发与滋养的能力——出众的审美直觉、让身边人舒展生长的温度，以及肯陪好作品慢慢成熟的耐心。"
-          },
-          "challenge": {
-            "en": "Even upright, The Empress in a challenge position asks whether lingering in comfort or over-tending everyone else's garden is delaying a necessary boundary or hard cut.",
-            "zh": "即便正位，落在阻碍位的皇后也提醒审视：沉溺于安逸，或忙着照料所有人的花园，是否让你推迟了一次必要的取舍或剪枝？"
           },
           "action": {
             "en": "Invest directly in nourishment and craft—upgrade the environment, tend the core project lovingly, and savor one concrete sensory joy today.",
             "zh": "直接把投入给到滋养与品质——美化你身处的空间、用心打磨核心作品，并在今天认真享受一件具体而温润的生活愉悦。"
           },
           "outcome": {
-            "en": "Rich harvest and tangible thriving follow: creative work bears fruit, relationships soften into warmth, and prosperity feels lived-in rather than frantic.",
-            "zh": "饱满的收获与踏实的兴盛即将呈现：创意落地结果，关系回暖丰盈，富足感沉稳可触而非紧绷奔忙。"
+            "en": "With continued care, this course tends toward a rich harvest: creative work is likely to bear fruit, relationships to soften into warmth, and prosperity to feel lived-in rather than frantic.",
+            "zh": "只要继续用心照料，这条路倾向于迎来饱满的收获：创意很可能落地结果，关系回暖丰盈，富足感沉稳可触而非紧绷奔忙。"
           },
           "advice": {
             "en": "Create from abundance rather than scarcity—tend your own body and environment first so your generosity stays sustainable.",
             "zh": "从丰足而非匮乏的心态去创造——先把自己与生活环境照顾舒展，你的慷慨才能源源不断。"
+          },
+          "hidden": {
+            "en": "Under the surface, something may be growing that has not shown yet: a project, a feeling, or goodwill built up through steady care. Check what your attention has been feeding without your quite noticing.",
+            "zh": "这里也许有东西正在生长，只是还没冒出地面：一个项目，一份感情，或者靠长期照料攒下来的好感。看看你的心思在不知不觉间一直滋养着什么。"
+          },
+          "self": {
+            "en": "You show up as the one who tends and provides: warm, generous, attentive to comfort and quality. You bring patience for slow growth and a sense that things done with care turn out better.",
+            "zh": "你是那个照料和供养的人：待人温暖，出手大方，在意舒适和品质。你带来的是陪事情慢慢长大的耐心，也相信用心做出来的东西总会更好。"
+          },
+          "other": {
+            "en": "The other person appears warm and giving, likely showing care through practical things: food, time, comfort, help offered before it is asked for. They seem inclined to let this develop at its own pace.",
+            "zh": "对方显得温暖而肯付出，多半是用实在的方式表达关心：吃的，时间，舒适，或者没等你开口就伸出的援手。他们似乎愿意让这件事按自己的节奏慢慢发展。"
+          },
+          "external": {
+            "en": "You are in supportive surroundings: resources are adequate, people nearby are willing to help, and the season favors growth. Like the wheat in the field, things ripen here without being pushed.",
+            "zh": "你身处一个有支撑的环境：资源够用，身边的人愿意搭把手，时节也利于生长。就像田里的麦子，这里的事情不用催，自己会熟。"
+          },
+          "hopes_fears": {
+            "en": "You hope this will grow into something rich and lasting if you keep caring for it, yet fear giving so much that you lose yourself in it, or that comfort will make you stop reaching.",
+            "zh": "你希望只要继续用心照料，它就能长成丰厚而长久的东西；又怕付出太多把自己也搭了进去，或者日子过得太舒服，反而不再往前够。"
           }
         },
         "domains": {
@@ -738,9 +930,25 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Look after the one who has been looking after everything. Until your own rest and enjoyment are back on the list, more giving or more managing is unlikely to help what you care about.",
+            "zh": "先照顾好那个一直在照顾一切的人。在你把自己的休息和乐趣重新排上日程之前，再多的付出、再细的操心，恐怕都帮不到你在意的那些人和事。"
+          },
+          "foundation": {
+            "en": "For a long stretch you gave more than you took in, or held on tightly to someone in the name of helping. The tiredness and the tension of today grew from that imbalance.",
+            "zh": "有很长一段时间，你付出的远多于得到的补给，或者以帮忙为名把某个人攥得太紧。今天的疲惫和紧绷，就是从那种失衡里长出来的。"
+          },
+          "present": {
+            "en": "Things feel dry at the moment: ideas come slowly, care feels like duty, and small pleasures keep being postponed. Help may be flowing in a way that leaves little room for anyone to breathe, you included.",
+            "zh": "眼下的状态有些干涸：灵感来得慢，照顾别人成了尽义务，小小的享受一再往后推。付出的方式也可能让谁都喘不过气，包括你自己。"
+          },
           "challenge": {
             "en": "Creative stagnation, burnout from over-giving, or clinging to comfort is dulling your natural vitality.",
             "zh": "创作卡壳、过度付出导致的干涸，或贪恋舒适区，正在钝化你原本鲜活的生命力。"
+          },
+          "resource": {
+            "en": "The capacity to nurture is still yours; it is only pointed outward. Turned back toward your own rest and work, it tends to recover quickly, and stepping out of a draining role may bring more relief than guilt.",
+            "zh": "滋养的能力还在你身上，只是一直朝外使。把它转回来用在自己的休息和创作上，恢复起来往往很快；从一个耗人的角色里退出来，带来的轻松可能比愧疚多。"
           },
           "action": {
             "en": "Stop rescuing someone else's harvest for a week and put one hour daily back into your own body, art, or living space.",
@@ -753,6 +961,26 @@
           "advice": {
             "en": "Nurture yourself with the same unhurried generosity you keep offering everyone else—and let loved ones grow on their own stems.",
             "zh": "把你一向分给旁人的耐心与慷慨先留给自身，同时也放心让身边的人在各自的枝干上独立生长。"
+          },
+          "hidden": {
+            "en": "Ask what the giving is really for. Under the helpfulness there may be a fear of not being needed, or a doubt about deserving care yourself, that has not been looked at directly.",
+            "zh": "问问自己这样付出到底是为了什么。在热心帮忙的底下，也许藏着一种怕不被需要的担心，或者对自己是否配得上被照顾的怀疑，一直没有被正视过。"
+          },
+          "self": {
+            "en": "You come to this running low: putting yourself last, doubting your own appeal or creative voice, or holding people close because letting go feels like loss.",
+            "zh": "你是带着亏空来的：总把自己排在最后，怀疑自己的吸引力或创作上的声音，或者因为一松手就觉得失去，所以把人抓得很近。"
+          },
+          "other": {
+            "en": "The other person may be coming across as either worn out or over-involved: too tired to give much, or helping in ways that leave you little room. Notice whether their care arrives with conditions attached.",
+            "zh": "对方给人的印象可能是两种之一：要么已经累得给不出多少，要么管得太多、让你没什么余地。留意一下，他们的关心是不是附带着条件。"
+          },
+          "external": {
+            "en": "Little is coming back from your surroundings right now: thin support, a demanding household or workplace, or an atmosphere where rest has to be justified. Growth is slow because the ground is tired, not because the seed is poor.",
+            "zh": "周围的环境眼下回馈很少：支持单薄，家里或单位处处要你出力，或者气氛让人觉得休息还得找理由。长得慢，是因为地力乏了，而不是种子不好。"
+          },
+          "hopes_fears": {
+            "en": "You long to feel full and creative again, and to be cared for in return, yet fear that if you stop giving, people will drift away or things will fall apart without you.",
+            "zh": "你盼着重新感到充盈、有创造力，也盼着有人反过来照顾你；可又怕自己一旦停止付出，身边的人就会走远，或者没了你事情就会垮掉。"
           }
         },
         "domains": {
@@ -874,25 +1102,45 @@
             "en": "Structure and authority are the decisive levers right now; consistency earns more trust than improvised flair.",
             "zh": "此刻真正起决定作用的是结构、规则与定力；稳定可靠的兑现比临场炫技更能赢得信赖。"
           },
+          "challenge": {
+            "en": "Friction with rigid authority is the snag here—either someone's inflexible rulebook or your own reluctance to yield control.",
+            "zh": "症结在于与强硬权威的摩擦——要么受制于他人僵化的规条，要么是你自己难以松开掌控权。"
+          },
           "resource": {
             "en": "Your strongest asset is executive clarity—the nerve to make tough calls, hold a line under pressure, and protect what matters.",
             "zh": "你手中最强的资本是决断与担当——敢在关键处拍板、扛得住外部施压，并切实护住核心盘面。"
-          },
-          "challenge": {
-            "en": "Even upright, The Emperor in a challenge slot highlights friction with rigid authority—either someone's inflexible rulebook or your own reluctance to yield control.",
-            "zh": "即便正位，落在阻碍位的皇帝也指向与强硬权威的摩擦——要么受制于僵化规条，要么是你自己难以松开掌控权。"
           },
           "action": {
             "en": "Write down the plan, budget, or boundary in concrete terms today and enforce it consistently without apologizing for having standards.",
             "zh": "今天就用白纸黑字定好计划、预算或底线，随后稳定执行，不必因为立了清晰标准而感到抱歉。"
           },
           "outcome": {
-            "en": "A stable, defensible foundation takes hold—earning lasting authority, material security, and clear strategic footing.",
-            "zh": "稳固而能经受考验的根基将扎实落成，为你换来长久的话语权、现实安全感与清晰版图。"
+            "en": "If you keep enforcing the structure consistently, a stable, defensible foundation is likely to take hold, bringing more lasting authority, material security, and clear strategic footing.",
+            "zh": "只要持续稳定地执行这套章法，稳固而经得起考验的根基很可能扎实成形，带来更长久的话语权、现实安全感与清晰的战略立足点。"
           },
           "advice": {
             "en": "Lead like a steward rather than a tyrant: protect the realm through fair, predictable rules and stay willing to hear honest counsel.",
             "zh": "以守土担当者的气度掌舵，而非唯我独尊的独裁者：用公平可预期的规则稳住大局，同时留出听取真话的通道。"
+          },
+          "hidden": {
+            "en": "Find out who actually sets the rules here. An unstated hierarchy, an old agreement, or one person's standards may be governing this more than anything written down.",
+            "zh": "弄清楚这里到底是谁在定规矩。一套没明说的上下级关系，一份旧约定，或者某个人的标准，可能比任何写下来的条文更管事。"
+          },
+          "self": {
+            "en": "You step in as the responsible one: organized, decisive, willing to set terms and be held to them. You bring structure and protection, and expect others to respect the lines you draw.",
+            "zh": "你是以负责人的姿态站出来的：有条理，敢决断，愿意定下规矩并且自己先守住。你带来的是秩序和保护，也希望别人尊重你划下的线。"
+          },
+          "other": {
+            "en": "The other party appears firm and in charge: clear about their terms, steady under pressure, perhaps protective. They are likely to respond better to a direct, well-organized case than to emotional appeal.",
+            "zh": "对方显得稳重而有主导权：条件讲得清楚，压力之下不乱，也许还带着几分保护的意味。跟他们打交道，条理分明地直说，多半比诉诸情绪更有效。"
+          },
+          "external": {
+            "en": "You are dealing with an established order: clear hierarchy, formal rules, institutions that move by procedure. It is stable and predictable, and it rewards those who work within its structure.",
+            "zh": "你面对的是一套成形的秩序：层级分明，规则正式，机构按程序办事。它稳定、可预期，也更照顾那些肯在框架之内做事的人。"
+          },
+          "hopes_fears": {
+            "en": "You hope to be the steady authority others can rely on, with things firmly under control, yet fear the weight of being responsible for everything, or of becoming rigid and distant in the process.",
+            "zh": "你希望成为别人靠得住的主心骨，把局面稳稳握在手里；又怕样样都得自己扛的那份重量，或者在这个过程中变得僵硬、不近人情。"
           }
         },
         "domains": {
@@ -942,9 +1190,25 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Check how you are using authority. If you are gripping every detail, loosen it; if you have handed the decision to whoever is loudest, take it back.",
+            "zh": "先看看你是怎么用手里这份权的。如果事事都攥着不放，就松一松；如果已经把决定权让给了嗓门最大的人，就把它拿回来。"
+          },
+          "foundation": {
+            "en": "This goes back to a time when control was misused or missing: a domineering figure, rules enforced without explanation, or a stretch when no one was really in charge.",
+            "zh": "这件事要追溯到一段权力被滥用或缺位的时期：一个说一不二的人物，一些只管执行不作解释的规矩，或者有一阵子根本没人真正负责。"
+          },
+          "present": {
+            "en": "Order is strained at the moment. Either rules are being enforced so tightly that people push back, or nobody is holding the line and things are drifting; possibly both in different corners.",
+            "zh": "眼下的秩序绷得很紧。要么规矩管得太死，引来了反弹；要么没人守线，事情在慢慢走偏；也可能两种情况在不同的角落同时存在。"
+          },
           "challenge": {
             "en": "Power struggles, rigid bureaucracy, or missing discipline is stalling progress.",
             "zh": "权力角力、死板规章或自身缺少章法与纪律，正在卡住事情的推进。"
+          },
+          "resource": {
+            "en": "You have seen up close what heavy-handed or absent leadership costs, and that is hard-won knowledge. It lets you build rules that are firm where it counts and humane everywhere else.",
+            "zh": "强硬的管法和缺位的管法各要付出什么代价，你都近距离见过，这是花了学费换来的见识。有了它，你可以立出在要紧处坚定、在其余地方通情达理的规矩。"
           },
           "action": {
             "en": "Identify where you are gripping too tightly—or failing to set a basic rule—and replace force with one clear, fair agreement.",
@@ -957,6 +1221,26 @@
           "advice": {
             "en": "True authority does not need to dominate every detail—delegate cleanly where others are capable and hold firm only on core principles.",
             "zh": "真正的权威不必处处死盯——在旁人胜任处放手授权，只把硬立场留给真正的核心原则。"
+          },
+          "hidden": {
+            "en": "Look for a harsh inner rule you have not questioned: that resting is weakness, or that being wrong is unforgivable. It may be driving the need to control, or the urge to avoid deciding at all.",
+            "zh": "找找心里有没有一条从没质疑过的严苛规矩：比如休息就是软弱，出错就不可原谅。也许正是它在驱使你非控制不可，或者干脆不敢做决定。"
+          },
+          "self": {
+            "en": "You are showing up either braced and controlling or unwilling to take charge. Underneath both is the same unease about whether your authority would hold if you used it calmly.",
+            "zh": "你呈现出来的要么是绷着劲、事事要管，要么是不肯站出来拿主意。两种样子底下是同一份不安：如果心平气和地行使权威，它还立得住吗？"
+          },
+          "other": {
+            "en": "They may be acting inflexibly: insisting on their way, checking every detail, treating a question as a challenge. Or they may be dodging responsibility; see which pattern their behavior fits.",
+            "zh": "对方的做法可能比较强硬：坚持照自己的来，样样细节都要过问，把提问当成挑战。也可能是在躲责任；看看他们的行为更符合哪一种。"
+          },
+          "external": {
+            "en": "The structures around you are not working well: rules applied by rote, decision-makers who are overbearing or absent, a chain of command no one fully trusts. Red tape and unclear ownership are likely.",
+            "zh": "你周围的体系运转得并不顺：规定被机械地套用，拍板的人要么过于强势要么不见踪影，上下级之间谁也不太信谁。繁琐的手续和权责不清，恐怕免不了。"
+          },
+          "hopes_fears": {
+            "en": "You want to stay in command without having to fight for it. What you fear is that easing your grip means losing respect, and that holding on means becoming the tyrant you would not want to work for.",
+            "zh": "你希望不用争也能稳住话语权；又怕手一松就没人服你，而继续攥紧，又会变成那种连你自己都不愿共事的专断上司。"
           }
         },
         "domains": {
@@ -1082,25 +1366,45 @@
             "en": "Learning, alignment with a community, or formalizing an agreement sits at the heart of what is unfolding now.",
             "zh": "系统学习、融入志同道合的共同体，或把重要约定正式落定，正处在当下局面的核心。"
           },
+          "challenge": {
+            "en": "The tension lies between honoring an established convention and outgrowing a rulebook that feels slightly too narrow.",
+            "zh": "张力出现在两者之间：一边是尊重既有的传统规范，一边是想突破一套略显偏窄的旧规。"
+          },
           "resource": {
             "en": "Your strongest resource is trusted lineage—mentors, formal credentials, documented standards, or a community that shares your ethics.",
             "zh": "你最扎实的助力来自可信赖的传承与体系——良师益友、专业背书、成熟规范，或与你同频的社群。"
-          },
-          "challenge": {
-            "en": "Even upright, The Hierophant in a challenge slot highlights tension between honoring an established convention and outgrowing a rulebook that feels slightly too narrow.",
-            "zh": "即便正位，落在阻碍位的教皇也呈现尊重传统规范与突破偏窄旧规之间的张力。"
           },
           "action": {
             "en": "Ask an experienced mentor one specific question, study the canonical fundamentals, or formalize the shared terms in clear view of everyone involved.",
             "zh": "带着一个具体问题向真正懂行的前辈请教，沉下心补齐正统基本功，或把各方的共识正式立为明文。"
           },
           "outcome": {
-            "en": "A recognized credential, blessed commitment, or sturdy shared framework brings lasting credibility and belonging.",
-            "zh": "一份受认可的资质、郑重落定的承诺或稳固的共同框架，将为你带来长久的公信力与归属感。"
+            "en": "This course tends toward a recognized credential, blessed commitment, or sturdy shared framework, which is likely to bring lasting credibility and belonging.",
+            "zh": "照此走下去，倾向于迎来一份受认可的资质、郑重落定的承诺或稳固的共同框架，并很可能带来长久的公信力与归属感。"
           },
           "advice": {
             "en": "Master the craft's real foundations before trying to break its rules—integrity within a shared standard earns deep trust.",
             "zh": "在打破规矩之前先吃透正统根基——在清晰公认的准则内守住操守，最能赢得深厚信赖。"
+          },
+          "hidden": {
+            "en": "An unwritten code may be at work here: what is considered proper, who is allowed to speak, which traditions go unquestioned. Check how much of your position rests on beliefs you inherited and never examined.",
+            "zh": "这里可能有一套不成文的规矩在起作用：什么算得体，谁有资格说话，哪些传统没人去问为什么。看看你的立场里有多少是继承来的、从没检验过的信念。"
+          },
+          "self": {
+            "en": "You come to this as a student of the established way, or as its teacher: respectful of what has worked before, loyal to your commitments, and keen to do things properly.",
+            "zh": "你要么以学生、要么以传授者的身份来面对这件事，守的都是那套成熟的路数：尊重前人行之有效的做法，认真对待许下的承诺，凡事力求合乎规范。"
+          },
+          "other": {
+            "en": "The other person appears conventional and principled, likely guided by a tradition, a profession, or family expectations. They may take the role of adviser, and will probably want things done the recognized way.",
+            "zh": "对方显得传统而有原则，背后多半有某种传承、行业规范或家庭期待在指引。他们可能会以指点者的角色出现，也大概希望事情按公认的方式来办。"
+          },
+          "external": {
+            "en": "Institutions and shared customs shape the field: schools, professional bodies, family or community expectations. Approval here runs through recognized channels, and a mentor or formal process is available.",
+            "zh": "大环境由制度和共同的习俗塑造：学校，行业组织，家庭或社群的期待。在这里，认可要走公认的渠道，而导师或正式的程序也是现成可用的。"
+          },
+          "hopes_fears": {
+            "en": "You hope to belong, to be recognized by people you respect and guided by something tested, yet fear that fitting in will cost you your own voice.",
+            "zh": "你渴望有所归属，被自己敬重的人认可，有经得起检验的东西可以依循；又怕为了合群，得把自己的声音交出去。"
           }
         },
         "domains": {
@@ -1150,27 +1454,63 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Sort the rules you follow into those you believe and those you only obey. Keep what still holds up in practice, and stop performing the rest for approval.",
+            "zh": "把你遵守的规矩分成两类：真心认同的，和只是照办的。经得起实践检验的留下；其余那些为了换取认可而做的样子，可以不必再演了。"
+          },
+          "foundation": {
+            "en": "At the root is a set of teachings you were handed and expected to accept: a family script, a creed, a workplace's settled way of doing things. You either complied at your own expense or broke away hard, and that history is still active.",
+            "zh": "根子上是一套别人交到你手里、默认你会接受的教导：家里的老规矩，某种信条，或者“我们这儿一向这么做”。你当年不是委屈自己照办，就是狠狠挣脱，而那段经历至今还在起作用。"
+          },
+          "present": {
+            "en": "The usual rulebook is not fitting the case at present. You are going through the motions of a convention you doubt, or rejecting advice mainly because of who it comes from.",
+            "zh": "眼下，惯常的那套规则套不上这件事。你要么在走一个自己都存疑的过场，要么在拒绝一条建议，主要原因只是它出自谁之口。"
+          },
           "challenge": {
             "en": "Stale orthodoxy, gatekeeping, or unexamined 'how we've always done it' thinking is boxing in the real solution.",
             "zh": "僵化教条、门户之见或一句“向来如此”的惯性思维，正在框死真正有效的解法。"
+          },
+          "resource": {
+            "en": "Your doubts are an asset: you know the tradition well enough to see where it has stopped working. That inside knowledge lets you keep its useful core and build a code you can actually stand behind.",
+            "zh": "你的怀疑本身就是本钱：你对这套传统足够熟，才看得出它在哪里已经不灵了。凭着这份内行人的了解，你可以留下其中有用的内核，建立一套自己真正站得住的准则。"
           },
           "action": {
             "en": "Test one inherited assumption against actual present reality—keep the living principle and drop the hollow ritual.",
             "zh": "拿眼下的真实处境检验一条沿袭已久的默认规矩——留住仍有生命力的核心原则，果断舍弃空壳形式。"
           },
           "outcome": {
-            "en": "An unconventional route proves more honest and effective than the textbook track, freeing your independent judgment.",
-            "zh": "一条不按常规脚本走的新路反而更真实有效，你的独立判断力会由此真正松绑。"
+            "en": "If you keep testing the rulebook against experience, an unconventional route is likely to prove more honest and effective than the textbook track, freeing your independent judgment.",
+            "zh": "只要继续拿切身经验检验规条，一条不按常规脚本走的路很可能比照本宣科更真实有效，你的独立判断也有望随之松绑。"
           },
           "advice": {
             "en": "Be your own careful teacher: question stale authority without becoming cynical toward genuine wisdom.",
             "zh": "做自己清醒而负责的导师：敢于质疑过时权威，同时不对真正宝贵的经验陷入犬儒式的排斥。"
+          },
+          "hidden": {
+            "en": "Check whether you have privately stopped believing in something you still publicly uphold. A quiet loss of faith in a rule, a mentor, or an institution may be behind the unease, even if nobody has said so.",
+            "zh": "看看你是否在心里已经不再相信某样自己表面上仍在维护的东西。对一条规矩、一位导师或一个机构悄悄失去的信任，也许就是这份不安的来源，哪怕谁都没有说破。"
+          },
+          "self": {
+            "en": "Your stance is at odds with the expected role: outwardly the good student or loyal member, inwardly unconvinced. Or you are the dissenter, defining yourself by what you refuse.",
+            "zh": "你和别人期待的那个角色并不合拍：外表仍是好学生、忠诚的一员，内心却并不信服。或者你是那个唱反调的人，用自己拒绝什么来定义自己。"
+          },
+          "other": {
+            "en": "The other party may be leaning hard on convention: quoting the rules, deferring to how things are done, guarding who gets in. Or they appear set on breaking with it; either way, the stance looks more reflex than reflection.",
+            "zh": "对方可能很倚重惯例：搬出规定，强调向来的做法，把守着门槛。也可能看上去一心要跟它决裂；不管哪一种，这种姿态都更像是条件反射，而不是想清楚之后的选择。"
+          },
+          "external": {
+            "en": "The institutions around you are showing their age: procedures that no longer serve their purpose, gatekeepers protecting form over substance, or a community split between old guard and breakaways.",
+            "zh": "你周围的体制显出了老态：程序早已偏离初衷，把关的人护着形式而不是实质，或者圈子里守旧的一派和出走的一派各说各话。"
+          },
+          "hopes_fears": {
+            "en": "You hope to live by rules you have tested for yourself, yet fear what stepping out of line will cost: disapproval, lost standing, or finding you threw away something that was holding you up.",
+            "zh": "你希望照着自己亲身检验过的准则生活；又怕出格要付的代价：旁人的不认可，地位的失落，或者事后才发现丢掉的正是一直支撑着你的东西。"
           }
         },
         "domains": {
           "general": {
             "en": "Outgrown conventions need thoughtful revision. Distinguish timeless integrity from rigid conformity and give yourself permission to think independently.",
-            "zh": "不再合时宜的旧规矩需要认真重审。分清真正值得坚守的操守与僵化的随大流，允许自己独立思考并另辟蹊径。"
+            "zh": "不再合时宜的旧规矩需要认真重审。分清真正值得坚守的操守与僵化的随大流，允许自己独立思考。"
           },
           "love": {
             "en": "In love, reversed Hierophant invites defining a relationship on your own authentic terms rather than performing someone else's timeline, expectations, or traditional template.",
@@ -1246,7 +1586,7 @@
         "Rising sunlit mountain peak framed squarely between the two companions"
       ],
       "zh": [
-        "自云端光辉中现身、展开羽翼施予祝福的炽天使",
+        "自云端光辉中现身、展开羽翼施予祝福的天使",
         "在丰茂花园中彼此坦诚相望的两道身影",
         "挂满果实、缠绕灵蛇的知善恶树，象征觉醒与自由抉择",
         "枝头跃动着十二朵火焰的生命之树，象征炙热生机",
@@ -1288,25 +1628,45 @@
             "en": "You stand at a meaningful crossroads or deep point of resonance—clarity arrives the instant you stop hedging between incompatible paths.",
             "zh": "你正站在意义重大的选择路口或深度共鸣期——当你停止在两条互不相容的路之间左右骑墙，局面就会立刻明朗。"
           },
+          "challenge": {
+            "en": "Choosing carries a genuine cost: saying a wholehearted yes to one path means honestly releasing its rival.",
+            "zh": "选择自有真实代价：全心奔向一条路，就意味着必须坦然告别另一条备选。"
+          },
           "resource": {
             "en": "Your strongest asset is genuine rapport and value clarity: when people and priorities actually match, collaboration feels effortless.",
             "zh": "你最强的助力是真挚默契与清晰三观：当同路人与核心方向真正同频时，协作几乎不费力气。"
-          },
-          "challenge": {
-            "en": "Even upright, The Lovers in a challenge slot highlights the genuine cost of choosing—saying a wholehearted yes to one path means honestly releasing its rival.",
-            "zh": "即便正位，落在阻碍位的恋人也点出选择的真实代价——全心奔向一条路，就意味着必须坦然告别另一条备选。"
           },
           "action": {
             "en": "Name your top two non-negotiable values, commit openly to the person or path that honors them, and close the side door you kept half-open.",
             "zh": "写清自己最不可让步的两条核心价值，坦荡奔向真正尊重它们的人或道路，把一直留着的后路门干脆关上。"
           },
           "outcome": {
-            "en": "Deepening mutual trust, clean partnership, or lasting inner coherence rewards a choice made with full sincerity.",
-            "zh": "更深的彼此信赖、稳固同盟或内外一致的踏实感，将回馈这次毫无保留的真诚决定。"
+            "en": "A choice made with full sincerity tends to be rewarded with deepening mutual trust, clean partnership, or lasting inner coherence.",
+            "zh": "一个毫无保留的真诚决定，往往会换来更深的彼此信赖、稳固的同盟或内外一致的踏实感。"
           },
           "advice": {
             "en": "Do not outsource this decision to applause or habit—choose what you can still look in the mirror and respect a year from now.",
             "zh": "别把决定权交给旁人掌声或惯性——选那个一年后你照镜子时依然由衷敬重的选择。"
+          },
+          "hidden": {
+            "en": "Consider whether the choice has already been made somewhere below the surface. An attraction or a loyalty you have not fully acknowledged may be steering this, and it is worth naming before it decides for you.",
+            "zh": "想一想，这个选择是不是在表面之下早已做出。一份你还没有完全承认的吸引或忠诚，也许正在掌舵；趁它替你做决定之前，先把它说出来。"
+          },
+          "self": {
+            "en": "You bring your whole self to this: open about what you feel, clear about what matters to you, and ready to choose rather than keep every option alive.",
+            "zh": "你是全心全意投入这件事的：不掩饰自己的感受，清楚什么对自己重要，也准备好做出选择，而不是把每个选项都吊着。"
+          },
+          "other": {
+            "en": "The other person appears open and sincerely engaged, meeting you face to face rather than at an angle. Their words and actions seem to line up, which suggests real interest in a mutual commitment.",
+            "zh": "对方显得坦诚而投入，是正面迎向你，而不是侧着身子。他们说的和做的看起来对得上，这多半意味着他们是认真想要一份双向的承诺。"
+          },
+          "external": {
+            "en": "The circumstances favor partnership: people around you are supportive of the match, and conditions line up for a joint decision. An outside choice point, such as an offer or an invitation, may be asking for a clear answer.",
+            "zh": "外部条件有利于结盟：身边的人看好这份契合，各方面也凑齐了共同做决定的时机。也可能有一个来自外界的选择摆在面前，比如一份邀约或提议，等着你给出明确答复。"
+          },
+          "hopes_fears": {
+            "en": "You hope for a bond where you are fully seen and fully chosen, yet fear what choosing it closes off, and how exposed you would be if you gave a wholehearted yes.",
+            "zh": "你渴望一份自己被完全看见、也被坚定选择的关系；又怕选了它就等于关上别的门，更怕全心说出“我愿意”之后，自己会毫无遮挡。"
           }
         },
         "domains": {
@@ -1356,21 +1716,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Stop agreeing to things that go against what you value. Name the mismatch honestly, to yourself first, and let the decision follow from that rather than from the wish to keep the peace.",
+            "zh": "别再对违背自己价值的事点头了。先对自己老实说出哪里不合拍，再让决定从这份诚实里长出来，而不是从“别伤和气”的愿望里长出来。"
+          },
+          "foundation": {
+            "en": "Somewhere back, you said yes while meaning maybe, or put off choosing until the choice was half made for you. That compromise, or that avoided decision, is what the present strain grows from.",
+            "zh": "回头看，你曾在心里还犹豫的时候就点了头，或者把选择一拖再拖，直到它被形势替你做了一半。眼下的拉扯，正是从那次妥协、或那次没做的决定里长出来的。"
+          },
+          "present": {
+            "en": "Two things that should match currently do not: what you say and what you want, your pace and theirs, or two options you keep trying to hold at once. The result is half-commitment on every side.",
+            "zh": "本该对得上的两样东西，现在对不上：你嘴上说的和心里要的，你的步调和对方的步调，或者两个你总想同时抓住的选项。结果就是哪一头都只投入了一半。"
+          },
           "challenge": {
             "en": "Conflicting desires, unclear priorities, or a misaligned partnership is pulling your focus in two directions.",
             "zh": "相互打架的欲望、模糊不清的取舍或步调失和的关系，正把你的心力扯向两个相反方向。"
+          },
+          "resource": {
+            "en": "The discomfort is useful: it shows exactly where your values have been crossed. You also still hold the freedom to choose, and admitting that something does not fit may come as a relief to both sides.",
+            "zh": "这份不舒服是有用的：它准确地标出了你的价值在哪里被越了线。选择的自由也仍在你手里；承认“不合适”，对双方来说都可能是一种解脱。"
           },
           "action": {
             "en": "Stop pretending two incompatible choices can both stay open; tell the honest truth about where values diverge and choose one ground.",
             "zh": "别再假装两条互相排斥的路可以同时留着；坦诚说出价值分歧所在，然后稳稳选定一方立足。"
           },
           "outcome": {
-            "en": "Lingering friction forces a candid reckoning—either realigning terms honestly or parting cleanly before resentment hardens.",
-            "zh": "持续的错位感会倒逼一次直面摊牌——要么重新对齐真实条件，要么在怨怼固化前体面分开。"
+            "en": "If the mismatch goes unaddressed, lingering friction tends to force a candid reckoning—either realigning terms honestly or parting cleanly before resentment hardens.",
+            "zh": "如果错位一直不处理，持续的摩擦往往会倒逼一次直面摊牌——要么坦诚地重新对齐条件，要么在怨怼固化前体面分开。"
           },
           "advice": {
             "en": "Repair self-trust before demanding harmony outside: once you honor your own compass, blurred choices sharpen quickly.",
             "zh": "在向外索求和谐前先修好对自己的信任：只要你肯诚实守住内在罗盘，模糊纠结的选择很快会清晰。"
+          },
+          "hidden": {
+            "en": "Unvoiced resentment is worth checking for. Going along with something on the surface while objecting underneath may be quietly eroding the connection, or pulling you toward a temptation that offers escape.",
+            "zh": "查查有没有没说出口的怨气。表面上顺着，心里却不同意，这可能正在悄悄磨损这段关系，或者把你推向某个看似能让人逃开的诱惑。"
+          },
+          "self": {
+            "en": "You arrive split: one foot in, one foot out, saying what keeps things smooth rather than what is true for you. You are not yet fully on your own side.",
+            "zh": "你是分成两半来的：一只脚在里面，一只脚在外面，说的是能让场面好看的话，而不是自己的真心话。你还没有完全站到自己这一边。"
+          },
+          "other": {
+            "en": "The other person may be running hot and cold: warm one week and distant the next, or agreeing without following through. It could reflect their own indecision, so look at the pattern rather than any single moment.",
+            "zh": "对方可能忽冷忽热：这个星期热络，下个星期疏远，或者答应了却没有下文。这也许反映的是他们自己拿不定主意，所以要看整体的规律，而不是某一个瞬间。"
+          },
+          "external": {
+            "en": "Outside pressures are pulling the pieces apart: competing loyalties, other people's opinions about what you should choose, or timing that puts two commitments in conflict. The setting does not make a clean choice easy.",
+            "zh": "外部压力正把局面往两边扯：彼此冲突的情分，旁人对你该怎么选的指指点点，或者时间上撞在一起的两份承诺。这样的处境下，想干脆利落地做选择并不容易。"
+          },
+          "hopes_fears": {
+            "en": "Part of you hopes the tension will resolve without anyone having to choose. The fear is that choosing honestly means losing someone, and that not choosing means slowly losing yourself.",
+            "zh": "你希望这份拉扯能自己化解，谁都不必做选择；又怕诚实地选了就会失去某个人，而一直不选，失去的则是慢慢被磨掉的自己。"
           }
         },
         "domains": {
@@ -1493,31 +1889,51 @@
             "en": "Things are moving fast and responding directly to your command; hold your composure so speed turns into precision rather than drift.",
             "zh": "局面正快速推进并紧跟你的指令；守住沉着定力，速度就会变成精准突破而非失控漂移。"
           },
+          "challenge": {
+            "en": "Watch for treating every conversation as a race to win, or for pushing speed ahead of alignment.",
+            "zh": "别把每场互动都当成必须压倒对手的竞速，也别让冲刺跑在方向校准之前。"
+          },
           "resource": {
             "en": "Your strongest asset is self-mastery under tension—holding logic and emotion in the same harness instead of letting either hijack the wheel.",
             "zh": "你最大的筹码是高压下的自我驾驭力——能把理智与热血套进同一副车轭，不让任何一方夺走方向盘。"
-          },
-          "challenge": {
-            "en": "Even upright, The Chariot in a challenge slot warns against treating every conversation as a race to win or pushing speed ahead of alignment.",
-            "zh": "即便正位，落在阻碍位的战车也在提醒：别把每场互动都当成必须压倒对手的竞速，也别让冲刺跑在方向校准之前。"
           },
           "action": {
             "en": "Lock in one concrete target, silence side distractions, and execute a decisive sprint that moves the needle visibly.",
             "zh": "锁定一个具体靶心，清掉支线干扰，打出一场能让局面明显前移的果断冲刺。"
           },
           "outcome": {
-            "en": "Earned victory and clear forward territory arrive—you break out of stalemate under your own disciplined drive.",
-            "zh": "凭实力赢得的胜利与开阔新局即将落地——你将靠自己的定力与执行冲出僵局。"
+            "en": "Held steadily, this course tends toward an earned victory and open ground ahead; you are likely to break out of stalemate under your own disciplined drive.",
+            "zh": "只要稳住这股有章法的冲劲，局面倾向于迎来凭实力赢得的胜利与开阔新局；你很可能靠自己的定力与执行冲出僵局。"
           },
           "advice": {
             "en": "Steer with quiet authority, not frantic whips—notice the sphinxes have no reins; inner clarity is what keeps opposing forces moving together.",
             "zh": "以沉静威仪而非焦躁挥鞭来御车——战车本无实体缰绳，真正让两股相反力量齐头并进的，是你不动摇的内在方向感。"
+          },
+          "hidden": {
+            "en": "Look at what is actually driving the push. Beneath the clear goal there may be opposing motives held together by willpower, or a need to prove something that has not been admitted.",
+            "zh": "看看这股冲劲背后到底是什么在驱动。在明确的目标底下，也许是靠意志力硬拢在一起的相反动机，或者一份没有承认的、想证明点什么的需要。"
+          },
+          "self": {
+            "en": "You show up determined and in control of yourself: armored, focused on the destination, unwilling to be talked off course. You bring discipline and nerve, and you expect to win this by effort.",
+            "zh": "你是带着决心和自制出场的：披着铠甲，盯着目的地，不肯被人劝得改了道。你带来的是纪律和胆气，也认定这件事要靠努力拿下。"
+          },
+          "other": {
+            "en": "They appear driven and sure of their direction, moving fast toward a goal of their own. They are likely to respect decisiveness, and may come across as guarded while they are in motion.",
+            "zh": "对方显得干劲十足、方向明确，正朝着自己的目标快速推进。他们多半欣赏果断的人；在赶路的时候，可能会给人一种不太容易接近的印象。"
+          },
+          "external": {
+            "en": "Events are moving quickly and in a clear direction: deadlines, travel, competition, a campaign already under way. The pace is set from outside, and it favors whoever stays focused.",
+            "zh": "外部的事态推进得很快，方向也清楚：最后期限，出行，竞争，一场已经打响的行动。节奏是外面定的，谁能保持专注，谁就更占便宜。"
+          },
+          "hopes_fears": {
+            "en": "You hope to drive this through to a clear win by sheer focus, yet fear that the forces you are holding together will pull apart the moment you relax your hold.",
+            "zh": "你希望靠着一股专注把这件事一路推到明明白白的胜利；又怕手上稍微一松，被你拢在一起的那几股力量就各奔东西。"
           }
         },
         "domains": {
           "general": {
             "en": "Determination, travel, and disciplined progress propel this chapter. Unite conflicting motives around a single clear objective and keep moving.",
-            "zh": "笃定意志、启程位移与有章法的推进主导当前阶段。把互相拉扯的念头收束到同一个清晰目标上，全速前进。"
+            "zh": "笃定意志、启程位移与有章法的推进主导当前阶段。把互相拉扯的念头收束到同一个清晰目标上，持续前进。"
           },
           "love": {
             "en": "In love, The Chariot signals intentional momentum—moving a relationship forward decisively, bridging distance, or aligning two distinct personalities toward a shared horizon.",
@@ -1561,9 +1977,25 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Settle the argument inside you before you push again. The effort is not lacking; what is missing is one destination that every part of you has agreed to.",
+            "zh": "再发力之前，先把心里那场争执了结。你不缺力气，缺的是一个让自己的每一部分都点头的目的地。"
+          },
+          "foundation": {
+            "en": "Some time ago you set off at speed before the route was settled, or kept going on willpower while part of you wanted something else. The loss of traction now began with that unresolved split.",
+            "zh": "早先，路线还没定好你就全速出发了，或者明明心里有一部分想要别的，却靠意志力硬撑着往前。现在的打滑，就是从那道没解决的分歧开始的。"
+          },
+          "present": {
+            "en": "Momentum has stalled or gone sideways. You may be working hard and covering little ground, or held up by delays outside your control while two priorities compete for the driver's seat.",
+            "zh": "势头要么停了，要么跑偏了。你可能很卖力却没走出多远，或者被自己左右不了的延误卡着，同时还有两个优先事项在抢方向盘。"
+          },
           "challenge": {
             "en": "Scattered direction, impatience, or trying to overpower an obstacle that actually needs steering is draining momentum.",
             "zh": "目标发散、急于求成，或试图用蛮力撞开原本只需巧妙绕行的障碍，正在消耗推力。"
+          },
+          "resource": {
+            "en": "The drive is still there, and so is the stamina that got you this far. A stop is not a defeat: time off the accelerator gives you a chance to check the map and take the wheel back.",
+            "zh": "那股冲劲还在，把你送到这里的耐力也还在。停下来不等于输：松开油门的这段时间，正好让你看看地图，把方向盘重新握回手里。"
           },
           "action": {
             "en": "Pull over for a deliberate pit stop: cut competing priorities down to one route and settle the internal tug-of-war before accelerating again.",
@@ -1576,6 +2008,26 @@
           "advice": {
             "en": "Direction beats speed—slow down long enough to get both sphinxes facing the same horizon.",
             "zh": "方向永远重于速度——宁可先放慢半拍，让两尊斯芬克斯真正望向同一片地平线。"
+          },
+          "hidden": {
+            "en": "Ask whether part of you does not want to arrive. A private pull in the opposite direction, or doubt about the goal itself, may be braking the effort while you present full commitment.",
+            "zh": "问问自己，是不是有一部分的你并不想抵达。一股私下里朝反方向的拉力，或者对目标本身的怀疑，可能正在给这番努力踩刹车，而你对外表现出的却是全力以赴。"
+          },
+          "self": {
+            "en": "You appear either to be forcing the pace or to have lost your grip on it: impatient, pushing past people, or worn down from holding a determined face over real inner conflict.",
+            "zh": "你给人的样子要么是在硬赶进度，要么是已经握不住节奏：不耐烦，从别人身边硬挤过去，或者心里明明在打架，脸上还得撑出坚定的样子，已经累得不行。"
+          },
+          "other": {
+            "en": "The other party may be pressing ahead without consulting anyone, or stalling while insisting everything is on track. Their direction looks unsettled, so confirm where they are headed before matching their speed.",
+            "zh": "对方可能谁也不商量就往前冲，或者一边原地不动、一边坚称一切按计划进行。他们的方向看上去并不稳定，所以在跟上他们的速度之前，先确认他们要去哪里。"
+          },
+          "external": {
+            "en": "Outside conditions are slowing things down: transport or scheduling problems, stakeholders pulling different ways, a contest with no clear finish line. Pushing harder against these mostly burns fuel.",
+            "zh": "外部条件在拖慢进度：交通或排期出了问题，相关各方各拉各的，或者是一场看不清终点线的比拼。顶着这些硬加力，多半只是白烧油。"
+          },
+          "hopes_fears": {
+            "en": "You hope that one more hard push will break the deadlock, yet fear that stopping to rethink would look like giving up, or reveal that you were heading the wrong way.",
+            "zh": "你希望再狠狠推一把就能打破僵局；又怕停下来重新想一想会被看成放弃，或者让人发现你原来一直走错了方向。"
           }
         },
         "domains": {
@@ -1654,14 +2106,14 @@
       "en": [
         "Serene woman draped in white robes girdled with blooming flowers and vines",
         "Glowing infinity lemniscate suspended lightly above her flower-wreathed brow",
-        "Powerful golden lion leaning calmly beneath her gentle, unafraid hands",
+        "Powerful red-orange lion leaning calmly beneath her gentle, unafraid hands",
         "Unarmed, unhurried touch resting on the lion's jaws and mane showing mastery without weapons",
         "Warm open meadow stretching toward a quiet blue-violet peak in the distance"
       ],
       "zh": [
         "身着素白长裙、以鲜花藤蔓束腰的沉静女子",
-        "轻盈悬浮在花冠额际上方的金色无限符号",
-        "在她柔和而不设防的双手间温顺依偎的雄壮金狮",
+        "轻盈悬浮在花冠额际上方、泛着微光的无限符号",
+        "在她柔和而不设防的双手间温顺依偎的雄壮橙红色狮子",
         "不借刀剑锁链、仅以温柔触碰安抚狮吻的从容力量",
         "向远方淡紫远山舒展开来的明亮开阔草野"
       ]
@@ -1701,25 +2153,45 @@
             "en": "You are handling high-stakes heat well—staying steady, listening deeply, and trusting slow influence over reactive control.",
             "zh": "你正稳稳接住当下的高热局面——保持呼吸平稳、真诚倾听，相信润物无声的影响力胜过焦躁硬控。"
           },
+          "challenge": {
+            "en": "Ask whether endless patience is bordering on absorbing too much friction alone—remember compassion includes firm limits.",
+            "zh": "无止境的包容，是否快演变成独自吞下所有摩擦？别忘了，慈悲同样包含清晰底线。"
+          },
           "resource": {
             "en": "Your greatest asset is heart-centered composure: courage that can sit right beside fierce feelings without flinching or lashing out.",
             "zh": "你最强的资本是源于内心的笃定与定力——敢直面剧烈情绪与强劲对手，既不退缩也不失态反击。"
-          },
-          "challenge": {
-            "en": "Even upright, Strength in a challenge slot asks whether endless patience is bordering on absorbing too much friction alone—remember compassion includes firm limits.",
-            "zh": "即便正位，落在阻碍位的力量也在提醒：无止境的包容是否快演变成独自吞下所有摩擦？别忘了，慈悲同样包含清晰底线。"
           },
           "action": {
             "en": "De-escalate one tense dynamic today through steady eye contact, honest warmth, and calm persistence rather than raising the volume.",
             "zh": "今天用平稳目光、真诚善意与不卑不亢的坚持，把一处紧绷僵局柔和化解，不必靠提高音量证明立场。"
           },
           "outcome": {
-            "en": "Lasting mastery and deep trust emerge—a tough challenge softens into durable respect and inner steadiness.",
-            "zh": "深厚信赖与长久掌控感随之浮现——原本棘手的考验会沉淀为你内在稳固的从容与威望。"
+            "en": "If you keep meeting this with calm steadiness, lasting mastery and deep trust are likely to emerge, and a tough challenge tends to soften into durable respect and inner steadiness.",
+            "zh": "只要继续以沉静定力应对，长久的掌控感与深厚信赖很可能浮现，棘手的考验也往往会软化为持久的尊重与内在的从容。"
           },
           "advice": {
             "en": "Befriend your own fierceness instead of caging it; passion guided by tenderness becomes unstoppable stamina.",
             "zh": "与内心那头狮子成为朋友，而不是把它关进笼子；被温柔引路的野性与热情，会化为源源不绝的耐力。"
+          },
+          "hidden": {
+            "en": "A strong feeling may be present that has been handled so smoothly nobody has remarked on it: anger, desire, or fear held gently in check. Check what you are quietly containing, and what it needs.",
+            "zh": "也许有一股强烈的情绪被处理得太平顺，以至于没人提起：被轻轻按住的怒气、欲望或恐惧。看看你在默默包容着什么，它又需要什么。"
+          },
+          "self": {
+            "en": "You meet this with steady nerves and an open hand: patient, kind without being a pushover, able to stay near strong emotion without being run by it.",
+            "zh": "你是带着稳得住的心、不攥拳头的手来面对这件事的：有耐心，待人和善却不软弱，能待在强烈的情绪旁边，而不被它牵着走。"
+          },
+          "other": {
+            "en": "Across from you is someone who appears calm and patient under pressure, likely stronger than their gentle manner suggests. They seem to answer provocation with restraint, and may be handling more than they show.",
+            "zh": "对方在压力之下显得平静而有耐心，实际的分量多半比温和的举止看上去要重。面对挑衅，他们似乎以克制回应，承担的东西可能也比表现出来的多。"
+          },
+          "external": {
+            "en": "The situation outside is charged, and it responds to patience rather than force: a volatile person, a tense room, a long test of endurance. Those around you are watching how you carry yourself under strain.",
+            "zh": "外面的局势带着火药味，而它吃软不吃硬：一个容易失控的人，一屋子紧绷的气氛，或者一场比拼耐力的持久考验。周围的人也在看你在压力之下如何自处。"
+          },
+          "hopes_fears": {
+            "en": "Your hope is that patience and goodwill will be enough to calm this. Your fear is the day your own temper or appetite gets loose, or that kindness will be mistaken for weakness.",
+            "zh": "你希望凭着耐心和善意就足以把局面安抚下来；又怕哪天自己的脾气或欲望挣脱出来，或者这份温和被人当成软弱。"
           }
         },
         "domains": {
@@ -1769,9 +2241,25 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "You are more tired than you are admitting. Stop measuring yourself against how much you can endure, and treat rest as part of handling this rather than a retreat from it.",
+            "zh": "你比自己肯承认的更累。别再拿“能忍多少”来衡量自己了；把休息看成应对这件事的一部分，而不是从这件事里退缩。"
+          },
+          "foundation": {
+            "en": "You held it together for a long time by biting back what you felt, or pushed through on pride after the energy had gone. The short fuse or flat confidence of today was built up over that stretch.",
+            "zh": "很长一段时间里，你是靠把话忍回去才撑住的，或者劲早就用完了，还凭着一口好强的气硬顶。今天一点就着的脾气、提不起来的信心，都是那段日子攒下的。"
+          },
+          "present": {
+            "en": "Reserves are low right now. Ordinary demands feel heavier than they should, patience runs out quickly, and you may be swinging between going quiet and snapping.",
+            "zh": "此刻的储备很低。平常的要求也显得格外沉，耐心很快就见底，你可能在闷不作声和突然发火之间来回摆。"
+          },
           "challenge": {
             "en": "Low emotional bandwidth, self-doubt, or reactive impatience is undercutting your usual poise.",
             "zh": "情绪带宽见底、自我怀疑或压不住的急躁，正在折损你一向稳健的判断力。"
+          },
+          "resource": {
+            "en": "What you have left is honesty about your limits, and that is worth a lot. The endurance you have already shown is proof of capacity; admitting you need to recover is what lets it rebuild.",
+            "zh": "你还剩下的，是对自身限度的诚实，而这很值钱。你已经撑过的那些，就是能力的证明；承认自己需要恢复，才能让这份力气重新长回来。"
           },
           "action": {
             "en": "Step back before answering a trigger, replenish basic physical stamina first, and name one small boundary cleanly instead of bottling it.",
@@ -1784,6 +2272,26 @@
           "advice": {
             "en": "Courage right now looks like self-kindness—stop grading yourself harshly for feeling raw and recharge before re-entering the arena.",
             "zh": "此刻最需要的是善待自己的勇气——别因为感到脆弱或烦躁而严厉苛责自己，先充好电再回赛场。"
+          },
+          "hidden": {
+            "en": "Check what you have been swallowing to keep up a composed front. Unspoken frustration or a doubt about your own courage may be draining more energy than the situation itself.",
+            "zh": "看看你为了维持镇定的门面，一直在咽下些什么。没说出口的憋屈，或者对自己勇气的怀疑，耗掉的精力可能比事情本身还多。"
+          },
+          "self": {
+            "en": "You feel smaller than the task at hand: doubting your nerve, bracing for a fight, or performing a calm you do not have. You may be harder on yourself than the situation calls for.",
+            "zh": "你觉得自己比这件事矮了一截：怀疑自己的胆量，时刻准备着干一仗，或者装出一份其实没有的平静。你对自己的苛刻，可能已经超出了这件事所需要的程度。"
+          },
+          "other": {
+            "en": "The other person may be running on empty: irritable, quick to take offense, or pulling back without explanation. Their sharpness appears to be about strain, so avoid meeting it with force.",
+            "zh": "对方可能已经撑到了极限：烦躁，容易被冒犯，或者不作解释地往后缩。他们的尖刻看起来更像是压力所致，所以别用硬碰硬去回应。"
+          },
+          "external": {
+            "en": "The demands coming at you are relentless, and the people around you have little patience to spare. It is an atmosphere of short tempers and long hours, where small provocations land harder than usual.",
+            "zh": "冲着你来的要求一刻不停，周围的人也没有多少耐心可以匀给你。这是一种人人火气大、个个熬得久的氛围，一点小小的刺激都比平时更扎人。"
+          },
+          "hopes_fears": {
+            "en": "You hope to get your confidence and calm back, yet fear that you no longer have it in you, or that if you stop holding everything in, what comes out will be too much.",
+            "zh": "你希望找回原来的自信和平静；又怕自己已经没有那份力气了，或者一旦不再把一切都憋着，涌出来的东西会让人承受不住。"
           }
         },
         "domains": {
@@ -1904,25 +2412,45 @@
             "en": "You are in a contemplative pause—auditing what truly holds value and letting hollow distractions fall away naturally.",
             "zh": "你正处在一场高质量的沉思窗口——逐项审视哪些事真正值得投入，让浮躁杂音自行褪去。"
           },
+          "challenge": {
+            "en": "Self-sufficiency can quietly slide into aloofness, making it hard for genuine allies to reach you.",
+            "zh": "习惯凡事独自想通，可能不知不觉演变成疏离戒备，让真心想帮你的伙伴无从靠近。"
+          },
           "resource": {
             "en": "Your strongest asset is hard-won discernment and deep focus—the ability to examine a problem patiently until its true grain appears.",
             "zh": "你最强的优势是沉得住气的独立思辨——愿意顺着问题的纹理耐心拆解，直到看清核心本质。"
-          },
-          "challenge": {
-            "en": "Even upright, The Hermit in a challenge position warns that self-sufficiency can quietly slide into aloofness, making it hard for genuine allies to reach you.",
-            "zh": "即便正位，落在阻碍位的隐士也在提醒：习惯凡事独自想通，可能不知不觉演变成疏离戒备，让真心想帮你的伙伴无从靠近。"
           },
           "action": {
             "en": "Carve out an uninterrupted block of solitude—turn off feeds, review the real facts slowly, and write down one honest conclusion.",
             "zh": "专门划出一段不被打扰的独处时光——关掉信息流、慢慢复盘真实脉络，亲手写下一条毫无自欺的结论。"
           },
           "outcome": {
-            "en": "Quiet, unshakeable clarity settles in—you emerge knowing your own mind and able to light the path for others too.",
-            "zh": "沉稳而不再动摇的内在笃定将落进心里——你不仅彻底想明白了自己的方向，也能为后来者举起一盏灯。"
+            "en": "Given unhurried reflection, this course tends toward quiet, steady clarity: you are likely to emerge knowing your own mind and able to light the path for others too.",
+            "zh": "只要给足沉淀的时间，这条路倾向于带来沉稳而踏实的内在笃定：你很可能想明白自己的方向，也能为后来者举起一盏灯。"
           },
           "advice": {
             "en": "Respect your own pace: wisdom ripens in unhurried silence, and lighting one honest footstep beats chasing bright illusions.",
             "zh": "尊重自己慢下来的节律：真知往往在安静中成熟，照实走稳脚下这一步，远胜追逐华而不实的远景。"
+          },
+          "hidden": {
+            "en": "The answer may already be with you, reached in private and not yet acted on. Check what you concluded the last time you were alone with this, before other voices came back in.",
+            "zh": "答案也许早就在你这里了，是独处时得出的，只是还没照着去做。回想一下上一次你独自面对这件事、别人的声音还没涌回来时，你得出了什么结论。"
+          },
+          "self": {
+            "en": "You bring a thoughtful distance to this: self-reliant, careful, more interested in what is true than in what is popular. You prefer to work it out alone before you speak.",
+            "zh": "你带着一种深思熟虑的距离感来面对这件事：凡事靠自己，行事谨慎，在意什么是真的，胜过在意什么受欢迎。你习惯先独自想明白，再开口。"
+          },
+          "other": {
+            "en": "The other person appears to be keeping to themselves for now, which looks more like taking time to think than like avoidance. They may be slow to reply, and are probably best approached with patience and a specific question.",
+            "zh": "对方眼下显得不太露面，看起来更像是在花时间把事情想清楚，而不是在躲你。他们回复可能会慢一些，带着耐心和一个具体的问题去找他们，大概最合适。"
+          },
+          "external": {
+            "en": "It is a quiet period outside: few invitations, little feedback, long gaps between replies. The lack of company or noise is a condition of the moment, and it leaves room for careful study.",
+            "zh": "外面正处在一段安静期：邀约不多，反馈很少，回音之间隔得很久。少了陪伴和喧闹，是眼下这段时间的客观条件，也给细细钻研留出了余地。"
+          },
+          "hopes_fears": {
+            "en": "You hope time alone will bring a clear answer you can trust, yet fear the loneliness of it, or that what you find in the quiet will ask you to change more than you would like.",
+            "zh": "你希望独处一段时间能换来一个自己信得过的清晰答案；又怕那份孤单，或者怕在安静里看见的东西，会要求你做出比自己愿意的更大的改变。"
           }
         },
         "domains": {
@@ -1972,9 +2500,25 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Time alone was meant to help you see, not to keep you out of reach. Notice whether you are hiding in solitude or hiding from it, and correct toward the side you have been avoiding.",
+            "zh": "独处本是为了让你看得更清楚，而不是让别人够不着你。看看你是在躲进独处，还是在躲开独处，然后朝自己一直回避的那一头调整过去。"
+          },
+          "foundation": {
+            "en": "A period of withdrawal went on past its usefulness, or you kept so busy that there was never a quiet hour to think. Either way, the reflection this needed was not finished or not shared.",
+            "zh": "之前有一段退避的日子，过了有用的期限还在继续；或者你一直忙得连一个钟头的清静都腾不出来。不管哪一种，这件事需要的那番思考，要么没做完，要么没跟人说。"
+          },
+          "present": {
+            "en": "At present you are either cut off or avoiding your own company. Thoughts circle without new input, or the calendar stays full so that nothing has to be faced; the balance between inward and outward is off.",
+            "zh": "眼下的你要么与人隔绝，要么在回避独处。念头没有新的输入，只在原地打转；或者日程排得满满的，好让什么都不必面对。向内和向外之间的平衡已经偏了。"
+          },
           "challenge": {
             "en": "Isolation, overthinking alone, or avoiding a quiet honest check-in with yourself is clouding perspective.",
             "zh": "过度封闭、一个人钻死胡同，或刻意回避与自己坦诚独处，正在让视野变窄。"
+          },
+          "resource": {
+            "en": "The thinking you did alone was not wasted; there is real insight in it, ready to be tested in conversation. People who would listen are still within reach, and the path back down is open.",
+            "zh": "你独自想过的那些并没有白费，里面有真见地，正等着拿到对话里去检验。愿意听你说的人仍然找得到，下山的路也一直开着。"
           },
           "action": {
             "en": "Either step back into the room and share what you learned with one trusted ally, or turn off distractions for thirty minutes to face the thought you keep outrunning.",
@@ -1987,6 +2531,26 @@
           "advice": {
             "en": "Solitude is a lantern, not a fortress—once reflection has done its work, step back down the trail and engage life again.",
             "zh": "独处是照明的灯，不是隔绝世界的堡垒——沉淀完成后，就该迈步下山重新走入生活。"
+          },
+          "hidden": {
+            "en": "Consider whether the distance is still about thinking, or has become a way to avoid being seen. A feeling of being unknown to the people around you may sit under the withdrawal, or under the constant busyness.",
+            "zh": "想一想：这份距离如今还是为了思考，还是已经变成了不让人看见自己的办法？在退避或不停的忙碌底下，也许压着一种“身边没人真正了解我”的感觉。"
+          },
+          "self": {
+            "en": "You are showing up withdrawn or evasive: hard to reach, sure that no one would understand, or keeping too busy to be asked a real question. The independence has started to cost you.",
+            "zh": "你呈现出来的是退缩或躲闪：很难联系上，认定没人会懂，或者忙得让别人问不出一句正经话。这份独立已经开始让你付出代价了。"
+          },
+          "other": {
+            "en": "The other person may be pulling away or shutting others out: unanswered messages, canceled plans, a closed door. It may equally be someone who cannot bear to be alone; in both cases, an easy, low-pressure invitation works better than a demand.",
+            "zh": "对方可能在往后退，或者把人挡在门外：消息不回，约好的事取消，门关着。也可能恰恰相反，是个受不了独处的人。无论哪种，一个轻松、没有压力的邀请，都比一句要求更管用。"
+          },
+          "external": {
+            "en": "Your surroundings make balance difficult: a setting that isolates you, with few people to compare notes with, or one so crowded and loud that there is no room to think.",
+            "zh": "你所处的环境让人很难找到平衡：要么把你孤立起来，找不到几个人可以交流看法；要么拥挤嘈杂，连想事情的地方都没有。"
+          },
+          "hopes_fears": {
+            "en": "You wish someone would reach in and understand without your having to explain, yet fear that coming out of your shell means being judged, and that staying in means being forgotten.",
+            "zh": "你希望有人能主动走近、不用你解释就懂你；又怕走出自己的壳会被人评头论足，而一直待在里面，又会被人遗忘。"
           }
         },
         "domains": {
@@ -2063,8 +2627,8 @@
       ],
       "zh": [
         "凌空悬浮于云霞之间、缓缓旋转的宏大金色命运巨轮",
-        "稳坐轮顶、手执短剑、神情沉着的蓝羽斯芬克斯",
-        "沿轮缘右侧向上攀升的胡狼首守护者与沿左侧滑落的蜿蜒红蛇",
+        "稳坐轮顶、手执短剑、神情沉着的戴冠蓝色斯芬克斯",
+        "沿轮缘右侧向上攀升的胡狼首守护者与沿左侧滑落的蜿蜒长蛇",
         "象征天地节律流转的同心圆环与八道放射轮辐",
         "云端四角展翼展卷的四位圣兽使者——天使、苍鹰、圣牛与雄狮"
       ]
@@ -2104,25 +2668,45 @@
             "en": "You are standing inside a live inflection point; small choices made at the pivot carry outsized downstream leverage.",
             "zh": "你正身处真实的拐点之中；转折关头落下的每一小步，都会在后续产生远超平常的放大效应。"
           },
+          "challenge": {
+            "en": "Beware banking on a lucky streak alone, or assuming today's upswing runs forever without stewardship.",
+            "zh": "别把好运当成永动机，也别以为眼下的顺风期无需妥善筹谋就会一直持续。"
+          },
           "resource": {
             "en": "Your strongest asset is adaptability and timing sense—reading momentum early instead of fighting a wave you can surf.",
             "zh": "你手中最强的筹码是应变弹性与节奏感——能提前读懂潮流走向，借浪前行而非迎头硬撞。"
-          },
-          "challenge": {
-            "en": "Even upright, Wheel of Fortune in a challenge slot warns against banking on a lucky streak alone or assuming today's upswing runs forever without stewardship.",
-            "zh": "即便正位，落在阻碍位的命运之轮也在提醒：别把好运当成永动机，也别以为眼下的顺风期无需妥善筹谋就会一直持续。"
           },
           "action": {
             "en": "Say yes to the timely opening in front of you while building a simple buffer for the next inevitable turn of the cycle.",
             "zh": "果断接住眼前出现的时机窗口，同时顺手为下一段周期波动预留一份稳妥缓冲。"
           },
           "outcome": {
-            "en": "A decisive shift breaks stagnation—fresh momentum, serendipitous timing, or a long-awaited turn of luck moves the story onto a new arc.",
-            "zh": "清晰的转机将打破停滞——新动量、恰逢其时的契机或久候的时运转暖，会带着局面跃入全新阶段。"
+            "en": "A decisive shift is likely to break the stagnation: if you meet it, fresh momentum, serendipitous timing, or a long-awaited turn of luck tends to move the story onto a new arc.",
+            "zh": "一次清晰的转机很可能打破停滞：只要你接得住，新动量、恰逢其时的契机或久候的时运转暖，往往会带着局面进入新阶段。"
           },
           "advice": {
             "en": "Anchor yourself at the quiet hub where the wheel stays still: move swiftly with change without tying your identity to any temporary high or low.",
             "zh": "把心安放于巨轮中心不动的轴心：行动上敏捷顺应变化，心态上却不把自我价值绑在任何一时起伏上。"
+          },
+          "hidden": {
+            "en": "A change may already be in motion that has not been announced or noticed yet. Look for early signs of the turn: a pattern repeating, a door opening quietly, a mood shifting around you.",
+            "zh": "一场变化也许已经在动了，只是还没人宣布，也还没被注意到。找找转向的早期迹象：某个规律又出现了，一扇门悄悄开了，周围的气氛在变。"
+          },
+          "self": {
+            "en": "You approach this as someone who accepts that things change and intends to move with them: alert to timing, ready to adjust, and not too attached to how it went last time.",
+            "zh": "你是抱着“事情总会变”的态度来的，也打算顺着变化走：对时机敏感，随时可以调整，对上一次是怎么过来的并不太执着。"
+          },
+          "other": {
+            "en": "The other party appears to be in the middle of a change of their own: circumstances shifting, plans in flux, luck turning. Their availability may depend more on timing than on intent.",
+            "zh": "对方看起来自己也正处在变动当中：处境在变，计划未定，运势在转。他们能不能配合，可能更多取决于时机，而不是意愿。"
+          },
+          "external": {
+            "en": "The wider situation is turning: markets, policies, or other people's decisions are shifting in ways you did not cause. Right now the movement opens a window, and windows of this kind do not stay open.",
+            "zh": "大局正在转向：行情、政策或别人的决定，都在以并非由你引起的方式变动。眼下这股变动推开了一扇窗，而这样的窗口不会一直开着。"
+          },
+          "hopes_fears": {
+            "en": "You hope this is finally your turn and that the timing is on your side, yet fear that what rises can drop again, and that you have less say in it than you would like.",
+            "zh": "你希望这回终于轮到自己，时机也站在自己这边；又怕升上去的还会掉下来，而自己能说了算的部分，比期望的要少。"
           }
         },
         "domains": {
@@ -2172,9 +2756,25 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "This has happened before. Find the part of the pattern that repeats because of something you do, and change that instead of waiting for your luck to change.",
+            "zh": "这种情况以前就发生过。找出这个循环里因为你自己的做法才反复出现的那一环，去改它，而不是等着运气自己好转。"
+          },
+          "foundation": {
+            "en": "A cycle that should have ended was kept going: an old arrangement held onto after its time, or the same choice made again under a new name. That repetition is what you are standing on.",
+            "zh": "一个本该结束的循环被延续了下来：过了期的旧安排还抓着不放，或者同一个选择换了个名目又做了一遍。你现在脚下踩着的，就是这种重复。"
+          },
+          "present": {
+            "en": "Timing is against you for the moment: delays, reversals, plans that keep slipping. It feels like being carried around to the same spot again, with less control than you are used to.",
+            "zh": "眼下时机不在你这边：延误，变卦，计划一拖再拖。感觉像是又被转回了老地方，手里的掌控也比你习惯的少。"
+          },
           "challenge": {
             "en": "Bad timing, stubborn attachment to how things used to work, or a familiar repeating snag is slowing you down.",
             "zh": "时机未熟、死守过往经验，或一再重演的熟悉卡点，正在拖慢你的脚步。"
+          },
+          "resource": {
+            "en": "You have been around this loop enough times to recognize its stages, and that familiarity is an advantage. A slow stretch also gives you time to shore up what you do control.",
+            "zh": "这个圈你已经转过好几回，各个阶段都认得出来，这份熟悉就是优势。慢下来的这段时间，也让你有空把自己管得了的部分加固好。"
           },
           "action": {
             "en": "Stop fighting the delay; map the repeating loop honestly, shore up what is under your control, and wait for the next clean window instead of forcing a bad bet.",
@@ -2187,6 +2787,26 @@
           "advice": {
             "en": "You cannot stop the wheel from turning, only choose how you stand while it moves—protect essentials and break one old automatic reaction.",
             "zh": "你拦不住巨轮转动，但能决定自己在转动时的站姿——护住基本盘，亲手打断一个老旧的条件反射。"
+          },
+          "hidden": {
+            "en": "Before blaming bad luck, check for the habit that keeps restarting the loop: a reaction, a kind of choice, a point where you always give way. It may be easier to see by asking what the last three setbacks had in common.",
+            "zh": "先别急着怪运气，找找是哪个习惯在反复重启这个循环：某种反应，某类选择，或者你总会让步的那个节点。问问最近三次挫折有什么共同点，也许更容易看出来。"
+          },
+          "self": {
+            "en": "You are meeting this as someone pushed around by events: braced for the next setback, attached to how things used to work, or tempted to bet big to get it all back at once.",
+            "zh": "你觉得自己在被事情推着走：提防着下一次挫折，放不下从前行得通的那一套，或者忍不住想押一把大的，一次全扳回来。"
+          },
+          "other": {
+            "en": "The other party may be caught in a downturn or delay of their own, and appears inconsistent as a result: keen one moment, unavailable the next. Their timing may simply not match yours right now.",
+            "zh": "对方可能自己也陷在低谷或延误里，因此显得反复无常：一会儿很积极，一会儿又找不到人。他们的节奏，眼下也许就是跟你的对不上。"
+          },
+          "external": {
+            "en": "The climate has turned unfavorable or unpredictable: a downturn, a policy change, decisions stalled elsewhere. None of it is aimed at you, and none of it is yours to hurry.",
+            "zh": "外部条件变得不利，或者难以预料：行情走低，政策调整，别处的决定卡着不动。这些都不是冲着你来的，也都不是你催得动的。"
+          },
+          "hopes_fears": {
+            "en": "You hope the run of bad timing is about to end. Underneath is the fear that it is not luck at all, and that the same thing will keep coming around until you change something you would rather keep.",
+            "zh": "你希望这一连串不顺很快就到头；又怕这根本不是运气的问题，在你改掉某样不愿放手的东西之前，同样的事还会一再转回来。"
           }
         },
         "domains": {
@@ -2269,14 +2889,14 @@
         "Regal unblindfolded figure seated squarely facing forward between twin stone pillars",
         "Straight double-edged sword held perfectly vertical in the right hand for clean discernment",
         "Balanced golden scales suspended evenly from the left hand weighing truth without bias",
-        "Crimson mantle over a quiet tunic and crown bearing a single square jewel",
+        "Crimson robe beneath a green mantle and crown bearing a single square jewel",
         "Draped royal veil stretched taut behind the throne separating clarity from noise"
       ],
       "zh": [
         "未蒙双眼、端坐于双石柱之间直视前方的庄重仲裁者",
         "右手笔直竖握的双刃长剑，象征不偏不倚的裁断",
         "左手平稳悬垂的金色天平，如实称量因果与公允",
-        "身披深红长袍、冠冕正中镶嵌一方宝石的端方仪态",
+        "身披深红长袍与绿色披肩、冠冕正中镶嵌一方宝石的端方仪态",
         "悬于宝座之后、隔绝外界干扰的挺括帷幕"
       ]
     },
@@ -2315,25 +2935,45 @@
             "en": "A formal review, contract, negotiation, or decisive truth check is underway; fairness and precision carry more weight than charm.",
             "zh": "一场正式评估、条款核对、谈判或关键真相校验正在进行；此刻公允与严谨远比口才讨喜更有分量。"
           },
+          "challenge": {
+            "en": "The difficulty here is the sting of strict accountability—owning an inconvenient consequence, or keeping clinical fairness from turning icy.",
+            "zh": "难处在于严格问责带来的刺痛——不得不认领某个不轻松的后果，或是得提防绝对理性变得不近人情。"
+          },
           "resource": {
             "en": "Your strongest asset is clean documentation and clear conscience—having the real facts, balanced terms, and honest intent on your side.",
             "zh": "你最硬的底牌是经得起查验的事实记录与坦荡立场——条款公道、证据扎实、动机清白，自然不惧审视。"
-          },
-          "challenge": {
-            "en": "Even upright, Justice in a challenge slot highlights the discomfort of strict accountability—owning an inconvenient consequence or keeping clinical fairness from turning icy.",
-            "zh": "即便正位，落在阻碍位的正义也指出严格问责的刺痛——不得不认领某个不轻松的后果，或避免绝对理性变得不近人情。"
           },
           "action": {
             "en": "Read every clause twice, put the true numbers on the table, and settle one lopsided obligation cleanly before moving on.",
             "zh": "把每一条细则认真重读两遍，把真实数字摊上桌面，先把一笔失衡的旧账公正了结，再谈下一步。"
           },
           "outcome": {
-            "en": "A fair verdict, clear ruling, or balanced resolution arrives—rewarding integrity directly and correcting tilted arrangements.",
-            "zh": "公道明朗的裁决、正式结论或失衡归位即将落地——坦荡付出者会得到对等回响，倾斜的安排也将被扶正。"
+            "en": "If things keep being handled this honestly, the course tends toward a fair verdict or balanced resolution—one that rewards integrity and corrects tilted arrangements.",
+            "zh": "若继续这样坦荡处理，事情多半走向公道明朗的裁决或失衡归位——坦荡付出者有望得到对等回响，倾斜的安排也更可能被扶正。"
           },
           "advice": {
             "en": "Keep both eyes wide open like the figure on the throne: fairness requires looking squarely at reality, not pretending bias doesn't exist.",
             "zh": "像宝座上未蒙双眼的仲裁者一样直视事实：真正的公正靠清醒审视，而不靠闭眼假装中立。"
+          },
+          "hidden": {
+            "en": "Check for a consequence already in motion that nobody has named yet—an old promise, an unread clause, or a debt of fairness you half remember. It may be weighing on this more than the visible arguments.",
+            "zh": "查一查有没有一桩后果已经在悄悄运转却没人点破：一句旧承诺、一条没细读的条款，或一笔你隐约记得的公道账。它对局面的分量，可能比台面上的争论更重。"
+          },
+          "self": {
+            "en": "You show up as the one who wants it done properly: facts checked, shares counted, your own part owned. That steadiness earns trust, though it can read as cool to people who wanted comfort first.",
+            "zh": "你在这件事里是那个坚持“按规矩办”的人：事实要核，份额要算，自己该担的也不躲。这份稳当让人信得过，只是想先被安慰的人，可能会觉得你有点冷。"
+          },
+          "other": {
+            "en": "The other party appears to be keeping careful score and may hold you to the letter of what was agreed. They are likely to respond to evidence and even-handed terms far more than to charm or pressure.",
+            "zh": "对方看起来账记得很细，很可能会按当初说好的条款逐字来对。比起套近乎或施压，摆事实、谈对等条件更容易得到他们的回应。"
+          },
+          "external": {
+            "en": "The setting around you runs on rules right now: a formal process, a deadline, a contract, or an authority that looks at records rather than intentions. Conditions favor whoever can show their work.",
+            "zh": "眼下的外部环境是按规则运转的：正式流程、截止日期、合同条款，或一个只看记录不看心意的评判方。谁能拿出清楚的凭据，局面就对谁有利。"
+          },
+          "hopes_fears": {
+            "en": "You hope the truth will finally be weighed fairly and your effort counted, yet fear what an honest tally might show about your own side of the scales.",
+            "zh": "你盼着真相终于被公平称量、自己的付出被算进去，却又怕天平如实落下时，照出自己这一边也有亏欠。"
           }
         },
         "domains": {
@@ -2383,21 +3023,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Something here is not being weighed evenly. Before you argue the result, find where the scale is tilted—a missing fact, a double standard, or a verdict on yourself you would never hand to a friend.",
+            "zh": "这件事里有东西没被公平称量。先别急着争结果，找出天平歪在哪里：缺了一块事实、用了双重标准，还是给自己下了一个你绝不会判给朋友的重判。"
+          },
+          "foundation": {
+            "en": "An earlier unfair call, a dodged admission, or terms nobody read closely left the account unsettled. The present friction grows from that unbalanced starting point.",
+            "zh": "早先一次不公的裁断、一句躲过去的认错，或一份谁都没细看的条款，让这笔账一直没结清。如今的摩擦，正是从那个失衡的起点长出来的。"
+          },
+          "present": {
+            "en": "Things are lopsided right now: one side carries more blame or cost than the facts support, and a decision or honest admission keeps getting put off.",
+            "zh": "眼下的局面明显偏了：有一方背着超出事实的指责或代价，而该做的决定、该说的那句实话，一直被往后推。"
+          },
           "challenge": {
             "en": "Bias, evasiveness, messy fine print, or reluctance to own a mistake is warping the outcome.",
             "zh": "偏见、推诿、含糊条款或不肯认领失误，正在把事情引向失真走向。"
+          },
+          "resource": {
+            "en": "You can still tell when a deal is skewed, and that instinct is worth trusting. Walking away from a rigged game costs less than winning it, and your own standards remain yours to restore.",
+            "zh": "你依然分辨得出哪笔约定是歪的，这份直觉值得相信。从一场不公平的局里退出，代价比硬赢下来要小；而你自己的准则，随时可以重新立起来。"
           },
           "action": {
             "en": "Verify every missing fact independently, name the imbalance plainly on the record, and own any blind spot that belongs to you.",
             "zh": "独立复核每一处被略过的事实，把不公之处清楚落到记录里，同时也干脆认领属于自己的那部分盲区。"
           },
           "outcome": {
-            "en": "Unaddressed bias or sloppy contracts linger as friction; refusing shortcuts and insisting on documented fairness eventually rights the ledger.",
-            "zh": "被敷衍过去的偏颇与漏洞只会留下后患；拒绝走捷径、坚持书面公允，账本终会逐步归平。"
+            "en": "Left unaddressed, bias or sloppy contracts are likely to linger as friction; refusing shortcuts and insisting on documented fairness gives the ledger its best chance of righting itself.",
+            "zh": "被敷衍过去的偏颇与漏洞多半会留下后患；拒绝走捷径、坚持书面公允，账本才最有机会逐步归平。"
           },
           "advice": {
             "en": "Do not sign under pressure or hide behind excuses—seek neutral second eyes whenever emotions tilt the scales.",
             "zh": "切忌在催促下仓促落笔，也别拿借口替自己遮掩——当情绪让天平倾斜时，主动引入冷静中立的第三方视角。"
+          },
+          "hidden": {
+            "en": "Ask whether a quiet bias is steering this: a rule applied to one person but not another, or a private sentence you passed on yourself long ago. It is worth testing before you trust the verdict.",
+            "zh": "问一问是否有不易察觉的偏心在左右局面：同一条规矩只对某个人较真，或是你很久以前就在心里给自己定了罪。在相信结论之前，值得先验一验。"
+          },
+          "self": {
+            "en": "You may be arriving as judge and accused at once—strict to the letter with others, or merciless with yourself. Either way, the measuring stick you are holding is bent.",
+            "zh": "你可能同时扮演着法官和被告：要么对别人抠着条文不放，要么对自己毫不留情。无论哪一种，你手里那把尺子本身已经弯了。"
+          },
+          "other": {
+            "en": "The other party may be sidestepping their share, leaning on technicalities, or working from a one-sided account. Treat that as a pattern to verify in their actions, not a motive you can prove.",
+            "zh": "对方可能在回避自己该担的那一份、抠字眼做文章，或只按一面之词理解经过。把这当成需要从行动中核实的迹象，而不是已经坐实的动机。"
+          },
+          "external": {
+            "en": "The process around you is not level right now: unclear rules, a stalled decision, or a referee with a stake in the result. Fair treatment is not something this setting hands out by default.",
+            "zh": "眼下外部的程序并不平整：规则含糊、决定迟迟不下，或裁判自己也牵涉其中。在这样的环境里，公道不会自动送到你手上。"
+          },
+          "hopes_fears": {
+            "en": "You hope someone will finally admit what was unfair and set it right, yet fear that pressing the point will expose your own part, or prove that nobody plans to balance it at all.",
+            "zh": "你希望终于有人承认哪里不公并把它扶正，却又怕追究下去会牵出自己的那一份，或发现根本没人打算把账算平。"
           }
         },
         "domains": {
@@ -2518,27 +3194,47 @@
           },
           "present": {
             "en": "Outward progress feels slow or suspended, yet genuine internal reframing is doing quiet heavy lifting beneath the surface.",
-            "zh": "表面进度看似悬在半空，实则深层的观念重构正在安静发力，为你铺垫接下来的真正破局。"
+            "zh": "表面进度看似悬在半空，实则深层的观念重构正在水面下安静发力，做着真正吃重的功课。"
+          },
+          "challenge": {
+            "en": "Limbo itself is the hard part—staying calm while the answers are not yet ready to drop into your lap, and resisting the urge to pry them loose early.",
+            "zh": "难熬的正是这份悬而未决——答案尚未成熟落地时，既要稳住心神，又要克制住急于硬撬的冲动。"
           },
           "resource": {
             "en": "Your strongest asset is patience and lateral sight—seeing a fresh exit everyone rushing at normal speed walks straight past.",
             "zh": "你手中最强的资源是沉得住气的逆向视野——能看清那些一路狂奔的人擦肩而过的隐藏出口。"
-          },
-          "challenge": {
-            "en": "Even upright, The Hanged Man in a challenge slot highlights the discomfort of limbo—staying calm when answers are not ready to drop into your lap yet.",
-            "zh": "即便正位，落在阻碍位的倒吊人也点出悬而未决的煎熬——当答案尚未成熟落地时，如何克制住急于硬撬的冲动。"
           },
           "action": {
             "en": "Release one tactic that clearly isn't working, let the timeline breathe, and test the exact counter-intuitive view you dismissed earlier.",
             "zh": "干脆松开那套已经证明行不通的旧打法，给时间表留出呼吸余地，去认真检验你此前一眼否掉的逆向思路。"
           },
           "outcome": {
-            "en": "An illuminating shift in perspective dissolves a stubborn knot; movement resumes later on far wiser terms than haste would have bought.",
-            "zh": "一场醍醐灌顶的视角翻转将解开死结；稍后重启推进时，你会站上比当初仓促行动高明得多的局面。"
+            "en": "If you let the pause do its work, a shift in perspective is likely to dissolve a stubborn knot, and movement tends to resume on far wiser terms than haste would have bought.",
+            "zh": "若肯让这段停顿发挥作用，视角的翻转很可能解开那个死结；之后重启推进时，局面往往比仓促行动高明得多。"
           },
           "advice": {
             "en": "Willing surrender is not defeat—notice the bright halo shines precisely because the traveler stopped thrashing against the rope.",
             "zh": "清醒的放手绝非认输——正因为旅人不再跟绳索徒劳撕扯，头顶那圈洞见之光才得以明亮燃起。"
+          },
+          "hidden": {
+            "en": "Look for the view you have been refusing to take. A belief you treat as fixed—what must happen first, or who has to move—may be the knot itself, and it has not been questioned yet.",
+            "zh": "找一找那个你一直不肯站过去看的角度。某个被你当成铁律的前提——哪件事必须先发生，该由谁先动——可能正是死结本身，只是还没被质疑过。"
+          },
+          "self": {
+            "en": "You are the one willing to wait while others push, holding still long enough to see differently. You bring patience and a readiness to give something up for a clearer answer.",
+            "zh": "别人都在往前挤的时候，你是那个愿意停下来等的人，停得够久，才看得出不一样的东西。你带来的是耐心，以及肯拿一点舍弃去换清醒答案的气度。"
+          },
+          "other": {
+            "en": "They appear to be in no hurry and may be holding back a decision while they rethink things. Their stillness looks more like reflection than rejection, so pressing for an answer may only lengthen the wait.",
+            "zh": "对方看上去并不着急，可能正按着决定不表态，好把事情重新想一遍。这种不动更像是在沉淀而不是拒绝，催着要答复，多半只会让等待更久。"
+          },
+          "external": {
+            "en": "Circumstances have put things on hold: a queue, a review period, someone else's timetable. Nothing outside is broken; the timing simply does not respond to effort for now.",
+            "zh": "外部条件把事情按下了暂停键：排队、审核期，或别人手里的时间表。外面并没有哪里坏了，只是这段时间，使劲也换不来进度。"
+          },
+          "hopes_fears": {
+            "en": "Part of you hopes this pause is leading to an insight that changes everything; another part fears you are merely stuck, giving up time and ground while everyone else moves on.",
+            "zh": "你心里一半盼着这段停顿能等来一个改变全局的领悟，另一半却怕自己只是卡住了，白白让出时间和位置，眼看别人一个个走远。"
           }
         },
         "domains": {
@@ -2588,21 +3284,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "The waiting has done its work: if you already know the answer, more hanging adds nothing, and if the delay is real, fighting it only tires you out. Decide which one this is.",
+            "zh": "这段等待该教的已经教完了：如果你心里早有答案，再吊着也不会多出什么；如果延迟是真的，硬扛只会把自己累垮。先分清眼下是哪一种。"
+          },
+          "foundation": {
+            "en": "A pause that once made sense went on too long, or a sacrifice was made that nobody asked for. Much of the current stuckness traces back to that overstayed wait.",
+            "zh": "一段原本合理的停顿被拖得太久，或是做了一次其实没人要求的牺牲。眼下的卡顿，很大一部分要追溯到那场等过了头的等待。"
+          },
+          "present": {
+            "en": "You are in a limbo that has stopped teaching you anything—outwardly waiting, inwardly restless, with the decision postponed under the label of needing more clarity.",
+            "zh": "你正悬在一段已经学不到新东西的空档里：表面在等，心里发躁，而那个决定被贴上“还要再看清一点”的标签，一再往后放。"
+          },
           "challenge": {
             "en": "Pointless stalling, passive martyrdom, or fighting an unavoidable wait is draining energy without adding wisdom.",
             "zh": "毫无产出的拖延、自我感动的退让，或跟不可避免的等待硬顶，都在白白消耗心气。"
+          },
+          "resource": {
+            "en": "The insight is already earned; the hanging bought it. What remains usable is that changed view, plus the plain relief of putting your feet down and no longer paying for a stalemate.",
+            "zh": "那份领悟已经到手了，是这段悬着的日子换来的。眼下还能用的，正是这个变过的视角，以及双脚落地、不再为僵局买单的那份轻松。"
           },
           "action": {
             "en": "End the stalemate today: stop making unnecessary sacrifices for a stuck situation and take one grounded step back onto your own feet.",
             "zh": "今天就打破悬空状态：停止为停滞的局面继续做无谓牺牲，稳稳踏回实地，迈出属于自己的第一步。"
           },
           "outcome": {
-            "en": "Lingering limbo breaks open—once you stop stalling or struggling against the clock, real forward motion returns.",
-            "zh": "久拖不决的悬置期即将终结——只要停止空等或瞎急，实在的推进感会立刻接通。"
+            "en": "This limbo is likely to drag on only as long as you keep stalling or struggling against the clock; drop either habit and real forward motion tends to return.",
+            "zh": "只要还在空等或瞎急，这段悬置期多半就会拖下去；放下其中任何一种惯性，实在的推进感往往就能重新接通。"
           },
           "advice": {
             "en": "A pause stops being wise the moment it turns into avoidance; take the insight you already earned and move.",
             "zh": "一旦停顿滑向逃避，它就不再是智慧；拿好你早已悟出的那点清醒，果断落地行动。"
+          },
+          "hidden": {
+            "en": "Consider whether the patience hides a hope of rescue: giving things up so that someone notices and acts for you. If resentment is building under the calm, that is worth admitting.",
+            "zh": "想一想这份耐心底下是否藏着被拯救的期待：一次次退让，是盼着有人看见、替你出手。如果平静底下正攒着怨气，那就值得承认。"
+          },
+          "self": {
+            "en": "You are showing up as either the long-suffering one who keeps giving in, or the one who cannot bear to wait another day. Both stances keep you from standing on your own decision.",
+            "zh": "你在这件事里，要么是那个一再委屈自己的人，要么是那个一天也等不下去的人。两种姿态，都让你没能站到自己的决定上。"
+          },
+          "other": {
+            "en": "They may be stalling without saying so, or appear to be waiting for you to make the move they would rather not make. Watch what actually changes over time instead of what is promised.",
+            "zh": "对方可能在不声不响地拖着，或者看起来是在等你去做那个他们自己不想做的动作。别看承诺了什么，看一段时间里实际变了什么。"
+          },
+          "external": {
+            "en": "Delays around you have lost their reason: a process dragging on out of habit, or people treating 'not yet' as an answer. The hold-up is no longer protecting anything.",
+            "zh": "周围的拖延已经没有了理由：流程只是出于惯性在拖，或大家把“再等等”当成了答复。这样的搁置，已经不再保护任何东西。"
+          },
+          "hopes_fears": {
+            "en": "You hope the standstill will end without your having to choose, yet fear that stepping down means the sacrifice was for nothing, or that you have already waited too long.",
+            "zh": "你希望僵局不用自己表态就能结束，却又怕一旦落地，之前的牺牲就都白费了，或者发现自己已经等得太久。"
           }
         },
         "domains": {
@@ -2722,25 +3454,45 @@
             "en": "You are crossing an unmistakable threshold of transformation: the old shape is dissolving in real time so a truer structure can form.",
             "zh": "你正跨过一道无法回头的蜕变门槛：旧形态正在眼前真实消融，为更契合当下的新秩序腾出空间。"
           },
+          "challenge": {
+            "en": "The raw ache of letting go is the difficulty—grieving something once precious takes real courage, even when you know its season has passed.",
+            "zh": "真正的难处是放手时的阵痛——明知花期已过，与曾经珍视之物好好作别，依然需要极大的勇气。"
+          },
           "resource": {
             "en": "Your strongest asset is ruthless honesty and clean compost—turning finished experience into rich soil instead of hoarding dead wood.",
             "zh": "你最强的力量是毫不自欺的断舍离与转化力——敢于把已结束的经历化作养分，而绝不囤积枯枝。"
-          },
-          "challenge": {
-            "en": "Even upright, Death in a challenge slot highlights the raw ache of letting go—grieving something once precious even when you know its season has passed.",
-            "zh": "即便正位，落在阻碍位的死神也直面放手的真实阵痛——明知花期已过，真正与曾经珍视之物作别依然需要极大勇气。"
           },
           "action": {
             "en": "Call time formally on the outgrown habit, deal, or chapter—pack away its remnants with respect and stop negotiating with the past.",
             "zh": "为那段已经不合身的旧习惯、旧合作或旧章节正式画上句号——体面收尾，不再回头和过去讨价还价。"
           },
           "outcome": {
-            "en": "A decisive chapter closes permanently, opening stark, clean air and genuine renewal on the other side of the transition.",
-            "zh": "一段旧周期将彻底封卷，穿越短暂的清空期后，迎面而来的是真正清朗且全新的开局。"
+            "en": "If the ending is honored rather than resisted, this chapter is likely to close for good, with stark, clean air and genuine renewal waiting on the far side of the transition.",
+            "zh": "若肯让这场终结好好完成，这段旧周期很可能就此封卷；走过转场之后，等在另一边的多半是清朗而真实的新开局。"
           },
           "advice": {
             "en": "Meet transition upright with dignity rather than bargaining—the mystic white rose blooms precisely on the dark banner of release.",
             "zh": "带着尊严直面更迭而不必卑微恳求——纯白的神秘玫瑰，恰恰盛开在黑色送别之旗上。"
+          },
+          "hidden": {
+            "en": "An ending may already be under way out of sight—a role, a bond, or a way of working that has finished its job without any announcement. Check what has quietly stopped growing before you plan around it.",
+            "zh": "一场结束可能已经在看不见的地方展开：一个角色、一段关系，或一种做法，没有任何宣告就完成了它的使命。在围绕它做打算之前，先看看哪些东西已经悄悄不再生长。"
+          },
+          "self": {
+            "en": "You come to this as someone finishing a chapter: less attached to who you were, readier than you expected to let a role go. That honesty makes you steadier than the circumstances look.",
+            "zh": "你是带着“翻完这一页”的状态走进这件事的：对从前的自己不再那么执着，放下某个角色的准备也比预想中充分。这份诚实，让你比局面看上去的更稳。"
+          },
+          "other": {
+            "en": "The other person appears to have closed a door, or may be changing in ways that end the old arrangement. Their behavior suggests a real shift, not a passing mood, so earlier terms may no longer apply.",
+            "zh": "对方看起来已经关上了某扇门，或者正在发生足以终结旧安排的变化。从举动上看，这更像一次真实的转变而非一时情绪，原先的约定可能不再适用。"
+          },
+          "external": {
+            "en": "Conditions are changing for good: a team dissolving, a market or era closing, a stage of life running out. This is a season turning, larger than anyone's effort to hold it in place.",
+            "zh": "外部条件正在发生不可逆的改变：团队解散、某个行情或时代落幕、人生的一个阶段走到头。这是季节在更替，不是谁使劲就能把它留在原地的。"
+          },
+          "hopes_fears": {
+            "en": "You hope for a clean ending that finally frees you to begin again, yet fear the empty stretch after it, and who you will be without what is passing.",
+            "zh": "你盼着一个干净的了结，好让自己终于能重新开始，却又怕了结之后那段空白，更怕没有了这些，自己还算是谁。"
           }
         },
         "domains": {
@@ -2782,7 +3534,7 @@
           },
           "internalized": {
             "en": "A quiet private transformation happening beneath outward routine before you feel ready to announce it.",
-            "zh": "外表看似一切如常，内心早已悄悄完成了对旧自己的松手与换代。"
+            "zh": "外表看似一切如常，内心却正悄悄经历一场蜕变，只是你还没准备好对外宣布。"
           },
           "release": {
             "en": "Finally loosening white-knuckled fear and allowing a delayed transition to complete gently.",
@@ -2790,27 +3542,63 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "The ending you are putting off has mostly happened. Take it as slowly as you need, but stop spending effort on keeping a finished thing looking alive.",
+            "zh": "你一直拖着不认的那个结局，其实大半已经发生了。想慢就慢慢来，只是别再花力气，让一件已经结束的事看上去还活着。"
+          },
+          "foundation": {
+            "en": "A chapter that should have closed was kept open—patched, postponed, or revived out of fear of the gap. That unfinished goodbye sits underneath the present heaviness.",
+            "zh": "有一章早该合上，却因为害怕空档而被缝缝补补、一再延期，甚至强行续命。那场没说完的告别，就压在如今这份沉重的底下。"
+          },
+          "present": {
+            "en": "You are between versions: the old form no longer fits, but it has not been set down. On the surface little moves, while inside a slower change is working its way through.",
+            "zh": "你正卡在两个版本之间：旧的样子已经不合身，却还没放下。表面上没什么动静，内里却有一场更慢的变化正在一点点走完。"
+          },
           "challenge": {
             "en": "Fear of the unknown is prolonging a painful goodbye that already happened in substance.",
             "zh": "对未知空白的恐惧，正在把一场实质上早已发生的告别无限拉长。"
+          },
+          "resource": {
+            "en": "Change is already happening in you, privately and at your own pace, and that counts. You also know exactly what the old form costs to keep, which makes letting go easier when you are ready.",
+            "zh": "变化已经在你身上发生了，悄悄地、按你自己的节奏，这本身就算数。你也清楚守着旧壳要付出多少，等你准备好的时候，放手会因此容易得多。"
           },
           "action": {
             "en": "Remove one anchor tying you to the finished past today—clear the files, cancel the zombie commitment, or speak the overdue goodbye.",
             "zh": "今天就亲手拔掉一根拴在旧日里的锚——清理掉过期文档、关停名存实亡的承诺，或说出那句拖延太久的再见。"
           },
           "outcome": {
-            "en": "Change still unfolds, only slower and heavier while resisted; once you unclench your grip, relief arrives swiftly.",
-            "zh": "变革依然会发生，抗拒只会让过程更沉重漫长；一旦肯松开紧绷的手，轻盈解脱感很快就会到来。"
+            "en": "The change tends to keep unfolding either way, only slower and heavier while resisted; if you unclench your grip, relief is likely to come sooner than you expect.",
+            "zh": "这场变化多半仍在推进，抗拒只会让过程更沉重漫长；若肯松开紧绷的手，轻松感很可能比你预想的来得更早。"
           },
           "advice": {
             "en": "Stop mistaking familiarity for safety—holding onto yesterday's shell blocks the very renewal you keep wishing for.",
             "zh": "别再把熟悉误当成安全——死抱昨天的旧壳，恰恰堵死了你一直盼望的新开端。"
+          },
+          "hidden": {
+            "en": "Ask what the delay protects. The fear may be less about losing the thing itself than about the blank space afterwards, or you may already have let go inside without admitting it.",
+            "zh": "问一问这样拖着到底在保护什么。你怕的也许不是失去这件事本身，而是之后那片空白；也可能你心里早就放下了，只是还没承认。"
+          },
+          "self": {
+            "en": "You are showing up half in, half out—loyal to something that has stopped giving back, going through the motions while part of you has quietly moved on.",
+            "zh": "你是以半进半退的状态出现的：守着一件已经没有回馈的事，手上照旧做着，心里的一部分却早已悄悄离开。"
+          },
+          "other": {
+            "en": "They may be holding on to how things were, keeping old terms alive while avoiding the conversation that would close them. From outside it looks more like reluctance to face the gap than renewed commitment.",
+            "zh": "对方可能还抓着从前的样子不放，一边让旧约定名义上延续，一边回避那场足以收尾的谈话。从外面看，这更像是不愿面对空档，而不是重新投入。"
+          },
+          "external": {
+            "en": "The surroundings are in a drawn-out wind-down: a closing nobody has announced, a structure kept running past its use. Outside signals are mixed because the ending is under way but not declared.",
+            "zh": "周围的环境正处在拖长的收尾期：一场没人宣布的结束，一套早已过了用处却还在运转的架构。外界信号之所以混乱，是因为结局在进行，却没人说破。"
+          },
+          "hopes_fears": {
+            "en": "The hope is that holding on a little longer might bring it back to life; the fear is both the final goodbye and the possibility that you have stayed long past the end.",
+            "zh": "你抱着的希望是再撑一阵子，也许它还能活过来；你怕的，既是那句最后的再见，也是发现自己早已在结局之后又多留了很久。"
           }
         },
         "domains": {
           "general": {
             "en": "Where are you postponing an inevitable closure out of habit or fear? Gentle acceptance turns dragged-out decay into clean renewal.",
-            "zh": "看看自己正因惯性或不安拖延着哪场早已注定的收尾。温和地承认并放手，能把漫长耗损立刻转为清爽重生。"
+            "zh": "看看自己正因惯性或不安拖延着哪场早已避不开的收尾。温和地承认并放手，能把漫长耗损转为清爽重生。"
           },
           "love": {
             "en": "In love, reversed Death flags lingering on an ex, clinging to an outdated dynamic, or fearing the vulnerability of letting a relationship evolve. Clear out past ghosts so live affection can breathe.",
@@ -2929,25 +3717,45 @@
             "en": "Integration is actively working right now—different parts of your life, skills, or team are finding a smoother shared rhythm.",
             "zh": "整合正在悄然生效——你生活、能力或团队里原本割裂的几股力量，正逐步磨合出顺畅共振的节拍。"
           },
+          "challenge": {
+            "en": "Ask whether chasing spotless harmony is keeping you over-cautious; smoothing every edge can become the obstacle when a crisper stance is needed.",
+            "zh": "不妨自问：一味追求四平八稳与面面俱到，是否让你在需要干脆表态时过于保守？处处求圆融，本身就可能成了阻力。"
+          },
           "resource": {
             "en": "Your strongest asset is equanimity and synthesis—the ability to bridge rival viewpoints and calm volatile situations without losing sight of purpose.",
             "zh": "你手中最宝贵的资本是定力与统筹调和力——既能弥合分歧立场、安抚急躁氛围，又始终不偏离核心目标。"
-          },
-          "challenge": {
-            "en": "Even upright, Temperance in a challenge slot asks whether chasing spotless harmony is keeping you over-cautious when a crisper stance is needed.",
-            "zh": "即便正位，落在阻碍位的节制也在提醒：一味追求四平八稳与面面俱到，是否让你在需要干脆表态时显得过于保守？"
           },
           "action": {
             "en": "Test a measured blend today—combine two competing requirements in small iterative pours rather than betting everything on one extreme.",
             "zh": "今天就试着做一次精准调配——用小步迭代把两项相互牵制的需求融出中间方案，别把全部筹码押在单一极端。"
           },
           "outcome": {
-            "en": "Quiet harmony, restored healing, and resilient long-term flow settle in—a sustainable synthesis built to last.",
-            "zh": "温润平顺的和谐、切实复原与细水长流的韧性将稳稳落地——这是一套能陪你走很久的持久平衡。"
+            "en": "Kept at this steady pace, things tend toward quiet harmony, real healing, and resilient long-term flow—a synthesis sustainable enough to last.",
+            "zh": "保持这样的稳当节奏，局面多半走向温润的和谐、切实的复原与细水长流的韧性——一种足以长久维持的平衡。"
           },
           "advice": {
             "en": "Keep one foot on solid earth and one in live water: stay grounded in practical facts while staying responsive to subtle shifts.",
             "zh": "一脚踩稳实地、一脚感知活水：既紧扣现实事实，又保持对细微变化的敏锐呼应。"
+          },
+          "hidden": {
+            "en": "Notice the slow adjustment already happening out of sight: two things you thought were at odds may be settling into a workable mix. Check whether you are giving it credit or still expecting a dramatic fix.",
+            "zh": "留意那场正在暗处慢慢进行的磨合：两样你以为互相冲突的东西，可能正在调出一个行得通的比例。看一看你是否认了这份功劳，还是仍在等一个戏剧性的解法。"
+          },
+          "self": {
+            "en": "You are the steady hand in this—the one who measures before pouring, listens to both sides, and adjusts by degrees. You bring pacing and a refusal to be rushed into extremes.",
+            "zh": "这件事里，你是那只稳得住的手：先量好再倒，两边的话都听，一点一点地调。你带来的是节奏感，以及不肯被催着走极端的定力。"
+          },
+          "other": {
+            "en": "The other person appears willing to meet halfway and may be adjusting their pace to yours. Their behavior suggests patience and good faith, though they are unlikely to respond well to ultimatums.",
+            "zh": "对方看起来愿意各退一步，也可能正在配合你的节奏做调整。从表现看，他们有耐心也有诚意，只是不太吃“最后通牒”这一套。"
+          },
+          "external": {
+            "en": "Conditions reward gradual work at the moment: a mixed team finding its rhythm, a recovery running on its own clock, terms still being tuned. The environment is cooperative but will not be hurried.",
+            "zh": "眼下的环境更奖励慢功夫：成员各异的团队在找节拍，恢复有自己的时钟，条件还在微调。外部是配合的，只是催不得。"
+          },
+          "hopes_fears": {
+            "en": "You hope the pieces of your life can finally fit together without one being sacrificed, yet fear that so much compromise will leave everything lukewarm, yourself included.",
+            "zh": "你盼着生活里的几块终于能拼到一起，不必牺牲哪一头，却又怕折中得太多，样样都变得温吞，连自己也被稀释在中间。"
           }
         },
         "domains": {
@@ -2997,21 +3805,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Something is out of proportion. Before adding effort, find the ingredient there is too much of—speed, work, comfort, or commitments that pull against each other—and reduce that first.",
+            "zh": "有什么东西的比例失调了。在加码之前，先找出放多了的那一样——速度、工作量、享受，还是互相拉扯的安排——先把它减下来。"
+          },
+          "foundation": {
+            "en": "A stretch of all-or-nothing living, or a process hurried before it had settled, tipped things over. The current strain began when the pace stopped matching what the situation could absorb.",
+            "zh": "一段非此即彼的日子，或一件还没沉淀好就被催熟的事，把平衡打翻了。眼下的吃力，是从节奏超过了事情承受能力的那一刻开始的。"
+          },
+          "present": {
+            "en": "Your rhythm is off: bursts followed by crashes, or energy split across demands that cancel each other out. Nothing is ruined, but the mix is not holding.",
+            "zh": "你的节奏乱了：猛冲一阵接着垮一阵，或是精力被互相抵消的要求分走。没有什么被毁掉，只是眼下这个配比稳不住。"
+          },
           "challenge": {
             "en": "Impatience, excess, or incompatible commitments are throwing your natural rhythm off center.",
             "zh": "急躁催进度、过度消耗或互相冲突的安排，正把你原本稳当的节律彻底打乱。"
+          },
+          "resource": {
+            "en": "You can feel the imbalance, and that sensitivity is the useful part. Catching it this early means a small correction is enough: fewer inputs, a slower pace, a simpler mix.",
+            "zh": "你感觉得到哪里失衡，这份敏感正是可用之处。发现得这么早，小小的修正就够了：少放几样，放慢一点，把配方调简单。"
           },
           "action": {
             "en": "Cut one extreme habit immediately—dial intensity back from ten to six and separate two clashing tasks instead of forcing them together.",
             "zh": "立刻叫停一个走到极端的习惯——把强度从十分降回六分，并把两件彼此掣肘的事拆开处理，别再硬往一锅里熬。"
           },
           "outcome": {
-            "en": "Rushing or over-swinging spills effort; stepping back to simplify restores clean footing quickly.",
-            "zh": "越急躁越容易打翻手里的积累；肯主动退回简单比例，稳当的节奏很快就会重新合拍。"
+            "en": "If the rushing or over-swinging continues, effort is likely to keep spilling; stepping back to simpler proportions tends to restore clean footing fairly fast.",
+            "zh": "若继续急躁冒进或大起大落，心血多半还会不断洒掉；肯主动退回简单比例，稳当的节奏往往很快就能重新合拍。"
           },
           "advice": {
             "en": "Aim for steady middle ground today—boring consistency heals faster than dramatic resets.",
             "zh": "今天只求稳稳站在中间地带——看似平淡的持续微调，比轰轰烈烈的推倒重来管用得多。"
+          },
+          "hidden": {
+            "en": "Look for the quiet leak—a commitment that fights another one, or a habit of making up for strictness with a blowout. It may be draining more than the obvious pressures.",
+            "zh": "找一找那个不声不响的漏点：一项和另一项互相打架的承诺，或一种先苛刻、再靠放纵来补偿的习惯。它耗掉的，可能比明面上的压力还多。"
+          },
+          "self": {
+            "en": "You are swinging between extremes in this matter: overcommitting, then pulling back hard, impatient with anything that takes time. The effort is real, but the dosage is off.",
+            "zh": "你在这件事上大起大落：先是过度投入，再猛地抽身，对任何需要时间的东西都不耐烦。你的努力是真的，只是剂量没拿准。"
+          },
+          "other": {
+            "en": "They may be blowing hot and cold, or pushing for speed where patience is needed. Their signals appear inconsistent, which more likely reflects their own imbalance than a settled view of you.",
+            "zh": "对方可能忽冷忽热，或在需要耐心的地方一味求快。他们的信号看起来前后不一，这更可能反映的是他们自身的失衡，而不是对你已有定论。"
+          },
+          "external": {
+            "en": "The environment is mismatched at present: competing demands, a pace set by someone else's urgency, resources that do not fit the task. Much of the friction comes from the mix, not from any single part.",
+            "zh": "眼下的环境本身就不合拍：要求互相冲突，节奏被别人的急迫牵着走，手头的资源和任务对不上。摩擦多半出在搭配上，而不在某一个环节。"
+          },
+          "hopes_fears": {
+            "en": "You hope one big push or one strict reset will put everything right, yet fear you cannot keep any steady middle for long, and that the swing back is already on its way.",
+            "zh": "你希望来一次猛冲或一场严格的重启，就能把一切扳正，却又怕自己守不住任何平稳的中间状态，而反弹已经在路上。"
           }
         },
         "domains": {
@@ -3131,13 +3975,13 @@
             "en": "You are standing inside a magnetic pull that costs more freedom than it admits; awareness of the trap is the exact crack that loosens it.",
             "zh": "你正身处一股极具诱惑却暗暗索要自由代价的牵引力里；清醒看穿它的运作机制，就是松开枷锁的第一道裂缝。"
           },
-          "resource": {
-            "en": "Even here, raw drive and fierce clarity about what people actually want can become potent leverage—provided you stay master of the appetite instead of its servant.",
-            "zh": "即便在这张牌上，炽热的野心、直面人性欲望的清醒眼光仍是强悍筹码——前提是由你驾驭欲念，绝不沦为它的奴仆。"
-          },
           "challenge": {
             "en": "Compulsive habits, gilded handcuffs, codependent bonds, or shadow fears are holding you captive inside a cage whose door isn't even locked.",
             "zh": "成瘾式惯性、金手铐式的现实绑架、共生依附或隐秘恐惧，正把你困在一座其实并未落锁的牢笼里。"
+          },
+          "resource": {
+            "en": "Raw drive and fierce clarity about what people actually want can still become potent leverage—provided you stay master of the appetite instead of its servant.",
+            "zh": "炽热的野心、直面人性欲望的清醒眼光，依然可以是强悍筹码——前提是由你驾驭欲念，而不是沦为它的奴仆。"
           },
           "action": {
             "en": "Interrupt one automatic craving or draining deal today—lift the loose collar deliberately and prove to yourself you can walk ten steps away.",
@@ -3148,8 +3992,28 @@
             "zh": "若继续放任沉溺，束缚只会越收越紧、透支心神；唯有坦诚揭开这笔代价账，松开的链环才真正交回你手里。"
           },
           "advice": {
-            "en": "Stop blaming the pedestal or pretending you have no choice—humorous, fearless honesty about your own shadow breaks its spell immediately.",
-            "zh": "别再把一切怪给外界诱惑或假装身不由己——带着清醒甚至一点自嘲去直视自己的欲望弱点，魔咒当下就会失灵。"
+            "en": "Stop blaming the pedestal or pretending you have no choice—humorous, fearless honesty about your own shadow is what starts to break its spell.",
+            "zh": "别再把一切怪给外界诱惑或假装身不由己——带着清醒甚至一点自嘲去直视自己的阴暗面，魔咒才会开始失灵。"
+          },
+          "hidden": {
+            "en": "Ask what you get out of staying. There may be a payoff you have not admitted—comfort, status, being needed, or avoiding a harder choice—and it could be what holds the chain in place.",
+            "zh": "问问自己，留在这里到底图什么。也许有一份你还没承认的好处——安逸、体面、被需要，或者能躲开一个更难的选择——正是它把链子固定在原地。"
+          },
+          "self": {
+            "en": "You show up bound to something you say you would rather be free of: wanting it, resenting it, and telling yourself there is no choice. The wanting is honest; the 'no choice' part deserves a second look.",
+            "zh": "你带着一样嘴上说想摆脱的东西来到这件事里：想要它，又怨它，还告诉自己别无选择。想要是真的，“别无选择”这一句，值得再看一眼。"
+          },
+          "other": {
+            "en": "The other side may be holding on tightly—through intensity, obligation, money, or guilt—and the tie appears to serve their needs more than your freedom. Judge it by the pattern of behavior, not the promises.",
+            "zh": "对方可能抓得很紧，靠的是浓烈的情绪、义务、金钱或愧疚，而这层牵绊看上去更照顾他们的需要，而不是你的自由。看反复出现的行为，别看许诺。"
+          },
+          "external": {
+            "en": "You are in surroundings built to hook: incentives that punish leaving, a culture of excess, pressure to keep up appearances. The pull is real, and it is designed to feel like the only option.",
+            "zh": "你所处的环境本身就是为“勾住人”而设计的：离开要付代价的激励、放纵成风的氛围、必须撑住场面的压力。这股拉力是真的，而且被设计得像是唯一的选项。"
+          },
+          "hopes_fears": {
+            "en": "You want to keep the pleasure or security this gives without paying its price, and you fear both what it is turning you into and how empty things might feel without it.",
+            "zh": "你想留住它给的快感或安全感，又不必付那份代价；你怕的，既是它正把自己变成另一个人，也是没有了它，日子会空得发慌。"
           }
         },
         "domains": {
@@ -3199,21 +4063,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "The hold is weaker than it was, and you have noticed. Use this window: say plainly what you are leaving and take the step while the grip is loose.",
+            "zh": "那股控制力已经不如从前，你自己也察觉到了。抓住这个窗口：把要离开的东西明明白白说出来，趁它抓得松，把那一步迈出去。"
+          },
+          "foundation": {
+            "en": "A period of entanglement—a habit, a dependence, or a deal that cost too much—has already begun to break. You are standing on the first refusals you managed back then.",
+            "zh": "一段纠缠的日子——一种习惯、一份依赖，或一笔代价过高的交易——早已开始松动。你现在脚下踩着的，就是当初咬牙说出的那几次“不”。"
+          },
+          "present": {
+            "en": "You are partway out. The old pull still calls, but it no longer decides for you, and what used to be automatic now takes a conscious yes.",
+            "zh": "你已经走出了一半。旧的拉力还在招手，却不再替你做主；从前不假思索的事，如今得你清醒地点头才会发生。"
+          },
           "challenge": {
             "en": "The final tug of an old habit or guilt from past entanglement is testing whether your breakaway holds.",
             "zh": "旧惯性的最后一波回潮，或过往沉溺留下的愧疚，正在考验你的抽身是否足够坚定。"
+          },
+          "resource": {
+            "en": "You know this trap from the inside, and that knowledge is yours to keep. Time, attention, and self-respect it once ate up are coming back and can be spent on purpose.",
+            "zh": "这个陷阱你是从里面认识的，这份了解会一直属于你。曾被它吞掉的时间、注意力和自尊正在一点点回来，可以由你有意识地安排去处。"
           },
           "action": {
             "en": "Remove the trigger environment today—unsubscribe, set a firm boundary, tell an honest confidant, and replace the empty slot with a clean habit.",
             "zh": "今天就从环境里拆掉诱发源——彻底切断旧入口、立下硬边界、向信得过的人坦白立约，并用清爽的新习惯填补空位。"
           },
           "outcome": {
-            "en": "Genuine liberation takes hold: an unhealthy attachment loosens decisively and energy once spent wrestling temptation returns to your own goals.",
-            "zh": "切实的松绑与重获自由即将落地：消耗你的执念彻底松脱，原本耗在对抗诱惑里的精力全数回到自己的人生主线。"
+            "en": "If the breakaway holds, an unhealthy attachment is likely to loosen for real, and energy once spent wrestling temptation tends to flow back to your own goals.",
+            "zh": "只要这次抽身守得住，消耗你的执念很可能真正松脱，原本耗在对抗诱惑里的精力也会逐渐回到自己的人生主线。"
           },
           "advice": {
             "en": "Walk cleanly away without turning liberation into self-punishment; reclaiming freedom feels lighter than nursing regret.",
             "zh": "干脆往前走，别把戒断变成自我惩罚；坦然拥抱重获的自由，远比反复咀嚼懊悔更有力量。"
+          },
+          "hidden": {
+            "en": "Check whether part of the pattern has simply gone underground. Shame can hide a habit better than it ends one, so see if something is being kept secret instead of being finished.",
+            "zh": "查一查这个模式是不是只是转到了地下。羞耻更擅长把习惯藏起来，而不是让它结束；看看有没有什么只是被瞒住，而不是真的了结。"
+          },
+          "self": {
+            "en": "You come as someone taking the collar off: clearer about your limits, a little raw, no longer willing to call the cage comfortable. It may still feel safer to hesitate at the door.",
+            "zh": "你是以“正在摘下锁环”的样子出现的：对自己的底线更清楚，还有点生疼，也不肯再把笼子说成舒适区。只是站在门口时，迟疑一下仍然显得更安全。"
+          },
+          "other": {
+            "en": "They may be loosening their hold, or struggling openly with a pattern they used to deny. Signs of change appear genuine, though it is wise to let consistent behavior confirm them over time.",
+            "zh": "对方可能正在松手，或开始公开面对一个过去不肯承认的模式。改变的迹象看起来是真的，不过还是让一段时间里前后一致的表现来确认更稳妥。"
+          },
+          "external": {
+            "en": "The pressures that kept you tied are easing: a contract ending, a tempting setting left behind, people around you no longer feeding the habit. For now, outside conditions make leaving easier than staying.",
+            "zh": "那些把你拴住的外部压力正在减弱：一份合约到期、一个充满诱惑的环境被留在身后，身边的人也不再助长旧习惯。就眼下的条件来说，离开比留下更容易。"
+          },
+          "hopes_fears": {
+            "en": "You hope you are truly free of it this time, yet fear one weak evening could pull you back, or that life without the old intensity will feel flat.",
+            "zh": "你盼着这一次是真的摆脱了，却又怕某个意志薄弱的晚上就被拽回去，或者没有了从前那股浓烈，日子会变得平淡无味。"
           }
         },
         "domains": {
@@ -3318,20 +4218,60 @@
       "upright": {
         "core": {
           "en": "The Tower upright is a disruptive awakening, not comfortable smoothness: an unstable assumption, role, or structure cracks open abruptly so you can stop defending what could not hold.",
-          "zh": "高塔正位绝非风平浪静的顺境，而是一次剧烈却清醒的破局：原本就撑不住的假设、角色或结构骤然裂开，逼着你不再维护注定失效的外壳。"
+          "zh": "高塔正位绝非风平浪静的顺境，而是一次剧烈却清醒的破局：原本就撑不住的假设、角色或结构骤然裂开，逼着你不再维护那层守不住的外壳。"
         },
         "byRole": {
-          "outcome": {
-            "en": "Expect a sharp shake-up or undeniable revelation that clears away brittle plans; what survives the jolt is what was genuinely real.",
-            "zh": "前方可能出现一次干脆利落的震荡或无法回避的真相揭露，冲垮脆弱安排；熬过冲击留下的才是真正靠得住的东西。"
+          "message": {
+            "en": "Something built on a shaky premise is giving way, and no amount of patching will hold it. Let the false part fall and pay attention to what is still standing afterwards.",
+            "zh": "有一样建立在不牢靠前提上的东西正在垮掉，怎么修补都撑不住。让虚的那部分倒下去，然后留心看，之后还立着的是什么。"
+          },
+          "foundation": {
+            "en": "A sudden break—a revelation, a collapse, an argument that changed everything—cleared away what you had been relying on. The present situation is being built on that exposed ground.",
+            "zh": "一次突如其来的断裂——真相曝光、一场崩塌，或一次改变一切的争吵——清空了你原本依靠的东西。眼下的局面，正是建在那片裸露出来的地面上。"
+          },
+          "present": {
+            "en": "The shake-up is happening now: plans overturned, a truth out in the open, a structure you trusted cracking. It is disorienting, and it is also showing you exactly what was never solid.",
+            "zh": "震荡正在发生：计划被掀翻，真相摆上了台面，一个你信任的结构出现裂缝。这让人发懵，但也正让你看清，哪些东西从来就不结实。"
           },
           "challenge": {
             "en": "Clinging to a structure that is already cracking multiplies the shock; let go of the facade before it falls on your head.",
             "zh": "死守已经开裂的结构只会放大冲击；在旧壳砸下来前先主动撤离。"
           },
+          "resource": {
+            "en": "Shock strips things down to what is true, and that clarity is usable. You now know which supports were real, and you are free of the effort it took to keep up the front.",
+            "zh": "冲击会把一切削到只剩真实，这份清晰是可以拿来用的。你现在知道哪些支撑是真的，也不必再为撑住门面耗费力气。"
+          },
           "action": {
             "en": "Name the flaw nobody wants to admit and dismantle the weakest dependency deliberately rather than waiting for an uncontrolled break.",
             "zh": "主动指出那个大家都不愿承认的隐患，有计划地拆掉最脆弱的依赖，而不是坐等它失控崩塌。"
+          },
+          "outcome": {
+            "en": "If the current course holds, a sharp shake-up or undeniable revelation is likely to clear away brittle plans; what survives the jolt is what was genuinely real.",
+            "zh": "照目前的走向，很可能出现一次干脆利落的震荡或无法回避的真相揭露，冲垮脆弱的安排；熬过冲击留下的，才是真正靠得住的东西。"
+          },
+          "advice": {
+            "en": "Do not rush to rebuild the same walls. Get clear of the falling pieces, tell the truth about what failed, and choose the next foundation only once the dust has settled.",
+            "zh": "别急着把同样的墙再砌一遍。先躲开还在掉落的碎块，如实说出到底是哪里出了问题，等尘埃落定，再选下一处地基。"
+          },
+          "hidden": {
+            "en": "Check for the crack you have been stepping around: a fact everyone avoids, a strain the structure was never built to carry. It may be closer to giving way than the calm surface suggests.",
+            "zh": "查一查那道你一直绕着走的裂缝：一件人人回避的事实，一份这个结构本就承受不了的压力。它离撑不住的那一刻，可能比平静的表面显示的更近。"
+          },
+          "self": {
+            "en": "You arrive shaken, or as the one who brings the jolt—blunt, unwilling to keep pretending, more honest than comfortable. Your certainties are in pieces, which leaves you unusually open to the truth.",
+            "zh": "你要么是带着被震过的状态出现，要么自己就是带来冲击的那个人：直来直去，不肯再装，诚实多过体面。原有的笃定碎了一地，反倒让你格外听得进真话。"
+          },
+          "other": {
+            "en": "The other person may act abruptly, with a sudden announcement, an outburst, or a reversal that upends the arrangement. Their behavior appears volatile right now, so avoid resting plans on yesterday's version of them.",
+            "zh": "对方可能会突然出手：一个临时的宣布、一次爆发，或一个推翻原有安排的转向。他们眼下的表现显得很不稳定，别把计划建立在“昨天的那个他们”之上。"
+          },
+          "external": {
+            "en": "Events outside your control are moving fast: a reorganization, a breaking story, a system failing without warning. The disruption comes from the structure itself, not from anything you did this week.",
+            "zh": "你控制不了的外部事件正在快速推进：一次重组、一条突发消息，或某个系统毫无预警地失灵。这场动荡来自结构本身，而不是你这几天做了什么。"
+          },
+          "hopes_fears": {
+            "en": "Part of you wants something to finally break the deadlock and end the pretending; the fear is how much could come down with it, and where that would leave you.",
+            "zh": "你心里有一部分希望终于有什么来打破僵局、结束这场装模作样；怕的是连带塌下来的太多，怕自己最后只能站在一地瓦砾里。"
           }
         },
         "domains": {
@@ -3378,6 +4318,60 @@
           "release": {
             "en": "A controlled demolition—dismantling what no longer fits on your own terms.",
             "zh": "一次可控拆解——按自己的节奏撤掉不再合身的结构。"
+          }
+        },
+        "byRole": {
+          "message": {
+            "en": "The change you are bracing against can still be made on your terms. Take the wall down piece by piece now, and it does not have to come down all at once later.",
+            "zh": "你正绷着身子抵挡的那场改变，现在还能由你说了算。趁现在一块一块把墙拆下来，它就不必等到日后一下子全塌。"
+          },
+          "foundation": {
+            "en": "A crisis that was averted, softened, or only half faced left the weak structure standing. What you feel now is the pressure of that postponed reckoning.",
+            "zh": "一场被躲过、被缓冲，或只面对了一半的危机，让那个不牢靠的结构留了下来。你现在感到的，正是那次被推迟的清算攒下的压力。"
+          },
+          "present": {
+            "en": "Outwardly things hold; inwardly the ground has already shifted. You are either quietly revising everything you believed or working hard to keep a strained arrangement from showing its cracks.",
+            "zh": "表面上一切还撑得住，内里的地面其实已经移位。你要么正悄悄推翻自己原本相信的一切，要么在费力不让一个吃紧的安排露出裂缝。"
+          },
+          "challenge": {
+            "en": "The difficulty is the dread itself: a break you keep postponing stretches the anxiety out, or you go on flinching at every creak long after the real danger has passed.",
+            "zh": "难处在于这份提心吊胆本身：一场一拖再拖的了断把焦虑越拉越长，或者真正的危险早已过去，你仍被每一声响动吓得一缩。"
+          },
+          "resource": {
+            "en": "You have warning and you have time, which a sudden collapse never grants. The shift has already happened in your thinking, so the outer change can be planned instead of suffered.",
+            "zh": "你有预警，也有时间，这是突然塌方从来不给的。转变已经先在你的想法里发生，外在的改变因此可以被安排，而不必被动承受。"
+          },
+          "action": {
+            "en": "Stop rescheduling the hard part. Put a date on the conversation, exit, or repair you keep deferring, and tell one person so the plan exists outside your head.",
+            "zh": "别再把最难的那一步往后排。给那场一拖再拖的谈话、离开或修补定下日期，并告诉一个人，让这个计划不只存在于你的脑子里。"
+          },
+          "outcome": {
+            "en": "If the propping-up continues, pressure is likely to build toward a rougher break. Handled in stages, the same change tends to arrive as a managed transition with far less damage.",
+            "zh": "如果继续硬撑，压力多半会越积越高，最后以更粗暴的方式断开。若分阶段处理，同样的改变往往能以可控的过渡到来，损失也小得多。"
+          },
+          "advice": {
+            "en": "Stop treating calm as proof of safety, and stop treating every tremor as the end. Face the specific thing that needs dismantling and leave the remaining walls alone.",
+            "zh": "别把平静当作安全的证明，也别把每一次晃动都当成末日。只面对那一处确实需要拆的地方，其余的墙先别去动。"
+          },
+          "hidden": {
+            "en": "Consider whether your view of this has already changed while your life still follows the old plan. A belief may have collapsed quietly, and the outward arrangement has not caught up.",
+            "zh": "想一想你对这件事的看法是不是已经变了，而生活还在按旧图纸走。某个信念可能已经悄悄塌了，只是外面的安排还没跟上。"
+          },
+          "self": {
+            "en": "You are the one holding the cracked wall together, composed outside and braced inside. Part of you knows it has to go and is deciding how, not whether.",
+            "zh": "你是那个用手扶着裂墙的人，外表镇定，里面却一直绷着。你其实有几分明白它迟早得拆，正在考虑的是怎么拆，而不是拆不拆。"
+          },
+          "other": {
+            "en": "They may be avoiding a confrontation or smoothing things over, and may appear calm while something larger shifts for them. Take the delay as a sign that a hard conversation is being postponed, not canceled.",
+            "zh": "对方可能在躲着正面冲突、粉饰太平，或者表面平静，背后却有更大的变动在发生。把这种拖延看作一场难谈的话被推后的迹象，而不是被取消。"
+          },
+          "external": {
+            "en": "Around you, the shake-up is slow and contained: cuts made in stages, a known problem deferred again, an institution patching instead of rebuilding. Instability is present but arriving in installments.",
+            "zh": "你周围的震荡是缓慢而被压住的：分批进行的削减、又一次被搁置的已知问题、只打补丁不肯重建的机构。不稳定是有的，只是分期到来。"
+          },
+          "hopes_fears": {
+            "en": "You hope to get through this change without anything breaking, yet fear the crash is only postponed, and that your careful propping is making the fall bigger.",
+            "zh": "你希望能不摔碎任何东西就挨过这场改变，却又怕崩塌只是被推迟了，怕自己小心翼翼的支撑反而让它摔得更重。"
           }
         },
         "domains": {
@@ -3499,25 +4493,45 @@
             "en": "You are in a restorative window of clarity and inspiration; creative energy flows gently without frantic strain.",
             "zh": "你正身处澄明而有灵气的修复窗口；灵感与好状态正柔和回流，不再需要咬牙硬逼。"
           },
+          "challenge": {
+            "en": "Beware of drifting in lofty inspiration alone; the risk is admiring the sky without channeling at least one bright stream onto practical earth.",
+            "zh": "当心只停留在仰望星空的理想微光里；风险在于光顾着憧憬，却没把哪怕一股清泉实实在在浇灌到现实土壤上。"
+          },
           "resource": {
             "en": "Your strongest asset is authentic vision and calm goodwill—people trust a steady guiding light that does not clamor for applause.",
             "zh": "你最宝贵的资源是真诚长远的愿景与温润定力——人们天然信任一束不喧哗却始终稳定的指路星光。"
-          },
-          "challenge": {
-            "en": "Even upright, The Star in a challenge slot cautions against drifting solely in lofty inspiration without channeling at least one bright stream onto practical earth.",
-            "zh": "即便正位，落在阻碍位的星星也在提醒：别只停留在仰望星空的理想微光里，记得把其中一股清泉实实在在浇灌到现实土壤上。"
           },
           "action": {
             "en": "Share one honest piece of work, express real gratitude, and invest daily steady care in the long-term dream that genuinely moves you.",
             "zh": "拿出一样真诚不炫技的作品与世界分享，表达由衷的感谢，并把日常稳定的心血浇灌在真正打动你的长期愿景上。"
           },
           "outcome": {
-            "en": "Deep healing, renewed faith, and luminous alignment unfold—a calm, sustainable chapter built on clear direction.",
-            "zh": "深层疗愈、重燃的笃定信念与顺遂契合将温和展开——一段方向清晰、细水长流的好时光正在铺陈。"
+            "en": "This path tends toward deep healing, renewed faith, and a sense of alignment—if you keep tending it, a calm, sustainable chapter built on clear direction is likely to take shape.",
+            "zh": "这条路多半通向深层疗愈、重燃的信念与内外契合——只要持续用心照料，一段方向清晰、细水长流的平静时光很可能慢慢成形。"
           },
           "advice": {
             "en": "Pour equally into inner life and outer earth—keep your heart open while anchoring bright ideals in simple repeatable craft.",
             "zh": "把水同时注进内在池水与外在土地——既保持心门敞开，也把清亮理想落进朴素可坚持的日常功夫。"
+          },
+          "hidden": {
+            "en": "Recovery may be further along than you have let yourself believe. Look for small evidence—easier sleep, an idea that excites you, less guarding—before deciding you are still where the storm left you.",
+            "zh": "复原的进度，可能比你允许自己相信的更靠前。先找找细小的证据——睡得踏实了些、有个让你来劲的念头、防备少了一点——再判断自己是否还停在风暴离开时的位置。"
+          },
+          "self": {
+            "en": "You come to this open-handed and unarmored, with more faith than proof and no interest in pretending. What you bring is sincerity and a calm sense of direction.",
+            "zh": "你是摊开双手、不带盔甲来到这件事里的：信心多过证据，也没兴趣装样子。你带来的是真诚，以及一份安静的方向感。"
+          },
+          "other": {
+            "en": "The other person appears sincere and unguarded with you, and may be offering quiet encouragement instead of grand gestures. Their steadiness is likely to show in consistency over time.",
+            "zh": "对方在你面前看起来是真诚、不设防的，给出的可能是安静的鼓励，而不是隆重的表示。他们的可靠，多半会体现在长期的前后一致上。"
+          },
+          "external": {
+            "en": "The worst has passed and the climate is gentle: goodwill around you, room to recover, modest help offered without strings. Conditions support slow rebuilding better than quick wins.",
+            "zh": "最难的一段已经过去，外部气候是温和的：身边有善意，有休养的余地，也有不附带条件的小帮助。眼下的条件更适合慢慢重建，而不是求速胜。"
+          },
+          "hopes_fears": {
+            "en": "You hope this calm means things are truly mending and your wish is within reach, yet fear trusting it too soon, having been caught off guard once before.",
+            "zh": "你盼着这份平静意味着事情真的在好转、心愿已经不远，却又怕信得太早，毕竟上一次就是在毫无防备时被打了个措手不及。"
           }
         },
         "domains": {
@@ -3567,21 +4581,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "Your hope has dimmed, not gone out. Tend the tiredness before you judge the dream, and count the small things that are working before concluding that nothing is.",
+            "zh": "你的希望只是暗了，并没有灭。先照顾好这份疲惫，再去评判那个梦想；先数一数还在起作用的小事，再下“什么都不行”的结论。"
+          },
+          "foundation": {
+            "en": "A disappointment, or a recovery that dragged on longer than promised, wore your faith thin. The guardedness you carry now began as a sensible response to that letdown.",
+            "zh": "一次失望，或一段比说好的拖得更久的恢复期，把你的信心磨薄了。你如今带着的那份戒备，最初只是对那次落空的合理反应。"
+          },
+          "present": {
+            "en": "You are running low: inspiration is quiet, the goal looks further off than it is, and you may be acting fine while privately wondering whether it is worth it.",
+            "zh": "你的电量偏低：灵感沉寂，目标看上去比实际更远，你也许面上若无其事，心里却在嘀咕这一切到底值不值。"
+          },
           "challenge": {
             "en": "Loss of faith, creative dryness, or measuring yourself against a harsh ideal is dimming your momentum.",
             "zh": "信心滑落、灵感枯竭，或拿过于苛刻的理想标尺鞭策自己，正在压暗你的前行动力。"
+          },
+          "resource": {
+            "en": "There is still water in the well. You still know what once moved you, and disappointment has taught you the difference between a fantasy and a hope you can actually look after.",
+            "zh": "井里还有水。你还记得什么曾经打动过你，而失望也教会了你分辨：哪些是幻想，哪些是你真能照料好的盼望。"
           },
           "action": {
             "en": "Refill your own pitcher first—step back from comparison, acknowledge one honest small victory, and reconnect with something that quietly delights you.",
             "zh": "先往自己的水瓶里重新蓄水——关掉横向比较，认真承认一个实实在在的小进步，去做一件纯粹让你眼里有光的小事。"
           },
           "outcome": {
-            "en": "Disillusionment softens as soon as you stop demanding instant miracles; quiet trust returns step by ordinary step.",
-            "zh": "当你不再苛求一夜奇迹，失落感就会迅速松动；踏实的信任感会在平凡一步步里重新长回来。"
+            "en": "Disillusionment tends to soften once you stop demanding instant miracles; quiet trust is likely to return step by ordinary step.",
+            "zh": "当你不再苛求一夜奇迹，失落感往往就会松动；踏实的信任感多半会在平凡的一步步里重新长回来。"
           },
           "advice": {
             "en": "Stars do not vanish behind clouds—lower the bar from grand inspiration to gentle daily stewardship until the sky clears.",
             "zh": "云层遮住夜空时星星并未消失——先别逼自己立刻灵感迸发，温和守好每一天的细小照料，天色自会放晴。"
+          },
+          "hidden": {
+            "en": "Ask whether cynicism is doing a protective job here. Under the 'I no longer expect much' line, there may be a hope you still hold and are afraid to say aloud.",
+            "zh": "问一问这份看淡是不是在替你挡着什么。在“我早就不指望了”这句话底下，可能还有一个你仍然抱着、却不敢说出口的盼望。"
+          },
+          "self": {
+            "en": "You show up tired and a little closed, measuring yourself against an ideal you cannot reach this month. The brave face is convincing to others; it is costing you energy you need.",
+            "zh": "你带着疲惫、也带着一点封闭出现，拿一个这个月根本够不着的理想来衡量自己。那副硬撑的样子能让别人信服，却在消耗你正需要的力气。"
+          },
+          "other": {
+            "en": "They may seem distant, discouraged, or slow to believe good news, and appear to be protecting themselves after a letdown. Low energy on their side is a likelier explanation than lack of care.",
+            "zh": "对方可能显得疏远、提不起劲，或对好消息将信将疑，看上去像是在一次落空之后护着自己。比起不在乎，他们精力见底是更说得通的解释。"
+          },
+          "external": {
+            "en": "Support around you is thin for now: slow responses, little encouragement, results that lag behind effort. The lull is one of timing and says little about the worth of what you are doing.",
+            "zh": "眼下周围的支持比较稀薄：回应迟缓，鼓励不多，成果也落在付出后面。这段冷清只是时机问题，并不说明你做的事不值得。"
+          },
+          "hopes_fears": {
+            "en": "You hope the spark will return and things will feel meaningful again, yet fear that believing once more would only set you up for the same disappointment.",
+            "zh": "你盼着那点火花回来，事情重新变得有意义，却又怕再信一次，只是把自己重新送到同样的失望面前。"
           }
         },
         "domains": {
@@ -3707,25 +4757,45 @@
             "en": "Not all information is in plain view yet; dreams, gut feelings, and subtle cues speak loudly, though they still require careful grounding.",
             "zh": "此刻并非所有真相都已摊在阳光下；梦境、情绪波动与微妙直觉异常活跃，但仍需落地查证。"
           },
-          "resource": {
-            "en": "Your strongest asset is imaginative depth and psychic sensitivity—noticing emotional undercurrents and hidden angles that purely literal minds miss.",
-            "zh": "你手中最深厚的资源是共情深度与敏锐想象力——能读懂纯理性视角极易忽略的情绪暗潮与象征脉络。"
-          },
           "challenge": {
             "en": "Projection, nighttime anxiety, or half-truths are distorting the road ahead so every shadow looks like a cliff.",
             "zh": "过度投射、深夜滋长的焦虑或残缺信息正在扭曲前路轮廓，让每一道黑影看起来都像险滩。"
+          },
+          "resource": {
+            "en": "Your strongest asset is imaginative depth and psychic sensitivity—noticing emotional undercurrents and hidden angles that purely literal minds miss.",
+            "zh": "你手中最深厚的资源是共情深度与敏锐想象力——能读懂纯理性视角极易忽略的情绪暗潮与象征脉络。"
           },
           "action": {
             "en": "Verify one uncertain assumption in plain daylight, record your gut impressions without acting blindly on panic, and take only the next visible step between the towers.",
             "zh": "挑一个最让你心神不宁的猜测去正面核实，记下直觉却不被恐慌推着乱动，只走眼下双塔之间看得见的那一步。"
           },
           "outcome": {
-            "en": "Ambiguity persists briefly while deeper truths surface from below; staying calm through the mist brings sharper self-knowledge than rushing ever could.",
-            "zh": "在深层真相完全浮水前，朦胧期还会持续一阵；只要在雾里稳住心神，穿越之后换来的洞察将格外深刻。"
+            "en": "Ambiguity is likely to linger a while as deeper truths surface from below; staying calm through the mist tends to bring sharper self-knowledge than rushing could.",
+            "zh": "在深层真相浮出水面之前，朦胧期多半还会持续一阵；若能在雾里稳住心神，换来的自我洞察往往比急着冲出去深刻得多。"
           },
           "advice": {
             "en": "Respect both the tame hound and the wild wolf inside you—neither dismiss genuine instincts nor let raw dread run the whole trail.",
             "zh": "兼顾内在驯顺的家犬与警觉的野狼——既不轻率否决真实的直觉警报，也不让原始恐惧接管整条夜路。"
+          },
+          "hidden": {
+            "en": "Something may not be in view yet—missing information, an unspoken feeling, or an old fear coloring how you read the signs. Check which it is before you settle on a conclusion.",
+            "zh": "可能有些东西还不在视野里：缺失的信息、没说出口的感受，或一桩正在影响你解读迹象的旧恐惧。先查清是哪一种，再下结论。"
+          },
+          "self": {
+            "en": "You are feeling your way through this by instinct, sensitive to every shift and unsure how far to trust your own reading. You bring real intuition along with a tendency to fill gaps with worry.",
+            "zh": "你是凭直觉摸索着走这件事的：对每一点变化都很敏感，却拿不准自己的判断能信几分。你带来的是真实的直觉，也带着拿担忧去填补空白的习惯。"
+          },
+          "other": {
+            "en": "The other person is hard to read at present: mixed signals, shifting moods, things left unsaid. They may be unsure themselves, so treat your guesses about them as guesses.",
+            "zh": "对方眼下很难看透：信号混杂，情绪起伏，话也没说全。他们自己可能也还没想清楚，所以请把你对他们的猜测，就当作猜测。"
+          },
+          "external": {
+            "en": "Conditions around you are murky: incomplete facts, rumors, plans that others have not finalized. The environment is unclear in itself, which is different from being hostile.",
+            "zh": "外部条件一片朦胧：事实不全，传言不少，别人的计划也还没敲定。环境本身看不清楚，这和环境不怀好意是两回事。"
+          },
+          "hopes_fears": {
+            "en": "You hope your intuition is right and the uncertainty will resolve in your favor, yet fear what is hiding in the dark, including the chance that you are deceiving yourself.",
+            "zh": "你希望自己的直觉是对的，迷雾散开后局面对你有利，却又怕暗处藏着什么，也怕其实是自己在骗自己。"
           }
         },
         "domains": {
@@ -3775,21 +4845,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "The picture is getting clearer, so let it. Look at what the thinning fog shows, even where it differs from the story you have been telling yourself.",
+            "zh": "画面正在变清楚，那就让它清楚。去看雾气变薄后露出来的东西，哪怕它和你一直讲给自己听的那个版本不一样。"
+          },
+          "foundation": {
+            "en": "A long stretch of confusion, guesswork, or fear in the dark lies behind this. Much of what frightened you then was built from too little information.",
+            "zh": "这件事的背后，是一长段困惑、瞎猜或摸黑的恐惧。当时吓到你的东西，有很大一部分是拿太少的信息拼出来的。"
+          },
+          "present": {
+            "en": "Things are coming to light: a misunderstanding is unraveling, a worry is shrinking to its real size, or a fact you avoided is now hard to ignore.",
+            "zh": "事情正在浮出水面：一场误会在解开，一桩担心缩回了它真实的大小，或者一件你回避过的事实，如今已经很难装作没看见。"
+          },
           "challenge": {
             "en": "Lingering self-deception, exposed confusion, or reluctance to trust clearing evidence is slowing your relief.",
             "zh": "残余的自我欺骗、刚浮出水面的混乱细节，或不敢相信局势正在明朗，正在拖慢你松口气的节奏。"
+          },
+          "resource": {
+            "en": "You have walked through the unclear part and learned which fears were only shadows. That hard-won sense of proportion, plus the relief of knowing, is what you can lean on.",
+            "zh": "最看不清的那一段你已经走过来了，也认出了哪些恐惧只是影子。这份来之不易的分寸感，加上“总算弄明白了”之后松下来的那口气，就是你可以倚靠的东西。"
           },
           "action": {
             "en": "Turn on the lights cleanly: confront the lingering rumor, admit the awkward truth out loud, and drop the anxious storyline that no longer fits the facts.",
             "zh": "干脆把灯全打开：当面戳破悬而未决的猜测、把略显尴尬却真实的现状说出来，丢掉早已不符合事实的焦虑剧本。"
           },
           "outcome": {
-            "en": "Confusion clears decisively—what was concealed comes into open view, leaving you relieved and much better equipped to choose.",
-            "zh": "迷障将干脆廓清——藏在暗处的变量全数明朗，你会长舒一口气，并拥有清晰得多的决策底气。"
+            "en": "If you keep facing what the thinning fog reveals, confusion is likely to clear and what was concealed tends to come into open view, leaving you relieved and better equipped to choose.",
+            "zh": "只要肯直视渐散的雾气所显露的东西，迷障很可能逐步廓清，藏在暗处的变量也趋于明朗，让你松一口气，做选择时也更有底气。"
           },
           "advice": {
             "en": "Welcome plain truth even if it feels stark at first; waking from a confusing dream is always cleaner than staying half-asleep.",
             "zh": "即便最初略显直白刺眼，也要坦然迎进真相；从混沌梦境里彻底醒来，永远比半梦半醒轻松得多。"
+          },
+          "hidden": {
+            "en": "Check whether you are still looking away from something the evidence now shows or, at the other extreme, reading plots into ordinary noise. Either habit may be keeping the fog in place.",
+            "zh": "查一查你是否仍在回避证据已经摆出来的东西，或者走到另一头，把寻常的杂音都读成了阴谋。这两种习惯，都可能让雾一直散不掉。"
+          },
+          "self": {
+            "en": "You are coming out of a confused spell, blinking a little—less ruled by worry than before, though part of you may prefer the familiar story to the plainer truth.",
+            "zh": "你正从一段糊涂的日子里走出来，眼睛还有点不适应光亮：比以前少受担忧摆布，只是心里有一部分，可能仍偏爱那个熟悉的说法，胜过更朴素的真相。"
+          },
+          "other": {
+            "en": "They may be starting to show their hand, clearing up something left vague or letting a pretense slip. What they do appears more legible now, so compare it with what you were told earlier.",
+            "zh": "对方可能开始亮出底牌：把之前含糊的事说清楚，或让某层伪装滑落。他们的举动现在看起来更容易读懂，不妨和你早先听到的说法对照一下。"
+          },
+          "external": {
+            "en": "Information is surfacing around you: rumors are being confirmed or dismissed, withheld details are coming out, the mood is steadying. Outside conditions are becoming easier to read.",
+            "zh": "周围的信息正在浮现：传言被证实或被否定，压着没说的细节陆续出来，气氛也在稳下来。外部局势正变得比之前好懂。"
+          },
+          "hopes_fears": {
+            "en": "You long for the truth to come out and put your mind at rest, and you fear that what comes to light will be harder to live with than the uncertainty was.",
+            "zh": "你盼着真相大白，好让自己安下心来，却又怕摆到明处的东西，比之前的不确定更难消受。"
           }
         },
         "domains": {
@@ -3916,25 +5022,45 @@
             "en": "Clarity, vitality, and positive visibility peak right now; doubts dissolve quickly when brought into direct conversation.",
             "zh": "清晰度、生命力与外在能见度正处高点；原本犹豫的疑惑，只要摊到明面上说清便会迎刃而解。"
           },
+          "challenge": {
+            "en": "Easy confidence can glare: basking in it so brightly that you skim past fine details, or hog the spotlight without meaning to, is the risk to watch.",
+            "zh": "顺风顺水的自信也会晃眼：要提防因光环正盛而略过细微隐患，或在无意间占满了全部聚光灯。"
+          },
           "resource": {
             "en": "Your strongest asset is radiant authenticity—warmth, optimism, and direct honesty that lift morale across the whole room.",
             "zh": "你最强的优势是坦荡感染力——发自内心的热情、爽朗与坦诚，能自然照亮并带动整个场域的士气。"
-          },
-          "challenge": {
-            "en": "Even upright, The Sun in a challenge slot warns against basking in easy confidence so brightly that you skim past fine details or hog the spotlight unintentionally.",
-            "zh": "即便正位，落在阻碍位的太阳也在提醒：小心因顺风顺水、光环正盛而略过细微隐患，或在无意间占满了全部聚光灯。"
           },
           "action": {
             "en": "Put your work, feelings, or gratitude into open view today—publish, celebrate visibly, and share credit warmly with those beside you.",
             "zh": "今天就大方把作品、心意或谢意亮在日光之下——发布成果、真诚庆祝，并把荣光温暖分给并肩同行的人。"
           },
           "outcome": {
-            "en": "Bright clarity, earned recognition, and heartfelt joy unfold—lingering uncertainty gives way to warm, undeniable resolution.",
-            "zh": "明朗结果、实至名归的认可与由衷欢欣即将落地——此前悬着的雾气尽散，迎来坦荡温暖的圆满节点。"
+            "en": "Things are heading toward bright clarity, earned recognition, and heartfelt joy; if you stay this open, lingering uncertainty is likely to give way to a warm resolution.",
+            "zh": "事情正朝着明朗的结果、实至名归的认可与由衷的欢欣发展；保持这份坦荡，此前悬着的不确定很可能化为温暖的圆满。"
           },
           "advice": {
             "en": "Stop shrinking to make others comfortable; shine cleanly, share warmth generously, and enjoy what you actually built.",
             "zh": "别再为了迁就气氛而刻意收起光芒；坦然发亮、慷慨传递暖意，好好享受你亲手创造的成果。"
+          },
+          "hidden": {
+            "en": "Very little is concealed here, and that itself may be what you have not accepted. Check whether you are searching for a catch because plain good news is harder to trust than trouble.",
+            "zh": "这件事里几乎没有什么藏着的，而这一点本身，可能恰恰是你还没接受的。看一看你是不是正在找破绽，只因为单纯的好消息比麻烦更难让人相信。"
+          },
+          "self": {
+            "en": "You show up warm, direct, and easy to read, with nothing to hide and real energy to give. People know where they stand with you, and that confidence is a large part of what you bring.",
+            "zh": "你带着暖意出现，直来直去，让人一眼就看得明白：没有什么要藏的，还有实打实的精力可以给。和你相处，谁都知道自己的位置，这份底气正是你带来的一大部分。"
+          },
+          "other": {
+            "en": "The other person appears open and glad to be involved, and is likely to say what they mean. Their warmth looks straightforward, so take it at face value unless their actions give you a reason not to.",
+            "zh": "对方看起来很敞开，也乐于参与，多半是有话直说的人。他们的热情看上去并不绕弯，除非行动上出现反例，否则照字面理解就好。"
+          },
+          "external": {
+            "en": "The climate is favorable: visible support, good timing, people in a generous mood. Outside conditions are clear and warm, and little is working against you from that side.",
+            "zh": "外部气候是有利的：看得见的支持、合适的时机、周围人大方的心情。外在条件晴朗而温暖，从这一侧来的阻力很少。"
+          },
+          "hopes_fears": {
+            "en": "You hope for simple, visible happiness, the kind you can show without apology, yet fear being fully seen, or that once things are this good they have nowhere to go but down.",
+            "zh": "你盼着一种简单、看得见的快乐，可以不带歉意地亮出来，却又怕被人完全看见，也怕好到这个份上，接下来只剩走下坡路。"
           }
         },
         "domains": {
@@ -3963,7 +5089,7 @@
       "reversed": {
         "core": {
           "en": "The Sun reversed is sunlight filtered through passing haze—warmth and potential remain intact, yet temporary fatigue, dimmed confidence, or overblown ego is clouding full enjoyment.",
-          "zh": "太阳逆位好比穿过薄云的晴光——底层的暖意与好局并未消失，但暂时的疲惫、延迟到账的认可，或浮夸好胜正在遮暗本该纯粹的喜悦。"
+          "zh": "太阳逆位好比穿过薄云的晴光——底层的暖意与好局并未消失，但暂时的疲惫、一时黯淡的自信，或浮夸好胜正在遮暗本该纯粹的喜悦。"
         },
         "lenses": {
           "blocked": {
@@ -3984,21 +5110,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "The good is still here, only quieter than you expected. Stop performing brightness and let yourself enjoy what is actually going well, at its real size.",
+            "zh": "好的东西还在，只是比你预想的安静。别再表演光芒万丈，按它真实的大小，去享受确实进展顺利的那部分。"
+          },
+          "foundation": {
+            "en": "A success that felt flat, praise that came late, or a season of keeping up a cheerful front has shaped this. Somewhere back there, enjoying things became conditional on their being perfect.",
+            "zh": "一次没尝出滋味的成功、一份迟到的肯定，或一段硬撑着笑脸的日子，造成了现在的样子。就在那时，“高兴”变成了一件必须先完美才被允许的事。"
+          },
+          "present": {
+            "en": "Things are basically fine and you are not quite feeling it: tired, a little flat, or busy looking happier than you are. The warmth is filtered at the moment, not lost.",
+            "zh": "事情基本顺利，你却没怎么感觉到：有些累，有点提不起劲，或者正忙着显得比实际更开心。眼下的暖意只是被滤掉了一层，并没有丢。"
+          },
           "challenge": {
             "en": "Temporary delays, dim self-belief, or trying too hard to look effortlessly sunny is stealing real joy.",
             "zh": "阶段性的延迟、信心略显不足，或用力维持“一切很好”的体面，正在悄悄偷走真快乐。"
+          },
+          "resource": {
+            "en": "Underneath the tiredness the basics are sound: real ability, real goodwill, results that exist whether or not they were applauded. A smaller, private gladness is available now, and it asks nothing of you.",
+            "zh": "疲惫底下，底子是好的：真实的能力、真实的善意，还有无论有没有掌声都已经存在的成果。一份更小、更私人的高兴现在就能拿到，而且它不向你要求任何东西。"
           },
           "action": {
             "en": "Drop toxic positivity and spotlight chasing; acknowledge one genuine win already on the board and check one overlooked practical detail.",
             "zh": "放下硬撑乐观与虚荣较劲；认真肯定桌上已有的那份实在成绩，再把一个容易忽略的现实细节补牢。"
           },
           "outcome": {
-            "en": "Success still arrives, simply quieter or slightly later than imagined—grounded pride outlasts flashy applause.",
-            "zh": "好结果依然会来，只是比预期稍晚一步或更低调朴实——扎实的踏实感远胜喧闹喝彩。"
+            "en": "Success is still likely, though it tends to come quieter or slightly later than imagined—and grounded pride outlasts flashy applause.",
+            "zh": "好结果仍然可期，只是多半比预想的稍晚一步或更低调朴实——扎实的踏实感远比喧闹的喝彩持久。"
           },
           "advice": {
             "en": "You do not have to blaze at noon every day; steady morning warmth is plenty to keep growing.",
             "zh": "不必每天都像正午烈日一样耀眼；清朗平稳的晨光，早已足够万物生长。"
+          },
+          "hidden": {
+            "en": "Ask whether the cheerfulness is covering fatigue, or whether confidence has drifted into ignoring a limit. It is also worth checking for a quiet happiness you are keeping to yourself in case it does not last.",
+            "zh": "问一问这份开朗是不是在盖着疲惫，或者自信是否已经滑向了对某个限度的视而不见。也值得看一看，有没有一份你怕它不长久而藏着没说的小欢喜。"
+          },
+          "self": {
+            "en": "You are putting on a brighter face than you feel, or leaning on confidence to avoid a small doubt. The ability is real; the need to look effortless is the part that wears you down.",
+            "zh": "你正摆出一副比真实感受更明亮的表情，或者靠着自信绕开一点小小的疑虑。能力是真的，“必须显得毫不费力”这一条，才是把你磨累的部分。"
+          },
+          "other": {
+            "en": "They may be overselling how well things are going, or appear upbeat while running on empty. Enthusiasm from their side is probably sincere but inflated, so wait for results before you match it.",
+            "zh": "对方可能把情况说得比实际更好，或者看上去兴致很高，其实已经在硬撑。他们的热情大概是真心的，只是有些虚高，不妨等看到结果，再跟着兴奋。"
+          },
+          "external": {
+            "en": "Outside conditions are good but hazy: recognition delayed, a celebration postponed, an upbeat mood that glosses over details. The setting is friendly, though slower and less clear than it looks.",
+            "zh": "外部条件不差，只是蒙着一层薄雾：认可来得晚，庆祝被推迟，一片乐观的气氛盖过了细节。环境是友好的，只是比看上去更慢，也没那么清楚。"
+          },
+          "hopes_fears": {
+            "en": "You hope to feel as happy as the situation says you should, yet fear that the glow is an act, or that sharing your gladness openly will tempt it to fade.",
+            "zh": "你希望自己能像局面“应该”的那样开心，却又怕这层光亮只是演出来的，或者一旦把高兴说出口，它就会跟着淡掉。"
           }
         },
         "domains": {
@@ -4126,25 +5288,45 @@
             "en": "You are standing in a clear moment of evaluation and graduation: past efforts are being tallied honestly, and a fresh tier of purpose is opening.",
             "zh": "你正处在一场清晰的阶段考核与跃升关口：过往积累正被如实检阅，更高一层的人生格局正在面前展开。"
           },
+          "challenge": {
+            "en": "Outgrowing an old self-image takes nerve, and that is the test here: rising means letting past critics and old excuses stay behind in the box.",
+            "zh": "挣脱旧的自我定位需要胆识，考验正在于此——起身迎新，就得把过往的标签、苛责与借口留在旧盒子里。"
+          },
           "resource": {
             "en": "Your strongest asset is redeemed experience—nothing you survived was wasted once you integrate its lesson and let it fuel your calling.",
             "zh": "你最厚重的资本是历经锤炼且被真正消化的阅历——凡是走过的弯路，只要提炼出真知，全都会成为托举你跃升的底气。"
-          },
-          "challenge": {
-            "en": "Even upright, Judgement in a challenge slot highlights the nerve required to outgrow an old self-image—rising means letting past critics and old excuses stay behind in the box.",
-            "zh": "即便正位，落在阻碍位的审判也指向挣脱旧自我定位所需的胆识——起身迎新，就必须把过往的标签、苛责与借口留在旧盒子里。"
           },
           "action": {
             "en": "Make the decisive call you have been circling, forgive one lingering self-reproach, and step openly into the next chapter with both arms lifted.",
             "zh": "做出那个你已反复盘旋的关键抉择，正式原谅自己一桩耿耿于怀的旧憾，张开双臂坦然迈入下一程。"
           },
           "outcome": {
-            "en": "Profound renewal, absolution, and a clean graduation into a truer life stage arrive—you emerge lighter, clearer, and deeply aligned.",
-            "zh": "深沉的焕新、彻底释怀与顺理成章的进阶跃升将落定——你会以更轻盈、更笃定的姿态站上全新高度。"
+            "en": "Answering the call tends to lead toward profound renewal, absolution, and a clean graduation into a truer life stage, where you are likely to feel lighter, clearer, and deeply aligned.",
+            "zh": "回应这声召唤，多半通向深沉的焕新、彻底的释怀与顺理成章的进阶——你很可能以更轻盈、更笃定的姿态踏入更真实的人生阶段。"
           },
           "advice": {
             "en": "Judge your past to harvest wisdom, never to sentence your future—rise when the trumpet sounds.",
             "zh": "复盘过往是为了提炼智慧，绝不是为了替未来判刑——号角已经响起，果断起身迎光。"
+          },
+          "hidden": {
+            "en": "An old chapter may be asking to be reviewed before you can move on—a regret, an unanswered apology, or a talent you shelved. Check what keeps resurfacing; it may be the call itself.",
+            "zh": "可能有一段旧章节正等着被重新过目，你才走得动：一桩遗憾、一句没回应的道歉，或一项被你束之高阁的本事。看看是什么总在反复冒出来，那可能就是召唤本身。"
+          },
+          "self": {
+            "en": "You come to this awake and ready to account for yourself: honest about the past, done with excuses, willing to be seen changing. You bring the courage to say the old version of you is finished.",
+            "zh": "你来到这件事里时是清醒的，也准备好为自己交代：对过去诚实，不再找借口，也不怕被人看见自己在变。你带来的，是敢说“从前那个我到此为止”的勇气。"
+          },
+          "other": {
+            "en": "The other person may be reassessing everything, and appears ready to speak honestly about the past or make a clear decision. They are likely to be direct, and may give the answer you have been waiting on.",
+            "zh": "对方可能正在把一切重新盘点，看上去已准备好坦率谈谈过去，或做出明确的决定。他们多半会直说，也许正是你等了很久的那个答复。"
+          },
+          "external": {
+            "en": "A moment of review has arrived from outside: results announced, a decision handed down, an invitation that asks for a yes or no. The timing is being set by the call, not by your readiness.",
+            "zh": "一个从外部到来的检阅时刻：结果公布、决定下达，或一份需要你明确表态的邀请。时间由这声召唤来定，而不是由你准备得如何来定。"
+          },
+          "hopes_fears": {
+            "en": "You hope to be forgiven, recognized, and given a real second chance, yet fear being weighed and found lacking, or having to live up to the calling once you answer it.",
+            "zh": "你盼着被原谅、被认可，得到一次真正的重来机会，却又怕被掂量之后发现不够格，也怕一旦应了这声召唤，就得真的担得起它。"
           }
         },
         "domains": {
@@ -4194,21 +5376,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "You have heard the call; the delay is in answering it. Put down the case against yourself long enough to take the step, because the window is probably wider than your doubt claims.",
+            "zh": "那声召唤你已经听见了，拖着的只是回应。先把对自己的指控放下片刻，好迈出那一步——那扇窗多半比你的自我怀疑所说的更宽。"
+          },
+          "foundation": {
+            "en": "An old mistake that was never forgiven, or a chance you believe you missed, has been running in the background. Your hesitation now traces back to that unfinished verdict.",
+            "zh": "一桩始终没被原谅的旧错，或一次你认定自己错过的机会，一直在后台运转。你如今的迟疑，可以追溯到那份没有结案的判决。"
+          },
+          "present": {
+            "en": "You are hitting snooze: aware that something is asking you to step up, and answering with self-criticism, comparison, or one more reason to wait.",
+            "zh": "你正在一遍遍按掉闹钟：明知有什么在叫你站出来，回应它的却是自我批评、和别人比较，或又一个“还不是时候”的理由。"
+          },
           "challenge": {
             "en": "Chronic self-doubt, old regret, or fear of outside judgment is drowning out a clear inner invitation.",
-            "zh": "挥之不去的自责、陈年懊悔或对旁人眼光的畏惧，正盖过内心原本清亮的召唤。"
+            "zh": "挥之不去的自我怀疑、陈年懊悔或对旁人眼光的畏惧，正盖过内心原本清亮的召唤。"
+          },
+          "resource": {
+            "en": "Your conscience works, perhaps too loudly, and it shows you care about getting this right. Turn its volume down and what remains is an honest record of what you have learned and a call still on the line.",
+            "zh": "你的良知是管用的，也许只是声音太大，这说明你在乎把事情做对。把音量调低，剩下的就是一份如实的成长记录，和一通还没挂断的来电。"
           },
           "action": {
             "en": "Write down the mistake you keep replaying, extract its single practical lesson, forgive yourself formally, and answer the opportunity you have been dodging.",
             "zh": "写下那件你总在心里反复翻旧账的失误，只提炼出一条实在教训，正式翻篇宽恕自己，再去回应那个你一直闪躲的机会。"
           },
           "outcome": {
-            "en": "Hesitation only stretches the waiting room; the moment you stop rehearsing old guilt, the stalled breakthrough unlocks cleanly.",
-            "zh": "犹豫只会拉长原地打转的候场时间；只要停止拿旧账惩罚自己，停滞的突破很快便会豁然开朗。"
+            "en": "Hesitation tends only to stretch the waiting room; if you stop rehearsing old guilt, the stalled breakthrough is likely to unlock.",
+            "zh": "犹豫多半只会拉长原地打转的候场时间；若能停止拿旧账惩罚自己，停滞的突破很可能就此松动打开。"
           },
           "advice": {
             "en": "Stop waiting for perfect absolution from outside critics—your real calling does not expire just because you stumbled earlier.",
             "zh": "别再等外界评委给你发完美通行证——你真正想走的路，绝不会因为从前跌过一跤就作废。"
+          },
+          "hidden": {
+            "en": "Ask whether the criticism, of yourself or of everyone else, is a way to avoid the next step. Beneath it there may be a belief that you are too late, and that belief has not been tested.",
+            "zh": "问一问这些批评——对自己的，或对所有人的——是不是在帮你躲开下一步。它底下可能有一个“我已经太晚了”的念头，而这个念头并没有被检验过。"
+          },
+          "self": {
+            "en": "You are acting as your own harshest critic, replaying the evidence against you and bracing for what others will say. That stance keeps you smaller than the facts require.",
+            "zh": "你正充当自己最严厉的批评者，把对自己不利的证据一遍遍重放，同时提防着别人会怎么说。这个姿态，把你压得比事实需要的更小。"
+          },
+          "other": {
+            "en": "They may be quick to criticize or slow to commit, and appear to be weighed down by their own unfinished past. Harsh words from them are likely to say as much about that as about you.",
+            "zh": "对方可能动辄挑剔，或迟迟不肯表态，看上去像是被自己没了结的过去拖着。他们说出的重话，多半既关乎你，也关乎那段过去。"
+          },
+          "external": {
+            "en": "The atmosphere is judgmental or stalled: a review that keeps being deferred, an audience quick to find fault, old history brought up again. Outside opinion is loud at present, though not all of it is binding.",
+            "zh": "外部的气氛要么充满评判，要么停滞不前：一场迟迟不落定的评审、一群爱挑毛病的看客，或被重新翻出来的旧账。眼下外界的声音很响，却并非句句都算数。"
+          },
+          "hopes_fears": {
+            "en": "What you hope to hear is that it is not too late and you are forgiven; what you fear is answering the call and being judged for it, or finding you really did miss your moment.",
+            "zh": "你想听到的是“还不算晚，你已经被原谅了”；你怕的是回应了召唤反被人评头论足，或发现自己真的错过了时机。"
           }
         },
         "domains": {
@@ -4282,15 +5500,15 @@
         "Serene dancing figure poised weightlessly at the center of a great oval laurel wreath",
         "Lush emerald victory wreath tied top and bottom with flowing crimson infinity ribbons",
         "Lightweight silk scarf draping gracefully across the dancer's balanced silhouette",
-        "Two short slender batons held evenly in each hand signifying equilibrium in motion",
-        "Four winged celestial corner emblems—angel, eagle, bull, and lion—framing the completed cosmos"
+        "A short slender baton held evenly in each hand signifying equilibrium in motion",
+        "Four cloud-borne corner emblems—man, eagle, bull, and lion—framing the completed cosmos"
       ],
       "zh": [
         "凌空舒展、轻盈起舞于巨型椭圆月桂花环中央的从容舞者",
         "上下两端皆系着绯红无限结丝带的繁茂翠绿胜利花环",
         "随舞姿优雅拂过身侧的飘逸轻纱",
         "双手各执一根纤细权杖，象征动静平衡与圆融掌控",
-        "镇守四隅云端、象征四元素圆满归位的天使、苍鹰、圣牛与雄狮"
+        "镇守四隅云端、象征四元素圆满归位的人面、苍鹰、圣牛与雄狮"
       ]
     },
     "editionMotifs": {
@@ -4328,25 +5546,45 @@
             "en": "Pieces are clicking cleanly into place; you are experiencing real wholeness, global perspective, and satisfying closure on a major endeavor.",
             "zh": "所有拼图正严丝合缝地归位；你正体会着难得的整全感、辽阔视野，以及重要长线事项圆满合拢的踏实。"
           },
+          "challenge": {
+            "en": "A quiet vertigo follows the finish of a big chapter; the trap is lingering to polish an already complete work just to avoid beginning the next spiral.",
+            "zh": "大篇章收官之后，难免有一丝微妙的悬空感；陷阱在于反复擦拭一件早已圆满的作品，只为躲开下一程的开始。"
+          },
           "resource": {
             "en": "Your strongest asset is panoramic synthesis—combining intellect, heart, willpower, and craft seamlessly so you feel at home anywhere.",
             "zh": "你最强的底气是全局融通力——把理智、共情、意志与实操无缝合一，无论走到哪片天地都能游刃有余。"
           },
-          "challenge": {
-            "en": "Even upright, The World in a challenge slot highlights the quiet vertigo right after finishing a big chapter—don't linger endlessly polishing a complete work just to avoid beginning the next spiral.",
-            "zh": "即便正位，落在阻碍位的世界也点出抵达巅峰后那一丝微妙悬空感——别因为还没想好下一程去哪，就反复擦拭一件早已圆满的作品不肯交付。"
-          },
           "action": {
             "en": "Ship the final deliverable, celebrate the full journey deliberately, and orient toward broader horizons—travel, international collaboration, or a bigger scope.",
-            "zh": "把最终成果正式交付封卷，郑重办一场属于自己的结业庆祝，随后把目光投向更宽广的版图——远行、跨界合作或更大格局。"
+            "zh": "把最终成果正式交付封卷，郑重庆祝这一整段旅程，随后把目光投向更宽广的版图——远行、跨国合作或更大的格局。"
           },
           "outcome": {
-            "en": "Fulfillment, well-earned mastery, and harmonious completion arrive—closing a meaningful era with poise and opening the gateway to a richer next cycle.",
-            "zh": "丰盈圆满、实至名归的掌控感与优雅收官即将到来——一段重要岁月从容合卷，更丰盛的新周期随即启幕。"
+            "en": "This course tends toward fulfillment, well-earned mastery, and harmonious completion—a meaningful era likely to close with poise and open the gateway to a richer next cycle.",
+            "zh": "照此走下去，多半迎来丰盈圆满、实至名归的掌控感与优雅收官——一段重要岁月有望从容合卷，并为更丰盛的新周期打开大门。"
           },
           "advice": {
             "en": "Move like the dancer inside the wreath: stay light on your feet even at the summit, because mastery is an ongoing rhythm rather than a static trophy.",
             "zh": "像花环中央轻盈起舞的人一样保持灵动：即便站上巅峰也不僵硬自满，真正的圆满是生生不息的流转，而非停步不前的奖杯。"
+          },
+          "hidden": {
+            "en": "You may have outgrown the frame you are still measuring yourself by. Check whether the question has already been answered by everything you have completed, and whether a wider one is now waiting.",
+            "zh": "你可能已经长出了那个仍被你拿来衡量自己的框架。看一看这个问题是否早已被你完成的一切回答了，是否有一个更大的问题正在等你。"
+          },
+          "self": {
+            "en": "You stand in this whole and unhurried, with the experience to see the full picture and nothing left to prove on this ground. You bring competence, ease, and a sense that this round is properly finished.",
+            "zh": "你是完整而从容地站在这件事里的：有看清全貌的阅历，在这片场地上也不再需要证明什么。你带来的是胜任、松弛，以及“这一轮确实做完了”的那份踏实。"
+          },
+          "other": {
+            "en": "The other person appears settled and complete in themselves, and may be ready for a bigger step or a wider commitment. They are likely to meet you as an equal, with little need for you to fill a gap.",
+            "zh": "对方看起来自洽而完整，可能已准备好迈出更大的一步，或作出范围更广的承诺。他们多半会以对等的姿态面对你，并不需要你去填补什么空缺。"
+          },
+          "external": {
+            "en": "The wider setting is ready: a project signed off, doors opening further afield, the right people in the right places. Conditions outside you have come together and support a move to a larger stage.",
+            "zh": "更大的环境已经就绪：项目验收通过，更远处的门正在打开，合适的人也都在合适的位置。外部条件已经凑齐，足以支持你走向更大的舞台。"
+          },
+          "hopes_fears": {
+            "en": "You hope to reach the point where it all comes together and you can say it is done, yet fear the ending itself: the blank after the applause, and beginning again as a novice.",
+            "zh": "你盼着走到一切合拢、可以说一句“完成了”的那一刻，却又怕结束本身：掌声之后的空白，以及又要从新手做起。"
           }
         },
         "domains": {
@@ -4396,21 +5634,57 @@
           }
         },
         "byRole": {
+          "message": {
+            "en": "You are nearly there, and nearly is the issue. Name what is still open—a task, a conversation, a goodbye—and give it the same care you gave the beginning.",
+            "zh": "你差一点就到了，问题恰恰出在“差一点”。说出还敞着口的是什么——一项任务、一场谈话，还是一句告别——然后拿出当初开头时的那份用心去对待它。"
+          },
+          "foundation": {
+            "en": "An earlier chapter was left slightly open: a project dropped near the end, a move made before the last matter was settled. That missing close still tugs at what you are doing now.",
+            "zh": "之前有一章留了一道缝没合上：一个临近尾声被放下的项目，或一次在最后一件事还没了结时就做出的转身。那个缺掉的收尾，至今还牵扯着你现在做的事。"
+          },
+          "present": {
+            "en": "Most of the work is done and the last stretch is dragging. Loose ends sit unattended while your attention drifts to the next thing, or to the one flaw that spoils the view for you.",
+            "zh": "大部分工作已经完成，最后一段却拖着不动。线头搁在那里没人管，你的注意力不是飘向下一件事，就是盯着那个让你觉得煞风景的小瑕疵。"
+          },
           "challenge": {
             "en": "Unfinished business, shortcuts on the final stretch, or reluctance to close an old loop is blocking full satisfaction.",
             "zh": "未清的收尾事项、冲线前的偷懒抄近路，或不肯为旧周期合卷，正拦着你体会真正的圆满感。"
+          },
+          "resource": {
+            "en": "Nearly all of it is built and none of that is lost. What is left is small and specific, and you already have every skill needed to finish it.",
+            "zh": "绝大部分已经建成，这些一点都不会丢。剩下的部分又小又具体，而收尾所需的每一样本事，你都早已具备。"
           },
           "action": {
             "en": "List the exact two or three remaining loose ends today and close them completely—no shortcuts—before starting anything brand new.",
             "zh": "今天就列出最后剩下的两三处未了尾项，不走捷径地彻底收干净，之后再启新局。"
           },
           "outcome": {
-            "en": "Completion is still within arm's reach, just waiting on patient follow-through; finishing the last inch properly delivers the whole reward.",
-            "zh": "圆满仍触手可及，只差耐心走完最后那一寸；踏实做好收口，整份成果的丰厚回馈就会完整落袋。"
+            "en": "Completion is still within arm's reach, waiting on patient follow-through; finishing the last inch properly is what tends to bring the whole reward.",
+            "zh": "圆满仍触手可及，只差耐心走完最后那一寸；踏实做好收口，整份成果的回馈才更可能完整到手。"
           },
           "advice": {
             "en": "Respect the final five percent—clean closure honors everything you already invested and frees your hands for what comes next.",
             "zh": "敬重最后百分之五的收官功夫——干脆体面的闭环既不辜负此前的全部心血，也能彻底腾出双手迎接新世界。"
+          },
+          "hidden": {
+            "en": "Consider whether leaving it unfinished serves a purpose. An open ending can be a way to avoid being evaluated, or to avoid the question of what comes after.",
+            "zh": "想一想让它悬着是不是另有用处。不收尾，有时是为了躲开被人评价，或躲开“接下来做什么”这个问题。"
+          },
+          "self": {
+            "en": "You are the one at the ninety-five percent mark, impatient to move on or unable to call it good enough. You undersell what you have done because of what remains.",
+            "zh": "你是那个停在百分之九十五处的人：要么急着奔向下一件事，要么怎么都不肯说一句“这样就够好了”。因为还剩下的那一点，你把自己做成的事说小了。"
+          },
+          "other": {
+            "en": "They may be leaving things open-ended, slow to finalize or reluctant to call the matter settled. They appear to have one foot already elsewhere, so ask directly what remains to be closed on their side.",
+            "zh": "对方可能让事情一直悬而未决：迟迟不敲定，或不愿承认这件事已经了结。他们看上去一只脚已经迈向别处，不妨直接问清楚，他们那边还有什么没收尾。"
+          },
+          "external": {
+            "en": "Outside factors are holding up the finish: a sign-off still pending, a last document or approval outstanding, travel or timing that will not line up. The delay is logistical and near the end, not a reversal.",
+            "zh": "卡住收尾的是外部因素：一个还没批下来的签字、一份迟迟未到的文件，或怎么也对不上的行程与时间。这是临近终点的流程延误，并不是局面逆转。"
+          },
+          "hopes_fears": {
+            "en": "You hope to close this out properly and feel finished at last, yet fear that once it is complete it can be judged as a whole, and that nothing as absorbing will follow.",
+            "zh": "你盼着把这件事好好收尾，终于能踏实地松一口气，却又怕做完就意味着它能被人整体评判，也怕之后再没有一件事能让自己这样投入。"
           }
         },
         "domains": {

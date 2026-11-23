@@ -7,6 +7,7 @@ import type {
   EmbeddedImage,
   Language,
   ReadingCard,
+  ReadingGuide,
   ReadingKind,
 } from "./types.js";
 
@@ -246,6 +247,44 @@ function normalizeCard(
   };
 }
 
+function strings(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter(
+        (entry): entry is string => typeof entry === "string" && entry !== "",
+      )
+    : [];
+}
+
+/**
+ * cardPositions holds the 1-based spread position of every card that survived
+ * normalization, so each prompt stays with the card it was written for even
+ * when an earlier card was dropped.
+ */
+function normalizeGuide(
+  value: unknown,
+  cardPositions: number[],
+): ReadingGuide | undefined {
+  if (!isRecord(value)) return undefined;
+  const prompts = new Map<number, string>();
+  if (Array.isArray(value.positionPrompts)) {
+    value.positionPrompts.forEach((entry, index) => {
+      if (!isRecord(entry) || typeof entry.prompt !== "string") return;
+      prompts.set(
+        typeof entry.positionIndex === "number"
+          ? entry.positionIndex
+          : index + 1,
+        entry.prompt,
+      );
+    });
+  }
+  const guide = {
+    steps: strings(value.steps),
+    prompts: cardPositions.map((position) => prompts.get(position) ?? ""),
+    guardrails: strings(value.guardrails),
+  };
+  return guide.steps.length > 0 ? guide : undefined;
+}
+
 export function normalizeConfirmedReading(
   value: unknown,
   begin?: BeginReadingPayload,
@@ -255,12 +294,13 @@ export function normalizeConfirmedReading(
   const cardImages = isRecord(meta.cardImages) ? meta.cardImages : {};
   const nested = isRecord(root.reading) ? root.reading : root;
   const cardsValue = nested.cards ?? root.cards;
-  const cards = Array.isArray(cardsValue)
+  const kept = Array.isArray(cardsValue)
     ? cardsValue.flatMap((card, index) => {
         const normalized = normalizeCard(card, index, cardImages);
-        return normalized ? [normalized] : [];
+        return normalized ? [{ card: normalized, position: index + 1 }] : [];
       })
     : [];
+  const cards = kept.map(({ card }) => card);
   const language = languageValue(nested.language, begin?.language ?? "en");
   const spreadType =
     stringValue(nested.spreadType, begin?.spreadType) ?? "custom";
@@ -278,6 +318,10 @@ export function normalizeConfirmedReading(
     timestamp: stringValue(nested.timestamp, nested.confirmedAt),
     cards,
     interpretation: stringValue(nested.interpretation, root.interpretation),
+    guide: normalizeGuide(
+      nested.guide,
+      kept.map(({ position }) => position),
+    ),
     deckBackImageUri:
       embeddedImageUri(meta.backImage) ?? begin?.deckBackImageUri,
   };

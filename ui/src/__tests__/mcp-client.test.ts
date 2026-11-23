@@ -234,6 +234,37 @@ describe("embedded MCP App host continuation", () => {
     );
   });
 
+  it("hands the server's reading guide to the host with the confirmed cards", async () => {
+    const { app, updateModelContext, sendMessage } = createFakeApp({
+      updateModelContext: { text: {}, structuredContent: {} },
+      message: { text: {} },
+    });
+    const client = createMcpClient(app);
+    const reading = await client.confirmReading("draw_confirmed", [
+      "slot-1",
+      "slot-2",
+    ]);
+    reading.guide = {
+      steps: ["Restate the question.", "Read each card by its role."],
+      prompts: ["What shaped this?", ""],
+      guardrails: ["Describe tendencies, never fixed fates."],
+    };
+
+    await client.continueReading!(reading);
+    const text = sendMessage.mock.calls[0]![0].content[0]!.text;
+    expect(text).toContain(
+      "Reading guide:\n1. Restate the question.\n2. Read each card by its role.",
+    );
+    expect(text).toContain("Ask of each position:\n- Past: What shaped this?");
+    expect(text).not.toContain("- Present:");
+    expect(text).toContain(
+      "Stay within:\n- Describe tendencies, never fixed fates.",
+    );
+    expect(
+      updateModelContext.mock.calls[0]![0].structuredContent,
+    ).toMatchObject({ tarotVisualReading: { guide: reading.guide } });
+  });
+
   it("merges simultaneous standard requests but never records them as delivered", async () => {
     const { app, callServerTool, updateModelContext, sendMessage } =
       createFakeApp({
@@ -674,7 +705,9 @@ describe("embedded MCP App host continuation", () => {
     // Acceptance is not delivery here, so the reader can hand it over again.
     await expect(client.continueReading!(reading)).resolves.toBe("queued");
     expect(sendMessage).toHaveBeenCalledTimes(2);
-    expect(sendMessage.mock.calls[1]![0]).toEqual(sendMessage.mock.calls[0]![0]);
+    expect(sendMessage.mock.calls[1]![0]).toEqual(
+      sendMessage.mock.calls[0]![0],
+    );
   });
 
   it("does not let late continuation acknowledgement overwrite a newer draw checkpoint", async () => {

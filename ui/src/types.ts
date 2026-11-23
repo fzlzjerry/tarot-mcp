@@ -108,6 +108,16 @@ export interface ReadingCard {
   embeddedImage?: EmbeddedImage;
 }
 
+/**
+ * The server's rubric for presenting a reading. `prompts` holds one question
+ * per card, in card order.
+ */
+export interface ReadingGuide {
+  steps: string[];
+  prompts: string[];
+  guardrails: string[];
+}
+
 export interface ConfirmedReading {
   readingId?: string;
   sessionId?: string;
@@ -119,6 +129,7 @@ export interface ConfirmedReading {
   timestamp?: string;
   cards: ReadingCard[];
   interpretation?: string;
+  guide?: ReadingGuide;
   deckBackImageUri?: string;
 }
 

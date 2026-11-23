@@ -10,6 +10,7 @@ import {
   TarotCard,
   PositionRole,
   ReadingEvidence,
+  ReadingGuide,
 } from "../shared/types.js";
 import {
   TAROT_SPREADS,
@@ -32,6 +33,10 @@ import {
   SessionNotFoundError,
 } from "../shared/errors.js";
 import { generateInterpretation } from "./interpretation/index.js";
+import {
+  buildReadingGuide,
+  renderReadingGuide,
+} from "./interpretation/guide.js";
 import {
   buildReadingEvidence,
   resolvePositionRole,
@@ -67,6 +72,8 @@ export interface ReadingPayload {
   deckVersion: string;
   knowledgeVersion: string;
   evidence: ReadingEvidence;
+  /** How the presenting assistant should read this spread. */
+  guide: ReadingGuide;
   cards: Array<{
     name: string;
     /** Stable snake_case identifier used by visual clients and card assets. */
@@ -147,8 +154,8 @@ export class TarotReadingManager {
 
   /**
    * Perform a custom tarot reading with a user-defined spread. The custom_*
-   * type id never matches the analyzer registry, so custom spreads always
-   * use the generic cross-card analysis.
+   * type id never matches a built-in spread, so custom spreads always get
+   * the contextual analysis heading and role-derived relations.
    */
   public performCustomReading(
     spreadName: string,
@@ -272,6 +279,12 @@ export class TarotReadingManager {
       question,
       language,
       VISUAL_ARTWORK_VERSION,
+      spread.links,
+    );
+    const guide = buildReadingGuide(
+      drawnCards,
+      evidence.relations ?? [],
+      language,
     );
 
     const reading: TarotReading = {
@@ -279,7 +292,14 @@ export class TarotReadingManager {
       spreadType,
       question,
       cards: drawnCards,
-      interpretation: generateInterpretation(drawnCards, question, spreadType, spread.name, language),
+      interpretation: generateInterpretation(
+        drawnCards,
+        question,
+        spreadType,
+        spread.name,
+        language,
+        evidence.relations,
+      ),
       timestamp: new Date(),
       language,
       deckVersion: VISUAL_ARTWORK_VERSION,
@@ -296,7 +316,13 @@ export class TarotReadingManager {
     // session mutation. Visual confirmation can then cache the completed
     // result without risking a retry that records the same reading twice.
     const performed: PerformedReading = {
-      text: formatReading(reading, spread.name, spread.description, readingNumber, language),
+      text:
+        formatReading(reading, spread.name, spread.description, readingNumber, language) +
+        renderReadingGuide(
+          guide,
+          drawnCards.map(({ position }) => position),
+          language,
+        ),
       reading: {
         readingId: reading.id,
         ...(session ? { sessionId: session.id } : {}),
@@ -308,6 +334,7 @@ export class TarotReadingManager {
         deckVersion: VISUAL_ARTWORK_VERSION,
         knowledgeVersion: CANON_KNOWLEDGE_VERSION,
         evidence,
+        guide,
         cards: drawnCards.map((drawnCard, index) => {
           const meanings = localizedMeanings(
             drawnCard.card,

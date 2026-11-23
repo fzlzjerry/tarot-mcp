@@ -8,53 +8,9 @@ import {
 } from "../../shared/types.js";
 import { localizedElement, pick } from "../../shared/i18n.js";
 import { classifyQuestionDomain, resolvePositionRole } from "./evidence.js";
+import { courtTheme, pipTheme } from "./numerology.js";
 
 const MAJOR_ARCANA_RATIO = 22 / 78;
-
-/**
- * Themes evoked when a Minor Arcana pip rank (1-10) appears more than once in
- * a reading. Strictly scoped to Minor Arcana numbered pips so Major Arcana
- * (0-21) and Court cards (11-14) never collide with pip numerology.
- */
-const REPEATED_PIP_THEMES: Record<number, string> = {
-  1: "new beginnings and raw potential",
-  2: "balance, choice, and partnership",
-  3: "growth, synthesis, and collaboration",
-  4: "stability, structure, and consolidation",
-  5: "friction, change, and adaptation",
-  6: "reciprocity, harmony, and adjustment",
-  7: "assessment, perseverance, and inner testing",
-  8: "momentum, mastery, and focused effort",
-  9: "near-completion, resilience, and reflection",
-  10: "culmination, saturation, and cycle transitions",
-};
-
-const REPEATED_PIP_THEMES_ZH: Record<number, string> = {
-  1: "全新起点与原始潜能",
-  2: "平衡、抉择与合作关系",
-  3: "成长、整合与协作推进",
-  4: "稳固、结构与根基夯实",
-  5: "摩擦、变动与调适考验",
-  6: "互惠、调和与重新校准",
-  7: "审视、耐力与内在试炼",
-  8: "推进、精进与专注发力",
-  9: "临近收尾、韧性与沉淀",
-  10: "阶段顶点、饱和与周期转换",
-};
-
-const REPEATED_COURT_THEMES: Record<number, string> = {
-  11: "messages and fresh perspectives",
-  12: "movement and decisive action",
-  13: "emotional depth and mastery",
-  14: "leadership and command",
-};
-
-const REPEATED_COURT_THEMES_ZH: Record<number, string> = {
-  11: "新讯息与新鲜视角",
-  12: "推进节奏与果断行动",
-  13: "内在定力与成熟掌控",
-  14: "领导担当与全局统筹",
-};
 
 export interface MeaningSelectionOptions {
   cardId?: string;
@@ -390,10 +346,8 @@ function analyzeNumericalPatterns(
     .filter(([, count]) => count > 1)
     .map(([num]) => parseInt(num, 10));
 
-  const themeTable =
-    language === "zh" ? REPEATED_PIP_THEMES_ZH : REPEATED_PIP_THEMES;
   const repeatedThemes = repeatedNumbers
-    .map((num) => themeTable[num])
+    .map((num) => pipTheme(num, language))
     .filter((theme): theme is string => theme !== undefined);
 
   if (repeatedThemes.length > 0) {
@@ -451,10 +405,8 @@ function analyzeCourtCards(
     const repeatedRanks = Object.entries(rankCounts)
       .filter(([, count]) => count > 1)
       .map(([rank]) => parseInt(rank, 10));
-    const courtThemes =
-      language === "zh" ? REPEATED_COURT_THEMES_ZH : REPEATED_COURT_THEMES;
     const repeatedCourtThemes = repeatedRanks
-      .map((rank) => courtThemes[rank])
+      .map((rank) => courtTheme(rank, language))
       .filter((theme): theme is string => theme !== undefined);
 
     if (repeatedCourtThemes.length > 0) {
@@ -470,7 +422,8 @@ function analyzeCourtCards(
 }
 
 /**
- * Analyze Major Arcana progression and classic archetypal pairings.
+ * Analyze the span of Major Arcana numbers. Classic pairings are reported as
+ * archetype_pair relations instead.
  */
 function analyzeMajorArcanaPatterns(
   drawnCards: DrawnCard[],
@@ -501,27 +454,6 @@ function analyzeMajorArcanaPatterns(
         "大阿卡纳序号紧邻，说明你正集中穿越人生转折中的同一个核心阶段。",
       );
     }
-  }
-
-  const cardNames = majorCards.map((c) => c.card.name.toLowerCase());
-
-  if (cardNames.includes("the fool") && cardNames.includes("the magician")) {
-    interpretation += pick(
-      language,
-      "The Fool alongside The Magician pairs fresh curiosity with the practical tools to act on it. ",
-      "愚者与魔术师同场出现，将敞开的好奇心与落地显化的行动力扣合在一起。",
-    );
-  }
-
-  if (
-    cardNames.includes("the high priestess") &&
-    cardNames.includes("the hierophant")
-  ) {
-    interpretation += pick(
-      language,
-      "The High Priestess and The Hierophant balance quiet personal intuition against established structure and mentorship. ",
-      "女祭司与教皇并现，映照出内在直觉与传统章法、师承体系之间的张力与平衡。",
-    );
   }
 
   return interpretation;

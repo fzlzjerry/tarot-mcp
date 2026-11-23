@@ -105,6 +105,31 @@ function readingContinuationText(reading: ModelReadingContext): string {
       `${chinese ? "已有解读" : "Existing interpretation"}: ${reading.interpretation}`,
     );
   }
+  if (reading.guide) {
+    const { steps, prompts, guardrails } = reading.guide;
+    lines.push(
+      "",
+      chinese ? "解读指引：" : "Reading guide:",
+      ...steps.map((step, index) => `${index + 1}. ${step}`),
+    );
+    const asked = prompts.flatMap((prompt, index) =>
+      prompt
+        ? [`- ${reading.cards[index]?.position ?? index + 1}: ${prompt}`]
+        : [],
+    );
+    if (asked.length > 0) {
+      lines.push(
+        chinese ? "每个牌位要回答的问题：" : "Ask of each position:",
+        ...asked,
+      );
+    }
+    if (guardrails.length > 0) {
+      lines.push(
+        chinese ? "解读边界：" : "Stay within:",
+        ...guardrails.map((guardrail) => `- ${guardrail}`),
+      );
+    }
+  }
   return lines.join("\n");
 }
 

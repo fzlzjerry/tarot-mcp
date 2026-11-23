@@ -3,6 +3,7 @@ import type {
   BeginReadingPayload,
   ConfirmedReading,
   ReadingCard,
+  ReadingGuide,
   TarotUiSnapshot,
 } from "./types.js";
 
@@ -18,6 +19,7 @@ export interface ModelReadingContext {
   timestamp?: string;
   cards: Array<Omit<ReadingCard, "imageUri" | "embeddedImage">>;
   interpretation?: string;
+  guide?: ReadingGuide;
 }
 
 /** Keep binary card art out of model context and private UI checkpoints. */
@@ -48,6 +50,15 @@ export function modelReadingContext(
     })),
     ...(reading.interpretation
       ? { interpretation: reading.interpretation }
+      : {}),
+    ...(reading.guide
+      ? {
+          guide: {
+            steps: [...reading.guide.steps],
+            prompts: [...reading.guide.prompts],
+            guardrails: [...reading.guide.guardrails],
+          },
+        }
       : {}),
   };
 }
@@ -92,6 +103,18 @@ function isReadingCard(value: unknown): value is ReadingCard {
   return true;
 }
 
+function isReadingGuide(value: unknown): value is ReadingGuide {
+  if (!isRecord(value)) return false;
+  for (const key of ["steps", "prompts", "guardrails"]) {
+    const list = value[key];
+    if (!Array.isArray(list)) return false;
+    for (const item of list) {
+      if (typeof item !== "string") return false;
+    }
+  }
+  return true;
+}
+
 function isConfirmedReading(value: unknown): value is ConfirmedReading {
   if (
     !isRecord(value) ||
@@ -106,6 +129,7 @@ function isConfirmedReading(value: unknown): value is ConfirmedReading {
       "timestamp",
       "interpretation",
     ]) ||
+    (value.guide !== undefined && !isReadingGuide(value.guide)) ||
     !Array.isArray(value.cards) ||
     value.cards.length === 0
   )

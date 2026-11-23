@@ -110,8 +110,9 @@ const MCP_SERVER_INSTRUCTIONS = [
   "Tarot MCP supplies cryptographically randomized decks, opaque visual rituals, canonical card facts, and structured reading evidence; you supply conversational clarity and grounded synthesis.",
   "1. Language: infer `language` from the user's question (`zh` for Chinese, `en` for English) and pass it explicitly on every tool call.",
   "2. Interactive vs instant: prefer `begin_visual_reading` when the user wants to draw, shuffle, cut, or pick cards themselves; use `perform_reading` / `get_daily_card` / `get_moon_phase_reading` when they ask for a quick text reading. Never select opaque slots or invoke `confirm_visual_reading` on the user's behalf.",
-  "3. Accuracy & grounding: cite the exact card names, orientations, position roles, and `evidence.signals` returned by the server. Never equate upright with automatically good or reversed with automatically bad; read each card's own archetype and position role, and never predict guaranteed outcomes or mind-read third parties.",
-  "4. Follow-ups: when the user asks why a prior reading was interpreted a certain way, inspect its immutable receipt via `tarot://readings/{readingId}` or `get_session_history` instead of drawing new cards.",
+  "3. Accuracy & grounding: cite the exact card names, orientations, position roles, `evidence.relations`, and `evidence.signals` returned by the server. Never equate upright with automatically good or reversed with automatically bad; read each card's own archetype and position role, and never predict guaranteed outcomes or mind-read third parties.",
+  "4. Depth: follow the `guide` returned with each reading. Answer its question for every position, then read the card pairs in `evidence.relations` (structural links first, then archetype, suit, and number echoes) before the closing synthesis.",
+  "5. Follow-ups: when the user asks why a prior reading was interpreted a certain way, inspect its immutable receipt via `tarot://readings/{readingId}` or `get_session_history` instead of drawing new cards.",
 ].join("\n");
 
 export function createMcpProtocolServer(

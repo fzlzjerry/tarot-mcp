@@ -6,21 +6,21 @@ import { SPREAD_TYPES, SpreadType } from "../tarot/shared/types.js";
 
 /**
  * Which cross-card analysis section each built-in spread must produce.
- * "generic" = the contextual fallback; null = no cross-card section
- * (single-card spreads).
+ * "generic" = the contextual heading reserved for custom spreads; null = no
+ * cross-card section (single-card spreads).
  */
 const EXPECTED_ANALYSIS: Record<SpreadType, string | "generic" | null> = {
   single_card: null,
   three_card: "Three Card Flow Analysis",
   celtic_cross: "Celtic Cross Analysis",
-  horseshoe: "generic",
+  horseshoe: "Horseshoe Arc Analysis",
   relationship_cross: "Relationship Dynamics Analysis",
   career_path: "Career Path Analysis",
-  decision_making: "generic",
+  decision_making: "Decision Paths Analysis",
   spiritual_guidance: "Spiritual Development Analysis",
   year_ahead: "Year Ahead Overview",
   chakra_alignment: "Chakra Energy Analysis",
-  shadow_work: "generic",
+  shadow_work: "Shadow Integration Analysis",
   venus_love: "Venus Love Energy Analysis",
   tree_of_life: "Tree of Life Spiritual Analysis",
   astrological_houses: "Astrological Houses Analysis",
@@ -28,13 +28,13 @@ const EXPECTED_ANALYSIS: Record<SpreadType, string | "generic" | null> = {
   pentagram: "Pentagram Elemental Analysis",
   mirror_of_truth: "Mirror of Truth - Four Beams of Light Analysis",
   daily_guidance: null,
-  yes_no: "generic",
-  weekly_forecast: "generic",
-  new_moon_intentions: "generic",
-  full_moon_release: "generic",
-  elemental_balance: "generic",
-  past_life_karma: "generic",
-  compatibility: "generic",
+  yes_no: "Yes/No Spread Analysis",
+  weekly_forecast: "Weekly Flow Analysis",
+  new_moon_intentions: "New Moon Intentions Analysis",
+  full_moon_release: "Full Moon Release Analysis",
+  elemental_balance: "Elemental Balance Analysis",
+  past_life_karma: "Karmic Pattern Analysis",
+  compatibility: "Compatibility Analysis",
 };
 
 /** Chinese headings mirroring EXPECTED_ANALYSIS, spread by spread. */
@@ -42,14 +42,14 @@ const EXPECTED_ANALYSIS_ZH: Record<SpreadType, string | "generic" | null> = {
   single_card: null,
   three_card: "三牌流动分析",
   celtic_cross: "凯尔特十字分析",
-  horseshoe: "generic",
+  horseshoe: "马蹄阵弧线分析",
   relationship_cross: "关系动态分析",
   career_path: "事业路径分析",
-  decision_making: "generic",
+  decision_making: "抉择路径分析",
   spiritual_guidance: "灵性发展分析",
   year_ahead: "年度前瞻总览",
   chakra_alignment: "脉轮能量分析",
-  shadow_work: "generic",
+  shadow_work: "阴影整合分析",
   venus_love: "金星之爱能量分析",
   tree_of_life: "生命之树灵性分析",
   astrological_houses: "占星宫位分析",
@@ -57,13 +57,13 @@ const EXPECTED_ANALYSIS_ZH: Record<SpreadType, string | "generic" | null> = {
   pentagram: "五芒星元素分析",
   mirror_of_truth: "真相之镜——四束光明分析",
   daily_guidance: null,
-  yes_no: "generic",
-  weekly_forecast: "generic",
-  new_moon_intentions: "generic",
-  full_moon_release: "generic",
-  elemental_balance: "generic",
-  past_life_karma: "generic",
-  compatibility: "generic",
+  yes_no: "是否牌阵分析",
+  weekly_forecast: "一周流动分析",
+  new_moon_intentions: "新月意图分析",
+  full_moon_release: "满月释放分析",
+  elemental_balance: "四元素平衡分析",
+  past_life_karma: "业力模式分析",
+  compatibility: "契合度分析",
 };
 
 function analysisHeadings(

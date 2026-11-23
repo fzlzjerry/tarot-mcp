@@ -106,8 +106,8 @@ export function registerPrompts(server: Server): void {
               text:
                 `Please perform a tarot reading for this question: "${question}". ` +
                 `${spreadInstruction} ${languageInstruction} Call the perform_reading tool, then walk me ` +
-                `through each card's meaning in its position and finish with an ` +
-                `overall synthesis and practical guidance.`,
+                `through each card's meaning in its position, explain how the linked cards ` +
+                `change each other, and finish with an overall synthesis and practical guidance.`,
             },
           },
         ],
@@ -140,7 +140,7 @@ export function registerPrompts(server: Server): void {
                 `begin_visual_reading with readingKind: "spread" and spreadType: "${spreadType}". ` +
                 `${languageInstruction} Let me shuffle, cut, and choose the face-down cards myself—` +
                 `do not pick slots for me. Once I reveal the cards and ask for interpretation, ground ` +
-                `every point in the exact cards, position roles, and evidence signals.`,
+                `every point in the exact cards, position roles, card-to-card relations, and evidence signals.`,
             },
           },
         ],

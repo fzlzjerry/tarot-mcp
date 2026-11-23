@@ -37,22 +37,29 @@ export interface TarotCard {
   zh?: CardLocalization;
 }
 
-export type PositionRole =
-  | "message"
-  | "foundation"
-  | "present"
-  | "challenge"
-  | "resource"
-  | "action"
-  | "outcome"
-  | "advice"
-  | "hidden"
-  | "self"
-  | "other"
-  | "external"
-  | "hopes_fears"
-  | "synthesis"
-  | "general";
+/**
+ * Every role a spread position can carry. `general` marks a thematic
+ * position (a month, a chakra, a house) that reads the card's domain meaning;
+ * every other role has its own entry per card and orientation in the canon.
+ */
+export const POSITION_ROLES = [
+  "message",
+  "foundation",
+  "present",
+  "challenge",
+  "resource",
+  "action",
+  "outcome",
+  "advice",
+  "hidden",
+  "self",
+  "other",
+  "external",
+  "hopes_fears",
+  "general",
+] as const;
+
+export type PositionRole = (typeof POSITION_ROLES)[number];
 
 export type ReadingDomain =
   | "general"
@@ -76,6 +83,62 @@ export interface ReadingSignal {
   note: string;
 }
 
+export type CardElement = NonNullable<TarotCard["element"]>;
+
+/**
+ * Classical elemental dignity between two cards: the same element intensifies,
+ * friendly pairs (fire+air, water+earth) strengthen each other, opposing pairs
+ * (fire+water, air+earth) weaken each other, and the rest are neutral.
+ */
+export type ElementalDignity = "same" | "friendly" | "opposing" | "neutral";
+
+/**
+ * How two spread positions relate structurally. Directed kinds read
+ * from → to: the challenge `crosses` the situation, a resource `answers` the
+ * challenge, an earlier position `leads_to` a later one, and a hidden factor
+ * `underlies` what is visible. `mirrors` and `tension` are symmetric.
+ */
+export type SpreadLinkKind =
+  | "crosses"
+  | "answers"
+  | "leads_to"
+  | "underlies"
+  | "mirrors"
+  | "tension";
+
+export interface SpreadLink {
+  /** Position ids within the same spread. */
+  from: string;
+  to: string;
+  kind: SpreadLinkKind;
+}
+
+/** A verifiable link between two drawn cards, with how to read it. */
+export interface ReadingRelation {
+  kind: "structural" | "archetype_pair" | "number_echo" | "suit_run";
+  /** Present on structural relations. */
+  link?: SpreadLinkKind;
+  /** 1-based position indices, from → to for directed links. */
+  positions: [number, number];
+  cardIds: [string, string];
+  elements?: [CardElement, CardElement];
+  dignity?: ElementalDignity;
+  fact: string;
+  note: string;
+}
+
+/** Role-conditioned rubric for the assistant that presents the reading. */
+export interface ReadingGuide {
+  version: string;
+  steps: string[];
+  positionPrompts: Array<{
+    positionIndex: number;
+    positionRole: PositionRole;
+    prompt: string;
+  }>;
+  guardrails: string[];
+}
+
 export interface ReadingCardEvidence {
   positionIndex: number;
   positionId: string;
@@ -96,6 +159,8 @@ export interface ReadingEvidence {
   questionDomain: ReadingDomain;
   cards: ReadingCardEvidence[];
   signals: ReadingSignal[];
+  /** Absent on receipts stored before relations existed. */
+  relations?: ReadingRelation[];
 }
 
 export interface DrawnCard {
@@ -117,6 +182,8 @@ export interface TarotSpread {
     role?: PositionRole;
   }[];
   cardCount: number;
+  /** Structural links between positions; custom spreads derive theirs from roles. */
+  links?: SpreadLink[];
 }
 
 export interface TarotReading {

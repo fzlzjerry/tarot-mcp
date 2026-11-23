@@ -238,6 +238,33 @@ describe("private UI checkpoint validation", () => {
     ).toBeUndefined();
   });
 
+  it("keeps a well-formed reading guide and rejects a malformed one", () => {
+    const guide = {
+      steps: ["Restate the question."],
+      prompts: ["What now?", ""],
+      guardrails: ["Describe tendencies, never fixed fates."],
+    };
+    const saved = {
+      ...snapshot(),
+      confirmedReading: { ...confirmedReading(), guide },
+    };
+    expect(
+      restoreUiSnapshot(saved, beginPayload())?.confirmedReading?.guide,
+    ).toEqual(guide);
+    expect(
+      restoreUiSnapshot(
+        {
+          ...saved,
+          confirmedReading: {
+            ...confirmedReading(),
+            guide: { ...guide, steps: [42] },
+          },
+        },
+        beginPayload(),
+      ),
+    ).toBeUndefined();
+  });
+
   it("prefers authoritative confirmed content but rejects incompatible reading identity or ordering", () => {
     const authoritative = {
       ...confirmedReading(),
