@@ -1,9 +1,4 @@
-import {
-  VISUAL_CARD_V1_ASSET_BASE,
-  VISUAL_CARD_V2_ASSET_BASE,
-} from "@tarot/shared/artwork.js";
-
-export type DeckEdition = "v1" | "v2";
+import { VISUAL_CARD_V2_ASSET_BASE } from "@tarot/shared/artwork.js";
 
 export const V2_SHOWCASE_CARD_IDS = [
   "fool",
@@ -14,52 +9,11 @@ export const V2_SHOWCASE_CARD_IDS = [
   "three_of_pentacles",
 ] as const;
 
-export function readInitialDeckEdition(): DeckEdition {
-  if (typeof window === "undefined") return "v2";
-  try {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("deck") === "v1" ? "v1" : "v2";
-  } catch {
-    return "v2";
-  }
+/** A small face for a grid of many cards: the 192px copy of a plate. */
+export function resolveWebCardThumbnailUrl(cardId: string): string {
+  return `${VISUAL_CARD_V2_ASSET_BASE}/mcp/${cardId}.webp`;
 }
 
-export function setUrlDeckEdition(edition: DeckEdition): void {
-  if (typeof window === "undefined") return;
-  try {
-    const url = new URL(window.location.href);
-    if (edition === "v1") url.searchParams.set("deck", "v1");
-    else url.searchParams.delete("deck");
-    window.history.replaceState(
-      window.history.state,
-      "",
-      `${url.pathname}${url.search}${url.hash}`,
-    );
-  } catch {
-    // Embedded / restricted hosts may disallow history mutations.
-  }
-}
-
-/**
- * A small face for a grid of many cards. The v2 deck ships a 192px copy of
- * every plate; the v1 deck has only its full-size plates.
- */
-export function resolveWebCardThumbnailUrl(
-  cardId: string,
-  edition: DeckEdition = readInitialDeckEdition(),
-): string {
-  return edition === "v1"
-    ? `${VISUAL_CARD_V1_ASSET_BASE}/${cardId}.webp`
-    : `${VISUAL_CARD_V2_ASSET_BASE}/mcp/${cardId}.webp`;
-}
-
-export function resolveWebCardAssetUrl(
-  cardId: string,
-  _fallbackUri?: string,
-  edition: DeckEdition = readInitialDeckEdition(),
-): string {
-  if (edition === "v1") {
-    return `${VISUAL_CARD_V1_ASSET_BASE}/${cardId}.webp`;
-  }
+export function resolveWebCardAssetUrl(cardId: string): string {
   return `${VISUAL_CARD_V2_ASSET_BASE}/${cardId}.webp`;
 }

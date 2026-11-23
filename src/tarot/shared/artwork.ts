@@ -1,7 +1,3 @@
-export const VISUAL_ARTWORK_V1_VERSION = "midnight-art-nouveau-v1";
-export const VISUAL_CARD_V1_ASSET_BASE = `/assets/cards/${VISUAL_ARTWORK_V1_VERSION}`;
-export const VISUAL_CARD_V1_BACK_URI = `${VISUAL_CARD_V1_ASSET_BASE}/back.webp`;
-
 export const VISUAL_ARTWORK_V2_VERSION = "midnight-art-nouveau-v2";
 export const VISUAL_CARD_V2_ASSET_REVISION = "r2";
 export const VISUAL_CARD_V2_ASSET_BASE = `/assets/cards/${VISUAL_ARTWORK_V2_VERSION}-${VISUAL_CARD_V2_ASSET_REVISION}`;

@@ -7,7 +7,6 @@ import { PositionKey } from "./PositionKey.js";
 import { ReadingInterpretation } from "./ReadingInterpretation.js";
 import { RitualProgress } from "./RitualProgress.js";
 import { cardBackStyle } from "./card-style.js";
-import { readInitialDeckEdition } from "./deck-edition.js";
 import { prefersReducedMotion } from "./flip.js";
 import { t } from "./i18n.js";
 import { layoutForSpread } from "./spreads.js";
@@ -126,12 +125,9 @@ function CardSpotlight({
   onInspect: () => void;
 }) {
   const [source] = useCardImage(client, card);
-  const isShowingV2 =
-    client.target === "mcp" || readInitialDeckEdition() === "v2";
-  const motifs =
-    isShowingV2 && card.editionMotifs?.length
-      ? card.editionMotifs
-      : card.traditionMotifs;
+  const motifs = card.editionMotifs?.length
+    ? card.editionMotifs
+    : card.traditionMotifs;
 
   return (
     <section

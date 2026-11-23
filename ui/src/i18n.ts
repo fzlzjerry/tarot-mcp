@@ -5,7 +5,6 @@ const messages = {
     noWebInterpretation:
       "Select a revealed card to explore its meaning and position.",
     deckEdition: "The Midnight Deck",
-    deckPreview: "Original deck artwork · 78 illustrated cards",
     prepareReading: "Begin with a question",
     spreadCount: "{count} spreads",
     skipToForm: "Skip to reading setup",
@@ -137,8 +136,6 @@ const messages = {
     intentDecision: "Crossroads decision",
     intentDecisionQ: "What should I weigh before making this decision?",
     spreadMapLabel: "Spread layout map",
-    deckEditionV1: "v1 Classic (78)",
-    deckEditionV2: "v2 Luminous (78)",
     v2DeckCaption:
       "Luminous Midnight Art Nouveau v2 · 78 illuminated plates + 180° symmetric back",
     galleryOpen: "Browse the deck",
@@ -163,7 +160,6 @@ const messages = {
   zh: {
     noWebInterpretation: "点击已翻开的牌，查看它的牌义与牌位。",
     deckEdition: "午夜牌组",
-    deckPreview: "原创牌面插画 · 完整 78 张牌",
     prepareReading: "从一个问题开始",
     spreadCount: "{count} 种牌阵",
     skipToForm: "跳至抽牌设置",
@@ -285,8 +281,6 @@ const messages = {
     intentDecision: "抉择权衡",
     intentDecisionQ: "在做眼前这个决定之前，我最需要看清什么？",
     spreadMapLabel: "牌阵几何示意图",
-    deckEditionV1: "v1 经典牌组（78张）",
-    deckEditionV2: "v2 新绘全集（78张）",
     v2DeckCaption: "流光午夜新艺术 v2 · 全套 78 张精绘牌面 + 180° 对称牌背",
     galleryOpen: "浏览全套牌面",
     galleryTitle: "全套牌面",

@@ -42,7 +42,7 @@ function makeReading(): ConfirmedReading {
         keywords: ["beginnings", "curiosity"],
         traditionMotifs: ["Sunlit cliff edge", "White rose", "Leaping white dog"],
         editionMotifs: ["V2 luminous coastal cliff", "V2 embroidered satchel"],
-        imageUri: "/assets/cards/midnight-art-nouveau-v1/fool.webp",
+        imageUri: "/assets/cards/midnight-art-nouveau-v2-r2/fool.webp",
       },
       {
         id: "queen_of_swords",
@@ -54,7 +54,7 @@ function makeReading(): ConfirmedReading {
         meaning: "Check whether sharpness protects clarity or guards an old hurt.",
         keywords: ["discernment", "boundaries"],
         editionMotifs: ["Upright gleaming silver sword", "Storm-blue clouds"],
-        imageUri: "/assets/cards/midnight-art-nouveau-v1/queen_of_swords.webp",
+        imageUri: "/assets/cards/midnight-art-nouveau-v2-r2/queen_of_swords.webp",
       },
       {
         id: "ten_of_wands",
@@ -65,7 +65,7 @@ function makeReading(): ConfirmedReading {
         positionMeaning: "Where the load is trending",
         meaning: "Real overload requires shedding what is no longer yours.",
         keywords: ["burden", "delegation"],
-        imageUri: "/assets/cards/midnight-art-nouveau-v1/ten_of_wands.webp",
+        imageUri: "/assets/cards/midnight-art-nouveau-v2-r2/ten_of_wands.webp",
       },
     ],
   };
@@ -246,15 +246,8 @@ describe("Milestone 1 UI upgrades", () => {
     ) as HTMLTextAreaElement;
     expect(textarea.value).toBe(t("en", "intentCareerQ"));
 
-    // Default is now full 78-card v2 Luminous deck; toggling to v1 switches caption cleanly
+    // One deck: the v2 caption shows and there is no edition switch
     expect(screen.getByText(t("en", "v2DeckCaption"))).not.toBeNull();
-    await user.click(
-      screen.getByRole("button", { name: t("en", "deckEditionV1") }),
-    );
-    expect(screen.getByText(t("en", "deckPreview"))).not.toBeNull();
-    await user.click(
-      screen.getByRole("button", { name: t("en", "deckEditionV2") }),
-    );
-    expect(screen.getByText(t("en", "v2DeckCaption"))).not.toBeNull();
+    expect(screen.queryByRole("button", { name: /v1/i })).toBeNull();
   });
 });

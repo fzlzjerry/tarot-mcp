@@ -1,14 +1,6 @@
-import { type ReactNode, useState } from "react";
-import {
-  VISUAL_CARD_V1_ASSET_BASE,
-  VISUAL_CARD_V2_ASSET_BASE,
-} from "@tarot/shared/artwork.js";
-import {
-  type DeckEdition,
-  V2_SHOWCASE_CARD_IDS,
-  readInitialDeckEdition,
-  setUrlDeckEdition,
-} from "./deck-edition.js";
+import type { ReactNode } from "react";
+import { VISUAL_CARD_V2_ASSET_BASE } from "@tarot/shared/artwork.js";
+import { V2_SHOWCASE_CARD_IDS } from "./deck-edition.js";
 import { DeckGalleryButton } from "./DeckGallery.js";
 import { t } from "./i18n.js";
 import { RitualProgress } from "./RitualProgress.js";
@@ -28,24 +20,12 @@ export function SetupShell({
   spreadCount: number;
   children: ReactNode;
 }) {
-  const [edition, setEdition] = useState<DeckEdition>(() =>
-    client.target === "web" ? readInitialDeckEdition() : "v2",
-  );
-
-  const switchEdition = (next: DeckEdition): void => {
-    setEdition(next);
-    setUrlDeckEdition(next);
-  };
-
-  const assetBase =
-    edition === "v1" ? VISUAL_CARD_V1_ASSET_BASE : VISUAL_CARD_V2_ASSET_BASE;
-
   const heroCards = (["moon", "back", "star"] as const).map((cardId) => ({
     slot: cardId,
     src:
       client.target === "mcp"
         ? client.getPreviewImage?.(cardId)
-        : `${assetBase}/${cardId}.webp`,
+        : `${VISUAL_CARD_V2_ASSET_BASE}/${cardId}.webp`,
   }));
 
   return (
@@ -62,41 +42,19 @@ export function SetupShell({
             <span aria-hidden="true">✦</span> Tarot
           </a>
         )}
-        <div className="setup-header__controls">
-          {client.target === "web" ? (
-            <div className="edition-switch" role="group" aria-label={t(language, "deckEdition")}>
-              <button
-                type="button"
-                className={edition === "v2" ? "is-active" : ""}
-                aria-pressed={edition === "v2"}
-                onClick={() => switchEdition("v2")}
-              >
-                {t(language, "deckEditionV2")}
-              </button>
-              <button
-                type="button"
-                className={edition === "v1" ? "is-active" : ""}
-                aria-pressed={edition === "v1"}
-                onClick={() => switchEdition("v1")}
-              >
-                {t(language, "deckEditionV1")}
-              </button>
-            </div>
-          ) : null}
-          <label className="language-picker">
-            <span className="sr-only">{t(language, "language")}</span>
-            <select
-              aria-label={t(language, "language")}
-              value={language}
-              onChange={(event) =>
-                onLanguageChange(event.target.value as Language)
-              }
-            >
-              <option value="zh">中文</option>
-              <option value="en">English</option>
-            </select>
-          </label>
-        </div>
+        <label className="language-picker">
+          <span className="sr-only">{t(language, "language")}</span>
+          <select
+            aria-label={t(language, "language")}
+            value={language}
+            onChange={(event) =>
+              onLanguageChange(event.target.value as Language)
+            }
+          >
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+          </select>
+        </label>
       </header>
       <main className="setup-layout">
         <section className="setup-intro" aria-labelledby="setup-title">
@@ -108,7 +66,7 @@ export function SetupShell({
               {heroCards.map(({ slot, src }) =>
                 src ? (
                   <img
-                    key={`${edition}-${slot}`}
+                    key={slot}
                     className={`deck-preview__${slot}`}
                     src={src}
                     width="640"
@@ -118,12 +76,8 @@ export function SetupShell({
                 ) : null,
               )}
             </div>
-            <figcaption>
-              {edition === "v2"
-                ? t(language, "v2DeckCaption")
-                : t(language, "deckPreview")}
-            </figcaption>
-            {edition === "v2" && client.target === "web" ? (
+            <figcaption>{t(language, "v2DeckCaption")}</figcaption>
+            {client.target === "web" ? (
               <div className="v2-gate-strip" aria-hidden="true">
                 {V2_SHOWCASE_CARD_IDS.map((id) => (
                   <img
