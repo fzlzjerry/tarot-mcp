@@ -163,9 +163,11 @@ no UI template. A missing built App resource fails `resources/read` with an
 internal error, while text tools remain available.
 
 REST failures return `{error}` with an HTTP status, 400 unless the failure has
-its own. MCP failures set `isError` and explain themselves in text. Failures of
-the visual draw also carry a machine code: `code` beside `error` over REST, and
-`_meta.tarotError: {code, httpStatus}` over MCP. A lookup or validation failure,
+its own. MCP failures set `isError` and explain themselves in text. Two kinds of
+failure also carry a machine code, `code` beside `error` over REST and
+`_meta.tarotError: {code, httpStatus}` over MCP: failures of the visual draw,
+and a card name that matches several cards (`AMBIGUOUS_CARD_NAME`, whose text
+lists the candidates with their ids). Any other lookup or validation failure,
 such as an unknown card name, carries the text alone. UI recovery uses the
 machine fields, never English-message matching:
 

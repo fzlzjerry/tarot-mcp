@@ -44,8 +44,9 @@ node scripts/art/validate-v2-deck.mjs
 `--stage all` runs the three generation stages in order. The cards stage accepts
 `--only id1,id2` to regenerate named cards, `--force` to replace existing
 masters, `--quality xhigh|high` and `--concurrency <n>`. Generation costs API
-credit and is not deterministic: a regenerated master is a new image, so review
-it on the contact sheets before processing.
+credit and is not deterministic: a regenerated master is a new image.
+`process-v2-deck.mjs` rebuilds the contact sheets from the processed files, so
+review the changed card on them after processing and before publishing.
 
 ### Deterministic layers
 
@@ -83,10 +84,15 @@ down.
 ### Changing a published image
 
 Artwork URLs are served as `immutable`, so a browser never re-fetches one. A
-change to any v2 image therefore ships under a new asset revision: raise
-`ASSET_REVISION` in `process-v2-deck.mjs`, `EXPECTED_ASSET_REVISION` in
-`validate-v2-deck.mjs` and `VISUAL_CARD_V2_ASSET_REVISION` in
-`src/tarot/shared/artwork.ts` together, then rebuild.
+change to any v2 image therefore ships under a new asset revision. Raise it in
+every place that names it, then rebuild:
+
+- `ASSET_REVISION` in `scripts/art/process-v2-deck.mjs`;
+- `EXPECTED_ASSET_REVISION` in `scripts/art/validate-v2-deck.mjs`;
+- `VISUAL_CARD_V2_ASSET_REVISION` in `src/tarot/shared/artwork.ts`;
+- the asset base checked by `scripts/verify-build-assets.mjs`;
+- the image URL expected by `src/__tests__/http-server.test.ts`;
+- the URLs quoted in this file, `docs/api.md` and `SPEC.md`.
 
 ## v1 deck
 
