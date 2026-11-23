@@ -108,6 +108,17 @@ export interface ReadingCard {
   embeddedImage?: EmbeddedImage;
 }
 
+/** One card of the deck as the gallery lists it. */
+export interface DeckCard {
+  id: string;
+  name: string;
+  displayName: string;
+  arcana: "major" | "minor";
+  suit?: "wands" | "cups" | "swords" | "pentacles";
+  number?: number;
+  keywords: { upright: string[]; reversed: string[] };
+}
+
 /**
  * The server's rubric for presenting a reading. `prompts` holds one question
  * per card, in card order.
@@ -182,6 +193,13 @@ export interface DrawClient {
   writeUiState?(state: TarotUiSnapshot): void;
   getPreviewImage?(cardId: "moon" | "back" | "star"): string | undefined;
   resolveImage?(card: ReadingCard): Promise<string | undefined>;
+  /** The whole deck, in catalog order. Absent where the host cannot list it. */
+  listCards?(
+    language: Language,
+    options?: { signal?: AbortSignal },
+  ): Promise<DeckCard[]>;
+  /** A small face for the gallery grid; the full plate comes from resolveImage. */
+  getCardThumbnail?(cardId: string): string | undefined;
   canRequestFullscreen?(): boolean;
   requestFullscreen?(): Promise<void>;
   getSessionToken?(): string;
@@ -193,4 +211,10 @@ export interface LayoutPoint {
   y: number;
   rotation?: number;
   layer?: number;
+  /**
+   * Stands the card beside its point rather than on it: half a card and half
+   * a gap to the left (-1) or the right (1). Opposite neighbours end up side
+   * by side at whatever size the cards are drawn.
+   */
+  side?: -1 | 1;
 }

@@ -40,6 +40,19 @@ export function setUrlDeckEdition(edition: DeckEdition): void {
   }
 }
 
+/**
+ * A small face for a grid of many cards. The v2 deck ships a 192px copy of
+ * every plate; the v1 deck has only its full-size plates.
+ */
+export function resolveWebCardThumbnailUrl(
+  cardId: string,
+  edition: DeckEdition = readInitialDeckEdition(),
+): string {
+  return edition === "v1"
+    ? `${VISUAL_CARD_V1_ASSET_BASE}/${cardId}.webp`
+    : `${VISUAL_CARD_V2_ASSET_BASE}/mcp/${cardId}.webp`;
+}
+
 export function resolveWebCardAssetUrl(
   cardId: string,
   _fallbackUri?: string,

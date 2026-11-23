@@ -2,6 +2,7 @@ import type {
   BeginReadingInputSnapshot,
   BeginReadingPayload,
   ConfirmedReading,
+  DeckCard,
   DrawError,
   DrawSlot,
   EmbeddedImage,
@@ -325,6 +326,43 @@ export function normalizeConfirmedReading(
     deckBackImageUri:
       embeddedImageUri(meta.backImage) ?? begin?.deckBackImageUri,
   };
+}
+
+const DECK_SUITS = ["wands", "cups", "swords", "pentacles"] as const;
+
+/**
+ * The deck catalog from the REST endpoint or the `list_all_cards` tool. A row
+ * without an id or a name cannot be shown or found, so it is dropped; a
+ * catalog with no usable rows is an error rather than an empty gallery.
+ */
+export function normalizeDeckCatalog(value: unknown): DeckCard[] {
+  const root = unwrapPayload(value);
+  const rows = Array.isArray(root.cards) ? root.cards : [];
+  const cards = rows.flatMap((row): DeckCard[] => {
+    if (!isRecord(row)) return [];
+    const id = stringValue(row.id);
+    const name = stringValue(row.name);
+    if (!id || !name) return [];
+    const keywords = isRecord(row.keywords) ? row.keywords : {};
+    const suit = DECK_SUITS.find((candidate) => candidate === row.suit);
+    const number = numberValue(row.number);
+    return [
+      {
+        id,
+        name,
+        displayName: stringValue(row.displayName) ?? name,
+        arcana: row.arcana === "major" ? "major" : "minor",
+        ...(suit ? { suit } : {}),
+        ...(number !== undefined ? { number } : {}),
+        keywords: {
+          upright: strings(keywords.upright),
+          reversed: strings(keywords.reversed),
+        },
+      },
+    ];
+  });
+  if (cards.length === 0) throw new Error("The deck list is empty.");
+  return cards;
 }
 
 export function extractError(

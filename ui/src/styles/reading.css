@@ -2,6 +2,8 @@
 
 .reading-card {
   position: relative;
+  /* A block, so no baseline gap pads the slot and shifts the card off centre. */
+  display: block;
   width: 100%;
   aspect-ratio: 2 / 3.35;
   border: 0;
@@ -119,8 +121,7 @@
     0 0 22px color-mix(in srgb, var(--gold) 28%, transparent);
 }
 
-.reading-card__foil,
-.card-spotlight__foil {
+.reading-card__foil {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -137,10 +138,6 @@
 
 .reading-card.is-revealed .reading-card__foil {
   animation: gilded-foil-sweep 920ms var(--ease-out-expo) 120ms both;
-}
-
-.card-spotlight__frame:hover .card-spotlight__foil {
-  animation: gilded-foil-sweep 860ms var(--ease-out-expo) both;
 }
 
 @keyframes gilded-foil-sweep {
@@ -192,17 +189,7 @@
   object-fit: cover;
 }
 
-.dialog-art img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  padding: 16px;
-  object-fit: contain;
-}
-
-.reading-card__face img.is-reversed,
-.dialog-art img.is-reversed {
+.reading-card__face img.is-reversed {
   transform: rotate(180deg);
 }
 
@@ -251,12 +238,20 @@
   box-shadow: 0 18px 42px rgb(0 0 0 / 42%);
 }
 
-.card-spotlight__plate {
-  display: grid;
-  place-items: center;
+/*
+ * A whole plate, shown large: the spotlight, the details dialog and the deck
+ * gallery share it. --tilt-x and --tilt-y run from -0.5 to 0.5 while a mouse
+ * is over the plate and are unset at rest. The frame leans toward the pointer,
+ * its shadow slides the other way, and the glare is dodged into the artwork,
+ * so it catches on the gilding and the pale linework while the indigo ground
+ * stays matte: lamplight on foil rather than a white wash over the card.
+ */
+.card-plate {
+  width: 100%;
+  perspective: 900px;
 }
 
-.card-spotlight__frame {
+.card-plate__frame {
   position: relative;
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -264,19 +259,51 @@
   border-radius: 10px;
   background: var(--card-stock);
   box-shadow:
-    0 18px 36px rgb(0 0 0 / 62%),
+    calc(var(--tilt-x, 0) * -22px) calc(18px - var(--tilt-y, 0) * 14px) 36px
+      rgb(0 0 0 / 62%),
     0 0 0 1px color-mix(in srgb, var(--gold-line) 50%, transparent);
+  transform: rotateX(calc(var(--tilt-y, 0) * -11deg))
+    rotateY(calc(var(--tilt-x, 0) * 11deg));
+  transition:
+    transform 560ms var(--ease-out-expo),
+    box-shadow 560ms var(--ease-out-expo);
 }
 
-.card-spotlight__frame img {
+/* While the pointer moves the frame follows it closely; it eases only home. */
+.card-plate[data-tilting] .card-plate__frame {
+  transition-duration: 110ms;
+  transition-timing-function: linear;
+}
+
+.card-plate__frame img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.card-spotlight__frame img.is-reversed {
+.card-plate__frame img.is-reversed {
   transform: rotate(180deg);
+}
+
+.card-plate__glare {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at calc(50% + var(--tilt-x, 0) * 100%)
+      calc(50% + var(--tilt-y, 0) * 100%),
+    color-mix(in srgb, var(--gold) 52%, white),
+    color-mix(in srgb, var(--gold) 34%, transparent) 30%,
+    transparent 64%
+  );
+  mix-blend-mode: color-dodge;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 360ms ease;
+}
+
+.card-plate[data-tilting] .card-plate__glare {
+  opacity: 0.5;
 }
 
 .card-spotlight__copy {

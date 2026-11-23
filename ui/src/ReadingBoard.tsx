@@ -1,5 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CardDetails } from "./CardDetails.js";
+import { CardPlate } from "./CardPlate.js";
+import { DeckGalleryButton } from "./DeckGallery.js";
 import { ClothSlot, ReadingCloth } from "./ReadingCloth.js";
 import { PositionKey } from "./PositionKey.js";
 import { ReadingInterpretation } from "./ReadingInterpretation.js";
@@ -16,6 +18,7 @@ import type {
   ReadingCard,
 } from "./types.js";
 import { useCardImage } from "./useCardImage.js";
+import { useClothFit } from "./useClothFit.js";
 import { FullscreenNotice, useFullscreen } from "./useFullscreen.js";
 
 const REVEAL_STAGGER = 90;
@@ -122,41 +125,25 @@ function CardSpotlight({
   onNext?: () => void;
   onInspect: () => void;
 }) {
-  const [resolvedSource, failed] = useCardImage(client, card);
-  const [imageFailed, setImageFailed] = useState(false);
+  const [source] = useCardImage(client, card);
   const isShowingV2 =
     client.target === "mcp" || readInitialDeckEdition() === "v2";
-  const source = resolvedSource;
-  const showFallback = failed || imageFailed || !source;
   const motifs =
     isShowingV2 && card.editionMotifs?.length
       ? card.editionMotifs
       : card.traditionMotifs;
-
-  useEffect(() => {
-    setImageFailed(false);
-  }, [card.id]);
 
   return (
     <section
       className="card-spotlight"
       aria-labelledby="spotlight-heading"
     >
-      <div className="card-spotlight__plate">
-        <div className="card-spotlight__frame">
-          {showFallback ? (
-            <div className="card-art-fallback">{card.displayName}</div>
-          ) : (
-            <img
-              src={source}
-              alt={card.displayName}
-              className={card.orientation === "reversed" ? "is-reversed" : ""}
-              onError={() => setImageFailed(true)}
-            />
-          )}
-          <span className="card-spotlight__foil" aria-hidden="true" />
-        </div>
-      </div>
+      <CardPlate
+        className="card-spotlight__plate"
+        source={source}
+        name={card.displayName}
+        reversed={card.orientation === "reversed"}
+      />
       <div className="card-spotlight__copy">
         <div className="card-spotlight__eyebrow-row">
           <h2 id="spotlight-heading" className="card-spotlight__eyebrow">
@@ -276,7 +263,14 @@ export function ReadingBoard({
   const batchActive = useRef(false);
   const sendInFlight = useRef(false);
   const mounted = useRef(true);
-  const layout = layoutForSpread(reading.spreadType, reading.cards.length);
+  const layout = useMemo(
+    () => layoutForSpread(reading.spreadType, reading.cards.length),
+    [reading.spreadType, reading.cards.length],
+  );
+  // One to three cards keep the stylesheet's showcase size; a fuller spread is
+  // sized to what its layout leaves room for on the cloth as measured.
+  const cloth = useClothFit(layout, reading.cards.length > 3);
+  const points = cloth.fit?.points ?? layout;
   const revealedOrdered = reading.cards
     .map((_, index) => index)
     .filter((index) => revealed.has(index));
@@ -484,6 +478,7 @@ export function ReadingBoard({
           {reading.question ? <p>{reading.question}</p> : null}
         </div>
         <div className="reading-actions">
+          <DeckGalleryButton client={client} language={language} />
           {fullscreen.available ? (
             <button
               className="text-action"
@@ -500,12 +495,18 @@ export function ReadingBoard({
         </div>
       </header>
 
-      <ReadingCloth label={reading.spreadName} cardCount={reading.cards.length}>
+      <ReadingCloth
+        label={reading.spreadName}
+        cardCount={reading.cards.length}
+        clothRef={cloth.attach}
+        slotWidth={cloth.fit?.slotWidth}
+      >
         {reading.cards.map((card, index) => (
           <ClothSlot
             key={`${card.id}-${index}`}
-            point={layout[index]}
+            point={points[index]}
             index={index}
+            captionWidth={cloth.fit?.captionWidths[index]}
           >
             <ReadingCardView
               card={card}

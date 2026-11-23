@@ -9,6 +9,7 @@ import {
   readInitialDeckEdition,
   setUrlDeckEdition,
 } from "./deck-edition.js";
+import { DeckGalleryButton } from "./DeckGallery.js";
 import { t } from "./i18n.js";
 import { RitualProgress } from "./RitualProgress.js";
 import type { DrawClient, Language } from "./types.js";
@@ -136,6 +137,7 @@ export function SetupShell({
               </div>
             ) : null}
           </figure>
+          <DeckGalleryButton client={client} language={language} />
         </section>
         <section className="setup-panel" aria-labelledby="form-title">
           <div className="setup-panel__heading">

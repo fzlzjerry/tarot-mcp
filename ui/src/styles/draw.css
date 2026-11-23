@@ -149,7 +149,10 @@
 .cloth-slot {
   position: absolute;
   z-index: calc(var(--z-cloth) + 1 + var(--card-layer));
-  left: var(--card-x);
+  /* A card told to stand beside its point moves half a card and half a gap. */
+  left: calc(
+    var(--card-x) + var(--card-side, 0) * (var(--slot-width) + 12px) / 2
+  );
   top: var(--card-y);
   width: var(--slot-width);
   text-align: center;
@@ -228,18 +231,38 @@
   }
 }
 
+/*
+ * The caption hangs below the card, outside the slot's own box, so the card
+ * alone is what sits centred on its point: two cards on one point share a
+ * centre whether or not either of them carries a caption.
+ */
 .slot-caption {
-  display: block;
-  width: 210%;
-  margin: 7px -55% 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: var(--caption-width, 210%);
+  margin-top: 7px;
   overflow: hidden;
   color: var(--muted);
   font-size: 0.75rem;
   line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
-  /* Undo the slot's spread rotation — a sideways card keeps a level label. */
-  transform: rotate(calc(-1 * var(--card-rotation)));
+  /* Undo the slot's spread rotation — a tilted card keeps a level label. */
+  transform: translateX(-50%) rotate(calc(-1 * var(--card-rotation)));
+}
+
+/*
+ * A card laid across another one covers the space beside it, so its caption
+ * moves clear of the pair: level, centred, just above the upright card. The
+ * offset is half that card's height (2 / 3.35, as .reading-card) plus the
+ * caption's own half height and the same 7px the others keep.
+ */
+.cloth-slot--crossing .slot-caption {
+  top: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%) rotate(calc(-1 * var(--card-rotation)))
+    translateY(calc(var(--slot-width) * -0.8375 - 0.6em - 7px));
 }
 
 .staged-card {

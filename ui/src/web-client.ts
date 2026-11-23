@@ -4,10 +4,12 @@ import {
   isRecord,
   normalizeBeginPayload,
   normalizeConfirmedReading,
+  normalizeDeckCatalog,
 } from "./normalize.js";
 import {
   readInitialDeckEdition,
   resolveWebCardAssetUrl,
+  resolveWebCardThumbnailUrl,
 } from "./deck-edition.js";
 import { t } from "./i18n.js";
 import type {
@@ -267,5 +269,26 @@ export function createWebClient(): DrawClient {
       }
       return card.imageUri ?? resolveWebCardAssetUrl(card.id, undefined, "v2");
     },
+    // The loopback handoff page serves one reading and has no catalog route.
+    ...(readHandoffToken()
+      ? {}
+      : {
+          async listCards(language, options) {
+            const token = readSessionToken();
+            const response = await fetch(`/api/cards?language=${language}`, {
+              signal: options?.signal,
+              headers: token ? { authorization: `Bearer ${token}` } : {},
+            });
+            const body = (await response.json().catch(() => ({}))) as unknown;
+            if (!response.ok)
+              throw extractError(
+                body,
+                `Request failed (${response.status})`,
+                response.status,
+              );
+            return normalizeDeckCatalog(body);
+          },
+        }),
+    getCardThumbnail: (cardId) => resolveWebCardThumbnailUrl(cardId),
   };
 }

@@ -17,19 +17,30 @@ export function ReadingCloth({
   label,
   size = "full",
   cardCount,
+  clothRef,
+  slotWidth,
   children,
 }: {
   label: string;
   size?: "compact" | "full";
   cardCount?: number;
+  clothRef?(element: HTMLElement | null): void;
+  /** A measured card width in pixels; without it the stylesheet's size holds. */
+  slotWidth?: number;
   children: ReactNode;
 }) {
   const sparse = cardCount !== undefined && cardCount <= 3;
   return (
     <section
+      ref={clothRef}
       className={`reading-cloth reading-cloth--${size}${sparse ? " reading-cloth--sparse" : ""}`}
       aria-label={label}
       data-card-count={cardCount}
+      style={
+        slotWidth
+          ? ({ "--slot-width": `${slotWidth}px` } as CSSProperties)
+          : undefined
+      }
     >
       <div className="reading-cloth__lamp" aria-hidden="true" />
       {children}
@@ -41,6 +52,8 @@ interface ClothSlotProps {
   point: LayoutPoint | undefined;
   index: number;
   className?: string;
+  /** Room measured for this card's caption; without it the stylesheet's holds. */
+  captionWidth?: number;
   children: ReactNode;
   /** Where this card flew in from. Consumed once, on the frame it mounts. */
   origin?: FlipRect;
@@ -54,6 +67,7 @@ export function ClothSlot({
   point,
   index,
   className,
+  captionWidth,
   children,
   origin,
   onOriginConsumed,
@@ -91,7 +105,7 @@ export function ClothSlot({
 
   return (
     <div
-      className={`cloth-slot${className ? ` ${className}` : ""}`}
+      className={`cloth-slot${Math.abs(rotation) % 180 === 90 ? " cloth-slot--crossing" : ""}${className ? ` ${className}` : ""}`}
       ref={attach}
       style={
         {
@@ -99,6 +113,8 @@ export function ClothSlot({
           "--card-y": `${point?.y ?? 50}%`,
           "--card-rotation": `${rotation}deg`,
           "--card-layer": point?.layer ?? index,
+          ...(point?.side ? { "--card-side": point.side } : {}),
+          ...(captionWidth ? { "--caption-width": `${captionWidth}px` } : {}),
         } as CSSProperties
       }
     >

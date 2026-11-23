@@ -767,3 +767,50 @@ describe("embedded MCP App host continuation", () => {
     ).toBe("another-reading");
   });
 });
+
+describe("embedded MCP App deck gallery", () => {
+  const catalogResult = {
+    content: [{ type: "text" as const, text: "# Tarot Cards" }],
+    structuredContent: {
+      category: "all",
+      language: "en",
+      total: 1,
+      cards: [
+        {
+          id: "star",
+          name: "The Star",
+          displayName: "The Star",
+          arcana: "major",
+          number: 17,
+          keywords: { upright: ["hope"], reversed: ["doubt"] },
+        },
+      ],
+    },
+  };
+
+  it("lists the deck through the catalog tool and shows the bundled faces", async () => {
+    const { app, callServerTool } = createFakeApp(undefined, catalogResult);
+    const client = createMcpClient(app);
+
+    await expect(client.listCards!("en")).resolves.toEqual(
+      catalogResult.structuredContent.cards,
+    );
+    expect(callServerTool).toHaveBeenCalledWith({
+      name: "list_all_cards",
+      arguments: { language: "en" },
+    });
+    expect(client.getCardThumbnail!("star")).toMatch(
+      /^data:image\/webp;base64,/,
+    );
+  });
+
+  it("surfaces a tool error instead of an empty deck", async () => {
+    const { app } = createFakeApp(undefined, {
+      isError: true,
+      content: [{ type: "text", text: "Catalog unavailable" }],
+    });
+    await expect(createMcpClient(app).listCards!("en")).rejects.toThrow(
+      "Catalog unavailable",
+    );
+  });
+});

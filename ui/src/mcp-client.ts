@@ -5,6 +5,7 @@ import {
   extractError,
   normalizeBeginPayload,
   normalizeConfirmedReading,
+  normalizeDeckCatalog,
 } from "./normalize.js";
 import { modelReadingContext, restoreUiSnapshot } from "./ui-state.js";
 import type { ModelReadingContext } from "./ui-state.js";
@@ -404,6 +405,16 @@ export function createMcpClient(
       // to the host model conversation.
       return getMcpCardArt(card.id);
     },
+    async listCards(language) {
+      const result = await app.callServerTool({
+        name: "list_all_cards",
+        arguments: { language },
+      });
+      if (result.isError)
+        throw extractError(result, "Could not load the deck list");
+      return normalizeDeckCatalog(result);
+    },
+    getCardThumbnail: getMcpCardArt,
     canRequestFullscreen(): boolean {
       return (app.getHostContext()?.availableDisplayModes ?? []).includes(
         "fullscreen",
