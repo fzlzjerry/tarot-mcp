@@ -192,6 +192,14 @@ describe("HTTP MCP server", () => {
     expect(cards.status).toBe(200);
     const cardsJson = await cards.json();
     expect(cardsJson.result).toContain("Major Arcana (22 cards)");
+    expect(cardsJson.structured.total).toBe(22);
+    expect(cardsJson.structured.cards[0]).toMatchObject({
+      id: "fool",
+      name: "The Fool",
+      displayName: "The Fool",
+      arcana: "major",
+      number: 0,
+    });
 
     const card = await fetch(
       `${BASE_URL}/api/cards/${encodeURIComponent("The Fool")}?orientation=reversed`,

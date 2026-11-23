@@ -14,6 +14,11 @@ When running in HTTP mode, the following endpoints are available:
 - `GET /api/cards` - List all cards with filtering options
   - `?category=all|major_arcana|minor_arcana|wands|cups|swords|pentacles`
   - `?language=en|zh` (default: en)
+  - `result` is the Markdown catalog. `structured` is the same catalog as data:
+    `{ category, language, total, cards }`, where each card has `id`, `name`,
+    `displayName`, `arcana`, `suit` and `number` when it has them, and its
+    three leading `keywords` for `upright` and `reversed`. The `list_all_cards`
+    tool returns it as `structuredContent`.
 - `GET /api/cards/:cardName` - Get detailed card information
   - `?orientation=upright|reversed` (default: upright)
   - Accepts English names, Chinese names, or stable card ids

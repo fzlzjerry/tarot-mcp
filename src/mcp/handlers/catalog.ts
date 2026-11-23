@@ -1,4 +1,5 @@
 import {
+  cardCatalogEntries,
   formatCardCatalog,
   formatCardInfo,
 } from "../../tarot/cards/card-formatter.js";
@@ -86,13 +87,15 @@ export const handleListAllCards: ToolHandler = (ctx, args) => {
     return formatValidationError("language", language.errors);
   }
 
-  return toolOk(
-    formatCardCatalog(
-      ctx.cardManager.getAllCards(),
-      typeof category === "string" ? category : category.data!,
-      language.data!,
-    ),
-  );
+  const cards = ctx.cardManager.getAllCards();
+  const selected = typeof category === "string" ? category : category.data!;
+  const entries = cardCatalogEntries(cards, selected, language.data!);
+  return toolOk(formatCardCatalog(cards, selected, language.data!), {
+    category: selected,
+    language: language.data!,
+    total: entries.length,
+    cards: entries,
+  });
 };
 
 export const handleListAvailableSpreads: ToolHandler = (ctx, args) => {

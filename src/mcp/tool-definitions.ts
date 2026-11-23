@@ -237,6 +237,41 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
         },
       },
     },
+    outputSchema: {
+      type: "object",
+      properties: {
+        category: { type: "string" },
+        language: { type: "string", enum: ["en", "zh"] },
+        total: { type: "integer" },
+        cards: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              id: { type: "string" },
+              name: { type: "string" },
+              displayName: { type: "string" },
+              arcana: { type: "string", enum: ["major", "minor"] },
+              suit: {
+                type: "string",
+                enum: ["wands", "cups", "swords", "pentacles"],
+              },
+              number: { type: "integer" },
+              keywords: {
+                type: "object",
+                properties: {
+                  upright: { type: "array", items: { type: "string" } },
+                  reversed: { type: "array", items: { type: "string" } },
+                },
+                required: ["upright", "reversed"],
+              },
+            },
+            required: ["id", "name", "displayName", "arcana", "keywords"],
+          },
+        },
+      },
+      required: ["category", "language", "total", "cards"],
+    },
   },
   {
     name: TOOL_NAMES.listAvailableSpreads,

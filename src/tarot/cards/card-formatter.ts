@@ -37,6 +37,47 @@ export function cardsForCategory(
   }
 }
 
+/** One card as the deck catalog lists it: enough to name, group and find it. */
+export interface CardCatalogEntry {
+  id: string;
+  name: string;
+  displayName: string;
+  arcana: TarotCard["arcana"];
+  suit?: TarotCard["suit"];
+  number?: number;
+  keywords: { upright: string[]; reversed: string[] };
+}
+
+const CATALOG_SUIT_ORDER = ["wands", "cups", "swords", "pentacles"];
+
+/**
+ * The catalog as data, in the order the text catalog prints it: the Major
+ * Arcana by number, then each suit by rank, with the same three leading
+ * keywords per orientation.
+ */
+export function cardCatalogEntries(
+  cards: readonly TarotCard[],
+  category: CardCategory = "all",
+  language: Language = "en",
+): CardCatalogEntry[] {
+  const group = (card: TarotCard): number =>
+    card.arcana === "major" ? -1 : CATALOG_SUIT_ORDER.indexOf(card.suit ?? "");
+  return [...cardsForCategory(cards, category)]
+    .sort((a, b) => group(a) - group(b) || (a.number ?? 0) - (b.number ?? 0))
+    .map((card) => ({
+      id: card.id,
+      name: card.name,
+      displayName: (language === "zh" && card.zh?.name) || card.name,
+      arcana: card.arcana,
+      ...(card.suit ? { suit: card.suit } : {}),
+      ...(card.number !== undefined ? { number: card.number } : {}),
+      keywords: {
+        upright: localizedKeywords(card, "upright", language).slice(0, 3),
+        reversed: localizedKeywords(card, "reversed", language).slice(0, 3),
+      },
+    }));
+}
+
 export function formatCardInfo(
   card: TarotCard,
   orientation: CardOrientation = "upright",
