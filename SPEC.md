@@ -209,15 +209,26 @@ immediately instead of leaving an unreachable waiter.
 
 ## Visual System
 
-- Complete 78-card `midnight-art-nouveau-v1` deck plus a rotationally symmetric
-  back, generated for this project without third-party card imagery.
-- Midnight indigo, warm ivory, antique-gold line work, flat Art Nouveau
-  composition, no generated text, logos, signatures, or watermarks.
-- Deterministic borders, ranks, and suit pips are composited after generation.
-- Web assets: 512x768 WebP. MCP assets: 192x288 WebP.
-- All 78 MCP faces plus the back are bundled inside the self-contained App
+- Complete 78-card `midnight-art-nouveau-v2` deck (Luminous Midnight Art
+  Nouveau) plus a back that is exactly symmetric under a 180° rotation,
+  generated for this project without third-party card imagery. It is the default
+  on the Web table and the deck bundled in the MCP App.
+- The first edition, `midnight-art-nouveau-v1`, stays available on the Web
+  table through the edition switch or `/draw?deck=v1`. Choosing it changes the
+  artwork and shows tradition motifs in place of the v2 edition motifs; the
+  draw, the meanings and the reading receipt are the same.
+- Midnight indigo, warm ivory and antique-gold line work in an Art Nouveau
+  composition, with no generated text, logos, signatures, or watermarks.
+- Borders, ranks and one suit emblem are composited deterministically after
+  generation. The first edition also composites its counted suit pips; in v2
+  the counted suit objects are part of the illustration.
+- Web assets: 640x960 WebP for v2 and 512x768 WebP for the first edition. MCP
+  assets: 192x288 WebP for both.
+- All 78 v2 MCP faces plus the back are bundled inside the self-contained App
   resource (raw artwork at most 600 KB; base64 artwork at most 800 KB; complete
   HTML at most 1.5 MB), rather than being attached to any tool result.
+- A published v2 image is never replaced in place: artwork URLs are immutable,
+  so a change ships under a new asset revision (`-r2` today).
 
 ## Constraints
 

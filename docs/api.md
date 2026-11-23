@@ -58,9 +58,18 @@ When running in HTTP mode, the following endpoints are available:
 
 ### Visual UI and artwork
 
-- `GET /draw` - Shared visual reading app (public static page)
-- `GET /assets/cards/midnight-art-nouveau-v1/:cardId.webp` - 512×768 Web artwork
-- `GET /assets/cards/midnight-art-nouveau-v1/mcp/:cardId.webp` - 192×288 MCP artwork
+- `GET /draw` - Shared visual reading app (public static page). It shows the v2
+  deck; `?deck=v1` shows the first edition. The parameter changes the artwork
+  the page loads and nothing about the draw or the reading.
+- `GET /assets/cards/midnight-art-nouveau-v2-r2/:cardId.webp` - 640×960 Web artwork, v2 deck
+- `GET /assets/cards/midnight-art-nouveau-v2-r2/mcp/:cardId.webp` - 192×288 artwork for the MCP App and the deck gallery
+- `GET /assets/cards/midnight-art-nouveau-v1/:cardId.webp` - 512×768 Web artwork, first edition
+- `GET /assets/cards/midnight-art-nouveau-v1/mcp/:cardId.webp` - 192×288 MCP artwork, first edition
+
+`:cardId` is a stable card id such as `fool` or `ten_of_cups`; `back.webp` in
+each directory is the card back. Artwork is served with
+`Cache-Control: public, max-age=31536000, immutable`, so a changed v2 image is
+published under a new revision suffix (`-r2` today) instead of replacing a file.
 
 The static UI and versioned artwork are public/cacheable. `/api/*`, `/mcp`, `/sse`, and `/messages` continue to require Bearer authentication whenever `MCP_AUTH_TOKEN` is set.
 
@@ -92,7 +101,7 @@ itself — call `tools/list` over MCP, or `GET /api/info` over HTTP.
 | Tool                           | Purpose                                                        |
 | ------------------------------ | -------------------------------------------------------------- |
 | `get_card_info`                | Full card detail (meanings, symbolism, astrology)              |
-| `list_all_cards`               | Card catalog, filterable by category                           |
+| `list_all_cards`               | Card catalog as text and data, filterable by category          |
 | `list_available_spreads`       | Spread catalog with positions                                  |
 | `perform_reading`              | Reading with a built-in spread (session-aware)                 |
 | `begin_visual_reading`         | Prepare a hidden deck; browser fallback waits for confirmation |
@@ -113,7 +122,11 @@ localized Simplified Chinese output. Card lookup and search also accept
 Chinese card names and Chinese keywords, while spread recommendation recognizes
 common Chinese question phrases. Reading tools additionally
 return machine-readable `structuredContent` (reading id, session id,
-drawn cards) beside the Markdown text. MCP card records contain only semantic
+drawn cards) beside the Markdown text. Each reading records the
+`knowledgeVersion` of the Card Canon that produced it (`canon-v2.1`) and the
+`deckVersion` whose artwork its edition motifs describe
+(`midnight-art-nouveau-v2`); the first-edition view on the Web page does not
+change either. MCP card records contain only semantic
 reading data: canonical `name`, stable `cardId`, localized `displayName`,
 orientation, position, keywords, and selected meaning. They do not attach
 `imageUri`, embedded image bytes, `cardImages`, or `backImage` to the model's
@@ -149,9 +162,14 @@ and adds the configured Bearer header to the private MCP service. Only begin has
 no UI template. A missing built App resource fails `resources/read` with an
 internal error, while text tools remain available.
 
-REST failures retain `{code, error}` and the HTTP status. MCP domain failures
-retain `isError`/text plus `_meta.tarotError: {code, httpStatus}`. UI recovery uses
-these machine fields, never English-message matching:
+REST failures return `{error}` with an HTTP status, 400 unless the failure has
+its own. MCP failures set `isError` and explain themselves in text. Two kinds of
+failure also carry a machine code, `code` beside `error` over REST and
+`_meta.tarotError: {code, httpStatus}` over MCP: failures of the visual draw,
+and a card name that matches several cards (`AMBIGUOUS_CARD_NAME`, whose text
+lists the candidates with their ids). Any other lookup or validation failure,
+such as an unknown card name, carries the text alone. UI recovery uses the
+machine fields, never English-message matching:
 
 | Failure | UI recovery |
 | --- | --- |
@@ -163,9 +181,11 @@ these machine fields, never English-message matching:
 | HTTP 401 | Preserve state; repair Web connection settings or check the private MCP tunnel, then retry |
 
 The server also exposes MCP **resources** (`tarot://cards`,
-`tarot://cards/{id}`, `tarot://spreads`, `tarot://spreads/{type}`) and
+`tarot://cards/{id}`, `tarot://spreads`, `tarot://spreads/{type}`,
+`tarot://readings/{readingId}`) and
 the MCP App resource `ui://tarot-mcp/visual-reading.html` using
-`text/html;profile=mcp-app`, plus **prompts** (`perform-reading`, `daily-draw`).
+`text/html;profile=mcp-app`, plus **prompts** (`perform-reading`,
+`visual-reading`, `daily-draw`).
 
 ## Two-stage visual reading
 

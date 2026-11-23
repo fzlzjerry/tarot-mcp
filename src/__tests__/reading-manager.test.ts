@@ -143,6 +143,14 @@ describe('TarotReadingManager', () => {
       expect(result).toContain('Future/Outcome');
     });
 
+    it('should count a single card in the singular', () => {
+      const result = readingManager.listAvailableSpreads();
+
+      expect(result).toContain('## Single Card (1 card)');
+      expect(result).toContain('## Three Card Spread (3 cards)');
+      expect(result).not.toContain('(1 cards)');
+    });
+
     it('should be well-formatted markdown', () => {
       const result = readingManager.listAvailableSpreads();
 

@@ -100,7 +100,7 @@ export function renderAvailableSpreads(
   spreads.forEach(spread => {
     result += pick(
       language,
-      `## ${spread.name} (${spread.cardCount} cards)\n\n`,
+      `## ${spread.name} (${spread.cardCount} ${spread.cardCount === 1 ? "card" : "cards"})\n\n`,
       `## ${spread.name}（${spread.cardCount} 张牌）\n\n`,
     );
     result += `${spread.description}\n\n`;

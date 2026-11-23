@@ -1,9 +1,10 @@
 # Tarot MCP
 
 A bilingual tarot reading service and visual card table, built with TypeScript,
-React and Vite. It includes a complete 78-card Rider–Waite–Smith deck, original
-Midnight Art Nouveau artwork, 25 built-in spreads, and daily, moon-phase and
-custom readings.
+React and Vite. It includes a complete 78-card Rider–Waite–Smith deck in
+original Luminous Midnight Art Nouveau artwork, a bilingual Card Canon that
+chooses each meaning by position role and question domain, 25 built-in spreads,
+and daily, moon-phase and custom readings.
 
 Write a question, start each shuffle yourself, cut the current deck, and choose
 face-down cards in order. Confirmation keeps the table visible and retries the
@@ -13,6 +14,13 @@ the reader can then explicitly hand the reading to the host conversation; a host
 that only stages that message says so instead of claiming it was sent. The
 standalone Web page keeps the server's local interpretation and does not claim to
 send it anywhere.
+
+The table shows the second edition of the artwork, `midnight-art-nouveau-v2`.
+The first edition stays available on the Web page through the edition switch on
+the entry page or `/draw?deck=v1`; it changes the artwork shown, never the draw
+or the interpretation. The whole deck can be browsed and searched from the entry
+page and from a reading, and the gallery lists all 78 cards the same way
+whatever has been drawn.
 
 ## Run locally
 
@@ -85,6 +93,7 @@ authentication and origin/host allowlists.
 | Location                     | Responsibility                                                                    |
 | ---------------------------- | --------------------------------------------------------------------------------- |
 | `src/tarot/cards/`           | Canonical deck, card validation, search, analysis and formatting                  |
+| `src/tarot/canon/`           | Card Canon: bilingual meanings by position role and domain, motifs, prompt specs  |
 | `src/tarot/readings/`        | Spreads, reading interpretation, visual draw lifecycle and sessions               |
 | `src/tarot/shared/`          | Domain types, shared visual input schema, localization and utilities              |
 | `src/mcp/handlers/`          | Tool implementations calling the domain services                                  |
@@ -93,15 +102,21 @@ authentication and origin/host allowlists.
 | `src/mcp/http/`              | REST routing, MCP transport sessions and JSON-RPC errors                          |
 | `ui/src/useDrawSession.ts`   | Async requests, cancellation, retries and reading transitions                     |
 | `ui/src/DrawApp.tsx`         | Card selection, animation state and stage composition                             |
+| `ui/src/cloth-fit.ts`        | Sizes a spread's cards to the measured cloth without overlap                      |
+| `ui/src/DeckGallery.tsx`     | Searchable gallery of all 78 cards                                                |
 | `ui/src/webmcp/`             | Browser feature detection, tool registration and live page access                 |
 | `ui/src/styles/`             | Ordered styles for setup, controls, ritual, draw, reading and responsive behavior |
-| `assets/cards/`              | Web and MCP artwork variants, manifest and QA evidence                            |
-| `scripts/art/`               | Reproducible artwork processing and verification                                  |
+| `assets/cards/`              | First-edition Web and MCP artwork, manifest and QA evidence; v2 in `v2/`          |
+| `scripts/art/`               | Artwork generation, processing and verification for both editions                 |
 
-Original PNGs, artwork provenance and QA files are retained because they are
-inputs or evidence for the deck pipeline. Full-resolution sources and contact
+The first edition's source PNGs, provenance and QA files are retained because
+they are inputs or evidence for its pipeline. Full-resolution sources and contact
 sheets are excluded from the distributable build; they are not duplicate runtime
-assets. See [the artwork workflow](scripts/art/README.md).
+assets. The v2 masters are kept outside the repository:
+`assets/artwork/v2/provenance.json` records each one's prompt, model and hash,
+and `assets/cards/v2/manifest.json` records the hash of every published card
+face and back.
+See [the artwork workflow](scripts/art/README.md).
 
 ## Checks
 
