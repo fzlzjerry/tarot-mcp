@@ -146,7 +146,15 @@ export function DeckGallery({
   }, []);
 
   useEffect(() => {
-    if (catalogs.get(client)?.has(language) || !client.listCards) return;
+    // An earlier opening may have finished loading the deck after it closed.
+    const cached = catalogs.get(client)?.get(language);
+    if (cached) {
+      setCatalog((current) =>
+        current.cards === cached ? current : { cards: cached },
+      );
+      return;
+    }
+    if (!client.listCards) return;
     const controller = new AbortController();
     client.listCards(language, { signal: controller.signal }).then(
       (cards) => {

@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import { DeckGalleryButton } from "../DeckGallery.js";
@@ -234,5 +234,42 @@ describe("deck gallery", () => {
       await screen.findByRole("button", { name: "The Fool" }),
     ).not.toBeNull();
     expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("shows a deck that an earlier opening finished loading after it closed", async () => {
+    let finishFirst: (cards: DeckCard[]) => void = () => undefined;
+    const listCards = vi
+      .fn<NonNullable<DrawClient["listCards"]>>()
+      .mockImplementationOnce(
+        () =>
+          new Promise<DeckCard[]>((resolve) => {
+            finishFirst = resolve;
+          }),
+      )
+      .mockRejectedValueOnce(new Error("Request failed (503)"));
+    const { client } = createClient({ listCards });
+    const user = userEvent.setup();
+    render(<DeckGalleryButton client={client} language="en" />);
+    const opener = screen.getByRole("button", { name: label("galleryOpen") });
+
+    await user.click(opener);
+    await user.click(
+      within(await screen.findByRole("dialog")).getByRole("button", {
+        name: label("close"),
+      }),
+    );
+    await user.click(opener);
+    const alert = await screen.findByRole("alert");
+
+    await act(async () => {
+      finishFirst(deck);
+    });
+    await user.click(
+      within(alert).getByRole("button", { name: label("tryAgain") }),
+    );
+    expect(
+      await screen.findByRole("button", { name: "The Fool" }),
+    ).not.toBeNull();
+    expect(listCards).toHaveBeenCalledTimes(2);
   });
 });

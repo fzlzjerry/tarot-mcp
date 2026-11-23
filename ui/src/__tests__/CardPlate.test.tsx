@@ -81,6 +81,28 @@ describe("card plate", () => {
     expect(plate.hasAttribute("data-tilting")).toBe(false);
   });
 
+  it("comes to rest once the reader asks for less motion", () => {
+    const plate = mountPlate();
+    fireEvent.pointerMove(plate, {
+      pointerType: "mouse",
+      clientX: 150,
+      clientY: 75,
+    });
+    expect(plate.hasAttribute("data-tilting")).toBe(true);
+
+    vi.mocked(window.matchMedia).mockReturnValue({
+      matches: true,
+    } as MediaQueryList);
+    fireEvent.pointerMove(plate, {
+      pointerType: "mouse",
+      clientX: 40,
+      clientY: 200,
+    });
+    expect(plate.hasAttribute("data-tilting")).toBe(false);
+    expect(plate.style.getPropertyValue("--tilt-x")).toBe("");
+    expect(plate.style.getPropertyValue("--tilt-y")).toBe("");
+  });
+
   it("turns a reversed card and names the card when its art will not load", () => {
     const { rerender } = render(
       <CardPlate source="/plates/tower.webp" name="The Tower" reversed />,

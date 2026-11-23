@@ -27,7 +27,7 @@ export function CardPlate({
 
   useEffect(() => {
     const element = plate.current;
-    if (!element || prefersReducedMotion()) return;
+    if (!element) return;
     let frame = 0;
     const rest = (): void => {
       cancelAnimationFrame(frame);
@@ -37,6 +37,11 @@ export function CardPlate({
     };
     const lean = (event: PointerEvent): void => {
       if (event.pointerType === "touch") return;
+      // Asked on every move, so a preference changed mid-session is honoured.
+      if (prefersReducedMotion()) {
+        rest();
+        return;
+      }
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const box = element.getBoundingClientRect();
