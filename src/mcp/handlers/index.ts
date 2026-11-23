@@ -8,6 +8,7 @@ import {
   handleSearchCards,
 } from "./analytics.js";
 import {
+  handleGetCardArtwork,
   handleGetCardInfo,
   handleListAllCards,
   handleListAvailableSpreads,
@@ -37,6 +38,7 @@ const HANDLERS: ReadonlyArray<readonly [string, ToolHandler]> = [
   [TOOL_NAMES.performReading, handlePerformReading],
   [TOOL_NAMES.beginVisualReading, handleBeginVisualReading],
   [TOOL_NAMES.confirmVisualReading, handleConfirmVisualReading],
+  [TOOL_NAMES.getCardArtwork, handleGetCardArtwork],
   [TOOL_NAMES.searchCards, handleSearchCards],
   [TOOL_NAMES.findSimilarCards, handleFindSimilarCards],
   [TOOL_NAMES.getDatabaseAnalytics, handleGetAnalytics],

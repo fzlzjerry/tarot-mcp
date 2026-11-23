@@ -198,6 +198,26 @@ describe("ReadingBoard restored presentation", () => {
 });
 
 describe("ReadingBoard reveal", () => {
+  it("asks the server for a sharper face only once a card is turned", async () => {
+    const user = userEvent.setup();
+    const resolveSharpImage = vi.fn<
+      NonNullable<DrawClient["resolveSharpImage"]>
+    >(async () => undefined);
+    const { client } = createClient("mcp", {
+      resolveImage: async (card) => `small:${card.id}`,
+      resolveSharpImage,
+    });
+    mount(client);
+    await act(async () => {});
+    expect(resolveSharpImage).not.toHaveBeenCalled();
+
+    await user.click(next());
+    expect(revealedCard("The Fool")).not.toBeNull();
+    expect(
+      new Set(resolveSharpImage.mock.calls.map(([card]) => card.id)),
+    ).toEqual(new Set(["fool"]));
+  });
+
   it("keeps face-down names and the interpretation out of reach until the user turns every card", async () => {
     const user = userEvent.setup();
     const { client } = createClient("web");

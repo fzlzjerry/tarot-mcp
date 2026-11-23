@@ -49,9 +49,12 @@ deck, secure randomization, sessions, and canonical tarot data.
 
 ## Interfaces
 
-- MCP tools: `begin_visual_reading`, `confirm_visual_reading`.
+- MCP tools: `begin_visual_reading`, `confirm_visual_reading`, and the
+  app-only `get_card_artwork`.
 - MCP resource: `ui://tarot-mcp/visual-reading.html` using
   `text/html;profile=mcp-app`.
+- MCP resource template: `tarot://cards/{id}/artwork`, one card's full-size
+  face as `image/webp`.
 - REST: `POST /api/visual-readings`,
   `POST /api/visual-readings/:drawId/confirm`.
 - Web: `GET /draw` and versioned local card-art assets.
@@ -69,8 +72,9 @@ JSON for Web.
 `confirm_visual_reading` accepts an ordered slot-id array. Its reading payload
 preserves existing fields and adds stable card ids, localized display names,
 keywords, and meanings. The MCP protocol boundary removes all image fields and
-bytes from `content`, `structuredContent`, and `_meta`; only the embedded App
-resource owns its bundled MCP-sized artwork. REST/Web payloads continue to
+bytes from the `content`, `structuredContent`, and `_meta` of every reading
+result; the embedded App resource owns its bundled MCP-sized artwork and asks
+for a full-size face itself (see Visual System). REST/Web payloads continue to
 include versioned static image URIs.
 
 When the stdio MCP client does not advertise the `io.modelcontextprotocol/ui`
@@ -223,6 +227,13 @@ immediately instead of leaving an unreachable waiter.
 - All 78 MCP faces plus the back are bundled inside the self-contained App
   resource (raw artwork at most 600 KB; base64 artwork at most 800 KB; complete
   HTML at most 1.5 MB), rather than being attached to any tool result.
+- A bundled face is drawn at once. Once a card is turned, the App replaces it
+  with the 640x960 face: `resources/read` on `tarot://cards/{id}/artwork`
+  where the host proxies resource reads, and otherwise the app-only
+  `get_card_artwork` tool, whose image travels in result `_meta.cardArtwork`.
+  Either way the image reaches the App as a data URI and never as
+  model-visible content, a card still face down requests nothing, and the
+  bundled face stays when no full-size face arrives.
 - A published image is never replaced in place: artwork URLs are immutable,
   so a change ships under a new asset revision (`-r2` today).
 

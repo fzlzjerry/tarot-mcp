@@ -2,6 +2,7 @@ import { App } from "@modelcontextprotocol/ext-apps";
 import { getMcpCardArt } from "./mcp-card-art.js";
 import {
   assertCompleteVisualDeck,
+  embeddedImageUri,
   extractError,
   normalizeBeginPayload,
   normalizeConfirmedReading,
@@ -26,6 +27,7 @@ type InitialHandlers = Parameters<
 >[0];
 
 const HOST_CONTINUATION_TIMEOUT_MS = 10_000;
+const CARD_ARTWORK_TIMEOUT_MS = 20_000;
 
 interface OpenAiFollowUpBridge {
   sendFollowUpMessage?: (args: {
@@ -152,6 +154,8 @@ export function createMcpClient(
 ): DrawClient & { connect(): Promise<void> } {
   const handlers = new Set<InitialHandlers>();
   const imageCache = new Map<string, string>();
+  const sharpImages = new Map<string, Promise<string | undefined>>();
+  let sharpFailures = 0;
   const continuedReadings = new Set<string>();
   const continuingReadings = new Map<string, Promise<ContinuationOutcome>>();
   let lastInput: BeginReadingInputSnapshot = {};
@@ -326,6 +330,36 @@ export function createMcpClient(
     return continuation;
   };
 
+  /**
+   * The full-size face the server keeps. It arrives as a data URI, the one
+   * image source the default App sandbox allows: by resource read where the
+   * host proxies them, and through the app-only tool everywhere else.
+   */
+  const loadSharpImage = async (
+    cardId: string,
+  ): Promise<string | undefined> => {
+    const options = { timeout: CARD_ARTWORK_TIMEOUT_MS };
+    if (app.getHostCapabilities()?.serverResources) {
+      try {
+        const { contents } = await app.readServerResource(
+          { uri: `tarot://cards/${encodeURIComponent(cardId)}/artwork` },
+          options,
+        );
+        const image = embeddedImageUri(contents[0]);
+        if (image) return image;
+      } catch {
+        // The tool below returns the same image.
+      }
+    }
+    const result = await app.callServerTool(
+      { name: "get_card_artwork", arguments: { cardId } },
+      options,
+    );
+    return result.isError
+      ? undefined
+      : embeddedImageUri(result._meta?.cardArtwork);
+  };
+
   app.ontoolinput = (params) => {
     lastInput = (params.arguments ?? {}) as BeginReadingInputSnapshot;
   };
@@ -400,10 +434,29 @@ export function createMcpClient(
       ) {
         return card.imageUri;
       }
-      // Current MCP artwork is bundled into the App resource itself. Tool
+      // The immediate face is bundled into the App resource itself. Reading
       // results stay text/JSON-only instead of attaching card image payloads
       // to the host model conversation.
       return getMcpCardArt(card.id);
+    },
+    resolveSharpImage(card: ReadingCard): Promise<string | undefined> {
+      const cached = sharpImages.get(card.id);
+      if (cached) return cached;
+      // Two misses in a row mean this host does not carry artwork: stop asking.
+      if (sharpFailures > 1) return Promise.resolve(undefined);
+      const pending = loadSharpImage(card.id)
+        .catch(() => undefined)
+        .then((image) => {
+          if (image) {
+            sharpFailures = 0;
+          } else {
+            sharpFailures += 1;
+            sharpImages.delete(card.id);
+          }
+          return image;
+        });
+      sharpImages.set(card.id, pending);
+      return pending;
     },
     async listCards(language) {
       const result = await app.callServerTool({

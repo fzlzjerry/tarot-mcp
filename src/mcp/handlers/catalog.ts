@@ -9,6 +9,7 @@ import {
   validateCardName,
   validateCardOrientation,
 } from "../../tarot/shared/validation.js";
+import { CARD_ARTWORK_MIME_TYPE, readCardArtwork } from "../card-artwork.js";
 import { toolError, toolOk } from "../tool-result.js";
 import {
   formatValidationError,
@@ -73,6 +74,29 @@ export const handleGetCardInfo: ToolHandler = (ctx, args) => {
       lang,
     ),
   );
+};
+
+export const handleGetCardArtwork: ToolHandler = async (ctx, args) => {
+  const cardId = validateCardName(args.cardId);
+  if (!cardId.success) {
+    return formatValidationError("cardId", cardId.errors);
+  }
+
+  const card = ctx.cardManager.findCardExact(cardId.data!);
+  const data = card && (await readCardArtwork(card.id));
+  if (!card || !data) {
+    return toolError(
+      `Error: No artwork for card "${sanitizeString(cardId.data!)}".`,
+    );
+  }
+
+  return {
+    ok: true,
+    text: `Artwork for ${card.name} is attached for the visual App.`,
+    meta: {
+      cardArtwork: { cardId: card.id, mimeType: CARD_ARTWORK_MIME_TYPE, data },
+    },
+  };
 };
 
 export const handleListAllCards: ToolHandler = (ctx, args) => {

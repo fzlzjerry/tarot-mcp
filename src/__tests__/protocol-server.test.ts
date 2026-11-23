@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import {
@@ -348,6 +349,76 @@ describe("MCP protocol server error contract", () => {
     ).rejects.toThrow();
   });
 
+  it("serves a card's full-size face as a resource beside its data", async () => {
+    const { resourceTemplates } = await client.listResourceTemplates();
+    expect(resourceTemplates.map((template) => template.uriTemplate)).toContain(
+      "tarot://cards/{id}/artwork",
+    );
+
+    const artwork = await client.readResource({
+      uri: "tarot://cards/fool/artwork",
+    });
+    const face = artwork.contents[0] as { mimeType: string; blob: string };
+    expect(face.mimeType).toBe("image/webp");
+    expect(
+      Buffer.from(face.blob, "base64").equals(
+        await readFile("assets/cards/v2/fool.webp"),
+      ),
+    ).toBe(true);
+
+    const data = await client.readResource({ uri: "tarot://cards/fool" });
+    expect(JSON.parse((data.contents[0] as { text: string }).text).name).toBe(
+      "The Fool",
+    );
+
+    for (const notACard of [
+      "back",
+      "manifest",
+      "..%2Fmanifest",
+      "mcp%2Ffool",
+    ]) {
+      await expect(
+        client.readResource({ uri: `tarot://cards/${notACard}/artwork` }),
+      ).rejects.toThrow();
+    }
+  });
+
+  it("hands card artwork to the App in result _meta and nowhere else", async () => {
+    const result = await client.callTool({
+      name: TOOL_NAMES.getCardArtwork,
+      arguments: { cardId: "fool" },
+    });
+    expect(result.isError).toBeUndefined();
+    expect(result.structuredContent).toBeUndefined();
+    expect(result.content).toEqual([
+      {
+        type: "text",
+        text: "Artwork for The Fool is attached for the visual App.",
+      },
+    ]);
+    const { cardArtwork } = result._meta as {
+      cardArtwork: { cardId: string; mimeType: string; data: string };
+    };
+    expect(cardArtwork).toMatchObject({
+      cardId: "fool",
+      mimeType: "image/webp",
+    });
+    expect(
+      Buffer.from(cardArtwork.data, "base64").equals(
+        await readFile("assets/cards/v2/fool.webp"),
+      ),
+    ).toBe(true);
+
+    for (const notACard of ["back", "../manifest", "mcp/fool"]) {
+      const missing = await client.callTool({
+        name: TOOL_NAMES.getCardArtwork,
+        arguments: { cardId: notACard },
+      });
+      expect(missing.isError).toBe(true);
+      expect(missing._meta).toBeUndefined();
+    }
+  });
+
   it("exposes reading workflows as prompts", async () => {
     const prompts = await client.listPrompts();
     expect(prompts.prompts.map((prompt) => prompt.name)).toEqual(
@@ -383,6 +454,7 @@ describe("MCP protocol server error contract", () => {
         false,
       ],
       [TOOL_NAMES.confirmVisualReading, "Confirm selected cards", false, true],
+      [TOOL_NAMES.getCardArtwork, "Load card artwork", true, true],
       [TOOL_NAMES.searchCards, "Search tarot cards", true, true],
       [TOOL_NAMES.findSimilarCards, "Find similar cards", true, true],
       [TOOL_NAMES.getDatabaseAnalytics, "Explore deck statistics", true, true],
@@ -443,6 +515,10 @@ describe("MCP protocol server error contract", () => {
       (tool) => tool.name === TOOL_NAMES.confirmVisualReading,
     )!;
     expect(confirm._meta?.ui).toEqual({ visibility: ["app"] });
+    const artwork = tools.find(
+      (tool) => tool.name === TOOL_NAMES.getCardArtwork,
+    )!;
+    expect(artwork._meta?.ui).toEqual({ visibility: ["app"] });
     for (const tool of tools) {
       const meta = tool._meta ?? {};
       expect(meta).not.toHaveProperty("ui/resourceUri");

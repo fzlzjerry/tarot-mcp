@@ -87,6 +87,9 @@ describe("MCP tool behavior", () => {
       if (tool.name === TOOL_NAMES.confirmVisualReading) {
         continue; // App-only continuation; language is frozen at begin.
       }
+      if (tool.name === TOOL_NAMES.getCardArtwork) {
+        continue; // App-only image request; a card face has no language.
+      }
       const properties = tool.inputSchema.properties as
         Record<string, unknown> | undefined;
       expect(

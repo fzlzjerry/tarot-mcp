@@ -94,7 +94,7 @@ The static UI and versioned artwork are public/cacheable. `/api/*`, `/mcp`, `/ss
 
 ## MCP tools
 
-The server provides **16 MCP tools**. The authoritative, always-current
+The server provides **17 MCP tools**. The authoritative, always-current
 catalog (schemas, annotations, output schemas) is served by the protocol
 itself — call `tools/list` over MCP, or `GET /api/info` over HTTP.
 
@@ -106,6 +106,7 @@ itself — call `tools/list` over MCP, or `GET /api/info` over HTTP.
 | `perform_reading`              | Reading with a built-in spread (session-aware)                 |
 | `begin_visual_reading`         | Prepare a hidden deck; browser fallback waits for confirmation |
 | `confirm_visual_reading`       | App-only ordered confirmation; retries return the same reading |
+| `get_card_artwork`             | App-only full-size card face for the visual App                |
 | `create_custom_spread`         | Reading with a user-defined spread                             |
 | `get_daily_card`               | One-shot daily guidance draw                                   |
 | `get_moon_phase_reading`       | Lunar-phase-aligned reading                                    |
@@ -133,6 +134,15 @@ tool result. Opaque slots alone stay in begin-result `_meta`; the single-file MC
 App bundles its own lightweight artwork, while REST/Web responses retain their
 versioned static `imageUri` values.
 
+The App draws a bundled face at once and, once a card is turned, replaces it
+with the 640×960 face. It reads the `tarot://cards/{id}/artwork` resource
+(`image/webp`, base64 `blob`) where the host proxies resource reads, and
+otherwise calls the app-only `get_card_artwork` tool with `cardId`. That tool
+returns the image in result `_meta.cardArtwork` (`cardId`, `mimeType`, base64
+`data`), outside `content` and `structuredContent`, so it stays out of the
+model's context. A card still face down requests nothing, and the bundled face
+stays when no full-size face arrives.
+
 Every reading's `structuredContent` also carries `evidence` and `guide`:
 
 | Field | Contents |
@@ -153,12 +163,12 @@ and the question's domain, and orientation is always reported as a mode of
 expression, never as a verdict. The tool text ends with the same guide, so hosts
 that pass only text to the model still receive it.
 
-All 16 tools provide titles, explicit read-only/destructive/open-world hints,
+All 17 tools provide titles, explicit read-only/destructive/open-world hints,
 and top-level `securitySchemes: [{type: "noauth"}]`. Here `noauth` means no
 additional end-user OAuth flow; the personal tunnel still authenticates upstream
 and adds the configured Bearer header to the private MCP service. Only begin has
-`_meta.ui.resourceUri` with model/app visibility; confirmation is app-only with
-no UI template. A missing built App resource fails `resources/read` with an
+`_meta.ui.resourceUri` with model/app visibility; confirmation and
+`get_card_artwork` are app-only with no UI template. A missing built App resource fails `resources/read` with an
 internal error, while text tools remain available.
 
 REST failures return `{error}` with an HTTP status, 400 unless the failure has
@@ -180,7 +190,8 @@ machine fields, never English-message matching:
 | HTTP 401 | Preserve state; repair Web connection settings or check the private MCP tunnel, then retry |
 
 The server also exposes MCP **resources** (`tarot://cards`,
-`tarot://cards/{id}`, `tarot://spreads`, `tarot://spreads/{type}`,
+`tarot://cards/{id}`, `tarot://cards/{id}/artwork`, `tarot://spreads`,
+`tarot://spreads/{type}`,
 `tarot://readings/{readingId}`) and
 the MCP App resource `ui://tarot-mcp/visual-reading.html` using
 `text/html;profile=mcp-app`, plus **prompts** (`perform-reading`,

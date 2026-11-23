@@ -62,7 +62,7 @@ function ReadingCardView({
   onTurn(): void;
   language: Language;
 }) {
-  const [source, failed] = useCardImage(client, card);
+  const [source, failed] = useCardImage(client, card, revealed);
   const [imageFailed, setImageFailed] = useState(false);
   const showFallback = failed || imageFailed || !source;
   return (

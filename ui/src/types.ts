@@ -193,6 +193,11 @@ export interface DrawClient {
   writeUiState?(state: TarotUiSnapshot): void;
   getPreviewImage?(cardId: "moon" | "back" | "star"): string | undefined;
   resolveImage?(card: ReadingCard): Promise<string | undefined>;
+  /**
+   * A sharper face than resolveImage gave, fetched after it. Absent where
+   * resolveImage is already full size; resolves to nothing when none arrives.
+   */
+  resolveSharpImage?(card: ReadingCard): Promise<string | undefined>;
   /** The whole deck, in catalog order. Absent where the host cannot list it. */
   listCards?(
     language: Language,
