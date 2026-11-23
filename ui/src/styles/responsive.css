@@ -46,8 +46,7 @@
     --slot-width: clamp(56px, 12vw, 80px);
   }
   .slot-caption {
-    width: 240%;
-    margin-inline: -70%;
+    width: var(--caption-width, 240%);
   }
 }
 
@@ -141,8 +140,16 @@
     max-height: calc(100dvh - 24px);
   }
   .dialog-art {
+    --art-band: min(46vh, 390px);
+
     min-height: 0;
-    height: min(46vh, 390px);
+    height: var(--art-band);
+    padding: 12px;
+  }
+  /* The art band has a fixed height here, so the plate takes its width from it. */
+  .dialog-art .card-plate {
+    width: calc((var(--art-band) - 24px) * 2 / 3);
+    max-width: 100%;
   }
   .dialog-copy {
     padding: 24px;
@@ -151,8 +158,16 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .card-spotlight__frame {
+  .card-spotlight__plate {
     max-width: 210px;
+    margin-inline: auto;
+  }
+  /* Stacked under the title, the header actions start where the text does. */
+  .reading-header {
+    gap: 16px;
+  }
+  .reading-actions {
+    justify-content: flex-start;
   }
   .active-slot-ribbon {
     flex-direction: column;
@@ -218,8 +233,7 @@
   }
 
   .reading-card.is-revealed .reading-card__face,
-  .reading-card.is-revealed .reading-card__foil,
-  .card-spotlight__frame:hover .card-spotlight__foil {
+  .reading-card.is-revealed .reading-card__foil {
     animation: none;
   }
 

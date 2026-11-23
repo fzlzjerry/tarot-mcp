@@ -284,3 +284,78 @@ describe("Web visual-reading client", () => {
     });
   });
 });
+
+describe("Web deck gallery client", () => {
+  beforeEach(() => {
+    window.sessionStorage.clear();
+    window.history.replaceState(null, "", "/draw/");
+    vi.restoreAllMocks();
+  });
+
+  it("lists the deck from the catalog route in the reader's language", async () => {
+    window.sessionStorage.setItem(AUTH_TOKEN_SESSION_KEY, "session-token");
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
+      jsonResponse({
+        cards: "# 塔罗牌",
+        structured: {
+          total: 1,
+          cards: [
+            {
+              id: "fool",
+              name: "The Fool",
+              displayName: "愚者",
+              arcana: "major",
+              number: 0,
+              keywords: { upright: ["新的开始"], reversed: ["鲁莽"] },
+            },
+          ],
+        },
+      }),
+    );
+    const client = createWebClient();
+    const controller = new AbortController();
+
+    await expect(
+      client.listCards!("zh", { signal: controller.signal }),
+    ).resolves.toEqual([
+      {
+        id: "fool",
+        name: "The Fool",
+        displayName: "愚者",
+        arcana: "major",
+        number: 0,
+        keywords: { upright: ["新的开始"], reversed: ["鲁莽"] },
+      },
+    ]);
+    expect(fetchMock).toHaveBeenCalledWith("/api/cards?language=zh", {
+      signal: controller.signal,
+      headers: { authorization: "Bearer session-token" },
+    });
+  });
+
+  it("keeps the server's reason when the catalog cannot be read", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
+      jsonResponse({ error: "Unauthorized" }, 401),
+    );
+    await expect(createWebClient().listCards!("en")).rejects.toMatchObject({
+      httpStatus: 401,
+      message: "Unauthorized",
+    });
+  });
+
+  it("offers no gallery on the hand-off page, which has no catalog route", () => {
+    window.sessionStorage.setItem(HANDOFF_TOKEN_SESSION_KEY, "handoff-token");
+    expect(createWebClient().listCards).toBeUndefined();
+  });
+
+  it("points the grid at the small faces of the deck on show", () => {
+    expect(createWebClient().getCardThumbnail!("star")).toMatch(
+      /^\/assets\/cards\/midnight-art-nouveau-v2-r\d+\/mcp\/star\.webp$/,
+    );
+    // The first edition ships full plates only.
+    window.history.replaceState(null, "", "/draw/?deck=v1");
+    expect(createWebClient().getCardThumbnail!("star")).toBe(
+      "/assets/cards/midnight-art-nouveau-v1/star.webp",
+    );
+  });
+});

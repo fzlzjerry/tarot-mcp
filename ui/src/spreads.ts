@@ -13,10 +13,28 @@ function line(count: number, y = 50, from = 12, to = 88): LayoutPoint[] {
   );
 }
 
-function column(count: number, x = 50, from = 10, to = 90): LayoutPoint[] {
-  if (count === 1) return [point(x, 50)];
-  return Array.from({ length: count }, (_, index) =>
-    point(x, from + ((to - from) * index) / (count - 1)),
+/**
+ * A column in two files. Each card stands to one side of the centre line, so
+ * neighbours sit side by side and a card only has to clear the one two steps
+ * below it: six or seven cards stay readable on a table that is wider than it
+ * is tall.
+ */
+function column(count: number, from = 10, to = 90): LayoutPoint[] {
+  if (count === 1) return [point(50, 50)];
+  return Array.from({ length: count }, (_, index) => ({
+    ...point(50, from + ((to - from) * index) / (count - 1)),
+    side: index % 2 === 0 ? -1 : 1,
+  }));
+}
+
+/**
+ * A row that steps up and down. Seven cards side by side leave each one a
+ * seventh of a phone's width; alternating two levels lets neighbours overlap
+ * in x, so the row keeps its order and the cards stay large enough to read.
+ */
+function wave(count: number, swing = 13, from = 12, to = 88): LayoutPoint[] {
+  return line(count, 50, from, to).map(({ x }, index) =>
+    point(x, 50 + (index % 2 === 0 ? -swing : swing)),
   );
 }
 
@@ -54,15 +72,6 @@ function grid(
   });
 }
 
-function arc(count: number, start = 200, end = 340): LayoutPoint[] {
-  return Array.from({ length: count }, (_, index) => {
-    const angle =
-      ((start + ((end - start) * index) / Math.max(1, count - 1)) * Math.PI) /
-      180;
-    return point(50 + Math.cos(angle) * 42, 18 - Math.sin(angle) * 60);
-  });
-}
-
 export function autoLayout(count: number): LayoutPoint[] {
   const safeCount = Math.max(1, Math.min(78, Math.floor(count)));
   const columns = Math.max(1, Math.ceil(Math.sqrt(safeCount * 1.45)));
@@ -72,19 +81,31 @@ export function autoLayout(count: number): LayoutPoint[] {
 export const SPREAD_LAYOUTS: Record<string, LayoutPoint[]> = {
   single_card: [point(50, 50)],
   three_card: line(3),
+  // The cross's arms sit further apart than the staff does from the cross:
+  // the card laid sideways is half as wide again as its upright neighbours.
   celtic_cross: [
-    point(36, 50),
-    point(36, 50, 90),
-    point(36, 84),
-    point(12, 50),
-    point(36, 16),
-    point(60, 50),
-    point(84, 88),
-    point(84, 64),
-    point(84, 40),
-    point(84, 16),
+    point(39, 50),
+    point(39, 50, 90),
+    point(39, 84),
+    point(12.5, 50),
+    point(39, 16),
+    point(65.5, 50),
+    point(87.5, 88),
+    point(87.5, 64),
+    point(87.5, 40),
+    point(87.5, 16),
   ],
-  horseshoe: arc(7),
+  // Each arm drops a full card per step, so the shoe holds its shape on a
+  // cloth that is taller than it is wide.
+  horseshoe: [
+    point(10, 14),
+    point(21, 38),
+    point(33, 61),
+    point(50, 84),
+    point(67, 61),
+    point(79, 38),
+    point(90, 14),
+  ],
   relationship_cross: [
     point(20, 50),
     point(80, 50),
@@ -95,12 +116,12 @@ export const SPREAD_LAYOUTS: Record<string, LayoutPoint[]> = {
     point(72, 18),
   ],
   career_path: [
-    point(12, 72),
-    point(28, 56),
-    point(44, 68),
+    point(12, 80),
+    point(27, 50),
+    point(42, 72),
     point(58, 42),
-    point(74, 52),
-    point(88, 20),
+    point(73, 64),
+    point(88, 22),
   ],
   decision_making: [
     point(50, 82),
@@ -120,12 +141,12 @@ export const SPREAD_LAYOUTS: Record<string, LayoutPoint[]> = {
     point(82, 18),
   ],
   venus_love: [
-    point(50, 84),
-    point(20, 57),
-    point(32, 28),
-    point(50, 48),
-    point(68, 28),
-    point(80, 57),
+    point(50, 86),
+    point(15, 64),
+    point(24, 28),
+    point(50, 50),
+    point(76, 28),
+    point(85, 64),
     point(50, 14),
   ],
   tree_of_life: [
@@ -141,7 +162,7 @@ export const SPREAD_LAYOUTS: Record<string, LayoutPoint[]> = {
     point(50, 94),
   ],
   astrological_houses: ring(12),
-  mandala: [point(50, 50), ...ring(8)],
+  mandala: [point(50, 50), ...ring(8, 42)],
   pentagram: [
     point(50, 8),
     point(88, 40),
@@ -157,7 +178,7 @@ export const SPREAD_LAYOUTS: Record<string, LayoutPoint[]> = {
   ],
   daily_guidance: [point(50, 50)],
   yes_no: [point(25, 62), point(50, 32), point(75, 62)],
-  weekly_forecast: line(7),
+  weekly_forecast: wave(7),
   new_moon_intentions: [
     point(50, 50),
     point(20, 68),

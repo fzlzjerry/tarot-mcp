@@ -191,6 +191,16 @@ Components feel restrained and legible around a highly crafted deck. Their shape
 
 The cloth is a 14px-radius Table Indigo stage with one broad radial pool of gold lamplight from above. It contains percentage-positioned card slots so a selected card can travel continuously from the arc into its spread position. During the 420ms FLIP flight, one bounded gold thread and a converging lamplight echo make the spatial relationship legible, then disappear completely. The cloth never uses a decorative grid, paper noise, or glass blur.
 
+A reading of four or more cards is sized to the cloth as measured: the widest card at which every card and caption stays 10px inside the rim, 8px clear of a neighbour beside it and 14px clear of the card below its caption, and never under the 44px target. The layout is slid inward before a card is made smaller. One to three cards keep the stylesheet's showcase size. The card alone sits on its point; its caption hangs outside the slot, and a card laid across another carries its caption above the pair. A caption is one line that runs as far as the cloth is free and then ends in an ellipsis, because the position key below always carries the full name. A column spread stands in two files either side of its centre line, so six or seven cards stay large on a wide table and on a phone.
+
+### Signature Component: The Card Plate
+
+The plate is a whole card shown large: in the spotlight, the details layer and the deck gallery. Under a mouse or pen it leans up to 11° toward the pointer while a lamp-gold highlight, blended with color-dodge so it lifts the gilding and leaves the dark ground matte, follows across it. The lean tracks the pointer within 110ms and eases home over 560ms when the pointer leaves. Touch and reduced-motion readers get the plate at rest. It replaces any looping or one-shot foil sweep: the plate moves only because the reader moved.
+
+### Component: The Deck Gallery
+
+All 78 cards, face up, in a native modal drawer that slides 36px in from the trailing edge with the Dialog shadow; the browser owns the focus trap, Esc and the return of focus. A search field matches name, suit and keyword; pill filters narrow to the Major Arcana or one suit. Faces sit in a 96px-minimum grid (three columns on a phone) under serif group headings with a count. Opening a face replaces the grid with one plate, its upright and reversed keywords and previous / next, which arrow keys also drive. The gallery lists every card the same way whatever has been drawn, so it gives nothing away about a reading that is still face down, and it is offered only where the client can list the deck.
+
 ### Signature Component: The Arc Fan
 
 Seventy-eight opaque cards form a horizontally scrollable curve. A single 820ms lamplight sweep introduces the complete fan; it never loops. Proximity and keyboard focus lift nearby cards, while selection stamps one short gold seal, moves the chosen card to the next cloth position, and leaves a clear order marker. Transform is painted directly for smooth scrubbing, without transitioning layout properties or pre-promoting all 78 cards.

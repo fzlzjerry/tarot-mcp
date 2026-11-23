@@ -47,8 +47,11 @@
 }
 
 .dialog-art {
+  display: grid;
   min-height: 430px;
+  place-items: center;
   background: var(--card-stock);
+  padding: 16px;
 }
 
 .dialog-copy {
@@ -140,12 +143,15 @@
   padding: 6px 11px;
 }
 
+/* Rows of one line and rows of three share a grid row at one height. */
 .position-key li:has(> .position-key__action) {
+  align-content: stretch;
   padding: 0;
 }
 
 .position-key__action {
   grid-column: 1 / -1;
+  align-self: stretch;
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;

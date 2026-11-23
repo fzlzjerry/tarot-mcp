@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { CardPlate } from "./CardPlate.js";
 import { readInitialDeckEdition } from "./deck-edition.js";
 import { t } from "./i18n.js";
 import type { DrawClient, Language, ReadingCard } from "./types.js";
@@ -21,10 +22,9 @@ export function CardDetails({
   onNext?(): void;
   counter?: { current: number; total: number };
 }) {
-  const [resolvedSource] = useCardImage(client, card);
+  const [source] = useCardImage(client, card);
   const isShowingV2 =
     client.target === "mcp" || readInitialDeckEdition() === "v2";
-  const source = resolvedSource;
 
   const closeButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLElement>(null);
@@ -116,15 +116,11 @@ export function CardDetails({
           ×
         </button>
         <div className="dialog-art">
-          {source ? (
-            <img
-              src={source}
-              alt={card.displayName}
-              className={card.orientation === "reversed" ? "is-reversed" : ""}
-            />
-          ) : (
-            <div className="card-art-fallback">{card.displayName}</div>
-          )}
+          <CardPlate
+            source={source}
+            name={card.displayName}
+            reversed={card.orientation === "reversed"}
+          />
         </div>
         <div className="dialog-copy">
           <div className="dialog-meta-row">

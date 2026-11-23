@@ -1,0 +1,268 @@
+/* ----------------------------------------------------------- deck gallery */
+
+/*
+ * The whole deck in a drawer that slides in from the trailing edge. It is a
+ * native modal dialog: the browser owns the focus trap, the inert page, Esc
+ * and the return of focus to the button that opened it.
+ */
+.deck-gallery {
+  width: min(880px, 100%);
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0 0 0 auto;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: var(--surface-raised);
+  padding: 0;
+  color: var(--ink);
+  box-shadow: 0 28px 70px rgb(0 0 0 / 68%);
+  overscroll-behavior: contain;
+}
+
+.deck-gallery[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  transition:
+    transform 380ms var(--ease-out-expo),
+    opacity 220ms ease;
+}
+
+@starting-style {
+  .deck-gallery[open] {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+}
+
+.deck-gallery::backdrop {
+  overflow: hidden;
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  overscroll-behavior: contain;
+}
+
+.deck-gallery__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px 12px;
+  border-bottom: 1px solid var(--line);
+  padding: clamp(16px, 3vw, 24px) clamp(16px, 3vw, 28px);
+}
+
+.deck-gallery__header h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.08;
+}
+
+.deck-gallery__header .dialog-close {
+  position: static;
+}
+
+.deck-gallery__tools {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 12px;
+}
+
+.deck-gallery__tools input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 10px 14px;
+}
+
+.deck-gallery__tools input::placeholder {
+  color: var(--muted);
+}
+
+.deck-gallery__groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.deck-gallery__groups button {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  padding: 8px 16px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition:
+    border-color 170ms ease,
+    color 170ms ease,
+    background-color 170ms ease;
+}
+
+.deck-gallery__groups button[aria-pressed="true"] {
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+  color: var(--gold);
+}
+
+.deck-gallery__body {
+  overflow-y: auto;
+  padding: 16px clamp(16px, 3vw, 28px)
+    max(28px, env(safe-area-inset-bottom, 0px));
+  overscroll-behavior: contain;
+  scrollbar-color: var(--gold-line) transparent;
+  scrollbar-width: thin;
+}
+
+.deck-gallery__status {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.deck-gallery__body section h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 24px 0 14px;
+  font-size: 1.1rem;
+}
+
+.deck-gallery__body section h3 span {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.deck-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 18px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck-thumb {
+  display: grid;
+  width: 100%;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.deck-thumb__art {
+  display: grid;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border: 1px solid var(--gold-line);
+  border-radius: 6px;
+  background: var(--card-stock);
+  box-shadow: 0 6px 12px rgb(0 0 0 / 52%);
+  transition:
+    border-color 170ms ease,
+    box-shadow 170ms ease,
+    transform 220ms var(--ease-out-expo);
+}
+
+.deck-thumb__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.deck-thumb__name {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.25;
+  text-wrap: balance;
+  transition: color 170ms ease;
+}
+
+.deck-thumb:focus-visible .deck-thumb__art {
+  border-color: var(--gold);
+}
+
+@media (hover: hover) {
+  .deck-gallery__groups button:hover:not([aria-pressed="true"]) {
+    border-color: var(--gold-line);
+    color: var(--ink);
+  }
+
+  .deck-thumb:hover .deck-thumb__art {
+    border-color: var(--gold);
+    box-shadow: 0 14px 24px rgb(0 0 0 / 62%);
+    transform: translateY(-3px);
+  }
+
+  .deck-thumb:hover .deck-thumb__name {
+    color: var(--ink);
+  }
+}
+
+/* The opener under the deck introduction on the entry page. */
+.setup-intro > .text-action {
+  margin-top: 20px;
+}
+
+/* ------------------------------------------------------- one card, large */
+
+.deck-gallery__card {
+  display: grid;
+  grid-template-columns: minmax(180px, 300px) minmax(0, 1fr);
+  align-items: start;
+  gap: 20px clamp(20px, 4vw, 40px);
+}
+
+.deck-gallery__card > .text-action {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.deck-gallery__copy h3 {
+  margin: 0 0 6px;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.deck-gallery__alias {
+  margin: 0;
+  color: var(--muted);
+}
+
+.deck-gallery__keywords h4 {
+  margin: 22px 0 10px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.deck-gallery__keywords .keyword-list {
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .deck-gallery {
+    border-left: 0;
+  }
+  .deck-gallery__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 10px;
+  }
+  .deck-gallery__card {
+    grid-template-columns: 1fr;
+  }
+  .deck-gallery__card > .card-plate {
+    max-width: 240px;
+    margin-inline: auto;
+  }
+}

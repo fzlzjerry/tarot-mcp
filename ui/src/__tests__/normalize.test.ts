@@ -3,6 +3,7 @@ import {
   extractError,
   normalizeBeginPayload,
   normalizeConfirmedReading,
+  normalizeDeckCatalog,
 } from "../normalize.js";
 
 describe("draw error normalization", () => {
@@ -182,5 +183,78 @@ describe("visual draw payload normalization", () => {
       "Ask of the past.",
       "Ask of the future.",
     ]);
+  });
+});
+
+describe("deck catalog normalization", () => {
+  const star = {
+    id: "star",
+    name: "The Star",
+    displayName: "星星",
+    arcana: "major",
+    number: 17,
+    keywords: { upright: ["希望", "疗愈"], reversed: ["怀疑"] },
+  };
+
+  it("reads the same catalog from the REST body and from the tool result", () => {
+    const expected = [
+      {
+        id: "star",
+        name: "The Star",
+        displayName: "星星",
+        arcana: "major",
+        number: 17,
+        keywords: { upright: ["希望", "疗愈"], reversed: ["怀疑"] },
+      },
+    ];
+    expect(
+      normalizeDeckCatalog({
+        cards: "# 塔罗牌",
+        structured: { cards: [star] },
+      }),
+    ).toEqual(expected);
+    expect(
+      normalizeDeckCatalog({
+        content: [{ type: "text", text: "# 塔罗牌" }],
+        structuredContent: { total: 1, cards: [star] },
+      }),
+    ).toEqual(expected);
+  });
+
+  it("keeps what can be shown and drops rows that cannot be found", () => {
+    expect(
+      normalizeDeckCatalog({
+        cards: [
+          { id: "ace_of_cups", name: "Ace of Cups", suit: "cups", number: 1 },
+          { id: "odd", name: "Odd", suit: "coins", keywords: { upright: [7] } },
+          { name: "No id" },
+          { id: "no_name" },
+          "fool",
+        ],
+      }),
+    ).toEqual([
+      {
+        id: "ace_of_cups",
+        name: "Ace of Cups",
+        displayName: "Ace of Cups",
+        arcana: "minor",
+        suit: "cups",
+        number: 1,
+        keywords: { upright: [], reversed: [] },
+      },
+      {
+        id: "odd",
+        name: "Odd",
+        displayName: "Odd",
+        arcana: "minor",
+        keywords: { upright: [], reversed: [] },
+      },
+    ]);
+  });
+
+  it("treats a catalog with nothing usable as a failure, not an empty deck", () => {
+    expect(() => normalizeDeckCatalog({ cards: [] })).toThrow();
+    expect(() => normalizeDeckCatalog({ cards: "# Tarot Cards" })).toThrow();
+    expect(() => normalizeDeckCatalog(undefined)).toThrow();
   });
 });

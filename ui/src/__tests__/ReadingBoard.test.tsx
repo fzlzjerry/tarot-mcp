@@ -16,6 +16,7 @@ const originalMatchMedia = window.matchMedia;
 afterEach(() => {
   vi.useRealTimers();
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
   Object.defineProperty(window, "matchMedia", {
     configurable: true,
     value: originalMatchMedia,
@@ -500,5 +501,117 @@ describe("ReadingBoard host continuation", () => {
     await user.click(interpretAgain()!);
     expect(continueReading).toHaveBeenCalledTimes(2);
     expect(continueReading).toHaveBeenLastCalledWith(current);
+  });
+});
+
+describe("ReadingBoard cloth", () => {
+  /** A cloth of a known size, observed, whose captions take one 14px line. */
+  function measurableCloth(width: number, height: number) {
+    vi.stubGlobal(
+      "ResizeObserver",
+      class {
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+      },
+    );
+    vi.spyOn(Element.prototype, "clientWidth", "get").mockReturnValue(width);
+    vi.spyOn(Element.prototype, "clientHeight", "get").mockReturnValue(height);
+    vi.spyOn(HTMLElement.prototype, "offsetHeight", "get").mockImplementation(
+      function (this: HTMLElement) {
+        return this.classList.contains("slot-caption") ? 14 : 0;
+      },
+    );
+  }
+  const cloth = (name: string) => screen.getByRole("region", { name });
+  const slots = (container: HTMLElement) => [
+    ...container.querySelectorAll<HTMLElement>(".cloth-slot"),
+  ];
+  const pixels = (element: HTMLElement, property: string) =>
+    Number.parseInt(element.style.getPropertyValue(property), 10);
+
+  it("sizes a ten-card spread to the cloth it measures and centres the crossing pair", () => {
+    measurableCloth(1338, 836);
+    const { client } = createClient("web");
+    const { container } = mount(client, celticReading());
+
+    const width = pixels(cloth("Celtic Cross"), "--slot-width");
+    expect(width).toBeGreaterThan(80);
+    expect(width).toBeLessThanOrEqual(168);
+
+    const [present, crossing, ...others] = slots(container);
+    expect(crossing.classList.contains("cloth-slot--crossing")).toBe(true);
+    expect(
+      [present, ...others].some((slot) =>
+        slot.classList.contains("cloth-slot--crossing"),
+      ),
+    ).toBe(false);
+    for (const axis of ["--card-x", "--card-y"]) {
+      expect(crossing.style.getPropertyValue(axis)).toBe(
+        present.style.getPropertyValue(axis),
+      );
+    }
+    // Every caption is told how far it may run, and never less than its card.
+    for (const slot of slots(container)) {
+      expect(pixels(slot, "--caption-width")).toBeGreaterThanOrEqual(width);
+    }
+  });
+
+  it("leaves a three-card spread at the stylesheet's showcase size", () => {
+    measurableCloth(1040, 495);
+    const { client } = createClient("web");
+    const { container } = mount(client);
+
+    expect(
+      cloth("Three Card Spread").style.getPropertyValue("--slot-width"),
+    ).toBe("");
+    for (const slot of slots(container)) {
+      expect(slot.style.getPropertyValue("--caption-width")).toBe("");
+    }
+  });
+
+  it("falls back to the stylesheet where the cloth cannot be observed", () => {
+    const { client } = createClient("web");
+    mount(client, celticReading());
+    expect(cloth("Celtic Cross").style.getPropertyValue("--slot-width")).toBe(
+      "",
+    );
+  });
+
+  it("opens the whole deck over a face-down reading without marking what was drawn", async () => {
+    const user = userEvent.setup();
+    const listCards = vi.fn<NonNullable<DrawClient["listCards"]>>(async () =>
+      ["The Fool", "The Star"].map((name) => ({
+        id: name.toLowerCase().replaceAll(" ", "_"),
+        name,
+        displayName: name,
+        arcana: "major" as const,
+        keywords: { upright: [], reversed: [] },
+      })),
+    );
+    const { client } = createClient("web", { listCards });
+    mount(client);
+    expect(revealedCard("The Fool")).toBeNull();
+
+    await user.click(
+      screen.getByRole("button", { name: label("galleryOpen") }),
+    );
+    const gallery = within(
+      await screen.findByRole("dialog", { name: label("galleryTitle") }),
+    );
+    const drawn = await gallery.findByRole("button", { name: "The Fool" });
+    const undrawn = gallery.getByRole("button", { name: "The Star" });
+
+    // The catalog is asked for by language alone: the reading is not sent.
+    expect(listCards).toHaveBeenCalledTimes(1);
+    expect(listCards.mock.calls[0][0]).toBe("en");
+    expect(Object.keys(listCards.mock.calls[0][1] ?? {})).toEqual(["signal"]);
+    const marks = (button: HTMLElement) =>
+      [...button.attributes]
+        .filter(({ name }) => name !== "data-card")
+        .map(({ name, value }) => `${name}=${value}`);
+    expect(marks(drawn)).toEqual(marks(undrawn));
+    // The reading itself is still face down behind the drawer.
+    expect(revealedCard("The Fool")).toBeNull();
   });
 });

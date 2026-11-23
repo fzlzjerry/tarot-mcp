@@ -29,7 +29,7 @@ function SpreadMiniMap({
       aria-label={label}
     >
       {points.map((pt, index) => {
-        const cx = 12 + (pt.x / 100) * 96;
+        const cx = 12 + (pt.x / 100) * 96 + (pt.side ?? 0) * 5.2;
         const cy = 10 + (pt.y / 100) * 58;
         const rot = pt.rotation ?? 0;
         return (

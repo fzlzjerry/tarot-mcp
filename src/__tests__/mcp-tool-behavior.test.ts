@@ -266,6 +266,67 @@ describe("MCP tool behavior", () => {
     expect(search).toContain("命中字段");
   });
 
+  it("returns the catalog as data in the order the text catalog prints it", async () => {
+    const result = await server.executeTool(TOOL_NAMES.listAllCards, {
+      language: "zh",
+    });
+    if (!result.ok) throw new Error(result.error);
+    const catalog = result.structured as {
+      category: string;
+      language: string;
+      total: number;
+      cards: Array<{
+        id: string;
+        name: string;
+        displayName: string;
+        arcana: string;
+        suit?: string;
+        number?: number;
+        keywords: { upright: string[]; reversed: string[] };
+      }>;
+    };
+    expect(catalog).toMatchObject({ category: "all", language: "zh" });
+    expect(catalog.total).toBe(78);
+    expect(new Set(catalog.cards.map((card) => card.id)).size).toBe(78);
+    expect(catalog.cards[0]).toEqual({
+      id: "fool",
+      name: "The Fool",
+      displayName: "愚者",
+      arcana: "major",
+      number: 0,
+      keywords: {
+        upright: ["全新开始", "信任", "觉醒"],
+        reversed: expect.any(Array),
+      },
+    });
+    expect(catalog.cards[0]).not.toHaveProperty("suit");
+    expect(catalog.cards.map((card) => card.suit ?? "major")).toEqual([
+      ...Array(22).fill("major"),
+      ...Array(14).fill("wands"),
+      ...Array(14).fill("cups"),
+      ...Array(14).fill("swords"),
+      ...Array(14).fill("pentacles"),
+    ]);
+    expect(catalog.cards.slice(22, 36).map((card) => card.number)).toEqual(
+      Array.from({ length: 14 }, (_, index) => index + 1),
+    );
+    for (const card of catalog.cards) {
+      expect(card.keywords.upright.length).toBeGreaterThan(0);
+      expect(card.keywords.upright.length).toBeLessThanOrEqual(3);
+      expect(card.keywords.reversed.length).toBeLessThanOrEqual(3);
+    }
+
+    const cups = await server.executeTool(TOOL_NAMES.listAllCards, {
+      category: "cups",
+    });
+    if (!cups.ok) throw new Error(cups.error);
+    expect(cups.structured).toMatchObject({
+      category: "cups",
+      language: "en",
+      total: 14,
+    });
+  });
+
   it("keeps the English path unchanged and rejects unknown languages", async () => {
     const english = await executeTool("performReading", {
       spreadType: "single_card",
