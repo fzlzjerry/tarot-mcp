@@ -219,9 +219,9 @@ immediately instead of leaving an unreachable waiter.
   draw, the meanings and the reading receipt are the same.
 - Midnight indigo, warm ivory and antique-gold line work in an Art Nouveau
   composition, with no generated text, logos, signatures, or watermarks.
-- Borders and ranks are composited deterministically after generation. The
-  first edition also composites its suit pips; in v2 the suit objects are part of
-  the illustration.
+- Borders, ranks and one suit emblem are composited deterministically after
+  generation. The first edition also composites its counted suit pips; in v2
+  the counted suit objects are part of the illustration.
 - Web assets: 640x960 WebP for v2 and 512x768 WebP for the first edition. MCP
   assets: 192x288 WebP for both.
 - All 78 v2 MCP faces plus the back are bundled inside the self-contained App

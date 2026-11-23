@@ -37,8 +37,8 @@ The prompt, model, quality, reference hash and SHA-256 of every 1024×1536 maste
 are recorded in `assets/artwork/v2/provenance.json`, and the hash of every
 published file in `assets/cards/v2/manifest.json`. The masters themselves are
 not part of this repository. The prompts forbid borders, title plaques, letters
-and numerals; the gilded frame and the rank in its cartouche are deterministic
-project artwork added during post-processing. The card back is made exactly
+and numerals; the gilded frame, the rank in its cartouche and the suit emblem in
+its crest are deterministic project artwork added during post-processing. The card back is made exactly
 symmetric under a 180-degree rotation and stored as lossless WebP.
 
 ### First edition (`midnight-art-nouveau-v1`)

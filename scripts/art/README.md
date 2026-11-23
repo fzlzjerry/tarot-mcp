@@ -54,11 +54,13 @@ numerals, so the generated art carries no text. `process-v2-deck.mjs` composites
 the rest from `frames-v2.mjs`:
 
 - a gilded arch frame in a palette per suit;
-- the rank in the top cartouche: Roman numerals for the Major Arcana and the
-  rank label for the Minor Arcana.
+- the rank in the top cartouche: `0` and `I`–`XXI` for the Major Arcana, and
+  `I`–`X`, `P`, `N`, `Q`, `K` for the Minor Arcana;
+- one suit emblem in the bottom crest, or a star medallion for the Major Arcana.
 
-Suit objects such as the eight wands are part of the illustration, so their
-count is checked by eye on the contact sheets, not by a script.
+The counted suit objects, such as the eight wands, are part of the
+illustration, so their count is checked by eye on the contact sheets, not by a
+script.
 
 The card back is made exactly symmetric under a 180° rotation and encoded as
 lossless WebP, so a reversed card cannot be told from an upright one while face
