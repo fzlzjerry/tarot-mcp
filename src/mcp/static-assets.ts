@@ -26,9 +26,9 @@ export function resolveVisualAssetDirectories(moduleDirectory: string): {
       join(process.cwd(), "dist", "ui", "web"),
     ]),
     cardDirectory: firstExistingDirectory([
-      join(moduleDirectory, "..", "assets", "cards"),
-      join(process.cwd(), "dist", "assets", "cards"),
-      join(process.cwd(), "assets", "cards"),
+      join(moduleDirectory, "..", "assets", "cards", "v2"),
+      join(process.cwd(), "dist", "assets", "cards", "v2"),
+      join(process.cwd(), "assets", "cards", "v2"),
     ]),
   };
 }
@@ -86,26 +86,18 @@ export function mountVisualWebAssets(
   }
 
   if (cardDirectory) {
-    const staticAssetOptions = {
-      index: false,
-      fallthrough: true,
-      immutable: true,
-      maxAge: "1y",
-      setHeaders: (res: Response) => {
-        res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-        res.setHeader("X-Content-Type-Options", "nosniff");
-      },
-    };
-    const v2CardDirectory = join(cardDirectory, "v2");
-    if (existsSync(v2CardDirectory)) {
-      app.use(
-        HTTP_ENDPOINTS.visualCardAssetsV2,
-        express.static(v2CardDirectory, staticAssetOptions),
-      );
-    }
     app.use(
-      HTTP_ENDPOINTS.visualCardAssetsV1,
-      express.static(cardDirectory, staticAssetOptions),
+      HTTP_ENDPOINTS.visualCardAssetsV2,
+      express.static(cardDirectory, {
+        index: false,
+        fallthrough: true,
+        immutable: true,
+        maxAge: "1y",
+        setHeaders: (res: Response) => {
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+          res.setHeader("X-Content-Type-Options", "nosniff");
+        },
+      }),
     );
   }
 }

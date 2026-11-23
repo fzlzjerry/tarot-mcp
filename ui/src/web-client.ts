@@ -7,7 +7,6 @@ import {
   normalizeDeckCatalog,
 } from "./normalize.js";
 import {
-  readInitialDeckEdition,
   resolveWebCardAssetUrl,
   resolveWebCardThumbnailUrl,
 } from "./deck-edition.js";
@@ -224,13 +223,6 @@ export function createWebClient(): DrawClient {
       );
       const payload = normalizeBeginPayload(result, input);
       assertCompleteVisualDeck(payload);
-      if (readInitialDeckEdition() === "v1") {
-        payload.deckBackImageUri = resolveWebCardAssetUrl(
-          "back",
-          payload.deckBackImageUri,
-          "v1",
-        );
-      }
       starts.set(payload.drawId, payload);
       return payload;
     },
@@ -252,22 +244,10 @@ export function createWebClient(): DrawClient {
             { selectedSlotIds },
             options?.signal,
           );
-      const confirmed = normalizeConfirmedReading(result, starts.get(drawId));
-      if (readInitialDeckEdition() === "v1") {
-        confirmed.deckBackImageUri = resolveWebCardAssetUrl(
-          "back",
-          confirmed.deckBackImageUri,
-          "v1",
-        );
-      }
-      return confirmed;
+      return normalizeConfirmedReading(result, starts.get(drawId));
     },
     async resolveImage(card: ReadingCard): Promise<string | undefined> {
-      const edition = readInitialDeckEdition();
-      if (edition === "v1") {
-        return resolveWebCardAssetUrl(card.id, card.imageUri, "v1");
-      }
-      return card.imageUri ?? resolveWebCardAssetUrl(card.id, undefined, "v2");
+      return card.imageUri ?? resolveWebCardAssetUrl(card.id);
     },
     // The loopback handoff page serves one reading and has no catalog route.
     ...(readHandoffToken()

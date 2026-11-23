@@ -78,19 +78,9 @@ await Promise.all([
     "Artwork license",
   ),
   requireMatchingFile(
-    join(rootDir, "assets", "artwork", "prompt-provenance.json"),
-    join(rootDir, "dist", "assets", "artwork", "prompt-provenance.json"),
-    "v1 prompt provenance",
-  ),
-  requireMatchingFile(
     join(rootDir, "assets", "artwork", "v2", "provenance.json"),
     join(rootDir, "dist", "assets", "artwork", "v2", "provenance.json"),
     "v2 prompt provenance",
-  ),
-  requireMatchingFile(
-    join(rootDir, "assets", "cards", "manifest.json"),
-    join(rootDir, "dist", "assets", "cards", "manifest.json"),
-    "v1 artwork manifest",
   ),
   requireMatchingFile(
     join(rootDir, "assets", "cards", "v2", "foil-mask.svg"),

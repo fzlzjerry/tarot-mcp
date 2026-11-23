@@ -1,6 +1,5 @@
 import {
   VISUAL_CARD_ASSET_BASE,
-  VISUAL_CARD_V1_ASSET_BASE,
   VISUAL_CARD_V2_ASSET_BASE,
 } from "../tarot/shared/artwork.js";
 
@@ -16,7 +15,6 @@ export const HTTP_ENDPOINTS = {
   health: "/health",
   draw: "/draw",
   visualCardAssets: VISUAL_CARD_ASSET_BASE,
-  visualCardAssetsV1: VISUAL_CARD_V1_ASSET_BASE,
   visualCardAssetsV2: VISUAL_CARD_V2_ASSET_BASE,
   api: {
     info: "/api/info",

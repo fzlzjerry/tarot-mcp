@@ -58,18 +58,18 @@ When running in HTTP mode, the following endpoints are available:
 
 ### Visual UI and artwork
 
-- `GET /draw` - Shared visual reading app (public static page). It shows the v2
-  deck; `?deck=v1` shows the first edition. The parameter changes the artwork
-  the page loads and nothing about the draw or the reading.
-- `GET /assets/cards/midnight-art-nouveau-v2-r2/:cardId.webp` - 640×960 Web artwork, v2 deck
+- `GET /draw` - Shared visual reading app (public static page)
+- `GET /assets/cards/midnight-art-nouveau-v2-r2/:cardId.webp` - 640×960 Web artwork
 - `GET /assets/cards/midnight-art-nouveau-v2-r2/mcp/:cardId.webp` - 192×288 artwork for the MCP App and the deck gallery
-- `GET /assets/cards/midnight-art-nouveau-v1/:cardId.webp` - 512×768 Web artwork, first edition
-- `GET /assets/cards/midnight-art-nouveau-v1/mcp/:cardId.webp` - 192×288 MCP artwork, first edition
 
 `:cardId` is a stable card id such as `fool` or `ten_of_cups`; `back.webp` in
 each directory is the card back. Artwork is served with
-`Cache-Control: public, max-age=31536000, immutable`, so a changed v2 image is
+`Cache-Control: public, max-age=31536000, immutable`, so a changed image is
 published under a new revision suffix (`-r2` today) instead of replacing a file.
+
+The first edition (`midnight-art-nouveau-v1`) is retired: its artwork URLs
+under `/assets/cards/midnight-art-nouveau-v1/` return 404, `/draw?deck=v1` shows
+the v2 deck, and `/api/info` no longer lists `visualCardAssetsV1`.
 
 The static UI and versioned artwork are public/cacheable. `/api/*`, `/mcp`, `/sse`, and `/messages` continue to require Bearer authentication whenever `MCP_AUTH_TOKEN` is set.
 
@@ -125,8 +125,7 @@ return machine-readable `structuredContent` (reading id, session id,
 drawn cards) beside the Markdown text. Each reading records the
 `knowledgeVersion` of the Card Canon that produced it (`canon-v2.1`) and the
 `deckVersion` whose artwork its edition motifs describe
-(`midnight-art-nouveau-v2`); the first-edition view on the Web page does not
-change either. MCP card records contain only semantic
+(`midnight-art-nouveau-v2`). MCP card records contain only semantic
 reading data: canonical `name`, stable `cardId`, localized `displayName`,
 orientation, position, keywords, and selected meaning. They do not attach
 `imageUri`, embedded image bytes, `cardImages`, or `backImage` to the model's

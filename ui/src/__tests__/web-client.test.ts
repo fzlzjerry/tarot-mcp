@@ -4,6 +4,7 @@ import {
   HANDOFF_TOKEN_SESSION_KEY,
   createWebClient,
 } from "../web-client.js";
+import type { ReadingCard } from "../types.js";
 
 function jsonResponse(body: unknown, status = 200): Response {
   return {
@@ -59,7 +60,8 @@ describe("Web visual-reading client", () => {
               requiredCount: 1,
               slots,
               deck: {
-                backImageUri: "/assets/cards/midnight-art-nouveau-v1/back.webp",
+                backImageUri:
+                  "/assets/cards/midnight-art-nouveau-v2-r2/back.webp",
                 slots,
               },
             },
@@ -81,7 +83,7 @@ describe("Web visual-reading client", () => {
                 name: "The Fool",
                 displayName: "The Fool",
                 orientation: "upright",
-                imageUri: "/assets/cards/midnight-art-nouveau-v1/fool.webp",
+                imageUri: "/assets/cards/midnight-art-nouveau-v2-r2/fool.webp",
               },
             ],
           },
@@ -114,7 +116,7 @@ describe("Web visual-reading client", () => {
         body: JSON.stringify({ selectedSlotIds: ["opaque-0"] }),
       }),
     );
-    expect(reading.cards[0].imageUri).toContain("midnight-art-nouveau-v1");
+    expect(reading.cards[0].imageUri).toContain("midnight-art-nouveau-v2-r2");
 
     client.setSessionToken?.("");
     expect(window.sessionStorage.getItem(AUTH_TOKEN_SESSION_KEY)).toBeNull();
@@ -144,7 +146,8 @@ describe("Web visual-reading client", () => {
             requiredCount: 1,
             slots,
             deck: {
-              backImageUri: "/assets/cards/midnight-art-nouveau-v1/back.webp",
+              backImageUri:
+                "/assets/cards/midnight-art-nouveau-v2-r2/back.webp",
               slots,
             },
           },
@@ -165,7 +168,7 @@ describe("Web visual-reading client", () => {
                 name: "The Fool",
                 displayName: "The Fool",
                 orientation: "upright",
-                imageUri: "/assets/cards/midnight-art-nouveau-v1/fool.webp",
+                imageUri: "/assets/cards/midnight-art-nouveau-v2-r2/fool.webp",
               },
             ],
           },
@@ -244,7 +247,7 @@ describe("Web visual-reading client", () => {
           requiredCount: 1,
           slots,
           deck: {
-            backImageUri: "/assets/cards/midnight-art-nouveau-v1/back.webp",
+            backImageUri: "/assets/cards/midnight-art-nouveau-v2-r2/back.webp",
             slots,
           },
         },
@@ -279,7 +282,7 @@ describe("Web visual-reading client", () => {
     expect(onConfirmed.mock.calls[0][0]).toMatchObject({
       readingId: "reading_restored",
       drawId: "draw_restored",
-      deckBackImageUri: "/assets/cards/midnight-art-nouveau-v1/back.webp",
+      deckBackImageUri: "/assets/cards/midnight-art-nouveau-v2-r2/back.webp",
       cards: [{ id: "world", orientation: "reversed" }],
     });
   });
@@ -348,14 +351,22 @@ describe("Web deck gallery client", () => {
     expect(createWebClient().listCards).toBeUndefined();
   });
 
-  it("points the grid at the small faces of the deck on show", () => {
+  it("points the grid at the small faces of the deck", () => {
     expect(createWebClient().getCardThumbnail!("star")).toMatch(
       /^\/assets\/cards\/midnight-art-nouveau-v2-r\d+\/mcp\/star\.webp$/,
     );
-    // The first edition ships full plates only.
+  });
+
+  it("ignores the retired ?deck=v1 parameter", async () => {
     window.history.replaceState(null, "", "/draw/?deck=v1");
-    expect(createWebClient().getCardThumbnail!("star")).toBe(
-      "/assets/cards/midnight-art-nouveau-v1/star.webp",
+    const client = createWebClient();
+    expect(client.getCardThumbnail!("star")).toMatch(
+      /^\/assets\/cards\/midnight-art-nouveau-v2-r\d+\/mcp\/star\.webp$/,
+    );
+    await expect(
+      client.resolveImage!({ id: "star" } as ReadingCard),
+    ).resolves.toMatch(
+      /^\/assets\/cards\/midnight-art-nouveau-v2-r\d+\/star\.webp$/,
     );
   });
 });

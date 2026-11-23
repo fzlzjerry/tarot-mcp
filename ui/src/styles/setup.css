@@ -414,42 +414,6 @@ textarea {
     font-size: 1.5rem;
   }
 }
-.setup-header__controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.edition-switch {
-  display: inline-flex;
-  padding: 3px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  gap: 2px;
-}
-.edition-switch button {
-  min-height: 32px;
-  padding: 4px 12px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--muted);
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color 150ms, background-color 150ms;
-}
-.edition-switch button.is-active {
-  background: color-mix(in srgb, var(--gold) 18%, var(--surface-raised));
-  color: var(--gold);
-}
-@media (hover: hover) {
-  .edition-switch button:hover:not(.is-active) {
-    color: var(--ink);
-  }
-}
 .v2-gate-strip {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));

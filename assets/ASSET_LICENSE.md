@@ -15,9 +15,9 @@ copies or substantial portions of the asset collection.
 
 ## Provenance
 
-Both editions of the artwork were created specifically for this project from
-project-authored prompts, then normalized and framed by the deterministic
-scripts in `scripts/art/`. No card image, scan, colorization, font artwork, or
+The artwork was created specifically for this project from project-authored
+prompts, then normalized and framed by the deterministic scripts in
+`scripts/art/`. No card image, scan, colorization, font artwork, or
 other visual asset was downloaded from the web or copied from a third-party
 tarot deck.
 
@@ -44,16 +44,10 @@ rotation and stored as lossless WebP.
 
 ### First edition (`midnight-art-nouveau-v1`)
 
-The first edition was created with OpenAI's built-in `image_gen` tool. Exact
-prompts, hashes, and output paths are recorded in
-`assets/artwork/prompt-provenance.json`. The generated center art contains no
-intentional text, title, number, logo, signature, or watermark. Suit pips and
-the common frame are deterministic project artwork produced during
-post-processing. Minor-arcana rank labels (`A`, `II`–`X`, `P`, `N`, `Q`,
-`K`) are also rendered deterministically and are not generated image text.
-The published card back is built by averaging every raw pixel with its
-180-degree counterpart, then using palette quantization and lossless WebP so
-both delivered sizes remain exactly symmetric after decoding.
+The first edition is retired and is no longer part of this asset collection. It
+was created for this project with OpenAI's built-in `image_gen` tool. Its
+artwork, sources, prompts and pipeline remain in the repository history and are
+complete at commit `37e8a22`.
 
 ## No warranty
 

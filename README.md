@@ -15,11 +15,9 @@ that only stages that message says so instead of claiming it was sent. The
 standalone Web page keeps the server's local interpretation and does not claim to
 send it anywhere.
 
-The table shows the second edition of the artwork, `midnight-art-nouveau-v2`.
-The first edition stays available on the Web page through the edition switch on
-the entry page or `/draw?deck=v1`; it changes the artwork shown, never the draw
-or the interpretation. The whole deck can be browsed and searched from the entry
-page and from a reading, and the gallery lists all 78 cards the same way
+The deck is `midnight-art-nouveau-v2`, the second edition of the artwork; the
+first edition is retired. The whole deck can be browsed and searched from the
+entry page and from a reading, and the gallery lists all 78 cards the same way
 whatever has been drawn.
 
 ## Run locally
@@ -106,17 +104,13 @@ authentication and origin/host allowlists.
 | `ui/src/DeckGallery.tsx`     | Searchable gallery of all 78 cards                                                |
 | `ui/src/webmcp/`             | Browser feature detection, tool registration and live page access                 |
 | `ui/src/styles/`             | Ordered styles for setup, controls, ritual, draw, reading and responsive behavior |
-| `assets/cards/`              | First-edition Web and MCP artwork, manifest and QA evidence; v2 in `v2/`          |
-| `scripts/art/`               | Artwork generation, processing and verification for both editions                 |
+| `assets/cards/v2/`           | Published Web and MCP artwork and its manifest                                    |
+| `scripts/art/`               | Artwork generation, processing and verification                                   |
 
-The first edition's source PNGs, provenance and QA files are retained because
-they are inputs or evidence for its pipeline. Full-resolution sources and contact
-sheets are excluded from the distributable build; they are not duplicate runtime
-assets. The v2 masters are kept outside the repository:
+The lossless masters are kept outside the repository:
 `assets/artwork/v2/provenance.json` records each one's prompt, model and hash,
 and `assets/cards/v2/manifest.json` records the hash of every published card
-face and back.
-See [the artwork workflow](scripts/art/README.md).
+face and back. See [the artwork workflow](scripts/art/README.md).
 
 ## Checks
 

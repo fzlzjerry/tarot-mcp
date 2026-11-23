@@ -187,6 +187,26 @@ describe("HTTP MCP server", () => {
     }
   });
 
+  it("serves the deck artwork as immutable files and nothing at the retired first-edition path", async () => {
+    const face = await fetch(
+      `${BASE_URL}/assets/cards/midnight-art-nouveau-v2-r2/fool.webp`,
+    );
+    expect(face.status).toBe(200);
+    expect(face.headers.get("content-type")).toBe("image/webp");
+    expect(face.headers.get("cache-control")).toBe(
+      "public, max-age=31536000, immutable",
+    );
+    const smallBack = await fetch(
+      `${BASE_URL}/assets/cards/midnight-art-nouveau-v2-r2/mcp/back.webp`,
+    );
+    expect(smallBack.status).toBe(200);
+
+    const retired = await fetch(
+      `${BASE_URL}/assets/cards/midnight-art-nouveau-v1/fool.webp`,
+    );
+    expect(retired.status).toBe(404);
+  });
+
   it("serves card listing and card detail endpoints", async () => {
     const cards = await fetch(`${BASE_URL}/api/cards?category=major_arcana`);
     expect(cards.status).toBe(200);

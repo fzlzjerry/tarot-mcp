@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { CardPlate } from "./CardPlate.js";
-import { readInitialDeckEdition } from "./deck-edition.js";
 import { t } from "./i18n.js";
 import type { DrawClient, Language, ReadingCard } from "./types.js";
 import { useCardImage } from "./useCardImage.js";
@@ -23,8 +22,6 @@ export function CardDetails({
   counter?: { current: number; total: number };
 }) {
   const [source] = useCardImage(client, card);
-  const isShowingV2 =
-    client.target === "mcp" || readInitialDeckEdition() === "v2";
 
   const closeButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLElement>(null);
@@ -88,10 +85,9 @@ export function CardDetails({
     };
   }, [onClose]);
 
-  const motifs =
-    isShowingV2 && card.editionMotifs?.length
-      ? card.editionMotifs
-      : card.traditionMotifs;
+  const motifs = card.editionMotifs?.length
+    ? card.editionMotifs
+    : card.traditionMotifs;
 
   return (
     <div
