@@ -114,7 +114,8 @@ they are inputs or evidence for its pipeline. Full-resolution sources and contac
 sheets are excluded from the distributable build; they are not duplicate runtime
 assets. The v2 masters are kept outside the repository:
 `assets/artwork/v2/provenance.json` records each one's prompt, model and hash,
-and `assets/cards/v2/manifest.json` records the hash of every published file.
+and `assets/cards/v2/manifest.json` records the hash of every published card
+face and back.
 See [the artwork workflow](scripts/art/README.md).
 
 ## Checks
