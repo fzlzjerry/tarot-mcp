@@ -83,7 +83,7 @@ function normalizeEmbeddedImage(value: unknown): EmbeddedImage | undefined {
   };
 }
 
-function embeddedImageUri(value: unknown): string | undefined {
+export function embeddedImageUri(value: unknown): string | undefined {
   if (typeof value === "string" && value.startsWith("data:")) return value;
   const image = normalizeEmbeddedImage(value);
   if (!image) return undefined;

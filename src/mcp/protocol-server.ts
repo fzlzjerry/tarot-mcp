@@ -46,7 +46,11 @@ const MCP_ARTWORK_FIELDS = new Set([
   "deckBackImageUri",
 ]);
 
-/** Keep artwork in the App/Web presentation layer, never in model tool data. */
+/**
+ * Keep artwork in the App/Web presentation layer, never in model tool data.
+ * The one image a tool returns is the app-only get_card_artwork face, which
+ * travels as `_meta.cardArtwork` for the App alone.
+ */
 function withoutMcpArtwork(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(withoutMcpArtwork);
   if (!isRecord(value)) return value;
@@ -144,7 +148,9 @@ export function createMcpProtocolServer(
     try {
       let result = await tarotServer.executeTool(name, args || {});
       let structuredContent = result.ok ? result.structured : undefined;
-      let resultMeta: Record<string, unknown> | undefined;
+      let resultMeta: Record<string, unknown> | undefined = result.ok
+        ? result.meta
+        : undefined;
       let resultText = result.ok ? result.text : result.error;
 
       if (

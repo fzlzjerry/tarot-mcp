@@ -62,9 +62,10 @@ function ReadingCardView({
   onTurn(): void;
   language: Language;
 }) {
-  const [source, failed] = useCardImage(client, card);
-  const [imageFailed, setImageFailed] = useState(false);
-  const showFallback = failed || imageFailed || !source;
+  const [source, failed] = useCardImage(client, card, revealed);
+  // Kept per source, so a sharper face still shows after an earlier one broke.
+  const [failedSource, setFailedSource] = useState<string>();
+  const showFallback = failed || !source || failedSource === source;
   return (
     <button
       type="button"
@@ -91,7 +92,7 @@ function ReadingCardView({
               src={source}
               alt=""
               className={card.orientation === "reversed" ? "is-reversed" : ""}
-              onError={() => setImageFailed(true)}
+              onError={() => setFailedSource(source)}
             />
           )}
           <span className="reading-card__foil" aria-hidden="true" />

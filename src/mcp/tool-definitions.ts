@@ -399,6 +399,35 @@ const TOOL_DEFINITIONS: readonly Tool[] = Object.freeze([
     outputSchema: VISUAL_READING_OUTPUT_SCHEMA,
   },
   {
+    name: TOOL_NAMES.getCardArtwork,
+    title: "Load card artwork",
+    securitySchemes: [{ type: "noauth" }],
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    _meta: {
+      ui: {
+        visibility: ["app"],
+      },
+    },
+    description:
+      "App-only: load one card's full-size face for the visual tarot App. The image travels in the result _meta, never in model-visible content.",
+    inputSchema: {
+      type: "object",
+      additionalProperties: false,
+      properties: {
+        cardId: {
+          type: "string",
+          description: "Stable card id from a reading or the card catalog.",
+        },
+      },
+      required: ["cardId"],
+    },
+  },
+  {
     name: TOOL_NAMES.searchCards,
     title: "Search tarot cards",
     securitySchemes: [{ type: "noauth" }],

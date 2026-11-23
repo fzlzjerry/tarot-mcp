@@ -36,6 +36,7 @@ export const TOOL_NAMES = {
   performReading: "perform_reading",
   beginVisualReading: "begin_visual_reading",
   confirmVisualReading: "confirm_visual_reading",
+  getCardArtwork: "get_card_artwork",
   searchCards: "search_cards",
   findSimilarCards: "find_similar_cards",
   getDatabaseAnalytics: "get_database_analytics",

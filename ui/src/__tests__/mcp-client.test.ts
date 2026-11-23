@@ -814,3 +814,126 @@ describe("embedded MCP App deck gallery", () => {
     );
   });
 });
+
+describe("embedded MCP App full-size artwork", () => {
+  const fool = {
+    id: "fool",
+    name: "The Fool",
+    displayName: "The Fool",
+    orientation: "upright",
+  } as const;
+  const world = { ...fool, id: "world", name: "The World" } as const;
+  const options = { timeout: 20_000 };
+
+  function artworkToolResult() {
+    return {
+      content: [
+        {
+          type: "text" as const,
+          text: "Artwork for The Fool is attached for the visual App.",
+        },
+      ],
+      _meta: {
+        cardArtwork: {
+          cardId: "fool",
+          mimeType: "image/webp",
+          data: "VE9PTA==",
+        },
+      },
+    };
+  }
+
+  it("reads the face as a resource where the host proxies resource reads", async () => {
+    const { app, callServerTool } = createFakeApp(
+      { serverResources: {} },
+      artworkToolResult(),
+    );
+    const readServerResource = vi.fn(async () => ({
+      contents: [
+        {
+          uri: "tarot://cards/fool/artwork",
+          mimeType: "image/webp",
+          blob: "UkVTT1VSQ0U=",
+        },
+      ],
+    }));
+    Object.assign(app, { readServerResource });
+
+    await expect(createMcpClient(app).resolveSharpImage!(fool)).resolves.toBe(
+      "data:image/webp;base64,UkVTT1VSQ0U=",
+    );
+    expect(readServerResource).toHaveBeenCalledWith(
+      { uri: "tarot://cards/fool/artwork" },
+      options,
+    );
+    expect(callServerTool).not.toHaveBeenCalled();
+  });
+
+  it("asks the app-only tool where resource reads are absent or fail", async () => {
+    const plain = createFakeApp(undefined, artworkToolResult());
+    await expect(
+      createMcpClient(plain.app).resolveSharpImage!(fool),
+    ).resolves.toBe("data:image/webp;base64,VE9PTA==");
+    expect(plain.callServerTool).toHaveBeenCalledWith(
+      { name: "get_card_artwork", arguments: { cardId: "fool" } },
+      options,
+    );
+
+    const refusing = createFakeApp(
+      { serverResources: {} },
+      artworkToolResult(),
+    );
+    Object.assign(refusing.app, {
+      readServerResource: vi.fn(async () => {
+        throw new Error("Method not found");
+      }),
+    });
+    await expect(
+      createMcpClient(refusing.app).resolveSharpImage!(fool),
+    ).resolves.toBe("data:image/webp;base64,VE9PTA==");
+  });
+
+  it("asks once per card however many views show it", async () => {
+    const { app, callServerTool } = createFakeApp(
+      undefined,
+      artworkToolResult(),
+    );
+    const client = createMcpClient(app);
+
+    const [first, second] = await Promise.all([
+      client.resolveSharpImage!(fool),
+      client.resolveSharpImage!(fool),
+    ]);
+    expect(second).toBe(first);
+    await client.resolveSharpImage!(fool);
+    expect(callServerTool).toHaveBeenCalledTimes(1);
+  });
+
+  it("tries a card again after a single failed request", async () => {
+    const { app, callServerTool } = createFakeApp(
+      undefined,
+      artworkToolResult(),
+    );
+    callServerTool.mockRejectedValueOnce(new Error("Request timed out"));
+    const client = createMcpClient(app);
+
+    await expect(client.resolveSharpImage!(fool)).resolves.toBeUndefined();
+    await expect(client.resolveSharpImage!(fool)).resolves.toBe(
+      "data:image/webp;base64,VE9PTA==",
+    );
+    expect(callServerTool).toHaveBeenCalledTimes(2);
+  });
+
+  it("stops asking a host that hands the App no artwork", async () => {
+    // What a host that drops result _meta leaves of the tool result.
+    const { app, callServerTool } = createFakeApp(undefined, {
+      content: artworkToolResult().content,
+    });
+    const client = createMcpClient(app);
+
+    await expect(client.resolveSharpImage!(fool)).resolves.toBeUndefined();
+    await expect(client.resolveSharpImage!(world)).resolves.toBeUndefined();
+    await expect(client.resolveSharpImage!(fool)).resolves.toBeUndefined();
+    expect(callServerTool).toHaveBeenCalledTimes(2);
+  });
+});

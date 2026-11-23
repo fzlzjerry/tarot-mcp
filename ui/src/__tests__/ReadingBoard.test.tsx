@@ -4,6 +4,7 @@ import {
   isInaccessible,
   render,
   screen,
+  waitFor,
   within,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -198,6 +199,26 @@ describe("ReadingBoard restored presentation", () => {
 });
 
 describe("ReadingBoard reveal", () => {
+  it("asks the server for a sharper face only once a card is turned", async () => {
+    const user = userEvent.setup();
+    const resolveSharpImage = vi.fn<
+      NonNullable<DrawClient["resolveSharpImage"]>
+    >(async () => undefined);
+    const { client } = createClient("mcp", {
+      resolveImage: async (card) => `small:${card.id}`,
+      resolveSharpImage,
+    });
+    mount(client);
+    await act(async () => {});
+    expect(resolveSharpImage).not.toHaveBeenCalled();
+
+    await user.click(next());
+    expect(revealedCard("The Fool")).not.toBeNull();
+    expect(
+      new Set(resolveSharpImage.mock.calls.map(([card]) => card.id)),
+    ).toEqual(new Set(["fool"]));
+  });
+
   it("keeps face-down names and the interpretation out of reach until the user turns every card", async () => {
     const user = userEvent.setup();
     const { client } = createClient("web");
@@ -501,6 +522,34 @@ describe("ReadingBoard host continuation", () => {
     await user.click(interpretAgain()!);
     expect(continueReading).toHaveBeenCalledTimes(2);
     expect(continueReading).toHaveBeenLastCalledWith(current);
+  });
+});
+
+describe("ReadingBoard card faces", () => {
+  it("shows a sharper face that arrives after the immediate one failed to load", async () => {
+    const user = userEvent.setup();
+    let deliver!: (source: string) => void;
+    const sharpFool = new Promise<string>((resolve) => {
+      deliver = resolve;
+    });
+    const { client } = createClient("mcp", {
+      resolveImage: async (card) => `small:${card.id}`,
+      resolveSharpImage: (card) =>
+        card.id === "fool" ? sharpFool : Promise.resolve(undefined),
+    });
+    const { container } = mount(client);
+    const face = () =>
+      container.querySelector(
+        ".reading-card.is-revealed .reading-card__face img",
+      );
+
+    await user.click(next());
+    await waitFor(() => expect(face()?.getAttribute("src")).toBe("small:fool"));
+    fireEvent.error(face()!);
+    expect(face()).toBeNull();
+
+    deliver("sharp:fool");
+    await waitFor(() => expect(face()?.getAttribute("src")).toBe("sharp:fool"));
   });
 });
 

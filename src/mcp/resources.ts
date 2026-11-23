@@ -4,6 +4,11 @@ import {
   ListResourceTemplatesRequestSchema,
   ReadResourceRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
+import {
+  CARD_ARTWORK_MIME_TYPE,
+  CARD_ARTWORK_URI_TEMPLATE,
+  readCardArtwork,
+} from "./card-artwork.js";
 import { TarotServer } from "./tarot-service.js";
 import {
   getVisualAppResourceDefinition,
@@ -58,6 +63,13 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
         mimeType: "application/json",
       },
       {
+        uriTemplate: CARD_ARTWORK_URI_TEMPLATE,
+        name: "Tarot card artwork",
+        description:
+          "Full-size face of one card (640x960 WebP) for the visual App to show in place of its bundled small face",
+        mimeType: CARD_ARTWORK_MIME_TYPE,
+      },
+      {
         uriTemplate: "tarot://spreads/{type}",
         name: "Tarot spread",
         description: "One spread definition with its positions",
@@ -95,6 +107,20 @@ export function registerResources(server: Server, tarotServer: TarotServer): voi
 
     if (uri === SPREADS_URI) {
       return jsonContents(uri, { spreads: tarotServer.getAvailableSpreads() });
+    }
+
+    const artworkMatch = /^tarot:\/\/cards\/([^/]+)\/artwork$/.exec(uri);
+    if (artworkMatch) {
+      const card = tarotServer.findCardExact(
+        decodeURIComponent(artworkMatch[1]),
+      );
+      const blob = card && (await readCardArtwork(card.id));
+      if (!blob) {
+        throw new Error(`Unknown card artwork: ${artworkMatch[1]}`);
+      }
+      return {
+        contents: [{ uri, mimeType: CARD_ARTWORK_MIME_TYPE, blob }],
+      };
     }
 
     const cardMatch = /^tarot:\/\/cards\/(.+)$/.exec(uri);
